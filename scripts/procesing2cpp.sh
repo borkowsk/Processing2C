@@ -52,6 +52,9 @@ sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
 #sed -E 's|assert (.+);|assert(\1);|g'
 sed -E 's|assert (.+):|assert \1; // |g' |\
 sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
+#modyfikacja print i println do plikow
+sed -E 's|(\w+)\.print\(|print(\1,|g' |\
+sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
 sed 's/boolean/bool/g' |\
 sed 's/this\./this->/g' |\

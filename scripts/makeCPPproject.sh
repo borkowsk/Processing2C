@@ -7,7 +7,8 @@ fi
 
 BASEDIR=$(dirname "$0")
 SOURCES=`pwd`
-echo "$BASEDIR" "$SOURCES"
+PROJECT=$(basename "$SOURCES")
+echo "$BASEDIR" "$SOURCES" "$PROJECT"
 
 source $BASEDIR/config.dat
 
@@ -45,7 +46,7 @@ cat << EOF > CMakeLists.txt
 cmake_minimum_required(VERSION 2.8)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
-project(Application)
+project($PROJECT)
 set( VERSION_NUM 0.1 ) #MUST BE NUMERIC 
 
 set( SRCPATH "$SOURCES/cppsrc/" )
