@@ -4,6 +4,7 @@
 #define PROCESSING_LIBRARY_H
 #include <string>
 #include <cassert>
+#include <fstream>
 ///
 ///
 ///
@@ -41,6 +42,19 @@ namespace Processing
         bool operator != (const ptr&)const;
         bool operator == (T*) const;
         bool operator != (T*) const;
+  };
+
+  class _string_param:public String
+  {
+    public:
+    _string_param(String p):String(p){}
+    _string_param(const char *p):String(p){}
+    _string_param(double p);
+    _string_param(float  p);
+    _string_param(int    p);
+    _string_param(void*  p);
+    template<class T>
+    _string_param(ptr<T> p);
   };
 
   template<class X>
@@ -101,6 +115,30 @@ namespace Processing
 
   inline
   float random(double hig){return random(0,hig); }
+
+  void saveFrame(const String& filename);
+  void saveFrame(const std::string& filename);
+
+
+/// File streams
+  class PrintWriter
+  {
+      std::fstream* ptr;
+   public:
+      PrintWriter();
+      PrintWriter(PrintWriter&);
+      void flush();
+  };
+
+  PrintWriter& createWriter(const String&);
+  PrintWriter& createWriter(const char* );
+
+  //void print();//To bez sensu
+  void print(PrintWriter& o,_string_param _p1="",_string_param _p2="",_string_param _p3="",_string_param _p4="",
+                            _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
+
+  void println(PrintWriter& o,_string_param _p1="",_string_param _p2="",_string_param _p3="",_string_param _p4="",
+                              _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
 
 }//END of namespace Processing
 #endif

@@ -7,34 +7,35 @@
 ///
 namespace Processing
 {
-  class _print_param:public String
-  {
-    public:
-    _print_param(String p):String(p){}
-    _print_param(const char *p):String(p){}
-    _print_param(double p);
-    _print_param(float  p);
-    _print_param(int    p);
-    _print_param(void*  p);
-    template<class T>
-    _print_param(ptr<T> p);
-  };
-
-
-
-
   //void print();//To bez sensu
-  void print(_print_param _p1);
-  void print(_print_param _p1,_print_param _p2);
-  void print(_print_param _p1,_print_param _p2,_print_param _p3);
-  void print(_print_param _p1,_print_param _p2,_print_param _p3,_print_param _p4,
-             _print_param _p5="",_print_param _p6="",_print_param _p7="",_print_param _p8="");
+  void print(_string_param _p1);
+  void print(_string_param _p1,_string_param _p2);
+  void print(_string_param _p1,_string_param _p2,_string_param _p3);
+  void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
+             _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
 
   void println();
-  void println(_print_param _p1);
-  void println(_print_param _p1,_print_param _p2);
-  void println(_print_param _p1,_print_param _p2,_print_param _p3);
-  void println(_print_param _p1,_print_param _p2,_print_param _p3,_print_param _p4,
-             _print_param _p5="",_print_param _p6="",_print_param _p7="",_print_param _p8="");
+  void println(_string_param _p1);
+  void println(_string_param _p1,_string_param _p2);
+  void println(_string_param _p1,_string_param _p2,_string_param _p3);
+  void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
+               _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
+
+  String nf(double num);
+  String nf(double num,int digits);
+  String nf(double num,int left,int right);
+
+  String nf(sarray<int> nums);
+  String nf(sarray<int> nums,int digits);
+  String nf(sarray<int> nums,int left,int right);
+
+  String nf(sarray<float> nums);
+  String nf(sarray<float> nums,int digits);
+  String nf(sarray<float> nums,int left,int right);
+
+  String nf(sarray<double> nums);
+  String nf(sarray<double> nums,int digits);
+  String nf(sarray<double> nums,int left,int right);
+
 }//END of namespace Processing
 #endif
