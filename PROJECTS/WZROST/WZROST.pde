@@ -12,7 +12,7 @@ int VIS_FRQ=100; //co ile kroków zrzut ekranu
 //Ważne globalne zmienne, ale inicjowane w setup()
 int Side;//Bok macieży
 int W; //Mnożnik dla kwadracika
-RGB World[][];//TABLICA
+RGB[][] World;//TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
 PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 

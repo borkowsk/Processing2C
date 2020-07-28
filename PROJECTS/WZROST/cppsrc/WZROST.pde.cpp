@@ -1,5 +1,5 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
-//Source: wzrost_170106grafika.pde
+//Source: WZROST.pde
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
@@ -22,7 +22,7 @@ int VIS_FRQ=100; //co ile kroków zrzut ekranu
 //Ważne globalne zmienne, ale inicjowane w setup()
 int Side;//Bok macieży
 int W; //Mnożnik dla kwadracika
-RGB smatrix<pWorld>;//TABLICA
+smatrix<pRGB> World;//TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
 PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 
@@ -101,5 +101,6 @@ void processing_window::draw()
     
     Step++;
   }
-}//../../scripts/procesing2cpp.sh did it
+}
+//../../scripts/procesing2cpp.sh did it
 

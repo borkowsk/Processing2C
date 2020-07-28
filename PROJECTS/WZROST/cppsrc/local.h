@@ -8,8 +8,9 @@
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
+extern int RGB_Counter;//=0;/// Globalny licznik obiektów typu RGB
 
 
 //All classes from Processing files
-class RGB; typedef Processing::ptr<RGB> pRGB; //
+class RGB; typedef Processing::ptr<RGB> pRGB; // {
 #endif

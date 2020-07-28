@@ -8,4 +8,4 @@ using namespace Processing;
 //==================================================================================
 
 #include "RGB.pde.cpp"
-#include "wzrost_170106grafika.pde.cpp"
+#include "WZROST.pde.cpp"
