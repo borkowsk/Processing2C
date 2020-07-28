@@ -1,7 +1,9 @@
 //TAKA KLASA
 ////////////////////////
-class RGB
-{
+int RGB_Counter=0;/// Globalny licznik obiektów typu RGB
+
+class RGB {
+  ///Info: obiekt przykładowy z polami Red,Green,Blue
   int R,G,B;
   
   RGB() //Konstruktor
@@ -37,10 +39,8 @@ class RGB
   
   void finalize() //Finalizer.  Wywoływany przez Javę gdy Garbage collector likwiduje objekt
   {               //Teoretycznie - bo trudno to sprawdzić. http://stackoverflow.com/questions/2506488/when-is-the-finalize-method-called-in-java
-    RGB_Counter--; //<>//
+    RGB_Counter--;//Wygląda na to że tym programie nie jest wołany nigdy //<>//
     println("-");
     //super.finalize();//Ale na to Processing robi blup...
   }
-}
-
-int RGB_Counter=0;
+};
