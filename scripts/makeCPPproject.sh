@@ -5,7 +5,15 @@ then
    exit -1
 fi
 
-./prepare_local_h.sh
+BASEDIR=$(dirname "$0")
+SOURCES=`pwd`
+echo "$BASEDIR" "$SOURCES"
+
+source $BASEDIR/config.dat
+
+$BASEDIR/prepare_local_h.sh
+
+mv "$SOURCES/local.h" "$SOURCES/cppsrc/"
 
 #Preparing files
 mkdir cppsrc/
@@ -13,7 +21,7 @@ cat <<EOF > "./cppsrc/project_at_once.cpp"
 //All sources in one file 
 #include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.h" //is optional. Should be deleted when not needed
+#include "processing_console.hpp" //is optional. Should be deleted when not needed
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -25,9 +33,9 @@ FILES=*.pde
 for f in $FILES
 do
   echo "File: $f "
-  echo "#include \"$f.cpp\"" >> "./cppsrc/project_at_once.cpp"
+  echo "#include \"$f.cpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
   # take action on each file. $f store current file name
-  ./procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
+  $BASEDIR/procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
 done
 
 #Preparing CMakeLists.txt
@@ -40,13 +48,13 @@ set( CMAKE_VERBOSE_MAKEFILE off )
 project(Application)
 set( VERSION_NUM 0.1 ) #MUST BE NUMERIC 
 
-set( SRCPATH "./cppsrc/")
+set( SRCPATH "$SOURCES/cppsrc/" )
 set( WBRTM   "../../WBRTM_Linux/")
 set( MYLIBS  "../../WBRTM_Linux/")
 
 add_definitions(-DMULTITR -DDEF_MAXTHREADS=16 -DVERSION_NUM=\${VERSION_NUM})
 
-include_directories( "\${WBRTM}" "\${SRCPATH}" )
+include_directories(  "\${SRCPATH}" "$BASEDIR/../lib/include" "\${WBRTM}" )
 
 add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_once"
                "\${SRCPATH}project_at_once.cpp"

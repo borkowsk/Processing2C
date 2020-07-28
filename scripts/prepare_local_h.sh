@@ -38,5 +38,3 @@ sed -i ':a;N;$!ba;s/\n//g' userclasses.sed
 
 cat userclasses.sed
 
-
-mv local.h ./cppsrc/
