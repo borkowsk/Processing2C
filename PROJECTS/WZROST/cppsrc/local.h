@@ -9,6 +9,8 @@
 
 //All global variables from Processing files
 extern int RGB_Counter;//=0;/// Globalny licznik obiektów typu RGB
+extern int Side;  /// Bok macieży
+extern int W;     /// Mnożnik dla kwadracika
 
 
 //All classes from Processing files

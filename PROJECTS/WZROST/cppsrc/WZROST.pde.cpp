@@ -20,9 +20,9 @@ bool ScreenDumps=true; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
-int Side;//Bok macieży
-int W; //Mnożnik dla kwadracika
-smatrix<pRGB> World;//TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
+int Side;  /// Bok macieży
+int W;     /// Mnożnik dla kwadracika
+smatrix<pRGB>    World;//TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
 PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 

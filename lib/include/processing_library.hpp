@@ -68,6 +68,7 @@ namespace Processing
   class sarray
   {
     public:
+        sarray();
         sarray(array<T>* tab);
         sarray(nullptr_t);//Empty sarray
         size_t length();
@@ -87,6 +88,7 @@ namespace Processing
   class smatrix
   {
     public:
+        smatrix();
         smatrix(matrix<T>* tab);
         size_t length();
         matrix<T>* operator -> ();
