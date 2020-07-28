@@ -39,7 +39,7 @@ void processing_window::setup() //Window and model initialization
   World[Side/2][Side/2].Visualise(Side/2,Side/2);
   
   output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
-  output.println("Step\tCounter");
+  println(output,"Step\tCounter");
   
   noSmooth(); //Fast visualization
   frameRate(30); //maximize speed
@@ -51,7 +51,7 @@ void processing_window::draw()
 //Monte Carlo Step
 {
   //Zapis tego co jest
-  output.println(Step+"\t"+RGB_Counter); // Write the statistics to the file
+  println(output,Step+"\t"+RGB_Counter); // Write the statistics to the file
   output.flush();//Upewnij się że bufor "poszedł na dysk"
   
   //Nowy stan
