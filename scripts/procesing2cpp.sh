@@ -56,11 +56,11 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed 's/boolean/bool/g' |\
+sed 's/boolean /bool /g' |\
 sed 's/this\./this->/g' |\
 sed 's/\.length/.length()/g' |\
 sed 's/null/nullptr/g' |\
-sed 's/final/const/g' |\
+sed 's/final /const /g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
