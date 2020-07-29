@@ -127,6 +127,7 @@ namespace Processing
    public:
       PrintWriter();
       PrintWriter(PrintWriter&);
+      std::fstream* operator -> ();
       void flush();
   };
 
