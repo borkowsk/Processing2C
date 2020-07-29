@@ -73,7 +73,7 @@ sed "s/void exit()/void processing_window::exit()/g" |\
 sed "s/super.exit();/processing_window_base::exit()/g" |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE - może być za brutalne
-sed -E 's/[^#*](\w+)\.(\w+)/\1->\2/g' |\
+sed -E 's/^([^#]*)(\w+)\.(\w+)/\1\2->\3/g' |\
 sed -E 's/\]\.(\w+)/]->\1/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
