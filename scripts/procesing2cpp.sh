@@ -57,7 +57,7 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed 's/boolean /bool /g' |\
+sed -E 's/boolean([ >])/bool\1/g' |\
 sed 's/this\./this->/g' |\
 sed 's/\.length/.length()/g' |\
 sed 's/null/nullptr/g' |\
@@ -72,11 +72,14 @@ sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
 sed "s/void exit()/void processing_window::exit()/g" |\
 sed "s/super.exit();/processing_window_base::exit()/g" |\
 sed -E -f userclasses.sed  |\
-#ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE - może być za brutalne
-sed -E 's/^([^#]*)(\w+)\.(\w+)/\1\2->\3/g' |\
-sed -E 's/\]\.(\w+)/]->\1/g' |\
+#ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE - nazwy plików w "" próbujemy zabezpieczyć 
+sed -E 's/"(.+)\.(.+)"/"\1@\2"/' |\
+sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
+sed -E 's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]->\1/g' |\
+sed -E 's/"(.+)\@(.+)"/"\1.\2"/' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 
+#echo 's/"(.+)\.(.+)"/bulba/g' 1>&2
 echo -e "//$0 did it\n"
 
