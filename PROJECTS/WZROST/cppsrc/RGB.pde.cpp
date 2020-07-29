@@ -3,6 +3,7 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
+//include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -49,10 +50,10 @@ class RGB {
   }
   
   void finalize() //Finalizer.  Wywoływany przez Javę gdy Garbage collector likwiduje objekt
-  {               //Teoretycznie - bo trudno to sprawdzić. http://stackoverflow.com/questions/2506488/when-is-the-finalize-method-called-in-java
+  {               //Teoretycznie - bo trudno to sprawdzić. http://stackoverflow->com/questions/2506488/when-is-the-finalize-method-called-in-java
     RGB_Counter--;//Wygląda na to że tym programie nie jest wołany nigdy //<>//
     println("-");
-    //super.finalize();//Ale na to Processing robi blup...
+    //super->finalize();//Ale na to Processing robi blup...
   }
 };
 //../../scripts/procesing2cpp.sh did it

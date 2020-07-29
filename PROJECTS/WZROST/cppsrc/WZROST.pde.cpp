@@ -3,6 +3,7 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
+//include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -35,12 +36,12 @@ void processing_window::setup() //Window and model initialization
   World = new matrix<pRGB>(Side,Side); //<>//
   World[Side/2][Side/2]= new RGB();
 
-  World[Side/2][Side/2].Set(STARTG,STARTG,STARTG);//Inicjalize 
-  World[Side/2][Side/2].Visualise(Side/2,Side/2);
+  World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG);//Inicjalize 
+  World[Side/2][Side/2]->Visualise(Side/2,Side/2);
   
-  output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
+  output = createWriter("Statistics->log"); // Create a new file in the sketch directory  
   println(output,"Step\tCounter");
-
+  
   noSmooth(); //Fast visualization
   frameRate(30); //maximize speed
 }
@@ -52,13 +53,13 @@ void processing_window::draw()
 {
   //Zapis tego co jest
   println(output,Step+"\t"+RGB_Counter); // Write the statistics to the file
-  output.flush();//Upewnij się że bufor "poszedł na dysk"
-
+  output->flush();//Upewnij się że bufor "poszedł na dysk"
+  
   //Nowy stan
   if(!Stop)
   {
     int M=Side*Side;
-
+    
     for(int i=0;i<M;i++)
     {
       int X=int(random(Side));
@@ -67,26 +68,26 @@ void processing_window::draw()
       {
          int Xt=X+int(random(JUMP))-JUMP/2;
          int Yt=Y+int(random(JUMP))-JUMP/2;
-
+         
          if(0<=Xt && Xt<Side && 0<=Yt && Yt<Side
             &&  World[Yt][Xt]==nullptr)
           {
             World[Yt][Xt]=new RGB();
-            int nR=World[Y][X].R+int(random(CJUMP))-CJUMP/2;
+            int nR=World[Y][X]->R+int(random(CJUMP))-CJUMP/2;
             if(nR<0) nR=0; else if(nR>255) nR=255;
-
-            int nG=World[Y][X].G+int(random(CJUMP))-CJUMP/2;
+            
+            int nG=World[Y][X]->G+int(random(CJUMP))-CJUMP/2;
             if(nG<0) nG=0; else if(nG>255) nG=255;
-
-            int nB=World[Y][X].B+int(random(CJUMP))-CJUMP/2;
+            
+            int nB=World[Y][X]->B+int(random(CJUMP))-CJUMP/2;
             if(nB<0) nB=0; else if(nB>255) nB=255;
-
-            World[Yt][Xt].Set(nR,nG,nB);
-            World[Yt][Xt].Visualise(Xt,Yt);
-
+            
+            World[Yt][Xt]->Set(nR,nG,nB);
+            World[Yt][Xt]->Visualise(Xt,Yt);
+            
             if(Xt==0 || Yt==0)//Doszło do brzegu z jednej z dwu stron - a rośnie w zasadzie symetrycznie
-                  Stop=true;
-          }
+                  Stop=true; 
+          }  
       }
     }
       
