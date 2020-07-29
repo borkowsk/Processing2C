@@ -36,5 +36,5 @@ echo "bulba)(\s+)(\w+)([;,\)\(\=])/\1p\2\3\4\5/g"  >> userclasses.sed
 
 sed -i ':a;N;$!ba;s/\n//g' userclasses.sed 
 
-cat userclasses.sed
+#cat userclasses.sed
 

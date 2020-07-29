@@ -10,6 +10,7 @@ echo "//Source: $1"
 echo "#include \"processing_window.hpp\""
 echo "#include \"processing_library.hpp\""
 echo "#include \"processing_console.hpp\" //is optional. Should be deleted when not needed"
+echo "//include \"processing_inlines.hpp\" //is optional. Use when project is already compilable"
 echo "using namespace Processing;"
 echo "#include \"local.h\""
 echo "#include \"project.h\" //Is's for you. Could be deleted when not needed"
@@ -71,8 +72,11 @@ sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
 sed "s/void exit()/void processing_window::exit()/g" |\
 sed "s/super.exit();/processing_window_base::exit()/g" |\
 sed -E -f userclasses.sed  |\
+#ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE - może być za brutalne
+sed -E 's/(\w+)\.(\w+)/\1->\2/g' |\
+sed -E 's/\]\.(\w+)/]->\1/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
-sed 's|//  //|//|g'
+sed -E 's|//\s+//|//|g'
 
 echo -e "//$0 did it\n"
 
