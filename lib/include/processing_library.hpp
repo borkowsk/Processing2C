@@ -5,6 +5,7 @@
 #include <string>
 #include <cassert>
 #include <fstream>
+#include <initializer_list> //https://en.cppreference.com/w/cpp/utility/initializer_list
 ///
 ///
 ///
@@ -93,6 +94,7 @@ namespace Processing
         sarray();
         sarray(array<T>* tab);
         sarray(nullptr_t);//Empty sarray
+        sarray(std::initializer_list<T> l);
         size_t length();
         array<T>* operator -> ();
         T& operator [] (size_t i);
@@ -112,6 +114,7 @@ namespace Processing
     public:
         smatrix();
         smatrix(matrix<T>* tab);
+        smatrix(std::initializer_list<T> l);//??? TODO TEST IT!
         size_t length();
         matrix<T>* operator -> ();
         sarray<T>& operator [] (size_t i);
