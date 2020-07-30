@@ -1,17 +1,16 @@
-int worozmiar = sizew/ws;  //ile pól jest na świecie
+int worozmiar = sizew/ws;  ///ile pól jest na świecie
 
-float density = 0.005;  //ewentualna gęstośc jedzenia rozłożena
+float density = 0.005;  ///ewentualna gęstośc jedzenia rozłożena
 
-int xNest = int(worozmiar/7);  //współrzędne gniazda i jego rozmiar
-int yNest = int(worozmiar/7);
-int siNest = 3;
+int xNest = int(worozmiar/7);  ///współrzędne gniazda i jego rozmiar
+int yNest = int(worozmiar/7);  ///
+int siNest = 3;                ///
 
-int foodSupply;  //początkowa ilość jedzenia w gnieździe
-int ileWsumieMrowek = sizew/10;  //maksymalna dopuszczalna liczba mrówek
+int foodSupply;  /// początkowa ilość jedzenia w gnieździe
+int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
 
 
-class World
-{
+class World {
   Back[][] backWorld;  
   Ant[][] antsWorld;  
   int[][] ants = new int[ileWsumieMrowek][2]; //tablica współrzędnych mrówek
@@ -125,10 +124,7 @@ class World
         }
       }
     }
-  }
-
-
-
+  };
 
   //++++++++++++ FUNKCJE POMOCNICZE ++++++++++++
 

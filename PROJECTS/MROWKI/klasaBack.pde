@@ -1,5 +1,4 @@
-class Back
-{
+class Back {
   float id;  //jaki rodzaj nawierzchni
   float p_follow;  //ile feromonu jest, jak chętnie będą iść
   float amountFood;  //ile jedzenia jest na miejscu
@@ -44,4 +43,4 @@ class Back
     if (id == 2) amountFood-=1;
     if (amountFood<=0) id = 0;
   }
-}
+};

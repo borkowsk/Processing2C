@@ -1,5 +1,4 @@
-class Ant
-{
+class Ant {
   float id, trailS; 
   //id - numerek w tablicy mrówek, trails - ile szlaku zostawia
   
@@ -70,4 +69,4 @@ class Ant
     }
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
-}
+};

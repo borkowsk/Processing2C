@@ -1,30 +1,31 @@
 //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
-PrintWriter output;
-PrintWriter stan;
-World world;
-int ws = 10;
-int sizew = 900;
+PrintWriter output;///Globalny output
+PrintWriter stan;///
+World world;///
+
+int ws = 10;///
+int sizew = 900;///
 
 //mrówka
-float ts = 0.5; //wzmocnienie szlaku po zebraniu jedzenia
-int memo = 10; //długość pamięci
-float distrail = 0.1; //osłabienie szlaku, gdy nie ma jedzenia
-float pLosowe = 0.01;  //prawdopodobieństwo odejścia od reguł, w klasieWorld
+float ts = 0.5; ///wzmocnienie szlaku po zebraniu jedzenia
+int memo = 10; ///długość pamięci
+float distrail = 0.1; ///osłabienie szlaku, gdy nie ma jedzenia
+float pLosowe = 0.01;  ///prawdopodobieństwo odejścia od reguł, w klasieWorld
 
 //tło
-float disp = 0.01; //tempo zanikania szlaku 
-float pe = 0.1; //normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
-int ileje = 80; //ile jest maksymalnie jedzenia na miejscu jedzenia
-float quiet = 0.5;   //tempo uciszania dźwięku
+float disp = 0.01; ///tempo zanikania szlaku 
+float pe = 0.1; ///normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
+int ileje = 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
+float quiet = 0.5;   ///tempo uciszania dźwięku
 
 //manipulowalne
-boolean vibrate; 
-boolean szlak;
-boolean pamiec;
-boolean losowo;
-int ileSymulacji = 2; 
+boolean vibrate;  ///
+boolean szlak;    ///
+boolean pamiec;  ///
+boolean losowo;  ///
+int ileSymulacji = 2; ///
 
 
 //++++++++++++ ZBIERANIE DANYCH ++++++++++++
@@ -37,9 +38,9 @@ void setup() {
   petla();
 }
 
-int iteracja;
-int dra = 0;
-int lpsym = 1; //do nazewnictwa
+int iteracja;  ///
+int dra = 0;   ///
+int lpsym = 1; /// do nazewnictwa
 
 void draw() {
   if (foodSupply<400) {  //dra - ile razy wykona tę samą symulację
