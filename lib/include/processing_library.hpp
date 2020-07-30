@@ -28,6 +28,14 @@ namespace Processing
       String& operator  + (float) const;
       String& operator  + (double) const;
       String& operator  + (bool) const;
+     friend
+      String& operator  + (int,const String&);
+     friend
+      String& operator  + (float,const String&);
+     friend
+      String& operator  + (double,const String&);
+     friend
+      String& operator  + (bool,const String&);
   };
 
   template<class T>
@@ -116,6 +124,13 @@ namespace Processing
   inline
   float random(double hig){return random(0,hig); }
 
+  int       min(int,int);
+  double    min(double,double);
+  int       max(int,int);
+  double    max(double,double);
+
+  void loop();
+  void noLoop();
   void saveFrame(const String& filename);
   void saveFrame(const std::string& filename);
 
