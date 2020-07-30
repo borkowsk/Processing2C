@@ -5,7 +5,7 @@
 #include <string>
 #include <cassert>
 #include <fstream>
-#include <initializer_list> //https://en.cppreference.com/w/cpp/utility/initializer_list
+#include <initializer_list>
 ///
 ///
 ///
@@ -29,15 +29,12 @@ namespace Processing
       String& operator  + (float) const;
       String& operator  + (double) const;
       String& operator  + (bool) const;
-     friend
-      String& operator  + (int,const String&);
-     friend
-      String& operator  + (float,const String&);
-     friend
-      String& operator  + (double,const String&);
-     friend
-      String& operator  + (bool,const String&);
   };
+
+   String& operator  + (int,const String&);
+   String& operator  + (float,const String&);
+   String& operator  + (double,const String&);
+   String& operator  + (bool,const String&);
 
   template<class T>
   class ptr
@@ -79,12 +76,16 @@ namespace Processing
         virtual int compareTo(ptr<T> t)=0;
   };
 
+  //https://en.cppreference.com/w/cpp/utility/initializer_list
+  //https://en.cppreference.com/w/cpp/language/constructor
+
   template<class T>
   class array
   {
     public:
         size_t length;
         array(size_t N);
+        array(array<T>* tab);//TEST IT! TODO
   };
 
   template<class T>
@@ -106,6 +107,7 @@ namespace Processing
     public:
         size_t length;
         matrix(size_t N,size_t M);
+        matrix(array<T>* tab);//??? TEST IT! TODO!!!
   };
 
   template<class T>
@@ -153,11 +155,13 @@ namespace Processing
   PrintWriter& createWriter(const char* );
 
   //void print();//To bez sensu
-  void print(PrintWriter& o,_string_param _p1="",_string_param _p2="",_string_param _p3="",_string_param _p4="",
-                            _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
+  //void print(PrintWriter& o,_string_param _p1="");
+  void print(PrintWriter& o,const String& );
+  void print(PrintWriter& o,const std::string& );
 
-  void println(PrintWriter& o,_string_param _p1="",_string_param _p2="",_string_param _p3="",_string_param _p4="",
-                              _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
+  //void println(PrintWriter& o,_string_param _p1="");
+  void println(PrintWriter& o,const String& );
+  void println(PrintWriter& o,const std::string& );
 
 }//END of namespace Processing
 #endif
