@@ -117,8 +117,8 @@ void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];
   losowo = permutacje[pet][3];
-  println(output,lpsym+String(") Kod symulacji: wspl ")+ int(may_vibrate)+int(szlak)+int(pamiec)+int(losowo)); //? czy z tego nie wyjdzie liczba zamiat ciągu zer i jedynej? TODO check it!
-  println(output,String("lp")+ String("\t")  + String("czas") + String("\t")  +  String("pracowało"));
+  println(output,lpsym+String(") Kod symulacji: wspl ")+ int(may_vibrate)+int(szlak)+int(pamiec)+int(losowo)); //? czy z tego nie wyjdzie liczba zamiast ciągu zer i jedynej? TODO check it!
+  println(output,"lp\tczas\tpracowało");//Usuwamy zbędne konkatenacje!
   lpsym++;
   pet++;
   if (pet<=16) {

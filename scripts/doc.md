@@ -19,6 +19,12 @@ Poważny problem stanowią domyślne ustawienia klas - w _Processingu_ cała zaw
 Ponadto użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej.
 (por. https://stackoverflow.com/questions/357307/how-to-call-a-parent-class-function-from-derived-class-function/357380#357380) 
 
+**Konkatenacje stringów**
+
+W _Processingu_ stałe napisowe są traktowane jak obiekty typu __String__, które z kolei ppodlegają konkatenacji niemal z każdym innym podstawowym typem zmiennych. W C++ konwersja na typ __Processing::String__  musi zostać wymuszona jawnie przez dodanie wywołania konstruktora w wyrażeniach. 
+
+Skrypty dodają takie wywołanie w wykrytych operacjach konkatenacji, ale generalnie lepiej jest konkatenacje maksymalnie upraszczać przed translacją.
+
  
 Jakie zmiany należy wykonać?
 ----------------------------
@@ -27,7 +33,7 @@ Przed translacją na C++ nalezy dokonać nieco zmian w kodzie _Processingu_ i sp
 
 1) Nawiasy '{' otwierające definicje klas przenieść do lini deklaracji klasy. Całość (łącznie z klasą bazową i ewentualnymi interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej linii.
 
-2) Po nawiasie zamykającym klasę dopisujemy ';' - Processingowi to nie przeszkadza, a w C++ jest wymagane.
+2) Po nawiasie zamykającym klasę dopisujemy ';' - _Processingowi_ to nie przeszkadza, a w C++ jest wymagane.
 
 3) Zmienne globalne, które mają  być widoczne we wszystkich plikach projektu należy skomentować używająć potrójnego slasha zamiast podwójnego (czyli '///' a nie '//'). Analogicznie należy postąpic w przypadku globalnych funkcji. Znak '{' musi się znajdować w linii deklaracji, a '///' za tym znakiem.
 

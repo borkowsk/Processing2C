@@ -155,13 +155,13 @@ namespace Processing
   PrintWriter& createWriter(const char* );
 
   //void print();//To bez sensu
-  //void print(PrintWriter& o,_string_param _p1="");
-  void print(PrintWriter& o,const String& );
-  void print(PrintWriter& o,const std::string& );
+  void print(PrintWriter& o,_string_param _p1="");
+  //void print(PrintWriter& o,const String& );
+  //void print(PrintWriter& o,const std::string& );
 
-  //void println(PrintWriter& o,_string_param _p1="");
-  void println(PrintWriter& o,const String& );
-  void println(PrintWriter& o,const std::string& );
+  void println(PrintWriter& o,_string_param _p1="");
+  //void println(PrintWriter& o,const String& );
+  //void println(PrintWriter& o,const std::string& );
 
 }//END of namespace Processing
 #endif
