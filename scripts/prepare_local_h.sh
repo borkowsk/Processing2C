@@ -3,7 +3,7 @@ echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOC
         > local.h
 
 echo -e "\n//All global finals (consts) from Processing files" >> local.h
-egrep -h '^\s*(final int|final float|final double|final String|final boolean)\s+(\w+)[;=].*///' *.pde |\
+egrep -h '^\s*(final int|final float|final double|final String|final boolean)\s+(\w+)\s*[;=].*///' *.pde |\
 sed 's|boolean|bool|g' |\
 sed 's|final|const|g' |\
 #sed 's|String|std::string|g' |\
@@ -11,11 +11,22 @@ sed -E 's/^\s*(const int|const float|const double|const String|const bool)/exter
 sed 's|=|;//=|' >> local.h
 
 echo -e "\n//All global variables from Processing files" >> local.h
-egrep -h '^\s*(int|float|double|String|boolean)\s+(\w+)[;=].*///' *.pde |\
+egrep -h '^\s*(int|float|double|String|boolean)\s+(\w+)\s*[;=].*///' *.pde |\
 sed 's|boolean|bool|g' |\
 #sed 's|String|std::string|g' |\
 sed -E 's/^\s*(int|float|double|String|bool)/extern &/' |\
 sed 's|=|;//=|' >> local.h
+
+#Funkcje wymagające deklaracji zapowiadających
+echo -e "\n//All global functions from Processing files" >> local.h
+#echo "///" '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\\{.*///'
+egrep -h '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\{.*///' *.pde |\
+sed 's|boolean|bool|g' |\
+sed 's|String|std::string|g' |\
+sed -E 's#^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*#&; //#' |\
+sed -E 's|//\s*\{\s*///|///|' |\
+sed 's|) ;|);|' >> local.h
+
 
 echo -e "\n\n//All classes from Processing files" >> local.h
 egrep -h '^\s*(class|abstract\s+class|interface)\s+(\w+)' *.pde |\

@@ -9,8 +9,8 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-class Ant
-{
+class Ant {
+  public:
   float id, trailS; 
   //id - numerek w tablicy mrówek, trails - ile szlaku zostawia
   
@@ -81,6 +81,6 @@ class Ant
     }
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
-}
+};
 //../../scripts/procesing2cpp.sh did it
 

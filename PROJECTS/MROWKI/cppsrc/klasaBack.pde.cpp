@@ -9,8 +9,8 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-class Back
-{
+class Back {
+  public:
   float id;  //jaki rodzaj nawierzchni
   float p_follow;  //ile feromonu jest, jak chętnie będą iść
   float amountFood;  //ile jedzenia jest na miejscu
@@ -55,6 +55,6 @@ class Back
     if (id == 2) amountFood-=1;
     if (amountFood<=0) id = 0;
   }
-}
+};
 //../../scripts/procesing2cpp.sh did it
 

@@ -1,4 +1,4 @@
-//++++++++++++ ZMIENNE ++++++++++++
+ //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
 PrintWriter output;///Globalny output
@@ -10,7 +10,7 @@ int sizew = 900;///
 
 //mrówka
 float ts = 0.5; ///wzmocnienie szlaku po zebraniu jedzenia
-int memo = 10; ///długość pamięci
+int memo = 10; /// długość pamięci
 float distrail = 0.1; ///osłabienie szlaku, gdy nie ma jedzenia
 float pLosowe = 0.01;  ///prawdopodobieństwo odejścia od reguł, w klasieWorld
 
@@ -66,7 +66,7 @@ void draw() {
   }
 }
 
-void inicjacja() {
+void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
   foodSupply = 0;
   iteracja = 0;
   world = new World();
@@ -82,7 +82,7 @@ boolean[][] permutacje = new boolean[16][4];
 boolean[] doIteracji = new boolean[2];
 int pet = 0;
 
-void pomocPetli() {
+void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
   doIteracji[0]=false;
   doIteracji[1]=true;
   for (int d=2; d>0; d--) {
@@ -101,7 +101,7 @@ void pomocPetli() {
   pet = 0;
 }
 
-void petla() {
+void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
   vibrate = permutacje[pet][0];
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];

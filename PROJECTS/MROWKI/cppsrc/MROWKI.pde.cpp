@@ -9,33 +9,34 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-//++++++++++++ ZMIENNE ++++++++++++
+ //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
-PrintWriter output;
-PrintWriter stan;
-pWorld world;
-int ws = 10;
-int sizew = 900;
+PrintWriter output;///Globalny output
+PrintWriter stan;///
+pWorld world;///
+
+int ws = 10;///
+int sizew = 900;///
 
 //mrówka
-float ts = 0.5; //wzmocnienie szlaku po zebraniu jedzenia
-int memo = 10; //długość pamięci
-float distrail = 0.1; //osłabienie szlaku, gdy nie ma jedzenia
-float pLosowe = 0.01;  //prawdopodobieństwo odejścia od reguł, w klasieWorld
+float ts = 0.5; ///wzmocnienie szlaku po zebraniu jedzenia
+int memo = 10; /// długość pamięci
+float distrail = 0.1; ///osłabienie szlaku, gdy nie ma jedzenia
+float pLosowe = 0.01;  ///prawdopodobieństwo odejścia od reguł, w klasieWorld
 
 //tło
-float disp = 0.01; //tempo zanikania szlaku 
-float pe = 0.1; //normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
-int ileje = 80; //ile jest maksymalnie jedzenia na miejscu jedzenia
-float quiet = 0.5;   //tempo uciszania dźwięku
+float disp = 0.01; ///tempo zanikania szlaku 
+float pe = 0.1; ///normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
+int ileje = 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
+float quiet = 0.5;   ///tempo uciszania dźwięku
 
 //manipulowalne
-bool vibrate; 
-bool szlak;
-bool pamiec;
-bool losowo;
-int ileSymulacji = 2; 
+bool vibrate;  ///
+bool szlak;    ///
+bool pamiec;  ///
+bool losowo;  ///
+int ileSymulacji = 2; ///
 
 
 //++++++++++++ ZBIERANIE DANYCH ++++++++++++
@@ -48,9 +49,9 @@ void processing_window::setup() {
   petla();
 }
 
-int iteracja;
-int dra = 0;
-int lpsym = 1; //do nazewnictwa
+int iteracja;  ///
+int dra = 0;   ///
+int lpsym = 1; /// do nazewnictwa
 
 void processing_window::draw() {
   if (foodSupply<400) {  //dra - ile razy wykona tę samą symulację
@@ -76,7 +77,7 @@ void processing_window::draw() {
   }
 }
 
-void inicjacja() {
+void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
   foodSupply = 0;
   iteracja = 0;
   world = new World();
@@ -92,7 +93,7 @@ smatrix<bool> permutacje = new matrix<bool>(16,4);
 sarray<bool> doIteracji = new array<bool>(2);
 int pet = 0;
 
-void pomocPetli() {
+void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
   doIteracji[0]=false;
   doIteracji[1]=true;
   for (int d=2; d>0; d--) {
@@ -111,7 +112,7 @@ void pomocPetli() {
   pet = 0;
 }
 
-void petla() {
+void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
   vibrate = permutacje[pet][0];
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];
