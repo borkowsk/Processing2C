@@ -55,7 +55,7 @@ int lpsym = 1; /// do nazewnictwa
 
 void processing_window::draw() {
   if (foodSupply<400) {  //dra - ile razy wykona tę samą symulację
-    if (world.antsOut<ileWsumieMrowek) world->whoLetTheAntsOut(); 
+    if (world->antsOut<ileWsumieMrowek) world->whoLetTheAntsOut(); 
     //do pewnego poziomu wypuszcza nowe
 
     world->antsMove();
