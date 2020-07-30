@@ -59,7 +59,7 @@ sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
 sed -E 's/boolean([ >])/bool\1/g' |\
 sed 's/this\./this->/g' |\
-sed 's/\.length/.length()/g' |\
+#sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
 #Opakowywanie stałych znakowych w operacjach konkatenacji ""

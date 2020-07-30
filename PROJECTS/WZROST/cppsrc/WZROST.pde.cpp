@@ -39,7 +39,7 @@ void processing_window::setup() //Window and model initialization
   World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG);//Inicjalize 
   World[Side/2][Side/2]->Visualise(Side/2,Side/2);
   
-  output = createWriter("Statistics->log"); // Create a new file in the sketch directory  
+  output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
   println(output,"Step\tCounter");
   
   noSmooth(); //Fast visualization
@@ -52,7 +52,7 @@ void processing_window::draw()
 //Monte Carlo Step
 {
   //Zapis tego co jest
-  println(output,Step+"\t"+RGB_Counter); // Write the statistics to the file
+  println(output,Step+String("\t")+RGB_Counter); // Write the statistics to the file
   output->flush();//Upewnij się że bufor "poszedł na dysk"
   
   //Nowy stan
@@ -94,10 +94,10 @@ void processing_window::draw()
     if(ScreenDumps && Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
     //if(ScreenDumps) //Zrzucanie obrazków co krok lub wcale
     {
-       //saveFrame("wzrost_step"+Step+".png");//Wersja z niewygodną numeracją
-       //saveFrame("wzrost_"+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
+       //saveFrame(String("wzrost_step")+Step+".png");//Wersja z niewygodną numeracją
+       //saveFrame(String("wzrost_")+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       saveFrame("wzrost_step"+sc+".png");//Wersja z wygodną numeracją
+       saveFrame(String("wzrost_step")+sc+".png");//Wersja z wygodną numeracją
     }
     
     Step++;
