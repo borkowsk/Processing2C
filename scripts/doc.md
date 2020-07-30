@@ -16,7 +16,8 @@ Ponadto w _Processingu_ zmienne i funkcje mają rozdzielne przestrzenie nazw. Oz
 
 Poważny problem stanowią domyślne ustawienia klas - w _Processingu_ cała zawartość klasy jest domyślnie publiczna, w C++ prywatna. Z kolei metody w Processingu są domyślnie wirtualne, w C++ nie (i ten prolem nie jest na razie rozwiązany w żaden sposób)
 
-Ponadto użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej. 
+Ponadto użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej.
+(por. https://stackoverflow.com/questions/357307/how-to-call-a-parent-class-function-from-derived-class-function/357380#357380) 
 
  
 Jakie zmiany należy wykonać?

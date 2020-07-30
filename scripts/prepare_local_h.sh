@@ -1,4 +1,5 @@
 #!/bin/bash
+#See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
         > local.h
 
@@ -43,8 +44,9 @@ echo "#endif" >> local.h
 #egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's|(\w+)|s/(&)(\\s+)(\\w+)/bla/g|'
 echo "s/([\,\s]*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
-echo "bulba)(\s+)(\w+)([;,\)\(\=])/\1p\2\3\4\5/g"  >> userclasses.sed
+echo "buuuulba)(\s+)(\w+)([;,\)\(\=])/\1p\2\3\4\5/g"  >> userclasses.sed
 
+#https://stackoverflow.com/questions/1251999/how-can-i-replace-a-newline-n-using-sed
 sed -i ':a;N;$!ba;s/\n//g' userclasses.sed 
 
 #cat userclasses.sed

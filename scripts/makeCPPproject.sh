@@ -20,6 +20,7 @@ echo -e WBSYMSHELL "  $WBSYMSHELL"
 #GET GLOBAL SYMBOLS
 $SCRIPTS/prepare_local_h.sh
 
+#https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
 SRCDIR="./cppsrc/"    
 if [ -d $SRCDIR ]; then
    echo #"Directory $SRCDIR already exists."

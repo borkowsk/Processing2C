@@ -84,6 +84,6 @@ sed -E 's/"(.+)\@(.+)"/"\1.\2"/' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 
-#echo 's/"(.+)\.(.+)"/bulba/g' 1>&2
+#echo 's/"(.+)\.(.+)"/buuulba/g' 1>&2
 echo -e "//$0 did it\n"
 
