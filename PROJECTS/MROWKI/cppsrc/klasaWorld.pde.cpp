@@ -190,7 +190,7 @@ class World {
     if (backWorld[p][r]->id==10 && antsWorld[i][j]->memory[0][0]>0) {
       antsWorld[i][j]->ifOnNestLeaveFood(p, r); 
       //jeżeli rusza się na gniazdo, zrzuca tam jedzenie
-      print(antsWorld[i][j]->trailS+"  ");
+      print(antsWorld[i][j]->trailS+ String("  "));
     }
     if (p==antsWorld[i][j]->memory[2][0] && r==antsWorld[i][j]->memory[2][1] && backWorld[p][r]->id==0) { 
       //jeżeli rusza się na jedzenie, a go tam nie ma, zapomina

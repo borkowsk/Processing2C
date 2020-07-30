@@ -62,6 +62,9 @@ sed 's/this\./this->/g' |\
 sed 's/\.length/.length()/g' |\
 sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
+#Opakowywanie stałych znakowych w operacjach konkatenacji ""
+sed -E 's|(\"[^".]*\")(\s*)\+|String(\1)\2\+|g' |\
+sed -E 's|\+(\s*)(\"[^".]*\")|+\1 String(\2)|g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
