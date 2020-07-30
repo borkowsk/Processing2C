@@ -32,7 +32,7 @@ int ileje = 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
 float quiet = 0.5;   ///tempo uciszania dźwięku
 
 //manipulowalne
-bool vibrate;  ///
+bool may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
 bool szlak;    ///
 bool pamiec;  ///
 bool losowo;  ///
@@ -113,11 +113,11 @@ void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
 }
 
 void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
-  vibrate = permutacje[pet][0];
+  may_vibrate = permutacje[pet][0];
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];
   losowo = permutacje[pet][3];
-  println(output,lpsym+") Kod symulacji: wspl "+ int(vibrate)+int(szlak)+int(pamiec)+int(losowo));
+  println(output,lpsym+") Kod symulacji: wspl "+ int(may_vibrate)+int(szlak)+int(pamiec)+int(losowo)); //? czy z tego nie wyjdzie liczba zamiat ciągu zer i jedynej? TODO check it!
   println(output,"lp"+ "\t"  + "czas" + "\t"  + "pracowało");
   lpsym++;
   pet++;

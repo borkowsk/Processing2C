@@ -6,11 +6,17 @@ Platforma docelowa musi zawierać kompilator C++ (najlepiej __gcc__) oraz progra
 
 Translacja została zaimplementowana za pomocą programu __sed__ więc kontekst składniowy ograniczony jest zawsze do jednej linii, co wymusza pewne zmiany z kodzie PDE, których trzeba dokonać przed translacją, i konieczność uzupełnień w wynikowym kodzie C++.
 
-Największą różnicą semantyczną między kodami jest widoczność identyfikatorów. W _Processingu_ kolejność wprowadania identyfikatorów globalnych nie ma znaczenia - wszystkie widoczne są wszędzie. W C++ identyfikator widoczny jest od miejsca deklaracji w dół. Deklaracje klas są odnajdywane i tworzone są z nich deklaracje zapowiadające, co nieco ogranicza ten problem, ale go nie eliminuje. Zmienne globalne, które przy kontekście jednoliniowym są nie do odróżnienia od globalnych muszą być specjalnie markowane. Wybrano komentarz zaczynający się od trzech slashy używany też przez programy do automatycznej dokumentacji kodu. Podobna sytuacja dotyczy globalnych funkcji, jeśli są używane przed zdefiniowanie. Trzeba wtedy, analogicznie jak dla zmiennych globalnych, wymusić wygenerowania deklaracji zapowiadającej.
+**widoczność identyfikatorów - największą różnica semantyczna między PDE a C++:**
 
-Drugi poważny problem stanowią domyślne ustawienia klas - w Processingu cała zawartość klasy jest domyślnie publiczna, w C++ prywatna. Z kolei metody w Processingu są domyślnie wirtualne, w C++ nie - ten prolem nie jest na razie rozwiązany.
+W _Processingu_ kolejność wprowadzania identyfikatorów globalnych nie ma znaczenia - wszystkie widoczne są wszędzie. W C++ identyfikator widoczny jest od miejsca deklaracji w dół. Skrypty odnajdują deklaracje klas i tworzą z nich deklaracje zapowiadające, co nieco ogranicza ten problem, ale go nie eliminuje. Zmienne globalne, które przy kontekście jednoliniowym są nie do odróżnienia od globalnych muszą być specjalnie markowane. Wybrano komentarz zaczynający się od trzech slashy używany też przez programy do automatycznej dokumentacji kodu. Podobna sytuacja dotyczy globalnych funkcji, jeśli są używane przed zdefiniowanie. Trzeba wtedy, analogicznie jak dla zmiennych globalnych, wymusić wygenerowania deklaracji zapowiadającej. 
 
-Ponadto użycie słowa kluczowego super reprezentującego w Processingu klasę bazową nie może być przetłumaczone automatycznie gdyż wymagałoby to wieloliniowego kontekstu i zapamiętania nazwy klasy bazowej. 
+Ponadto w Processingu zmienne i funkcje mają rozdzielne przestrzenie nazw. Oznacza to że zmienna globalna może mieć taką samą nazwę jak lokalna metoda i obie będą odróżniane. Takie mieszanie nazw nie jest dopuszczalne w C++ ponieważ identyfikatory funkcji i metod mogą występować w kontekście wskaźnikowym bez nawiasów. Stąd lokalna metoda o tej samej nazwie co zmienna globalna zakryje tą zmienną.
+
+**Klasy:**
+
+Poważny problem stanowią domyślne ustawienia klas - w _Processingu_ cała zawartość klasy jest domyślnie publiczna, w C++ prywatna. Z kolei metody w Processingu są domyślnie wirtualne, w C++ nie (i ten prolem nie jest na razie rozwiązany w żaden sposób)
+
+Ponadto użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone automatycznie gdyż wymagałoby to wieloliniowego kontekstu i zapamiętania nazwy klasy bazowej. 
 
  
 Jakie zmiany należy wykonać:

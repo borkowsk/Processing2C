@@ -184,7 +184,7 @@ class World {
       //jeżeli jest taka opcja, to zostawia szlak
       backWorld[i][j].trail(antsWorld[i][j].trailS);
     }
-    if (backWorld[p][r].sound>0 && vibrate) {  
+    if (backWorld[p][r].sound>0 && may_vibrate) {  
       //jeżeli jest na wibracji, to wibruje
       antsWorld[i][j].pamieta(backWorld[p][r].where[0], backWorld[p][r].where[1]);
     }
@@ -192,7 +192,7 @@ class World {
       //jeżeli ruszyła się na jedzenie, bierze i wibruje
       backWorld[p][r].takeFood();
       antsWorld[i][j].takeFood(p, r);
-      if (vibrate) vibrate(p, r);
+      if (may_vibrate) vibrate(p, r);
     }
     //rusza się, wpisuje to do pamięci i uzupełnia się w tabliczce
     antsWorld[p][r] = antsWorld[i][j];  

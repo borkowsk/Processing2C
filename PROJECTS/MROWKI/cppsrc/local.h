@@ -25,7 +25,7 @@ extern float disp ;//= 0.01; ///tempo zanikania szlaku
 extern float pe ;//= 0.1; ///normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
 extern int ileje ;//= 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
 extern float quiet ;//= 0.5;   ///tempo uciszania dźwięku
-extern bool vibrate;  ///
+extern bool may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
 extern bool szlak;    ///
 extern bool pamiec;  ///
 extern bool losowo;  ///
