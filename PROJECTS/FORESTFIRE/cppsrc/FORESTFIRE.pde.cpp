@@ -60,7 +60,7 @@ void processing_window::setup()
     else
     World[i][j]=0;
    
-  frameRate(4*week);
+  setFrameRate(4*week);
   noSmooth();
   noStroke();
   

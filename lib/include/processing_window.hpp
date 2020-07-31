@@ -30,13 +30,11 @@ extern const int& height;
 
 void size(int width,int height);
 
+void setFrameRate(float fps); ///Set desired frame rate
+extern const float frameRate; ///Get aproximated frame rate achived;
 
 void noSmooth();
 void smooth();
-void frameRate(float fps);
-
-void saveFrame();
-void saveFrame(const char* filename);
 
 void strokeWeight(float Weight);
 void stroke(float Gray);
@@ -55,12 +53,14 @@ void point(float x,float y);
 void rect(float a,float  b,float  c,float  d);
 void rectMode(int mode);// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 
-
 void text(char c, float x,float y);
 void text(const char* str,float x,float y);
 void text(char chars[],int start,int stop,float x,float y);
 void text(const char* str,float x1,float y1,float x2,float y2);
 void text(float num,float x,float y);
+
+void saveFrame();
+void saveFrame(const char* filename);
 
 }//END of namespace Processing
 #endif
