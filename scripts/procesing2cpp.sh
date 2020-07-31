@@ -21,8 +21,8 @@ cat $1 |\
 sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
 #wolne public/private przed funkcjami i zmiennymi - rzadko stosowane w Processingu
-sed "s/public/public:\n\t/g" |\
-sed "s/private/private:\n\t/g" |\
+sed -E "s/^(\s*)public/\1public:\n\t/g" |\
+sed -E "s/^(\s*)private/\1private:\n\t/g" |\
 #sed -E 's|\)\s+\{(.+)$|){\n\t\t\1|' |\
 #w deklaracjach klas (działa tylko dla deklaracji klas z { w tej samej linii! )
 sed -E 's|abstract(.+)class(.+)\{|//abstract\n\1class\2{|' |\
@@ -63,8 +63,8 @@ sed 's/this\./this->/g' |\
 sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
 #Opakowywanie stałych znakowych w operacjach konkatenacji ""
-sed -E 's|(\"[^".]*\")(\s*)\+|String(\1)\2\+|g' |\
-sed -E 's|\+(\s*)(\"[^".]*\")|+\1 String(\2)|g' |\
+sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
+sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
@@ -73,7 +73,7 @@ sed "s/void setup()/void processing_window::setup()/g" |\
 sed "s/void draw()/void processing_window::draw()/g" |\
 sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
 sed "s/void exit()/void processing_window::exit()/g" |\
-sed "s/super.exit();/processing_window_base::exit()/g" |\
+sed "s/super.exit();/processing_window_base::exit();/g" |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików w "" próbujemy zabezpieczyć - głównie dotyczy to includów

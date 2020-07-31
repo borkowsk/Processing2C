@@ -16,6 +16,8 @@ class processing_window_base
 
 extern class processing_window: public processing_window_base
 {
+  static int width;
+  static int height;
   public:
   void setup();
   void draw();
@@ -23,7 +25,11 @@ extern class processing_window: public processing_window_base
   void mouseClicked();
 } _processing_window_instance;
 
+extern const int& width;
+extern const int& height;
+
 void size(int width,int height);
+
 
 void noSmooth();
 void smooth();
@@ -37,16 +43,24 @@ void stroke(float Gray);
 void stroke(float Gray,float Alpha);
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
+void noStroke();
 
 void fill(float Gray);
 void fill(float Gray,float Alpha);
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
+void noFill();
 
 void point(float x,float y);
 void rect(float a,float  b,float  c,float  d);
 void rectMode(int mode);// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 
+
+void text(char c, float x,float y);
+void text(const char* str,float x,float y);
+void text(char chars[],int start,int stop,float x,float y);
+void text(const char* str,float x1,float y1,float x2,float y2);
+void text(float num,float x,float y);
 
 }//END of namespace Processing
 #endif

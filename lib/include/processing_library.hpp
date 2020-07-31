@@ -14,6 +14,7 @@ namespace Processing
 /// Classes
   class String:public std::string
   {
+    ///INFO:
     public:
       String(const char*);
       String(const String&);
@@ -39,6 +40,7 @@ namespace Processing
   template<class T>
   class ptr
   {
+    ///INFO:
     public:
         ptr();
         ptr(T* ini);
@@ -52,8 +54,9 @@ namespace Processing
 
   class _string_param:public String
   {
+    ///INFO: class designed for automatic PARAMETER conversion into String
     public:
-    _string_param(String p):String(p){}
+    _string_param(const String& p):String(p){}
     _string_param(const char *p):String(p){}
     _string_param(double p);
     _string_param(float  p);
@@ -72,6 +75,7 @@ namespace Processing
   template<class T>
   /*interface*/ class Comparable
   {
+    ///INFO:
     public:
         virtual int compareTo(ptr<T> t)=0;
   };
@@ -82,6 +86,7 @@ namespace Processing
   template<class T>
   class array
   {
+    ///INFO:
     public:
         size_t length;
         array(size_t N);
@@ -104,6 +109,7 @@ namespace Processing
   template<class T>
   class matrix
   {
+    ///INFO:
     public:
         size_t length;
         matrix(size_t N,size_t M);
@@ -113,6 +119,7 @@ namespace Processing
   template<class T>
   class smatrix
   {
+    ///INFO:
     public:
         smatrix();
         smatrix(matrix<T>* tab);
@@ -125,9 +132,7 @@ namespace Processing
 
 /// Simple functions
   float random(double low,double hig);
-
-  inline
-  float random(double hig){return random(0,hig); }
+  inline float random(double hig){return random(0,hig); }
 
   int       min(int,int);
   double    min(double,double);
@@ -136,13 +141,21 @@ namespace Processing
 
   void loop();
   void noLoop();
+  void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
+
   void saveFrame(const String& filename);
   void saveFrame(const std::string& filename);
 
+/// Extended graphix text()
+  void text(_string_param str,float x,float y);
+  void text(_string_param str,float x1,float y1,float x2,float y2);
+  //void text(const String& str,float x,float y);
+  //void text(const String& str,float x1,float y1,float x2,float y2);
 
 /// File streams
   class PrintWriter
   {
+   ///INFO:
       std::fstream* ptr;
    public:
       PrintWriter();

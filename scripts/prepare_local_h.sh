@@ -20,12 +20,11 @@ sed 's|=|;//=|' >> local.h
 
 #Funkcje wymagające deklaracji zapowiadających
 echo -e "\n//All global functions from Processing files" >> local.h
-#echo "///" '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\\{.*///'
-egrep -h '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\{.*///' *.pde |\
+egrep -h '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
 sed 's|boolean|bool|g' |\
 sed 's|String|std::string|g' |\
 sed -E 's#^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*#&; //#' |\
-sed -E 's|//\s*\{\s*///|///|' |\
+sed -E 's|//\s*\{*\s*///|///|' |\
 sed 's|) ;|);|' >> local.h
 
 
