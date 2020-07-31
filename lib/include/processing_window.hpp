@@ -11,7 +11,8 @@ namespace Processing
 class processing_window_base
 {
   public:
-  void exit();
+    virtual ~processing_window_base();
+    void exit();
 };
 
 extern class processing_window: public processing_window_base

@@ -16,6 +16,7 @@ namespace Processing
   {
     ///INFO:
     public:
+      virtual ~String();//??? Na pewno potrzebne?
       String(const char*);
       String(const String&);
       bool operator == (nullptr_t);
@@ -41,10 +42,12 @@ namespace Processing
   class ptr
   {
     ///INFO:
+       T* _ptr;
     public:
+        virtual ~ptr();// Zwalnianie zasobów
         ptr();
         ptr(T* ini);
-        T* operator -> ();
+        T* operator -> () { return _ptr;}
         operator T& ();
         bool operator == (const ptr&) const;
         bool operator != (const ptr&)const;
@@ -56,14 +59,15 @@ namespace Processing
   {
     ///INFO: class designed for automatic PARAMETER conversion into String
     public:
-    _string_param(const String& p):String(p){}
-    _string_param(const char *p):String(p){}
-    _string_param(double p);
-    _string_param(float  p);
-    _string_param(int    p);
-    _string_param(void*  p);
-    template<class T>
-    _string_param(ptr<T> p);
+        virtual ~_string_param();// Zwalnianie zasobów
+        _string_param(const String& p):String(p){}
+        _string_param(const char *p):String(p){}
+        _string_param(double p);
+        _string_param(float  p);
+        _string_param(int    p);
+        _string_param(void*  p);
+        template<class T>
+        _string_param(ptr<T> p);
   };
 
   template<class X>
@@ -87,46 +91,56 @@ namespace Processing
   class array
   {
     ///INFO:
+        T* _ptr;
     public:
+        virtual ~array();// Zwalnianie zasobów
         size_t length;
         array(size_t N);
         array(array<T>* tab);//TEST IT! TODO
+        T& operator [] (size_t i);
   };
 
   template<class T>
   class sarray
   {
+        array<T>* _arr;//goły wskaźnik na array
     public:
+        virtual ~sarray();// Zwalnianie zasobów
         sarray();
         sarray(array<T>* tab);
         sarray(nullptr_t);//Empty sarray
         sarray(std::initializer_list<T> l);
         size_t length();
         array<T>* operator -> ();
-        T& operator [] (size_t i);
+        T& operator [] (size_t i) { return (*_arr)[i]; }
   };
 
   template<class T>
   class matrix
   {
     ///INFO:
+        sarray<T>* _arr;//TABLICA TABLIC
     public:
         size_t length;
+        virtual ~matrix();// Zwalnianie zasobów
         matrix(size_t N,size_t M);
         matrix(array<T>* tab);//??? TEST IT! TODO!!!
+        sarray<T>& operator [] (size_t j);
   };
 
   template<class T>
   class smatrix
   {
     ///INFO:
+        matrix<T>* _arr;//goły wskaźnik na matrix
     public:
+        virtual ~smatrix();// Zwalnianie zasobów
         smatrix();
         smatrix(matrix<T>* tab);
         smatrix(std::initializer_list<T> l);//??? TODO TEST IT!
         size_t length();
         matrix<T>* operator -> ();
-        sarray<T>& operator [] (size_t i);
+        sarray<T>& operator [] (size_t j) { return (*_arr)[j]; }
   };
 
 
@@ -177,6 +191,7 @@ namespace Processing
    ///INFO:
       std::fstream* ptr;
    public:
+      virtual ~PrintWriter();// Zwalnianie zasobów
       PrintWriter();
       PrintWriter(PrintWriter&);
       std::fstream* operator -> ();
