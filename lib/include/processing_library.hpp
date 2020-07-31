@@ -139,8 +139,27 @@ namespace Processing
   int       max(int,int);
   double    max(double,double);
 
-  void loop();
-  void noLoop();
+
+  float map(float value,float start1,float stop1,float start2,float stop2);
+  /// Parameters:
+  /// value 	float: the incoming value to be converted
+  /// start1 	float: lower bound of the value's current range
+  /// stop1 	float: upper bound of the value's current range
+  /// start2 	float: lower bound of the value's target range
+  /// stop2 	float: upper bound of the value's target range
+
+  float norm(float value,float start,float stop);
+  /// Parameters:
+  /// value 	float: the incoming value to be converted
+  /// start 	float: lower bound of the value's current range
+  /// stop 	float: upper bound of the value's current range
+
+  float lerp(float start,float stop,float amt);
+  /// Parameters:
+  /// start 	float: first value
+  /// stop 	float: second value
+  /// amt 	float: float between 0.0 and 1.0
+
   void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
 
   void saveFrame(const String& filename);

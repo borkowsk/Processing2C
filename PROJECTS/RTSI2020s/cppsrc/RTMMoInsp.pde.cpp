@@ -25,15 +25,12 @@ pAgent selected=nullptr;
 class PairOfInt {
   public:
     ///INFO: Simple version of Pair returning a pair of Int
-    //public:
-	 
+    //public 
     const int a;
-    //public:
-	 
+    //public 
     const int b;
 
-    //public:
-	 
+    //public 
     PairOfInt(int a,int b) 
     {
         this->a = a;

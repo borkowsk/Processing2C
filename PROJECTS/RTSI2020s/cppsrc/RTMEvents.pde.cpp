@@ -36,8 +36,8 @@ void keyPressed()
             pixelizeProperties2D(theWorld->properties);
             theWorld->currFilter=comboVisFilter->reset(WhichProperty,linkWeightTresh);
             break;
-  case 'O': FRAMEFREQ/=2;frameRate(FRAMEFREQ);println("Requested",FRAMEFREQ,"frames/sec");break;
-  case '0': FRAMEFREQ*=2;frameRate(FRAMEFREQ);println("Requested",FRAMEFREQ,"frames/sec");break;
+  case 'O': FRAMEFREQ/=2;setFrameRate(FRAMEFREQ);println("Requested",FRAMEFREQ,"frames/sec");break;
+  case '0': FRAMEFREQ*=2;setFrameRate(FRAMEFREQ);println("Requested",FRAMEFREQ,"frames/sec");break;
   case '1': STEPSperVIS=1;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
   case '2': STEPSperVIS=2;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
   case '3': STEPSperVIS=5;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
@@ -47,8 +47,8 @@ void keyPressed()
   case '7': STEPSperVIS=100;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
   case '8': STEPSperVIS=150;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
   case '9': STEPSperVIS=200;println(STEPSperVIS,"step/frame");text(String("StPerV: ")+STEPSperVIS,0,height-16);break;
-  case ' ': save(modelName+"."+nf((float)theWorld->StepCounter,6,5)+".PNG");
-            println(modelName+"."+nf((float)theWorld->StepCounter,6,5)+".PNG","SAVED!");
+  case ' ': save(modelName+String(".")+nf((float)theWorld->StepCounter,6,5)+ String(".PNG"));
+            println(modelName+String(".")+nf((float)theWorld->StepCounter,6,5)+ String(".PNG"),"SAVED!");
             break;
   case ESC: simulationRun=!simulationRun; break;
   case 's': simulationRun=false; break;

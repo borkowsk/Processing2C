@@ -326,7 +326,10 @@ float viewAsColumns(pFrequencies hist,float startX,float startY,int width,int he
   }
   
   textAlign(LEFT,BOTTOM);
-  text(String("")+max+(logaritm?String("<=")+hist->higherBucket+String(" @ ")+hist@higherBucketIndex:String(" . ")+hist->higherBucketIndex),startX,startY-height);
+  text(String("")+max+(logaritm ? String("<=") + hist->higherBucket + 
+                          String(" @ ") + hist->higherBucketIndex :
+                          String(" @ ") + hist->higherBucketIndex ),
+                          startX,startY-height);
   //Real width of histogram
   float realwidth=(hist->buckets.length)*wid;//println(realwidth);noLoop();
   return realwidth;

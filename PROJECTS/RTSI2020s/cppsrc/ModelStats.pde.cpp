@@ -16,7 +16,7 @@ PrintWriter outstat; ///May be used also autside this file!
 void initializeStats()
 {
   String FileName=modelName+=String("_")+year()+'.'+nf(month(),2)+'.'+nf(day(),2)+'.'+nf(hour(),2)+'.'+nf(minute(),2)+'.'+nf(second(),2)+'.'+millis();
-  outstat=createWriter(FileName+".out");
+  outstat=createWriter(FileName+ String(".out"));
   print(outstat,"$STEP\tAlive\tMeanOp\t+StdDevOp\tMinOp\tMaxOp\tmeanABSError"
                 + String("\tlink_up\tlink_dw\tsensor_up\tsensor_dw\tMeanSensor\tUsedSensors\tMeanSRelia\tMeanSReal\tmaxInfos\tmaxKnowl")
                   );//<-- complete the header line!

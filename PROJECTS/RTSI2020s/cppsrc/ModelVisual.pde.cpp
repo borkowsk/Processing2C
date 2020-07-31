@@ -66,19 +66,19 @@ void writeStatusLine()
   fill(255);rect(0,WORLD_VIS_SIDE,width,STATUSHEIGH);
   textSize(FONT_HEIGHT);fill(0);
   textAlign(LEFT, TOP);
-  text(String("Opinions [")+nf(minOpinion)+"..(mean:"+nf(meanOpinion,1,5)
-       +String(" stddev:")+nf(stddOpinion)+").."+nf(maxOpinion)+ String("]"),
+  text(String("Opinions [")+nf(minOpinion)+String("..(mean:")+nf(meanOpinion,1,5)
+       +String(" stddev:")+nf(stddOpinion)+String(")..")+nf(maxOpinion)+ String("]"),
           0,WORLD_VIS_SIDE);
   fill(200,0,0);        
-  text(String("mnError:")+meanError+String(" maxInfo:")+Info_maxInfos+" maxKnow.:"+Info_maxKnowl+" mnSens.:"
+  text(String("mnError:")+meanError+String(" maxInfo:")+Info_maxInfos+String(" maxKnow.:")+Info_maxKnowl+ String(" mnSens.:")
        +nf(meanSensor,1,5)+String("(N:")+UsedSensors+String(") mnReliab:")+nf(meanSRelia,1,5),
           0,WORLD_VIS_SIDE+FONT_HEIGHT);
   fill(255,0,255);        
   if(VIS_NETWORK)
-    text(String(" Visible links:")+linkCounter+" Link tres.:"+linkWeightTresh,
+    text(String(" Visible links:")+linkCounter+String(" Link tres.:")+linkWeightTresh,
           0,WORLD_VIS_SIDE+FONT_HEIGHT*2);//For link filtering
   fill(0,0,200);
-  text(String(" ")+theWorld->StepCounter+String(") Life:")+liveCount+" Fps.:"+frameRate,             //+" Prop.:"+WhichProperty, - in simple_model only ONE PROPERTY
+  text(String(" ")+theWorld->StepCounter+String(") Life:")+liveCount+String(" Fps.:")+frameRate,             //+String(" Prop.:")+WhichProperty, - in simple_model only ONE PROPERTY
           0,WORLD_VIS_SIDE+FONT_HEIGHT*3);
   stroke(64);
   viewFrame(WORLD_VIS_SIDE,WORLD_VIS_SIDE+HISTOGRAM_HEIGHT+FONT_HEIGHT+1,int(histogram_width),int(HISTOGRAM_HEIGHT));
@@ -89,7 +89,7 @@ void writeStatusLine()
   if(selected!=nullptr)
   {
       String inspect=String("Cell ")+selectedX+String("x")+selectedY+String(" belong to ")+selected;
-      inspect+=" Env. value:"+theWorld->properties[0]->get2D(selectedX,selectedY);
+      inspect+=String(" Env. value:")+theWorld->properties[0]->get2D(selectedX,selectedY);
       inspect+=String("\n")+selected.fullInfo(";");
       selected->setFill();
       textAlign(LEFT,TOP);text(inspect,width/4,WORLD_VIS_SIDE);

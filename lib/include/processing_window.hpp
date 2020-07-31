@@ -29,6 +29,8 @@ extern const int& width;
 extern const int& height;
 
 void size(int width,int height);
+void loop();
+void noLoop();
 
 void setFrameRate(float fps); ///Set desired frame rate
 extern const float frameRate; ///Get aproximated frame rate achived;

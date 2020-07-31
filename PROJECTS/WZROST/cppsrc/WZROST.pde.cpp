@@ -43,7 +43,7 @@ void processing_window::setup() //Window and model initialization
   println(output,"Step\tCounter");
   
   noSmooth(); //Fast visualization
-  frameRate(30); //maximize speed
+  setFrameRate(30); //maximize speed
 }
 
 int Step=0;
@@ -94,10 +94,10 @@ void processing_window::draw()
     if(ScreenDumps && Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
     //if(ScreenDumps) //Zrzucanie obrazków co krok lub wcale
     {
-       //saveFrame(String("wzrost_step")+Step+".png");//Wersja z niewygodną numeracją
-       //saveFrame(String("wzrost_")+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
+       //saveFrame(String("wzrost_step")+Step+ String(".png"));//Wersja z niewygodną numeracją
+       //saveFrame(String("wzrost_")+ String("f########.png"));//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       saveFrame(String("wzrost_step")+sc+".png");//Wersja z wygodną numeracją
+       saveFrame(String("wzrost_step")+sc+ String(".png"));//Wersja z wygodną numeracją
     }
     
     Step++;

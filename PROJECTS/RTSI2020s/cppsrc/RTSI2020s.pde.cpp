@@ -115,7 +115,7 @@ void processing_window::setup()
   pixelDensity(1);//1 or 2, expecially for "Retina" or HERE?
   println("WINDOW:","Width=",width,"Height=",height,"displayDensity=",displayDensity());
   
-  frameRate(FRAMEFREQ);
+  setFrameRate(FRAMEFREQ);
   noSmooth();
   background(255,255,200);
   strokeWeight(1);
@@ -145,7 +145,7 @@ void processing_window::setup()
   
   if(WITH_VIDEO) 
   {
-    //initVideoExport(this,modelName+".mp4",FRAMEFREQ);
+    //initVideoExport(this,modelName+ String(".mp4"),FRAMEFREQ);
     //FirstVideoFrame();
   }
   

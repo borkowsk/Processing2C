@@ -16,7 +16,7 @@ void processing_window::exit()          //it is called whenever a window is clos
   noLoop();          //For to be sure...
   delay(100);        // it is possible to close window when draw() is still working!
   
-  //write(world,modelName+"."+nf((float)StepCounter,5,5));//end state of the system
+  //write(world,modelName+String(".")+nf((float)StepCounter,5,5));//end state of the system
   if(statisticsLogEnabled)
         CloseStatistics();
 
@@ -24,7 +24,7 @@ void processing_window::exit()          //it is called whenever a window is clos
   //        CloseVideo();    //Finalise of Video export
           
   println("Thank You");
-  processing_window_base::exit()       //What library superclass have to do at exit
+  processing_window_base::exit();       //What library superclass have to do at exit
 } 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

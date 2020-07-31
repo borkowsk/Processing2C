@@ -79,7 +79,7 @@ void initializeAgents(smatrix<pAgent> agents,// MODEL IMPORTANT PART!
              if(SELF_LINKED)
              {
                curra->addConn(curra->sensors[k]->reliability);                       //Dodaje self-link - czyli swój sensor traktuje jak sąsiadów
-                                                                                  println(curra,"+",curra->sensors[0]->reliability.fullInfo(";"));//DEBUG                                                      //DEBUG
+                                                                                  println(curra,"+ String(",curra->sensors[0]->reliability.fullInfo(");"));//DEBUG                                                      //DEBUG
              }
              //NOT USED simple_model
              //tmp->issues[k]->own_reliability=new RTSILink(tmp,random(0.5,1.0),k);  //Some initial trust to own "logic" 

@@ -60,7 +60,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
      
      if(MIN_RELIABILITY<reliab)                                                 //Agent may not trust its own sensor
      {                                                                          assert(reliab<=1);	//Mamy zatem pomiar któremu choć trochę ufamy
-       float currmes=agent->getSensor(0,world);                                  assert(0<=currmes && currmes<=1 );	//  "agent.getSensor()=="+currmes;
+       float currmes=agent->getSensor(0,world);                                  assert(0<=currmes && currmes<=1 );	//  String("agent.getSensor()==")+currmes;
        pInfo newFact=new Info(currmes,reliab,world->StepCounter,sens->reliability);
        
        //some changes in reliability of own sensor                              
@@ -91,7 +91,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
       float    currmes=partner->getSensor(0,world);                              // MODEL IMPORTANT PART!
                                                                                 //PYTAMY O JEGO SENSOR A NIE O OPINIE!!! - MODEL IMPORTANT PART!    
       if(currmes!=INF_NOT_EXIST)                                                //O ile coś odpowiedział
-      {                                                                         assert(0<=currmes && currmes<=1 );	//  "partner.getSensor()=="+currmes;
+      {                                                                         assert(0<=currmes && currmes<=1 );	//  String("partner.getSensor()==")+currmes;
         pInfo newFact=new Info(currmes,reliab,world->StepCounter,currlnk);        //Mamy zatem fakt któremu choć trochę ufamy
             
         if(SELF_LINKED && partner==agent)                                       //... some changes in reliability?   
@@ -127,7 +127,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
       pAgent    partner=(Agent)currlnk->target;
       float    currmes=partner->getOpinion(0);
       if(currmes!=INF_NOT_EXIST)
-      {                                                                        assert(0<=currmes && currmes<=1 );	//  "partner.getOpinion()=="+currmes;
+      {                                                                        assert(0<=currmes && currmes<=1 );	//  String("partner.getOpinion()==")+currmes;
         //... some changes in reliability TODO
         agent->issues[0]->opinions->add(new Info(currmes,reliab,world->StepCounter,currlnk)); //float ival,float asses,int timem,pRTSILink sour)
         println(world->StepCounter,"\t",agent,partner,currmes,reliab,"OPINION");

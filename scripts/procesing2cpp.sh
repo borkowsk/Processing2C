@@ -78,13 +78,13 @@ sed "s/super.exit();/processing_window_base::exit();/g" |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików w "" próbujemy zabezpieczyć - głównie dotyczy to includów
-sed -E 's/"(.+)\.(.+)"/"\1@\2"/' |\
+sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
 #WŁAŚCIWA ZAMIANA - próba uniknięcia ingerencji w dyrektywy kompilatora # blokuje podwójne wymiany w linii
 #sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
 sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 sed -E 's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]->\1/g' |\
 #Odbezpieczenie nazw plików
-sed -E 's/"(.+)\@(.+)"/"\1.\2"/' |\
+sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 

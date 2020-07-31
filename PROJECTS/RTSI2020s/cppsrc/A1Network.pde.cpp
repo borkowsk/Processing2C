@@ -459,7 +459,7 @@ class NodeList : public Node {
   
   int     addConn(pLink   l)
   {
-    assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+".addConn(Link)?"; 
+    assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+ String(".addConn(Link)?"); 
     bool res=connections->add(l); 
     if(res)
       return   1;
@@ -469,19 +469,19 @@ class NodeList : public Node {
   
   int     delConn(pLink   l)
   {
-    assert(false );	//  String("Not implemented ")+this->getClass().getName()+".delConn(Link "+l+ String(") called"); 
+    assert(false );	//  String("Not implemented ")+this->getClass().getName()+String(".delConn(Link ")+l+ String(") called"); 
     return   -1;
   }
   
   pLink    getConn(int    i)
   {
-    assert(i<connections->size());	//  String("Index '")+i+String("' out of bound '")+connections->size()+String("' in ")+this->getClass().getName()+".getConn(int)"; 
+    assert(i<connections->size());	//  String("Index '")+i+String("' out of bound '")+connections->size()+String("' in ")+this->getClass().getName()+ String(".getConn(int)"); 
     return connections->get(i);
   }
   
   pLink    getConn(pNode   n)
   {
-    assert(n!=nullptr );	//  String("Empty node in ")+this->getClass().getName()+".getConn(Node)"; 
+    assert(n!=nullptr );	//  String("Empty node in ")+this->getClass().getName()+ String(".getConn(Node)"); 
     for(Link l:connections)
     {
       if(l->target==n) 
@@ -492,7 +492,7 @@ class NodeList : public Node {
   
   pLink    getConn(String k)
   {
-    assert(k==nullptr || k=="" );	//  String("Empty string in ")+this->getClass().getName()+".getConn(String)"; 
+    assert(k==nullptr || k=="" );	//  String("Empty string in ")+this->getClass().getName()+ String(".getConn(String)"); 
     for(Link l:connections)
     {
       if(l->target.name()==k) 
@@ -503,7 +503,7 @@ class NodeList : public Node {
   
   sarray<pLink>  getConns(pLinkFilter f)
   {
-    assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+".getConns(LinkFilter)"; 
+    assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+ String(".getConns(LinkFilter)"); 
     ArrayList<Link> selected=new ArrayList<Link>();
     for(Link l:connections)
     {
@@ -533,7 +533,7 @@ class NodeMap : public Node {
   
   int     addConn(pLink   l)
   {
-    assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+".addConn(Link)?"; 
+    assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+ String(".addConn(Link)?"); 
     String key=l->target.name();
     pLink old=connections->put(key,l); 
     if(old==nullptr)
@@ -544,13 +544,13 @@ class NodeMap : public Node {
   
   int     delConn(pLink   l)
   {
-    assert(false );	//  String("Not implemented ")+this->getClass().getName()+".delConn(Link "+l+ String(") called"); 
+    assert(false );	//  String("Not implemented ")+this->getClass().getName()+String(".delConn(Link ")+l+ String(") called"); 
     return   -1;
   }
   
   pLink    getConn(int    i)
   {
-    assert(i>=connections->size());	// String("Index '")+i+String("' out of bound '")+connections->size()+String("' in ")+this->getClass().getName()+".getConn(int)"; 
+    assert(i>=connections->size());	// String("Index '")+i+String("' out of bound '")+connections->size()+String("' in ")+this->getClass().getName()+ String(".getConn(int)"); 
     assert(false);	//  "Non optimal use of NodeMap in getConn(int)";
     int counter=0;
     for(Map->Entry<String,Link> ent:connections->entrySet())
@@ -564,20 +564,20 @@ class NodeMap : public Node {
   
   pLink    getConn(pNode   n)
   {
-    assert(n!=nullptr );	//  String("Empty node in ")+this->getClass().getName()+".getConn(Node)"; 
+    assert(n!=nullptr );	//  String("Empty node in ")+this->getClass().getName()+ String(".getConn(Node)"); 
     String key=n->name();
     return connections->get(key);
   }
   
   pLink    getConn(String k)
   {
-    assert(k==nullptr || k=="" );	//  String("Empty string in ")+this->getClass().getName()+".getConn(String)"; 
+    assert(k==nullptr || k=="" );	//  String("Empty string in ")+this->getClass().getName()+ String(".getConn(String)"); 
     return connections->get(k);
   }
   
   sarray<pLink>  getConns(pLinkFilter f)
   {
-    assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+".getConns(LinkFilter)"; 
+    assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+ String(".getConns(LinkFilter)"); 
     ArrayList<Link> selected=new ArrayList<Link>();
     for(Map->Entry<String,Link> ent:connections->entrySet())
     {
