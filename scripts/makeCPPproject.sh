@@ -96,8 +96,9 @@ cat << EOF >> CMakeLists.txt
 target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "--verbose" "-std=c++11" "-pthread" ) # -o3 ?
 
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
+     "-L/data/wb/SCC/__working_copies/Processing2C/lib/"
      "-L\${MYLIBS}"
-     wbrtm wbsyshX11 X11 Xpm
+     wbprocess wbrtm wbsyshX11 X11 Xpm
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
      rt
