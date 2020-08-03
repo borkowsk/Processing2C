@@ -12,13 +12,14 @@ class processing_window_base
 {
   public:
     virtual ~processing_window_base();
-    void exit();
+    virtual void exit();
+    virtual void mouseClicked();
+    virtual void setup()=0;//Must be provided!
+    virtual void draw(){} //EMPTY DRAW()
 };
 
 extern class processing_window: public processing_window_base
 {
-  static int width;
-  static int height;
   public:
   void setup();
   void draw();
@@ -32,9 +33,9 @@ extern const int& height;
 void size(int width,int height);
 void loop();
 void noLoop();
-
 void setFrameRate(float fps); ///Set desired frame rate
-extern const float frameRate; ///Get aproximated frame rate achived;
+
+extern const float& frameRate; ///Get aproximated frame rate achived;
 
 void noSmooth();
 void smooth();
