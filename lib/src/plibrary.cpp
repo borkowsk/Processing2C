@@ -7,6 +7,9 @@ namespace Processing
 String::~String()
 {}//??? Na pewno potrzebne?
 
+String::String()
+{}
+
 String::String(const char*)
 {}
 

@@ -2,6 +2,8 @@
 #pragma once
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
+/// https://en.cppreference.com/w/cpp/utility/initializer_list
+/// https://en.cppreference.com/w/cpp/language/constructor
 namespace Processing
 {
 
@@ -34,8 +36,36 @@ inline  ptr<T>::ptr(T* ini)
 
 }
 
-//https://en.cppreference.com/w/cpp/utility/initializer_list
-//https://en.cppreference.com/w/cpp/language/constructor
+template<class T>
+inline  ptr<T>::operator T& ()
+{
+
+}
+
+template<class T>
+inline  bool ptr<T>::operator == (const ptr&) const
+{
+
+}
+
+template<class T>
+inline  bool ptr<T>:: operator != (const ptr&)const
+{
+
+}
+
+template<class T>
+inline  bool ptr<T>::operator == (T*) const
+{
+
+}
+
+template<class T>
+inline  bool ptr<T>::operator != (T*) const
+{
+
+}
+
 
 template<class T>
 class array
@@ -49,6 +79,33 @@ class array
       array(array<T>* tab);//TEST IT! TODO
       T& operator [] (size_t i);
 };
+
+
+template<class T>
+inline  array<T>::~array()
+{
+
+}
+// Zwalnianie zasobów
+template<class T>
+inline  array<T>::array(size_t N)
+{
+
+}
+
+template<class T>
+inline  array<T>::array(array<T>* tab)
+{
+
+}
+//TEST IT! TODO
+
+template<class T>
+inline  T& array<T>::operator [] (size_t i)
+{
+
+}
+
 
 template<class T>
 class sarray
@@ -66,6 +123,51 @@ class sarray
 };
 
 template<class T>
+inline  sarray<T>::~sarray()
+{
+
+}
+// Zwalnianie zasobów
+
+template<class T>
+inline  sarray<T>::sarray()
+{
+
+}
+
+template<class T>
+inline  sarray<T>::sarray(array<T>* tab)
+{
+
+}
+
+template<class T>
+inline  sarray<T>::sarray(nullptr_t)
+{
+
+}
+//Empty sarray
+
+template<class T>
+inline  sarray<T>::sarray(std::initializer_list<T> l)
+{
+
+}
+
+template<class T>
+inline  size_t sarray<T>::length()
+{
+
+}
+
+template<class T>
+inline  array<T>* sarray<T>::operator -> ()
+{
+
+}
+
+
+template<class T>
 class matrix
 {
   ///INFO:
@@ -77,6 +179,32 @@ class matrix
       matrix(array<T>* tab);//??? TEST IT! TODO!!!
       sarray<T>& operator [] (size_t j);
 };
+
+template<class T>
+inline  matrix<T>::~matrix()
+{
+
+}
+
+template<class T>
+inline  matrix<T>::matrix(size_t N,size_t M)
+{
+
+}
+
+template<class T>
+inline  matrix<T>::matrix(array<T>* tab)
+{
+
+}
+//??? TEST IT! TODO!!!
+
+template<class T>
+inline  sarray<T>& matrix<T>::operator [] (size_t j)
+{
+
+}
+
 
 template<class T>
 class smatrix
@@ -94,6 +222,43 @@ class smatrix
 };
 
 
+template<class T>
+inline  smatrix<T>::~smatrix()
+{
+
+}
+// Zwalnianie zasobów
+
+template<class T>
+inline  smatrix<T>::smatrix()
+{
+
+}
+
+template<class T>
+inline  smatrix<T>::smatrix(matrix<T>* tab)
+{
+
+}
+
+template<class T>
+inline  smatrix<T>::smatrix(std::initializer_list<T> l)
+{
+
+}
+//??? TODO TEST IT!
+
+template<class T>
+inline  size_t smatrix<T>::length()
+{
+
+}
+
+template<class T>
+inline  matrix<T>* smatrix<T>::operator -> ()
+{
+
+}
 
 
 }//END of namespace Processing
