@@ -208,4 +208,12 @@ void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+/// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
+/// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw() does not run draw() immediately (it only sets a flag that indicates an update is needed).
+/// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().
+void redraw()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 }//END of namespace Processing
