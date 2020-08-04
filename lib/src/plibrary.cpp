@@ -175,5 +175,10 @@ void println(PrintWriter& o,_string_param _p1)
 //void println(PrintWriter& o,const String& );
 //void println(PrintWriter& o,const std::string& );
 
+void saveFrame()
+{}
+
+void saveFrame(const char* filename)
+{}
 
 }//END of namespace Processing

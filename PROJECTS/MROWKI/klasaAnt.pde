@@ -22,7 +22,7 @@ class Ant {
 
   //++++++++++++ FUNKCJE WYKONAWCZE ++++++++++++
 
-  void takeFood(int x, int y) {
+   /*virtual*/ void takeFood(int x, int y) {
     memory[0][0] +=1; //zbiera jedzenie do pamięci
     czyCosNiosla = true;
     if (trailS<0.95 && szlak) trailS+=ts;  //wzmacnia swój zostawiany szlak

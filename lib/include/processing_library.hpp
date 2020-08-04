@@ -136,5 +136,8 @@ namespace Processing
   //void println(PrintWriter& o,const String& );
   //void println(PrintWriter& o,const std::string& );
 
+  void saveFrame();
+  void saveFrame(const char* filename);
+
 }//END of namespace Processing
 #endif
