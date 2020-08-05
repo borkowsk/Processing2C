@@ -29,17 +29,20 @@ extern class processing_window: public processing_window_base
 
 extern const int& width;
 extern const int& height;
+extern const int& pixelWidth;
+extern const int& pixelHeight;
 
 void size(int width,int height);
+void fullScreen();
 void loop();
 void noLoop();
 void setFrameRate(float fps); ///Set desired frame rate
 
-extern const float& frameRate; ///Get aproximated frame rate achived;
+extern const float& frameRate; /// Get aproximated frame rate achived;
+extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
 
 void noSmooth();
 void smooth();
-
 
 void stroke(float Gray);
 void stroke(float Gray,float Alpha);
@@ -60,11 +63,10 @@ void noFill();
 void point(float x,float y);
 void line(float  x1,float  y1,float  x2,float  y2);
 
-
 void ellipse(float a,float  b,float  c,float  d);
 void arc(float a,float  b,float  c,float  d,float  start,float  stop);
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
-/// Parameters
+/// Parameters:
 ///  a 	float: x-coordinate of the ellipse
 ///  b 	float: y-coordinate of the ellipse
 ///  c 	float: width of the ellipse by default
@@ -90,6 +92,29 @@ void text(float num,float x,float y);
 /// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw() does not run draw() immediately (it only sets a flag that indicates an update is needed).
 /// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().
 void redraw();
+
+
+//void cursor(int kind);
+//void cursor(PImage img);
+//void cursor(PImage img,int x,int y);
+void cursor();
+void noCursor();
+/// Parameters:
+/// kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
+/// img 	PImage: any variable of type PImage
+///   x 	int: the horizontal active spot of the cursor
+///   y 	int: the vertical active spot of the cursor
+
+void delay(int napTime); ///The delay() function halts for a specified time. Delay times are specified in thousandths of a second.
+/// Parameters	napTime 	int: milliseconds to pause before running draw() again
+
+inline
+void pixelDensity(int density){} //DO NOTHING!
+// Parameters	density 	int: 1 or 2
+
+inline
+int displayDensity(int display=0) {return 1;}
+/// Parameters	display 	int: the display number to check
 
 }//END of namespace Processing
 #endif

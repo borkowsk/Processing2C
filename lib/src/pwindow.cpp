@@ -2,16 +2,21 @@
 #include "processing_window.hpp"
 #include <iostream>
 
-static int width=0;//processing_window_base::
-static int height=0;
-static float frameRate=0; ///Aproximated frame rate achived;
+static int _width=0;//processing_window_base::
+static int _height=0;
+static float _frameRate=0; ///Aproximated frame rate achived;
+static int _frameCount=0;
 
 namespace Processing
 {
 
-const int& width=::width;
-const int& height=::height;
-const float& frameRate=::frameRate; ///Get aproximated frame rate achived;
+const int&   width=_width;
+const int&   height=_height;
+const int& pixelWidth=_width;
+const int& pixelHeight=_height;
+const float& frameRate=_frameRate; ///Get aproximated frame rate achived;
+const int&   frameCount=_frameCount;///contains the number of frames that have been displayed since the program started.
+
 
 processing_window_base::~processing_window_base()
 {
@@ -29,6 +34,11 @@ void processing_window_base::mouseClicked()
 }
 
 void size(int width,int height)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void fullScreen()
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
@@ -215,5 +225,22 @@ void redraw()
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
+
+//void cursor(int kind);
+//void cursor(PImage img);
+//void cursor(PImage img,int x,int y);
+void cursor()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+void noCursor()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+//Parameters:
+//kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
+//img 	PImage: any variable of type PImage
+//  x 	int: the horizontal active spot of the cursor
+//  y 	int: the vertical active spot of the cursor
 
 }//END of namespace Processing
