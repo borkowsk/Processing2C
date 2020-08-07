@@ -2,68 +2,63 @@
 #pragma once
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
+#include <memory>
 /// https://en.cppreference.com/w/cpp/utility/initializer_list
 /// https://en.cppreference.com/w/cpp/language/constructor
+/// https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
 namespace Processing
 {
 
 template<class T>
 class ptr
 {
-  ///INFO:
-     T* _ptr;
+  ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
+      std::shared_ptr<T> _ptr;
   public:
-      virtual ~ptr();// Zwalnianie zasobów
-      ptr(T* ini);
+      //virtual ???
+      ~ptr(){}// Zwalnianie zasobów
+      ptr(ptr<T>& other):_ptr(other._ptr){}
+      ptr(T* ini):_ptr(ini){}
       ptr():_ptr(nullptr){}
-      T* operator -> () { return _ptr;}
-      operator T& ();
-      bool operator == (const ptr&) const;
-      bool operator != (const ptr&)const;
+      ptr<T>& operator = (ptr<T>& other);
+
+      T* operator -> () { return _ptr.get();}
+      operator T& () { return *_ptr;}
+
+      bool operator == (const ptr<T>&) const;
+      bool operator != (const ptr<T>&) const;
       bool operator == (T*) const;
       bool operator != (T*) const;
 };
 
 template<class T>
-inline  ptr<T>::~ptr()
+inline  ptr<T>& ptr<T>::operator = (ptr<T>& other)
 {
-
+    _ptr=other._ptr; return *this;
 }
 
 template<class T>
-inline  ptr<T>::ptr(T* ini)
+inline  bool ptr<T>::operator == (const ptr<T>& other) const
 {
-
+    return _ptr.get()==other._ptr.get();
 }
 
 template<class T>
-inline  ptr<T>::operator T& ()
+inline  bool ptr<T>:: operator != (const ptr& other)const
 {
-
+    return _ptr.get()!=other._ptr.get();
 }
 
 template<class T>
-inline  bool ptr<T>::operator == (const ptr&) const
+inline  bool ptr<T>::operator == (T* other) const
 {
-
+    return _ptr.get()==other;
 }
 
 template<class T>
-inline  bool ptr<T>:: operator != (const ptr&)const
+inline  bool ptr<T>::operator != (T* other) const
 {
-
-}
-
-template<class T>
-inline  bool ptr<T>::operator == (T*) const
-{
-
-}
-
-template<class T>
-inline  bool ptr<T>::operator != (T*) const
-{
-
+    return _ptr.get()!=other;
 }
 
 
