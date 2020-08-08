@@ -15,7 +15,7 @@ class Back {
   float p_follow;  //ile feromonu jest, jak chętnie będą iść
   float amountFood;  //ile jedzenia jest na miejscu
   float sound;
-  sarray<int> where = new array<int>(2);
+  sarray<int> where { new array<int>(2) };
 
   Back(int idB) {  //tło inicjowane rodzajem powierzchi
     id = idB;

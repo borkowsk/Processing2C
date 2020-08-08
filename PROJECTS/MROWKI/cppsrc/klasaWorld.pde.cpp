@@ -23,9 +23,16 @@ int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
 
 class World {
   public:
-  smatrix<pBack> backWorld;  
-  smatrix<pAnt> antsWorld;  
-  smatrix<int> ants = new matrix<int>(ileWsumieMrowek,2); //tablica współrzędnych mrówek
+    sarray<pAnt>    dumm1 { new array<pAnt>(10) };//OK
+    //sarray<pAnt>    dummy2 = new array<pAnt>(10); //Compiler error?!?!?!
+    smatrix<pAnt>   dummyWorld1 { new matrix<pAnt>(100,100) };//OK
+    smatrix<pAnt>   dummyWorld2 = new matrix<pAnt>(100,100);//OK
+    smatrix<int>    ants = new matrix<int>(50/*ileWsumieMrowek*/,2);// OK
+
+    //tablica współrzędnych mrówek
+    smatrix<pBack> backWorld;
+    smatrix<pAnt>  antsWorld
+    ;
 
   World() {  //świat składa się ze środowiska i z mrówek
     backWorld = new matrix<pBack>(worozmiar,worozmiar);

@@ -90,7 +90,11 @@ void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
 //++++++++++++ FUNKCJE DO SPRAWNEGO SYMULOWANIA ++++++++++++
 
 smatrix<bool> permutacje = new matrix<bool>(16,4);
-sarray<bool> doIteracji = new array<bool>(2);
+//sarray<int>  dummy = new array<int>(2);// Compiler error
+//sarray<int>  dummy { new array<int>(2) };//OK
+//sarray<bool> test = new array<bool>(2);// Compiler error
+//sarray<bool> test { new array<bool>(2) };//OK
+sarray<bool> doIteracji { new array<bool>(2) };
 int pet = 0;
 
 void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
