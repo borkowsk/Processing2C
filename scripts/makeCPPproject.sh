@@ -35,9 +35,10 @@ mv "$SOURCES/local.h" "$SOURCES/cppsrc/"
 cat <<EOF > "./cppsrc/project_at_once.cpp"
 //All sources in one file 
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-//include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //This is for you. Could be deleted when not needed
@@ -108,7 +109,7 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
 
 #target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}"
 #     "-L\${MYLIBS}"
-#     wbprocessing wbrtm wbsyshX11 X11 Xpm
+#     wbprocess wbrtm wbsyshX11 X11 Xpm
 #     \${CMAKE_THREAD_LIBS_INIT}
 #     pthread
 #     rt
