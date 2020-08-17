@@ -11,25 +11,24 @@ namespace Processing
 {
 
 template<class T>
-class ptr
+class ptr:public std::shared_ptr<T>
 {
   ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
-      std::shared_ptr<T> _ptr;
   public:
       ~ptr(){}// Zwalnianie zasobów
-      ptr():_ptr(nullptr){}
-      ptr(T* ini):_ptr(ini){}
-      ptr(ptr<T>& other):_ptr(other._ptr){}
-      ptr<T>& operator = (ptr<T>& other);
-      ptr<T>& operator = (T* other);
-      ptr<T>& operator = (nullptr_t);
+      ptr():std::shared_ptr<T>(nullptr){}
+      ptr(T* ini):std::shared_ptr<T>(ini){}
+      //ptr(ptr<T>& other):_ptr(other._ptr){}
+      //ptr<T>& operator = (ptr<T>& other);
+      //ptr<T>& operator = (T* other);
+      //ptr<T>& operator = (nullptr_t);
 
-      bool operator == (const ptr<T>&) const;
-      bool operator != (const ptr<T>&) const;
-      bool operator == (T*) const;
-      bool operator != (T*) const;
-      T* operator -> () { return _ptr.get();}
-      operator T& () { return *_ptr;}
+      //bool operator == (const ptr<T>&) const;
+      //bool operator != (const ptr<T>&) const;
+      //bool operator == (T*) const;
+      //bool operator != (T*) const;
+      T* operator -> () { return this->get();}
+      operator T& () { return *(this->get());}
 };
 
 // Pojawił się problem z kompilatorem
@@ -39,99 +38,57 @@ class ptr
 template<class T>
 class array
 {
-  ///INFO:
-  //    T* _ptr;
+  ///INFO: Array of T, sized when constructed
+  T* _ptr;
   public:
       size_t length;
 
-      ~array();//{ delete [] _ptr; }// Zwalnianie zasobów
-      array(size_t N);
-
-      T& operator [] (size_t i);
+      ~array() { delete [] _ptr; } // Zwalnianie zasobów
+      array(size_t N): length{N} { _ptr = new T[N]; }
+      T& operator [] (size_t i) { return _ptr[i]; }
 };
 
-/*
-template<class T>
-class sarray
-{
-  public:
-      ~sarray(){}
-      sarray(){}
-      sarray(array<T>* tab);
-      sarray(std::initializer_list<T> lst);
-      sarray<T>& operator = (array<T>* tab);
-      T& operator [] (size_t i);
-};
-*/
 
 template<class T>
-class sarray
+class sarray:public ptr< array<T> >
 {
-      ///INFO:
+      ///INFO: Processing semantics for one dimensional array
       //ptr< array<T> > _arr;//smart ptr to array?
   public:
       ~sarray(){}// Zwalnianie zasobów
       sarray(){}
       sarray(std::initializer_list<T> lst);
-      sarray(array<T>* tab);
-      sarray(nullptr_t);//Empty sarray
-      sarray<T>& operator = (array<T>* tab);
+      sarray(array<T>* tab): ptr< array<T> >(tab){}
 
-      array<T>* operator -> ();
-      T& operator [] (size_t i);// { return (*_arr)[i]; }
+      array<T>* operator -> () { return this->get();}
+      T& operator [] (size_t i) { return (*this)[i]; }
       //size_t length();//Potrzebne?
 };
 
 template<class T>
-class matrix
+class matrix:public sarray<T>
 {
   ///INFO:
-  //    sarray<T>* _arr;//TABLICA TABLIC
   public:
-      size_t length;
-
       ~matrix(){}// Zwalnianie zasobów
-      matrix(size_t N,size_t M);
-
-      sarray<T>& operator [] (size_t j);
+       matrix(size_t N,size_t M);
+      //sarray<T>& operator [] (size_t j);
 };
 
-/*
-template<class T>
-class smatrix
-{
-  public:
-     ~smatrix(){}
-     smatrix(){}
-     smatrix(matrix<T>* tab);
-     smatrix(std::initializer_list<T> lst);
-     smatrix<T>& operator = (smatrix<T>* tab);
-
-     size_t length();
-     matrix<T>* operator -> ();
-     sarray<T>& operator [] (size_t j);
-};
-*/
 
 template<class T>
-class smatrix
+class smatrix:public ptr< matrix<T> >
 {
   ///INFO:
-  ///    matrix<T>* _arr;//goły wskaźnik na matrix
   public:
       ~smatrix(){}// Zwalnianie zasobów
       smatrix(){}
-      smatrix(matrix<T>* tab);
+      smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
       smatrix(std::initializer_list<T> lst);//??? TODO TEST IT!
 
-      size_t length();
-      matrix<T>* operator -> ();
-      sarray<T>& operator [] (size_t j);// { return (*_arr)[j]; }
+      matrix<T>* operator -> () { return this->get();}
+      sarray<T>& operator [] (size_t j) { return (*this)[j]; }
 };
-
-/*
-
-*/
 
 /*
 template<class T>

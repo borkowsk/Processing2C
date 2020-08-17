@@ -1,5 +1,6 @@
 /// podstawy obsługo okienka pseudo-processingowego
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include <iostream>
 
 static int _width=0;//processing_window_base::

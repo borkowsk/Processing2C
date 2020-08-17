@@ -1,7 +1,7 @@
 #include "processing_templates.hpp"
-
 #include "local.h"
-#include "RGB.pde.cpp"
+
+using namespace Processing;
 
 void tests()
 {
@@ -14,8 +14,8 @@ void tests()
 
     sarray<bool>   test3 { new array<bool>(2) };//OK
 
-    sarray<pRGB> dummy;
-    dummy = new array<pRGB>(Side);
-    dummy[Side/2] = new RGB();//OK
+    //sarray<pRGB> dummy;
+    //dummy = new array<pRGB>(Side);
+    //dummy[Side/2] = new RGB();//OK
 }
 

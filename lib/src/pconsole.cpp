@@ -1,5 +1,6 @@
 // Processing like console functions
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp"
 #include <iostream>

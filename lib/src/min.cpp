@@ -1,4 +1,5 @@
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include "processing_library.hpp"
 
 namespace Processing
