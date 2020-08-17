@@ -33,7 +33,7 @@ class ptr:public std::shared_ptr<T>
 
 // Pojawił się problem z kompilatorem
 //https://stackoverflow.com/questions/63314333/strange-behavior-of-gcc-are-c-object-definitions-with-and-equal-or-not
-//array(size_t N,nullptr_t); To też nie pomaga :-/
+//Użyłem klasy std::shared_ptr jako bazy i problem zniknął
 
 template<class T>
 class array
@@ -53,7 +53,6 @@ template<class T>
 class sarray:public ptr< array<T> >
 {
       ///INFO: Processing semantics for one dimensional array
-      //ptr< array<T> > _arr;//smart ptr to array?
   public:
       ~sarray(){}// Zwalnianie zasobów
       sarray(){}
@@ -61,33 +60,54 @@ class sarray:public ptr< array<T> >
       sarray(array<T>* tab): ptr< array<T> >(tab){}
 
       array<T>* operator -> () { return this->get();}
-      T& operator [] (size_t i) { return (*this)[i]; }
-      //size_t length();//Potrzebne?
+      T&        operator [] (size_t i) { return (*this)[i]; }
+      T*        begin() { return &(*this)[0]; }
+      T*        end() { return &(*this)[ length() ]; }
+      size_t    length() { return this->get()->length; }
 };
 
 template<class T>
-class matrix:public sarray<T>
+inline  sarray<T>::sarray(std::initializer_list<T> l):
+            ptr< array<T> >(new array<T>(l.size()))
+{ //NOT TESTED YET! TODO!
+    size_t i=0;
+    for(auto e:l)
+        (*this)[i++]=e;
+}
+
+template<class T>
+class matrix:public array< sarray<T> >
 {
-  ///INFO:
+  ///INFO: tablica dwuwymiarowa opiera się na jednowymiarowych
   public:
       ~matrix(){}// Zwalnianie zasobów
        matrix(size_t N,size_t M);
-      //sarray<T>& operator [] (size_t j);
+      //sarray<T>& operator [] (size_t j);//Potrzebne?
 };
 
+template<class T>
+inline matrix<T>::matrix(size_t N,size_t M):
+            array< sarray<T> >( M )
+{ //NOT TESTED YET! TODO!
+    for(size_t i=0;i<this->length;i++)
+        (*this)[i]=new array<T>(N);
+}
 
 template<class T>
 class smatrix:public ptr< matrix<T> >
 {
-  ///INFO:
+  ///INFO:Processing semantics for two dimensional array
   public:
       ~smatrix(){}// Zwalnianie zasobów
       smatrix(){}
       smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
-      smatrix(std::initializer_list<T> lst);//??? TODO TEST IT!
+      //smatrix(std::initializer_list<T> lst);//Potrzebne?
 
       matrix<T>* operator -> () { return this->get();}
       sarray<T>& operator [] (size_t j) { return (*this)[j]; }
+      sarray<T>* begin() { return &(*this)[0]; }
+      sarray<T>* end() { return &(*this)[ length() ]; }
+      size_t     length() { return this->get()->length; }
 };
 
 /*
@@ -137,11 +157,6 @@ inline  T& array<T>::operator [] (size_t i)
 //
 //}
 
-//template<class T>
-//inline  sarray<T>::sarray(std::initializer_list<T> l)
-//{
-//
-//}
 
 //template<class T>
 //inline  size_t sarray<T>::length()
