@@ -51,7 +51,7 @@ namespace Processing
         _string_param(int    p);
         _string_param(void*  p);
         template<class T>
-        _string_param(ptr<T> p);
+        _string_param(ptr<T> p):_string_param(p.get()){}
   };
 
   template<class X>

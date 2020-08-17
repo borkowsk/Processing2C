@@ -18,6 +18,8 @@ add_library( wbprocess STATIC
     "${WBPROCDIR}/lib/src/max.cpp"
     "${WBPROCDIR}/lib/src/min.cpp"
     "${WBPROCDIR}/lib/src/window_exit.cpp"
+    "${WBPROCDIR}/lib/src/window_draw.cpp"
+    "${WBPROCDIR}/lib/src/window_setup.cpp"
     "${WBPROCDIR}/lib/src/mouseClicked.cpp"
 )
 endif()

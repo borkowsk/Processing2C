@@ -10,7 +10,6 @@ using namespace Processing;
 //#include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-std::array<int,10> s;
 
 void processing_window::setup()
 {
