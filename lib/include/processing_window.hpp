@@ -16,6 +16,7 @@ class processing_window_base
     virtual void mouseClicked();
     virtual void setup()=0;//Must be provided!
     virtual void draw(){} //EMPTY DRAW()
+    virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
 };
 
 extern class processing_window: public processing_window_base
@@ -40,7 +41,7 @@ void setFrameRate(float fps); ///Set desired frame rate
 
 extern const float& frameRate; /// Get aproximated frame rate achived;
 extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
-
+extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
 void noSmooth();
 void smooth();
 

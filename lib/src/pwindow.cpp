@@ -18,15 +18,22 @@ const int& pixelHeight=_height;
 const float& frameRate=_frameRate; ///Get aproximated frame rate achived;
 const int&   frameCount=_frameCount;///contains the number of frames that have been displayed since the program started.
 
+void processing_window_base::after_draw()
+//Calculate frameRate and _INTERNAL_DELAY
+{
+    //TODO!
+}
 
 processing_window_base::~processing_window_base()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    //Is anything to do here?
 }
 
 void processing_window_base::exit()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    //Is anything to do here?
+    //Finishing the whole aplication
+    ::exit(0);
 }
 
 void processing_window_base::mouseClicked()
