@@ -183,12 +183,6 @@ float lerp(float start,float stop,float amt)
 }
 
 
-/// Parameters:	napTime 	int: milliseconds to pause before running draw() again
-void delay(int napTime)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 void saveFrame(const String& filename)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
@@ -279,3 +273,4 @@ void saveFrame(const char* filename)
 }
 
 }//END of namespace Processing
+
