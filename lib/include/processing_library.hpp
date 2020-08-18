@@ -15,10 +15,14 @@ namespace Processing
   {
     ///INFO:
     public:
-      virtual ~String();//??? Na pewno potrzebne?
-      String(const char*);
+      //virtual ???
+      ~String();//??? Na pewno potrzebne?
+      String(){}
+      String(const char* str):std::string(str){}
+      String(char  c);
+      String(const std::string& str):std::string(str){}
       String(const String&);
-      String();
+      operator bool () { return this->c_str()!=nullptr; }
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
       String& operator += (const String&);
@@ -38,7 +42,6 @@ namespace Processing
    String& operator  + (double,const String&);
    String& operator  + (bool,const String&);
 
-
   class _string_param:public String
   {
     ///INFO: class designed for automatic PARAMETER conversion into String
@@ -46,6 +49,7 @@ namespace Processing
         virtual ~_string_param();// Zwalnianie zasobów
         _string_param(const String& p):String(p){}
         _string_param(const char *p):String(p){}
+        _string_param(char p);
         _string_param(double p);
         _string_param(float  p);
         _string_param(int    p);

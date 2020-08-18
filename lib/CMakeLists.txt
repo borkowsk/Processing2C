@@ -12,8 +12,9 @@ if(true)
 add_definitions( -DHAVE_X11 -DUSE_X11 )
 add_library( wbprocess STATIC 
     "${WBPROCDIR}/lib/src/main.cpp"
-    "${WBPROCDIR}/lib/src/delay.cpp"
     "${WBPROCDIR}/lib/src/pwindow.cpp"
+    "${WBPROCDIR}/lib/src/delay.cpp"
+    "${WBPROCDIR}/lib/src/pstrings.cpp"
     "${WBPROCDIR}/lib/src/plibrary.cpp"
     "${WBPROCDIR}/lib/src/pconsole.cpp"
     "${WBPROCDIR}/lib/src/max.cpp"
