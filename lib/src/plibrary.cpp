@@ -79,12 +79,12 @@ PrintWriter::~PrintWriter()
 // Zwalnianie zasobów
 PrintWriter::PrintWriter()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 PrintWriter::PrintWriter(PrintWriter&)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 std::fstream* PrintWriter::operator -> ()
