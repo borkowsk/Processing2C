@@ -17,6 +17,7 @@ class processing_window_base
     virtual void setup()=0;//Must be provided!
     virtual void draw(){} //EMPTY DRAW()
     virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
+    virtual void check_events();//If events are in queue, they are processed
 };
 
 extern class processing_window: public processing_window_base

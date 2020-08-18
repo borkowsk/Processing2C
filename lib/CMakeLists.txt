@@ -12,17 +12,18 @@ if(true)
 add_definitions( -DHAVE_X11 -DUSE_X11 )
 add_library( wbprocess STATIC 
     "${WBPROCDIR}/lib/src/main.cpp"
-    "${WBPROCDIR}/lib/src/pwindow.cpp"
     "${WBPROCDIR}/lib/src/delay.cpp"
+    "${WBPROCDIR}/lib/src/pwindow.cpp"
     "${WBPROCDIR}/lib/src/pstrings.cpp"
-    "${WBPROCDIR}/lib/src/plibrary.cpp"
+    "${WBPROCDIR}/lib/src/pbasegrapx.cpp"
     "${WBPROCDIR}/lib/src/pconsole.cpp"
+    "${WBPROCDIR}/lib/src/plibrary.cpp"
     "${WBPROCDIR}/lib/src/max.cpp"
     "${WBPROCDIR}/lib/src/min.cpp"
+    "${WBPROCDIR}/lib/src/mouseClicked.cpp"
     "${WBPROCDIR}/lib/src/window_exit.cpp"
     "${WBPROCDIR}/lib/src/window_draw.cpp"
     "${WBPROCDIR}/lib/src/window_setup.cpp"
-    "${WBPROCDIR}/lib/src/mouseClicked.cpp"
 )
 endif()
 
