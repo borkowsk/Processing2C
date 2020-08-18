@@ -87,10 +87,10 @@ class matrix:public array< sarray<T> >
 
 template<class T>
 inline matrix<T>::matrix(size_t N,size_t M):
-            array< sarray<T> >( M )
+            array< sarray<T> >( N )
 { //NOT TESTED YET! TODO!
     for(size_t i=0;i<this->length;i++)
-        (*this)[i]=new array<T>(N);
+        (*this)[i]=new array<T>( M );
 }
 
 template<class T>
