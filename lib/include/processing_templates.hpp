@@ -60,7 +60,7 @@ class sarray:public ptr< array<T> >
       sarray(array<T>* tab): ptr< array<T> >(tab){}
 
       array<T>* operator -> () { return this->get();}
-      T&        operator [] (size_t i) { return (*this)[i]; }
+      T&        operator [] (size_t i) { return (*this->get())[i]; }
       T*        begin() { return &(*this)[0]; }
       T*        end() { return &(*this)[ length() ]; }
       size_t    length() { return this->get()->length; }
@@ -104,7 +104,7 @@ class smatrix:public ptr< matrix<T> >
       //smatrix(std::initializer_list<T> lst);//Potrzebne?
 
       matrix<T>* operator -> () { return this->get();}
-      sarray<T>& operator [] (size_t j) { return (*this)[j]; }
+      sarray<T>& operator [] (size_t j) { return (*this->get())[j]; }
       sarray<T>* begin() { return &(*this)[0]; }
       sarray<T>* end() { return &(*this)[ length() ]; }
       size_t     length() { return this->get()->length; }

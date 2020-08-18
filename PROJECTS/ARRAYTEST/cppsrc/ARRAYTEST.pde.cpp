@@ -16,19 +16,19 @@ void processing_window::setup()
   sarray<int> a=new array<int>(10);
   for(int v:a)
     print(v,' ');
-  
+
   println();
-  
+
   smatrix<int> b=new matrix<int>(10,2);
   for(sarray<int> v:b)
     print(v,' ');
-    
+
   println();
   for(sarray<int> v:b)
   {
     for(int w:v)
       print(w,' ');
-    
+
     println();
   }
 
