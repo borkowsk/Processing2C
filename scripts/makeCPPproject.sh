@@ -43,7 +43,7 @@ using namespace Processing;
 #include "local.h"
 #include "project.h" //This is for you. Could be deleted when not needed
 //==================================================================================
-
+const char* Processing::_PROGRAMNAME="$PROJECT";
 EOF
 
 FILES=*.pde

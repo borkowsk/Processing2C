@@ -29,6 +29,7 @@ extern class processing_window: public processing_window_base
   void mouseClicked();
 } _processing_window_instance;
 
+extern const char* _PROGRAMNAME;
 extern const int& width;
 extern const int& height;
 extern const int& pixelWidth;
@@ -43,6 +44,7 @@ void setFrameRate(float fps); ///Set desired frame rate
 extern const float& frameRate; /// Get aproximated frame rate achived;
 extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
 extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
+
 void noSmooth();
 void smooth();
 
