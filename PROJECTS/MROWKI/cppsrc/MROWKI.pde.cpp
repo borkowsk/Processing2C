@@ -1,9 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: MROWKI.pde
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-//include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -90,11 +91,7 @@ void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
 //++++++++++++ FUNKCJE DO SPRAWNEGO SYMULOWANIA ++++++++++++
 
 smatrix<bool> permutacje = new matrix<bool>(16,4);
-//sarray<int>  dummy = new array<int>(2);// Compiler error
-//sarray<int>  dummy { new array<int>(2) };//OK
-//sarray<bool> test = new array<bool>(2);// Compiler error
-//sarray<bool> test { new array<bool>(2) };//OK
-sarray<bool> doIteracji { new array<bool>(2) };
+sarray<bool> doIteracji = new array<bool>(2);
 int pet = 0;
 
 void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej

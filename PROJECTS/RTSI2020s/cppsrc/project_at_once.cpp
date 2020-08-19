@@ -8,7 +8,7 @@ using namespace Processing;
 #include "local.h"
 #include "project.h" //This is for you. Could be deleted when not needed
 //==================================================================================
-
+const char* Processing::_PROGRAMNAME="RTSI2020s";
 #include "A1Network.pde.cpp"
 #include "Abstract.pde.cpp"
 #include "Agent.pde.cpp"

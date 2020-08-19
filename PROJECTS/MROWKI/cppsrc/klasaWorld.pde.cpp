@@ -1,9 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: klasaWorld.pde
 #include "processing_window.hpp"
+#include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-//include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -23,16 +24,9 @@ int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
 
 class World {
   public:
-    sarray<pAnt>    dumm1 { new array<pAnt>(10) };//OK
-    //sarray<pAnt>    dummy2 = new array<pAnt>(10); //Compiler error?!?!?!
-    smatrix<pAnt>   dummyWorld1 { new matrix<pAnt>(100,100) };//OK
-    smatrix<pAnt>   dummyWorld2 = new matrix<pAnt>(100,100);//OK
-    smatrix<int>    ants = new matrix<int>(50/*ileWsumieMrowek*/,2);// OK
-
-    //tablica współrzędnych mrówek
-    smatrix<pBack> backWorld;
-    smatrix<pAnt>  antsWorld
-    ;
+  smatrix<pBack> backWorld;  
+  smatrix<pAnt> antsWorld;  
+  smatrix<int> ants = new matrix<int>(ileWsumieMrowek,2); //tablica współrzędnych mrówek
 
   World() {  //świat składa się ze środowiska i z mrówek
     backWorld = new matrix<pBack>(worozmiar,worozmiar);
