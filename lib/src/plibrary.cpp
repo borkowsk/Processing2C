@@ -46,31 +46,6 @@ float lerp(float start,float stop,float amt)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-
-void saveFrame(const String& filename)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void saveFrame(const std::string& filename)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-/// Extended graphix text()
-void text(_string_param str,float x,float y)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void text(_string_param str,float x1,float y1,float x2,float y2)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-//void text(const String& str,float x,float y);
-//void text(const String& str,float x1,float y1,float x2,float y2);
-
 /// File streams
 PrintWriter::~PrintWriter()
 {

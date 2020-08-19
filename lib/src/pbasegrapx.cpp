@@ -1,6 +1,8 @@
 /// podstawy obsługo okienka pseudo-processingowego
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_library.hpp"
+#include "SYMSHELL/symshell.h"
 #include <iostream>
 
 namespace Processing
@@ -146,6 +148,21 @@ void text(float num,float x,float y)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+/// Extended graphix text()
+void text(_string_param str,float x,float y)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void text(_string_param str,float x1,float y1,float x2,float y2)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+//void text(const String& str,float x,float y);
+//void text(const String& str,float x1,float y1,float x2,float y2);
+
+
 void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
@@ -157,6 +174,16 @@ void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
 }
 
 void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void saveFrame(const String& filename)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void saveFrame(const std::string& filename)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
