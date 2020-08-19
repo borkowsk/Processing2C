@@ -13,12 +13,13 @@ Processing::processing_window Processing::_processing_window_instance;
 
 int Processing::_INTERNAL_DELAY=100;
 
-int main(int argc, char *argv[])
+int main(int argc,const char *argv[])
 {
 #ifdef DEBUG
     std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<std::endl;//DEBUG
     std::cout<<"SETUP:"<<std::endl;//DEBUG
 #endif
+    _processing_window_instance.before_setup(argc,argv);
     _processing_window_instance.setup();
 
     while(1)

@@ -14,6 +14,7 @@ class processing_window_base
     virtual ~processing_window_base();
     virtual void exit();
     virtual void mouseClicked();
+    virtual void before_setup(int argc, const char *argv[]);
     virtual void setup()=0;//Must be provided!
     virtual void draw(){} //EMPTY DRAW()
     virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY

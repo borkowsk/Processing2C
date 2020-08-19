@@ -1,6 +1,7 @@
 /// podstawy obsługo okienka pseudo-processingowego
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "SYMSHELL/symshell.h"
 #include <iostream>
 
 static int _width=0;//processing_window_base::
@@ -21,13 +22,18 @@ const int&   frameCount= _frameCount;///contains the number of frames that have 
 void processing_window_base::after_draw()
 //Calculate frameRate and _INTERNAL_DELAY
 {
-    //TODO!
+    flush_plot();
+    //... Calculate frameRate: TODO!
 }
 
 void processing_window_base::check_events()
 //If events are in queue, they are processed
 {
-    //TODO!!
+    while(input_ready())
+    {
+        int inp=get_char();
+        if(inp==EOF) exit();
+    }
 }
 
 processing_window_base::~processing_window_base()
@@ -38,6 +44,7 @@ processing_window_base::~processing_window_base()
 void processing_window_base::exit()
 {
     //Is anything to do here?
+    close_plot();
     //Finishing the whole aplication
     ::exit(0);
 }
@@ -47,14 +54,21 @@ void processing_window_base::mouseClicked()
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+void processing_window_base::before_setup(int argc,const char *argv[])
+{
+    fix_size(1);
+    set_background(255);
+    shell_setup(_PROGRAMNAME,argc,argv);
+}
+
 void size(int width,int height)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    init_plot(width,height,0,0);
 }
 
 void fullScreen()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    init_plot(4096,2048,0,0);//Powinien dopasowac się do ekranu
 }
 
 void setFrameRate(float fps)
