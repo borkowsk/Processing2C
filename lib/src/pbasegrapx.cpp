@@ -18,6 +18,21 @@ void smooth()
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 void stroke(float Gray)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
@@ -162,21 +177,6 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
 //void text(const String& str,float x,float y);
 //void text(const String& str,float x1,float y1,float x2,float y2);
 
-
-void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
 
 void saveFrame(const String& filename)
 {
