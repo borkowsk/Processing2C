@@ -10,7 +10,7 @@ namespace Processing
 /// Simple functions
 float random(double low,double hig)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    return low+((double)rand()/(double)RAND_MAX*hig);  //???
 }
 
 //inline float random(double hig){return random(0,hig); }
@@ -113,7 +113,7 @@ void saveFrame(const char* filename)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-09-02                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

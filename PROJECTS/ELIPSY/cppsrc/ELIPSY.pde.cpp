@@ -30,7 +30,7 @@ void processing_window::draw()
 {
   fill(random(255),random(255),random(255),random(255));
   float r=radius();
-  ellipse(random(W),random(W),r,r);
+  ellipse(random(W),random(W), r , r );
   println(frameRate);
 }
 //../../scripts/procesing2cpp.sh did it

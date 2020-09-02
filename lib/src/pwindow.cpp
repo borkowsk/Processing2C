@@ -57,18 +57,24 @@ void processing_window_base::mouseClicked()
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
     fix_size(1);
-    set_background(255);
+    set_background(256+200);
     shell_setup(_PROGRAMNAME,argc,argv);
 }
 
 void size(int width,int height)
 {
     init_plot(width,height,0,0);
+    strokeWeight(1);
+    stroke(0);
+    fill(255);
 }
 
 void fullScreen()
 {
     init_plot(4096,2048,0,0);//Powinien dopasowac się do ekranu
+    strokeWeight(1);
+    stroke(0);
+    fill(255);
 }
 
 void setFrameRate(float fps)
@@ -116,7 +122,7 @@ void noLoop()
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-09-02                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
