@@ -26,7 +26,6 @@ float map(float value,float start1,float stop1,float start2,float stop2)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-
 /// Parameters:
 /// value 	float: the incoming value to be converted
 /// start 	float: lower bound of the value's current range
@@ -36,7 +35,6 @@ float norm(float value,float start,float stop)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-
 /// Parameters:
 /// start 	float: first value
 /// stop 	float: second value
@@ -45,61 +43,6 @@ float lerp(float start,float stop,float amt)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
-
-/// File streams
-PrintWriter::~PrintWriter()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-// Zwalnianie zasobów
-PrintWriter::PrintWriter()
-{
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-PrintWriter::PrintWriter(PrintWriter&)
-{
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-std::fstream* PrintWriter::operator -> ()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void PrintWriter::flush()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-PrintWriter& createWriter(const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-PrintWriter& createWriter(const char* )
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-//void print();//To bez sensu
-void print(PrintWriter& o,_string_param _p1)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-//void print(PrintWriter& o,const String& );
-//void print(PrintWriter& o,const std::string& );
-
-void println(PrintWriter& o,_string_param _p1)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-//void println(PrintWriter& o,const String& );
-//void println(PrintWriter& o,const std::string& );
 
 void saveFrame()
 {
