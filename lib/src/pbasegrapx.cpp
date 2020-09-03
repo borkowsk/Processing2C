@@ -224,13 +224,15 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
 void saveFrame(const String& filename)
 {
     dump_screen(filename.c_str());
-    std::cerr<<__FUNCTION__<<" - special chars ignored!"<<std::endl;
+    if(filename.find_first_of('#')!=std::string::npos)
+        std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
 }
 
 void saveFrame(const std::string& filename)
 {
     dump_screen(filename.c_str());
-    std::cerr<<__FUNCTION__<<" - special chars ignored!"<<std::endl;
+    if(filename.find_first_of('#')!=std::string::npos)
+        std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
 }
 
 }//END of namespace Processing
