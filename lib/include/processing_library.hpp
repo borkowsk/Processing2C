@@ -121,9 +121,14 @@ namespace Processing
    public:
       virtual ~PrintWriter();// Zwalnianie zasobów
       PrintWriter();
-      PrintWriter(PrintWriter&);
+      PrintWriter(PrintWriter& );
+      void set(std::fstream*);
+      operator std::fstream& () {return *ptr;}
+      PrintWriter& operator = (PrintWriter& );
       std::fstream* operator -> ();
       void flush();
+      //Nie działa jako "friend"
+      //error: undefined reference to `Processing::PrintWriter::PrintWriter(std::basic_fstream<char, std::char_traits<char> >*)'
   };
 
   PrintWriter& createWriter(const String&);
