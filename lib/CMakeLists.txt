@@ -17,6 +17,7 @@ add_library( wbprocess STATIC
     "${WBPROCDIR}/lib/src/pstrings.cpp"
     "${WBPROCDIR}/lib/src/pbasegrapx.cpp"
     "${WBPROCDIR}/lib/src/pconsole.cpp"
+    "${WBPROCDIR}/lib/src/pnumberformat.cpp"
     "${WBPROCDIR}/lib/src/pprintwriter.cpp"
     "${WBPROCDIR}/lib/src/plibrary.cpp"
     "${WBPROCDIR}/lib/src/max.cpp"
