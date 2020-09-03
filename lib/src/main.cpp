@@ -25,7 +25,7 @@ int main(int argc,const char *argv[])
     while(1)
     {
 #ifdef DEBUG
-        std::cout<<"DRAW:"<<std::endl;//DEBUG
+        //std::cout<<"DRAW:"<<std::endl;//DEBUG
 #endif
         _processing_window_instance.draw();
         delay(_INTERNAL_DELAY);
