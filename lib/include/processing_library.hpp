@@ -48,6 +48,7 @@ namespace Processing
     public:
         virtual ~_string_param();// Zwalnianie zasobów
         _string_param(const String& p):String(p){}
+        _string_param(const std::string& p):String(p){}
         _string_param(const char *p):String(p){}
         _string_param(char p);
         _string_param(double p);
@@ -73,8 +74,10 @@ namespace Processing
   };
 
 /// Simple functions
-  float random(double low,double hig);
-  inline float random(double hig){return random(0,hig); }
+  void  randomSeed(int seed);
+  double random(double low,double hig);
+  inline double random(double hig){return random(0,hig); }
+
 
   int       min(int,int);
   double    min(double,double);

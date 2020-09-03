@@ -8,9 +8,19 @@ namespace Processing
 {
 
 /// Simple functions
-float random(double low,double hig)
+
+void  randomSeed(int seed)
 {
-    return low+((double)rand()/(double)RAND_MAX*hig);  //???
+    srand((unsigned)seed);
+}
+
+static double _denominator=RAND_MAX+1.0;
+double random(double low,double hig)
+{
+    double tmp=low + (rand()/_denominator) * (hig-low);  //???
+    if(tmp==hig)
+            std::cout<<__FUNCTION__<<" - unexpected value "<<tmp<<std::endl;
+    return tmp;
 }
 
 //inline float random(double hig){return random(0,hig); }

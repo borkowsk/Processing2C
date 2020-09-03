@@ -1,6 +1,7 @@
 /// podstawy obsługo okienka pseudo-processingowego
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_library.hpp"
 #include "SYMSHELL/symshell.h"
 #include <iostream>
 #include <chrono>
@@ -81,8 +82,11 @@ void processing_window_base::mouseClicked()
 
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
+    randomSeed(time(nullptr));
+    buffering_setup(1);//buffered window!
     fix_size(1);
     set_background(256+200);
+
     shell_setup(_PROGRAMNAME,argc,argv);
     milliseconds ms = duration_cast< milliseconds >(
         system_clock::now().time_since_epoch()
