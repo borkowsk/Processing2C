@@ -11,7 +11,7 @@ using namespace Processing;
 
 Processing::processing_window Processing::_processing_window_instance;
 
-int Processing::_INTERNAL_DELAY=100;
+int Processing::_INTERNAL_DELAY=10;
 
 int main(int argc,const char *argv[])
 {

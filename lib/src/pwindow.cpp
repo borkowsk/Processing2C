@@ -3,11 +3,26 @@
 #include "processing_templates.hpp"
 #include "SYMSHELL/symshell.h"
 #include <iostream>
+#include <chrono>
+                            //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
+using namespace std::chrono;//https://en.cppreference.com/w/cpp/chrono/duration
+                            //https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets
 
 static int _width=0;//processing_window_base::
 static int _height=0;
+
 static float _frameRate=0; ///Aproximated frame rate achived;
+
 static int _frameCount=0;
+static int _frameCountFromChange=0;
+
+static milliseconds begintms;
+static milliseconds firstms;
+static milliseconds lastms;
+
+extern "C" {
+int WB_error_enter_before_clean=0;
+}
 
 namespace Processing
 {
@@ -23,7 +38,17 @@ void processing_window_base::after_draw()
 //Calculate frameRate and _INTERNAL_DELAY
 {
     flush_plot();
-    //... Calculate frameRate: TODO!
+    _frameCount++;
+    _frameCountFromChange++;
+
+    //... Calculate frameRate:
+    milliseconds ms = duration_cast< milliseconds >(
+        system_clock::now().time_since_epoch()
+    );
+    _frameRate=((double)_frameCountFromChange)/((ms-firstms).count()/1000.0);
+    //std::cerr<<_frameCountFromChange<<"frames /"<<((ms-firstms).count()/1000.0)<<"s = "<<_frameRate<<std::endl;
+    //... Calculate _INTERNAL_DELAY: TODO!
+    // ...
 }
 
 void processing_window_base::check_events()
@@ -59,6 +84,12 @@ void processing_window_base::before_setup(int argc,const char *argv[])
     fix_size(1);
     set_background(256+200);
     shell_setup(_PROGRAMNAME,argc,argv);
+    milliseconds ms = duration_cast< milliseconds >(
+        system_clock::now().time_since_epoch()
+    );
+    //std::cerr<<ms.count()<<"ms"<<std::endl;
+    begintms=ms;
+    firstms=ms;
 }
 
 void size(int width,int height)
@@ -80,7 +111,7 @@ void fullScreen()
 void setFrameRate(float fps)
 ///Set desired frame rate
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _INTERNAL_DELAY=1000/fps;
 }
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary,

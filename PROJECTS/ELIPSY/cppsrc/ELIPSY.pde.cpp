@@ -22,7 +22,7 @@ int radius()
 void processing_window::setup()
 {
   size(600,600);
-  setFrameRate(10);
+  setFrameRate(100);
 }
 
 //Running - visualisation and dynamics (about 30 times per sec.)
