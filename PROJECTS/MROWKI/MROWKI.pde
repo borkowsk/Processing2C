@@ -32,7 +32,7 @@ int ileSymulacji = 2; ///
 
 void setup() {
   size(900, 900);
-  frameRate(1001);//Maximize speed
+  frameRate(2000);//Maximize speed
   output = createWriter("Symulacja kolejna.txt");
   inicjacja();
   pomocPetli();
@@ -51,11 +51,11 @@ void draw() {
     world.antsMove();
     iteracja++;
     
-    if (iteracja%1==0) {
+    if (iteracja%50==0) {
       world.drawWorld();
     }
     
-    if(iteracja%10==0)
+    if(iteracja%50==0)
           println("\nStep:",iteracja,"Frame:",frameCount,"Frame rate:",frameRate);
     
   } else {  //po osiągnięciu pewnego poziomu jedzenia spisuje dane
@@ -108,7 +108,7 @@ void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
 }
 
 void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
-  may_vibrate = permutacje[pet][0];
+  may_vibrate = permutacje[pet][0];//Tu się wywala po wydrukowaniu KONIEC!
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];
   losowo = permutacje[pet][3];
