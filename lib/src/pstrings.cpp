@@ -2,6 +2,7 @@
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
+#include "processing_console.hpp"
 #include <iostream>
 
 //#define DEBUG 1
@@ -22,86 +23,27 @@ String::String(const String& par):std::string( par.c_str() )
 String::String(char  c):std::string({c,'\0'})
 {}
 
-bool String::operator == (nullptr_t)
+bool String::operator == (nullptr_t v)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" should not be used for nullptr!"<<std::endl;
+    return empty();
 }
 
 bool String::operator != (nullptr_t)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" should not be used for nullptr!"<<std::endl;
+    return !empty();
 }
 
-String& String::operator += (const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
+//String& String::operator += (const String&)
+//{
+//    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+//}
 
-String& String::operator += (int)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator += (float)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator += (double)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator += (bool)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator  + (const String&) const
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator  + (int) const
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator  + (float) const
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator  + (double) const
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& String::operator  + (bool) const
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& operator  + (int,const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& operator  + (float,const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& operator  + (double,const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String& operator  + (bool,const String&)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
+//String& String::operator  + (const String&) const
+//{
+//    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+//}
 
 _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
