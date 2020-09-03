@@ -13,4 +13,3 @@ const char* Processing::_PROGRAMNAME="MROWKI";
 #include "klasaBack.pde.cpp"
 #include "klasaWorld.pde.cpp"
 #include "MROWKI.pde.cpp"
-//https://wiadomosci.wp.pl/koronawirus-w-polsce-znamy-kolejnosc-w-jakiej-pojawiaja-sie-objawy-6544484640651904a

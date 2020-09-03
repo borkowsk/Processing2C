@@ -32,6 +32,7 @@ int ileSymulacji = 2; ///
 
 void setup() {
   size(900, 900);
+  frameRate(1001);//Maximize speed
   output = createWriter("Symulacja kolejna.txt");
   inicjacja();
   pomocPetli();
@@ -49,9 +50,14 @@ void draw() {
 
     world.antsMove();
     iteracja++;
+    
     if (iteracja%1==0) {
       world.drawWorld();
     }
+    
+    if(iteracja%10==0)
+          println("\nStep:",iteracja,"Frame:",frameCount,"Frame rate:",frameRate);
+    
   } else {  //po osiągnięciu pewnego poziomu jedzenia spisuje dane
     output.println(dra + " \t " + iteracja + " \t " + world.ileMrowekNiosloCokolwiek());
     output.flush(); 

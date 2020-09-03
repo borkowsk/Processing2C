@@ -44,6 +44,7 @@ int ileSymulacji = 2; ///
 
 void processing_window::setup() {
   size(900, 900);
+  setFrameRate(1001);//Maximize speed
   output = createWriter("Symulacja kolejna.txt");
   inicjacja();
   pomocPetli();
@@ -61,9 +62,14 @@ void processing_window::draw() {
 
     world->antsMove();
     iteracja++;
+    
     if (iteracja%1==0) {
       world->drawWorld();
     }
+    
+    if(iteracja%10==0)
+          println("\nStep:",iteracja,"Frame:",frameCount,"Frame rate:",frameRate);
+    
   } else {  //po osiągnięciu pewnego poziomu jedzenia spisuje dane
     println(output,dra + String(" \t ") + iteracja + String(" \t ") + world->ileMrowekNiosloCokolwiek());
     output->flush(); 

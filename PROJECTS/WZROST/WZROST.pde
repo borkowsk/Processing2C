@@ -32,7 +32,7 @@ void setup() //Window and model initialization
   output.println("Step\tCounter");
   
   noSmooth(); //Fast visualization
-  frameRate(30); //maximize speed
+  frameRate(1001); //maximize speed
 }
 
 int Step=0;
@@ -87,6 +87,7 @@ void draw()
        //saveFrame("wzrost_"+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
        saveFrame("wzrost_step"+sc+".png");//Wersja z wygodną numeracją
+       println("Frame rate:",frameRate);
     }
     
     Step++;
