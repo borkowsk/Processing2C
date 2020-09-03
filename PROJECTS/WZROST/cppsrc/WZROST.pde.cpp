@@ -19,7 +19,7 @@ int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
 int STARTG=128;//W jakiej szarości pierwsza komórka
 bool ScreenDumps=true; //Zrzucanie obrazków co krok wcale
-int VIS_FRQ=100; //co ile kroków zrzut ekranu
+int VIS_FRQ=10; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
 int Side;  /// Bok macieży
@@ -53,7 +53,7 @@ void processing_window::draw()
 //Monte Carlo Step
 {
   //Zapis tego co jest
-  println(output,Step+String("\t")+RGB_Counter); // Write the statistics to the file
+  println(output, Step + String("\t") + RGB_Counter); // Write the statistics to the file
   output->flush();//Upewnij się że bufor "poszedł na dysk"
   
   //Nowy stan
@@ -98,7 +98,9 @@ void processing_window::draw()
        //saveFrame(String("wzrost_step")+Step+ String(".png"));//Wersja z niewygodną numeracją
        //saveFrame(String("wzrost_")+ String("f########.png"));//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       saveFrame(String("wzrost_step")+sc+ String(".png"));//Wersja z wygodną numeracją
+       String name= String("wzrost_step") + sc + String(".png");
+       println(name);
+       saveFrame(name);//Wersja z wygodną numeracją nazw plików
     }
     
     Step++;
