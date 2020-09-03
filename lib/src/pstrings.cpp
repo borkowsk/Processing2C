@@ -35,15 +35,18 @@ bool String::operator != (nullptr_t)
     return !empty();
 }
 
-//String& String::operator += (const String&)
-//{
-//    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-//}
+String& String::operator += (const String& v)
+{
+    std::string::operator += (v.c_str());
+    return *this;
+}
 
-//String& String::operator  + (const String&) const
-//{
-//    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-//}
+String String::operator  + (const String& v) const
+{
+    std::string tmp(this->c_str());
+    tmp+=v.c_str();
+    return tmp;
+}
 
 _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
 {

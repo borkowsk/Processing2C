@@ -45,26 +45,27 @@ String String::operator  + (double v) const
 
 String operator  + (int v,const String& self)
 {
-    String tmp=nf(v);
+    std::string tmp=nf(v);
     tmp+=self.c_str();
     return tmp;
 }
 
 String operator  + (float v,const String& self)
 {
-    String tmp=nf(v);
+    std::string tmp=nf(v);
     tmp+=self.c_str();
     return tmp;
 }
 
 String operator  + (double v,const String& self)
 {
-    String tmp=nf(v);
+    std::string tmp=nf(v);
     tmp+=self.c_str();
     return tmp;
 }
 
 //DLA bool
+/*
 String& String::operator += (bool v)
 {
     std::cerr<<__FUNCTION__<<" (1)!"<<std::endl;
@@ -89,7 +90,7 @@ String operator  + (bool v,const String& self)
     tmp+=self.c_str();
     return tmp;
 }
-
+*/
 //Funkcje formatujące
 String nf(double num)
 {

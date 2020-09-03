@@ -25,12 +25,12 @@ namespace Processing
       operator bool () { return this->c_str()!=nullptr; }
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
-      //String& operator += (const String&);
+      String& operator += (const String&);
       String& operator += (int);
       String& operator += (float);
       String& operator += (double);
       String& operator += (bool);
-      //String& operator  + (const String&) const;
+      String operator  + (const String&) const;
       String operator  + (int) const;
       String operator  + (float) const;
       String operator  + (double) const;

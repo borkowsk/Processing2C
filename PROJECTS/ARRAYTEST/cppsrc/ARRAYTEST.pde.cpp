@@ -13,6 +13,7 @@ using namespace Processing;
 
 void processing_window::setup()
 {
+  size(100,100);
   sarray<int> a=new array<int>(10);
   for(int v:a)
     print(v,' ');
