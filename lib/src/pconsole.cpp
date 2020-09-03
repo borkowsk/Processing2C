@@ -71,17 +71,23 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
 
 String nf(double num)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    char bufor[1024];
+    sprintf(bufor,"%g",num);
+    return String(bufor);
 }
 
 String nf(double num,int digits)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    char bufor[1024];
+    sprintf(bufor,"%g",num);
+    return String(bufor);
 }
 
 String nf(double num,int left,int right)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    char bufor[1024];
+    sprintf(bufor,"%g",num);
+    return String(bufor);
 }
 
 String nf(sarray<int> nums)
@@ -98,7 +104,6 @@ String nf(sarray<int> nums,int left,int right)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
-
 
 String nf(sarray<float> nums)
 {
