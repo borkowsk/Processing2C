@@ -39,10 +39,10 @@ void processing_window::setup() //Window and model initialization
 
   World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG);//Inicjalize 
   World[Side/2][Side/2]->Visualise(Side/2,Side/2);
-  
-  output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
+
+  output = createWriter("Statistics.log"); // Create a new file in the sketch directory
   println(output,"Step\tCounter");
-  
+
   noSmooth(); //Fast visualization
   setFrameRate(30); //maximize speed
 }
