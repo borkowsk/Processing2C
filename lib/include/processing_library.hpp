@@ -42,6 +42,12 @@ namespace Processing
    String operator  + (double,const String&);
    String operator  + (bool,const String&);
 
+   template<class X>
+   String& operator + (String&,ptr<X>);
+
+   template<class X>
+   String& operator += (String&,ptr<X>);
+
   class _string_param:public String
   {
     ///INFO: class designed for automatic PARAMETER conversion into String
@@ -59,11 +65,14 @@ namespace Processing
         _string_param(ptr<T> p):_string_param(p.get()){}
   };
 
-  template<class X>
-  String& operator + (String&,ptr<X>);
-
-  template<class X>
-  String& operator += (String&,ptr<X>);
+  /// Extended graphix text()
+  void text(_string_param str,float x,float y);
+  void text(_string_param str,float x1,float y1,float x2,float y2);
+  //void text(char c, float x,float y);
+  //void text(float num,float x,float y);
+  //void text(const char* str,float x,float y);
+  //void text(char chars[],int start,int stop,float x,float y);
+  //void text(const char* str,float x1,float y1,float x2,float y2);
 
   template<class T>
   /*interface*/ class Comparable
@@ -109,12 +118,6 @@ namespace Processing
 
   void saveFrame(const String& filename);
   void saveFrame(const std::string& filename);
-
-/// Extended graphix text()
-  void text(_string_param str,float x,float y);
-  void text(_string_param str,float x1,float y1,float x2,float y2);
-  //void text(const String& str,float x,float y);
-  //void text(const String& str,float x1,float y1,float x2,float y2);
 
 /// File streams
   class PrintWriter

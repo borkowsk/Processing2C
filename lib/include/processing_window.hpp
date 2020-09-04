@@ -86,13 +86,6 @@ void rect(float a,float  b,float  c,float  d);
 void rect(float a,float  b,float  c,float  d,float r);
 void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 
-
-void text(char c, float x,float y);
-void text(const char* str,float x,float y);
-void text(char chars[],int start,int stop,float x,float y);
-void text(const char* str,float x1,float y1,float x2,float y2);
-void text(float num,float x,float y);
-
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
 /// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw() does not run draw() immediately (it only sets a flag that indicates an update is needed).
 /// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().

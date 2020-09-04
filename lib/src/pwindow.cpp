@@ -102,6 +102,8 @@ void size(int width,int height)
     strokeWeight(1);
     stroke(0);
     fill(255);
+    _width=screen_width();
+    _height=screen_height();
 }
 
 void fullScreen()
@@ -110,6 +112,8 @@ void fullScreen()
     strokeWeight(1);
     stroke(0);
     fill(255);
+    _width=screen_width();
+    _height=screen_height();
 }
 
 void setFrameRate(float fps)

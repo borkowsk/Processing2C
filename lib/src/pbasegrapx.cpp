@@ -178,7 +178,7 @@ void ellipseMode(int mode)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
-
+/*
 void text(char c, float x,float y)
 {
     print_d(x,y,"%c",c);
@@ -204,16 +204,16 @@ void text(float num,float x,float y)
 {
      print_d(x,y,"%f",num);
 }
-
+*/
 /// Extended graphix text()
 void text(_string_param str,float x,float y)
 {
-    print_d(x,y,"%s",str.c_str());
+    print_d(x,y-char_height('X'),"%s",str.c_str());
 }
 
 void text(_string_param str,float x1,float y1,float x2,float y2)
 {
-    print_d(x1,y1,"%s",str.c_str());
+    print_d(x1,y1-char_height('X'),"%s",str.c_str());
     std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;
 }
 
