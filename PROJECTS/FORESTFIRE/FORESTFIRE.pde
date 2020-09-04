@@ -49,7 +49,9 @@ void setup()
     else
     World[i][j]=0;
    
-  frameRate(4*week);
+  //frameRate(4*week);
+  frameRate(10001);
+  
   noSmooth();
   noStroke();
   
