@@ -10,7 +10,10 @@ namespace Processing
 /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
 void delay(int napTime)
 {
-    delay_ms(napTime);
+    if(napTime>0)
+        delay_ms(napTime);
+    else
+        delay_us(100);//Give system a chance!
 }
 
 }//END of namespace Processing
