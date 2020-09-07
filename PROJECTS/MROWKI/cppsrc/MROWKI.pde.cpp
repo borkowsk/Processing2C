@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: MROWKI.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -44,7 +44,7 @@ int ileSymulacji = 2; ///
 
 void processing_window::setup() {
   size(900, 900);
-  setFrameRate(2000);//Maximize speed
+  setFrameRate(20000);//Maximize speed
   output = createWriter("Symulacja kolejna.txt");
   inicjacja();
   pomocPetli();
@@ -120,7 +120,7 @@ void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
 }
 
 void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
-  may_vibrate = permutacje[pet][0];
+  may_vibrate = permutacje[pet][0];//Tu się wywala po wydrukowaniu KONIEC!
   szlak = permutacje[pet][1];
   pamiec = permutacje[pet][2];
   losowo = permutacje[pet][3];

@@ -33,7 +33,10 @@ class RGB {
         rect(X*W,Y*W,W,W);
       }
       else
-      point(X,Y);
+      {
+        stroke(R,G,B);
+        point(X,Y);
+      }
     }
   }
   

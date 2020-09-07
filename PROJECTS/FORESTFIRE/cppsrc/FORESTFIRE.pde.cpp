@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: FORESTFIRE.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -60,10 +60,10 @@ void processing_window::setup()
     World[i][j]=MatureT/2;
     else
     World[i][j]=0;
-
-  setFrameRate(4*week);
-  //setFrameRate(10001);
-
+   
+  //setFrameRate(4*week);
+  setFrameRate(10001);
+  
   noSmooth();
   noStroke();
   
@@ -180,7 +180,6 @@ void doVisualisation() /// Must be predeclared
   else
     fill(50+random(205),random(255),0);
   meanSize/=alives;
-
   text(String(" T:")+alives+String(" B:")+burning+String(" Speed:")+frameRate+ String("fr/sec"),0,height-16);
   fill(0,255,0);
   text(String(" Growing:")+GrowS+String(" Fire transfer p.:")+IgnitionP+ String(" Fire p.:")
@@ -191,7 +190,7 @@ void doVisualisation() /// Must be predeclared
     + Step +  String(" h")  ,0,height);
   fill(0,255,255);
   text(String("Mean Size: ")+meanSize+ String(" "),width/2,height);
-
+  
   println(Log,Step+String("\t ")+alives+String("\t ")+burning+String("\t ")+empty+String("\t ")+meanSize);
   if(Step % 5000==0) Log->flush();//Sometimes writes the buffer to the file
 }

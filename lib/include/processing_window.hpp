@@ -2,9 +2,11 @@
 #pragma once
 #ifndef PROCESSING_WINDOW_H
 #define PROCESSING_WINDOW_H
-///
-///
-///
+
+#ifndef OPTINLINE
+#define OPTINLINE /* EPMTY */
+#endif
+
 namespace Processing
 {
 
@@ -49,25 +51,33 @@ extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
 void noSmooth();
 void smooth();
 
+OPTINLINE
 void stroke(float Gray);
 void stroke(float Gray,float Alpha);
+OPTINLINE
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
+OPTINLINE
 void noStroke();
 
+OPTINLINE
 void strokeWeight(float Weight);/// Parameters	weight 	float: the weight (in pixels) of the stroke
 void strokeCap(int cap);/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
 void strokeJoin(int join);/// Parameters	join 	int: either MITER, BEVEL, ROUND
 
+OPTINLINE
 void fill(float Gray);
 void fill(float Gray,float Alpha);
+OPTINLINE
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
+OPTINLINE
 void noFill();
 
 void point(float x,float y);
+OPTINLINE
 void line(float  x1,float  y1,float  x2,float  y2);
-
+OPTINLINE
 void ellipse(float a,float  b,float  c,float  d);
 void arc(float a,float  b,float  c,float  d,float  start,float  stop);
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
@@ -81,9 +91,10 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
 
 void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 
-
+OPTINLINE
 void rect(float a,float  b,float  c,float  d);
 void rect(float a,float  b,float  c,float  d,float r);
+OPTINLINE
 void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.

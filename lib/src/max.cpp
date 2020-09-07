@@ -2,7 +2,6 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 
 namespace Processing
 {

@@ -6,7 +6,7 @@
 int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
 int STARTG=128;//W jakiej szarości pierwsza komórka
-boolean ScreenDumps=true; //Zrzucanie obrazków co krok wcale
+boolean ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
@@ -19,8 +19,8 @@ PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 void setup() //Window and model initialization
 {
   size(900,900);
-  W=2;
-  Side=900/2;
+  W=3;
+  Side=900/W;
 
   World = new RGB[Side][Side]; //<>//
   World[Side/2][Side/2]= new RGB();
@@ -32,7 +32,8 @@ void setup() //Window and model initialization
   output.println("Step\tCounter");
   
   noSmooth(); //Fast visualization
-  frameRate(1001); //maximize speed
+  noStroke();
+  frameRate(1000); //maximize speed
 }
 
 int Step=0;
@@ -80,13 +81,13 @@ void draw()
       }
     }
       
-    if(ScreenDumps && Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
+    if(Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
     //if(ScreenDumps) //Zrzucanie obrazków co krok lub wcale
     {
        //saveFrame("wzrost_step"+Step+".png");//Wersja z niewygodną numeracją
        //saveFrame("wzrost_"+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       saveFrame("wzrost_step"+sc+".png");//Wersja z wygodną numeracją
+       if(ScreenDumps) saveFrame("wzrost_step"+sc+".png");//Wersja z wygodną numeracją
        println("Frame rate:",frameRate);
     }
     

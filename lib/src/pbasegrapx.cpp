@@ -28,77 +28,77 @@ void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-static int lineWidthMem=1;
+int _lineWidthMem=1;
 
 void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
 {
-    line_width(lineWidthMem=(int)Weight);
+    line_width(_lineWidthMem=(int)Weight);
 }
 
 void stroke(float Gray)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,lineWidthMem,1 /*style*/);
+    set_pen_rgb(S,S,S,_lineWidthMem,1 /*style*/);
 }
 
 void stroke(float Gray,float Alpha)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,lineWidthMem,1 /*style*/);
+    set_pen_rgb(S,S,S,_lineWidthMem,1 /*style*/);
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
 }
 
 void stroke(float Red,float Green,float Blue)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,lineWidthMem,1 /*style*/);
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_lineWidthMem,1 /*style*/);
 }
 
 void stroke(float Red,float Green,float Blue,float Alpha)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,lineWidthMem,1 /*style*/);
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_lineWidthMem,1 /*style*/);
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
 }
 
 void noStroke()
 {
     line_width(0);//???
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
-static bool filled=true;
+bool _filled=true;
 
 void fill(float Gray)
 {
     int S=(int)Gray;
     set_brush_rgb(S,S,S);
-    filled=true;
+    _filled=true;
 }
 
 void fill(float Gray,float Alpha)
 {
     int S=(int)Gray;
     set_brush_rgb(S,S,S);
-    filled=true;
+    _filled=true;
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
 }
 
 void fill(float Red,float Green,float Blue)
 {
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
-    filled=true;
+    _filled=true;
 }
 
 void fill(float Red,float Green,float Blue,float Alpha)
 {
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
-    filled=true;
+    _filled=true;
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
 }
 
 void noFill()
 {
-    filled=false;
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _filled=false;
+    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
 void point(float x,float y)
@@ -118,7 +118,7 @@ void rect(float a,float  b,float  c,float  d)
     int x2=a+c;
     int y2=b+d;
 
-    if(filled)
+    if(_filled)
         fill_rect_d(x1,y1,x2,y2);
 
     if(get_line_width()>0)
@@ -126,6 +126,8 @@ void rect(float a,float  b,float  c,float  d)
         line_d(x1,y1,x1,y2);
         line_d(x1,y1,x2,y1);
     }
+
+    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
 void rect(float a,float  b,float  c,float  d,float r)
@@ -156,11 +158,13 @@ void ellipse(float a,float  b,float  c,float  d)
     if(A==0) A=1;
     if(B==0) B=1;
 
-    if(filled)
+    if(_filled)
         fill_ellipse_d(x1,y1,A,B);
 
     if(get_line_width()>0 && A>1 && B>1)
         ellipse_d(x1,y1,A,B);
+
+    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
 void arc(float a,float  b,float  c,float  d,float  start,float  stop)
@@ -178,48 +182,18 @@ void ellipseMode(int mode)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
-/*
-void text(char c, float x,float y)
-{
-    print_d(x,y,"%c",c);
-}
 
-void text(const char* str,float x,float y)
-{
-    print_d(x,y,"%s",str);
-}
-
-void text(char chars[],int start,int stop,float x,float y)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void text(const char* str,float x1,float y1,float x2,float y2)
-{
-    print_d(x1,y1,"%s",str);
-    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;
-}
-
-void text(float num,float x,float y)
-{
-     print_d(x,y,"%f",num);
-}
-*/
 /// Extended graphix text()
 void text(_string_param str,float x,float y)
 {
-    print_d(x,y-char_height('X'),"%s",str.c_str());
+    print_d(x,y-char_height('X'),"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
 }
 
 void text(_string_param str,float x1,float y1,float x2,float y2)
 {
-    print_d(x1,y1-char_height('X'),"%s",str.c_str());
-    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;
+    print_d(x1,y1-char_height('X'),"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
+    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
 }
-
-//void text(const String& str,float x,float y);
-//void text(const String& str,float x1,float y1,float x2,float y2);
-
 
 void saveFrame(const String& filename)
 {
@@ -247,3 +221,31 @@ void saveFrame(const std::string& filename)
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
+
+/*
+void text(char c, float x,float y)
+{
+    print_d(x,y,"%c",c);
+}
+
+void text(const char* str,float x,float y)
+{
+    print_d(x,y,"%s",str);
+}
+
+void text(char chars[],int start,int stop,float x,float y)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void text(const char* str,float x1,float y1,float x2,float y2)
+{
+    print_d(x1,y1,"%s",str);
+    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;
+}
+
+void text(float num,float x,float y)
+{
+     print_d(x,y,"%f",num);
+}
+*/

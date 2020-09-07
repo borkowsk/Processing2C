@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: WZROST.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -18,7 +18,7 @@ using namespace Processing;
 int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
 int STARTG=128;//W jakiej szarości pierwsza komórka
-bool ScreenDumps=true; //Zrzucanie obrazków co krok wcale
+bool ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
@@ -31,8 +31,8 @@ PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 void processing_window::setup() //Window and model initialization
 {
   size(900,900);
-  W=2;
-  Side=900/2;
+  W=3;
+  Side=900/W;
 
   World = new matrix<pRGB>(Side,Side); //<>//
   World[Side/2][Side/2]= new RGB();
@@ -44,7 +44,8 @@ void processing_window::setup() //Window and model initialization
   println(output,"Step\tCounter");
   
   noSmooth(); //Fast visualization
-  setFrameRate(1001); //maximize speed
+  noStroke();
+  setFrameRate(1000); //maximize speed
 }
 
 int Step=0;
@@ -92,13 +93,13 @@ void processing_window::draw()
       }
     }
       
-    if(ScreenDumps && Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
+    if(Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
     //if(ScreenDumps) //Zrzucanie obrazków co krok lub wcale
     {
        //saveFrame(String("wzrost_step")+Step+ String(".png"));//Wersja z niewygodną numeracją
        //saveFrame(String("wzrost_")+ String("f########.png"));//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
        String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       saveFrame(String("wzrost_step")+sc+ String(".png"));//Wersja z wygodną numeracją
+       if(ScreenDumps) saveFrame(String("wzrost_step")+sc+ String(".png"));//Wersja z wygodną numeracją
        println("Frame rate:",frameRate);
     }
     

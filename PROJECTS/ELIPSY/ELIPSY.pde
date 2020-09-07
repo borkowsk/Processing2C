@@ -10,7 +10,7 @@ int radius()
 void setup()
 {
   size(600,600);
-  frameRate(10);
+  frameRate(1000);//Nie za dużo bo Xorg zablokuje kompa!
 }
 
 //Running - visualisation and dynamics (about 30 times per sec.)
