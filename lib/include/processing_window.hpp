@@ -10,6 +10,26 @@
 namespace Processing
 {
 
+//SETTINGS CONSTANTS
+///ellipseMode(mode) parameters
+const int CENTER=1;
+const int RADIUS=2;
+const int CORNER=3;
+const int CORNERS=4;
+///rectMode(mode)parameters
+//const int CENTER=1;
+//const int RADIUS=2;
+//const int CORNER=3;
+//const int CORNERS=4;
+///strokeCap(cap) parameters
+const int SQUARE=1;
+const int PROJECT=2;
+const int ROUND=3;
+///strokeJoin(join) parameters
+const int MITER=1;
+const int BEVEL=2;
+//const int ROUND=3;
+
 class processing_window_base
 {
   public:

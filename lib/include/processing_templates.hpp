@@ -25,10 +25,14 @@ class ptr:public std::shared_ptr<T>
 
       //bool operator == (const ptr<T>&) const;
       //bool operator != (const ptr<T>&) const;
-      //bool operator == (T*) const;
+      bool operator == (T* p) const { return this->get()==p;}
+      bool operator != (T* p) const { return this->get()!=p;}
+      bool operator == (std::nullptr_t p) const { return this->get()==p;}
+      bool operator != (std::nullptr_t p) const { return this->get()!=p;}
       //bool operator != (T*) const;
       T* operator -> () { return this->get();}
       operator T& () { return *(this->get());}
+      //operator T* () { return *(this->get());}
 };
 
 // Pojawił się problem z kompilatorem

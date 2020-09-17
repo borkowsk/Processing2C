@@ -29,7 +29,7 @@ sed -E "s/^(\s*)private/\1private:\n\t/g" |\
 sed -E 's|abstract(.+)class(.+)\{|//abstract\n\1class\2{|' |\
 sed -E 's|interface(.+)\{|//interface\nclass\1{|' |\
 #dodanie public:
-sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|g' |\
+sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
 #...i jak nie ma komentarza
 #sed -E 's|class(\s+)(\w+)(.*)\{|&\npublic:|M' |\ ?????
 #https://serverfault.com/questions/272033/sed-replace-across-multiple-lines
@@ -58,7 +58,8 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed -E 's/boolean([ >])/bool\1/g' |\
+sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
+sed -E 's/boolean([ >])/bool   \1/g' |\
 sed 's/this\./this->/g' |\
 sed "s/frameRate(/setFrameRate(/" |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
@@ -86,6 +87,7 @@ sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
 #sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
 sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 sed -E 's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]->\1/g' |\
+sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 #Odbezpieczenie nazw plików
 sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY

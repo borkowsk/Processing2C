@@ -4,12 +4,25 @@
 #define PROCESSING_LIBRARY_H
 #include <string>
 #include <cassert>
+#include <cfloat>
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <fstream>
 ///
 ///
 ///
 namespace Processing
 {
+/// MATH CONSTANTS
+/// # define M_PI_2		1.57079632679489661923	/* pi/2 */
+/// # define M_PI_4		0.78539816339744830962	/* pi/4 */
+    const auto PI=M_PI;//3.6651914291881;
+    const auto TWO_PI=2*M_PI;//6.2831855f
+    const auto TAU=6.2831855f;
+    const auto HALF_PI=M_PI_2;
+    const auto QUARTER_PI=M_PI_4;
+
+
 /// Classes
   class String:public std::string
   {
@@ -30,11 +43,15 @@ namespace Processing
       String& operator += (float);
       String& operator += (double);
       String& operator += (bool);
+      String& operator += (void*);
       String operator  + (const String&) const;
       String operator  + (int) const;
       String operator  + (float) const;
       String operator  + (double) const;
       String operator  + (bool) const;
+      String operator  + (void*) const;
+      template<class X>
+      String operator  + (ptr<X>& p) const;
   };
 
    String operator  + (int,const String&);
