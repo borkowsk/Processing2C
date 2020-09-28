@@ -35,6 +35,11 @@ namespace Processing
       String(char  c);
       String(const std::string& str):std::string(str){}
       String(const String&);
+
+      String* operator -> () //Utożsamia operator -> z operatorem . dla tego typu!!!
+      { return this; }//Sam z siebie robi pointer na siebie :-D HACK!!!
+
+      bool  equals(const char* wz) { return this->compare(wz)==0;}
       operator bool () { return this->c_str()!=nullptr; }
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
@@ -143,12 +148,20 @@ namespace Processing
       std::fstream* ptr;
    public:
       virtual ~PrintWriter();// Zwalnianie zasobów
+      PrintWriter(std::fstream* p);
+      PrintWriter& operator = (std::fstream* p);
+
       PrintWriter();
       PrintWriter(PrintWriter& );
+
       void set(std::fstream*);
       operator std::fstream& () {return *ptr;}
+
       PrintWriter& operator = (PrintWriter& );
       std::fstream* operator -> ();
+      bool operator == (std::nullptr_t p) const;
+      bool operator != (std::nullptr_t p) const;
+
       void flush();
       //Nie działa jako "friend"
       //error: undefined reference to `Processing::PrintWriter::PrintWriter(std::basic_fstream<char, std::char_traits<char> >*)'

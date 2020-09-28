@@ -19,6 +19,9 @@ echo "//========================================================================
 echo ""
 
 cat $1 |\
+#Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
+sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
+#Dodawanie ENTER po { ale nie dla "enum"
 sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
 #wolne public/private przed funkcjami i zmiennymi - rzadko stosowane w Processingu
@@ -50,6 +53,10 @@ sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]|new\1cuboid<p\2>(\4,\6,\8)|' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)]|new\1matrix<p\2>(\4,\6)|' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
+#listy obiektów np.
+#ArrayList<Link> connections;
+#connections=new ArrayList<Link>();
+sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([,;:=])|sArrayList<\1\2\3>\4\5\6\7|g' |\
 #modyfikacja składni asercji - chyba spacje po assert zbędne
 #sed -E 's|assert (.+);|assert(\1);|g'
 sed -E 's|assert (.+):|assert \1; // |g' |\
@@ -59,8 +66,11 @@ sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
 sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
 sed -E 's/boolean([ >])/bool   \1/g' |\
 sed 's/this\./this->/g' |\
+sed 's/super\./super::/' |\
+sed 's/Math\./std::/g'  |\
 sed "s/frameRate(/setFrameRate(/" |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
@@ -73,6 +83,8 @@ sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
+#??? TODO
+sed 's|import java.util.Collections;|/*java.util.Collections*/|' |\
 #POJEDYNCZE FUNKCJE O ZNACZENIU SPECJALNYM
 sed "s/void setup()/void processing_window::setup()/g" |\
 sed "s/void draw()/void processing_window::draw()/g" |\
@@ -81,7 +93,7 @@ sed "s/void exit()/void processing_window::exit()/g" |\
 sed "s/super.exit();/processing_window_base::exit();/g" |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
-#nazwy plików w "" próbujemy zabezpieczyć - głównie dotyczy to includów
+#nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów
 sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
 #WŁAŚCIWA ZAMIANA - próba uniknięcia ingerencji w dyrektywy kompilatora # blokuje podwójne wymiany w linii
 #sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\

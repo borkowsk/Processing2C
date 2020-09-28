@@ -114,6 +114,28 @@ class smatrix:public ptr< matrix<T> >
       size_t     length() { return this->get()->length; }
 };
 
+/// Listy z interfejsu processingu
+///////////////////////////////////////////////////////
+
+class FloatList
+{
+
+};
+
+class IntList
+{
+
+};
+
+class StringList
+{
+
+};
+
+typedef Processing::ptr<FloatList>  pFloatList;
+typedef Processing::ptr<IntList>    pIntList;
+typedef Processing::ptr<StringList> pStringList;
+
 /*
 template<class T>
 inline  ptr<T>& ptr<T>::operator = (ptr<T>& other)
