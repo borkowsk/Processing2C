@@ -183,7 +183,43 @@ void ellipseMode(int mode)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-/// Extended graphix text()
+/// Extended graphix text() & Attributes
+void textAlign(int)
+// Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void textAlign(int,int)
+// and TOP, BOTTOM, CENTER, or BASELINE for vertical
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void textLeading(int)
+// Sets the spacing between lines of text in units of pixels.
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void textMode(int)
+// Sets the way text draws to the screen, either as texture maps or as vector geometry (MODEL or SHAPE)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void textSize(int)
+// Sets the current font size, measured in units of pixels.
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+float textWidth(_string_param str)
+// Calculates and returns the width of any character or text string.
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 void text(_string_param str,float x,float y)
 {
     print_d(x,y-char_height('X'),"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
@@ -211,7 +247,7 @@ void saveFrame(const std::string& filename)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-02                   */
+/*               PROCESSING2C  version 2020-09-29                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

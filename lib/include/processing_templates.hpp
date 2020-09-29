@@ -40,6 +40,14 @@ class ptr:public std::shared_ptr<T>
 //Użyłem klasy std::shared_ptr jako bazy i problem zniknął
 
 template<class T>
+/*interface*/ class Comparable
+{
+  ///INFO:
+  public:
+      virtual int compareTo(ptr<T> t)=0;
+};
+
+template<class T>
 class array
 {
   ///INFO: Array of T, sized when constructed
@@ -215,7 +223,7 @@ inline  matrix<T>* smatrix<T>::operator -> ()
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-09-29                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

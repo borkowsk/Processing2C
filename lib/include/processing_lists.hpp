@@ -10,7 +10,7 @@ namespace Processing
 {
 
 template<class T>
-class ArrayList:public std::vector<T>
+class ArrayList:public std::vector<T>, virtual public _self_printable
 {
   public:
     using std::vector<T>::begin;
@@ -56,28 +56,38 @@ class ArrayList:public std::vector<T>
 
         return a;
     }
+
+    String print() const
+    {
+        String ret=String("Size:")+nf(this->size(),3)+String(" [");
+        for(const T& val:*this)
+            ret+=val+String(" ");
+        ret+=String("]");
+        return ret;
+    }
 };
 
 template<class T>
-class sArrayList:public ptr< ArrayList<T> >
+class sArrayList:public self_printable_ptr< ArrayList<T> >
 {
       ///INFO: Processing semantics for one dimensional array
   public:
       ~sArrayList(){}// Zwalnianie zasobów
       sArrayList(){}
       sArrayList(std::initializer_list<T> lst);
-      sArrayList(ArrayList<T>* tab): ptr< ArrayList<T> >(tab){}
-
-      ArrayList<T>* operator -> () { return this->get();}
-      //T&        operator [] (size_t i) { return (*this->get())[i]; }
+//      sArrayList(ArrayList<T>* tab): self_printable_ptr< ArrayList<T> >(tab){}
+      using self_printable_ptr< ArrayList<T> >::operator =;
+      using self_printable_ptr< ArrayList<T> >::operator ->;
+      //ArrayList<T>* operator -> () { return this->get();}
       T*        begin() { return ((ptr< ArrayList<T> >)this)->begin(); }
       T*        end() { return ((ptr< ArrayList<T> >)this)->end(); }
+      //T&        operator [] (size_t i) { return (*this->get())[i]; }
       //size_t    length() { return this->get()->length; }
 };
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-09-29                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
