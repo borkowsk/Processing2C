@@ -24,6 +24,8 @@ namespace Processing
 
 
 /// Classes
+/////////////////////////////////////////////////////////////
+
   class String:public std::string
   {
     ///INFO:
@@ -87,15 +89,6 @@ namespace Processing
         _string_param(ptr<T> p):_string_param(p.get()){}
   };
 
-  /// Extended graphix text()
-  void text(_string_param str,float x,float y);
-  void text(_string_param str,float x1,float y1,float x2,float y2);
-  //void text(char c, float x,float y);
-  //void text(float num,float x,float y);
-  //void text(const char* str,float x,float y);
-  //void text(char chars[],int start,int stop,float x,float y);
-  //void text(const char* str,float x1,float y1,float x2,float y2);
-
   template<class T>
   /*interface*/ class Comparable
   {
@@ -105,6 +98,18 @@ namespace Processing
   };
 
 /// Simple functions
+/////////////////////////////////////////////////
+
+  /// Extended graphix text() & Attributes
+  void textAlign(int); /// Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
+  void textAlign(int,int);/// and TOP, BOTTOM, CENTER, or BASELINE for vertical
+  void textLeading(int);/// Sets the spacing between lines of text in units of pixels.
+  void textMode(int);/// Sets the way text draws to the screen, either as texture maps or as vector geometry (MODEL or SHAPE)
+  void textSize(int);/// Sets the current font size, measured in units of pixels.
+  float textWidth(_string_param str);/// Calculates and returns the width of any character or text string.
+  void text(_string_param str,float x,float y);
+  void text(_string_param str,float x1,float y1,float x2,float y2);
+
   void  randomSeed(int seed);
   double random(double low,double hig);
   inline double random(double hig){return random(0,hig); }
@@ -138,10 +143,14 @@ namespace Processing
 
   void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
 
+  void saveFrame();
   void saveFrame(const String& filename);
   void saveFrame(const std::string& filename);
+  void saveFrame(const char* filename);
 
 /// File streams
+////////////////////////////////////////////////////////////////////////
+
   class PrintWriter
   {
    ///INFO:
@@ -179,8 +188,77 @@ namespace Processing
   //void println(PrintWriter& o,const String& );
   //void println(PrintWriter& o,const std::string& );
 
-  void saveFrame();
-  void saveFrame(const char* filename);
+/// Processing specialised lists
+///////////////////////////////////////////////////////
+
+  class FloatList
+  {
+     public:
+      int       size();// 	Get the length of the list
+      void      clear();// 	Remove all entries from the list
+      float     get(int index);// 	Get an entry at a particular index
+      void      set(int index,float what);// 	Set the entry at a particular index
+      float     remove(int index);// 	Remove an element from the specified index
+      void      append(float what);// 	Add a new entry to the list (.append(values) .append(list) )
+      bool      hasValue(float what);// 	Check if a number is a part of the list
+      void      add(int index,float amount);// 	Add to a value
+      void      sub(int index,float amount);// 	Subtract from a value
+      void      mult(int index,float amount);// 	Multiply a value
+      void      div(int index,float amount);// 	Divide a value
+      float     min();// 	Return the smallest value
+      float     max();// 	Return the largest value
+      void      sort();// 	Sorts an array, lowest to highest
+      void      sortReverse();// 	Reverse sort, orders values from highest to lowest
+      void      reverse();// 	Reverse the order of the list elements
+      void      shuffle();// 	Randomize the order of the list elements
+      sarray<float>     array();// 	Create a new array with a copy of all the values
+  };
+
+  class IntList
+  {
+      public:
+       int      size();// 	Get the length of the list
+       void     clear();// 	Remove all entries from the list
+       int      get(int index);// 	Get an entry at a particular index
+       void     set(int index,int   what);// 	Set the entry at a particular index
+       int      remove(int index);// 	Remove an element from the specified index
+       void     append(int   what);// 	Add a new entry to the list (.append(values) .append(list) )
+       bool     hasValue(int   what);// 	Check if a number is a part of the list
+       void     add(int index,int   amount);// 	Add to a value
+       void     sub(int index,int   amount);// 	Subtract from a value
+       void     mult(int index,int   amount);// 	Multiply a value
+       void     div(int index,int   amount);// 	Divide a value
+       int      min();// 	Return the smallest value
+       int      max();// 	Return the largest value
+       void     sort();// 	Sorts an array, lowest to highest
+       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
+       void     reverse();// 	Reverse the order of the list elements
+       void     shuffle();// 	Randomize the order of the list elements
+       sarray<int>  array();// 	Create a new array with a copy of all the values
+  };
+
+  class StringList
+  {
+      public:
+       int      size();// 	Get the length of the list
+       void     clear();// 	Remove all entries from the list
+       String&  get(int index);// 	Get an entry at a particular index
+       void     set(int index,_string_param   what);// 	Set the entry at a particular index
+       String   remove(int index);// 	Remove an element from the specified index
+       void     append(_string_param   what);// 	Add a new entry to the list (.append(values) .append(list) )
+       bool     hasValue(_string_param   what);// 	Check if a number is a part of the list
+       void     sort();// 	Sorts an array, lowest to highest
+       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
+       void     reverse();// 	Reverse the order of the list elements
+       void     shuffle();// 	Randomize the order of the list elements
+       void     lower();// 	Make the entire list lower case
+       void     upper();// 	Make the entire list upper case
+       sarray<int>  array();// 	Create a new array with a copy of all the values
+  };
+
+  typedef Processing::ptr<FloatList>  pFloatList;
+  typedef Processing::ptr<IntList>    pIntList;
+  typedef Processing::ptr<StringList> pStringList;
 
 }//END of namespace Processing
 /********************************************************************/

@@ -77,7 +77,8 @@ sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcbody\*\/|=0|g'|\
-#Opakowywanie stałych znakowych w operacjach konkatenacji ""
+#Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
+sed -E "s|('[^']')|String(\1)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
 sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 #IMPORTY

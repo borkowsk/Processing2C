@@ -52,7 +52,7 @@ void processing_window::draw() {
   String item = inventory->get(2);
   float flos = inventoryF->get(2);
   int nums = inventoryI->get(2);
-  text(item+';'+nums+';'+flos, width/2, height/2);
+  text(item+String(';')+nums+String(';')+flos, width/2, height/2);
 }
 ///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 
