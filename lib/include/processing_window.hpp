@@ -45,12 +45,26 @@ class processing_window_base
 
 extern class processing_window: public processing_window_base
 {
+  bool _loop=true;
   public:
+  bool inLoop() {return _loop;}
   void setup();
   void draw();
   void exit();
   void mouseClicked();
+  friend void loop();
+  friend void noLoop();
 } _processing_window_instance;
+
+inline void loop()
+{
+    _processing_window_instance._loop=true;
+}
+
+inline void noLoop()
+{
+    _processing_window_instance._loop=false;
+}
 
 extern const char* _PROGRAMNAME;
 extern const int& width;

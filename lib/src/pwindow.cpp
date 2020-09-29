@@ -55,10 +55,12 @@ void processing_window_base::after_draw()
 void processing_window_base::check_events()
 //If events are in queue, they are processed
 {
+    //std::cerr<<'?';
     while(input_ready())
     {
         int inp=get_char();
-        if(inp==EOF) exit();
+        std::cerr<<inp<<' '<<char(inp);
+        if(inp==EOF || inp==27 ) exit();
     }
 }
 
@@ -149,15 +151,6 @@ void noCursor()
 //  x 	int: the horizontal active spot of the cursor
 //  y 	int: the vertical active spot of the cursor
 
-void loop()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void noLoop()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
 
 }//END of namespace Processing
 /********************************************************************/

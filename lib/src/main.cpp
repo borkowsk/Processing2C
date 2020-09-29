@@ -22,14 +22,24 @@ int main(int argc,const char *argv[])
     _processing_window_instance.before_setup(argc,argv);
     _processing_window_instance.setup();
 
+    if(!_processing_window_instance.inLoop())
+    {
+        _processing_window_instance.draw();//only once
+        _processing_window_instance.after_draw();
+    }
+
     while(1)
     {
 #ifdef DEBUG
         //std::cout<<"DRAW:"<<std::endl;//DEBUG
 #endif
-        _processing_window_instance.draw();
         delay(_INTERNAL_DELAY);
-        _processing_window_instance.after_draw();//Calculate frameRate and _INTERNAL_DELAY
+        if(_processing_window_instance.inLoop())
+        {
+            _processing_window_instance.draw();
+            _processing_window_instance.after_draw();//Calculate frameRate and _INTERNAL_DELAY
+        }
+        _processing_window_instance.check_events();//Should be repeated any way!
     }
 
     return 0;
