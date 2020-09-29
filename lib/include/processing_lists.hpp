@@ -75,12 +75,12 @@ class sArrayList:public self_printable_ptr< ArrayList<T> >
       ~sArrayList(){}// Zwalnianie zasobów
       sArrayList(){}
       sArrayList(std::initializer_list<T> lst);
-//      sArrayList(ArrayList<T>* tab): self_printable_ptr< ArrayList<T> >(tab){}
-      using self_printable_ptr< ArrayList<T> >::operator =;
-      using self_printable_ptr< ArrayList<T> >::operator ->;
-      //ArrayList<T>* operator -> () { return this->get();}
-      T*        begin() { return ((ptr< ArrayList<T> >)this)->begin(); }
-      T*        end() { return ((ptr< ArrayList<T> >)this)->end(); }
+      sArrayList(ArrayList<T>* tab): self_printable_ptr< ArrayList<T> >(tab){}
+      //using self_printable_ptr< ArrayList<T> >::operator =;
+      //using self_printable_ptr< ArrayList<T> >::operator ->;
+      ArrayList<T>* operator -> () { return this->get();}
+      auto  begin() { return this->get()->begin(); } //need C++14 !
+      auto  end() { return this->get()->end(); } //need C++14 !
       //T&        operator [] (size_t i) { return (*this->get())[i]; }
       //size_t    length() { return this->get()->length; }
 };

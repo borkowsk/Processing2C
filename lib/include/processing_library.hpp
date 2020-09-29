@@ -84,8 +84,13 @@ namespace Processing
    {
      public:
        String print() const { return  this->get()->print(); }
-       using ptr<T>::operator = ;
-       //self_printable_ptr<T>& operator = (T* other){ ptr<T>::operator = ((T*)other); return *this;}
+       self_printable_ptr():ptr<T>(nullptr){}
+       self_printable_ptr(T* ini):ptr<T>(ini){}
+       //using ptr<T>::operator = ;
+       self_printable_ptr<T>& operator = (T* other){ ptr<T>::operator = ((T*)other); return *this;}
+       auto begin() { return this->get()->begin(); } //need C++14 !
+       auto end()   { return this->get()->end(); } //need C++14 !
+
    };
 
   class _string_param:public String
