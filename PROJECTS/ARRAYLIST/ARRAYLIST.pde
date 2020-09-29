@@ -1,5 +1,5 @@
-ArrayList<String> testStr;
-StringList        inventory;
+ArrayList<String> testStr=null;
+StringList        inventory=new StringList();
 FloatList         inventoryF;
 IntList           inventoryI;
 
@@ -40,5 +40,10 @@ void draw() {
   String item = inventory.get(2);
   float flos = inventoryF.get(2);
   int nums = inventoryI.get(2);
+  for(int i:inventoryI)
+    println(i);
+  for(String s:testStr)
+    println(s);
   text(item+';'+nums+';'+flos, width/2, height/2);
+  
 }

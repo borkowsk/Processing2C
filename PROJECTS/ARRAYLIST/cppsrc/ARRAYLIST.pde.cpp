@@ -10,8 +10,8 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-sArrayList<String> testStr;
-pStringList        inventory;
+sArrayList<String> testStr=nullptr;
+pStringList        inventory=new StringList();
 pFloatList         inventoryF;
 pIntList           inventoryI;
 
@@ -52,7 +52,12 @@ void processing_window::draw() {
   String item = inventory->get(2);
   float flos = inventoryF->get(2);
   int nums = inventoryI->get(2);
+  for(int i:inventoryI)
+    println(i);
+  for(String s:testStr)
+    println(s);
   text(item+String(';')+nums+String(';')+flos, width/2, height/2);
+  
 }
 ///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 
