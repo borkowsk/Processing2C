@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: WZROST.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -18,7 +18,7 @@ using namespace Processing;
 int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
 int STARTG=128;//W jakiej szarości pierwsza komórka
-bool ScreenDumps=false; //Zrzucanie obrazków co krok wcale
+bool    ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
@@ -49,7 +49,7 @@ void processing_window::setup() //Window and model initialization
 }
 
 int Step=0;
-bool Stop=false;
+bool    Stop=false;
 void processing_window::draw()
 //Monte Carlo Step
 {
@@ -106,5 +106,5 @@ void processing_window::draw()
     Step++;
   }
 }
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

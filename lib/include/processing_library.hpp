@@ -9,6 +9,7 @@
 #include <cmath>
 #include <fstream>
 #include <vector>
+#include <climits>
 ///
 ///
 ///
@@ -22,6 +23,7 @@ namespace Processing
     const auto TAU=6.2831855f;
     const auto HALF_PI=M_PI_2;
     const auto QUARTER_PI=M_PI_4;
+    const auto MAX_INT=INT_MAX;
 
 
 /// Classes

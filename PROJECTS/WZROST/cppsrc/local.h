@@ -5,6 +5,10 @@
 #define LOCAL_H
 
 
+
+//All classes from Processing files
+class RGB; typedef Processing::ptr<RGB> pRGB; // {
+
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
@@ -13,8 +17,4 @@ extern int Side;  /// Bok macieży
 extern int W;     /// Mnożnik dla kwadracika
 
 //All global functions from Processing files
-
-
-//All classes from Processing files
-class RGB; typedef Processing::ptr<RGB> pRGB; // {
 #endif

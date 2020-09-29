@@ -91,7 +91,7 @@ sed "s/void setup()/void processing_window::setup()/g" |\
 sed "s/void draw()/void processing_window::draw()/g" |\
 sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
 sed "s/void exit()/void processing_window::exit()/g" |\
-sed "s/super.exit();/processing_window_base::exit();/g" |\
+sed "s/super::exit();/processing_window_base::exit();/g" |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów

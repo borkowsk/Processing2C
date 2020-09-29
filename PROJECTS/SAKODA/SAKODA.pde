@@ -3,19 +3,19 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //Model parameters
-int side=100;//side of main table
-String modelName="ABMSakoda";
-float density=0.55;
+int side=100;/// side of main table
+String modelName="ABMSakoda";///
+float density=0.55;///
 
-World TheWorld=new World(side);//... but also will be initialised inside setup()
+World TheWorld=new World(side); ///... but also will be initialised inside setup()
 
 //Parameters of visualisation etc...
-int cwidth=8;//size of cell
-int STATUSHEIGH=40;
-int STEPSperVIS=1;
-int FRAMEFREQ=20;
-boolean WITH_VIDEO=false;
-boolean simulationRun=true;//Start/stop flag
+int cwidth=8;/// size of cell
+int STATUSHEIGH=40;///
+int STEPSperVIS=1;///
+int FRAMEFREQ=20;///
+boolean WITH_VIDEO=false;///
+boolean simulationRun=true;///Start/stop flag
 
 void setup()
 {
@@ -70,7 +70,7 @@ void draw()
 
 }
 
-void writeStatusLine()
+void writeStatusLine() /// Used also for stats
 {
   fill(255);rect(0,side*cwidth,width,STATUSHEIGH);
   fill(0);noStroke();

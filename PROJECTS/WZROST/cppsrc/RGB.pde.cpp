@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: RGB.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -30,7 +30,7 @@ class RGB {
     R=iR;G=iG;B=iB;
   }
   
-  bool isEmpty()
+  bool    isEmpty()
   {
     return R<=0 && G<=0 && B<=0;
   }
@@ -57,8 +57,8 @@ class RGB {
   {               //Teoretycznie - bo trudno to sprawdzić. http://stackoverflow->com/questions/2506488/when-is-the-finalize-method-called-in-java
     RGB_Counter--;//Wygląda na to że tym programie nie jest wołany nigdy //<>//
     println("-");
-    //super->finalize();//Ale na to Processing robi blup...
+    //super::finalize();//Ale na to Processing robi blup...
   }
 };
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

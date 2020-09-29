@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: MROWKI.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -33,10 +33,10 @@ int ileje = 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
 float quiet = 0.5;   ///tempo uciszania dźwięku
 
 //manipulowalne
-bool may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
-bool szlak;    ///
-bool pamiec;  ///
-bool losowo;  ///
+bool    may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
+bool    szlak;    ///
+bool    pamiec;  ///
+bool    losowo;  ///
 int ileSymulacji = 2; ///
 
 
@@ -44,7 +44,7 @@ int ileSymulacji = 2; ///
 
 void processing_window::setup() {
   size(900, 900);
-  setFrameRate(20000);//Maximize speed
+  setFrameRate(2000);//Maximize speed
   output = createWriter("Symulacja kolejna.txt");
   inicjacja();
   pomocPetli();
@@ -96,8 +96,8 @@ void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
 
 //++++++++++++ FUNKCJE DO SPRAWNEGO SYMULOWANIA ++++++++++++
 
-smatrix<bool> permutacje = new matrix<bool>(16,4);
-sarray<bool> doIteracji = new array<bool>(2);
+smatrix<bool   > permutacje = new matrix<bool   >(16,4);
+sarray<bool   > doIteracji = new array<bool   >(2);
 int pet = 0;
 
 void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej
@@ -134,5 +134,5 @@ void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

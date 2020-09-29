@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: klasaAnt.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -19,7 +19,7 @@ class Ant {
   //pamięć z przegródkami: 
   //zerowa - jedzenie, pierwsza - wsp. gniazda, druga - wsp. jedzenia, rezszta - gdzie już była
   
-  bool czyCosNiosla = false;
+  bool    czyCosNiosla = false;
 
   Ant(float idA, int xGnia, int yGnia) {  //inicjacja mrówki
     id = idA; //numerek w tablicy mrówek
@@ -74,7 +74,7 @@ class Ant {
     memory[2][1] = memory[1][1];
   }
 
-  bool memoryCheck(int a, int b) {//sprawdzanie, czy dane pole jest w pamięci
+  bool    memoryCheck(int a, int b) {//sprawdzanie, czy dane pole jest w pamięci
     for (int i=3; i<memo; i++) {
       if (a==memory[i][0] && b==memory[i][1]) {
         return(false);  //fałsz, gdy jest
@@ -83,5 +83,5 @@ class Ant {
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

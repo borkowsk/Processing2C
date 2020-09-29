@@ -9,6 +9,8 @@
 
 namespace Processing
 {
+//CHAR CONSTANTS
+const char ESC=27;
 
 //SETTINGS CONSTANTS
 ///ellipseMode(mode) parameters
@@ -29,6 +31,10 @@ const int ROUND=3;
 const int MITER=1;
 const int BEVEL=2;
 //const int ROUND=3;
+//textAligment
+const int LEFT=101;
+const int TOP=102;
+const int BOTTOM=103;
 
 class processing_window_base
 {

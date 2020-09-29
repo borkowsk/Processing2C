@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: klasaWorld.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -146,7 +146,7 @@ class World {
   //++++++++++++ FUNKCJE POMOCNICZE ++++++++++++
 
 
-  bool czyWstroneZpamieci(int i, int j, int p, int r, int mem) { 
+  bool    czyWstroneZpamieci(int i, int j, int p, int r, int mem) { 
     //idzie za danymi współrzędnymi w pamięci
     sarray<int> polePamieci = antsWorld[i][j]->memory[mem];
     p = abs(p - polePamieci[0]);  //zawinięcie w torus
@@ -161,18 +161,18 @@ class World {
     //albo bliżej gniazda/jedzenia w którymkolwiek kierunku, albo małe p, że jednak skręci
   }  
 
-  bool czyCosWie(int i, int j) {  //jeżeli wie, że gdzieś jest jedzenie
+  bool    czyCosWie(int i, int j) {  //jeżeli wie, że gdzieś jest jedzenie
     return antsWorld[i][j]->memory[1][0]!=antsWorld[i][j]->memory[2][0] 
             || antsWorld[i][j]->memory[1][1]!=antsWorld[i][j]->memory[2][1];
   }  
 
 
-  bool czyMoze(int i, int j, int p, int r) {//nie może iść na swoje obecne miejsce lub na czyjeś
+  bool    czyMoze(int i, int j, int p, int r) {//nie może iść na swoje obecne miejsce lub na czyjeś
     return (p!=i || r!=j) && antsWorld[p][r]==nullptr;
   }
 
 
-  bool czyChce(int i, int j, int p, int r) {  
+  bool    czyChce(int i, int j, int p, int r) {  
     if (antsWorld[i][j]->memory[0][0]>0) {  
       //jeżeli już coś zebrała, chce tylko do gniazda
       return czyWstroneZpamieci(i, j, p, r, 1);
@@ -264,5 +264,5 @@ class World {
     }
   }
 };
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

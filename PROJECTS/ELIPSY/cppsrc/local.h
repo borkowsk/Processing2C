@@ -5,12 +5,12 @@
 #define LOCAL_H
 
 
+
+//All classes from Processing files
+
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
 
 //All global functions from Processing files
-
-
-//All classes from Processing files
 #endif

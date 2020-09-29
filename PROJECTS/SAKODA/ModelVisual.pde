@@ -1,8 +1,7 @@
 // World full of agents need method of visualisation on screen/window
 ////////////////////////////////////////////////////////////////////////////
 
-void visualizeAgents(Agent[][] agents)
-{
+void visualizeAgents(Agent[][] agents) { ///
   Agent curra;
   for(int a=0;a<agents.length;a++)
    for(int b=0;b<agents[a].length;b++)
@@ -26,8 +25,7 @@ void visualizeAgents(Agent[][] agents)
    }
 }
 //OR
-void visualizeAgents(Agent[] agents)
-{
+void visualizeAgents(Agent[] agents) { ///
    Agent curra;
    for(int a=0;a<agents.length;a++)
    {

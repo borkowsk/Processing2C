@@ -5,6 +5,12 @@
 #define LOCAL_H
 
 
+
+//All classes from Processing files
+class Ant; typedef Processing::ptr<Ant> pAnt; // {
+class Back; typedef Processing::ptr<Back> pBack; // {
+class World; typedef Processing::ptr<World> pWorld; // {
+
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
@@ -15,6 +21,9 @@ extern int yNest ;//= int(worozmiar/7);  ///
 extern int siNest ;//= 3;                ///
 extern int foodSupply;  /// początkowa ilość jedzenia w gnieździe
 extern int ileWsumieMrowek ;//= sizew/10;  /// maksymalna dopuszczalna liczba mrówek
+extern PrintWriter output;///Globalny output
+extern PrintWriter stan;///
+extern pWorld world;///
 extern int ws ;//= 10;///
 extern int sizew ;//= 900;///
 extern float ts ;//= 0.5; ///wzmocnienie szlaku po zebraniu jedzenia
@@ -38,10 +47,4 @@ extern int lpsym ;//= 1; /// do nazewnictwa
 void inicjacja(); /// Funkcja wymagająca deklaracji zapowiadającej
 void pomocPetli(); /// Funkcja wymagająca deklaracji zapowiadającej
 void petla(); /// Funkcja wymagająca deklaracji zapowiadającej
-
-
-//All classes from Processing files
-class Ant; typedef Processing::ptr<Ant> pAnt; // {
-class Back; typedef Processing::ptr<Back> pBack; // {
-class World; typedef Processing::ptr<World> pWorld; // {
 #endif

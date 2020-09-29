@@ -5,6 +5,9 @@
 #define LOCAL_H
 
 
+
+//All classes from Processing files
+
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
@@ -18,6 +21,7 @@ extern float GrowS;//=  0.0005; ///Growt per step
 extern float SeedP;//=  0.0005;///How often new ofspring emerging (per free cell)
 extern float LightP;//= 0.000000005;///How often fire emerge (per tree)
 extern int MatureT;//=220; ///Max size of tree. Then will stop to grow
+extern PrintWriter Log;///For writing statistics into disk drive
 extern int S;//=20;       ///cell width & height
 extern int Step;//=0; ///!!!
 extern float Burn;//=0;///Ile możliwości zapalenia na krok
@@ -25,7 +29,4 @@ extern float Burn;//=0;///Ile możliwości zapalenia na krok
 //All global functions from Processing files
 void doMonteCarloStep(); ///MAIN FUNCTION OF THE MODEL
 void doVisualisation(); /// Must be predeclared
-
-
-//All classes from Processing files
 #endif

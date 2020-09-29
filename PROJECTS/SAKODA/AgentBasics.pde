@@ -2,7 +2,7 @@
 // Agent need to be initialised & they need logic of change 
 ///////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents)
+void initializeAgents(Agent[][] agents) ///
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -13,8 +13,8 @@ void initializeAgents(Agent[][] agents)
     }
 }
 //OR
-void initializeAgents(Agent[] agents)
-{
+void initializeAgents(Agent[] agents) ///
+{ 
   for(int a=0;a<agents.length;a++)
   if(random(1)<density)
   {
@@ -23,7 +23,7 @@ void initializeAgents(Agent[] agents)
   }
 }
 
-void  changeAgents(Agent[] agents)
+void  changeAgents(Agent[] agents) ///
 {
   int MC=agents.length;
   for(int i=0;i<MC;i++)
@@ -56,7 +56,7 @@ void  changeAgents(Agent[] agents)
   }  
 }
 //OR
-void  changeAgents(Agent[][] agents)
+void  changeAgents(Agent[][] agents) ///
 {
   int MC=agents.length*agents[0].length;
   for(int i=0;i<MC;i++)
