@@ -8,6 +8,9 @@
                             //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
 using namespace std::chrono;//https://en.cppreference.com/w/cpp/chrono/duration
                             //https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets
+static milliseconds begintms;
+static milliseconds firstms;
+static milliseconds lastms;
 
 static int _width=0;//processing_window_base::
 static int _height=0;
@@ -17,9 +20,12 @@ static float _frameRate=0; ///Aproximated frame rate achived;
 static int _frameCount=0;
 static int _frameCountFromChange=0;
 
-static milliseconds begintms;
-static milliseconds firstms;
-static milliseconds lastms;
+static bool _mousePressed=0;
+static int  _mouseButton=0;
+static int  _mouseX=0;
+static int  _mouseY=0;
+
+static bool _keyPressed=0;
 
 extern "C" {
 int WB_error_enter_before_clean=0;
@@ -34,6 +40,30 @@ const int&   pixelWidth= _width;
 const int&   pixelHeight=_height;
 const float& frameRate=  _frameRate; ///Get aproximated frame rate achived;
 const int&   frameCount= _frameCount;///contains the number of frames that have been displayed since the program started.
+
+const bool& mousePressed = _mousePressed;
+const int&  mouseButton  = _mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
+                                        /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
+const int&  mouseX = _mouseX;/// always contains the current horizontal coordinate of the mouse.
+const int&  mouseY = _mouseY;/// always contains the current vertical coordinate of the mouse.
+                             /// Note that Processing can only track the mouse position when the pointer is over the current window
+
+const bool&   keyPressed = _keyPressed;/// is true if any key is pressed and false if no keys are pressed.
+
+char    key;    /// always contains the value of the most recent key on the keyboard that was used (either pressed or released)
+int     keyCode;/// The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
+                             /// as well as ALT, CONTROL, and SHIFT.
+                             /// There are issues with how keyCode behaves across different renderers and operating systems.
+                             /// Watch out for unexpected behavior as you switch renderers and operating systems.
+                             /// When checking for these keys, it can be useful to first check if the key is coded.
+                             /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
+
+void processing_window_base::before_draw()
+{
+    _mousePressed=0;
+    _keyPressed=0;
+}
+
 
 void processing_window_base::after_draw()
 //Calculate frameRate and _INTERNAL_DELAY
@@ -61,6 +91,9 @@ void processing_window_base::check_events()
         int inp=get_char();
         std::cerr<<inp<<' '<<char(inp);
         if(inp==EOF || inp==27 ) exit();
+        _keyPressed=true;
+        key=inp;
+        keyCode=0;// TODO!
     }
 }
 
@@ -96,6 +129,31 @@ void processing_window_base::before_setup(int argc,const char *argv[])
     //std::cerr<<ms.count()<<"ms"<<std::endl;
     begintms=ms;
     firstms=ms;
+}
+
+// The background() function sets the color used for the background of the Processing window. The default background is light gray.
+// This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used
+// inside setup() to set the background on the first frame of animation or if the backgound need only be set once.
+void background(float gray)
+{
+    set_background(256+gray);
+}
+
+void background(float gray,float  alpha)
+{
+    set_background(256+gray);
+    std::cerr<<__FUNCTION__<<" ignoring alpha channel!"<<std::endl;
+}
+
+void background(float v1,float v2,float v3)
+{
+    set_background(v1,v2,v3);
+}
+
+void background(float v1,float v2,float v3,float  alpha)
+{
+    set_background(v1,v2,v3);
+    std::cerr<<__FUNCTION__<<" ignoring alpha channel!"<<std::endl;
 }
 
 void size(int width,int height)

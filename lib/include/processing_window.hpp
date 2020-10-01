@@ -44,6 +44,7 @@ class processing_window_base
     virtual void mouseClicked();
     virtual void before_setup(int argc, const char *argv[]);
     virtual void setup()=0;//Must be provided!
+    virtual void before_draw();//Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
     virtual void draw(){} //EMPTY DRAW()
     virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
     virtual void check_events();//If events are in queue, they are processed
@@ -85,10 +86,10 @@ extern const int& pixelHeight;
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
 /// The mouseButton variable can be used to determine which button has been pressed.
 extern const bool& mousePressed;
-extern       int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
+extern const int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
                                /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
-extern       int&  mouseX;/// always contains the current horizontal coordinate of the mouse.
-extern       int&  mouseY;/// always contains the current vertical coordinate of the mouse.
+extern const int&  mouseX;/// always contains the current horizontal coordinate of the mouse.
+extern const int&  mouseY;/// always contains the current vertical coordinate of the mouse.
                           /// Note that Processing can only track the mouse position when the pointer is over the current window
 
 /// For non-ASCII keys, use the keyCode variable. The keys included in the ASCII specification (BACKSPACE, TAB, ENTER, RETURN, ESC, and DELETE)
@@ -116,6 +117,14 @@ extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
 
 void noSmooth();
 void smooth();
+
+// The background() function sets the color used for the background of the Processing window. The default background is light gray.
+// This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used
+// inside setup() to set the background on the first frame of animation or if the backgound need only be set once.
+void background(float gray);
+void background(float gray,float  alpha);
+void background(float v1,float v2,float v3);
+void background(float v1,float v2,float v3,float  alpha);
 
 OPTINLINE
 void stroke(float Gray);
@@ -159,6 +168,7 @@ void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORN
 
 OPTINLINE
 void rect(float a,float  b,float  c,float  d);
+OPTINLINE
 void rect(float a,float  b,float  c,float  d,float r);
 OPTINLINE
 void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS

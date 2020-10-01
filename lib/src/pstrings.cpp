@@ -48,6 +48,12 @@ String String::operator  + (const String& v) const
     return tmp;
 }
 
+String String::operator  + (char v) const
+{
+    String tmp(v);
+    return tmp;
+}
+
 _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
 #ifdef DEBUG

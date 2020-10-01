@@ -55,6 +55,7 @@ namespace Processing
       String& operator += (bool);
       String& operator += (void*);
       String operator  + (const String&) const;
+      String operator  + (char) const;
       String operator  + (int) const;
       String operator  + (float) const;
       String operator  + (double) const;
@@ -193,8 +194,8 @@ namespace Processing
 
       PrintWriter& operator = (PrintWriter& );
       std::fstream* operator -> ();
-      bool operator == (std::nullptr_t p) const;
-      bool operator != (std::nullptr_t p) const;
+      bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
+      bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
 
       void flush();
       //Nie działa jako "friend"

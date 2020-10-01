@@ -21,7 +21,6 @@ inline void strokeWeight(float Weight)
 inline void noStroke()
 {
     line_width(0);//???
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 inline void stroke(float Gray)
