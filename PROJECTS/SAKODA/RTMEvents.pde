@@ -14,6 +14,7 @@ void mouseClicked()
   theSelected=null;
   searchedX=mouseX;
   searchedY=mouseY; //Searching should be implemented in visialisation!
+  key=0;
 }
 
 void keyPressed() 
