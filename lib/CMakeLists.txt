@@ -21,6 +21,7 @@ add_library( wbprocess STATIC
     "${WBPROCDIR}/lib/src/pprintwriter.cpp"
     "${WBPROCDIR}/lib/src/plibrary.cpp"
     "${WBPROCDIR}/lib/src/plists.cpp"
+    "${WBPROCDIR}/lib/src/pdatetime.cpp"
     "${WBPROCDIR}/lib/src/max.cpp"
     "${WBPROCDIR}/lib/src/min.cpp"
     "${WBPROCDIR}/lib/src/mouseClicked.cpp"

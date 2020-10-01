@@ -72,11 +72,37 @@ inline void noLoop()
     _processing_window_instance._loop=false;
 }
 
+/// Global "system" variables
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 extern const char* _PROGRAMNAME;
 extern const int& width;
 extern const int& height;
 extern const int& pixelWidth;
 extern const int& pixelHeight;
+
+/// The mousePressed variable stores whether or not a mouse button is currently being pressed.
+/// The value is true when any mouse button is pressed, and false if no button is pressed.
+/// The mouseButton variable can be used to determine which button has been pressed.
+extern const bool& mousePressed;
+extern       int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
+                               /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
+extern       int&  mouseX;/// always contains the current horizontal coordinate of the mouse.
+extern       int&  mouseY;/// always contains the current vertical coordinate of the mouse.
+                          /// Note that Processing can only track the mouse position when the pointer is over the current window
+
+/// For non-ASCII keys, use the keyCode variable. The keys included in the ASCII specification (BACKSPACE, TAB, ENTER, RETURN, ESC, and DELETE)
+/// do not require checking to see if the key is coded, and you should simply use the key variable instead of keyCode
+/// If you're making cross-platform projects, note that the ENTER key is commonly used on PCs and Unix and the RETURN key is used instead on Macintosh.
+/// Check for both ENTER and RETURN to make sure your program will work for all platforms.
+extern const bool&   keyPressed;/// is true if any key is pressed and false if no keys are pressed.
+extern       char    key;/// always contains the value of the most recent key on the keyboard that was used (either pressed or released)
+extern       int     keyCode;/// The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
+                             /// as well as ALT, CONTROL, and SHIFT.
+                             /// There are issues with how keyCode behaves across different renderers and operating systems.
+                             /// Watch out for unexpected behavior as you switch renderers and operating systems.
+                             /// When checking for these keys, it can be useful to first check if the key is coded.
+                             /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 
 void size(int width,int height);
 void fullScreen();

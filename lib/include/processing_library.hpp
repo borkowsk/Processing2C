@@ -131,7 +131,6 @@ namespace Processing
   double random(double low,double hig);
   inline double random(double hig){return random(0,hig); }
 
-
   int       min(int,int);
   double    min(double,double);
   int       max(int,int);
@@ -164,6 +163,15 @@ namespace Processing
   void saveFrame(const String& filename);
   void saveFrame(const std::string& filename);
   void saveFrame(const char* filename);
+
+  int year();   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
+  int month();  /// The month() function returns the current month as a value from 1 - 12.
+  int day();    /// The day() function returns the current day as a value from 1 - 31.
+  int hour();   /// The hour() function returns the current hour as a value from 0 - 23.
+  int minute(); /// The minute() function returns the current minute as a value from 0 - 59.
+  int second(); /// The second() function returns the current second as a value from 0 - 59.
+  int millis(); /// Returns the number of milliseconds (thousandths of a second) since starting the program.
+                /// This information is often used for timing events and animation sequences.
 
 /// File streams
 ////////////////////////////////////////////////////////////////////////
