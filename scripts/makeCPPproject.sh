@@ -11,11 +11,20 @@ SOURCES=`pwd`
 PROJECT=$(basename "$SOURCES")
 source $SCRIPTS/config.dat
 
+echo "Directories:"
 echo -e SCRIPTS "     $SCRIPTS"
 echo -e PROJECT "     $PROJECT"
 echo -e SOURCES "     $SOURCES"
 echo -e WBRTM "       $WBRTM"
 echo -e WBSYMSHELL "  $WBSYMSHELL"
+
+#CHECK SOURCE
+echo -e "\nAt least setup() or draw() function expected in *.pde files:"
+grep --color -EHn '(setup\(\)|draw\(\))' *.pde
+
+echo -e "\nThe following lines may generate conflicts because of used library symbols as user defined names"
+egrep --color -Hn -f ../../scripts/symbols_pattern.grep *.pde
+
 
 #GET GLOBAL SYMBOLS
 $SCRIPTS/prepare_local_h.sh
