@@ -1,7 +1,7 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: FORESTFIRE.pde
 #include "processing_templates.hpp"
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
@@ -202,7 +202,7 @@ void processing_window::exit() //it is called whenever a window is closed.
   Log->flush();// Writes the remaining data to the file
   Log->close();// Finishes the file
   println("Thank You");
-  super::exit(); //What library superclass have to do at exit
+  processing_window_base::exit(); //What library superclass have to do at exit
 } 
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 
