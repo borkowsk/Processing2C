@@ -16,8 +16,8 @@ using namespace Processing;
 ///////////////////////////////////////////////////////////////////////////
 
 //One step is equivalential to one hour
-int week=24*7;    ///how many steps is equivalential to one week?
-float year=365.5*24;///how many steps is equivalential to one YEAR?
+int Week=24*7;    ///how many steps is equivalential to one week?
+float Year=365.5*24;///how many steps is equivalential to one YEAR?
 
 //Model parameters
 int N=300;        ///array side
@@ -75,7 +75,7 @@ void processing_window::setup()
 void processing_window::draw()
 {
   if(is_burning ||
-     Step % (4*week) == 0)
+     Step % (4*Week) == 0)
       doVisualisation();
   
   is_burning=false;//We will check it in a moment
@@ -185,8 +185,8 @@ void doVisualisation() /// Must be predeclared
   text(String(" Growing:")+GrowS+String(" Fire transfer p.:")+IgnitionP+ String(" Fire p.:")
        +LightP+ String("(all per step & per tree)"), width/3, height-16);
   fill(255,255,0); 
-  text(Step/year+String(" years  = ")+Step/week+ String(" weeks & ") 
-    + (Step%week)/24 +  String(" days = ") 
+  text(Step/Year+String(" years  = ")+Step/Week+ String(" weeks & ") 
+    + (Step%Week)/24 +  String(" days = ") 
     + Step +  String(" h")  ,0,height);
   fill(0,255,255);
   text(String("Mean Size: ")+meanSize+ String(" "),width/2,height);
@@ -198,7 +198,7 @@ void doVisualisation() /// Must be predeclared
 void processing_window::exit() //it is called whenever a window is closed. 
 {
   noLoop();   // For to be sure...
-  delay(100); // it is possible to close window when draw() is still working!
+  delay(100); // it is quite possible to close window when draw( ) is currently working!
   Log->flush();// Writes the remaining data to the file
   Log->close();// Finishes the file
   println("Thank You");

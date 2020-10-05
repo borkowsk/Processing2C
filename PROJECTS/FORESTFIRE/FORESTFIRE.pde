@@ -4,8 +4,8 @@
 ///////////////////////////////////////////////////////////////////////////
 
 //One step is equivalential to one hour
-int week=24*7;    ///how many steps is equivalential to one week?
-float year=365.5*24;///how many steps is equivalential to one YEAR?
+int Week=24*7;    ///how many steps is equivalential to one week?
+float Year=365.5*24;///how many steps is equivalential to one YEAR?
 
 //Model parameters
 int N=300;        ///array side
@@ -63,7 +63,7 @@ void setup()
 void draw()
 {
   if(is_burning ||
-     Step % (4*week) == 0)
+     Step % (4*Week) == 0)
       doVisualisation();
   
   is_burning=false;//We will check it in a moment
@@ -173,8 +173,8 @@ void doVisualisation() /// Must be predeclared
   text(" Growing:"+GrowS+" Fire transfer p.:"+IgnitionP+" Fire p.:"
        +LightP+"(all per step & per tree)", width/3, height-16);
   fill(255,255,0); 
-  text(Step/year+" years  = "+Step/week+" weeks & " 
-    + (Step%week)/24 + " days = " 
+  text(Step/Year+" years  = "+Step/Week+" weeks & " 
+    + (Step%Week)/24 + " days = " 
     + Step + " h"  ,0,height);
   fill(0,255,255);
   text("Mean Size: "+meanSize+" ",width/2,height);
@@ -186,7 +186,7 @@ void doVisualisation() /// Must be predeclared
 void exit() //it is called whenever a window is closed. 
 {
   noLoop();   // For to be sure...
-  delay(100); // it is possible to close window when draw() is still working!
+  delay(100); // it is quite possible to close window when draw( ) is currently working!
   Log.flush();// Writes the remaining data to the file
   Log.close();// Finishes the file
   println("Thank You");

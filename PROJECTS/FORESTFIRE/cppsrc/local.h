@@ -11,8 +11,8 @@
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern int week;//=24*7;    ///how many steps is equivalential to one week?
-extern float year;//=365.5*24;///how many steps is equivalential to one YEAR?
+extern int Week;//=24*7;    ///how many steps is equivalential to one week?
+extern float Year;//=365.5*24;///how many steps is equivalential to one YEAR?
 extern int N;//=300;        ///array side
 extern int FireTimeDiv;//=50;///How long the tree is burning (divider for size)
 extern float IgnitionP ;//= 0.10;///Probability of fire transfer
