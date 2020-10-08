@@ -1,6 +1,7 @@
 #!/bin/bash
 rm -f trash.txt
-echo "cmake_minimum_required(VERSION 3.0)" > CMakeLists.txt
+echo -e "cmake_minimum_required(VERSION 3.0)\nadd_subdirectory( \"../lib/\" \"../lib/\" )" > CMakeLists.txt
+
 for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdujących się w bieżącym katalogu
   if [ -d "$f" ]; then
     pushd "$f" > /dev/null
