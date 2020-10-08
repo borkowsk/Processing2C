@@ -136,6 +136,8 @@ namespace Processing
   double    min(double,double);
   int       max(int,int);
   double    max(double,double);
+  int       max(int,int,int);
+  double    max(double,double,double);
 
 
   float map(float value,float start1,float stop1,float start2,float stop2);

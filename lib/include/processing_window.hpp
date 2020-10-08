@@ -32,6 +32,7 @@ const int MITER=1;
 const int BEVEL=2;
 //const int ROUND=3;
 //textAligment
+const int RIGHT=100;
 const int LEFT=101;
 const int TOP=102;
 const int BOTTOM=103;
