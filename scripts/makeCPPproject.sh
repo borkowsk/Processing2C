@@ -20,7 +20,7 @@ echo -e WBSYMSHELL "  $WBSYMSHELL"
 
 #CHECK SOURCE
 echo -e "\nAt least setup() or draw() function expected in *.pde files:"
-grep --color -EHn '(setup\(\)|draw\(\))' *.pde
+egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
 
 echo -e "\nThe following lines may generate conflicts because of used library symbols as user defined names"
 egrep --color -Hn -f ../../scripts/symbols_pattern.grep *.pde
