@@ -8,7 +8,7 @@ String modelName="ABMEpidemia";
 float density=0.66;
 
 World TheWorld=new World(side);//INICJALIZACJA JEST KONCZONA 
-                               //W FUNKCJI setup()
+                               //W FUNKCJI setup( )
 
 //Coś w rodzaju stałych ;-)
 final int Duration=7;//Czas trwania infekcji!
@@ -38,7 +38,7 @@ int cwidth=3;//DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
 int STATUSHEIGH=150;//WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
 
 int STEPSperVIS=1;//JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
-int FRAMEFREQ=30; //ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw()
+int FRAMEFREQ=30; //ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
 
 //boolean WITH_VIDEO=false;//CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo.pde)
 boolean simulationRun=true;//FLAGA Start/stop DZIAŁANIA SYMULACJI
@@ -58,7 +58,7 @@ void setup()
   //initializeStats();      //ODKOMENTOWAĆ JEŚLI UŻYWAMY STATYSTYK
   //doStatistics(TheWorld); //J.W.
   
-  //OBLICZAMY WYMAGANY ROZMIAR OKNA DLA size() 
+  //OBLICZAMY WYMAGANY ROZMIAR OKNA DLA funkcji size 
   println(modelName+": REQUIRED SIZE OF PAINTING AREA IS "
           +(cwidth*side)+"x"+(cwidth*side+STATUSHEIGH));
   cwidth=(height-STATUSHEIGH)/side;//DOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
@@ -66,7 +66,7 @@ void setup()
   //INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo.pde)
   //if(WITH_VIDEO) {initVideoExport(this,modelName+".mp4",FRAMEFREQ);FirstVideoFrame();}
   
-  //INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup()
+  //INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup( )
   println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
   visualizeModel(TheWorld);//PIERWSZA PO INICJALIZACJI WIZUALIZACJA ŚWIATA
   

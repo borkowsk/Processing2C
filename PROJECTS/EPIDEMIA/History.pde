@@ -5,10 +5,10 @@ void timeline(FloatList data, //dane do wykresu
               float startX, float startY, float height,//Położenie i wysokość
               boolean logaritm)//czy logarytmować dane
 {
-  float   max=-Float.MAX_VALUE;
-  int     whmax=-1;//Gdzie jest maksimum
-  float   min=Float.MAX_VALUE;
-  int     whmin=-1;//Gdzie jest minimum
+  float   Max=-Float.MAX_VALUE;
+  int     whMax=-1;//Gdzie jest maksimum
+  float   Min=Float.MAX_VALUE;
+  int     whMin=-1;//Gdzie jest minimum
   int     N=data.size(); //Ile pomiarów
   float  lenght=width-startX;//Ile miejsca na wykres
   
@@ -16,14 +16,14 @@ void timeline(FloatList data, //dane do wykresu
   for(int t=0;t<N;t++)
   {
     float val=data.get(t);
-    if(val>max) { max=val; whmax=t;}
-    if(val<min) { min=val; whmin=t;}
+    if(val>Max) { Max=val; whMax=t;}
+    if(val<Min) { Min=val; whMin=t;}
   }
   
   if(logaritm)
   {
-    max=(float)Math.log10(max+1);//+1 to takie oszustwo 
-    min=(float)Math.log10(min+1);//żeby 0 nie wywalało obliczeń
+    Max=(float)Math.log10(Max+1);//+1 to takie oszustwo 
+    Min=(float)Math.log10(Min+1);//żeby 0 nie wywalało obliczeń
   }
   
   //Właściwe rysowanie
@@ -34,9 +34,9 @@ void timeline(FloatList data, //dane do wykresu
     float val=data.get(t);
     
     if(logaritm)
-      val=map((float)Math.log10(val+1),min,max,0,height);    
+      val=map((float)Math.log10(val+1),Min,Max,0,height);    
     else 
-      val=map(val,min,max,0,height);
+      val=map(val,Min,Max,0,height);
     
     float x=t*wid;
     if(oldy!=-Float.MIN_VALUE)
@@ -48,7 +48,7 @@ void timeline(FloatList data, //dane do wykresu
     
     oldy=val;
     
-    if(t==whmax || t==whmin)
+    if(t==whMax || t==whMin)
     {
       textAlign(LEFT,BOTTOM);
       String out=""+data.get(t);
@@ -64,10 +64,10 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
               float startX, float startY, float height,boolean logaritm,
               color color_a,color color_b,color color_c)
 {
-  float   max=-Float.MAX_VALUE;//Tu będzie prawdziwa wartość
-  float   gmax=0;//A tu przeliczona dla grafiki
-  float   min=Float.MAX_VALUE;//J.w.
-  float   gmin=0;//Analogicznie j.w.
+  float   Max=-Float.MAX_VALUE;//Tu będzie prawdziwa wartość
+  float   gMax=0;//A tu przeliczona dla grafiki
+  float   Min=Float.MAX_VALUE;//J.w.
+  float   gMin=0;//Analogicznie j.w.
   int     N1=data_a.size(),N2=data_b.size(),N3=data_c.size(); //Ile pomiarów
   float   lenght=width-startX;//Ile miejsca na wykres
   
@@ -75,33 +75,33 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
   for(int t=0;t<N1;t++)
   {
     float val=data_a.get(t);
-    if(val>max) max=val;
-    if(val<min) min=val;
+    if(val>Max) Max=val;
+    if(val<Min) Min=val;
   }
   
   for(int t=0;t<N2;t++)
   {
     float val=data_b.get(t);
-    if(val>max) max=val;
-    if(val<min) min=val;
+    if(val>Max) Max=val;
+    if(val<Min) Min=val;
   }
   
   for(int t=0;t<N3;t++)
   {
     float val=data_c.get(t);
-    if(val>max) max=val; 
-    if(val<min) min=val;
+    if(val>Max) Max=val; 
+    if(val<Min) Min=val;
   }
   
   if(logaritm)
   {
-    gmax=(float)Math.log10(max+1);//+1 to takie oszustwo 
-    gmin=(float)Math.log10(min+1);//żeby 0 nie wywalało obliczeń
+    gMax=(float)Math.log10(Max+1);//+1 to takie oszustwo 
+    gMin=(float)Math.log10(Min+1);//żeby 0 nie wywalało obliczeń
   }
   else
   {
-    gmax=max;
-    gmin=min;
+    gMax=Max;
+    gMin=Min;
   }
   
   //Właściwe rysowanie
@@ -113,9 +113,9 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
     float val=data_a.get(t);
     
     if(logaritm)
-      val=map((float)Math.log10(val+1),gmin,gmax,0,height);    
+      val=map((float)Math.log10(val+1),gMin,gMax,0,height);    
     else 
-      val=map(val,gmin,gmax,0,height);
+      val=map(val,gMin,gMax,0,height);
     
     float x=t*wid;
     if(oldy!=-Float.MIN_VALUE)
@@ -133,9 +133,9 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
     float val=data_b.get(t);
     
     if(logaritm)
-      val=map((float)Math.log10(val+1),gmin,gmax,0,height);    
+      val=map((float)Math.log10(val+1),gMin,gMax,0,height);    
     else 
-      val=map(val,gmin,gmax,0,height);
+      val=map(val,gMin,gMax,0,height);
     
     float x=t*wid;
     if(oldy!=-Float.MIN_VALUE)
@@ -153,9 +153,9 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
     float val=data_c.get(t);
     
     if(logaritm)
-      val=map((float)Math.log10(val+1),gmin,gmax,0,height);    
+      val=map((float)Math.log10(val+1),gMin,gMax,0,height);    
     else 
-      val=map(val,gmin,gmax,0,height);
+      val=map(val,gMin,gMax,0,height);
     
     float x=t*wid;
     if(oldy!=-Float.MIN_VALUE)
@@ -168,8 +168,8 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
   
   //Min i max są wspólne
   textAlign(LEFT,BOTTOM);
-  text(""+max,startX,startY-height);//Na osi X
-  text(""+min,startX,startY);//Na osi X
+  text(""+Max,startX,startY-height);//Na osi X
+  text(""+Min,startX,startY);//Na osi X
 }
 
 
@@ -177,7 +177,7 @@ void dottedLine(float x1, float y1, float x2, float y2, float steps)
 //https://processing.org/discourse/beta/num_1219255354.html
 {
  for(int i=0; i<=steps; i++) {
-   float x = lerp(x1, x2, i/steps);//funkcja lerp() jest bardzo uzyteczna :-)
+   float x = lerp(x1, x2, i/steps);//funkcja lerp jest bardzo uzyteczna :-)
    float y = lerp(y1, y2, i/steps);
    //noStroke();ellipse(x, y,2,2);//Używanie elipsy zamiast punktu nie jest zbyt wydajne ;-)
    point(x,y);
