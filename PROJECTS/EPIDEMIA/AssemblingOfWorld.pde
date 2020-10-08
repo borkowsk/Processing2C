@@ -6,7 +6,7 @@ class World
 {
   //Agent agents[];//JEDNOWYMIAROWA TABLICA AGENTÓW
   //OR
-  Agent agents[][];//DWUWYMIAROWA TABLICA AGENTÓW
+  Agent[][] agents;//DWUWYMIAROWA TABLICA AGENTÓW
   
   World(int side)//KONSTRUKTOR ŚWIATA
   {
