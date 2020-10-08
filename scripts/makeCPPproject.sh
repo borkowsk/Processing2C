@@ -106,7 +106,7 @@ popd >> /dev/null
 cat << EOF >> CMakeLists.txt
 #        )
 
-target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "--verbose" "-std=c++14" "-pthread" ) # -o3 ?
+target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # -o3 ?
 
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
      "-L/data/wb/SCC/__working_copies/Processing2C/lib/"

@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -f trash.txt
+echo "cmake_minimum_required(VERSION 3.0)" > CMakeLists.txt
 for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdujących się w bieżącym katalogu
   if [ -d "$f" ]; then
     pushd "$f" > /dev/null
@@ -9,6 +10,7 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
      echo "Processing projekt '$f'" 
      #echo $LST
      ../../scripts/makeCPPproject.sh
+     echo "add_subdirectory( $f )" >> ../CMakeLists.txt
     fi
     popd > /dev/null
   elif [ -f "$f" ]; then
