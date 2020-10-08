@@ -2,11 +2,10 @@
 /////////////////////////////////////////////////////////////////////
 int Max=0;//Max wspólny dla całej symulacji
 
-void histogram(Agent[][] agents,float startx,float starty,float hight)
-//Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.
+void histogram(Agent[][] agents,float startx,float starty,float hight) ///Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.
 {
   int NumOfBaskets=100;
-  int Basket[]=new int[NumOfBaskets+1];
+  int[] Basket=new int[NumOfBaskets+1];
   int N=0; //Licznik żywych
   //int Max=0;//Albo Max resetowany dla każdego kroku
   Agent curra;//Pomocniczy uchwyt agenta

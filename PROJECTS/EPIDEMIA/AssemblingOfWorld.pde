@@ -2,9 +2,8 @@
 ///////////////////////////////////////////////////////////////
 int StepCounter=0;//GLOBALNY LICZNIK KROKÓW SYMULACJI
 
-class World
-{
-  //Agent agents[];//JEDNOWYMIAROWA TABLICA AGENTÓW
+class World {
+  //Agent[] agents;//JEDNOWYMIAROWA TABLICA AGENTÓW
   //OR
   Agent[][] agents;//DWUWYMIAROWA TABLICA AGENTÓW
   
@@ -14,19 +13,19 @@ class World
     //OR
     agents=new Agent[side][2*side];
   }
-}
+};
 
 //BARDZIEJ ZŁOŻONE FUNKCJONALNOŚCI ZOSTAŁY ZDEFINIOWANE JAKO OSOBNE FUNKCJE
 //A NIE METODY KLASY World ZE WZGLĘDU NA OGRANICZENIA SKŁADNI PROCESSINGU
 //NIE POZWALAJĄCEJ SCHOWAĆ GDZIEŚ INDZIEJ MNIEJ ISTOTNYCH METOD KLASY
 ///////////////////////////////////////////////////////////////////////////
 
-void initializeModel(World world)
+void initializeModel(World world) /// Zwyczajowa nazwa funkcji
 {
   initializeAgents(world.agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
 }
 
-void visualizeModel(World world)
+void visualizeModel(World world) /// Zwyczajowa nazwa funkcji
 {
   visualizeAgents(world.agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
 }
@@ -36,7 +35,7 @@ void visualizeModel(World world)
 //  dummyChangeAgents(world.agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
 //}
 
-void modelStep(World world)
+void modelStep(World world) /// Zwyczajowa nazwa funkcji
 {
    //dummyChange(world);//TYMCZASOWE WYWOŁANIE TRYWIALNEJ DYNAMIKI
    //OR

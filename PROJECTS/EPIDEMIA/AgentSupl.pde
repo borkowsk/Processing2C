@@ -2,7 +2,7 @@
 // Agent need to be initialised & they need logic of change 
 ///////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents)
+void initializeAgents(Agent[][] agents) /// Inicjalizacja wszystkich agentów w 2D
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -23,7 +23,7 @@ void initializeAgents(Agent[][] agents)
    agents[agents.length/2][agents.length/2].state=Infected;
 }
 //OR
-void initializeAgents(Agent[] agents)
+void initializeAgents(Agent[] agents) /// Inicjalizacja wszystkich agentów  w 1D
 {
   for(int a=0;a<agents.length;a++)
     if(random(1)<density)
@@ -43,7 +43,7 @@ void initializeAgents(Agent[] agents)
    agents[agents.length/2].state=Infected;
 }
 
-void  agentsChange(Agent[] agents)//do zmiany na agentsChange()
+void  agentsChange(Agent[] agents) /// Główna dynamika symulacji 1D - dummy! NIEZAIPLEMENTOWANA!
 {
   int MC=agents.length;
   for(int i=0;i<MC;i++)
@@ -51,14 +51,14 @@ void  agentsChange(Agent[] agents)//do zmiany na agentsChange()
     int a=(int)random(0,agents.length);
     if(agents[a]!= null )
     {
-      //agents[a].dummy+=random(-0.1,0.1);//PRZYKŁADOWA ZMIANA
+      //agents[a].dummy+=random(-0.1,0.1);//PRZYKŁADOWA ZMIANA 
     }
   }  
 }
 
 //OR
 
-void  agentsChange(Agent[][] agents)
+void  agentsChange(Agent[][] agents) /// Główna dynamika symulacji 2D
 {
   //Zapamiętujemy stan przed krokiem
   int befInfected=sumInfected;

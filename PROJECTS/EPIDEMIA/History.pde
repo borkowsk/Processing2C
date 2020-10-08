@@ -1,9 +1,12 @@
 // Wykres zmian w czasie
 ///////////////////////////////////////////////////////////////
 
-void timeline(FloatList data, //dane do wykresu
-              float startX, float startY, float height,//Położenie i wysokość
-              boolean logaritm)//czy logarytmować dane
+//void timeline(FloatList data,             //dane do wykresu
+//              float startX, float startY, //Położenie początku
+//              float height,               //wysokość
+//              boolean logaritm);          //czy logarytmować dane
+              
+void timeline(FloatList data,float startX, float startY, float height,boolean logaritm)/// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-Float.MAX_VALUE;
   int     whMax=-1;//Gdzie jest maksimum
@@ -60,9 +63,7 @@ void timeline(FloatList data, //dane do wykresu
 
 //A jakby miało być więcej zmiennych? UWAGA!:  wspólna skala!!!
 //Wtedy np. tak jak poniżej, co jest wersją bardzo prymitywną, ale będzie działać :-D
-void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
-              float startX, float startY, float height,boolean logaritm,
-              color color_a,color color_b,color color_c)
+void timeline(FloatList data_a,FloatList data_b,FloatList data_c,float startX,float startY,float height,boolean logaritm,color color_a,color color_b,color color_c)/// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-Float.MAX_VALUE;//Tu będzie prawdziwa wartość
   float   gMax=0;//A tu przeliczona dla grafiki
@@ -173,7 +174,7 @@ void timeline(FloatList data_a, FloatList data_b, FloatList data_c,
 }
 
 
-void dottedLine(float x1, float y1, float x2, float y2, float steps)
+void dottedLine(float x1, float y1, float x2, float y2, float steps) ///Potrzebna do wizualizacji
 //https://processing.org/discourse/beta/num_1219255354.html
 {
  for(int i=0; i<=steps; i++) {

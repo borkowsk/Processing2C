@@ -3,42 +3,44 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //PARAMETRY MODELU
-int side=200;//DŁUGOŚĆ BOKU ŚWIATA
-String modelName="ABMEpidemia";
-float density=0.66;
+int side=200;/// DŁUGOŚĆ BOKU ŚWIATA
+String modelName="ABMEpidemia";/// Nazwa modelu, np. dla plików wyjściowych
+float density=0.66;/// główny MERYTORYCZNY parametr modelu
 
 World TheWorld=new World(side);//INICJALIZACJA JEST KONCZONA 
                                //W FUNKCJI setup( )
 
-//Coś w rodzaju stałych ;-)
-final int Duration=7;//Czas trwania infekcji!
+//Inne parametry symulacji jako final - coś w rodzaju stałych ;-)
+final int Duration=7;/// Czas trwania infekcji!
 //final int Empty=0;//NIEPOTRZEBNE. Zamiast tego jest null w komórce tablicy uchwytów do agetów 
-final int Susceptible=1;
-final int Infected=2;
-final int Recovered=Infected+Duration;
-final int Death=100;
+final int Susceptible=1;/// Oznaczenie podatnego
+final int Infected=2;/// Oznaczenie zainfekowanego
+final int Recovered=Infected+Duration;/// Oznaczenie wyleczonego
+final int Death=100;/// Oznaczenie zmarłego
 //final float PTransfer=???;  //Prawdopodobieństwo zarażenia agenta w pojedynczej interakcji
                               //teraz zależy od indywidualnej wartości immunity!
-final float PDeath=0.015;     //Średnie prawdopodobieństwo śmierci w danym dniu choroby
+                              
+final float PDeath=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
 //STATYSTYKI LICZONE W TRAKCIE SYMULACJI
-int liveCount=0;
+int liveCount=0;/// Ile aktualnie żywych
 
-int  sumInfected=0;//Zachorowanie
-int sumRecovered=0;//Wyzdrowienia
-int     sumDeath=0;//Ci co umarli
+int  sumInfected=0;///Zachorowanie
+int sumRecovered=0;///Wyzdrowienia
+int     sumDeath=0;///Ci co umarli
 
-FloatList deaths=new FloatList();//Śmierci 
-FloatList newcas=new FloatList();//Nowe zachorowania
-FloatList  cured=new FloatList();//Wyleczeni 
+//HISTORIE DO WYŚWIETLANIA
+FloatList deaths=new FloatList();///Historia śmierci 
+FloatList newcas=new FloatList();///Historia nowych zachorowań
+FloatList  cured=new FloatList();///Historia wyleczeń
 
 //PARAMETRY WIZUALIZACJI, STATYSTYKI ITP.
-int cwidth=3;//DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
+int cwidth=3;///DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
              //WARTOSC NADANA TU JEST TYLKO WSTĘPNA
-int STATUSHEIGH=150;//WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
+int STATUSHEIGH=150;///WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
 
-int STEPSperVIS=1;//JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
-int FRAMEFREQ=30; //ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
+int STEPSperVIS=1;///JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
+int FRAMEFREQ=30; ///ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
 
 //boolean WITH_VIDEO=false;//CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo.pde)
 boolean simulationRun=true;//FLAGA Start/stop DZIAŁANIA SYMULACJI
@@ -64,7 +66,11 @@ void setup()
   cwidth=(height-STATUSHEIGH)/side;//DOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
   
   //INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo.pde)
-  //if(WITH_VIDEO) {initVideoExport(this,modelName+".mp4",FRAMEFREQ);FirstVideoFrame();}
+  //if(WITH_VIDEO) 
+  //{ 
+  //  initVideoExport(this,modelName+".mp4",FRAMEFREQ);
+  //  FirstVideoFrame();
+  //}
   
   //INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup( )
   println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
@@ -97,7 +103,7 @@ void draw()
 
 }
 
-void writeStatusLine()
+void writeStatusLine() ///Ta nazwa musi być znana globalnie
 {
   fill(0);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
   histogram(TheWorld.agents,0,height-16,STATUSHEIGH-16);//Histogram wg. odporności  
