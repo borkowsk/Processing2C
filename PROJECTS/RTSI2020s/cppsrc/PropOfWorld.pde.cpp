@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: PropOfWorld.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -13,7 +13,7 @@ using namespace Processing;
 // Basic properties of the world
 ////////////////////////////////////////////////////////////////////////////////
 
-const float INF_NOT_EXIST=Float->MAX_VALUE;  ///visible autside this file!
+const float INF_NOT_EXIST=FLT_MAX;  ///visible autside this file!
 
 class PropertyBase {
   public:
@@ -35,10 +35,10 @@ class PropertyBase {
 	return INF_NOT_EXIST;
 	}
   float getMin(){
-	 return -Float->MAX_VALUE;
+	 return -FLT_MAX;
 	}//MIN_RANGE_VALUE?
   float getMax(){
-	 return +Float->MAX_VALUE;
+	 return +FLT_MAX;
 	}//Always must be different!
   void  reset(){
 	
@@ -61,10 +61,10 @@ class MultProperty : public PropertyBase {
 	return x*y;
 	}
   float getMin(){
-	 return -Float->MAX_VALUE;
+	 return -FLT_MAX;
 	}
   float getMax(){
-	 return Float->MAX_VALUE;
+	 return FLT_MAX;
 	}//Must be different!
 };
 
@@ -177,7 +177,7 @@ class DefPerlinProperty : public PropertyBase {
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

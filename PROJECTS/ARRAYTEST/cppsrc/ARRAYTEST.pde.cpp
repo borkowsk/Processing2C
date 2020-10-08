@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ARRAYTEST.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -58,5 +58,5 @@ void processing_window::draw()
   s[a][b]=nf(c[a][b]);
   println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

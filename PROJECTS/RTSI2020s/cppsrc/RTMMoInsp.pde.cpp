@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: RTMMoInsp.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -14,7 +14,7 @@ using namespace Processing;
 ///////////////////////////////////////////////////////////////////////
 int searchedX=-1;  ///visible autside this file!
 int searchedY=-1;  ///visible autside this file!
-bool Clicked=false;  ///visible autside this file!
+bool    Clicked=false;  ///visible autside this file!
 int selectedX=-1;  ///visible autside this file!
 int selectedY=-1;  ///visible autside this file!
 
@@ -80,7 +80,7 @@ pPairOfInt findCell(smatrix<pAgent> agents)//Używamy globalnych zmiennych mouse
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS FROM TEMPLATE
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS FROM TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

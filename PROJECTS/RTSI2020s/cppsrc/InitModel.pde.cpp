@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: InitModel.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -74,7 +74,7 @@ void initializeAgents(smatrix<pAgent> agents,// MODEL IMPORTANT PART!
         curra->X=j+0.5;
         curra->Y=i+0.5;
         
-        for (int k = 0; k < curra->sensors.length; k++)// MODEL IMPORTANT PART!
+        for (int k = 0; k < curra->sensors->length; k++)// MODEL IMPORTANT PART!
         {
              curra->sensors[k]->reliability=new RTSILink(curra,random(MIN_RELIABILITY,MAX_INI_RELIABILITY),k);//Some initial trust to own sensor - MODEL IMPORTANT PART!
              if(SELF_LINKED)
@@ -110,7 +110,7 @@ void initializeAgents(sarray<pAgent> agents,const pWorld world)//Agents need acc
     tmp->X=j+0.5;//???
     tmp->Y=0;//Why is different? Because of 1D?
     
-    //for (int k = 0; k < tmp->sensors.length; k++)//Initial knowledge
+    //for (int k = 0; k < tmp->sensors->length; k++)//Initial knowledge
     {
          //float noise=tmp->sensors[k]->noise;//Noise of particular agent's sensor
          //TODO? Use noise as regulator of numbers of rules?
@@ -126,7 +126,7 @@ void initializeAgents(sarray<pAgent> agents,const pWorld world)//Agents need acc
 }
 */
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - model initialisation
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - model initialisation
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

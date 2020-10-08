@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ModelStats.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -16,7 +16,7 @@ PrintWriter outstat; ///May be used also autside this file!
 
 void initializeStats()
 {
-  String FileName=modelName+=String("_")+year()+'.'+nf(month(),2)+'.'+nf(day(),2)+'.'+nf(hour(),2)+'.'+nf(minute(),2)+'.'+nf(second(),2)+'.'+millis();
+  String FileName=modelName+=String("_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(FileName+ String(".out"));
   print(outstat,"$STEP\tAlive\tMeanOp\t+StdDevOp\tMinOp\tMaxOp\tmeanABSError"
                 + String("\tlink_up\tlink_dw\tsensor_up\tsensor_dw\tMeanSensor\tUsedSensors\tMeanSRelia\tMeanSReal\tmaxInfos\tmaxKnowl")
@@ -110,7 +110,7 @@ void doStatisticsOnAgents(smatrix<pAgent> agents)
       
       if(val!=INF_NOT_EXIST && vre!=INF_NOT_EXIST)
       {
-        dsum+=Math->abs(vre-val);//MN(abs(Opinion[a,b]-Sensor[a,b]))
+        dsum+=std::abs(vre-val);//MN(abs(Opinion[a,b]-Sensor[a,b]))
         derrCount++;
       }
       
@@ -184,7 +184,7 @@ void doStatisticsOnAgents(smatrix<pAgent> agents)
                        +String("\t")+link_up+String("\t")+link_dw+String("\t")+sensor_up+String("\t")+sensor_dw+ String("\t")
                        +sens/UsedSensors+String("\t")+UsedSensors+String("\t")+reli/liveCount+String("\t")+real/liveCount+String("\t")+Info_maxInfos+String("\t")+Info_maxKnowl+ String("\t"));
      print(outstat,forLog->outsideLow+ String("\t"));
-     for(int i=0;i<forLog->buckets.length;i++)
+     for(int i=0;i<forLog->buckets->length;i++)
             print(outstat,forLog->buckets[i]+ String("\t"));
      println(outstat,forLog->outsideHig);
    }
@@ -248,10 +248,10 @@ void CloseStatistics()
   }
 }
 
-static bool     statisticsLogEnabled=false;//initializeStats() will set up it for true
+static bool        statisticsLogEnabled=false;//initializeStats() will set up it for true
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - STATISTICS LOG from TEMPLATE
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - STATISTICS LOG from TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 void doStatisticsOnAgents(sarray<pAgent> agents)

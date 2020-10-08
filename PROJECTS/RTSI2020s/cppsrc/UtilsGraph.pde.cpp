@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: UtilsGraph.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -211,7 +211,7 @@ void dashedline(float x0, float y0, float x1, float y1, sarray<float> spacing)
   if (distance > 0) 
   { 
     int i; 
-    bool drawLine = true; // alternate between dashes and gaps 
+    bool    drawLine = true; // alternate between dashes and gaps 
  
     /* 
       Figure out x and y distances for each of the spacing values 
@@ -283,7 +283,7 @@ void arrow_d(int x1,int y1,int x2,int y2,float size,float theta)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

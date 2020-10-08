@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: InfoCalc.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -50,7 +50,7 @@ float getSummOfKnowlegde(ArrayList<Info> infos)// NOW FOR VISUALISATION ONLY
     
     float know=0;
     
-    for(Info inf:infos)
+    for(pInfo inf:infos)
     {
       know+=inf->assessment;//Only level of assesment!
     }
@@ -68,7 +68,7 @@ float getAssesedMeanOfKnowlegde(ArrayList<Info> infos)               // MODEL IM
     float mean=0;
     float know=0;
     
-    for(Info inf:infos)                                
+    for(pInfo inf:infos)                                
     {
       mean+=inf->value*inf->assessment;
       know+=inf->assessment;
@@ -83,7 +83,7 @@ float getAssesedMeanOfKnowlegde(ArrayList<Info> infos)               // MODEL IM
       return INF_NOT_EXIST;
 }
 
-float getAssesedMeanOfSource(ArrayList<Info> infos,pNode source)     //MODEL IMPORTANT PART!
+float getAssesedMeanOfSource(sArrayList<Info> infos,pNode source)     //MODEL IMPORTANT PART!
 {                                                                   //Ważona średnia z obecnych w tablicy faktów danego źródła
                                                                     assert(source!=nullptr);	//
                                                                     assert(infos!=nullptr);	//
@@ -93,9 +93,9 @@ float getAssesedMeanOfSource(ArrayList<Info> infos,pNode source)     //MODEL IMP
     float mean=0;
     float know=0;//To musi być suma wszystkich wag!
     
-    for(Info inf:infos)
+    for(pInfo inf:infos)
     if(inf->sourceOfInfo!=nullptr 
-    && inf->sourceOfInfo.target==source)                             //Filtrowanie jednego źródła
+    && inf->sourceOfInfo->target==source)                             //Filtrowanie jednego źródła
     {
       mean+=inf->value*inf->assessment;
       know+=inf->assessment;
@@ -110,9 +110,9 @@ float getAssesedMeanOfSource(ArrayList<Info> infos,pNode source)     //MODEL IMP
       return INF_NOT_EXIST;
 }
 
-void checkCoherenceWithReality(float reality,ArrayList<Info> infos,pAgent self)//very mild version - MODEL IMPORTANT PART!
+void checkCoherenceWithReality(float reality,sArrayList<Info> infos,pAgent self)//very mild version - MODEL IMPORTANT PART!
 {
-    for(Info inf:infos)
+    for(pInfo inf:infos)
     {                                     
       if(inf->sourceOfInfo!=nullptr)//When link is available to change
       {
@@ -120,14 +120,14 @@ void checkCoherenceWithReality(float reality,ArrayList<Info> infos,pAgent self)/
                                                                               //print("SQRE=",errsqr);//DEBUG
         if(errsqr>SQR_ERROR_TRESHOLD)
         {
-              inf->sourceOfInfo.weight*=(1-DOWN_LINK_TRUST);                   // MODEL IMPORTANT PART!
+              inf->sourceOfInfo->weight*=(1-DOWN_LINK_TRUST);                   // MODEL IMPORTANT PART!
               link_dw++;//Count when weight goes down!
                                                                               //print("l-");//DEBUG   
         }
         else
         {
-              inf->sourceOfInfo.weight+=                                       // MODEL IMPORTANT PART!
-                          (1-inf->sourceOfInfo.weight)*UP_Q_LINK_TRUST;        // MODEL IMPORTANT PART!
+              inf->sourceOfInfo->weight+=                                       // MODEL IMPORTANT PART!
+                          (1-inf->sourceOfInfo->weight)*UP_Q_LINK_TRUST;        // MODEL IMPORTANT PART!
               link_up++;//Count when weight goes up
                                                                               //print("l+");//DEBUG
         } 
@@ -135,29 +135,29 @@ void checkCoherenceWithReality(float reality,ArrayList<Info> infos,pAgent self)/
     }
 } //<>//
 
-float checkFactReliability(pInfo fact,ArrayList<Info> infos,pAgent self)// MODEL IMPORTANT PART!!!
+float checkFactReliability(pInfo fact,sArrayList<Info> infos,pAgent self)// MODEL IMPORTANT PART!!!
 {                                                
     float val=getAssesedMeanOfKnowlegde(infos);                               //Mean result - MODEL IMPORTANT PART! //<>//
                                                                               //Ważona średnia z całej tablicy faktów
     if(val!=INF_NOT_EXIST)
     {
       float errsqr=sqr(val-fact->value);//squared error                        // MODEL IMPORTANT PART! //<>//
-                                                                              assert(fact->sourceOfInfo.weight>=0);	//
+                                                                              assert(fact->sourceOfInfo->weight>=0);	//
       if(errsqr>SQR_ERROR_TRESHOLD)
       {
             fact->assessment/=2;//TODO WHY as much?!                           //Lowering trust for this fact  - MODEL IMPORTANT PART!!!
-            fact->sourceOfInfo.weight*=(1-DOWN_LINK_TRUST);                    //Lowering trust for this source! -  MODEL IMPORTANT PART!
+            fact->sourceOfInfo->weight*=(1-DOWN_LINK_TRUST);                    //Lowering trust for this source! -  MODEL IMPORTANT PART!
             link_dw++;                                                        //Count when weight goes down!
                                                                               //print("l-");//DEBUG   
       }
       else
       {
-            fact->sourceOfInfo.weight+=                                        // MODEL IMPORTANT PART!
-                        (1-fact->sourceOfInfo.weight)*UP_Q_LINK_TRUST;         //More trust for this source! - MODEL IMPORTANT PART!
+            fact->sourceOfInfo->weight+=                                        // MODEL IMPORTANT PART!
+                        (1-fact->sourceOfInfo->weight)*UP_Q_LINK_TRUST;         //More trust for this source! - MODEL IMPORTANT PART!
             link_up++;                                                        //Count when weight goes up!
                                                                               //print("l+");//DEBUG
       }
-                                                                              assert(fact->sourceOfInfo.weight<=1);	//
+                                                                              assert(fact->sourceOfInfo->weight<=1);	//
       float myres=0;//For own result      
       if(self!=nullptr                                                           //only if self is known 
       && (myres=getAssesedMeanOfSource(infos,self))!=INF_NOT_EXIST)           //If has it own results and mean result, then is able to check own sensor
@@ -177,7 +177,7 @@ float checkFactReliability(pInfo fact,ArrayList<Info> infos,pAgent self)// MODEL
                                                                               assert(self->sensors[0]->reliability->weight<=1);	//
                                             
                                                                               //println("\t",
-        //self,"Sensor assesment:",self->sensors[0]->reliability->weight,self->sensors[0]->reliability->weight<0.01? //DEBUG
+        //self,"pSensor assesment:",self->sensors[0]->reliability->weight,self->sensors[0]->reliability->weight<0.01? //DEBUG
                                                                               //"!!!!!!!!!":"");
       }
     }
@@ -185,7 +185,7 @@ float checkFactReliability(pInfo fact,ArrayList<Info> infos,pAgent self)// MODEL
     return fact->assessment;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: Abstract.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -33,7 +33,7 @@ class RTSILink : public Link {
    
    String fullInfo(String fieldSeparator)
    {
-    return super->fullInfo(fieldSeparator)+fieldSeparator+String("TM:")+timemark;
+    return super::fullInfo(fieldSeparator)+fieldSeparator+String("TM:")+timemark;
    }
 }; //; after class is not a problem for Processing
 
@@ -90,9 +90,7 @@ class Sensor {
   }
 };
 
-enum StateOfIssue {
-	 NOT_NEED,NEED_OPINION,HAVE_OPINION,HAVE_DECISION 
-	}
+//enum StateOfIssue  :  NOT_NEED,NEED_OPINION,HAVE_OPINION,HAVE_DECISION 
                                                             
 //NOTE:
 //Cannot be inside Issue because in processing all classes are inside classes of the Applet! 
@@ -106,9 +104,9 @@ class Issue {
   int     properties;//index of related properties
   float   currentop;//current opinion
   
-  ArrayList<Info> facts;
-  //ArrayList<Info> opinions;
-  ArrayList<Info> rules;
+  sArrayList<Info> facts;
+  //sArrayList<Info> opinions;
+  sArrayList<Info> rules;
   
   //This own_reliability is probably not used in this version of simple_model.
   //Reliability of sensor is used instead
@@ -172,7 +170,7 @@ class Issue {
   
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

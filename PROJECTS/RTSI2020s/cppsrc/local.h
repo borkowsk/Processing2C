@@ -5,11 +5,60 @@
 #define LOCAL_H
 
 
+
+//All classes from Processing files
+/*abstract*/class Colorable; typedef Processing::ptr<Colorable> pColorable; // extends Named implements iColorable {
+/*abstract*/class LinkFactory; typedef Processing::ptr<LinkFactory> pLinkFactory; // {
+/*abstract*/class LinkFilter; typedef Processing::ptr<LinkFilter> pLinkFilter; // {
+/*abstract*/class Named; typedef Processing::ptr<Named> pNamed; // implements iNamed { 
+/*abstract*/class Node; typedef Processing::ptr<Node> pNode; // extends Positioned implements iNode {
+/*abstract*/class Positioned; typedef Processing::ptr<Positioned> pPositioned; // extends Colorable implements iPositioned {
+/*interface*/class iColorable; typedef Processing::ptr<iColorable> piColorable; // {
+/*interface*/class iLink; typedef Processing::ptr<iLink> piLink; // { 
+/*interface*/class iNamed; typedef Processing::ptr<iNamed> piNamed; // {
+/*interface*/class iNode; typedef Processing::ptr<iNode> piNode; // { 
+/*interface*/class iPositioned; typedef Processing::ptr<iPositioned> piPositioned; // {
+/*interface*/class iVisLink; typedef Processing::ptr<iVisLink> piVisLink; // extends iLink,iNamed,iColorable {
+/*interface*/class iVisNode; typedef Processing::ptr<iVisNode> piVisNode; // extends iNode,iNamed,iColorable,iPositioned {
+class AbsHighPassFilter; typedef Processing::ptr<AbsHighPassFilter> pAbsHighPassFilter; // extends LinkFilter {
+class AbsLowPassFilter; typedef Processing::ptr<AbsLowPassFilter> pAbsLowPassFilter; // extends LinkFilter {
+class Agent; typedef Processing::ptr<Agent> pAgent; // extends NodeList implements iVisNode {
+class AllLinks; typedef Processing::ptr<AllLinks> pAllLinks; // extends LinkFilter
+class AndFilter; typedef Processing::ptr<AndFilter> pAndFilter; // extends LinkFilter {
+class CosMultProperty; typedef Processing::ptr<CosMultProperty> pCosMultProperty; // extends PropertyBase {
+class DefPerlinProperty; typedef Processing::ptr<DefPerlinProperty> pDefPerlinProperty; // extends PropertyBase { // MODEL IMPORTANT PART!
+class Frequencies; typedef Processing::ptr<Frequencies> pFrequencies; // extends NamedData {
+class HighPassFilter; typedef Processing::ptr<HighPassFilter> pHighPassFilter; // extends LinkFilter {
+class Info; typedef Processing::ptr<Info> pInfo; // { // MODEL IMPORTANT PART!
+class Issue; typedef Processing::ptr<Issue> pIssue; // { 
+class Link; typedef Processing::ptr<Link> pLink; // extends Colorable implements iLink,iVisLink,Comparable<Link> {
+class LowPassFilter; typedef Processing::ptr<LowPassFilter> pLowPassFilter; // extends LinkFilter {
+class MultProperty; typedef Processing::ptr<MultProperty> pMultProperty; // extends PropertyBase {
+class NamedData; typedef Processing::ptr<NamedData> pNamedData; // implements iNamed {
+class NodeList; typedef Processing::ptr<NodeList> pNodeList; // extends Node {
+class NodeMap; typedef Processing::ptr<NodeMap> pNodeMap; // extends Node {
+class OrFilter; typedef Processing::ptr<OrFilter> pOrFilter; // extends LinkFilter {
+class PairOfInt; typedef Processing::ptr<PairOfInt> pPairOfInt; // {
+class PropertyBase; typedef Processing::ptr<PropertyBase> pPropertyBase; // {
+class RTSILink; typedef Processing::ptr<RTSILink> pRTSILink; // extends Link {
+class RTSILinkFactory; typedef Processing::ptr<RTSILinkFactory> pRTSILinkFactory; // extends LinkFactory {
+class Range; typedef Processing::ptr<Range> pRange; // extends NamedData {
+class Sample; typedef Processing::ptr<Sample> pSample; // extends NamedData {
+class Sensor; typedef Processing::ptr<Sensor> pSensor; // {
+class SinMultProperty; typedef Processing::ptr<SinMultProperty> pSinMultProperty; // extends PropertyBase {
+class TypeAndAbsHighPassFilter; typedef Processing::ptr<TypeAndAbsHighPassFilter> pTypeAndAbsHighPassFilter; // extends LinkFilter {
+class TypeFilter; typedef Processing::ptr<TypeFilter> pTypeFilter; // extends LinkFilter {
+class World; typedef Processing::ptr<World> pWorld; // {
+class pointxy; typedef Processing::ptr<pointxy> ppointxy; // {
+class settings_bar3d; typedef Processing::ptr<settings_bar3d> psettings_bar3d; // {
+enum StateOfIssue { NOT_NEED,NEED_OPINION,HAVE_OPINION,HAVE_DECISION }
+
 //All global finals (consts) from Processing files
 extern const float INF_NOT_EXIST;//=Float.MAX_VALUE;  ///visible autside this file!
 
 //All global variables from Processing files
 extern int debug_level;//=0;  ///visible autside this file!
+extern PrintWriter outstat; ///May be used also autside this file! 
 extern float meanOpinion;//=0;  ///May be used also autside this file!
 extern float stddOpinion;//=0;  ///visible autside this file!
 extern float minOpinion;//=0;  ///visible autside this file!
@@ -19,6 +68,10 @@ extern int   UsedSensors;//=0;  ///visible autside this file!
 extern float meanSRealt;//=0;  ///visible autside this file!
 extern float meanSRelia;//=0;  ///visible autside this file!
 extern float meanError;//=0; ///Co jest błędem jest zależne od tego co jest realnością!
+extern pSample mnDiffOwnReal;//=new Sample("mnDiffOwnReal");  ///visible autside this file!
+extern pSample mnDiffMnSensor;//=new Sample("mnDiffMnSensor");  ///visible autside this file!
+extern pSample mnDiffMnOpinion;//=new Sample("mnDiffMnOpinion");  ///visible autside this file!
+extern pSample mnDiffMnReal;//=new Sample("mnDiffMnReal");  ///visible autside this file!
 extern int    link_up;//=0;  ///When weight goes up
 extern int    link_dw;//=0;  ///When weight goes down
 extern int  sensor_up;//=0;  ///visible autside this file!
@@ -91,51 +144,4 @@ extern int     cwidth;//=15;///size of cell
 extern bool simulationRun;//=true;///Start/stop flag
 
 //All global functions from Processing files
-
-
-//All classes from Processing files
-/*abstract*/class Colorable; typedef Processing::ptr<Colorable> pColorable; // extends Named implements iColorable {
-/*abstract*/class LinkFactory; typedef Processing::ptr<LinkFactory> pLinkFactory; // {
-/*abstract*/class LinkFilter; typedef Processing::ptr<LinkFilter> pLinkFilter; // {
-/*abstract*/class Named; typedef Processing::ptr<Named> pNamed; // implements iNamed { 
-/*abstract*/class Node; typedef Processing::ptr<Node> pNode; // extends Positioned implements iNode {
-/*abstract*/class Positioned; typedef Processing::ptr<Positioned> pPositioned; // extends Colorable implements iPositioned {
-/*interface*/class iColorable; typedef Processing::ptr<iColorable> piColorable; // {
-/*interface*/class iLink; typedef Processing::ptr<iLink> piLink; // { 
-/*interface*/class iNamed; typedef Processing::ptr<iNamed> piNamed; // {
-/*interface*/class iNode; typedef Processing::ptr<iNode> piNode; // { 
-/*interface*/class iPositioned; typedef Processing::ptr<iPositioned> piPositioned; // {
-/*interface*/class iVisLink; typedef Processing::ptr<iVisLink> piVisLink; // extends iLink,iNamed,iColorable {
-/*interface*/class iVisNode; typedef Processing::ptr<iVisNode> piVisNode; // extends iNode,iNamed,iColorable,iPositioned {
-class AbsHighPassFilter; typedef Processing::ptr<AbsHighPassFilter> pAbsHighPassFilter; // extends LinkFilter {
-class AbsLowPassFilter; typedef Processing::ptr<AbsLowPassFilter> pAbsLowPassFilter; // extends LinkFilter {
-class Agent; typedef Processing::ptr<Agent> pAgent; // extends NodeList implements iVisNode {
-class AllLinks; typedef Processing::ptr<AllLinks> pAllLinks; // extends LinkFilter
-class AndFilter; typedef Processing::ptr<AndFilter> pAndFilter; // extends LinkFilter {
-class CosMultProperty; typedef Processing::ptr<CosMultProperty> pCosMultProperty; // extends PropertyBase {
-class DefPerlinProperty; typedef Processing::ptr<DefPerlinProperty> pDefPerlinProperty; // extends PropertyBase { // MODEL IMPORTANT PART!
-class Frequencies; typedef Processing::ptr<Frequencies> pFrequencies; // extends NamedData {
-class HighPassFilter; typedef Processing::ptr<HighPassFilter> pHighPassFilter; // extends LinkFilter {
-class Info; typedef Processing::ptr<Info> pInfo; // { // MODEL IMPORTANT PART!
-class Issue; typedef Processing::ptr<Issue> pIssue; // { 
-class Link; typedef Processing::ptr<Link> pLink; // extends Colorable implements iLink,iVisLink,Comparable<Link> {
-class LowPassFilter; typedef Processing::ptr<LowPassFilter> pLowPassFilter; // extends LinkFilter {
-class MultProperty; typedef Processing::ptr<MultProperty> pMultProperty; // extends PropertyBase {
-class NamedData; typedef Processing::ptr<NamedData> pNamedData; // implements iNamed {
-class NodeList; typedef Processing::ptr<NodeList> pNodeList; // extends Node {
-class NodeMap; typedef Processing::ptr<NodeMap> pNodeMap; // extends Node {
-class OrFilter; typedef Processing::ptr<OrFilter> pOrFilter; // extends LinkFilter {
-class PairOfInt; typedef Processing::ptr<PairOfInt> pPairOfInt; // {
-class PropertyBase; typedef Processing::ptr<PropertyBase> pPropertyBase; // {
-class RTSILink; typedef Processing::ptr<RTSILink> pRTSILink; // extends Link {
-class RTSILinkFactory; typedef Processing::ptr<RTSILinkFactory> pRTSILinkFactory; // extends LinkFactory {
-class Range; typedef Processing::ptr<Range> pRange; // extends NamedData {
-class Sample; typedef Processing::ptr<Sample> pSample; // extends NamedData {
-class Sensor; typedef Processing::ptr<Sensor> pSensor; // {
-class SinMultProperty; typedef Processing::ptr<SinMultProperty> pSinMultProperty; // extends PropertyBase {
-class TypeAndAbsHighPassFilter; typedef Processing::ptr<TypeAndAbsHighPassFilter> pTypeAndAbsHighPassFilter; // extends LinkFilter {
-class TypeFilter; typedef Processing::ptr<TypeFilter> pTypeFilter; // extends LinkFilter {
-class World; typedef Processing::ptr<World> pWorld; // {
-class pointxy; typedef Processing::ptr<pointxy> ppointxy; // {
-class settings_bar3d; typedef Processing::ptr<settings_bar3d> psettings_bar3d; // {
 #endif

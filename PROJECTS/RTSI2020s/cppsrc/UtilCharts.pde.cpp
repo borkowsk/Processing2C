@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: UtilCharts.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -12,7 +12,7 @@ using namespace Processing;
 
 // Functions & classes for chart making
 ///////////////////////////////////////////////////////////////////////////////////////////
-//const float INF_NOT_EXIST=Float->MAX_VALUE;
+//const float INF_NOT_EXIST=FLT_MAX;
 
 class NamedData : public iNamed {
   public:
@@ -29,8 +29,8 @@ class NamedData : public iNamed {
 class Range : public NamedData {
   public:
   ///INFO: 
-  float min=+Float->MAX_VALUE;
-  float max=-Float->MAX_VALUE;
+  float min=+FLT_MAX;
+  float max=-FLT_MAX;
   
   Range(String Name){
 	 super(Name);
@@ -53,11 +53,11 @@ class Range : public NamedData {
 class Sample  : public NamedData {
   public:
   ///INFO:  For representing series of numbers
-  FloatList data=nullptr;
+  pFloatList data=nullptr;
   
-  float   min=+Float->MAX_VALUE;
+  float   min=+FLT_MAX;
   int   whmin=-1;
-  float   max=-Float->MAX_VALUE;
+  float   max=-FLT_MAX;
   int   whmax=-1;
   double   sum=0;
   int    count=0;//Licznik REALNYCH wartości!
@@ -76,9 +76,9 @@ class Sample  : public NamedData {
   void reset()
   {
     data->clear();
-    min=-Float->MAX_VALUE;
+    min=-FLT_MAX;
     whmin=-1;
-    max=-Float->MAX_VALUE;
+    max=-FLT_MAX;
     whmax=-1;
     sum=0;  
     count=0;
@@ -146,8 +146,8 @@ class Frequencies : public NamedData {
   private:
 	 sarray<int>   buckets=nullptr;
   float   sizeOfbucket=0;//(Max-Min)/N;
-  float   lowerb=+Float->MAX_VALUE;
-  float   upperb=-Float->MAX_VALUE;
+  float   lowerb=+FLT_MAX;
+  float   upperb=-FLT_MAX;
   int     outsideLow=0;
   int     outsideHig=0;
   int     inside=0;
@@ -234,10 +234,10 @@ void viewTicsH(float startX,float startY,float width,float height,float space)
      line(x,startY,x,startY-height);
 }
 
-void viewScaleV(pRange MinMax,int startX,int startY,int width,int height)//,bool logaritm)//Na razie tu nie rysujemy kresek (tics)
+void viewScaleV(pRange MinMax,int startX,int startY,int width,int height)//,bool    logaritm)//Na razie tu nie rysujemy kresek (tics)
 {
-   //float min=(logaritm?(float)Math->log10(MinMax->min+1):MinMax->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
-   //float max=(logaritm?(float)Math->log10(MinMax->max+1):MinMax->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+   //float min=(logaritm?(float)std::log10(MinMax->min+1):MinMax->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+   //float max=(logaritm?(float)std::log10(MinMax->max+1):MinMax->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
    textAlign(LEFT,TOP);
    text(String("")+MinMax->min,startX+width,startY);
    text(String("")+MinMax->max,startX+width,startY-height);
@@ -245,18 +245,18 @@ void viewScaleV(pRange MinMax,int startX,int startY,int width,int height)//,bool
 
 void viewAsPoints(pSample data,//Źródło danych
                   int startD, //Punkt startowy wyświetlania, albo liczba od końca  - gdy wartość ujemna
-                  float startX,float startY,int width,int height,bool logaritm,pRange commMinMax,bool connect)
+                  float startX,float startY,int width,int height,bool    logaritm,pRange commMinMax,bool    connect)
 {
   float min,max;
   if(commMinMax!=nullptr)
   {
-    min=(logaritm?(float)Math->log10(commMinMax->min+1):commMinMax->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
-    max=(logaritm?(float)Math->log10(commMinMax->max+1):commMinMax->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność    
+    min=(logaritm?(float)std::log10(commMinMax->min+1):commMinMax->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+    max=(logaritm?(float)std::log10(commMinMax->max+1):commMinMax->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność    
   }
   else
   {
-    min=(logaritm?(float)Math->log10(data->min+1):data->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
-    max=(logaritm?(float)Math->log10(data->max+1):data->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+    min=(logaritm?(float)std::log10(data->min+1):data->min);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+    max=(logaritm?(float)std::log10(data->max+1):data->max);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
   }
   
   int     N=data->numOfElements();       assert(startD<N-1);	//
@@ -271,24 +271,24 @@ void viewAsPoints(pSample data,//Źródło danych
       //print("?");
   }
   float wid=float(width)/(N-startD);  //println(width,N,startD,wid,min,max);
-  float oldy=-Float->MIN_VALUE;
+  float oldy=-FLT_MIN;
   
   for(int t=startD;t<N;t++)
   {
-    float val=data->data.get(t);
+    float val=data->data->get(t);
     if(val==INF_NOT_EXIST) 
     {
-      oldy=-Float->MIN_VALUE;
+      oldy=-FLT_MIN;
       continue;
     }
     
     if(logaritm)
-      val=map((float)Math->log10(val+1),min,max,0,height);    
+      val=map((float)std::log10(val+1),min,max,0,height);    
     else 
       val=map(val,min,max,0,height);
     
     float x=(t-startD)*wid;
-    if(connect && oldy!=-Float->MIN_VALUE)
+    if(connect && oldy!=-FLT_MIN)
     {
       line (startX+x-wid,startY-oldy,startX+x,startY-val);//println(wid,x-wid,oldy,x,val);
     }
@@ -304,22 +304,22 @@ void viewAsPoints(pSample data,//Źródło danych
     if(t==data->whmax || t==data->whmin)
     {
       textAlign(LEFT,TOP);
-      text(String("")+data->data.get(t),startX+x,startY-val);
+      text(String("")+data->data->get(t),startX+x,startY-val);
     }
   }
 }
 
-float viewAsColumns(pFrequencies hist,float startX,float startY,int width,int height,bool logaritm)
+float viewAsColumns(pFrequencies hist,float startX,float startY,int width,int height,bool    logaritm)
 {
-  float max=(logaritm?(float)Math->log10(hist->higherBucket+1):hist->higherBucket);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
-  int wid=width/hist->buckets.length; //println(width,wid);
+  float max=(logaritm?(float)std::log10(hist->higherBucket+1):hist->higherBucket);//+1 wizualnie niewiele zmienia a gwarantuje obliczalność
+  int wid=width/hist->buckets->length; //println(width,wid);
   if(wid<1) wid=1;
   
-  for(int i=0;i<hist->buckets.length;i++)
+  for(int i=0;i<hist->buckets->length;i++)
   {
     float hei;
     if(logaritm)
-      hei=map((float)Math->log10(hist->buckets[i]+1),0,max,0,height);    
+      hei=map((float)std::log10(hist->buckets[i]+1),0,max,0,height);    
     else 
       hei=map(hist->buckets[i],0,max,0,height);
     
@@ -332,12 +332,12 @@ float viewAsColumns(pFrequencies hist,float startX,float startY,int width,int he
                           String(" @ ") + hist->higherBucketIndex ),
                           startX,startY-height);
   //Real width of histogram
-  float realwidth=(hist->buckets.length)*wid;//println(realwidth);noLoop();
+  float realwidth=(hist->buckets->length)*wid;//println(realwidth);noLoop();
   return realwidth;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

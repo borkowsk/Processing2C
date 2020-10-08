@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: RTSI2020s.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -34,14 +34,14 @@ float BIAS_MEAN=0.01;  /// Desired mean value of bias
 float BIAS_DISP=0.02;  /// Desired dispersion, so each BIAS is inside range [mean-dispersion,mean+dispersion]
 
 //Wybieranie mieszanki zachowań!!!
-bool TRACE_ACTIONS=false;  /// If you want to see each particular action
+bool    TRACE_ACTIONS=false;  /// If you want to see each particular action
 
 float   REAL_INFO_PROBABILITY=0.01;    /// "R" - How offten agent has reality check - JAK 0 TO NIGDY NIE SPRAWDZA FAKTYCZNEGO STANU
 int     REALITY=3;   /// Skąd bierzemy "realność"? 0-bierze REALNOSC spod nog, 1-średni pomiar, 2-średnią opinie, 3-średnią realność
-bool REMEMBER_REALITY_FACTS=false;  /// Is reality fact remembered for opinion or not (ESPECIALLY NOT IN PREDICTION CHECK MODEL!)
+bool    REMEMBER_REALITY_FACTS=false;  /// Is reality fact remembered for opinion or not (ESPECIALLY NOT IN PREDICTION CHECK MODEL!)
 
 float   OWN_MEASURE_PROBABILITY=0.0;   /// "S" - How offten agent use own sensor
-bool SELF_LINKED=(OWN_MEASURE_PROBABILITY==0);  /// Alternatywnie używamy linku do własnego sensora jak do obcego
+bool    SELF_LINKED=(OWN_MEASURE_PROBABILITY==0);  /// Alternatywnie używamy linku do własnego sensora jak do obcego
 float   INTERACTION_PROBABILITY=1.0-OWN_MEASURE_PROBABILITY-REAL_INFO_PROBABILITY;/// "o" - other agent activities (ask for fact only in simple_model)
 
 //Parametry startu i zmiany zaufania czyli wagi połączeń
@@ -70,26 +70,26 @@ int   NUM_OF_ISSUES=NUM_OF_PROPERTIES;  /// ONLY ONE PROPERTY FOR SIMPLE MODEL
 
 //Parameters of visualisation etc...
 //=======================================
-//bool SCREEN_FULL=true;//To nie działa bo "size() and fullScreen() cannot be used in the same sketch"
+//bool    SCREEN_FULL=true;//To nie działa bo "size() and fullScreen() cannot be used in the same sketch"
 int     WhichProperty=0;  ///Which property of the world is about to visualise?
 
 int     STEPSperVIS=10;  ///Visualisation &  every 10 steps
 int     STEPSperSTAT=1;  ///Statistics &  every 10 steps
 
-bool VIS_NETWORK=false;   ///
+bool    VIS_NETWORK=false;   ///
 float   linkWeightTresh=0.95;///Links filtering for visualisation
 float   MAX_LINK_WEIGHT=2;   ///Maximal strokeWidth for links TODO - link stroke from 1-3, when 1 is for linkWeightTresh
 float   LINK_INTENSITY=32;   ///For link transparency
-bool VIS_AGENTS=false;    ///
+bool    VIS_AGENTS=false;    ///
 float   AGENT_STROKE=2;      ///Stroke width for Agents
-bool WITH_STROKE=true;    ///
+bool    WITH_STROKE=true;    ///
 
-bool WITH_MIN_MAX=false;  /// Wizualizacja minimalnej i maksymalnej opini
-bool WITH_ERRORS=true;    /// Czy jest wykres średniego błędu?
-bool ZERO_ONE_SCALE=false;///Dodanie zera i jedynki do wspólnych maksimów i minimów
-bool visualiseReliabilities=true;  ///
+bool    WITH_MIN_MAX=false;  /// Wizualizacja minimalnej i maksymalnej opini
+bool    WITH_ERRORS=true;    /// Czy jest wykres średniego błędu?
+bool    ZERO_ONE_SCALE=false;///Dodanie zera i jedynki do wspólnych maksimów i minimów
+bool    visualiseReliabilities=true;  ///
 int     FROM_END=(MACRO_STEP*10)/STEPSperSTAT;  ///How many MACRO_STEPS are visible on timelines?
-bool WITH_VIDEO=false;    /// visible autside this file!
+bool    WITH_VIDEO=false;    /// visible autside this file!
 
 int     FONT_HEIGHT=10;       /// for fontSize 
 int     STATUSHEIGH=100;      /// Bottom side STATUS area HEIGHT
@@ -100,7 +100,7 @@ float   TIMELINES_WIDTH=0.4985;///as part of window width
 float   TIMELINES_HIGTH=0.950;/// as part of window (height-STATUSHEIGH)
 
 int     cwidth=15;///size of cell
-bool simulationRun=true;///Start/stop flag
+bool    simulationRun=true;///Start/stop flag
 
 // MAIN OBJECT
 //========================================================
@@ -151,7 +151,7 @@ void processing_window::setup()
   }
   
   //Finishing setup stage
-  //println(String("\nCURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds.height???
+  //println(String("\nCURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
   XSPREAD=0.30/NUM_OF_PROPERTIES;
   theWorld->visualizeModel();//First time visualisation
   println("\nMacro step is",MACRO_STEP);
@@ -163,7 +163,7 @@ void processing_window::setup()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - SETUP SOURCE FROM TEMPLATE, BUT CHANGED!!!
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - SETUP SOURCE FROM TEMPLATE, BUT CHANGED!!!
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //ABSTRACT RULES FOR MODEL A
@@ -198,7 +198,7 @@ double sqr(double a)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - HANDY FUNCTIONS & CLASSES
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

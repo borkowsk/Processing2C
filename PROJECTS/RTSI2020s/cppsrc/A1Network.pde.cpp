@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: A1Network.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -85,7 +85,7 @@ class iNode {
  class LinkFilter {
    public:
   ///INFO: 
-  bool meetsTheAssumptions(pLink l)
+  bool    meetsTheAssumptions(pLink l)
                   {
 	assert(false );	//  "Pure interface meetsTheAssumptions(Link) called";
  	return  false;
@@ -181,7 +181,7 @@ class iNode {
 // CLASS FOR MODIFICATION:
 //////////////////////////
 
-class Link : public Colorable , iLink,iVisLink,Comparable<Link> {
+class Link : public Colorable , iLink,iVisLink,Comparable<pLink> {
   public:
   ///INFO: This class is available for user modifications
   pNode  target;
@@ -447,11 +447,11 @@ void makeRandomNet(smatrix<pNode> nodes,pLinkFactory linkfac,float probability)
 class NodeList : public Node {
   public:
   ///INFO: 
-  ArrayList<Link> connections;//https://docs->oracle.com/javase/8/docs/api/java/util/ArrayList->html
+  sArrayList<pLink> connections;//https://docs->oracle->com/javase/8/docs/api/java/util/ArrayList->html
   
   NodeList()
   {
-    connections=new ArrayList<Link>();
+    connections=new ArrayList<pLink>();
   }
   
   int     numOfConn()      {
@@ -461,7 +461,7 @@ class NodeList : public Node {
   int     addConn(pLink   l)
   {
     assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+ String(".addConn(Link)?"); 
-    bool res=connections->add(l); 
+    bool    res=connections->add(l); 
     if(res)
       return   1;
     else
@@ -483,7 +483,7 @@ class NodeList : public Node {
   pLink    getConn(pNode   n)
   {
     assert(n!=nullptr );	//  String("Empty node in ")+this->getClass().getName()+ String(".getConn(Node)"); 
-    for(Link l:connections)
+    for(pLink l:connections)
     {
       if(l->target==n) 
             return l;
@@ -494,9 +494,9 @@ class NodeList : public Node {
   pLink    getConn(String k)
   {
     assert(k==nullptr || k=="" );	//  String("Empty string in ")+this->getClass().getName()+ String(".getConn(String)"); 
-    for(Link l:connections)
+    for(pLink l:connections)
     {
-      if(l->target.name()==k) 
+      if(l->target->name()==k) 
             return l;
     }
     return nullptr;
@@ -505,8 +505,8 @@ class NodeList : public Node {
   sarray<pLink>  getConns(pLinkFilter f)
   {
     assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+ String(".getConns(LinkFilter)"); 
-    ArrayList<Link> selected=new ArrayList<Link>();
-    for(Link l:connections)
+    sArrayList<pLink> selected=new ArrayList<pLink>();
+    for(pLink l:connections)
     {
       if(f->meetsTheAssumptions(l)) 
             selected->add(l);
@@ -521,7 +521,7 @@ class NodeList : public Node {
 class NodeMap : public Node {
   public:
   ///INFO: 
-  HashMap<String,Link> connections;//https://docs->oracle.com/javase/6/docs/api/java/util/HashMap->html
+  HashMap<String,Link> connections;//https://docs->oracle->com/javase/6/docs/api/java/util/HashMap->html
   
   NodeMap()
   {
@@ -535,7 +535,7 @@ class NodeMap : public Node {
   int     addConn(pLink   l)
   {
     assert(l!=nullptr );	//  String("Empty link in ")+this->getClass().getName()+ String(".addConn(Link)?"); 
-    String key=l->target.name();
+    String key=l->target->name();
     pLink old=connections->put(key,l); 
     if(old==nullptr)
       return   1;
@@ -579,7 +579,7 @@ class NodeMap : public Node {
   sarray<pLink>  getConns(pLinkFilter f)
   {
     assert(f!=nullptr );	//  String("Empty LinkFilter in ")+this->getClass().getName()+ String(".getConns(LinkFilter)"); 
-    ArrayList<Link> selected=new ArrayList<Link>();
+    sArrayList<pLink> selected=new ArrayList<pLink>();
     for(Map->Entry<String,Link> ent:connections->entrySet())
     {
       if(f->meetsTheAssumptions(ent->getValue())) 
@@ -592,7 +592,7 @@ class NodeMap : public Node {
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - SOCIAL NETWORK TEMPLATE
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - SOCIAL NETWORK TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

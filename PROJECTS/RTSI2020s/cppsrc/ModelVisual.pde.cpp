@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ModelVisual.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -13,7 +13,7 @@ using namespace Processing;
 //   Basic visualisation of RTSI model utilized cell geometry
 ///////////////////////////////////////////////////////////////
 
-bool requestClean=false;  ///visible autside this file!
+bool    requestClean=false;  ///visible autside this file!
 float histogram_width=HISTOGRAM_WIDTH;  /// Bars have integer width, so really histogram may be narrower than that
 
 void processing_window::draw()
@@ -336,7 +336,7 @@ void visualizeAgents(sarray<pAgent> agents)
 }
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - BASIC VISUALISATION from TEMPLATE
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - BASIC VISUALISATION from TEMPLATE
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 

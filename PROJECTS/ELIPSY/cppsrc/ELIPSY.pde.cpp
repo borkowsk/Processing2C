@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ELIPSY.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -33,5 +33,5 @@ void processing_window::draw()
   ellipse(random(W),random(W),r,r);
   println(frameRate);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

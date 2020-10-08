@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: klasaAnt.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -83,5 +83,5 @@ class Ant {
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

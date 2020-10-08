@@ -1,10 +1,10 @@
 //Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ModelSteps.pde
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 using namespace Processing;
 #include "local.h"
 #include "project.h" //Is's for you. Could be deleted when not needed
@@ -57,7 +57,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
   {
      pSensor sens=agent->sensors[0];                                              assert( agent->sensors[0]->propertyIndex==0);	//<>//
                                                                                 if(TRACE_ACTIONS) print("S");//DEBUG
-     float reliab=sens->reliability.weight;                                      assert( reliab<=1);	//
+     float reliab=sens->reliability->weight;                                      assert( reliab<=1);	//
      
      if(MIN_RELIABILITY<reliab)                                                 //Agent may not trust its own sensor
      {                                                                          assert(reliab<=1);	//Mamy zatem pomiar któremu choć trochę ufamy
@@ -65,7 +65,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
        pInfo newFact=new Info(currmes,reliab,world->StepCounter,sens->reliability);
        
        //some changes in reliability of own sensor                              
-       reliab=checkFactReliability(newFact,agent->issues[0]->facts,agent);        //(pInfo fact,ArrayList<Info> infos,pNode selfsource) - MODEL IMPORTANT PART!
+       reliab=checkFactReliability(newFact,agent->issues[0]->facts,agent);        //(pInfo fact,sArrayList<Info> infos,pNode selfsource) - MODEL IMPORTANT PART!
        
        agent->issues[0]->facts->add(newFact);                                      //ZAPAMIĘTANIE NOWEGO FAKTU NA LIŚCIE DO WYDAWANIA OPINII
                                                                                 //println(world->StepCounter,"\t",agent,currmes,reliab,"MEASURED FACT");//DEBUG
@@ -100,7 +100,7 @@ void stepForAgent(pAgent agent,pWorld world)                                    
           reliab=checkFactReliability(newFact,agent->issues[0]->facts,agent);     //Ta sytuacja trochę nietypowa //<>//
         }
         else
-          reliab=checkFactReliability(newFact,agent->issues[0]->facts,nullptr);      //(pInfo fact,ArrayList<Info> infos,pNode selfsource) - MODEL IMPORTANT PART! 
+          reliab=checkFactReliability(newFact,agent->issues[0]->facts,nullptr);      //(pInfo fact,sArrayList<Info> infos,pNode selfsource) - MODEL IMPORTANT PART! 
         
         agent->issues[0]->facts->add(newFact);                                     //ZAPAMIĘTANIE NOWEGO FAKTU NA LIŚCIE DO WYDAWANIA OPINII
                                                                                 //println(world->StepCounter,"\t",agent,partner,currmes,reliab,"OTHER FACT");//DEBUG
@@ -170,7 +170,7 @@ void modelStepOnAgents(sarray<pAgent> agents)
   }
 }*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate.net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - RTSI model in Processing
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts/procesing2cpp.sh did it
 
