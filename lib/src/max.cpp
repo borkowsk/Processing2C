@@ -11,9 +11,19 @@ int       max(int a,int b)
         return (a>b?a:b);
 }
 
+int       max(int a,int b,int c)
+{
+        return max(a>b?a:b,c);
+}
+
 double    max(double a,double b)
 {
         return (a>b?a:b);
+}
+
+double    max(double a,double b,double c)
+{
+        return max(a>b?a:b,c);
 }
 
 }//END OF NAMESPACE Processing
