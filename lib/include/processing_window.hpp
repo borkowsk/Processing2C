@@ -7,6 +7,8 @@
 #define OPTINLINE /* EPMTY */
 #endif
 
+#include<cstdint>
+
 namespace Processing
 {
 //CHAR CONSTANTS
@@ -23,6 +25,10 @@ const int CORNERS=4;
 //const int RADIUS=2;
 //const int CORNER=3;
 //const int CORNERS=4;
+
+extern int _ELLIPSE_MODE;//=CORNER?
+extern int _RECT_MODE;//=CORNER?
+
 ///strokeCap(cap) parameters
 const int SQUARE=1;
 const int PROJECT=2;
@@ -31,11 +37,19 @@ const int ROUND=3;
 const int MITER=1;
 const int BEVEL=2;
 //const int ROUND=3;
-//textAligment
+
+extern int _STROKE_CAP;//=SQUARE?;
+extern int _STROKE_JOIN;//=MITER?;
+
+//for textAligment
 const int RIGHT=100;
 const int LEFT=101;
 const int TOP=102;
 const int BOTTOM=103;
+
+
+extern int _TEXT_HORIZONTAL_AL;//=LEFT;
+extern int _TEXT_VERTICAL_AL;//=TOP;
 
 class processing_window_base
 {
@@ -73,6 +87,40 @@ inline void noLoop()
 {
     _processing_window_instance._loop=false;
 }
+
+/// Class color
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class color
+{
+  public:
+    std::uint32_t val;
+    color(std::uint32_t value):val(value){}
+
+    color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
+    {
+        val=B + 256*G + 256*256*R;
+    }
+
+    color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
+    {
+        val|=alfa<<24;//??? TODO! TEST IT!
+    }
+
+    std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
+
+    std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
+
+    std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
+
+    std::uint8_t blue() const  { return (val & 0x000000FF); }
+};
+
+
+inline float  alfa(const color& col) { return col.alfa(); }
+inline float   red(const color& col) { return col.red(); }
+inline float green(const color& col) { return col.green(); }
+inline float  blue(const color& col) { return col.blue(); }
 
 /// Global "system" variables
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,6 +181,7 @@ void stroke(float Gray,float Alpha);
 OPTINLINE
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
+void stroke(const color& col);
 OPTINLINE
 void noStroke();
 
@@ -144,9 +193,11 @@ void strokeJoin(int join);/// Parameters	join 	int: either MITER, BEVEL, ROUND
 OPTINLINE
 void fill(float Gray);
 void fill(float Gray,float Alpha);
+
 OPTINLINE
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
+void fill(const color& col);
 OPTINLINE
 void noFill();
 

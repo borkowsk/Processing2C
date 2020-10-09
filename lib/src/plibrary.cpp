@@ -31,9 +31,14 @@ double random(double low,double hig)
 /// stop1 	float: upper bound of the value's current range
 /// start2 	float: lower bound of the value's target range
 /// stop2 	float: upper bound of the value's target range
-float map(float value,float start1,float stop1,float start2,float stop2)
+float map(float s,float a1,float a2,float b1,float b2)//float value,float start1,float stop1,float start2,float stop2)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
+}
+
+double map(double s,double a1,double a2,double b1,double b2)
+{
+    return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
 }
 
 /// Parameters:
@@ -49,9 +54,10 @@ float norm(float value,float start,float stop)
 /// start 	float: first value
 /// stop 	float: second value
 /// amt 	float: float between 0.0 and 1.0
-float lerp(float start,float stop,float amt)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+/// float lerp(float start,float stop,float amt)
+float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
+{                                       // https://en.wikipedia.org/wiki/Linear_interpolation
+  return (1 - t) * v0 + t * v1;
 }
 
 void saveFrame()

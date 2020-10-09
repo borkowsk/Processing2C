@@ -209,7 +209,6 @@ void noCursor()
 //  x 	int: the horizontal active spot of the cursor
 //  y 	int: the vertical active spot of the cursor
 
-
 }//END of namespace Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-09-02                   */

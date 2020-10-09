@@ -11,27 +11,28 @@
 namespace Processing
 {
 extern bool _filled;//=true;
-extern int _lineWidthMem;//=1;
+extern int _LINE_WIDTH;//=1;
 
 inline void strokeWeight(float Weight)
 {
-    line_width(_lineWidthMem=(int)Weight);
+    line_width(_LINE_WIDTH=(int)Weight);
 }
 
 inline void noStroke()
 {
-    line_width(0);//???
+    //line_width(0);//??? TODO?
+    _LINE_WIDTH=0;
 }
 
 inline void stroke(float Gray)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,_lineWidthMem,1 /*style*/);
+    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void stroke(float Red,float Green,float Blue)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,_lineWidthMem,1 /*style*/);
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void noFill()
@@ -94,6 +95,19 @@ inline void ellipse(float a,float  b,float  c,float  d)
     if(get_line_width()>0 && A>1 && B>1)
         ellipse_d(x1,y1,A,B);
 }
+
+/// map & lerp - nie graficzne ale też czesto używane
+//////////////////////////////////////////////////////////////
+inline float map(float s,float a1,float a2,float b1,float b2)//float value,float start1,float stop1,float start2,float stop2)
+{
+    return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
+}
+
+inline float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
+{                                       // https://en.wikipedia.org/wiki/Linear_interpolation
+  return (1 - t) * v0 + t * v1;
+}
+
 
 }//END of namespace Processing
 /********************************************************************/

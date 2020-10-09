@@ -28,40 +28,48 @@ void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-int _lineWidthMem=1;
+int _LINE_WIDTH=1;
 
 void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
 {
-    line_width(_lineWidthMem=(int)Weight);
+    line_width(_LINE_WIDTH=(int)Weight);
 }
 
 void stroke(float Gray)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,_lineWidthMem,1 /*style*/);
+    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
 }
 
 void stroke(float Gray,float Alpha)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,_lineWidthMem,1 /*style*/);
+    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
 }
 
 void stroke(float Red,float Green,float Blue)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,_lineWidthMem,1 /*style*/);
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
 }
 
 void stroke(float Red,float Green,float Blue,float Alpha)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,_lineWidthMem,1 /*style*/);
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+}
+
+//TEMPORARY IMPLEMENTATION OF stroke(color)
+void stroke(const color& col)//Until update of symshell.h (TODO!)
+{
+    //std::cerr<<__FUNCTION__<<' '<<std::hex<<col.val<<std::endl;
+    stroke(red(col),green(col),blue(col));
 }
 
 void noStroke()
 {
-    line_width(0);//???
+    line_width(0);//??? TODO?
+    _LINE_WIDTH=0;
     std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
@@ -93,6 +101,12 @@ void fill(float Red,float Green,float Blue,float Alpha)
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
     _filled=true;
     std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+}
+
+//TEMPORARY IMPLEMENTATION OF fill(color)
+void fill(const color& col)//Until update of symshell.h (TODO!)
+{
+    fill(red(col),green(col),blue(col));
 }
 
 void noFill()
@@ -184,16 +198,20 @@ void ellipseMode(int mode)
 }
 
 /// Extended graphix text() & Attributes
-void textAlign(int)
+int _TEXT_HORIZONTAL_AL=LEFT;
+int _TEXT_VERTICAL_AL=TOP;
+
+void textAlign(int hor)
 // Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _TEXT_HORIZONTAL_AL=hor;
 }
 
-void textAlign(int,int)
+void textAlign(int hor,int ver)
 // and TOP, BOTTOM, CENTER, or BASELINE for vertical
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _TEXT_HORIZONTAL_AL=hor;
+    _TEXT_VERTICAL_AL=ver;
 }
 
 void textLeading(int)
