@@ -1,7 +1,7 @@
 //Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: EPIDEMIA.pde
 #include "processing_templates.hpp"
-//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
@@ -117,7 +117,7 @@ void processing_window::draw()
 
 void writeStatusLine() ///Ta nazwa musi być znana globalnie
 {
-  fill(0);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
+  fill(64);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
   histogram(TheWorld->agents,0,height-16,STATUSHEIGH-16);//Histogram wg. odporności  
    
   //Legenda i historie trzech zmiennych dziennych każda w swojej skali

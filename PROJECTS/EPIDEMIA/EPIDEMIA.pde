@@ -105,7 +105,7 @@ void draw()
 
 void writeStatusLine() ///Ta nazwa musi być znana globalnie
 {
-  fill(0);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
+  fill(128);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
   histogram(TheWorld.agents,0,height-16,STATUSHEIGH-16);//Histogram wg. odporności  
    
   //Legenda i historie trzech zmiennych dziennych każda w swojej skali
