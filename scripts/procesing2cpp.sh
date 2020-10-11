@@ -21,6 +21,8 @@ echo ""
 cat $1 |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
+#przeorganizowywanie konstruktorow
+sed -E 's|\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\:\1\2\(\3\)\4{|' |\
 #Dodawanie ENTER po { ale nie dla "enum"
 sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
@@ -69,6 +71,7 @@ sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
 sed -E 's/boolean([ >])/bool   \1/g' |\
 sed 's/this\./this->/g' |\
+sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
 sed 's/super\./super::/' |\
 sed 's/Math\./std::/g'  |\
 sed "s/frameRate(/setFrameRate(/" |\
@@ -76,7 +79,8 @@ sed "s/frameRate(/setFrameRate(/" |\
 sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
-sed 's|\/\*_forcbody\*\/|=0|g'|\
+sed 's|\/\*_forcebody\*\/|=0|g'|\
+sed 's|\/\*_pubext\*\/|public|g'|\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
