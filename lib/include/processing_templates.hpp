@@ -44,7 +44,7 @@ template<class T>
 {
   ///INFO:
   public:
-      virtual int compareTo(ptr<T> t)=0;
+      virtual int compareTo(ptr<T> o)=0;
 };
 
 template<class T>
