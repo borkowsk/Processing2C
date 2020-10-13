@@ -40,7 +40,7 @@ sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
 #https://serverfault.com/questions/272033/sed-replace-across-multiple-lines
 sed 's|extends|: public|g' |\
 sed 's|implements|: public|g' |\
-sed -E 's|class(.+)(: public)(.*)(: public)(.*)\{|class\1\2\3,\5\{|' |\
+sed -E 's|class(.+)(:\s*public)\s*(\w+)\s*(:\s*public)(.*)\{|class\1 \2 \3, public \5 \{|' |\
 #składnia prostych tablic
 sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/' |\
 sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/' |\
@@ -81,6 +81,7 @@ sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed 's|\/\*_pubext\*\/|public|g'|\
+sed -E 's|\/\*_downcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
