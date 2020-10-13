@@ -2,69 +2,83 @@
 ///////////////////////////////////////////////////////////////////////////
 
 interface Mew {
-    void meow();
+    /*_interfunc*/ void meow(int l)/*_forcebody*/;
 };
 
 interface Eat {
-    void eat();
+    /*_interfunc*/ void eat(int l)/*_forcebody*/;
 };
 
-class Animal {
-    void eat() {
-        println("Animal eats"); 
+abstract class Animal {
+    /*_interfunc*/ void eat(int l) {
+        println(l,"Animal eats"); 
     }
 };
 
-class Cat extends Animal implements Mew, Eat {
-    void eat() {
-         println("Cat eats");  
+class Cat extends Animal implements Mew, /*_pubext*/ Eat {
+    void eat(int l) {
+         println(l,"Cat eats");  
     }
  
-    void meow() {
-         println("Cat meows");  
+    void meow(int l) {
+         println(l,"Cat meows");  
     }
 };
 
 class Dog extends Animal {
-    void eat() {
-         println("Dog eats");  
+    void eat(int l) {
+         println(l,"Dog eats");  
     }
 };
 
+/*
 class AnimalFeeder {
-    void feed(ArrayList<Animal> animals) {
-        for(Animal a:animals)
-            a.eat();
-        }
-};
-
-Mew mew = new Cat();
+//    void feed(ArrayList<Animal> animals) {
+//        for(Animal a:animals)
+//            a.eat(0);
+//        }
+//};
+*/
 
 void setup()
 {
-    Object object = new Animal(); //OK
+    size(150,100);
+    //Object object = new Animal(); //OK
     Cat cat = new Cat();//OK
-    Animal animal = cat;//OK
-    animal =(Animal)cat;//OK
+    Mew mew = new Cat();
+    Object obj=new Cat();
+    mew = cat;
+    mew.meow(1);
     
-    animal.eat();
-//  animal.meow(); /// The method meow() is undefined for the type Animal
-  	((Cat) animal).meow();// downcast is needed 
+    Animal animal = cat;//OK
+    animal = /*_downcast*/(Cat)( mew );
+    animal.eat(2);
+    
+    animal = /*_downcast*/(Animal)( cat );//OK
+    
+    animal.eat(3);
+//  animal.meow(4); /// The method meow() is undefined for the type Animal
+    Cat ancat=/*_downcast*/(Cat)( animal );
+    ancat.meow(4);
+    (/*_downcast*/(Cat)( animal ) ).meow(5);// downcast is needed 
+   
+    
 
-    if (animal instanceof Cat) { //downcast with check
-        ((Cat) animal).meow();
-    }
+    //if (animal instanceof Cat) { //downcast with check
+    //    (/*_downcast*/(Cat)( animal ) ).meow(6);
+    //}
     
     animal = new Dog();
+    animal.eat(7);    
     
-    if (animal instanceof Cat) { //downcast with check
-        ((Cat) animal).meow(); /// Does not happen
-    }
+//    if (animal instanceof Cat) { //downcast with check
+//        ((Cat) animal).meow(8); /// Does not happen
+//    }
 
     //Polymorphism
-    ArrayList<Animal> animals = new ArrayList<Animal>();
-    animals.add(new Cat());
-    animals.add(new Dog());
-    AnimalFeeder feeder=new AnimalFeeder();
-    feeder.feed(animals);
+    //ArrayList<Animal> animals = new ArrayList<Animal>();
+    //animals.add(new Cat());
+    //animals.add(new Dog());
+    //AnimalFeeder feeder=new AnimalFeeder();
+    //feeder.feed(animals);
 }
