@@ -1,7 +1,7 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: EPIDEMIA.pde
 #include "processing_templates.hpp"
-#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //is optional. Should be deleted when not needed
@@ -147,5 +147,5 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM MAIN TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

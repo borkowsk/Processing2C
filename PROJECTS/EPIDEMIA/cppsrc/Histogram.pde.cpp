@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: Histogram.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -52,5 +52,5 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
    fill(random(255),random(255),random(255));
    text(String("N:")+N+String("\nMax:")+Max,startx+NumOfBaskets,starty);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 
