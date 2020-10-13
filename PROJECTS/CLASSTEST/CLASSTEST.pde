@@ -51,16 +51,16 @@ void setup()
     mew.meow(1);
     
     Animal animal = cat;//OK
-    animal = /*_downcast*/(Cat)( mew );
+    //animal = /*_downcast*/(Cat)( mew );
     animal.eat(2);
     
-    animal = /*_downcast*/(Animal)( cat );//OK
+    //animal = /*_downcast*/(Animal)( cat );//OK
     
     animal.eat(3);
 //  animal.meow(4); /// The method meow() is undefined for the type Animal
-    Cat ancat=/*_downcast*/(Cat)( animal );
-    ancat.meow(4);
-    (/*_downcast*/(Cat)( animal ) ).meow(5);// downcast is needed 
+    //Cat ancat=/*_downcast*/(Cat)( animal );
+    //ancat.meow(4);
+    //(/*_downcast*/(Cat)( animal ) ).meow(5);// downcast is needed 
    
     
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -70,28 +70,28 @@ void processing_window::setup()
     pObject obj=new Cat();
     mew = cat;
     mew->meow(1);
-
+    
     pAnimal animal= cat;//OK
     //animal = processing_cast<Cat>( mew );
     animal->eat(2);
-
+    
     //animal = processing_cast<Animal>( cat );//OK
-
+    
     animal->eat(3);
 //  animal->meow(4); /// The method meow() is undefined for the type Animal
-    //pCat ancat=(pCat)( animal );
+    //pCat ancat=processing_cast<Cat>( animal );
     //ancat->meow(4);
-    //(processing_cast<Cat>( animal ) ).meow(5);// downcast is needed
-
-
+    //(processing_cast<Cat>( animal ) ).meow(5);// downcast is needed 
+   
+    
 
     //if (animal instanceof Cat) { //downcast with check
     //    (processing_cast<Cat>( animal ) ).meow(6);
     //}
     
     animal = new Dog();
-    animal->eat(7);
-
+    animal->eat(7);    
+    
 //    if (animal instanceof Cat) { //downcast with check
 //        ((Cat) animal).meow(8); /// Does not happen
 //    }
@@ -103,5 +103,5 @@ void processing_window::setup()
     //pAnimalFeeder feeder=new AnimalFeeder();
     //feeder->feed(animals);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 
