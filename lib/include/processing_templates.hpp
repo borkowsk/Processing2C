@@ -10,14 +10,23 @@
 namespace Processing
 {
 
+class Object
+{
+ public:
+    virtual ~Object(){}
+};
+
 template<class T>
 class ptr:public std::shared_ptr<T>
 {
   ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
   public:
       ~ptr(){}// Zwalnianie zasobów
-      ptr():std::shared_ptr<T>(nullptr){}
-      ptr(T* ini):std::shared_ptr<T>(ini){}
+      //Konstruktory
+      ptr():std::shared_ptr<T>(nullptr){}  //empty
+      ptr(T* ini):std::shared_ptr<T>(ini){}//from raw pointer for new T
+      template<class B>
+      ptr(ptr<B>& ini):std::shared_ptr<T>(ini){}//Konwersja z ptr<> do typów pochodnych? TODO CHECK???
       //ptr(ptr<T>& other):_ptr(other._ptr){}
       //ptr<T>& operator = (ptr<T>& other);
       //ptr<T>& operator = (T* other);
@@ -34,6 +43,24 @@ class ptr:public std::shared_ptr<T>
       operator T& () { return *(this->get());}
       //operator T* () { return *(this->get());}
 };
+
+typedef ptr<Object> pObject;
+
+/*
+template<class T>
+class processing_cast:public std::shared_ptr<T>
+{
+  public:
+    processing_cast(T* ini):std::shared_ptr<T>(ini){}//from raw pointer for new T
+
+    //template<class B>
+    //processing_cast(ptr<B>& ini):std::shared_ptr<T>(std::shared_ptr<B>(ini)){}
+
+    //operator ptr<T> () { return this->get();}
+    T* operator -> () { return this->get();}
+    //operator T& ();
+};
+*/
 
 // Pojawił się problem z kompilatorem
 //https://stackoverflow.com/questions/63314333/strange-behavior-of-gcc-are-c-object-definitions-with-and-equal-or-not

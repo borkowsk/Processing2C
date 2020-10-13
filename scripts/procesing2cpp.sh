@@ -31,8 +31,8 @@ sed -E "s/^(\s*)public/\1public:\n\t/g" |\
 sed -E "s/^(\s*)private/\1private:\n\t/g" |\
 #sed -E 's|\)\s+\{(.+)$|){\n\t\t\1|' |\
 #w deklaracjach klas (działa tylko dla deklaracji klas z { w tej samej linii! )
-sed -E 's|abstract(.+)class(.+)\{|//abstract\n\1class\2{|' |\
-sed -E 's|interface(.+)\{|//interface\nclass\1{|' |\
+sed -E 's|abstract(.+)class(.+)\{|//abstract\n\1class\2\: virtual public Object{|' |\
+sed -E 's|interface(.+)\{|//interface\nclass\1\: virtual public Object {|' |\
 #dodanie public:
 sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
 #...i jak nie ma komentarza
@@ -81,7 +81,7 @@ sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed 's|\/\*_pubext\*\/|public|g'|\
-sed -E 's|\/\*_downcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
+sed -E 's|\/\*_downcast\*\/\((\w+)\)|processing_cast\<\1\>|g' |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
