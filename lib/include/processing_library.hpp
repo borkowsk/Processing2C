@@ -185,15 +185,18 @@ namespace Processing
       std::fstream* ptr;
    public:
       virtual ~PrintWriter();// Zwalnianie zasobów
-      PrintWriter(std::fstream* p);
-      PrintWriter& operator = (std::fstream* p);
 
+      //Konstruktory
       PrintWriter();
+      PrintWriter(std::nullptr_t& p): PrintWriter(){}
+      PrintWriter(std::fstream* p);
       PrintWriter(PrintWriter& );
+      PrintWriter(const PrintWriter& );
 
       void set(std::fstream*);
       operator std::fstream& () {return *ptr;}
 
+      PrintWriter& operator = (std::fstream* p);
       PrintWriter& operator = (PrintWriter& );
       std::fstream* operator -> ();
       bool operator == (std::nullptr_t p) const { return ptr==nullptr; }

@@ -33,7 +33,7 @@ sed -i ':a;N;$!ba;s/\n//g' userclasses.sed
 
 #TEMPORARY
 echo "s/<(Link)>/<p\1>/g"  >> userclasses.sed
-echo "s/aNetworkType\./aNetworkType\:\:/g" >> userclasses.sed
+echo "s/(aNetworkType|aCriterion)\./\1\:\:/g" >> userclasses.sed
 
 
 echo -e "\n//All global finals (consts) from Processing files" >> local.h

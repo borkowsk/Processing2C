@@ -12,7 +12,7 @@ using namespace Processing;
 
 // Agent is a one of two central class of each ABM model
 ///////////////////////////////////////////////////////////////
-class Agent {
+class Agent: public virtual Object{
   public:
   int   state;
   float immunity;//Zamiast PTransfer!

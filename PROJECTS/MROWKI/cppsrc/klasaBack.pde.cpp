@@ -10,7 +10,7 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-class Back {
+class Back: public virtual Object{
   public:
   float id;  //jaki rodzaj nawierzchni
   float p_follow;  //ile feromonu jest, jak chętnie będą iść

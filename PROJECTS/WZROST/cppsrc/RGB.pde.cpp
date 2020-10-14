@@ -14,7 +14,7 @@ using namespace Processing;
 ////////////////////////
 int RGB_Counter=0;/// Globalny licznik obiektów typu RGB
 
-class RGB {
+class RGB: public virtual Object{
   public:
   ///Info: obiekt przykładowy z polami Red,Green,Blue
   int R,G,B;

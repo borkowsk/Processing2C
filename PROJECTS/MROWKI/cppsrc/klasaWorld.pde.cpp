@@ -22,7 +22,7 @@ int foodSupply;  /// początkowa ilość jedzenia w gnieździe
 int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
 
 
-class World {
+class World: public virtual Object{
   public:
   smatrix<pBack> backWorld;  
   smatrix<pAnt> antsWorld;  

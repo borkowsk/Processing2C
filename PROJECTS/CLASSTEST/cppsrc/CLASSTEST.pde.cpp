@@ -14,26 +14,26 @@ using namespace Processing;
 ///////////////////////////////////////////////////////////////////////////
 
 //interface
-class Mew : virtual public Object {
+class Mew: public virtual Object{
   public:
     virtual void meow(int l)=0;
 };
 
 //interface
-class Eat : virtual public Object {
+class Eat: public virtual Object{
   public:
     virtual void eat(int l)=0;
 };
 
 //abstract
- class Animal : virtual public Object{
-   public:
+class Animal: public virtual Object{
+  public:
     virtual void eat(int l) {
         println(l,"Animal eats"); 
     }
 };
 
-class Cat  : public Animal, public  Mew, public Eat  {
+class Cat : public virtual Animal, public virtual Mew, public virtual Eat , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Cat eats");  
@@ -44,7 +44,7 @@ class Cat  : public Animal, public  Mew, public Eat  {
     }
 };
 
-class Dog : public Animal {
+class Dog : public virtual Animal , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Dog eats");  
@@ -52,7 +52,7 @@ class Dog : public Animal {
 };
 
 /*
-class AnimalFeeder {
+class AnimalFeeder: public virtual Object{
   public:
 //    void feed(ArrayList<Animal> animals) {
 //        for(pAnimal a:animals)

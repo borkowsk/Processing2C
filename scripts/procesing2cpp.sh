@@ -31,16 +31,20 @@ sed -E "s/^(\s*)public/\1public:\n\t/g" |\
 sed -E "s/^(\s*)private/\1private:\n\t/g" |\
 #sed -E 's|\)\s+\{(.+)$|){\n\t\t\1|' |\
 #w deklaracjach klas (działa tylko dla deklaracji klas z { w tej samej linii! )
-sed -E 's|abstract(.+)class(.+)\{|//abstract\n\1class\2\: virtual public Object{|' |\
-sed -E 's|interface(.+)\{|//interface\nclass\1\: virtual public Object {|' |\
+sed -E 's|\s*abstract\s*class(.+)\{|//abstract\nclass\1{|' |\
+sed -E        's|\s*interface(.+)\{|//interface\nclass\1\{|' |\
+sed -E 's|class(.+)\{|class\1\, public virtual Object{|' |\
+sed 's|extends|: public virtual|g' |\
+sed 's|implements|: public virtual|g' |\
+sed 's|\/\*_pubext\*\/|public virtual|g' |\
+sed -E 's|class(.+)(:\s*public\s*virtual\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g' |\
+#gdy nie bylo zadnej klasy bazowej
+sed -E 's|class\s+(\w+)\s*\,\s*public|class \1: public|' |\
 #dodanie public:
 sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
 #...i jak nie ma komentarza
 #sed -E 's|class(\s+)(\w+)(.*)\{|&\npublic:|M' |\ ?????
 #https://serverfault.com/questions/272033/sed-replace-across-multiple-lines
-sed 's|extends|: public|g' |\
-sed 's|implements|: public|g' |\
-sed -E 's|class(.+)(:\s*public)\s*(\w+)\s*(:\s*public)(.*)\{|class\1 \2 \3, public \5 \{|' |\
 #składnia prostych tablic
 sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/' |\
 sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/' |\
@@ -81,7 +85,6 @@ sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
-sed 's|\/\*_pubext\*\/|public|g'|\
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
@@ -91,14 +94,14 @@ sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
-#??? TODO
-sed 's|import java.util.Collections;|/*java.util.Collections*/|' |\
+sed 's/import java.util.Collections;/#include\<algorithm\>/' |\
 #POJEDYNCZE FUNKCJE O ZNACZENIU SPECJALNYM
 sed "s/void setup()/void processing_window::setup()/g" |\
 sed "s/void draw()/void processing_window::draw()/g" |\
 sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
 sed "s/void exit()/void processing_window::exit()/g" |\
 sed "s/super::exit();/processing_window_base::exit();/g" |\
+sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów

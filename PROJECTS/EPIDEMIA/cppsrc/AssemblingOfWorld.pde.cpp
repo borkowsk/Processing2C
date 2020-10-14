@@ -14,7 +14,7 @@ using namespace Processing;
 ///////////////////////////////////////////////////////////////
 int StepCounter=0;//GLOBALNY LICZNIK KROKÓW SYMULACJI
 
-class World {
+class World: public virtual Object{
   public:
   //sarray<pAgent> agents;//JEDNOWYMIAROWA TABLICA AGENTÓW
   //OR

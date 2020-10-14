@@ -10,7 +10,7 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-class Ant {
+class Ant: public virtual Object{
   public:
   float id, trailS; 
   //id - numerek w tablicy mrówek, trails - ile szlaku zostawia
