@@ -70,6 +70,13 @@ void saveFrame(const char* filename)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+long Object::hashCode() const
+///	returns the hashcode number for this object
+{
+    std::cout<<__FUNCTION__<<" - not implemented! "<<std::endl;
+    return (size_t)this;
+}
+
 }//END of namespace Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-09-02                   */

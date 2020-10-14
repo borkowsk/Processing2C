@@ -64,16 +64,25 @@ void setup()
    
     
 
-    //if (animal instanceof Cat) { //downcast with check
+    if (animal instanceof Cat) { //downcast with check
+      println("This animal is a cat");
     //    (/*_downcast*/(Cat)( animal ) ).meow(6);
-    //}
+    }
     
     animal = new Dog();
     animal.eat(7);    
     
-//    if (animal instanceof Cat) { //downcast with check
+    if (animal instanceof Cat) { //downcast with check
+      println("This animal is a cat");
 //        ((Cat) animal).meow(8); /// Does not happen
-//    }
+    }
+    
+    if (animal instanceof Dog) { //Type check
+      println("This animal is a dog");
+    }
+    
+    //if( Dog instanceof Animal ) //Tak w Processingu nie działa
+    //  println("Any dog is an animal");
 
     //Polymorphism
     //ArrayList<Animal> animals = new ArrayList<Animal>();

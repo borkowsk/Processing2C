@@ -12,8 +12,12 @@ namespace Processing
 
 class Object
 {
- public:
+  ///INFO: see https://www.javatpoint.com/object-class
+  public:
     virtual ~Object(){}
+    virtual long hashCode() const;///	returns the hashcode number for this object
+    virtual bool equals(const Object& obj) const///	compares the given object to this object.
+    { return this==&obj; }
 };
 
 template<class T>
@@ -46,25 +50,11 @@ class ptr:public std::shared_ptr<T>
 
 typedef ptr<Object> pObject;
 
-/*
-template<class T>
-class processing_cast:public std::shared_ptr<T>
+template<typename Base, typename T> //inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
+inline bool instanceof(ptr<T>& p)
 {
-  public:
-    processing_cast(T* ini):std::shared_ptr<T>(ini){}//from raw pointer for new T
-
-    //template<class B>
-    //processing_cast(ptr<B>& ini):std::shared_ptr<T>(std::shared_ptr<B>(ini)){}
-
-    //operator ptr<T> () { return this->get();}
-    T* operator -> () { return this->get();}
-    //operator T& ();
-};
-*/
-
-// Pojawił się problem z kompilatorem
-//https://stackoverflow.com/questions/63314333/strange-behavior-of-gcc-are-c-object-definitions-with-and-equal-or-not
-//Użyłem klasy std::shared_ptr jako bazy i problem zniknął
+   return dynamic_cast<Base*>(p.get())!=nullptr;
+}
 
 template<class T>
 /*interface*/ class Comparable
@@ -86,7 +76,6 @@ class array
       array(size_t N): length{N} { _ptr = new T[N]; }
       T& operator [] (size_t i) { return _ptr[i]; }
 };
-
 
 template<class T>
 class sarray:public ptr< array<T> >

@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -85,16 +85,25 @@ void processing_window::setup()
    
     
 
-    //if (animal instanceof Cat) { //downcast with check
+    if (instanceof< Cat >( animal )) { //downcast with check
+      println("This animal is a cat");
     //    (processing_cast<Cat>( animal ) ).meow(6);
-    //}
+    }
     
     animal = new Dog();
     animal->eat(7);    
     
-//    if (animal instanceof Cat) { //downcast with check
+    if (instanceof< Cat >( animal )) { //downcast with check
+      println("This animal is a cat");
 //        ((Cat) animal).meow(8); /// Does not happen
-//    }
+    }
+    
+    if (instanceof< Dog >( animal )) { //Type check
+      println("This animal is a dog");
+    }
+    
+    //if( instanceof< Animal >( Dog ) ) //Tak w Processingu nie działa
+    //  println("Any dog is an animal");
 
     //Polymorphism
     //sArrayList<Animal> animals = new ArrayList<Animal>();
@@ -103,5 +112,5 @@ void processing_window::setup()
     //pAnimalFeeder feeder=new AnimalFeeder();
     //feeder->feed(animals);
 }
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 
