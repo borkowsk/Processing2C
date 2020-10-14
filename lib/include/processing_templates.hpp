@@ -26,15 +26,25 @@ class ptr:public std::shared_ptr<T>
   ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
   public:
       ~ptr(){}// Zwalnianie zasobów
+
       //Konstruktory
-      ptr():std::shared_ptr<T>(nullptr){}  //empty
-      ptr(T* ini):std::shared_ptr<T>(ini){}//from raw pointer for new T
+      ptr():std::shared_ptr<T>(nullptr){}     //empty
+
+      ptr(nullptr_t p):std::shared_ptr<T>(p){}//visible empty
+
+      ptr(T* ini):std::shared_ptr<T>(ini){}   //from raw pointer for new T
+
       template<class B>
-      ptr(ptr<B>& ini):std::shared_ptr<T>(ini){}//Konwersja z ptr<> do typów pochodnych? TODO CHECK???
-      //ptr(ptr<T>& other):_ptr(other._ptr){}
-      //ptr<T>& operator = (ptr<T>& other);
-      //ptr<T>& operator = (T* other);
-      //ptr<T>& operator = (nullptr_t);
+      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini){}//from dynamic_pointer_cast
+
+      template<class B>
+      ptr(ptr<B>& ini):std::shared_ptr<T>(ini){}//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+
+      //using std::shared_ptr<T>::operator = ;//kipisz!!!
+
+      ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
+      ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
+      ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
 
       //bool operator == (const ptr<T>&) const;
       //bool operator != (const ptr<T>&) const;
@@ -42,7 +52,7 @@ class ptr:public std::shared_ptr<T>
       bool operator != (T* p) const { return this->get()!=p;}
       bool operator == (std::nullptr_t p) const { return this->get()==p;}
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
-      //bool operator != (T*) const;
+
       T* operator -> () { return this->get();}
       operator T& () { return *(this->get());}
       //operator T* () { return *(this->get());}

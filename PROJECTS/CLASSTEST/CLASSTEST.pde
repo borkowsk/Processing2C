@@ -43,45 +43,61 @@ class AnimalFeeder {
 void setup()
 {
     size(150,100);
-    //Object object = new Animal(); //OK
-    Cat cat = new Cat();//OK
+    Object object = new Cat();
+    Cat cat = /*_downcast*/(Cat)(object);//Second parentheses required
+    cat.meow(0);
+    //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+                 //error: ambiguous overload for ‘operator=’ 
+                 //operand types are ‘Processing::pObject (aka Processing::ptr<Processing::Object>)’ and ‘pCat (aka Processing::ptr<Cat>)’
+    object = /*_upcast*/(Object)(cat);//works using static_cast in C++
+    object = /*_downcast*/(Object)(cat);//works using dynamic_cast in C++
+    
     Mew mew = new Cat();
-    Object obj=new Cat();
-    mew = cat;
     mew.meow(1);
+    //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+              //error: ambiguous overload for ‘operator=’ 
+              //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
+    mew = /*_upcast*/(Mew)(cat);//works using COMPILE TIME static_cast in C++
+    mew = /*_downcast*/(Mew)(cat);//dynamic_cast is usualy resolved at RUN TIME
+    
+    mew.meow(2);
     
     Animal animal = cat;//OK
-    //animal = /*_downcast*/(Cat)( mew );
-    animal.eat(2);
-    
-    //animal = /*_downcast*/(Animal)( cat );//OK
-    
+    //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+    animal = /*_upcast*/(Animal)( cat );//use static_cast in C++
     animal.eat(3);
-//  animal.meow(4); /// The method meow() is undefined for the type Animal
-    //Cat ancat=/*_downcast*/(Cat)( animal );
-    //ancat.meow(4);
-    //(/*_downcast*/(Cat)( animal ) ).meow(5);// downcast is needed 
-   
     
-
+    //animal = mew;//Not work in Processing, also in C++ does not
+    //animal = (Cat) mew;//Work in Processing, in C++ does not
+    //animal = (Animal) mew;//Work in Processing, in C++ does not
+    //animal = /*_upcast*/(Animal)( mew );//in Processing same as below, but not in C++
+    animal = /*_downcast*/(Animal)( mew );//With _downcast work always
+    animal.eat(4);
+    
+//  animal.meow(4); ///Error: The method meow() is undefined for the type Animal
+    
+    Cat ancat=/*_downcast*/(Cat)( animal );
+    ancat.meow(5);
+    (/*_downcast*/(Cat)( animal ) ).meow(6);//Second parentheses required
+   
     if (animal instanceof Cat) { //downcast with check
       println("This animal is a cat");
-    //    (/*_downcast*/(Cat)( animal ) ).meow(6);
+      (/*_downcast*/(Cat)( animal ) ).meow(7);
     }
     
     animal = new Dog();
-    animal.eat(7);    
+    animal.eat(8);    
     
     if (animal instanceof Cat) { //downcast with check
       println("This animal is a cat");
-//        ((Cat) animal).meow(8); /// Does not happen
+      (/*_downcast*/(Cat)(animal) ).meow(9); /// Does not happen
     }
     
-    if (animal instanceof Dog) { //Type check
+    if ( animal instanceof Dog ) { //Type check
       println("This animal is a dog");
     }
     
-    //if( Dog instanceof Animal ) //Tak w Processingu nie działa
+    //if ( Dog instanceof Animal ) //Does not work both in Processing & in C++
     //  println("Any dog is an animal");
 
     //Polymorphism

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
@@ -64,45 +64,61 @@ class AnimalFeeder {
 void processing_window::setup()
 {
     size(150,100);
-    //pObject object= new Animal(); //OK
-    pCat cat= new Cat();//OK
+    pObject object= new Cat();
+    pCat cat= std::dynamic_pointer_cast<Cat>(object);//Second parentheses required
+    cat->meow(0);
+    //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+                 //error: ambiguous overload for ‘operator=’ 
+                 //operand types are ‘Processing::pObject (aka Processing::ptr<Processing::Object>)’ and ‘pCat (aka Processing::ptr<Cat>)’
+    object = static_cast<pObject>(cat);//works using static_cast in C++
+    object = std::dynamic_pointer_cast<Object>(cat);//works using dynamic_cast in C++
+    
     pMew mew= new Cat();
-    pObject obj=new Cat();
-    mew = cat;
     mew->meow(1);
+    //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+              //error: ambiguous overload for ‘operator=’ 
+              //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
+    mew = static_cast<pMew>(cat);//works using COMPILE TIME static_cast in C++
+    mew = std::dynamic_pointer_cast<Mew>(cat);//dynamic_cast is usualy resolved at RUN TIME
+    
+    mew->meow(2);
     
     pAnimal animal= cat;//OK
-    //animal = processing_cast<Cat>( mew );
-    animal->eat(2);
-    
-    //animal = processing_cast<Animal>( cat );//OK
-    
+    //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
+    animal = static_cast<pAnimal>( cat );//use static_cast in C++
     animal->eat(3);
-//  animal->meow(4); /// The method meow() is undefined for the type Animal
-    //pCat ancat=processing_cast<Cat>( animal );
-    //ancat->meow(4);
-    //(processing_cast<Cat>( animal ) ).meow(5);// downcast is needed 
-   
     
-
+    //animal = mew;//Not work in Processing, also in C++ does not
+    //animal = (Cat) mew;//Work in Processing, in C++ does not
+    //animal = (Animal) mew;//Work in Processing, in C++ does not
+    //animal = static_cast<pAnimal>( mew );//in Processing same as below, but not in C++
+    animal = std::dynamic_pointer_cast<Animal>( mew );//With _downcast work always
+    animal->eat(4);
+    
+//  animal->meow(4); ///Error: The method meow() is undefined for the type Animal
+    
+    pCat ancat=std::dynamic_pointer_cast<Cat>( animal );
+    ancat->meow(5);
+    (std::dynamic_pointer_cast<Cat>( animal ) )->meow(6);//Second parentheses required
+   
     if (instanceof< Cat >( animal )) { //downcast with check
       println("This animal is a cat");
-    //    (processing_cast<Cat>( animal ) ).meow(6);
+      (std::dynamic_pointer_cast<Cat>( animal ) )->meow(7);
     }
     
     animal = new Dog();
-    animal->eat(7);    
+    animal->eat(8);    
     
     if (instanceof< Cat >( animal )) { //downcast with check
       println("This animal is a cat");
-//        ((Cat) animal).meow(8); /// Does not happen
+      (std::dynamic_pointer_cast<Cat>(animal) )->meow(9); /// Does not happen
     }
     
-    if (instanceof< Dog >( animal )) { //Type check
+    if ( instanceof< Dog >( animal ) ) { //Type check
       println("This animal is a dog");
     }
     
-    //if( instanceof< Animal >( Dog ) ) //Tak w Processingu nie działa
+    //if ( instanceof< Animal >( Dog ) ) //Does not work both in Processing & in C++
     //  println("Any dog is an animal");
 
     //Polymorphism
@@ -112,5 +128,5 @@ void processing_window::setup()
     //pAnimalFeeder feeder=new AnimalFeeder();
     //feeder->feed(animals);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

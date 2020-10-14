@@ -82,7 +82,8 @@ sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed 's|\/\*_pubext\*\/|public|g'|\
-sed -E 's|\/\*_downcast\*\/\((\w+)\)|processing_cast\<\1\>|g' |\
+sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
+sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
@@ -106,6 +107,7 @@ sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
 #sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
 sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 sed -E 's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]->\1/g' |\
+sed -E 's/\)\.([_a-zA-Z][_a-zA-Z0-9]*)/)->\1/g' |\
 sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 #Odbezpieczenie nazw plików
 sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
