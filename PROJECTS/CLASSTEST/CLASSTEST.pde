@@ -31,14 +31,14 @@ class Dog extends Animal {
     }
 };
 
-/*
+
 class AnimalFeeder {
-//    void feed(ArrayList<Animal> animals) {
-//        for(Animal a:animals)
-//            a.eat(0);
-//        }
-//};
-*/
+    void feed(ArrayList<Animal> animals) {
+        for(Animal a:animals)
+            a.eat(10);
+        }
+};
+
 
 void setup()
 {
@@ -101,9 +101,9 @@ void setup()
     //  println("Any dog is an animal");
 
     //Polymorphism
-    //ArrayList<Animal> animals = new ArrayList<Animal>();
-    //animals.add(new Cat());
-    //animals.add(new Dog());
-    //AnimalFeeder feeder=new AnimalFeeder();
-    //feeder.feed(animals);
+    ArrayList<Animal> animals = new ArrayList<Animal>();
+    animals.add(new Cat());
+    animals.add(new Dog());
+    AnimalFeeder feeder=new AnimalFeeder();
+    feeder.feed(animals);
 }

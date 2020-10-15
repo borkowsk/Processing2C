@@ -62,7 +62,9 @@ sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
 #listy obiektów np.
 #ArrayList<Link> connections;
 #connections=new ArrayList<Link>();
-sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([,;:=])|sArrayList<\1\2\3>\4\5\6\7|g' |\
+sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([\),;:=])|sArrayList<p\2>\4\5\6\7|g' |\
+sed -E 's|new(\s+)ArrayList<(\s*)(\w+)(\s*)>|new ArrayList<p\3>|g' |\
+#sed -E 's|ArrayList<(\s*)(\w+)(\s*)>|sArrayList<p\2>|g' |\
 #modyfikacja składni asercji - chyba spacje po assert zbędne
 #sed -E 's|assert (.+);|assert(\1);|g'
 sed -E 's|assert (.+):|assert \1; // |g' |\
@@ -114,9 +116,10 @@ sed -E 's/\)\.([_a-zA-Z][_a-zA-Z0-9]*)/)->\1/g' |\
 sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
 #Odbezpieczenie nazw plików
 sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
+#jeśli przypadkiem któryś z typów podstawowych zostanie potraktowany jako object w <> szablonu:
+sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
-
 #echo 's/"(.+)\.(.+)"/buuulba/g' 1>&2
 echo -e "//$0 did it\n"
 

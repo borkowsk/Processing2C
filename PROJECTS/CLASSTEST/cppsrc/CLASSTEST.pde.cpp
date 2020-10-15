@@ -54,9 +54,9 @@ class Dog : public virtual Animal , public virtual Object{
 
 class AnimalFeeder: public virtual Object{
   public:
-    void feed(ArrayList<pAnimal> animals) {
+    void feed(sArrayList<pAnimal> animals) {
         for(pAnimal a:animals)
-            a->eat(0);
+            a->eat(10);
         }
 };
 
@@ -80,9 +80,9 @@ void processing_window::setup()
               //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
     mew = static_cast<pMew>(cat);//works using COMPILE TIME static_cast in C++
     mew = std::dynamic_pointer_cast<Mew>(cat);//dynamic_cast is usualy resolved at RUN TIME
-
+    
     mew->meow(2);
-
+    
     pAnimal animal= cat;//OK
     //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
     animal = static_cast<pAnimal>( cat );//use static_cast in C++
@@ -123,10 +123,10 @@ void processing_window::setup()
 
     //Polymorphism
     sArrayList<pAnimal> animals = new ArrayList<pAnimal>();
-    //animals->add(new Cat());
-    //animals->add(new Dog());
-    //pAnimalFeeder feeder=new AnimalFeeder();
-    //feeder->feed(animals);
+    animals->add(new Cat());
+    animals->add(new Dog());
+    pAnimalFeeder feeder=new AnimalFeeder();
+    feeder->feed(animals);
 }
 //../../scripts/procesing2cpp.sh did it
 
