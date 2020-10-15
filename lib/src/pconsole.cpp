@@ -28,11 +28,11 @@ void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _
            _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8)
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
-    if(_p4) std::cout<<' '<<_p4;
-    if(_p5) std::cout<<' '<<_p5;
-    if(_p6) std::cout<<' '<<_p6;
-    if(_p7) std::cout<<' '<<_p7;
-    if(_p8) std::cout<<' '<<_p8;
+    if(_p4.notEmpty()) std::cout<<' '<<_p4;
+    if(_p5.notEmpty()) std::cout<<' '<<_p5;
+    if(_p6.notEmpty()) std::cout<<' '<<_p6;
+    if(_p7.notEmpty()) std::cout<<' '<<_p7;
+    if(_p8.notEmpty()) std::cout<<' '<<_p8;
 }
 
 void println()
@@ -60,11 +60,11 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
 
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
-    if(_p4) std::cout<<' '<<_p4;
-    if(_p5) std::cout<<' '<<_p5;
-    if(_p6) std::cout<<' '<<_p6;
-    if(_p7) std::cout<<' '<<_p7;
-    if(_p8) std::cout<<' '<<_p8;
+    if(_p4.notEmpty()) std::cout<<' '<<_p4;
+    if(_p5.notEmpty()) std::cout<<' '<<_p5;
+    if(_p6.notEmpty()) std::cout<<' '<<_p6;
+    if(_p7.notEmpty()) std::cout<<' '<<_p7;
+    if(_p8.notEmpty()) std::cout<<' '<<_p8;
     std::cout<<std::endl;
 }
 

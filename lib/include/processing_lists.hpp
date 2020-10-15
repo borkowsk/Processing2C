@@ -61,7 +61,10 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
     {
         String ret=String("Size:")+nf(this->size(),3)+String(" [");
         for(const T& val:*this)
-            ret+=val+String(" ");
+        {
+            ret+=val;
+            ret+=" ";
+        }
         ret+=String("]");
         return ret;
     }

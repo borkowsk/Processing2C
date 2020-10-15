@@ -29,52 +29,67 @@ namespace Processing
 /// Classes
 /////////////////////////////////////////////////////////////
 
+  class _string_param;//Zapowiadająca
+
   class String:public std::string
   {
     ///INFO:
     public:
+      friend class Processing::_string_param;
       //virtual ???
       ~String();//??? Na pewno potrzebne?
       String(){}
       String(const char* str):std::string(str){}
+      String(nullptr_t):String(){}
+      String(const void* );
       String(char  c);
       String(const std::string& str):std::string(str){}
       String(const String&);
+      template<class T>
+      String(const ptr<T> p):String((void*)p.get()){}
 
       String* operator -> () //Utożsamia operator -> z operatorem . dla tego typu!!!
       { return this; }//Sam z siebie robi pointer na siebie :-D HACK!!!
 
       bool  equals(const char* wz) { return this->compare(wz)==0;}
-      operator bool () { return this->c_str()!=nullptr; }
+      //operator bool () { return this->c_str()!=nullptr; }
+      bool  notEmpty() { return this->c_str()!=nullptr; }
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
-      String& operator += (const String&);
-      String& operator += (int);
-      String& operator += (float);
-      String& operator += (double);
-      String& operator += (bool);
-      String& operator += (void*);
-      String operator  + (const String&) const;
-      String operator  + (char) const;
-      String operator  + (int) const;
-      String operator  + (float) const;
-      String operator  + (double) const;
-      String operator  + (bool) const;
-      String operator  + (void*) const;
-      template<class X>
-      String operator  + (ptr<X>& p) const;
+
+      //String& operator += (const String&);
+      String& operator += (_string_param);
+      //String& operator += (int);
+      //String& operator += (float);
+      //String& operator += (double);
+      //String& operator += (bool);
+      //String& operator += (void*);
+
+      //template<class X>
+      //String& operator += (const ptr<X>&);
+
+      //String operator  + (const String&) const;
+      String operator  + (_string_param) const;
+      //String operator  + (char) const;
+      //String operator  + (int) const;
+      //String operator  + (float) const;
+      //String operator  + (double) const;
+      //String operator  + (bool) const;
+      //String operator  + (void*) const;
+
+      //template<class X>
+      //String operator  + (const ptr<X>& p) const;
   };
 
-   String operator  + (int,const String&);
-   String operator  + (float,const String&);
-   String operator  + (double,const String&);
-   String operator  + (bool,const String&);
+   String operator  + (_string_param,const String&);
+   //String operator  + (int,const String&);
+   //String operator  + (float,const String&);
+   //String operator  + (double,const String&);
+   //String operator  + (bool,const String&);
 
-   template<class X>
-   String& operator + (String&,ptr<X>);
+   //template<class X>
+   //String& operator + (const ptr<X>&,String&);
 
-   template<class X>
-   String& operator += (String&,ptr<X>);
 
    /*interface*/ class _self_printable
    {
@@ -110,6 +125,7 @@ namespace Processing
         _string_param(float  p);
         _string_param(int    p);
         _string_param(const void*  p);
+
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
         //operator String& () {return *(String*)this;}
@@ -327,7 +343,8 @@ namespace Processing
 
   inline String FloatList::print() const
   {
-      String ret=String("Size:")+size()+String(" [");
+      String ret=String("Size:")+size();
+      ret+=String(" [");
       for(float val:*this)
           ret+=val+String(" ");
       ret+=String("]");

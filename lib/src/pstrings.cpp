@@ -35,12 +35,7 @@ bool String::operator != (nullptr_t)
     return !empty();
 }
 
-String& String::operator += (const String& v)
-{
-    std::string::operator += (v.c_str());
-    return *this;
-}
-
+/*
 String String::operator  + (const String& v) const
 {
     std::string tmp(this->c_str());
@@ -53,28 +48,7 @@ String String::operator  + (char v) const
     String tmp(v);
     return tmp;
 }
-
-_string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
-{
-#ifdef DEBUG
-    std::cerr<<__FUNCTION__<<" called!"<<std::endl;
-#endif
-}
-
-_string_param::_string_param(char p):String( p )
-{}
-
-_string_param::_string_param(double p):String( std::to_string(p) )
-{}
-
-_string_param::_string_param(float  p):String( std::to_string(p) )
-{}
-
-_string_param::_string_param(int    p):String( std::to_string(p) )
-{}
-
-_string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )
-{}
+*/
 
 }//END of namespace Processing
 /********************************************************************/

@@ -7,6 +7,32 @@
 namespace Processing
 {
 
+String& String::operator += (_string_param v)
+{
+    (*this)=v;return *this;
+}
+
+String String::operator  + (_string_param v) const
+{
+    String ret=(*this);
+    ret+=v;
+    return ret;
+}
+
+String operator  + (_string_param v,const String& s)
+{
+    String ret=v;
+    ret+=s;
+    return ret;
+}
+
+/*
+String& String::operator += (const String& v)
+{
+    std::string::operator += (v.c_str());
+    return *this;
+}
+
 String& String::operator += (int v)
 {
     (*this)+=nf(v);return *this;
@@ -21,6 +47,7 @@ String& String::operator += (double v)
 {
     (*this)+=nf(v);return *this;
 }
+
 
 String String::operator  + (int v) const
 {
@@ -63,6 +90,29 @@ String operator  + (double v,const String& self)
     tmp+=self.c_str();
     return tmp;
 }
+*/
+
+_string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
+{
+#ifdef DEBUG
+    std::cerr<<__FUNCTION__<<" called!"<<std::endl;
+#endif
+}
+
+_string_param::_string_param(char p):String( p )
+{}
+
+_string_param::_string_param(double p):String( std::to_string(p) )
+{}
+
+_string_param::_string_param(float  p):String( std::to_string(p) )
+{}
+
+_string_param::_string_param(int    p):String( std::to_string(p) )
+{}
+
+_string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )
+{}
 
 //DLA bool
 /*

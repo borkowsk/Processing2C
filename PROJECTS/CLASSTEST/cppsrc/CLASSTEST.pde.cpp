@@ -51,15 +51,15 @@ class Dog : public virtual Animal , public virtual Object{
     }
 };
 
-/*
+
 class AnimalFeeder: public virtual Object{
   public:
-//    void feed(ArrayList<Animal> animals) {
-//        for(pAnimal a:animals)
-//            a->eat(0);
-//        }
-//};
-*/
+    void feed(ArrayList<pAnimal> animals) {
+        for(pAnimal a:animals)
+            a->eat(0);
+        }
+};
+
 
 void processing_window::setup()
 {
@@ -80,9 +80,9 @@ void processing_window::setup()
               //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
     mew = static_cast<pMew>(cat);//works using COMPILE TIME static_cast in C++
     mew = std::dynamic_pointer_cast<Mew>(cat);//dynamic_cast is usualy resolved at RUN TIME
-    
+
     mew->meow(2);
-    
+
     pAnimal animal= cat;//OK
     //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
     animal = static_cast<pAnimal>( cat );//use static_cast in C++
@@ -122,7 +122,7 @@ void processing_window::setup()
     //  println("Any dog is an animal");
 
     //Polymorphism
-    //sArrayList<Animal> animals = new ArrayList<Animal>();
+    sArrayList<pAnimal> animals = new ArrayList<pAnimal>();
     //animals->add(new Cat());
     //animals->add(new Dog());
     //pAnimalFeeder feeder=new AnimalFeeder();
