@@ -46,8 +46,9 @@ class ptr:public std::shared_ptr<T>
       ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
       ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
 
-      //bool operator == (const ptr<T>&) const;
-      //bool operator != (const ptr<T>&) const;
+      bool equals(const ptr<T>& p) const { return this->get()==p.get();}//Same object pointed
+      //bool operator == (const ptr<T>& p) const { return this->equals(p);}
+      //bool operator != (const ptr<T>& p) const { return this->equals(p);}
       bool operator == (T* p) const { return this->get()==p;}
       bool operator != (T* p) const { return this->get()!=p;}
       bool operator == (std::nullptr_t p) const { return this->get()==p;}

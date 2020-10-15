@@ -30,7 +30,7 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
     bool remove(const T& o)
     {
        for (auto it = begin(); it != end(); )
-         if(it.equal(o))
+         if(it->equals(o))
          {
            this->erase(it);
            return true;
@@ -47,7 +47,7 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
     //the element in the array immediately following the end of the collection is set to null.
     //(This is useful in determining the length of the list only if the caller knows that the list does not contain any null elements.)
     {
-        if(a.length!=this->size())
+        if(a.length()!=this->size())
             a=new array<T>(this->size());
 
         int i=0;

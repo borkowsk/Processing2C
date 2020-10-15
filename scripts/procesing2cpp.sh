@@ -98,15 +98,20 @@ sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
 sed 's/import java.util.Collections;/#include\<algorithm\>/' |\
 #POJEDYNCZE FUNKCJE O ZNACZENIU SPECJALNYM
-sed "s/void setup()/void processing_window::setup()/g" |\
-sed "s/void draw()/void processing_window::draw()/g" |\
-sed "s/void mouseClicked()/void processing_window::mouseClicked()/g" |\
-sed "s/void exit()/void processing_window::exit()/g" |\
-sed "s/super::exit();/processing_window_base::exit();/g" |\
+sed 's/void setup()/void processing_window::setup()/' |\
+sed 's/void draw()/void processing_window::draw()/' |\
+sed 's/void mouseClicked()/void processing_window::mouseClicked()/' |\
+sed 's/void keyPressed()/void processing_window::keyPressed()/' |\
+sed 's/void exit()/void processing_window::exit()/' |\
+sed 's/super::exit()/processing_window_base::exit()/g' |\
 sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
+sed 's/Integer.parseInt/std::stoi/g' |\
+sed 's/Float.parseFloat/std::stof/g' |\
+#PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów
+#ale sprawia kłopoty w długich konkatenacjach tekstów
 sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
 #WŁAŚCIWA ZAMIANA - próba uniknięcia ingerencji w dyrektywy kompilatora # blokuje podwójne wymiany w linii
 #sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
@@ -120,6 +125,6 @@ sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
 sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
-#echo 's/"(.+)\.(.+)"/buuulba/g' 1>&2
+#echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
 echo -e "//$0 did it\n"
 

@@ -12,6 +12,7 @@
 namespace Processing
 {
 //CHAR CONSTANTS
+const char16_t CODED=65535;
 const char ESC=27;
 
 //SETTINGS CONSTANTS
@@ -51,18 +52,22 @@ const int BOTTOM=103;
 extern int _TEXT_HORIZONTAL_AL;//=LEFT;
 extern int _TEXT_VERTICAL_AL;//=TOP;
 
+class _string_param;//Zapowiadająca
+
 class processing_window_base
 {
   public:
     virtual ~processing_window_base();
     virtual void exit();
     virtual void mouseClicked();
+    virtual void keyPressed();
     virtual void before_setup(int argc, const char *argv[]);
     virtual void setup()=0;//Must be provided!
     virtual void before_draw();//Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
     virtual void draw(){} //EMPTY DRAW()
     virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
     virtual void check_events();//If events are in queue, they are processed
+    virtual void setTitle(_string_param);
 };
 
 extern class processing_window: public processing_window_base
@@ -74,9 +79,12 @@ extern class processing_window: public processing_window_base
   void draw();
   void exit();
   void mouseClicked();
+  void keyPressed();
   friend void loop();
   friend void noLoop();
 } _processing_window_instance;
+
+extern processing_window *const surface;//=&_processing_window_instance;
 
 inline void loop()
 {

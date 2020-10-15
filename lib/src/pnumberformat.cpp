@@ -163,6 +163,27 @@ String nf(double num,int left,int right)
     return String(bufor);
 }
 
+String nfp(double num)
+{
+    char bufor[1024];
+    sprintf(bufor,"%+g",num);
+    return String(bufor);
+}
+
+String nfp(double num,int digits)
+{
+    char bufor[1024];
+    sprintf(bufor,"%+g",num);//TODO int digits
+    return String(bufor);
+}
+
+String nfp(double num,int left,int right)
+{
+    char bufor[1024];
+    sprintf(bufor,"%+g",num);//TODO int left,int right
+    return String(bufor);
+}
+
 String nf(sarray<int> nums)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
@@ -204,6 +225,53 @@ String nf(sarray<double> nums,int digits)
 }
 
 String nf(sarray<double> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+
+
+String nfp(sarray<int> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<int> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<int> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<float> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<float> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<float> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<double> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<double> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfp(sarray<double> nums,int left,int right)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }

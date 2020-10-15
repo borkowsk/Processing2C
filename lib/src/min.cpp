@@ -4,7 +4,7 @@
 
 namespace Processing
 {
-
+/*
 int       min(int a,int b)
 {
         return (a<b?a:b);
@@ -14,7 +14,7 @@ double    min(double a,double b)
 {
         return (a<b?a:b);
 }
-
+*/
 }//END OF NAMESPACE Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-08-19                   */

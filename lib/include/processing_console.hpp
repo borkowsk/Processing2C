@@ -37,6 +37,22 @@ namespace Processing
   String nf(sarray<double> nums,int digits);
   String nf(sarray<double> nums,int left,int right);
 
+  String nfp(double num);
+  String nfp(double num,int digits);
+  String nfp(double num,int left,int right);
+
+  String nfp(sarray<int> nums);
+  String nfp(sarray<int> nums,int digits);
+  String nfp(sarray<int> nums,int left,int right);
+
+  String nfp(sarray<float> nums);
+  String nfp(sarray<float> nums,int digits);
+  String nfp(sarray<float> nums,int left,int right);
+
+  String nfp(sarray<double> nums);
+  String nfp(sarray<double> nums,int digits);
+  String nfp(sarray<double> nums,int left,int right);
+
 }//END of namespace Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-08-19                   */

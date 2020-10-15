@@ -10,6 +10,7 @@
 #include <fstream>
 #include <vector>
 #include <climits>
+#include <algorithm>
 ///
 ///
 ///
@@ -90,6 +91,7 @@ namespace Processing
    //template<class X>
    //String& operator + (const ptr<X>&,String&);
 
+   extern sarray<String> args;
 
    /*interface*/ class _self_printable
    {
@@ -108,7 +110,6 @@ namespace Processing
        self_printable_ptr<T>& operator = (T* other){ ptr<T>::operator = ((T*)other); return *this;}
        auto begin() { return this->get()->begin(); } //need C++14 !
        auto end()   { return this->get()->end(); } //need C++14 !
-
    };
 
   class _string_param:public String
@@ -124,6 +125,7 @@ namespace Processing
         _string_param(double p);
         _string_param(float  p);
         _string_param(int    p);
+        _string_param(long unsigned int p);
         _string_param(const void*  p);
 
         template<class T>
@@ -144,17 +146,31 @@ namespace Processing
   void text(_string_param str,float x,float y);
   void text(_string_param str,float x1,float y1,float x2,float y2);
 
+  /// String parsing
+  sarray<String> split(_string_param string,_string_param delim);///The split() function breaks a String into pieces
+                                                                 ///using a character or string as the delimiter.
+
   void  randomSeed(int seed);
   double random(double low,double hig);
   inline double random(double hig){return random(0,hig); }
 
+
+  //min & max defined in  header <algorithm>
+  using std::min;
+  using std::max;
+  /*
   int       min(int,int);
   double    min(double,double);
   int       max(int,int);
   double    max(double,double);
   int       max(int,int,int);
   double    max(double,double,double);
-
+*/
+  //often used in processing especially inside graphix functions
+  float     min(int,float);
+  float     min(float,int);
+  float     max(int,float);
+  float     max(float,int);
 
   float map(float value,float start1,float stop1,float start2,float stop2);
   /// Parameters:
@@ -178,10 +194,10 @@ namespace Processing
 
   void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
 
+
   void saveFrame();
-  void saveFrame(const String& filename);
-  void saveFrame(const std::string& filename);
-  void saveFrame(const char* filename);
+  void saveFrame(_string_param filename);
+  void save(_string_param filename);
 
   int year();   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
   int month();  /// The month() function returns the current month as a value from 1 - 12.
@@ -191,6 +207,7 @@ namespace Processing
   int second(); /// The second() function returns the current second as a value from 0 - 59.
   int millis(); /// Returns the number of milliseconds (thousandths of a second) since starting the program.
                 /// This information is often used for timing events and animation sequences.
+
 
 /// File streams
 ////////////////////////////////////////////////////////////////////////
