@@ -7,9 +7,14 @@
 namespace Processing
 {
 
-String& String::operator += (_string_param v)
+String& String::operator = (_string_param v)// inline?
 {
-    (*this)=v;return *this;
+    std::string::operator = (v);return *this;
+}
+
+String& String::operator += (_string_param v)// inline?
+{
+    std::string::operator += (v);return *this;
 }
 
 String String::operator  + (_string_param v) const
@@ -99,48 +104,21 @@ _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy baz
 #endif
 }
 
-_string_param::_string_param(char p):String( p )
+_string_param::_string_param(char p):String( p )// inline?
 {}
 
-_string_param::_string_param(double p):String( std::to_string(p) )
+_string_param::_string_param(double p):String( std::to_string(p) )// inline?
 {}
 
-_string_param::_string_param(float  p):String( std::to_string(p) )
+_string_param::_string_param(float  p):String( std::to_string(p) )// inline?
 {}
 
-_string_param::_string_param(int    p):String( std::to_string(p) )
+_string_param::_string_param(int    p):String( std::to_string(p) )// inline?
 {}
 
-_string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )
+_string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )// inline?
 {}
 
-//DLA bool
-/*
-String& String::operator += (bool v)
-{
-    std::cerr<<__FUNCTION__<<" (1)!"<<std::endl;
-    if(v) (*this)+="true";
-    else  (*this)+="false";
-    return *this;
-}
-
-String String::operator  + (bool v) const
-{
-    std::cerr<<__FUNCTION__<<" (2)!"<<std::endl;
-    String tmp(*this);
-    tmp+=v;
-    return tmp;
-}
-
-String operator  + (bool v,const String& self)
-{
-    std::cerr<<__FUNCTION__<<" (3)!"<<std::endl;
-    String tmp;
-    tmp+=v;
-    tmp+=self.c_str();
-    return tmp;
-}
-*/
 //Funkcje formatujące
 String nf(double num)
 {

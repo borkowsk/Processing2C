@@ -249,18 +249,16 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
     std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
 }
 
-void saveFrame(const String& filename)
+void saveFrame(_string_param filename)
 {
     dump_screen(filename.c_str());
     if(filename.find_first_of('#')!=std::string::npos)
         std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
 }
 
-void saveFrame(const std::string& filename)
+void save(_string_param filename)
 {
     dump_screen(filename.c_str());
-    if(filename.find_first_of('#')!=std::string::npos)
-        std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
 }
 
 }//END of namespace Processing

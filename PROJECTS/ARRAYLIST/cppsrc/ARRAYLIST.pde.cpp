@@ -56,7 +56,8 @@ void processing_window::draw() {
     println(i);
   for(String s:testStr)
     println(s);
-  text(item+String(';')+nums+String(';')+flos, width/2, height/2);
+
+  text(item+String(';')+nums+String(';')+flos, width/2, height/2);//Tu jest error! z int i float znowu :-/
   
 }
 //../../scripts/procesing2cpp.sh did it

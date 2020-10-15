@@ -42,7 +42,6 @@ namespace Processing
       String(){}
       String(const char* str):std::string(str){}
       String(nullptr_t):String(){}
-      String(const void* );
       String(char  c);
       String(const std::string& str):std::string(str){}
       String(const String&);
@@ -58,40 +57,24 @@ namespace Processing
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
 
-      //String& operator += (const String&);
-      String& operator += (_string_param);
-      //String& operator += (int);
-      //String& operator += (float);
-      //String& operator += (double);
-      //String& operator += (bool);
-      //String& operator += (void*);
+      String& operator = (_string_param v);
+      String& operator += (_string_param v);
 
       //template<class X>
       //String& operator += (const ptr<X>&);
 
-      //String operator  + (const String&) const;
       String operator  + (_string_param) const;
-      //String operator  + (char) const;
-      //String operator  + (int) const;
-      //String operator  + (float) const;
-      //String operator  + (double) const;
-      //String operator  + (bool) const;
-      //String operator  + (void*) const;
 
       //template<class X>
       //String operator  + (const ptr<X>& p) const;
   };
 
    String operator  + (_string_param,const String&);
-   //String operator  + (int,const String&);
-   //String operator  + (float,const String&);
-   //String operator  + (double,const String&);
-   //String operator  + (bool,const String&);
 
    //template<class X>
    //String& operator + (const ptr<X>&,String&);
 
-   extern sarray<String> args;
+   extern sarray<String> args;//WHOLE PROGRAM PARAMETERS!!!
 
    /*interface*/ class _self_printable
    {
@@ -121,12 +104,12 @@ namespace Processing
         _string_param(const std::string& p):String(p){}
         _string_param(const char *p):String(p){}
         _string_param(const _self_printable& p):String(p.print()){}
-        _string_param(char p);
+        _string_param(char   p);
         _string_param(double p);
         _string_param(float  p);
         _string_param(int    p);
         _string_param(long unsigned int p);
-        _string_param(const void*  p);
+        explicit _string_param(const void*  p);
 
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
@@ -155,17 +138,34 @@ namespace Processing
   inline double random(double hig){return random(0,hig); }
 
 
-  //min & max defined in  header <algorithm>
-  using std::min;
-  using std::max;
-  /*
-  int       min(int,int);
-  double    min(double,double);
-  int       max(int,int);
-  double    max(double,double);
-  int       max(int,int,int);
-  double    max(double,double,double);
-*/
+  //More sophisticated min & max is defined in header <algorithm>
+  //Use std::min & std::max instead of Processing like version!
+  template<class V>
+  inline V max(V a,V b)
+  {
+     return (a>b?a:b);
+  }
+
+  template<class V>
+  inline V max(V a,V b,V c)
+  {
+     V d=(a>b?a:b);
+     return (c>d?c:d);
+  }
+
+  template<class V>
+  inline V min(V a,V b)
+  {
+     return (a<b?a:b);
+  }
+
+  template<class V>
+  inline V min(V a,V b,V c)
+  {
+     V d=(a<b?a:b);
+     return (c<d?c:d);
+  }
+
   //often used in processing especially inside graphix functions
   float     min(int,float);
   float     min(float,int);
@@ -192,13 +192,11 @@ namespace Processing
   /// stop 	float: second value
   /// amt 	float: float between 0.0 and 1.0
 
-  void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
-
-
   void saveFrame();
   void saveFrame(_string_param filename);
   void save(_string_param filename);
 
+  void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
   int year();   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
   int month();  /// The month() function returns the current month as a value from 1 - 12.
   int day();    /// The day() function returns the current day as a value from 1 - 31.
@@ -207,7 +205,6 @@ namespace Processing
   int second(); /// The second() function returns the current second as a value from 0 - 59.
   int millis(); /// Returns the number of milliseconds (thousandths of a second) since starting the program.
                 /// This information is often used for timing events and animation sequences.
-
 
 /// File streams
 ////////////////////////////////////////////////////////////////////////
@@ -348,7 +345,7 @@ namespace Processing
   inline void  FloatList::append(float what){std::vector<float>::push_back(what);}
   inline void    IntList::append(int what){std::vector<int>::push_back(what);}
   inline void StringList::append(_string_param what){std::vector<Processing::String>::push_back((String)what);}
-  inline void StringList::append(Processing::String& what){std::vector<Processing::String>::push_back(what);}
+  //inline void StringList::append(Processing::String& what){std::vector<Processing::String>::push_back(what);}
 
   inline float   FloatList::get(int index){ return (*this)[index];}
   inline int       IntList::get(int index){ return (*this)[index];}

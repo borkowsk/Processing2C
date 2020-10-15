@@ -58,6 +58,8 @@ int     keyCode;/// The variable keyCode is used to detect special keys such as 
                              /// When checking for these keys, it can be useful to first check if the key is coded.
                              /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 
+sarray<String> args=nullptr;//WHOLE PROGRAM PARAMETERS!!!
+
 void processing_window_base::before_draw()
 {
     _mousePressed=0;
@@ -115,9 +117,26 @@ void processing_window_base::mouseClicked()
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
+void processing_window_base::keyPressed()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void processing_window_base::setTitle(Processing::_string_param)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
     randomSeed(time(nullptr));
+
+    sarray<String> args=new array<String>(argc);//WHOLE PROGRAM PARAMETERS!!!
+    for(int i=0;i<argc;i++)
+    {
+        args[i]=String(argv[i]);//new String(argv[i]);???
+    }
+
     buffering_setup(1);//buffered window!
     fix_size(1);
     set_background(256+200);
