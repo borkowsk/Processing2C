@@ -1,4 +1,8 @@
-// ABM minimum template - using template for AGENT BASE MODEL in 1D & 2D discrete geometry
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: EPIDEMIA.pde
+/////////////////////////////////////////////////////////////////////////////////////////
+// Model of epidemic using template for AGENT BASE MODEL in 1D & 2D discrete geometry
 // implemented by Wojciech Borkowski
 /////////////////////////////////////////////////////////////////////////////////////////
 

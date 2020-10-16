@@ -1,3 +1,8 @@
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaBack.pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 class Back {
   float id;  //jaki rodzaj nawierzchni
   float p_follow;  //ile feromonu jest, jak chętnie będą iść

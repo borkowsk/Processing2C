@@ -1,3 +1,8 @@
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaAnt.pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 class Ant {
   float id, trailS; 
   //id - numerek w tablicy mrówek, trails - ile szlaku zostawia

@@ -10,8 +10,12 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: ModelVisualisation->pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // World full of agents need method of visualisation on screen/window
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
 
 void visualizeAgents(smatrix<pAgent> agents) /// Wizualizacja wszystkich agentów 2D
 {

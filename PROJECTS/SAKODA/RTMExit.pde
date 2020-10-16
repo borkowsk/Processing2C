@@ -1,3 +1,7 @@
+/// ABM model of segregation (test project for Processing2C)
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: RTMExit.pde
+//////////////////////////////////////////////////////////////////////////////////////////
 void exit()          //it is called whenever a window is closed. 
 {
   noLoop();          //For to be sure...

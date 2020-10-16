@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// ABM model of segregation (test project for Processing2C)
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: RTMExit->pde
+//////////////////////////////////////////////////////////////////////////////////////////
 void processing_window::exit()          //it is called whenever a window is closed. 
 {
   noLoop();          //For to be sure...

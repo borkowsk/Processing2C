@@ -10,6 +10,11 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaWorld->pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 int worozmiar = sizew/ws;  ///ile pól jest na świecie
 
 float density = 0.005;  ///ewentualna gęstośc jedzenia rozłożena

@@ -10,6 +10,11 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaBack->pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 class Back: public virtual Object{
   public:
   float id;  //jaki rodzaj nawierzchni

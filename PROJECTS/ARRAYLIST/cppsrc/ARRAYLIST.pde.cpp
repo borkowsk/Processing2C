@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// IntList,FloatList,StringList & ArrayList test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: ARRAYLIST->pde
+////////////////////////////////////////////////////////////////////
 sArrayList<String> testStr=nullptr;
 pStringList        inventory=new StringList();
 pFloatList         inventoryF;
@@ -56,8 +60,7 @@ void processing_window::draw() {
     println(i);
   for(String s:testStr)
     println(s);
-
-  text(item+String(';')+nums+String(';')+flos, width/2, height/2);//Tu jest error! z int i float znowu :-/
+  text(item+String(';')+nums+String(';')+flos, width/2, height/2);
   
 }
 //../../scripts/procesing2cpp.sh did it

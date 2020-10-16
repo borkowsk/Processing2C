@@ -10,6 +10,11 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaAnt->pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 class Ant: public virtual Object{
   public:
   float id, trailS; 

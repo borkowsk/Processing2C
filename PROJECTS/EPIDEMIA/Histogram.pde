@@ -1,5 +1,9 @@
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE:aSimpleHistogram.pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // Bardzo prosty histogram agentów wg jednej właściwości
-/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
 int Max=0;//Max wspólny dla całej symulacji
 
 void histogram(Agent[][] agents,float startx,float starty,float hight) ///Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.

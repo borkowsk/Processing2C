@@ -1,3 +1,7 @@
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: AgentDefinition.pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // Agent is a one of two central class of each ABM model
 ///////////////////////////////////////////////////////////////
 class Agent {

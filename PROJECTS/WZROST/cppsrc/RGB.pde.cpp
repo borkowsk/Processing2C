@@ -10,7 +10,11 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-//TAKA KLASA
+/// Simple model of colony growth with mutations (test project for Processing2C)
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: klasaRGB->pde
+//////////////////////////////////////////////////////////////////////////////////
+// TAKA KLASA
 ////////////////////////
 int RGB_Counter=0;/// Globalny licznik obiektów typu RGB
 

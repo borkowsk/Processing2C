@@ -1,3 +1,8 @@
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: klasaWorld.pde
+/////////////////////////////////////////////
+ //++++++++++++ ZMIENNE ++++++++++++
 int worozmiar = sizew/ws;  ///ile pól jest na świecie
 
 float density = 0.005;  ///ewentualna gęstośc jedzenia rozłożena

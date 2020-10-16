@@ -1,3 +1,7 @@
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: MRÓWKI.pde
+/////////////////////////////////////////////
  //++++++++++++ ZMIENNE ++++++++++++
 
 //świat

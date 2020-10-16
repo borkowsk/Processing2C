@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: aSimpleHistory->pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // Wykres zmian w czasie
 ///////////////////////////////////////////////////////////////
 

@@ -1,5 +1,9 @@
-//Control parameters
-int W=600;
+/// Simple graphics test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: ELIPSY.pde
+////////////////////////////////////////////////////////////////////
+
+int W=600;//Control parameter
 
 int radius()
 {
@@ -10,10 +14,11 @@ int radius()
 void setup()
 {
   size(600,600);
-  frameRate(1000);//Nie za dużo bo Xorg zablokuje kompa!
+  frameRate(500); // draw( ) about 500 times per sec.(if possible!)
+                  //Nie za dużo bo Xorg zablokuje kompa!
 }
 
-//Running - visualisation and dynamics (about 30 times per sec.)
+//Running - visualisation and dynamics
 void draw()
 {
   fill(random(255),random(255),random(255),random(255));

@@ -12,6 +12,7 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
      #echo $LST
      ../../scripts/makeCPPproject.sh
      echo "add_subdirectory( $f )" >> ../CMakeLists.txt
+     git add *.sed
     fi
     popd > /dev/null
   elif [ -f "$f" ]; then

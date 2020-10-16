@@ -10,7 +10,11 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
-// EXAMPLE BORROWED from https://www->baeldung->com/java-type-casting
+/// Class hierarchy test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: CLASSTEST->pde
+///////////////////////////////////////////////////////////////////////////
+// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
 ///////////////////////////////////////////////////////////////////////////
 
 //interface
@@ -51,7 +55,6 @@ class Dog : public virtual Animal , public virtual Object{
     }
 };
 
-
 class AnimalFeeder: public virtual Object{
   public:
     void feed(sArrayList<pAnimal> animals) {
@@ -59,7 +62,6 @@ class AnimalFeeder: public virtual Object{
             a->eat(10);
         }
 };
-
 
 void processing_window::setup()
 {

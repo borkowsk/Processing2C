@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: AssemblingOfWorld->pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // World is a one of two central class of each ABM model
 ///////////////////////////////////////////////////////////////
 int StepCounter=0;//GLOBALNY LICZNIK KROKÓW SYMULACJI

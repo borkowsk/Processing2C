@@ -1,3 +1,7 @@
+/// Sophisticated :-) PCA (Probabilistic Cellular Automaton) model test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: FORESTFIRE.pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // "Forest fire with regeneration" - my private version 
 // Model "pożaru lasu" jest bardzo klasyczny, choć tu mamy wersję autorską
 // z próbą urealnienia stosunków czasowych
@@ -8,7 +12,7 @@ int Week=24*7;    ///how many steps is equivalential to one week?
 float Year=365.5*24;///how many steps is equivalential to one YEAR?
 
 //Model parameters
-int N=300;        ///array side
+int N=100;        ///array side
 
 int FireTimeDiv=50;///How long the tree is burning (divider for size)
 float IgnitionP = 0.10;///Probability of fire transfer
@@ -49,7 +53,7 @@ void setup()
     else
     World[i][j]=0;
    
-  //frameRate(4*week);
+  //frameRate(4*Week);
   frameRate(10001);
   
   noSmooth();

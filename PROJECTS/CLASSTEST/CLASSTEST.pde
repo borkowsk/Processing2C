@@ -1,4 +1,8 @@
-// EXAMPLE BORROWED from https://www.baeldung.com/java-type-casting
+/// Class hierarchy test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: CLASSTEST.pde
+///////////////////////////////////////////////////////////////////////////
+// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
 ///////////////////////////////////////////////////////////////////////////
 
 interface Mew {
@@ -31,14 +35,12 @@ class Dog extends Animal {
     }
 };
 
-
 class AnimalFeeder {
     void feed(ArrayList<Animal> animals) {
         for(Animal a:animals)
             a.eat(10);
         }
 };
-
 
 void setup()
 {

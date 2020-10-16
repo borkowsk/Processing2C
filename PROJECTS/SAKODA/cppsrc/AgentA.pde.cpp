@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// ABM model of segregation (test project for Processing2C)
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: AgentA->pde
+/////////////////////////////////////////////////////////////////////////////////////////
 // Agent is a one of two central class of each ABM model
 //////////////////////////////////////////////////////////////////
 int Number_of_identities=2;/// Ile jest wykluczających się tożsamości

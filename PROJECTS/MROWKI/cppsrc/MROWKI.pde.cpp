@@ -10,6 +10,10 @@ using namespace Processing;
 #include "project.h" //Is's for you. Could be deleted when not needed
 //==================================================================================
 
+/// Agent Base Model adopted for Processing2C
+/// Author: Zofia Cieślińska
+/// ORIGINAL FILE: MRÓWKI->pde
+/////////////////////////////////////////////
  //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
