@@ -25,6 +25,36 @@ double random(double low,double hig)
 
 //inline float random(double hig){return random(0,hig); }
 
+float noise(float x)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+float noise(float x,float  y)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+float noise(float x,float  y,float  z)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void  noiseSeed(int seed)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void noiseDetail(int lod)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void noiseDetail(int lod,float falloff)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 /// Parameters:
 /// value 	float: the incoming value to be converted
 /// start1 	float: lower bound of the value's current range

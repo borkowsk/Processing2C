@@ -119,6 +119,10 @@ namespace Processing
 /// Simple functions
 /////////////////////////////////////////////////
 
+  /// String parsing
+  sarray<String> split(_string_param string,_string_param delim);///The split() function breaks a String into pieces
+                                                                 ///using a character or string as the delimiter.
+
   /// Extended graphix text() & Attributes
   void textAlign(int); /// Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
   void textAlign(int,int);/// and TOP, BOTTOM, CENTER, or BASELINE for vertical
@@ -129,17 +133,69 @@ namespace Processing
   void text(_string_param str,float x,float y);
   void text(_string_param str,float x1,float y1,float x2,float y2);
 
-  /// String parsing
-  sarray<String> split(_string_param string,_string_param delim);///The split() function breaks a String into pieces
-                                                                 ///using a character or string as the delimiter.
+  /// Shapes:
+  /// Using the beginShape() and endShape() functions allow creating more complex forms. beginShape() begins recording vertices for
+  /// a shape and endShape() stops recording. The value of the kind parameter tells it which types of shapes to create from
+  /// the provided vertices. With no mode specified, the shape can be any irregular polygon.
+  /// 	kind int: Either POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, or QUAD_STRIP
+  const int CLOSE=1;
+  void beginShape();
+  void beginShape(int kind);
+  void endShape();
+  void endShape(int mode);/// Parameters	mode 	int: use CLOSE to close the shape
+  /// vertex() is used to specify the vertex coordinates for points, lines, triangles, quads, and polygons. It is used exclusively
+  /// within the beginShape() and endShape() functions.
+  /// Parameters
+  /// v 	float[]: vertex parameters, as a float array of length VERTEX_FIELD_COUNT
+  /// x 	float: x-coordinate of the vertex
+  /// y 	float: y-coordinate of the vertex
+  /// z 	float: z-coordinate of the vertex
+  /// u 	float: horizontal coordinate for the texture mapping
+  /// v 	float: vertical coordinate for the texture mapping
+  void vertex(float x,float y);
+  void vertex(float x,float y,float z);
+  void vertex(float v[]);
+  void vertex(float x,float y,float u,float v);
+  void vertex(float x,float y,float z,float u,float v);
 
-  void  randomSeed(int seed);
+  /// Generates random numbers:
+  /// Each time the random() function is called, it returns an unexpected value within the specified range.
+  /// If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter.
+  /// For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
+  /// If two parameters are specified, the function will return a float with a value between the two values.
+  /// For example, random(-5, 10.2) returns values starting at -5 and up to (but not including) 10.2.
+  /// To convert a floating-point random number to an integer, use the int() function.
   double random(double low,double hig);
-  inline double random(double hig){return random(0,hig); }
+  inline
+  double random(double hig){return random(0,hig); }
+  void   randomSeed(int seed);/// Sets the seed value for random(). By default, random() produces different results each time the program is run.
 
+  /// NOISE:
+  /// Returns the Perlin noise value at specified coordinates. Perlin noise is a random sequence generator
+  /// producing a more natural, harmonic succession of numbers than that of the standard random() function.
+  /// Parameters:
+  /// x 	float: x-coordinate in noise space
+  /// y 	float: y-coordinate in noise space
+  /// z 	float: z-coordinate in noise space
+  /// By default, noise() produces different results each time the program is run. Set the seed parameter
+  /// to a constant to return the same pseudo-random numbers each time the software is run.
+  float noise(float x);
+  float noise(float x,float  y);
+  float noise(float x,float  y,float  z);
+  void  noiseSeed(int seed);/// Parameters	seed 	int: seed value
+  /// Adjusts the character and level of detail produced by the Perlin noise function.
+  /// While any number between 0.0 and 1.0 is valid, note that values greater than 0.5 may result in noise()
+  /// returning values greater than 1.0. By changing these parameters, the signal created by the noise()
+  /// function can be adapted to fit very specific needs and characteristics.
+  /// Parameters:
+  /// lod 	int: number of octaves to be used by the noise
+  /// falloff 	float: falloff factor for each octave
+  void noiseDetail(int lod);
+  void noiseDetail(int lod,float falloff);
 
-  //More sophisticated min & max is defined in header <algorithm>
-  //Use std::min & std::max instead of Processing like version!
+  /// Min & Max functions:
+  /// More sophisticated min & max is defined in header <algorithm>
+  /// Use std::min & std::max instead of Processing like version!
   template<class V>
   inline V max(V a,V b)
   {
@@ -166,12 +222,14 @@ namespace Processing
      return (c<d?c:d);
   }
 
-  //often used in processing especially inside graphix functions
+  /// Mixed type max & min is often used in Processing
+  /// especially inside graphix functions
   float     min(int,float);
   float     min(float,int);
   float     max(int,float);
   float     max(float,int);
 
+  /// Mapping and normalising values:
   float map(float value,float start1,float stop1,float start2,float stop2);
   /// Parameters:
   /// value 	float: the incoming value to be converted
@@ -192,11 +250,13 @@ namespace Processing
   /// stop 	float: second value
   /// amt 	float: float between 0.0 and 1.0
 
+  /// Graphics saving to file
   void saveFrame();
   void saveFrame(_string_param filename);
   void save(_string_param filename);
 
-  void delay(int napTime); /// Parameters:	napTime 	int: milliseconds to pause before running draw() again
+  /// Time counting and manipulatring
+  void delay(int napTime); /// Parameters: int napTime: milliseconds to pause before running draw() again
   int year();   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
   int month();  /// The month() function returns the current month as a value from 1 - 12.
   int day();    /// The day() function returns the current day as a value from 1 - 31.

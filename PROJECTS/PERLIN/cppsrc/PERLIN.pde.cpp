@@ -17,7 +17,8 @@ using namespace Processing;
 // Based on Processing examples for Perlin noise
 // See also: https://en->wikipedia->org/wiki/Perlin_noise
 
-void processing_window::setup() {
+void processing_window::setup() 
+{
   size(200,200);
   //noiseSeed(10);
 }
@@ -30,14 +31,16 @@ void processing_window::draw()
 float xoff = 0.0;
 float yoff = 0.1;   // 2nd dimension of perlin noise
 
-void draw0() {
+void draw0() /// Used before definition
+{
   stroke(random(256),0,0);//stroke(frameCount%256,2*frameCount/100,0);//stroke(0, 10);
   xoff = xoff + .01;
   float n = noise(xoff) * width;
   line(n, 0, n, height);
 }
 
-void draw1() {
+void draw1() /// May be used before definition
+{
   background(255);
   xoff = xoff + .01;
   float n = noise(xoff) * width;
@@ -46,7 +49,8 @@ void draw1() {
 
 float noiseScale = 0.10;
 
-void draw2() {
+void draw2() /// May be used before definition
+{
   background(0);
   for (int x=0; x < width; x++) {
     float noiseVal = noise((mouseX+x)*noiseScale, mouseY*noiseScale);
@@ -55,7 +59,8 @@ void draw2() {
   }
 }
 
-void draw3() {
+void draw3() /// May be used before definition
+{
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width/2; x++) {
       
@@ -73,7 +78,8 @@ void draw3() {
   }
 }
 
-void draw4() { //https://processing->org/examples/noisewave->html
+void draw4() /// May be used before definition
+{ //https://processing->org/examples/noisewave->html
   background(51);
 
   fill(255);

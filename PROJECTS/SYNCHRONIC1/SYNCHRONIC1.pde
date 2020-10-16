@@ -1,11 +1,11 @@
 /// Simple model of synchronization of couple (test project for Processing2C)
 /// Also class demonstration
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// Comments from lecture: Małgorzata Filon
 /// ORIGINAL FILE: synchronizacja1.pde -> SYNCHRONIC1.pde
 //////////////////////////////////////////////////////////////////////////////////
 
-class singiel //typ złożony
-{
+class singiel { //typ złożony
   //pola obiektu czyli dane 
   float x1,x2;
   float r;// wspolczynik kontroli
@@ -22,7 +22,7 @@ class singiel //typ złożony
     x1=x2;
     x2=x1*r*(1-x1);
   }
-}
+};
 
 //zdefiniowaliśmy klasę, teraz jej użyjemy, wspólczynnik spięcia, synchronizacji
 final  float DefaultAlfa=0.0;
@@ -38,9 +38,14 @@ void setup()
  First=new singiel(random(1.0), 3.5+random(0.5), DefaultAlfa);// 3,5 do 5 bo patrzymy na synchronnizacje w chaosie, wtedy jest najciekawsza
  Second=new singiel(random(1.0), 3.5+random(0.5), DefaultAlfa);//dwaa systey od siebie niezależne, wpływając na alfa możemy zwiekszac ich wzajmna synchronizacje
  
- println("1st:",First.x1+" "+First.r+" alfa:"+First.alfa);//uchwyt do biektu, robi za nazwe obiektu, kropka i nazwa pola wiec czytamy nazew pola lub mozna z funkcja
- println("2st:",Second.x1+" "+Second.r+" alfa:"+Second.alfa);
+ println("1st:",First.x1+
+         " "+First.r+
+         " alfa:"+First.alfa);//uchwyt do biektu, robi za nazwe obiektu, kropka i nazwa pola wiec czytamy nazew pola lub mozna z funkcja
+ println("2st:",Second.x1+
+         " "+Second.r+
+         " alfa:"+Second.alfa);
 }
+
 int N=0;
 
 float G=0;
@@ -52,11 +57,12 @@ float scaleY(double X)
   return Ws-(float)X*Ws;
 }
 
-void draw()
+void draw()///
 {
   First.next();
   Second.next();
-  println("1st:",First.x1,"\t2nd:",Second.x1);
+  println("1st:",First.x1,
+          "\t2nd:",Second.x1);
   if(N<2*Ws)
   {
     stroke(Red,0,0,25);
@@ -79,7 +85,8 @@ void draw()
   else
   {
     N=0;
-    println("realFM:",frameRate,"\tX=",First.x1,Second.x2);
+    println("realFM:",frameRate,
+            "\tX=",First.x1,Second.x2);
     First.x2=random(1.0);
     Second.x2=random(1.0);
     G=random(255);B=random(255);Red=random(255);

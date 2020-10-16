@@ -261,6 +261,52 @@ void save(_string_param filename)
     dump_screen(filename.c_str());
 }
 
+void beginShape()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void beginShape(int kind)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void endShape()
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void endShape(int mode)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void vertex(float x,float y)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void vertex(float x,float y,float z)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void vertex(float v[])
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void vertex(float x,float y,float u,float v)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+void vertex(float x,float y,float z,float u,float v)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+
 }//END of namespace Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-09-29                   */
