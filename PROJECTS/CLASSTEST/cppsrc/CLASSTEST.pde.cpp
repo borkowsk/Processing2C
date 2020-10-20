@@ -37,7 +37,7 @@ class Animal: public virtual Object{
     }
 };
 
-class Cat : public virtual Animal, public virtual Mew, public virtual Eat , public virtual Object{
+class Cat : public  Animal, public virtual Mew, public virtual Eat , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Cat eats");  
@@ -48,7 +48,7 @@ class Cat : public virtual Animal, public virtual Mew, public virtual Eat , publ
     }
 };
 
-class Dog : public virtual Animal , public virtual Object{
+class Dog : public  Animal , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Dog eats");  

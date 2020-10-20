@@ -15,9 +15,9 @@ using namespace Processing;
 /// ORIGINAL FILE: ARRAYLIST->pde
 ////////////////////////////////////////////////////////////////////
 sArrayList<String> testStr=nullptr;
-pStringList        inventory=new StringList();
-pFloatList         inventoryF;
-pIntList           inventoryI;
+pStringList inventory=new StringList();
+pFloatList inventoryF;
+pIntList inventoryI;
 
 void processing_window::setup() {
   size(200, 200);
