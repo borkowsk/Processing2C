@@ -23,7 +23,7 @@ echo -e "\nAt least setup() or draw() function expected in *.pde files:"
 egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
 
 echo -e "\nThe following lines may generate conflicts because of used library symbols as user defined names"
-egrep --color -Hn -f ../../scripts/symbols_pattern.grep *.pde
+egrep --color -Hn -f $SCRIPTS/symbols_pattern.grep *.pde
 
 
 #GET GLOBAL SYMBOLS

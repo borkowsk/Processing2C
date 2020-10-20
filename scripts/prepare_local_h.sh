@@ -18,7 +18,7 @@ sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g' | LC_COLLAT
 
 echo "s/([\,\(\s]*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
-echo "FloatList|IntList|StringList|Object)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5/g"  >> userclasses.sed
+echo 'FloatList|IntList|StringList|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed
 
 #TO DZIAŁA NIE TAK JAK BYM CHCIAŁ TODO!!!
 #echo "_@ENTER_" >> userclasses.sed
@@ -68,6 +68,7 @@ sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 #podmiana boolean i String
 sed 's|boolean|bool   |g' |\
 #sed 's|String|std::string|g' |\
+sed 's|\/\*_reference\*\/|\& |g' |\
 sed -E -f userclasses.sed  |\
 sed -E 's|//\s*\{*\s*///|///|' |\
 sed 's|) ;|);|' >> local.h

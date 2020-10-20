@@ -17,9 +17,17 @@ void  randomSeed(int seed)
 static double _denominator=RAND_MAX+1.0;
 double random(double low,double hig)
 {
-    double tmp=low + (rand()/_denominator) * (hig-low);  //???
-    if(tmp==hig)
-            std::cout<<__FUNCTION__<<" - unexpected value "<<tmp<<std::endl;
+    double tmp=low + (rand()/_denominator) * (hig-low);  //???TODO BETTER
+    if( tmp<low )
+    {
+            std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
+            return low;
+    }
+    if( tmp<low || hig<=tmp )
+    {
+            std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
+            return hig-0.00000000001;//????TODO BETTER
+    }
     return tmp;
 }
 

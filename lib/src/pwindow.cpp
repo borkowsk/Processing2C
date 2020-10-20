@@ -33,7 +33,7 @@ int WB_error_enter_before_clean=0;
 
 namespace Processing
 {
-
+processing_window *const surface=&_processing_window_instance;
 const int&   width  =    _width;
 const int&   height =    _height;
 const int&   pixelWidth= _width;
@@ -65,7 +65,6 @@ void processing_window_base::before_draw()
     _mousePressed=0;
     _keyPressed=0;
 }
-
 
 void processing_window_base::after_draw()
 //Calculate frameRate and _INTERNAL_DELAY
@@ -110,6 +109,11 @@ void processing_window_base::exit()
     close_plot();
     //Finishing the whole aplication
     ::exit(0);
+}
+
+void exit()
+{
+    _processing_window_instance.exit();
 }
 
 void processing_window_base::mouseClicked()

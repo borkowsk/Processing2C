@@ -22,11 +22,6 @@ PrintWriter::PrintWriter()
     ptr=nullptr;
 }
 
-void PrintWriter::set(std::fstream* ini)
-{
-    ptr=ini;
-}
-
 PrintWriter::PrintWriter(PrintWriter& w)
 {
     std::cerr<<__FUNCTION__<<" used for ptr="<<(unsigned long long)w.ptr<<std::endl;
@@ -54,7 +49,7 @@ PrintWriter& createWriter(const String& name)
 {
     std::fstream* file=new std::fstream(name);
     static PrintWriter tmp;
-    tmp.set(file);
+    tmp._set(file);
     return tmp;
 }
 
@@ -62,7 +57,7 @@ PrintWriter& createWriter(const char* name)
 {
     std::fstream* file=new std::fstream(name);
     static PrintWriter tmp;
-    tmp.set(file);
+    tmp._set(file);
     return tmp;
 }
 

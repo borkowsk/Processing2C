@@ -4,17 +4,17 @@
 
 namespace Processing
 {
-/*
-int       min(int a,int b)
+
+float min(int a,float b)
 {
         return (a<b?a:b);
 }
 
-double    min(double a,double b)
+float min(float a,int b)
 {
         return (a<b?a:b);
 }
-*/
+
 }//END OF NAMESPACE Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-08-19                   */

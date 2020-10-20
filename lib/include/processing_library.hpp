@@ -37,16 +37,22 @@ namespace Processing
     ///INFO:
     public:
       friend class Processing::_string_param;
+
       //virtual ???
       ~String();//??? Na pewno potrzebne?
+
       String(){}
       String(const char* str):std::string(str){}
       String(nullptr_t):String(){}
+      explicit
       String(char  c);
       String(const std::string& str):std::string(str){}
       String(const String&);
+      String(double v);//:String(){ operator+=(v);}
+      String(const Object* p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
+
       template<class T>
-      String(const ptr<T> p):String((void*)p.get()){}
+      String(const ptr<T> p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
 
       String* operator -> () //Utożsamia operator -> z operatorem . dla tego typu!!!
       { return this; }//Sam z siebie robi pointer na siebie :-D HACK!!!
@@ -69,6 +75,8 @@ namespace Processing
       //String operator  + (const ptr<X>& p) const;
   };
 
+   //String operator  + (_string_param,float); //A lot of conflicts :-(
+   //String operator  + (_string_param,int); //A lot of conflicts :-(
    String operator  + (_string_param,const String&);
 
    //template<class X>
@@ -109,15 +117,36 @@ namespace Processing
         _string_param(float  p);
         _string_param(int    p);
         _string_param(long unsigned int p);
-        explicit _string_param(const void*  p);
+        //explicit
+        _string_param(const void*  p);
 
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
         //operator String& () {return *(String*)this;}
+        String& get() {return *(String*)this;}
   };
+
+  inline String::String(double v):String()
+  {
+      operator+=(v);
+  }
+
+  inline String::String(const Object* p):String("@")
+  {
+      operator+=( (long unsigned int)p );
+  }
+
+  template<class T>
+  inline String::String(const ptr<T> p):String("@")
+  {
+      operator+=( (long unsigned int)p.get() );
+  }
 
 /// Simple functions
 /////////////////////////////////////////////////
+
+  /// nonparametr exit()
+  void exit();
 
   /// String parsing
   sarray<String> split(_string_param string,_string_param delim);///The split() function breaks a String into pieces
@@ -279,14 +308,14 @@ namespace Processing
       //Konstruktory
       PrintWriter();
       PrintWriter(std::nullptr_t& p): PrintWriter(){}
-      PrintWriter(std::fstream* p);
+      PrintWriter(std::fstream* p) { ptr=p;}
       PrintWriter(PrintWriter& );
       PrintWriter(const PrintWriter& );
 
-      void set(std::fstream*);
+      void _set(std::fstream* p)  { ptr=p;} //for createWriter ONLY
       operator std::fstream& () {return *ptr;}
 
-      PrintWriter& operator = (std::fstream* p);
+      PrintWriter& operator = (std::fstream* p) { ptr=p;}
       PrintWriter& operator = (PrintWriter& );
       std::fstream* operator -> ();
       bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
@@ -317,6 +346,8 @@ namespace Processing
      public:
       using     std::vector<float>::begin;
       using     std::vector<float>::end;
+      FloatList(){}
+      FloatList(int initialSize):std::vector<float>(initialSize){}
       int       size() const;// 	Get the length of the list
       void      clear();// 	Remove all entries from the list
       float     get(int index);// 	Get an entry at a particular index

@@ -35,24 +35,25 @@ bool String::operator != (nullptr_t)
     return !empty();
 }
 
-/*
-String String::operator  + (const String& v) const
-{
-    std::string tmp(this->c_str());
-    tmp+=v.c_str();
-    return tmp;
-}
+ sarray<String> split(_string_param string2parse,_string_param delimiter)
+ {
 
-String String::operator  + (char v) const
-{
-    String tmp(v);
-    return tmp;
-}
-*/
-
+     std::cerr<<__FUNCTION__<<"called for:'"
+               <<string2parse.get().c_str()<<"' with delimiter '"
+               <<delimiter.get().c_str()<<"'"<<std::endl;
+     //Calculate number of strings?
+     // ..... TODO
+     int numberOfstrings=1;
+     //Make output array
+     sarray<String> out=new array<String>(numberOfstrings);
+     //Find substrings
+     //..... TODO
+     out[0]=String("Not implemented!");
+     return out;
+ }
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-10-19                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

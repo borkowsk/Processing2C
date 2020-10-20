@@ -2,6 +2,7 @@
 #pragma once
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
+#include <cassert>
 #include <memory>
 #include <initializer_list>
 /// https://en.cppreference.com/w/cpp/utility/initializer_list
@@ -13,6 +14,7 @@ namespace Processing
 class Object
 {
   ///INFO: see https://www.javatpoint.com/object-class
+  private: Object& operator = (const Object&);
   public:
     virtual ~Object(){}
     virtual long hashCode() const;///	returns the hashcode number for this object
@@ -25,9 +27,10 @@ class ptr:public std::shared_ptr<T>
 {
   ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
   public:
-      ~ptr(){}// Zwalnianie zasobów
+      ~ptr(){}// Destruktor - zwalnianie zasobów
 
       //Konstruktory
+      //^^^^^^^^^^^^
       ptr():std::shared_ptr<T>(nullptr){}     //empty
 
       ptr(nullptr_t p):std::shared_ptr<T>(p){}//visible empty
@@ -35,31 +38,56 @@ class ptr:public std::shared_ptr<T>
       ptr(T* ini):std::shared_ptr<T>(ini){}   //from raw pointer for new T
 
       template<class B>
-      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini){}//from dynamic_pointer_cast
+      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)//konwersja z gołych shared_ptr'ów (potrzebna?)
+      {assert(ini.get()==nullptr || this->get()!=nullptr);}
 
       template<class B>
-      ptr(ptr<B>& ini):std::shared_ptr<T>(ini){}//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+      ptr(ptr<B>& ini):std::shared_ptr<T>(ini)//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+      {assert(ini.get()==nullptr || this->get()!=nullptr);}
 
-      //using std::shared_ptr<T>::operator = ;//kipisz!!!
-
+      //Przypisania  //using std::shared_ptr<T>::operator = ;//kipisz!!! :-(
+      //^^^^^^^^^^^
       ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
       ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
       ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
 
-      bool equals(const ptr<T>& p) const { return this->get()==p.get();}//Same object pointed
-      //bool operator == (const ptr<T>& p) const { return this->equals(p);}
-      //bool operator != (const ptr<T>& p) const { return this->equals(p);}
+      //Porównania
+      //^^^^^^^^^^
+      template<class B>
+      bool equals(const ptr<B>& p) const //Same object pointed
+      {
+          Object* tmp1=this->get();
+          Object* tmp2=p.get();
+          return tmp1==tmp2;
+      }
+
+      template<class B>
+      bool operator == (const ptr<B>& p) const { return this->equals(p);}
+
+      template<class B>
+      bool operator != (const ptr<B>& p) const { return !(this->equals(p));}
+
       bool operator == (T* p) const { return this->get()==p;}
       bool operator != (T* p) const { return this->get()!=p;}
+
       bool operator == (std::nullptr_t p) const { return this->get()==p;}
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
+      //Dostęp do wskaźnika przechowywanego
+      //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       T* operator -> () { return this->get();}
-      operator T& () { return *(this->get());}
-      //operator T* () { return *(this->get());}
+      //operator T& () { return *(this->get());}
+      operator T* () { return this->get();}
 };
 
 typedef ptr<Object> pObject;
+
+template<class A,class B>
+inline A*
+_free_ptr_to(ptr<B>& b)//release the pointer to A
+{
+    return (A*)(B*)b;
+}
 
 template<typename Base, typename T> //inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
 inline bool instanceof(ptr<T>& p)
@@ -106,9 +134,8 @@ class sarray:public ptr< array<T> >
 };
 
 template<class T>
-inline  sarray<T>::sarray(std::initializer_list<T> l):
-            ptr< array<T> >(new array<T>(l.size()))
-{ //NOT TESTED YET! TODO!
+inline  sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.size()))
+{ //NOT TESTED YET? TODO?
     size_t i=0;
     for(auto e:l)
         (*this)[i++]=e;
@@ -125,8 +152,7 @@ class matrix:public array< sarray<T> >
 };
 
 template<class T>
-inline matrix<T>::matrix(size_t N,size_t M):
-            array< sarray<T> >( N )
+inline matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 { //NOT TESTED YET! TODO!
     for(size_t i=0;i<this->length;i++)
         (*this)[i]=new array<T>( M );
@@ -148,105 +174,6 @@ class smatrix:public ptr< matrix<T> >
       sarray<T>* end() { return &(*this)[ length() ]; }
       size_t     length() { return this->get()->length; }
 };
-
-
-/*
-template<class T>
-inline  ptr<T>& ptr<T>::operator = (ptr<T>& other)
-{
-    _ptr=other._ptr; return *this;
-}
-
-template<class T>
-inline  bool ptr<T>::operator == (const ptr<T>& other) const
-{
-    return _ptr.get()==other._ptr.get();
-}
-
-template<class T>
-inline  bool ptr<T>:: operator != (const ptr& other)const
-{
-    return _ptr.get()!=other._ptr.get();
-}
-
-template<class T>
-inline  bool ptr<T>::operator == (T* other) const
-{
-    return _ptr.get()==other;
-}
-
-template<class T>
-inline  bool ptr<T>::operator != (T* other) const
-{
-    return _ptr.get()!=other;
-}
-
-//template<class T>
-//inline  array<T>::array(size_t N):_ptr(new T[N]),length(N)
-//{}
-
-template<class T>
-inline  T& array<T>::operator [] (size_t i)
-{
-//    return _ptr[i];
-}
-
-//template<class T>
-//inline  sarray<T>::sarray(array<T> &tab)
-//{
-//
-//}
-
-
-//template<class T>
-//inline  size_t sarray<T>::length()
-//{
-//
-//}
-
-template<class T>
-inline  array<T>* sarray<T>::operator -> ()
-{
-
-}
-
-template<class T>
-inline  matrix<T>::matrix(size_t N,size_t M)
-{
-
-}
-
-template<class T>
-inline  sarray<T>& matrix<T>::operator [] (size_t j)
-{
-
-}
-
-template<class T>
-inline  smatrix<T>::smatrix(matrix<T>* tab)
-{
-
-}
-
-template<class T>
-inline  smatrix<T>::smatrix(std::initializer_list<T> l)
-{
-
-}
-//??? TODO TEST IT!
-
-template<class T>
-inline  size_t smatrix<T>::length()
-{
-
-}
-
-template<class T>
-inline  matrix<T>* smatrix<T>::operator -> ()
-{
-
-}
-*/
 
 }//END of namespace Processing
 /********************************************************************/

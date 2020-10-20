@@ -32,13 +32,19 @@ sed -E "s/^(\s*)private/\1private:\n\t/g" |\
 #sed -E 's|\)\s+\{(.+)$|){\n\t\t\1|' |\
 #w deklaracjach klas (działa tylko dla deklaracji klas z { w tej samej linii! )
 sed -E 's|\s*abstract\s*class(.+)\{|//abstract\nclass\1{|' |\
-sed -E        's|\s*interface(.+)\{|//interface\nclass\1\{|' |\
+sed -E 's|class(\s+)(\w+)(\s*)extends|class\1\2\3: public |g' |\
+#dla klas reprezentujacych interface'y JAVA'y dziedziczenie jest tylko wirtualne
+sed -E 's|\s*interface(.+)\{|//interface\nclass\1\{|' |\
 sed -E 's|class(.+)\{|class\1\, public virtual Object{|' |\
-sed 's|extends|: public virtual|g' |\
+sed 's|extends|: public virtual |g' |\
+#implementacje interfejsow sa tylko wirtualne
 sed 's|implements|: public virtual|g' |\
+#i czasem trzeba to jawnie podpowiedziec
 sed 's|\/\*_pubext\*\/|public virtual|g' |\
+#jak sie wygeneruje za duzo : to je zmieniamy na przecinki
+sed -E 's|class(.+)(:\s*public\s*\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g' |\
 sed -E 's|class(.+)(:\s*public\s*virtual\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g' |\
-#gdy nie bylo zadnej klasy bazowej
+#gdy nie bylo zadnej klasy bazowej?
 sed -E 's|class\s+(\w+)\s*\,\s*public|class \1: public|' |\
 #dodanie public:
 sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
@@ -88,7 +94,11 @@ sed 's/final /const /g' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
+sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
+sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
+sed -E 's|\/\*_reference\*\/|\& |g'|\
+sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\

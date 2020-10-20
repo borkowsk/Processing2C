@@ -6,14 +6,14 @@
 namespace Processing
 {
 
-double    max(float a, float b, float c)
+float     max(int a,float b)
 {
-        return max(a>b?a:b,c);
+    return (a>b?a:b);
 }
 
-double    max(double a, double b, double c)
+float     max(float a,int b)
 {
-        return max(a>b?a:b,c);
+    return  (a>b?a:b);
 }
 
 }//END OF NAMESPACE Processing
