@@ -13,3 +13,4 @@ using namespace Processing;
 //==================================================================================
 const char* Processing::_PROGRAMNAME="ELIPSY";
 #include "ELIPSY.pde.cpp"
+#include "exit.pde.cpp"

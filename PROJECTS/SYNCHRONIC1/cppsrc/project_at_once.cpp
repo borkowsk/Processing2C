@@ -12,4 +12,5 @@ using namespace Processing;
 #include "project.h" //This is for you. Could be deleted when not needed
 //==================================================================================
 const char* Processing::_PROGRAMNAME="SYNCHRONIC1";
+#include "exit.pde.cpp"
 #include "SYNCHRONIC1.pde.cpp"

@@ -13,3 +13,4 @@ using namespace Processing;
 //==================================================================================
 const char* Processing::_PROGRAMNAME="ALIGNMENT";
 #include "ALIGNMENT.pde.cpp"
+#include "exit.pde.cpp"

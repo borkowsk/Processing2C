@@ -12,4 +12,5 @@ using namespace Processing;
 #include "project.h" //This is for you. Could be deleted when not needed
 //==================================================================================
 const char* Processing::_PROGRAMNAME="PERLIN";
+#include "exit.pde.cpp"
 #include "PERLIN.pde.cpp"
