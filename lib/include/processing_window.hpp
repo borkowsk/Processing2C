@@ -212,10 +212,11 @@ void noFill();
 void point(float x,float y);
 OPTINLINE
 void line(float  x1,float  y1,float  x2,float  y2);
-OPTINLINE
-void ellipse(float a,float  b,float  c,float  d);
-void arc(float a,float  b,float  c,float  d,float  start,float  stop);
-void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
+
+/// "ellipse" draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
+/// By default, the first two parameters set the location, and the third and fourth parameters set
+/// the shape's width and height.
+///
 /// Parameters:
 ///  a 	float: x-coordinate of the ellipse
 ///  b 	float: y-coordinate of the ellipse
@@ -224,12 +225,36 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
 ///  start 	float: angle to start the arc, specified in radians
 ///  stop 	float: angle to stop the arc, specified in radians
 
+OPTINLINE
+void ellipse(float a,float  b,float  c,float  d);
+void arc(float a,float  b,float  c,float  d,float  start,float  stop);
+void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
+
+
 void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 
+
+/// "rect" draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at ninety degrees.
+/// By default, the first two parameters set the location of the upper-left corner, the third sets the width, and
+/// the fourth sets the height.
+///
+/// Parameters
+/// a 	float: x-coordinate of the rectangle by default
+/// b 	float: y-coordinate of the rectangle by default
+/// c 	float: width of the rectangle by default
+/// d 	float: height of the rectangle by default
+/// r 	float: radii for all four corners
+/// tl 	float: radius for top-left corner
+/// tr 	float: radius for top-right corner
+/// br 	float: radius for bottom-right corner
+/// bl 	float: radius for bottom-left corner
+/// Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
 OPTINLINE
 void rect(float a,float  b,float  c,float  d);
 OPTINLINE
 void rect(float a,float  b,float  c,float  d,float r);
+OPTINLINE
+void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl);
 OPTINLINE
 void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 
@@ -239,16 +264,16 @@ void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER
 void redraw();
 
 
-//void cursor(int kind);
-//void cursor(PImage img);
-//void cursor(PImage img,int x,int y);
-void cursor();
-void noCursor();
 /// Parameters:
 /// kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
 /// img 	PImage: any variable of type PImage
 ///   x 	int: the horizontal active spot of the cursor
 ///   y 	int: the vertical active spot of the cursor
+void cursor();
+void cursor(int kind);
+void noCursor();
+//void cursor(PImage img);
+//void cursor(PImage img,int x,int y);
 
 void delay(int napTime); ///The delay() function halts for a specified time. Delay times are specified in thousandths of a second.
 /// Parameters	napTime 	int: milliseconds to pause before running draw() again
@@ -263,7 +288,7 @@ int displayDensity(int display=0) {return 1;}
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-10-21                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

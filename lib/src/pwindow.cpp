@@ -91,7 +91,11 @@ void processing_window_base::check_events()
     {
         int inp=get_char();
         std::cerr<<inp<<' '<<char(inp);
-        if(inp==EOF || inp==27 ) exit();
+        if(inp==EOF || inp==27 )
+        {
+            exit();
+            ::exit(0);//Na wypadek gdyby uztkownik zapomnial wywolac super.exit
+        }
         _keyPressed=true;
         key=inp;
         keyCode=0;// TODO!

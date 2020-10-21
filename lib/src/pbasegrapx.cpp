@@ -125,6 +125,8 @@ void line(float  x1,float  y1,float  x2,float  y2)
     line_d((int)x1,(int)y1,(int)x2,(int)y2);
 }
 
+
+int _RECT_MODE=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 void rect(float a,float  b,float  c,float  d)
 {
     int x1=a;
@@ -153,7 +155,8 @@ void rect(float a,float  b,float  c,float  d,float r)
 /// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 void rectMode(int mode)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _RECT_MODE=mode;
+    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 /// Parameters
@@ -163,6 +166,7 @@ void rectMode(int mode)
 ///  d 	float: height of the ellipse by default
 ///  start 	float: angle to start the arc, specified in radians
 ///  stop 	float: angle to stop the arc, specified in radians
+int  _ELLIPSE_MODE=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 void ellipse(float a,float  b,float  c,float  d)
 {
     int x1=a;
@@ -194,7 +198,8 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode)
 /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 void ellipseMode(int mode)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    _ELLIPSE_MODE=mode;
+    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 /// Extended graphix text() & Attributes
