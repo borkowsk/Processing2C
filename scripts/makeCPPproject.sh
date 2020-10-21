@@ -22,10 +22,11 @@ echo -e WBSYMSHELL "  $WBSYMSHELL"
 echo -e "\nAt least setup() or draw() function expected in *.pde files:"
 egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
 
-echo -e "\nThe following lines may generate conflicts because of used library symbols as user defined names"
+echo -e "\nThe following lines may hide library symbols..."
 egrep --color -Hn -f $SCRIPTS/symbols_pattern.grep *.pde
+echo -e "... END\n"
 
-
+echo "Translating project..."
 #GET GLOBAL SYMBOLS
 $SCRIPTS/prepare_local_h.sh
 
@@ -128,4 +129,4 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
 #     )
 EOF
 
-echo -e "\nDONE\n"
+echo -e "\nProject ${PROJECT} DONE\n\n"
