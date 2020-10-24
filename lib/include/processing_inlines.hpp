@@ -12,6 +12,8 @@ namespace Processing
 {
 extern bool _filled;//=true;
 extern int _LINE_WIDTH;//=1;
+extern int _RECT_MODE;//=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _ELLIPSE_MODE;//=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
 
 inline void strokeWeight(float Weight)
 {
@@ -65,34 +67,44 @@ inline void line(float  x1,float  y1,float  x2,float  y2)
 
 inline void rect(float a,float  b,float  c,float  d)
 {
-    int x1=a;
-    int y1=b;
-    int x2=a+c;
-    int y2=b+d;
+    int x1,y1,x2,y2;
+    switch(_RECT_MODE){
+    case CORNERS:x1=a; y1=b; x2=c; y2=d;break;
+    case CENTER:x1=a-c/2;x2=a+c/2;y1=b-d/2;y2=b+d/2;break;
+    case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
+    default:
+    case CORNER:
+        x1=a; y1=b; x2=a+c; y2=b+d;break;
+    }
 
     if(_filled)
         fill_rect_d(x1,y1,x2,y2);
 
-    if(get_line_width()>0)
+    if(get_line_width()>0) //TODO - eliminate it!!!
     {
-        line_d(x1,y1,x1,y2);
-        line_d(x1,y1,x2,y1);
+        ::line_d(x1,y1,x1,y2);
+        ::line_d(x1,y1,x2,y1);
+        ::line_d(x2,y1,x2,y2);
+        ::line_d(x1,y2,x2,y2);
     }
 }
 
 inline void ellipse(float a,float  b,float  c,float  d)
 {
-    int x1=a;
-    int y1=b;
-    int A=c/2;
-    int B=d/2;
-    if(A==0) A=1;
-    if(B==0) B=1;
+    int x1,y1,A,B;
+    switch(_ELLIPSE_MODE){
+    case RADIUS:x1=a; A=c; y1=b; B=d;break;
+    case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
+    case CORNER:
+         A=c/2;B=d/2;x1=a+A; y1=b+B;break;
+    default:
+    case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
+    }
 
     if(_filled)
         fill_ellipse_d(x1,y1,A,B);
 
-    if(get_line_width()>0 && A>1 && B>1)
+    if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
 }
 

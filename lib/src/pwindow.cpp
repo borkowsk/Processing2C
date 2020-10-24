@@ -145,9 +145,10 @@ void processing_window_base::before_setup(int argc,const char *argv[])
         args[i]=String(argv[i]);//new String(argv[i]);???
     }
 
-    buffering_setup(1);//buffered window!
-    fix_size(1);
+    buffering_setup(SSH_YES);//buffered window!
+    fix_size(SSH_YES);
     set_background(256+200);
+    print_transparently(SSH_YES);
 
     shell_setup(_PROGRAMNAME,argc,argv);
     milliseconds ms = duration_cast< milliseconds >(

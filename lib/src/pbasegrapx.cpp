@@ -1,4 +1,5 @@
 /// podstawy obsługo okienka pseudo-processingowego
+#include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -73,7 +74,7 @@ void noStroke()
     std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
-bool _filled=true;
+bool _filled=true;//TODO _FILLED !!!
 
 void fill(float Gray)
 {
@@ -129,18 +130,25 @@ void line(float  x1,float  y1,float  x2,float  y2)
 int _RECT_MODE=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 void rect(float a,float  b,float  c,float  d)
 {
-    int x1=a;
-    int y1=b;
-    int x2=a+c;
-    int y2=b+d;
+    int x1,y1,x2,y2;
+    switch(_RECT_MODE){
+    case CORNERS:x1=a; y1=b; x2=c; y2=d;break;
+    case CENTER:x1=a-c/2;x2=a+c/2;y1=b-d/2;y2=b+d/2;break;
+    case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
+    default: std::cerr<<__FUNCTION__<<" - undefined rect mode!"<<std::endl;
+    case CORNER:
+        x1=a; y1=b; x2=a+c; y2=b+d;break;
+    }
 
     if(_filled)
         fill_rect_d(x1,y1,x2,y2);
 
-    if(get_line_width()>0)
+    if(get_line_width()>0) //TODO - eliminate it!!!
     {
-        line_d(x1,y1,x1,y2);
-        line_d(x1,y1,x2,y1);
+        ::line_d(x1,y1,x1,y2);
+        ::line_d(x1,y1,x2,y1);
+        ::line_d(x2,y1,x2,y2);
+        ::line_d(x1,y2,x2,y2);
     }
 
     std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
@@ -166,20 +174,23 @@ void rectMode(int mode)
 ///  d 	float: height of the ellipse by default
 ///  start 	float: angle to start the arc, specified in radians
 ///  stop 	float: angle to stop the arc, specified in radians
-int  _ELLIPSE_MODE=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+int  _ELLIPSE_MODE=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
 void ellipse(float a,float  b,float  c,float  d)
 {
-    int x1=a;
-    int y1=b;
-    int A=c/2;
-    int B=d/2;
-    if(A==0) A=1;
-    if(B==0) B=1;
+    int x1,y1,A,B;
+    switch(_ELLIPSE_MODE){
+    case RADIUS:x1=a; A=c; y1=b; B=d;break;
+    case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
+    case CORNER:
+         A=c/2;B=d/2;x1=a+A; y1=b+B;break;
+    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
+    case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
+    }
 
     if(_filled)
         fill_ellipse_d(x1,y1,A,B);
 
-    if(get_line_width()>0 && A>1 && B>1)
+    if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
 
     std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
@@ -204,7 +215,7 @@ void ellipseMode(int mode)
 
 /// Extended graphix text() & Attributes
 int _TEXT_HORIZONTAL_AL=LEFT;
-int _TEXT_VERTICAL_AL=TOP;
+int _TEXT_VERTICAL_AL=BOTTOM;
 
 void textAlign(int hor)
 // Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
@@ -240,12 +251,25 @@ void textSize(int)
 float textWidth(_string_param str)
 // Calculates and returns the width of any character or text string.
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    return string_width(str.c_str());
 }
 
 void text(_string_param str,float x,float y)
 {
-    print_d(x,y-char_height('X'),"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
+    switch(_TEXT_HORIZONTAL_AL){
+    default:std::cerr<<__FUNCTION__<<" - invalid horizontal alignment!"<<std::endl;
+    case LEFT:break;
+    case CENTER:x-=string_width(str.c_str())/2;break;
+    case RIGHT:x-=string_width(str.c_str());break;
+    }
+    switch(_TEXT_VERTICAL_AL){
+    default:std::cerr<<__FUNCTION__<<" - invalid vertical alignment!"<<std::endl;
+    case BASELINE:
+    case TOP: break;
+    case BOTTOM:y-=char_height('X');break;
+    case CENTER: y-=char_height('X')/2;break;
+    }
+    print_d(x,y,"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
 }
 
 void text(_string_param str,float x1,float y1,float x2,float y2)

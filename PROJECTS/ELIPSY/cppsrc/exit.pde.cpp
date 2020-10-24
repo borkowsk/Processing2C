@@ -1,5 +1,6 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: exit.pde
+#include "processing_consts.hpp"
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
@@ -14,5 +15,5 @@ void processing_window::exit()
 {
   save("exit.png");
 }
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

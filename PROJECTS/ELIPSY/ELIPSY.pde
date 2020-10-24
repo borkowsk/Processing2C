@@ -23,6 +23,10 @@ void draw()
 {
   fill(random(255),random(255),random(255),random(255));
   float r=radius();
-  ellipse(random(W),random(W),r,r);
+  float x=random(W);
+  float y=random(W);
+  ellipse(x,y,r,r);
+  stroke(255);
+  point(x,y);
   println(frameRate);
 }

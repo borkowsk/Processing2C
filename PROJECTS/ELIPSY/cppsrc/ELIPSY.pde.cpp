@@ -1,5 +1,6 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: ELIPSY.pde
+#include "processing_consts.hpp"
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
@@ -35,8 +36,12 @@ void processing_window::draw()
 {
   fill(random(255),random(255),random(255),random(255));
   float r=radius();
-  ellipse(random(W),random(W),r,r);
+  float x=random(W);
+  float y=random(W);
+  ellipse(x,y,r,r);
+  stroke(255);
+  point(x,y);
   println(frameRate);
 }
-//../../scripts/procesing2cpp.sh did it
+///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
 

@@ -36,6 +36,7 @@ void setup()
   line(width3_4,height1_4,width3_4,height3_4);
   frameRate(3);
   textSize(16);
+  text("DEFAULT",width/2,height/2);
 }
 
 void draw()

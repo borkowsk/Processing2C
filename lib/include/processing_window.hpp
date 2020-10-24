@@ -11,44 +11,11 @@
 
 namespace Processing
 {
-//CHAR CONSTANTS
-const char16_t CODED=65535;
-const char ESC=27;
 
-//SETTINGS CONSTANTS
-///ellipseMode(mode) parameters
-const int CENTER=1;
-const int RADIUS=2;
-const int CORNER=3;
-const int CORNERS=4;
-///rectMode(mode)parameters
-//const int CENTER=1;
-//const int RADIUS=2;
-//const int CORNER=3;
-//const int CORNERS=4;
-
-extern int _ELLIPSE_MODE;//=CORNER?
+extern int _ELLIPSE_MODE;//=CENTER?
 extern int _RECT_MODE;//=CORNER?
-
-///strokeCap(cap) parameters
-const int SQUARE=1;
-const int PROJECT=2;
-const int ROUND=3;
-///strokeJoin(join) parameters
-const int MITER=1;
-const int BEVEL=2;
-//const int ROUND=3;
-
 extern int _STROKE_CAP;//=SQUARE?;
 extern int _STROKE_JOIN;//=MITER?;
-
-//for textAligment
-const int RIGHT=100;
-const int LEFT=101;
-const int TOP=102;
-const int BOTTOM=103;
-
-
 extern int _TEXT_HORIZONTAL_AL;//=LEFT;
 extern int _TEXT_VERTICAL_AL;//=TOP;
 
@@ -288,7 +255,7 @@ int displayDensity(int display=0) {return 1;}
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-10-21                   */
+/*               PROCESSING2C  version 2020-10-24                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

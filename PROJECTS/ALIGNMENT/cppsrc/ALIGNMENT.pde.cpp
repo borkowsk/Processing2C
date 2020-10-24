@@ -1,5 +1,6 @@
 //Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
 //Source: ALIGNMENT.pde
+#include "processing_consts.hpp"
 #include "processing_templates.hpp"
 //#include "processing_inlines.hpp" //is optional. Use when project is already compilable
 #include "processing_window.hpp"
@@ -48,6 +49,7 @@ void processing_window::setup()
   line(width3_4,height1_4,width3_4,height3_4);
   setFrameRate(3);
   textSize(16);
+  text("DEFAULT",width/2,height/2);
 }
 
 void processing_window::draw()

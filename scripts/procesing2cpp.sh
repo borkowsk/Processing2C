@@ -7,6 +7,7 @@ fi
 
 echo "//Processing to C++ converter $0"
 echo "//Source: $1"
+echo "#include \"processing_consts.hpp\""
 echo "#include \"processing_templates.hpp\""
 echo "//#include \"processing_inlines.hpp\" //is optional. Use when project is already compilable"
 echo "#include \"processing_window.hpp\""
