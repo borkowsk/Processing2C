@@ -19,6 +19,7 @@ int main(int argc,const char *argv[])
     std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<std::endl;//DEBUG
     std::cout<<"SETUP:"<<std::endl;//DEBUG
 #endif
+    setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
     _processing_window_instance.before_setup(argc,argv);
     _processing_window_instance.setup();
 
