@@ -162,6 +162,10 @@ namespace Processing
   void text(_string_param str,float x,float y);
   void text(_string_param str,float x1,float y1,float x2,float y2);
 
+  typedef void* PFont;              /// Font handler
+  PFont createFont(String fn,int s);/// Make font available for program
+  void textFont(PFont f);           /// Use font
+
   /// Shapes:
   /// Using the beginShape() and endShape() functions allow creating more complex forms. beginShape() begins recording vertices for
   /// a shape and endShape() stops recording. The value of the kind parameter tells it which types of shapes to create from

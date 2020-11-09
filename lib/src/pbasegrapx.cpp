@@ -276,6 +276,20 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
     std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
 }
 
+//typedef void* PFont;              /// Font handler
+PFont createFont(String fn,int s)
+/// Make font available for program
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    return nullptr;
+}
+
+void textFont(PFont f)
+/// Use font
+{
+     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 void saveFrame(_string_param filename)
 {
     dump_screen(filename.c_str());

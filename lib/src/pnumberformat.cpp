@@ -69,14 +69,30 @@ String nf(double num)
 String nf(double num,int digits)
 {
     char bufor[1024];
-    sprintf(bufor,"%g",num);//TODO int digits
+    sprintf(bufor,"%0*g",digits+(num<0?+1:0),num);
     return String(bufor);
 }
 
 String nf(double num,int left,int right)
 {
     char bufor[1024];
-    sprintf(bufor,"%g",num);//TODO int left,int right
+    sprintf(bufor,"%0*.*f",left+right+(num<0?+2:+1),right,num);
+    return String(bufor);
+}
+
+String nfs(double num,int digits)
+{
+    char bufor[1024];
+    bool minus=num<0;
+    sprintf(bufor,"%s%0*g",minus?"":" ",digits+(minus?1:0),num);
+    return String(bufor);
+}
+
+String nfs(double num,int left,int right)
+{
+    char bufor[1024];
+    bool minus=num<0;
+    sprintf(bufor,"%s%0*.*f",minus?"":" ",left+right+(minus?2:1),right,num);
     return String(bufor);
 }
 
@@ -90,16 +106,34 @@ String nfp(double num)
 String nfp(double num,int digits)
 {
     char bufor[1024];
-    sprintf(bufor,"%+g",num);//TODO int digits
+    sprintf(bufor,"%+0*g",digits+1,num);
     return String(bufor);
 }
 
 String nfp(double num,int left,int right)
 {
     char bufor[1024];
-    sprintf(bufor,"%+g",num);//TODO int left,int right
+    sprintf(bufor,"%+0*.*f",left+right+2,right,num);
     return String(bufor);
 }
+
+
+String nfc(double num)
+{
+    char bufor[1024];
+    sprintf(bufor,"%'g",num);
+    return String(bufor);
+}
+
+String nfc(double num,int digits)
+{
+    char bufor[1024];
+    //setlocale(LC_NUMERIC,"en_US.UTF-8");
+    sprintf(bufor,"%'0.*f",digits,num);
+    //setlocale(LC_NUMERIC,"de_DE.UTF-8");
+    return String(bufor);
+}
+
 
 String nf(sarray<int> nums)
 {
@@ -189,19 +223,8 @@ String nfp(sarray<double> nums,int digits)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-String nfs(double num,int digits)
-{
-    char bufor[1024];
-    sprintf(bufor,"%g",num);//TODO int digits
-    return String(bufor);
-}
 
-String nfs(double num,int left,int right)
-{
-    char bufor[1024];
-    sprintf(bufor,"%g",num);//TODO int left,int right
-    return String(bufor);
-}
+
 
 String nfs(sarray<double> nums,int left,int right)
 {
@@ -246,21 +269,6 @@ String nfs(sarray<double> nums)
 String nfs(sarray<double> nums,int digits)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-String nfc(double num)
-{
-    char bufor[1024];
-    sprintf(bufor,"%g",num);
-    return String(bufor);
-}
-
-String nfc(double num,int digits)
-{
-    char bufor[1024];
-    sprintf(bufor,"%g",num);//TODO int digits
-    return String(bufor);
 }
 
 
