@@ -37,6 +37,7 @@ namespace Processing
   String nf(sarray<double> nums,int digits);
   String nf(sarray<double> nums,int left,int right);
 
+
   String nfp(double num);
   String nfp(double num,int digits);
   String nfp(double num,int left,int right);
@@ -53,6 +54,39 @@ namespace Processing
   String nfp(sarray<double> nums,int digits);
   String nfp(sarray<double> nums,int left,int right);
 
+
+  String nfs(double num);
+  String nfs(double num,int digits);
+  String nfs(double num,int left,int right);
+
+  String nfs(sarray<int> nums);
+  String nfs(sarray<int> nums,int digits);
+  String nfs(sarray<int> nums,int left,int right);
+
+  String nfs(sarray<float> nums);
+  String nfs(sarray<float> nums,int digits);
+  String nfs(sarray<float> nums,int left,int right);
+
+  String nfs(sarray<double> nums);
+  String nfs(sarray<double> nums,int digits);
+  String nfs(sarray<double> nums,int left,int right);
+
+
+  String nfc(double num);
+  String nfc(double num,int digits);
+  String nfc(double num,int left,int right);
+
+  String nfc(sarray<int> nums);
+  String nfc(sarray<int> nums,int digits);
+  String nfc(sarray<int> nums,int left,int right);
+
+  String nfc(sarray<float> nums);
+  String nfc(sarray<float> nums,int digits);
+  String nfc(sarray<float> nums,int left,int right);
+
+  String nfc(sarray<double> nums);
+  String nfc(sarray<double> nums,int digits);
+  String nfc(sarray<double> nums,int left,int right);
 }//END of namespace Processing
 /********************************************************************/
 /*               PROCESSING2C  version 2020-08-19                   */

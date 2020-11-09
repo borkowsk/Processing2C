@@ -31,71 +31,7 @@ String operator  + (_string_param v,const String& s)
     return ret;
 }
 
-/*
-String& String::operator += (const String& v)
-{
-    std::string::operator += (v.c_str());
-    return *this;
-}
 
-String& String::operator += (int v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-String& String::operator += (float v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-String& String::operator += (double v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-
-String String::operator  + (int v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String String::operator  + (float v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String String::operator  + (double v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String operator  + (int v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-
-String operator  + (float v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-
-String operator  + (double v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-*/
 
 _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
@@ -212,6 +148,7 @@ String nf(sarray<double> nums,int left,int right)
 
 
 
+
 String nfp(sarray<int> nums)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
@@ -252,10 +189,126 @@ String nfp(sarray<double> nums,int digits)
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-String nfp(sarray<double> nums,int left,int right)
+String nfs(double num,int digits)
+{
+    char bufor[1024];
+    sprintf(bufor,"%g",num);//TODO int digits
+    return String(bufor);
+}
+
+String nfs(double num,int left,int right)
+{
+    char bufor[1024];
+    sprintf(bufor,"%g",num);//TODO int left,int right
+    return String(bufor);
+}
+
+String nfs(sarray<double> nums,int left,int right)
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
+
+String nfs(sarray<int> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<int> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<int> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<float> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<float> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<float> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<double> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfs(sarray<double> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+
+String nfc(double num)
+{
+    char bufor[1024];
+    sprintf(bufor,"%g",num);
+    return String(bufor);
+}
+
+String nfc(double num,int digits)
+{
+    char bufor[1024];
+    sprintf(bufor,"%g",num);//TODO int digits
+    return String(bufor);
+}
+
+
+String nfc(sarray<double> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<int> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<int> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<int> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<float> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<float> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<float> nums,int left,int right)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<double> nums)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
+String nfc(sarray<double> nums,int digits)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 
 }//END of namespace Processing
 /********************************************************************/
@@ -269,3 +322,68 @@ String nfp(sarray<double> nums,int left,int right)
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
+/*
+String& String::operator += (const String& v)
+{
+    std::string::operator += (v.c_str());
+    return *this;
+}
+
+String& String::operator += (int v)
+{
+    (*this)+=nf(v);return *this;
+}
+
+String& String::operator += (float v)
+{
+    (*this)+=nf(v);return *this;
+}
+
+String& String::operator += (double v)
+{
+    (*this)+=nf(v);return *this;
+}
+
+
+String String::operator  + (int v) const
+{
+    String tmp(*this);
+    tmp+=nf(v);
+    return tmp;
+}
+
+String String::operator  + (float v) const
+{
+    String tmp(*this);
+    tmp+=nf(v);
+    return tmp;
+}
+
+String String::operator  + (double v) const
+{
+    String tmp(*this);
+    tmp+=nf(v);
+    return tmp;
+}
+
+String operator  + (int v,const String& self)
+{
+    std::string tmp=nf(v);
+    tmp+=self.c_str();
+    return tmp;
+}
+
+String operator  + (float v,const String& self)
+{
+    std::string tmp=nf(v);
+    tmp+=self.c_str();
+    return tmp;
+}
+
+String operator  + (double v,const String& self)
+{
+    std::string tmp=nf(v);
+    tmp+=self.c_str();
+    return tmp;
+}
+*/

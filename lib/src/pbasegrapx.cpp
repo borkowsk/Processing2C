@@ -11,12 +11,12 @@ namespace Processing
 
 void noSmooth()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" is default for X11!"<<std::endl;
 }
 
 void smooth()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" not available under X11!"<<std::endl;
 }
 
 void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
@@ -164,7 +164,6 @@ void rect(float a,float  b,float  c,float  d,float r)
 void rectMode(int mode)
 {
     _RECT_MODE=mode;
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 /// Parameters
@@ -210,7 +209,6 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode)
 void ellipseMode(int mode)
 {
     _ELLIPSE_MODE=mode;
-    //std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 /// Extended graphix text() & Attributes
@@ -348,31 +346,3 @@ void vertex(float x,float y,float z,float u,float v)
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
-
-/*
-void text(char c, float x,float y)
-{
-    print_d(x,y,"%c",c);
-}
-
-void text(const char* str,float x,float y)
-{
-    print_d(x,y,"%s",str);
-}
-
-void text(char chars[],int start,int stop,float x,float y)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void text(const char* str,float x1,float y1,float x2,float y2)
-{
-    print_d(x1,y1,"%s",str);
-    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;
-}
-
-void text(float num,float x,float y)
-{
-     print_d(x,y,"%f",num);
-}
-*/
