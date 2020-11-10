@@ -37,6 +37,7 @@ void setVariables()
 void processing_window::setup()
 {
   size(600,600);
+  setTitle("HELLO!");
   setVariables();
   line(0,0,width,height);
   line(0,height,width,0);

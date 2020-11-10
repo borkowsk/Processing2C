@@ -205,9 +205,9 @@ void setFrameRate(float fps)
     _INTERNAL_DELAY=1000/fps;
 }
 
-void processing_window_base::setTitle(Processing::_string_param)
+void processing_window_base::setTitle(Processing::_string_param bar)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    set_title(bar.c_str());
 }
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary,
