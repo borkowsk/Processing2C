@@ -25,6 +25,9 @@ namespace Processing
     const auto HALF_PI=M_PI_2;
     const auto QUARTER_PI=M_PI_4;
     const auto MAX_INT=INT_MAX;
+    const auto CHORD=2;
+    const auto PIE=1;
+    const auto OPEN=0;
 
 
 /// Classes
@@ -282,6 +285,13 @@ namespace Processing
   /// start 	float: first value
   /// stop 	float: second value
   /// amt 	float: float between 0.0 and 1.0
+
+  /// Recalculating angles
+  float radians(float degrees);
+  float degrees(float radians);
+  /// degrees 	float: degree value to convert to radians
+  /// radians 	float: radian value to convert to degrees
+  /// Returns	float
 
   /// Graphics saving to file
   void saveFrame();

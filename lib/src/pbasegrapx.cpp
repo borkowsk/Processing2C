@@ -197,11 +197,29 @@ void ellipse(float a,float  b,float  c,float  d)
 
 void arc(float a,float  b,float  c,float  d,float  start,float  stop)
 {
+    int x1,y1,A,B;
+    switch(_ELLIPSE_MODE){
+    case RADIUS:x1=a; A=c; y1=b; B=d;break;
+    case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
+    case CORNER:
+         A=c/2;B=d/2;x1=a+A; y1=b+B;break;
+    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
+    case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
+    }
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode)
 {
+    int x1,y1,A,B;
+    switch(_ELLIPSE_MODE){
+    case RADIUS:x1=a; A=c; y1=b; B=d;break;
+    case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
+    case CORNER:
+         A=c/2;B=d/2;x1=a+A; y1=b+B;break;
+    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
+    case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
+    }
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
@@ -258,6 +276,11 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
     std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
 }
 
+void save(_string_param filename)
+{
+    dump_screen(filename.c_str());
+}
+
 void saveFrame(_string_param filename)
 {
     dump_screen(filename.c_str());
@@ -265,19 +288,15 @@ void saveFrame(_string_param filename)
         std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
 }
 
-void save(_string_param filename)
+void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will save files as screen-0000.tif, screen-0001.tif,
 {
-    dump_screen(filename.c_str());
-}
-
-void saveFrame()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    dump_screen("screen-");
+    std::cerr<<__FUNCTION__<<": files numbering not implemented!"<<std::endl;
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-29                   */
+/*               PROCESSING2C  version 2020-11-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

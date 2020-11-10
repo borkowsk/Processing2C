@@ -23,7 +23,7 @@ double random(double low,double hig)
             std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
             return low;
     }
-    if( tmp<low || hig<=tmp )
+    if( hig<=tmp )
     {
             std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
             return hig-0.00000000001;//????TODO BETTER
@@ -33,6 +33,8 @@ double random(double low,double hig)
 
 //inline float random(double hig){return random(0,hig); }
 
+/// Proportions
+/// ///////////
 /// Parameters:
 /// value 	float: the incoming value to be converted
 /// start1 	float: lower bound of the value's current range
@@ -55,7 +57,7 @@ double map(double s,double a1,double a2,double b1,double b2)
 /// stop 	float: upper bound of the value's current range
 float norm(float value,float start,float stop)
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    return (value-start)/(stop-start);
 }
 
 /// Parameters:
@@ -63,10 +65,34 @@ float norm(float value,float start,float stop)
 /// stop 	float: second value
 /// amt 	float: float between 0.0 and 1.0
 /// float lerp(float start,float stop,float amt)
+///
 float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
 {                                       // https://en.wikipedia.org/wiki/Linear_interpolation
   return (1 - t) * v0 + t * v1;
 }
+
+
+/// Recalculating angles
+/// ////////////////////
+/// Parameters:
+/// degrees 	float: degree value to convert to radians
+/// radians 	float: radian value to convert to degrees
+/// Returns	float
+///
+float radians(float degrees)
+{
+    const double mult = M_PI/180;
+    return degrees * mult;
+    //return ( degrees * M_PI ) / 180 ;
+}
+
+float degrees(float radians)
+{
+    const double mult = 180/M_PI;
+    return radians * mult;
+    //return ( radians * 180 ) / M_PI ;
+}
+
 
 }//END of namespace Processing
 /********************************************************************/
