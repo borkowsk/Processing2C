@@ -12,6 +12,7 @@ add_subdirectory( "../lib/"
 add_subdirectory( ALIGNMENT                      )
 add_subdirectory( ARRAYLIST 	 EXCLUDE_FROM_ALL)
 add_subdirectory( ARRAYTEST 	 EXCLUDE_FROM_ALL)
+add_subdirectory( ARCS                           )
 add_subdirectory( CLASSTEST 	 EXCLUDE_FROM_ALL)
 add_subdirectory( ELIPSY 	 EXCLUDE_FROM_ALL)
 add_subdirectory( EPIDEMIA 	 EXCLUDE_FROM_ALL)
