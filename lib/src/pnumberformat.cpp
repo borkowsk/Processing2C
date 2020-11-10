@@ -1,4 +1,5 @@
-// Processing like console functions
+/// Processing like numbers 2 string and string 2 number conversions
+///////////////////////////////////////////////////////////////////////
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -31,8 +32,6 @@ String operator  + (_string_param v,const String& s)
     return ret;
 }
 
-
-
 _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
 #ifdef DEBUG
@@ -58,7 +57,7 @@ _string_param::_string_param(unsigned long int    p):String( std::to_string(p) )
 _string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )// inline?
 {}
 
-//Funkcje formatujące
+//Funkcje formatujące pojedyncze liczby
 String nf(double num)
 {
     char bufor[1024];
@@ -133,190 +132,6 @@ String nfc(double num,int digits)
     //setlocale(LC_NUMERIC,"de_DE.UTF-8");
     return String(bufor);
 }
-
-
-String nf(sarray<int> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<int> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<int> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<float> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<float> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<float> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<double> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<double> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nf(sarray<double> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-
-
-String nfp(sarray<int> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<int> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<int> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<float> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<float> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<float> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<double> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfp(sarray<double> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-
-
-String nfs(sarray<double> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<int> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<int> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<int> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<float> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<float> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<float> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<double> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfs(sarray<double> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-
-String nfc(sarray<double> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<int> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<int> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<int> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<float> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<float> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<float> nums,int left,int right)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<double> nums)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-String nfc(sarray<double> nums,int digits)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 
 }//END of namespace Processing
 /********************************************************************/

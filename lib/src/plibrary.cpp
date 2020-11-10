@@ -33,36 +33,6 @@ double random(double low,double hig)
 
 //inline float random(double hig){return random(0,hig); }
 
-float noise(float x)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-float noise(float x,float  y)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-float noise(float x,float  y,float  z)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void  noiseSeed(int seed)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void noiseDetail(int lod)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void noiseDetail(int lod,float falloff)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 /// Parameters:
 /// value 	float: the incoming value to be converted
 /// start1 	float: lower bound of the value's current range
@@ -98,26 +68,9 @@ float lerp(float v0, float v1, float t) // Precise method, which guarantees v = 
   return (1 - t) * v0 + t * v1;
 }
 
-void saveFrame()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void saveFrame(const char* filename)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-long Object::hashCode() const
-///	returns the hashcode number for this object
-{
-    std::cout<<__FUNCTION__<<" - not implemented! "<<std::endl;
-    return (size_t)this;
-}
-
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-02                   */
+/*               PROCESSING2C  version 2020-11-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -122,17 +122,12 @@ void exit()
 
 void processing_window_base::mouseClicked()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" ignored"<<std::endl;
 }
 
 void processing_window_base::keyPressed()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void processing_window_base::setTitle(Processing::_string_param)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" ignored!"<<std::endl;
 }
 
 void processing_window_base::before_setup(int argc,const char *argv[])
@@ -210,6 +205,11 @@ void setFrameRate(float fps)
     _INTERNAL_DELAY=1000/fps;
 }
 
+void processing_window_base::setTitle(Processing::_string_param)
+{
+    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+}
+
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary,
 /// for example when an event registered by mousePressed() or keyPressed() occurs.
 /// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw()
@@ -220,26 +220,9 @@ void redraw()
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 
-//void cursor(int kind);
-//void cursor(PImage img);
-//void cursor(PImage img,int x,int y);
-void cursor()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-void noCursor()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-//Parameters:
-//kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
-//img 	PImage: any variable of type PImage
-//  x 	int: the horizontal active spot of the cursor
-//  y 	int: the vertical active spot of the cursor
-
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-02                   */
+/*               PROCESSING2C  version 2020-11-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

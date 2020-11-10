@@ -228,24 +228,6 @@ void textAlign(int hor,int ver)
     _TEXT_VERTICAL_AL=ver;
 }
 
-void textLeading(int)
-// Sets the spacing between lines of text in units of pixels.
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void textMode(int)
-// Sets the way text draws to the screen, either as texture maps or as vector geometry (MODEL or SHAPE)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void textSize(int)
-// Sets the current font size, measured in units of pixels.
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 float textWidth(_string_param str)
 // Calculates and returns the width of any character or text string.
 {
@@ -276,20 +258,6 @@ void text(_string_param str,float x1,float y1,float x2,float y2)
     std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
 }
 
-//typedef void* PFont;              /// Font handler
-PFont createFont(String fn,int s)
-/// Make font available for program
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-    return nullptr;
-}
-
-void textFont(PFont f)
-/// Use font
-{
-     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 void saveFrame(_string_param filename)
 {
     dump_screen(filename.c_str());
@@ -302,51 +270,10 @@ void save(_string_param filename)
     dump_screen(filename.c_str());
 }
 
-void beginShape()
+void saveFrame()
 {
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
-
-void beginShape(int kind)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void endShape()
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void endShape(int mode)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void vertex(float x,float y)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void vertex(float x,float y,float z)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void vertex(float v[])
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void vertex(float x,float y,float u,float v)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
-void vertex(float x,float y,float z,float u,float v)
-{
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
-
 
 }//END of namespace Processing
 /********************************************************************/
