@@ -12,6 +12,11 @@ const int CENTER=1;
 const int RADIUS=2;
 const int CORNER=3;
 const int CORNERS=4;
+///for arc's
+const int OPENPIE=1;
+const int OPEN=0;//Open CHORD
+const int CHORD=2;
+const int PIE=3;
 ///rectMode(mode)parameters
 //const int CENTER=1;
 //const int RADIUS=2;
@@ -33,7 +38,7 @@ const int BOTTOM=103;
 const int BASELINE=104;
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-10-24                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

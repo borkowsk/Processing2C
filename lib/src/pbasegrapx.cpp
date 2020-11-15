@@ -195,21 +195,8 @@ void ellipse(float a,float  b,float  c,float  d)
     std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
 }
 
-void arc(float a,float  b,float  c,float  d,float  start,float  stop)
-{
-    int x1,y1,A,B;
-    switch(_ELLIPSE_MODE){
-    case RADIUS:x1=a; A=c; y1=b; B=d;break;
-    case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
-    case CORNER:
-         A=c/2;B=d/2;x1=a+A; y1=b+B;break;
-    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
-    case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
-    }
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
-}
 
-void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode)
+void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*=0*/)
 {
     int x1,y1,A,B;
     switch(_ELLIPSE_MODE){
@@ -220,7 +207,17 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode)
     default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
     case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
     }
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+
+    if(_filled)
+    {
+        fill_earc_d(x1,y1,A,B,start,stop,mode & 0x1);
+    }
+
+    if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
+        earc_d(x1,y1,A,B,start,stop);
+
+    if(mode!=0)
+        std::cerr<<__FUNCTION__<<" mode ignored!!"<<std::endl;
 }
 
 /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
@@ -296,7 +293,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-10                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

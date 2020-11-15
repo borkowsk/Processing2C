@@ -25,10 +25,6 @@ namespace Processing
     const auto HALF_PI=M_PI_2;
     const auto QUARTER_PI=M_PI_4;
     const auto MAX_INT=INT_MAX;
-    const auto CHORD=2;
-    const auto PIE=1;
-    const auto OPEN=0;
-
 
 /// Classes
 /////////////////////////////////////////////////////////////
@@ -490,7 +486,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-29                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

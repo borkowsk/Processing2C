@@ -1,6 +1,7 @@
 // main.cpp must be for Processing derived application
 // but user may generate and use its own versions
 //////////////////////////////////////////////////////////////
+#include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include <iostream>
@@ -46,7 +47,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

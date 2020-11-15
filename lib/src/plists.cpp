@@ -1,4 +1,5 @@
 // Non inline methods of FloatList IntList & StringList 
+#include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -187,7 +188,7 @@ sarray<int>  StringList::array()// 	Create a new array with a copy of all the va
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-29                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

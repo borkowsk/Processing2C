@@ -194,8 +194,7 @@ void line(float  x1,float  y1,float  x2,float  y2);
 
 OPTINLINE
 void ellipse(float a,float  b,float  c,float  d);
-void arc(float a,float  b,float  c,float  d,float  start,float  stop);
-void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode);
+void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
 
 void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
@@ -255,7 +254,7 @@ int displayDensity(int display=0) {return 1;}
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-10-24                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

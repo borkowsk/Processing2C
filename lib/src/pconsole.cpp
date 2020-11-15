@@ -1,4 +1,5 @@
 // Processing like console functions
+#include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -70,7 +71,7 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-02                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

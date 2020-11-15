@@ -1,4 +1,5 @@
 // Processing library functions connected with data & time
+#include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -79,7 +80,7 @@ int millis() /// Returns the number of milliseconds (thousandths of a second) si
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-10-01                   */
+/*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
