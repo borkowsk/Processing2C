@@ -1,7 +1,7 @@
 Processing2C - skrypty i biblioteka do portowania aplikacji w Processingu na C++
 =================================================================================
 
-Skrypty służą przekształceniu projektu w _Processingu_ w projekt w C++ w systemach _linux_
+Skrypty służą przekształceniu projektu w _Processingu_ w projekt w C++ w systemach *linux*
 Platforma docelowa musi zawierać kompilator C++ (najlepiej __gcc__) oraz programy __cmake__ i __make__.
 Oczywiście potrzebna jest też załączona biblioteka inplementująca interface Processingu oraz biblioteka
 pakiet SymShellLight zapewniający grafikę w __X11__, __MS Windows__, oraz grafikę __SVG__ do uruchamiania aplikacji
@@ -27,8 +27,8 @@ w wynikowym kodzie C++, które staramy się ograniczać przez zestaw dyrektyw w 
 W _Processingu_ kolejność wprowadzania identyfikatorów globalnych nie ma znaczenia - wszystkie widoczne są wszędzie.
 W C++ identyfikator widoczny jest od miejsca deklaracji w dół!
 
-Pierwszym krokiem do rozwiązania tego problemu jest tworzenie __pliku project_at_once.cpp__, który za pomocą dyrektywy #include włącza
-wszystkie pliki wynikowe __*.cpp__ *w kolejności alfabetycznej*.
+Pierwszym krokiem do rozwiązania tego problemu jest tworzenie _pliku project_at_once.cpp_, który za pomocą dyrektywy #include włącza
+wszystkie pliki wynikowe _\*.cpp_ *w kolejności alfabetycznej*.
 
 Zmienne globalne, które przy kontekście jednoliniowym są nie do odróżnienia od globalnych muszą być specjalnie markowane.
 Wybrano komentarz zaczynający się od trzech slashy ('///') używany też przez programy do automatycznej dokumentacji kodu.
@@ -49,13 +49,13 @@ staramy się wykrywać i ostrzegać o nich.
 
 Poważny problem stanowią domyślne ustawienia klas - w _Processingu_ cała zawartość klasy jest domyślnie publiczna, w C++
 prywatna. Z kolei metody w Processingu są domyślnie wirtualne, w C++ nie. Pierwszy problem na razie został rozwiązany częściowo dla
-deklaracji klas które mają otwierajacy znak '{' w tej samej linii. Kwestię funkcji wirtualnych rozwiązuje dyrektywa /*_interfunc*/.
+deklaracji klas które mają otwierajacy znak '{' w tej samej linii. Kwestię funkcji wirtualnych rozwiązuje dyrektywa /\*_interfunc\*/.
 
 Trzecim problemem jest sposób dziedziczenia klas w JAVA'ie. Klasa może mieć tylko jedną klasę bazową, oraz dowolną liczbę implementowanych
 interfejsów. W C++ klas bazowych może być dowolnie dużo, ale nie ma interfejsów.
 Rozwiązujemy to w ten sposób że interfejsy są zmieniane na klasy abstrakcyjne C++ bez pól i implementacji metod, do czego konieczne jest
-użycie w definicji takiego interfejsu dyrektyw /*_interfunc*/ i /*_forcebody*/, a w definicji klasy implementującej interface uprzed
-każdym DODATKOWYM interfejsem trzeba użyć dyrektywy /*_pubext*/.
+użycie w definicji takiego interfejsu dyrektyw /\*_interfunc\*/ i /\*_forcebody\*/, a w definicji klasy implementującej interface uprzed
+każdym DODATKOWYM interfejsem trzeba użyć dyrektywy /\*_pubext\*/.
 
 Użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone
 automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej.
@@ -97,7 +97,9 @@ Znak '{' musi się znajdować w linii deklaracji, a '///' za tym znakiem.
 6) Zmienne globalne oraz pola obiektów o tych samych nazwach co funcje lub metody stosowane w tych samych kontekstach
 przemianowujemy
 
-5) Pliki definiujące bardziej podstawowe klasy powinny mieć nazwy alfabetycznie wcześniejsze niż pliki z tych klas korzystające,
+5) Uzupełniamy interfejsy i klasy implementujace  o niezbędne dyrektywy
+
+6) Pliki definiujące bardziej podstawowe klasy powinny mieć nazwy alfabetycznie wcześniejsze niż pliki z tych klas korzystające,
 ponieważ skrypty używają kolejności alfabetycznej umieszczajac pliki w projekcie. Można także po translacji zmienić kolejność
-plików załączanych (#include) do pliku __project_at_once.cpp__
+plików załączanych (#include) do pliku _project_at_once.cpp_
 
