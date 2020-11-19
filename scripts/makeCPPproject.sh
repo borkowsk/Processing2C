@@ -117,7 +117,8 @@ cat << EOF >> CMakeLists.txt
 target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # -o3 ?
 
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"  
-     #"-L\${PROC2C}/lib/;\${SYMSHELL};\${MYLIBS}"
+     "-L\${PROC2C}/lib"
+     "-L\${SYMSHELL}"
      wbprocess wbsyshX11 X11 Xpm
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
