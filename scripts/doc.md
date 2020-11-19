@@ -1,11 +1,11 @@
 Processing2C - skrypty i biblioteka do portowania aplikacji w Processingu na C++
 =================================================================================
 
-Skrypty służą przekształceniu projektu w _Processingu_ w projekt w C++ w systemach *linux*
+Skrypty służą przekształceniu projektu w _Processingu_ w projekt w C++ w systemach __linux__
 Platforma docelowa musi zawierać kompilator C++ (najlepiej __gcc__) oraz programy __cmake__ i __make__.
 Oczywiście potrzebna jest też załączona biblioteka inplementująca interface Processingu oraz biblioteka
 pakiet SymShellLight zapewniający grafikę w __X11__, __MS Windows__, oraz grafikę __SVG__ do uruchamiania aplikacji
-na serwerach do których nie ma dostępu za pomoca *GUI* a jedynie przez terminal tekstowy.
+na serwerach do których nie ma dostępu za pomoca _GUI_ a jedynie przez terminal tekstowy.
 
 Translacja została zaimplementowana za pomocą programu __sed__ więc kontekst składniowy ograniczony jest zawsze do jednej linii,
 co wymusza pewne zmiany z kodzie PDE, których trzeba dokonać przed translacją. Czasem konieczne są też drobne uzupełnienia 
@@ -42,7 +42,7 @@ jego właściwości bez pełnego zdefiniowania. Tu pomóc może jedynie zmiana k
 Ponadto w _Processingu_ zmienne i funkcje mają rozdzielne przestrzenie nazw. Oznacza to, że zmienna globalna może mieć taką samą
 nazwę jak lokalna metoda i obie będą odróżniane. Takie mieszanie nazw nie jest dopuszczalne w C++ ponieważ identyfikatory funkcji
 i metod mogą występować także bez nawiasów '()' w kontekście wskaźnikowym. Stąd lokalna metoda o tej samej nazwie co zmienna
-globalna zakryje tą zmienną, i vice versa, prowadząc do dziwnych zjawisk. Takie sytuacje dla symboli z interfejsu __Processingu__
+globalna zakryje tą zmienną, i vice versa, prowadząc do dziwnych zjawisk. Takie sytuacje dla symboli z interfejsu _Processingu_
 staramy się wykrywać i ostrzegać o nich.
 
 **Klasy:**
@@ -55,7 +55,7 @@ Trzecim problemem jest sposób dziedziczenia klas w JAVA'ie. Klasa może mieć t
 interfejsów. W C++ klas bazowych może być dowolnie dużo, ale nie ma interfejsów.
 Rozwiązujemy to w ten sposób że interfejsy są zmieniane na klasy abstrakcyjne C++ bez pól i implementacji metod, do czego konieczne jest
 użycie w definicji takiego interfejsu dyrektyw /\*_interfunc\*/ i /\*_forcebody\*/, a w definicji klasy implementującej interface uprzed
-każdym DODATKOWYM interfejsem trzeba użyć dyrektywy /\*_pubext\*/.
+każdym DODATKOWYM interfejsem trzeba użyć dyrektywy _/\*_pubext\*/_.
 
 Użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone
 automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej.
@@ -63,7 +63,7 @@ automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem naz
 Radzimy sobie tylko w prostych sytuacjach gdy chodzi o wywołanie konstruktora, i to pod warunkiem zachowania nieco nienaturalnej
 składni.
 
-Ostatnia kwestia to ';' wymagany w C++ po deklaracji klasy. Na szczęście __Processing_ toleruje takie średniki, więc można je wstawić
+Ostatnia kwestia to ';' wymagany w C++ po deklaracji klasy. Na szczęście _Processing_ toleruje takie średniki, więc można je wstawić
 w pliku PDE.
 
 Te rozwiązania pozwoliły mi na uzycie Processing2C do moich modeli symulacyjnych, ale nie jest to wygodne. Planuje napisać osobny
@@ -94,7 +94,7 @@ interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej lin
 zamiast podwójnego (czyli '///' a nie '//'). Analogicznie należy postąpic w przypadku globalnych funkcji.
 Znak '{' musi się znajdować w linii deklaracji, a '///' za tym znakiem.
 
-6) Zmienne globalne oraz pola obiektów o tych samych nazwach co funcje lub metody stosowane w tych samych kontekstach
+6) Zmienne globalne oraz pola obiektów o tych samych nazwach co funkcje lub metody stosowane w tych samych kontekstach
 przemianowujemy
 
 5) Uzupełniamy interfejsy i klasy implementujace  o niezbędne dyrektywy
