@@ -27,10 +27,9 @@ w wynikowym kodzie C++, które staramy się ograniczać przez zestaw dyrektyw w 
 W _Processingu_ kolejność wprowadzania identyfikatorów globalnych nie ma znaczenia - wszystkie widoczne są wszędzie.
 W C++ identyfikator widoczny jest od miejsca deklaracji w dół!
 
-Pierwszym krokiem do rozwiązania tego problemu jest tworzenie _pliku project_at_once.cpp_, który za pomocą dyrektywy #include włącza
-wszystkie pliki wynikowe _\*.cpp_ *w kolejności alfabetycznej*.
+Pierwszym krokiem do rozwiązania tego problemu jest tworzenie _pliku project_at_once.cpp_, który za pomocą dyrektywy #include włącza wszystkie pliki wynikowe _\*.cpp_ *w kolejności alfabetycznej*.
 
-Zmienne globalne, które przy kontekście jednoliniowym są nie do odróżnienia od globalnych muszą być specjalnie markowane.
+Zmienne globalne, które przy kontekście jednoliniowym są nie do odróżnienia od lokalnych muszą być specjalnie markowane.
 Wybrano komentarz zaczynający się od trzech slashy ('///') używany też przez programy do automatycznej dokumentacji kodu.
 Podobna sytuacja dotyczy globalnych funkcji, jeśli są używane przed zdefiniowaniem. Trzeba wtedy, analogicznie jak dla zmiennych globalnych,
 wymusić wygenerowania deklaracji zapowiadającej.
@@ -75,8 +74,9 @@ W _Processingu_ stałe napisowe są traktowane jak obiekty typu __String__, któ
 innym podstawowym typem zmiennych. W C++ konwersja stałych łańcuchowych na typ __Processing::String__ musi zostać wymuszona jawnie przez dodanie
 wywołania konstruktora w wyrażeniach.
 
-Skrypty dodają takie wywołanie w wykrytych operacjach konkatenacji, ale niestety kompilator C++ często w tym miejscu sygnalizuje
-"warning". Generalnie lepiej jest konkatenacje maksymalnie upraszczać przed translacją.
+Skrypty dodają takie wywołanie w wykrytych operacjach konkatenacji, ale niestety kompilator C++ często w tym miejscu sygnalizuje ostrzeżenie. Generalnie lepiej jest konkatenacje maksymalnie upraszczać przed translacją.
+
+Mam pewne pomysły jak to usprawnić, ale wymagają dosyć dużo pracy i testów, a aktualne rozwiązanie jakoś działa.
 
  
 Jakie zmiany należy wykonać w plikach PDE?
@@ -90,16 +90,26 @@ interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej lin
 
 2) Po nawiasie zamykającym klasę dopisujemy ';' - _Processingowi_ to nie przeszkadza, a w C++ jest wymagane.
 
-3) Zmienne globalne, które mają  być widoczne we wszystkich plikach projektu należy skomentować używająć potrójnego slasha
-zamiast podwójnego (czyli '///' a nie '//'). Analogicznie należy postąpic w przypadku globalnych funkcji.
-Znak '{' musi się znajdować w linii deklaracji, a '///' za tym znakiem.
+3) Zmienne globalne, które mają  być widoczne we wszystkich plikach projektu należy skomentować używająć potrójnego slasha zamiast podwójnego (czyli '///' a nie '//'). Analogicznie należy postąpic w przypadku globalnych funkcji. Znak '{', jeśli ma wystąpić w lini, musi się znajdować za deklaracją, a '///' za tym znakiem.
 
-6) Zmienne globalne oraz pola obiektów o tych samych nazwach co funkcje lub metody stosowane w tych samych kontekstach
-przemianowujemy
+4) Zmienne oraz pola obiektów o tych samych nazwach co funkcje lub metody stosowane w tych samych kontekstach przemianowujemy
 
 5) Uzupełniamy interfejsy i klasy implementujace  o niezbędne dyrektywy
 
-6) Pliki definiujące bardziej podstawowe klasy powinny mieć nazwy alfabetycznie wcześniejsze niż pliki z tych klas korzystające,
-ponieważ skrypty używają kolejności alfabetycznej umieszczajac pliki w projekcie. Można także po translacji zmienić kolejność
-plików załączanych (#include) do pliku _project_at_once.cpp_
+6) Pliki definiujące bardziej podstawowe klasy powinny mieć nazwy alfabetycznie wcześniejsze niż pliki z tych klas korzystające, ponieważ skrypty używają kolejności alfabetycznej umieszczajac pliki w projekcie. Można także po translacji zmienić kolejność plików załączanych (#include) do pliku _project_at_once.cpp_
+
+
+
+
+/********************************************************************/
+/*               PROCESSING2C  version 2020-11-19                   */
+/********************************************************************/
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
+/*            W O J C I E C H   B O R K O W S K I                   */
+/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
+/*    GITHUB: https://github.com/borkowsk                           */
+/*                                                                  */
+/*                               (Don't change or remove this note) */
+/********************************************************************/
 
