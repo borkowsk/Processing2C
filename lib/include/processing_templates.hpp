@@ -90,9 +90,10 @@ _free_ptr_to(ptr<B>& b)//release the pointer to A
 }
 
 template<typename Base, typename T> //inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
-inline bool instanceof(ptr<T>& p)
+inline 
+bool instanceof(ptr<T>& p)
 {
-   return dynamic_cast<Base*>(p.get())!=nullptr;
+   return dynamic_cast<Base*>(p.get()) != nullptr;
 }
 
 template<class T>
@@ -100,7 +101,7 @@ template<class T>
 {
   ///INFO:
   public:
-      virtual int compareTo(ptr<T> o)=0;
+      virtual int compareTo(ptr<T> o) = 0;
 };
 
 template<class T>
@@ -134,7 +135,8 @@ class sarray:public ptr< array<T> >
 };
 
 template<class T>
-inline  sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.size()))
+inline  
+sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.size()))
 { //NOT TESTED YET? TODO?
     size_t i=0;
     for(auto e:l)
@@ -152,7 +154,8 @@ class matrix:public array< sarray<T> >
 };
 
 template<class T>
-inline matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
+inline 
+matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 { //NOT TESTED YET! TODO!
     for(size_t i=0;i<this->length;i++)
         (*this)[i]=new array<T>( M );
@@ -177,7 +180,7 @@ class smatrix:public ptr< matrix<T> >
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-29                   */
+/*               PROCESSING2C  version 2020-11-18                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

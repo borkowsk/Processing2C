@@ -26,6 +26,13 @@ String String::operator  + (_string_param v) const
     return ret;
 }
 
+_string_param _string_param::operator  + (_string_param v) const
+{
+    _string_param ret=(*this);
+    ret+=v;
+    return ret;
+}
+
 String operator  + (_string_param v,const String& s)
 {
     String ret=v;
@@ -136,7 +143,7 @@ String nfc(double num,int digits)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

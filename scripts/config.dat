@@ -1,6 +1,0 @@
-#FILL THIS PATHS PROPERLY - SHOULD BE ABSOLUTE!!!
-#WBSYMSHELL=
-#WBRTM=
-#EGZ.:
-WBRTM="/data/wb/SCC/__working_copies/symShell2/WBRTM_Linux/"
-WBSYMSHELL="/data/wb/SCC/__working_copies/symShell2/WBRTM_Linux/"

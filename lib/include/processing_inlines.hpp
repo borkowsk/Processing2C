@@ -2,7 +2,7 @@
 #pragma once
 #ifndef PROCESSING_INLINES_H
 #define PROCESSING_INLINES_H
-#include "SYMSHELL/symshell.h"
+#include "symshell.h"
 #include <cmath>
 //using namespace std::math;
 ///
@@ -123,7 +123,7 @@ inline float lerp(float v0, float v1, float t) // Precise method, which guarante
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-08-19                   */
+/*               PROCESSING2C  version 2020-11-18                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -27,9 +27,9 @@ bool    ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w setup()
-int Side;  /// Bok macieży
-int W;     /// Mnożnik dla kwadracika
-smatrix<pRGB>    World;//TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
+int          Side;  /// Bok macieży
+int          W;     /// Mnożnik dla kwadracika
+smatrix<pKLASA>    World; /// TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
 PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
 
@@ -39,8 +39,8 @@ void processing_window::setup() //Window and model initialization
   W=3;
   Side=900/W;
 
-  World = new matrix<pRGB>(Side,Side); //<>//
-  World[Side/2][Side/2]= new RGB();
+  World = new matrix<pKLASA>(Side,Side); //<>//
+  World[Side/2][Side/2]= new KLASA();
 
   World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG);//Inicjalize 
   World[Side/2][Side/2]->Visualise(Side/2,Side/2);
@@ -59,7 +59,7 @@ void processing_window::draw()
 //Monte Carlo Step
 {
   //Zapis tego co jest
-  println(output,Step+String("\t")+RGB_Counter); // Write the statistics to the file
+  println(output,Step+String("\t")+KLASA_Counter); // Write the statistics to the file
   output->flush();//Upewnij się że bufor "poszedł na dysk"
   
   //Nowy stan
@@ -79,7 +79,7 @@ void processing_window::draw()
          if(0<=Xt && Xt<Side && 0<=Yt && Yt<Side
             &&  World[Yt][Xt]==nullptr)
           {
-            World[Yt][Xt]=new RGB();
+            World[Yt][Xt]=new KLASA();
             int nR=World[Y][X]->R+int(random(CJUMP))-CJUMP/2;
             if(nR<0) nR=0; else if(nR>255) nR=255;
             

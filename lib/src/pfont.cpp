@@ -4,7 +4,7 @@
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
-#include "SYMSHELL/symshell.h"
+#include "symshell.h"
 #include <iostream>
 
 namespace Processing
@@ -44,7 +44,7 @@ void textSize(int)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

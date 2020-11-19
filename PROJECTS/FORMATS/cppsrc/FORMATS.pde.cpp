@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: FORMATS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -82,5 +82,5 @@ void processing_window::setup()
   text(String("nfc2___10000.:") + nfc(10000.0,2),10,pos+=fontSize);
   text(String("nfc2__-10000.:") + nfc(-10000.0,2),10,pos+=fontSize);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

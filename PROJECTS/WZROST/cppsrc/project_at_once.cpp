@@ -13,5 +13,5 @@ using namespace Processing;
 #include "project.h" //This is for you. Could be deleted when not needed
 //==================================================================================
 const char* Processing::_PROGRAMNAME="WZROST";
-#include "RGB.pde.cpp"
+#include "KLASA.pde.cpp"
 #include "WZROST.pde.cpp"

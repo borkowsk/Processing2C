@@ -1,4 +1,7 @@
 #!/bin/bash
+# This script have to prepare cmake C++ project in directory containing Processing project
+# No parameters are expected!  
+
 if [ $# -ne 0 ]; 
 then
    echo "No parameters expected!" 1>&2
@@ -15,8 +18,9 @@ echo "Directories:"
 echo -e SCRIPTS "     $SCRIPTS"
 echo -e PROJECT "     $PROJECT"
 echo -e SOURCES "     $SOURCES"
+echo -e PROC2C "      $PROC2C"
 echo -e WBRTM "       $WBRTM"
-echo -e WBSYMSHELL "  $WBSYMSHELL"
+echo -e WBSYMSHELL "  $SYMSHELL"
 
 #CHECK SOURCE
 echo -e "\nAt least setup() or draw() function expected in *.pde files:"
@@ -68,23 +72,25 @@ do # take action on each file. $f store current file name
   $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
 done
 
-#Preparing CMakeLists.txt
-#https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+#Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 echo -e "\nCreating CMakeLists.txt"
 cat << EOF > CMakeLists.txt
 cmake_minimum_required(VERSION 2.8)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project($PROJECT)
-set( VERSION_NUM 0.1 ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.11 ) #MUST BE NUMERIC 
 
-set( SRCPATH "$SOURCES/cppsrc/" )
-set( WBRTM   "$WBRTM")
-set( MYLIBS  "$WBRTM")
+set( SRCPATH  "$SOURCES/cppsrc/" )
+set( PROC2C   "$PROC2DIR" )
+set( SYMSHELL "$SYMSHELL" )
+set( WBRTM    "$WBRTM" )
 
-add_definitions( -DMULTITR -DDEF_MAXTHREADS=16 -DVERSION_NUM=\${VERSION_NUM} )
+set( MYLIBS   "$WBRTM/lib" )
 
-include_directories(  "\${SRCPATH}" "$SCRIPTS/../lib/include" "\${WBRTM}" "\${WBRTM}/INCLUDE" )
+add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
+
+include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}" "\${WBRTM}/INCLUDE" )
 
 add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_once"
                "\${SRCPATH}project_at_once.cpp"
@@ -110,10 +116,9 @@ cat << EOF >> CMakeLists.txt
 
 target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # -o3 ?
 
-target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
-     "-L/data/wb/SCC/__working_copies/Processing2C/lib/"
-     "-L\${MYLIBS}"
-     wbprocess wbrtm wbsyshX11 X11 Xpm
+target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"  
+     #"-L\${PROC2C}/lib/;\${SYMSHELL};\${MYLIBS}"
+     wbprocess wbsyshX11 X11 Xpm
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
      rt
@@ -122,7 +127,7 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
 #target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}"  PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # --verbose ?
 
 #target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}"
-#     "-L\${MYLIBS}"
+#     #"-L\${PROC2C}/lib/;\${SYMSHELL};\${MYLIBS}"
 #     wbprocess wbrtm wbsyshX11 X11 Xpm
 #     \${CMAKE_THREAD_LIBS_INIT}
 #     pthread
@@ -131,3 +136,4 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"
 EOF
 
 echo -e "\nProject ${PROJECT} DONE\n\n"
+

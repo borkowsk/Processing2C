@@ -55,7 +55,7 @@ Trzecim problemem jest sposób dziedziczenia klas w JAVA'ie. Klasa może mieć t
 interfejsów. W C++ klas bazowych może być dowolnie dużo, ale nie ma interfejsów.
 Rozwiązujemy to w ten sposób że interfejsy są zmieniane na klasy abstrakcyjne C++ bez pól i implementacji metod, do czego konieczne jest
 użycie w definicji takiego interfejsu dyrektyw /\*_interfunc\*/ i /\*_forcebody\*/, a w definicji klasy implementującej interface uprzed
-każdym DODATKOWYM interfejsem trzeba użyć dyrektywy _/\*_pubext\*/_.
+każdym DODATKOWYM interfejsem trzeba użyć dyrektywy /\*_pubext\*/.
 
 Użycie słowa kluczowego __super__ reprezentującego w _Processingu_ klasę bazową nie może być przetłumaczone
 automatycznie gdyż wymagałoby to wieloliniowego kontekstu z zapamiętaniem nazwy klasy bazowej.

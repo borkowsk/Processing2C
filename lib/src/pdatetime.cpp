@@ -80,7 +80,7 @@ int millis() /// Returns the number of milliseconds (thousandths of a second) si
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

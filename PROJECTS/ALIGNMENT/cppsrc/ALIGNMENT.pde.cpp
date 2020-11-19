@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ALIGNMENT.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -37,7 +37,6 @@ void setVariables()
 void processing_window::setup()
 {
   size(600,600);
-  setTitle("HELLO!");
   setVariables();
   line(0,0,width,height);
   line(0,height,width,0);
@@ -132,5 +131,5 @@ void processing_window::draw()
   cross(width3_4,height1_4);
   cross(width-1,height-1);
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

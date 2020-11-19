@@ -81,7 +81,8 @@ namespace Processing
    //template<class X>
    //String& operator + (const ptr<X>&,String&);
 
-   extern sarray<String> args;//WHOLE PROGRAM PARAMETERS!!!
+   extern 
+   sarray<String> args; //WHOLE PROGRAM PARAMETERS!!!
 
    /*interface*/ class _self_printable
    {
@@ -118,6 +119,8 @@ namespace Processing
         _string_param(long unsigned int p);
         //explicit
         _string_param(const void*  p);
+
+        _string_param operator  + (_string_param) const;
 
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
@@ -228,29 +231,33 @@ namespace Processing
   /// Min & Max functions:
   /// More sophisticated min & max is defined in header <algorithm>
   /// Use std::min & std::max instead of Processing like version!
-  template<class V>
-  inline V max(V a,V b)
+  template<class value>
+  inline 
+  value max(value a,value b)
   {
      return (a>b?a:b);
   }
 
-  template<class V>
-  inline V max(V a,V b,V c)
+  template<class value>
+  inline 
+  value max(value a,value b,value c)
   {
-     V d=(a>b?a:b);
+     value d=(a>b?a:b);
      return (c>d?c:d);
   }
 
-  template<class V>
-  inline V min(V a,V b)
+  template<class value>
+  inline 
+  value min(value a,value b)
   {
      return (a<b?a:b);
   }
 
-  template<class V>
-  inline V min(V a,V b,V c)
+  template<class value>
+  inline 
+  value min(value a,value b,value c)
   {
-     V d=(a<b?a:b);
+     value d=(a<b?a:b);
      return (c<d?c:d);
   }
 
@@ -458,28 +465,28 @@ namespace Processing
 
   inline String FloatList::print() const
   {
-      String ret=String("Size:")+size();
+      String ret=_string_param("Size:")+_string_param(size());
       ret+=String(" [");
       for(float val:*this)
-          ret+=val+String(" ");
+          ret+=_string_param(val)+_string_param(" ");
       ret+=String("]");
       return ret;
   }
 
   inline String IntList::print() const
   {
-      String ret=String("Size:")+size()+String(" [");
+      String ret=_string_param("Size:")+_string_param(size())+_string_param(" [");
       for(int val:*this)
-          ret+=val+String(" ");
+          ret+=_string_param(val)+_string_param(" ");
       ret+=String("]");
       return ret;
   }
 
   inline String StringList::print() const
   {
-      String ret=String("Size:")+size()+String(" [");
+      String ret=_string_param("Size:")+_string_param(size())+_string_param(" [");
       for(String val:*this)
-          ret+=String('"')+val+String("\" ");
+          ret+=_string_param('"')+_string_param(val)+_string_param("\" ");
       ret+=String("]");
       return ret;
   }

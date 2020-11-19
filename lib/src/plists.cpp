@@ -188,7 +188,7 @@ sarray<int>  StringList::array()// 	Create a new array with a copy of all the va
     std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

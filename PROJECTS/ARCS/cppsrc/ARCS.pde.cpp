@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ARCS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -35,5 +35,5 @@ arc(400,400,100,100,radians(10),radians(180),PIE);
 //http://processingwedukacji->blogspot->com
 saveFrame();//If saveFrame() is used without parameters, it will save files as screen-0000.tif, screen-0001.tif
 }
-///data/wb/SCC/__working_copies/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 
