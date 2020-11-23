@@ -77,8 +77,7 @@ The character '{', if it is to appear on a line, must follow the declaration and
 
 
 
-
-
+```C
 /********************************************************************/
 /*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/
@@ -90,4 +89,4 @@ The character '{', if it is to appear on a line, must follow the declaration and
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
-
+```
