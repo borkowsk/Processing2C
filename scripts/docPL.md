@@ -11,15 +11,15 @@ Translacja została zaimplementowana za pomocą programu __sed__ więc kontekst 
 co wymusza pewne zmiany z kodzie PDE, których trzeba dokonać przed translacją. Czasem konieczne są też drobne uzupełnienia 
 w wynikowym kodzie C++, które staramy się ograniczać przez zestaw dyrektyw w komentarzach takich jak:
 
-    - /*_reference*/ translated into '&'
-    - /*_pubext*/ translated into 'public virtual'
-    - /*_interfunc*/ translated into 'virtual'
-    - /*_forcebody*/ translated into '=0'
-    - /*_downcast*/ translated into 'std::dynamic_pointer_cast\<\1\>'
-    - /*_dncast*/ translated into 'std::dynamic_pointer_cast\<\1\>'
-    - /*_upcast*/ translated into 'static_cast\<p\1\>'
-    - /*_tmpfree*/ translated into '_free_ptr_to\<\1\>'
-    - /*_tmpptr*/ translated into '*'
+    - /*_reference*/ transformowane na '&'
+    - /*_pubext*/ transformowane na 'public virtual'
+    - /*_interfunc*/ transformowane na 'virtual'
+    - /*_forcebody*/ transformowane na '=0'
+    - /*_downcast*/ transformowane na 'std::dynamic_pointer_cast\<\1\>'
+    - /*_dncast*/ transformowane na 'std::dynamic_pointer_cast\<\1\>'
+    - /*_upcast*/ transformowane na 'static_cast\<p\1\>'
+    - /*_tmpfree*/ transformowane na '_free_ptr_to\<\1\>'
+    - /*_tmpptr*/ transformowane na '*'
 
 
 **Widoczność identyfikatorów - największą różnica semantyczna między PDE a C++:**
@@ -100,9 +100,9 @@ interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej lin
 
 
 
-
+```C
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-11-23                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
@@ -112,4 +112,4 @@ interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej lin
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
-
+```
