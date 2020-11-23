@@ -20,4 +20,11 @@ Then go into _Processing2C/_ and and run _config.sh_ bash script.
 
 See: _./scripts/doc.md_ for more!
 
+**REQUIREMENTS**
+
+Curenty tested only on UBUNTU 18.04 and source codes for Processing 3.x
+Need also the following tools **bash**, **sed**, **cmake**, **make** & **gcc** 
+
+
+
 See: https://stackoverflow.com/questions/20303826/highlight-bash-shell-code-in-markdown-files
