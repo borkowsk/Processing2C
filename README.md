@@ -22,7 +22,8 @@ See: _./scripts/doc.md_ for more!
 
 **REQUIREMENTS**
 
-Curenty tested only on UBUNTU 18.04 and source codes for Processing 3.x
+Curenty tested only on __UBUNTU 18.04__ and source codes for __Processing 3.x__
+
 Need also the following tools **bash**, **sed**, **cmake**, **make** & **gcc** 
 
 
