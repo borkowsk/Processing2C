@@ -8,35 +8,35 @@
 namespace Processing
 {
 
-    float noise(float x)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+float noise(float x)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
-    float noise(float x,float  y)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+float noise(float x,float  y)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
-    float noise(float x,float  y,float  z)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+float noise(float x,float  y,float  z)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
-    void  noiseSeed(int seed)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+void  noiseSeed(int seed)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
-    void noiseDetail(int lod)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+void noiseDetail(int lod)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
-    void noiseDetail(int lod,float falloff)
-    {
-        FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    }
+void noiseDetail(int lod,float falloff)
+{
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+}
 
 }//END of namespace Processing
 /********************************************************************/
