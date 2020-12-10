@@ -88,6 +88,7 @@ namespace Processing
   String nfc(sarray<double> nums,int digits);
   String nfc(sarray<double> nums,int left,int right);
 }//END of namespace Processing
+
 /********************************************************************/
 /*               PROCESSING2C  version 2020-11-19                   */
 /********************************************************************/

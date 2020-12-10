@@ -21,12 +21,12 @@ double random(double low,double hig)
     double tmp=low + (rand()/_denominator) * (hig-low);  //???TODO BETTER
     if( tmp<low )
     {
-            std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
+            std::cerr<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
             return low;
     }
     if( hig<=tmp )
     {
-            std::cout<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
+            std::cerr<<__FUNCTION__<<"("<<low<<","<<hig<<") - unexpected value "<<tmp<<std::endl;
             return hig-0.00000000001;//????TODO BETTER
     }
     return tmp;
@@ -97,7 +97,7 @@ float degrees(float radians)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

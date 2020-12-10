@@ -25,13 +25,13 @@ PrintWriter::PrintWriter()
 
 PrintWriter::PrintWriter(PrintWriter& w)
 {
-    std::cerr<<__FUNCTION__<<" used for ptr="<<(unsigned long long)w.ptr<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
     ptr=w.ptr;w.ptr=nullptr;
 }
 
 PrintWriter&  PrintWriter::operator = (PrintWriter& w)
 {
-    std::cerr<<__FUNCTION__<<" used for ptr="<<(unsigned long long)w.ptr<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
     ptr=w.ptr;w.ptr=nullptr;
     return *this;
 }
@@ -80,7 +80,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

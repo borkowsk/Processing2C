@@ -14,12 +14,12 @@ namespace Processing
     //void cursor(PImage img,int x,int y);
     void cursor()
     {
-        std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+        FIRST_TIME_ERRMESSAGE( " not implemented!" );
     }
 
     void noCursor()
     {
-        std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+        FIRST_TIME_ERRMESSAGE( " not implemented!" );
     }
     //Parameters:
     //kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
@@ -29,7 +29,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

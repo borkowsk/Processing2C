@@ -11,22 +11,22 @@ namespace Processing
 
 void noSmooth()
 {
-    std::cerr<<__FUNCTION__<<" is default for X11!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " is default for X11!" );
 }
 
 void smooth()
 {
-    std::cerr<<__FUNCTION__<<" not available under X11!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " not available under X11!" );
 }
 
 void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
 }
 
 void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
 }
 
 int _LINE_WIDTH=1;
@@ -46,7 +46,7 @@ void stroke(float Gray,float Alpha)
 {
     int S=(int)Gray;
     set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
-    std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
 }
 
 void stroke(float Red,float Green,float Blue)
@@ -57,13 +57,13 @@ void stroke(float Red,float Green,float Blue)
 void stroke(float Red,float Green,float Blue,float Alpha)
 {
     set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
-    std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF stroke(color)
 void stroke(const color& col)//Until update of symshell.h (TODO!)
 {
-    //std::cerr<<__FUNCTION__<<' '<<std::hex<<col.val<<std::endl;
+    //FIRST_TIME_ERRMESSAGE( ' '<<std::hex<<col.val );
     stroke(red(col),green(col),blue(col));
 }
 
@@ -71,7 +71,7 @@ void noStroke()
 {
     line_width(0);//??? TODO?
     _LINE_WIDTH=0;
-    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - not inline called" );
 }
 
 bool _filled=true;//TODO _FILLED !!!
@@ -88,7 +88,7 @@ void fill(float Gray,float Alpha)
     int S=(int)Gray;
     set_brush_rgb(S,S,S);
     _filled=true;
-    std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
 }
 
 void fill(float Red,float Green,float Blue)
@@ -101,7 +101,7 @@ void fill(float Red,float Green,float Blue,float Alpha)
 {
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
     _filled=true;
-    std::cerr<<__FUNCTION__<<" - Alpha ignored!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF fill(color)
@@ -113,7 +113,7 @@ void fill(const color& col)//Until update of symshell.h (TODO!)
 void noFill()
 {
     _filled=false;
-    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - not inline called" );
 }
 
 void point(float x,float y)
@@ -135,7 +135,7 @@ void rect(float a,float  b,float  c,float  d)
     case CORNERS:x1=a; y1=b; x2=c; y2=d;break;
     case CENTER:x1=a-c/2;x2=a+c/2;y1=b-d/2;y2=b+d/2;break;
     case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
-    default: std::cerr<<__FUNCTION__<<" - undefined rect mode!"<<std::endl;
+    default: FIRST_TIME_ERRMESSAGE( " - undefined rect mode!" );
     case CORNER:
         x1=a; y1=b; x2=a+c; y2=b+d;break;
     }
@@ -151,13 +151,13 @@ void rect(float a,float  b,float  c,float  d)
         ::line_d(x1,y2,x2,y2);
     }
 
-    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - not inline called" );
 }
 
 void rect(float a,float  b,float  c,float  d,float r)
 {
     rect(a,b,c,d);
-    std::cerr<<__FUNCTION__<<" - r parameter is ignored!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - r parameter is ignored!" );
 }
 
 /// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
@@ -182,7 +182,7 @@ void ellipse(float a,float  b,float  c,float  d)
     case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
     case CORNER:
          A=c/2;B=d/2;x1=a+A; y1=b+B;break;
-    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
+    default: FIRST_TIME_ERRMESSAGE( " - undefined ellipse mode!" );
     case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
     }
 
@@ -192,7 +192,7 @@ void ellipse(float a,float  b,float  c,float  d)
     if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
 
-    std::cerr<<__FUNCTION__<<" - not inline called"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " - not inline called" );
 }
 
 
@@ -204,7 +204,7 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
     case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
     case CORNER:
          A=c/2;B=d/2;x1=a+A; y1=b+B;break;
-    default: std::cerr<<__FUNCTION__<<" - undefined ellipse mode!"<<std::endl;
+    default: FIRST_TIME_ERRMESSAGE( " - undefined ellipse mode!" );
     case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
     }
 
@@ -217,7 +217,7 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
         earc_d(x1,y1,A,B,start,stop);
 
     if(mode!=0)
-        std::cerr<<__FUNCTION__<<" mode ignored!!"<<std::endl;
+        FIRST_TIME_ERRMESSAGE( " mode ignored!!" );
 }
 
 /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
@@ -252,13 +252,13 @@ float textWidth(_string_param str)
 void text(_string_param str,float x,float y)
 {
     switch(_TEXT_HORIZONTAL_AL){
-    default:std::cerr<<__FUNCTION__<<" - invalid horizontal alignment!"<<std::endl;
+    default:FIRST_TIME_ERRMESSAGE( " - invalid horizontal alignment!" );
     case LEFT:break;
     case CENTER:x-=string_width(str.c_str())/2;break;
     case RIGHT:x-=string_width(str.c_str());break;
     }
     switch(_TEXT_VERTICAL_AL){
-    default:std::cerr<<__FUNCTION__<<" - invalid vertical alignment!"<<std::endl;
+    default:FIRST_TIME_ERRMESSAGE( " - invalid vertical alignment!" );
     case BASELINE:
     case TOP: break;
     case BOTTOM:y-=char_height('X');break;
@@ -270,7 +270,7 @@ void text(_string_param str,float x,float y)
 void text(_string_param str,float x1,float y1,float x2,float y2)
 {
     print_d(x1,y1-char_height('X'),"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
-    std::cerr<<__FUNCTION__<<" - x2 & y2 ignored!"<<std::endl;//ale w SYMSHELL X11
+    FIRST_TIME_ERRMESSAGE( " - x2 & y2 ignored!" );//ale w SYMSHELL X11
 }
 
 void save(_string_param filename)
@@ -282,18 +282,18 @@ void saveFrame(_string_param filename)
 {
     dump_screen(filename.c_str());
     if(filename.find_first_of('#')!=std::string::npos)
-        std::cerr<<__FUNCTION__<<" - special meaning of # ignored!"<<std::endl;
+        FIRST_TIME_ERRMESSAGE( " - special meaning of # ignored!" );
 }
 
 void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will save files as screen-0000.tif, screen-0001.tif,
 {
     dump_screen("screen-");
-    std::cerr<<__FUNCTION__<<": files numbering not implemented!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( ": files numbering not implemented!" );
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

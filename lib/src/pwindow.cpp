@@ -123,12 +123,12 @@ void exit()
 
 void processing_window_base::mouseClicked()
 {
-    std::cerr<<__FUNCTION__<<" ignored"<<std::endl;
+    std::cerr<<__FUNCTION__<<" ignored"<<std::endl;//ANY TIME IS USED!
 }
 
 void processing_window_base::keyPressed()
 {
-    std::cerr<<__FUNCTION__<<" ignored!"<<std::endl;
+    std::cerr<<__FUNCTION__<<" ignored!"<<std::endl;//ANY TIME IS USED!
 }
 
 void processing_window_base::before_setup(int argc,const char *argv[])
@@ -166,7 +166,7 @@ void background(float gray)
 void background(float gray,float  alpha)
 {
     set_background(256+gray);
-    std::cerr<<__FUNCTION__<<" ignoring alpha channel!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
 }
 
 void background(float v1,float v2,float v3)
@@ -177,7 +177,7 @@ void background(float v1,float v2,float v3)
 void background(float v1,float v2,float v3,float  alpha)
 {
     set_background(v1,v2,v3);
-    std::cerr<<__FUNCTION__<<" ignoring alpha channel!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
 }
 
 void size(int width,int height)
@@ -218,12 +218,12 @@ void processing_window_base::setTitle(Processing::_string_param bar)
 /// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().
 void redraw()
 {
-    std::cerr<<__FUNCTION__<<" not implemented!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " not implemented!" );
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

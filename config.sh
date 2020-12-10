@@ -1,4 +1,7 @@
 #!/bin/bash
+# https://intoli.com/blog/exit-on-errors-in-bash-scripts/
+#
+set -e
 
 function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
  read -s -n 1 -p "Press ^C to abort, any key to continue . . ."
@@ -17,13 +20,13 @@ pause
 cp scripts/config.dat.tmpl scripts/config.dat
 echo SYMSHELL=${SYMSHELL} >> scripts/config.dat
 echo PROC2DIR=${PROC2DIR} >> scripts/config.dat
-echo "see scripts/config.dat"
+echo "see scripts/config.dat !"
 
 #prepare CMakeLists.txt
 cat lib/CMakeLists.tmpl |\
 sed "s|%%PROC2DIR%%|\"$PROC2DIR\"|" |\
 sed "s|%%SYMSHELL%%|\"$SYMSHELL\"|" > lib/CMakeLists.txt
-echo "see lib/CMakeLists.txt"
+echo "see lib/CMakeLists.txt !"
 
 echo "Ready to make library!"
 pause

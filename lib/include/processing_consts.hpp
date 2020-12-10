@@ -37,6 +37,14 @@ const int TOP=102;
 const int BOTTOM=103;
 const int BASELINE=104;
 }//END of namespace Processing
+
+//FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS
+#define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;\
+                                            if(0==flag++) \
+                                                std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
+                                         }
+
+
 /********************************************************************/
 /*               PROCESSING2C  version 2020-11-15                   */
 /********************************************************************/

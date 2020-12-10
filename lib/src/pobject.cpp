@@ -11,13 +11,13 @@ namespace Processing
     long Object::hashCode() const
     ///	returns the hashcode number for this object
     {
-        std::cout<<__FUNCTION__<<" - not implemented! "<<std::endl;
+        FIRST_TIME_ERRMESSAGE( " - not implemented! " );
         return (size_t)this;
     }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

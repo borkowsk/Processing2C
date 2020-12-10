@@ -14,7 +14,7 @@ namespace Processing
 String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
 #ifdef DEBUG
-    std::cerr<<__FUNCTION__<<" called!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " called!" );
 #endif
 }
 
@@ -26,35 +26,65 @@ String::String(char  c):std::string({c,'\0'})
 
 bool String::operator == (nullptr_t v)
 {
-    std::cerr<<__FUNCTION__<<" should not be used for nullptr!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
     return empty();
 }
 
 bool String::operator != (nullptr_t)
 {
-    std::cerr<<__FUNCTION__<<" should not be used for nullptr!"<<std::endl;
+    FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
     return !empty();
+}
+
+static int count_substrings(const char *str,const char *substr)
+        //https://www.sanfoundry.com/c-program-count-occurence-substring/
+{ return 0; }
+
+static int count_characters(const char *str, char character)
+{
+    const char *p = str;
+    int count = 0;
+
+    do {
+        if (*p == character)
+            count++;
+    } while (*(p++));
+
+    return count;
 }
 
  sarray<String> split(_string_param string2parse,_string_param delimiter)
  {
-
+#ifndef NDEBUG
      std::cerr<<__FUNCTION__<<"called for:'"
                <<string2parse.get().c_str()<<"' with delimiter '"
                <<delimiter.get().c_str()<<"'"<<std::endl;
+#endif
      //Calculate number of strings?
-     // ..... TODO
-     int numberOfstrings=1;
+     int numberOfstrings=1+count_characters(string2parse.c_str(),delimiter[0]);
      //Make output array
      sarray<String> out=new array<String>(numberOfstrings);
      //Find substrings
-     //..... TODO
-     out[0]=String("Not implemented!");
+     if(numberOfstrings>1)
+     { //https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c POPRAWIONE!
+         size_t ind = 0;
+         size_t pos = 0;
+         size_t dln = delimiter.length()-1;
+         while ((pos = string2parse.find(delimiter.c_str())) != std::string::npos)
+         {
+             Processing::String token{ string2parse.substr(0, pos) };//std::cout << token << std::endl;
+             string2parse.erase(0, pos + dln);//std::cout << string2parse << std::endl;
+             out[ind++]=token;
+         }
+         out[ind]=string2parse;//std::cout << string2parse << std::endl;
+     }
+     else
+         out[0]=string2parse;
      return out;
  }
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
