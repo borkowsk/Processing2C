@@ -38,7 +38,7 @@ const int BOTTOM=103;
 const int BASELINE=104;
 }//END of namespace Processing
 
-//FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS
+//FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS isted also in 'not_implemented.h'
 #define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;\
                                             if(0==flag++) \
                                                 std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
@@ -46,7 +46,7 @@ const int BASELINE=104;
 
 
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-12-10                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

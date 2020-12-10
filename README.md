@@ -27,5 +27,6 @@ Curenty tested only on __UBUNTU 18.04__ and source codes for __Processing 3.x__
 Need also the following tools **bash**, **sed**, **cmake**, **make** & **gcc** 
 
 
+**NOT IMPLEMENTED**
 
-See: https://stackoverflow.com/questions/20303826/highlight-bash-shell-code-in-markdown-files
+Functions already declared but still not implemented are listed in _not_implemented.h_ file. 
