@@ -21,18 +21,18 @@ String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
 String::String(const String& par):std::string( par.c_str() )
 {}
 
-String::String(char  c):std::string({c,'\0'})
+String::String(char  c):std::string({c})
 {}
 
 bool String::operator == (nullptr_t v)
 {
-    FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
+    //FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
     return empty();
 }
 
 bool String::operator != (nullptr_t)
 {
-    FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
+    //FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
     return !empty();
 }
 
@@ -56,7 +56,7 @@ static int count_characters(const char *str, char character)
  sarray<String> split(_string_param string2parse,_string_param delimiter)
  {
 #ifndef NDEBUG
-     std::cerr<<__FUNCTION__<<"called for:'"
+     std::cerr<<__FUNCTION__<<" called for:'"
                <<string2parse.get().c_str()<<"' with delimiter '"
                <<delimiter.get().c_str()<<"'"<<std::endl;
 #endif
@@ -69,14 +69,14 @@ static int count_characters(const char *str, char character)
      { //https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c POPRAWIONE!
          size_t ind = 0;
          size_t pos = 0;
-         size_t dln = delimiter.length()-1;
+         size_t dln = delimiter.length(); //std::cout << dln <<  std::endl;
          while ((pos = string2parse.find(delimiter.c_str())) != std::string::npos)
          {
-             Processing::String token{ string2parse.substr(0, pos) };//std::cout << token << std::endl;
-             string2parse.erase(0, pos + dln);//std::cout << string2parse << std::endl;
+             Processing::String token{ string2parse.substr(0, pos) }; //std::cout << token << std::endl;
+             string2parse.erase(0, pos + dln); //std::cout << string2parse << std::endl;
              out[ind++]=token;
          }
-         out[ind]=string2parse;//std::cout << string2parse << std::endl;
+         out[ind]=string2parse; //std::cout << string2parse << std::endl;
      }
      else
          out[0]=string2parse;
