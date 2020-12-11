@@ -65,6 +65,9 @@ _string_param::_string_param(unsigned long int    p):String( std::to_string(p) )
 _string_param::_string_param(const void *p):String( std::to_string( (size_t)p) )// inline?
 {}
 
+_string_param::_string_param(std::exception& e):String( e.what() )
+{}
+
 //Funkcje formatujące pojedyncze liczby
 String nf(double num)
 {

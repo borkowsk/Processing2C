@@ -13,22 +13,20 @@ PrintWriter::~PrintWriter()
 {
     if(ptr!=nullptr)
     {
+        ptr->close();
         delete ptr;// Zwalnianie zasobów
         ptr=nullptr;
     }
 }
 
-PrintWriter::PrintWriter()
-{
-    ptr=nullptr;
-}
-
+// Real ;-) constructor - TRANSFERING!
 PrintWriter::PrintWriter(PrintWriter& w)
 {
     FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
     ptr=w.ptr;w.ptr=nullptr;
 }
 
+//TRANSFERING assigment
 PrintWriter&  PrintWriter::operator = (PrintWriter& w)
 {
     FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
@@ -36,21 +34,65 @@ PrintWriter&  PrintWriter::operator = (PrintWriter& w)
     return *this;
 }
 
-
 PrintWriter& createWriter(_string_param name)
 {
-    std::ofstream* file=new std::ofstream(name);
+    std::ofstream* file=new std::ofstream(name);                        assert(file!=nullptr);
+
     static PrintWriter tmp;
-    tmp._set(file);
+
+    if(file->is_open())
+        tmp._set(file);
+    else delete file;
+
     return tmp;
 }
 
+/// File streams input
+BufferedReader::~BufferedReader()
+// Zwalnianie zasobów
+{
+    if(ptr!=nullptr)
+    {
+        ptr->close();
+        delete ptr;// Zwalnianie zasobów
+        ptr=nullptr;
+    }
+}
+
+// Real ;-) constructor - TRANSFERING!
+BufferedReader::BufferedReader(BufferedReader& w)
+{
+    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+    ptr=w.ptr;w.ptr=nullptr;
+}
+
+
+//TRANSFERING assigment
+BufferedReader& BufferedReader::operator = (BufferedReader& w)
+{
+    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+    ptr=w.ptr;w.ptr=nullptr;
+    return *this;
+}
+
+
 BufferedReader& createReader(_string_param name)
 {
-    std::ifstream* file=new std::ifstream(name);
-    file->exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+    std::ifstream* file=new std::ifstream(name);                        assert(file!=nullptr);
+
     static BufferedReader tmp;
-    tmp._set(file);
+
+    if(file->is_open())
+    {
+        file->exceptions ( /*std::ifstream::failbit |*/ std::ifstream::badbit );
+        tmp._set(file);
+    }
+    else
+    {
+        std::cerr << "File" << name << " cannot be open!" << std::endl;
+        delete file;
+    }
+
     return tmp;
 }
 
@@ -72,7 +114,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2020-12-11                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

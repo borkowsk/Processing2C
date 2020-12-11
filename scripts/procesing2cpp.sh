@@ -120,7 +120,8 @@ sed 's/Integer.parseInt/std::stoi/g' |\
 sed 's/Float.parseFloat/std::stof/g' |\
 #WYJĄTKI - EXCEPTIONS http://www.cplusplus.com/reference/ios/ios/exceptions/
 sed 's/IOException/std::ifstream::failure/g' |\
-sed 's/Exception/std::exception/g' |\
+sed 's/Exception/std::runtime_error/g' |\
+sed -E 's/throw(\s+)new/throw/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE

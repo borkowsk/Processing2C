@@ -121,7 +121,7 @@ namespace Processing
         _string_param(float  p);
         _string_param(int    p);
         _string_param(long unsigned int p);
-        _string_param(std::exception e);
+        _string_param(std::exception &e);
         //explicit
         _string_param(const void*  p);
 
@@ -325,14 +325,14 @@ namespace Processing
    ///INFO:
       std::ifstream* ptr;
    public:
-      virtual ~BufferedReader();// Zwalnianie zasobów
+      virtual ~BufferedReader();// zamknięcie i zwalnianie zasobów
 
       //Konstruktory
-      BufferedReader();
-      BufferedReader(std::nullptr_t& p): BufferedReader(){}
+      BufferedReader(){ptr=nullptr;}
+      BufferedReader(const std::nullptr_t& p): BufferedReader(){}
       BufferedReader(std::ifstream* p) { ptr=p;}
       BufferedReader(BufferedReader& );
-      BufferedReader(const BufferedReader& );
+      BufferedReader(const BufferedReader& );//need for nullptr initialisation  BUT NOT USED?
 
       void _set(std::ifstream* p)  { ptr=p;} //for createReader ONLY
       //operator std::ifstream& () {return *ptr;}
@@ -344,27 +344,38 @@ namespace Processing
       bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
       bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
 
-      String readLine() { String line; std::getline(*ptr, line);return line;}
+      String readLine();
 
       void close() { if(ptr!=nullptr) ptr->close(); }
   };
 
   BufferedReader& createReader(_string_param _name);
 
+  inline
+  String BufferedReader::readLine()
+  {
+      if(ptr!=nullptr)
+      {
+          String line;
+          std::getline(*ptr, line);
+          return line;
+      }
+      else return nullptr;
+  }
 
   class PrintWriter
   {
    ///INFO:
       std::ofstream* ptr;
    public:
-      virtual ~PrintWriter();// Zwalnianie zasobów
+      virtual ~PrintWriter();// zamknięcie i zwalnianie zasobów
 
       //Konstruktory
-      PrintWriter();
-      PrintWriter(std::nullptr_t& p): PrintWriter(){}
+      PrintWriter() {ptr=nullptr;}
+      PrintWriter(const std::nullptr_t& p): PrintWriter(){}
       PrintWriter(std::ofstream* p) { ptr=p;}
       PrintWriter(PrintWriter& );
-      PrintWriter(const PrintWriter& );
+      PrintWriter(const PrintWriter& );//need for nullptr initialisation BUT NOT USED?
 
       void _set(std::ofstream* p)  { ptr=p;} //for createWriter ONLY
       operator std::ofstream& () {return *ptr;}
