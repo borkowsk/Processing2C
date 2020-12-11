@@ -36,28 +36,20 @@ PrintWriter&  PrintWriter::operator = (PrintWriter& w)
     return *this;
 }
 
-std::fstream* PrintWriter::operator -> ()
-{
-    return ptr;
-}
 
-void PrintWriter::flush()
+PrintWriter& createWriter(_string_param name)
 {
-    if(ptr!=nullptr) ptr->flush();
-}
-
-PrintWriter& createWriter(const String& name)
-{
-    std::fstream* file=new std::fstream(name);
+    std::ofstream* file=new std::ofstream(name);
     static PrintWriter tmp;
     tmp._set(file);
     return tmp;
 }
 
-PrintWriter& createWriter(const char* name)
+BufferedReader& createReader(_string_param name)
 {
-    std::fstream* file=new std::fstream(name);
-    static PrintWriter tmp;
+    std::ifstream* file=new std::ifstream(name);
+    file->exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+    static BufferedReader tmp;
     tmp._set(file);
     return tmp;
 }

@@ -42,6 +42,7 @@ void draw()
     if((line = reader.readLine() )!= null)
     {
       String[] pieces = split(line,"\t");
+      if(pieces.length<2) throw new IOException("File format error");
       float x = float(pieces[0]);
       float y = float(pieces[1]);
       println(x+"\t"+y);
@@ -50,7 +51,12 @@ void draw()
   }
   catch (IOException e) 
   {
-    e.printStackTrace();
+    println("IOerror:",e); //<>//
+    //e.printStackTrace(); //<>//
+  }
+  catch (Exception e)
+  {
+    println("ERROR:",e);
   }
 }
 
@@ -59,11 +65,12 @@ void exit()
   noLoop();
   try 
   {
-    reader.close();
+    reader.close(); //<>//
     println("positions.txt is closed");
   }
   catch (IOException e) 
   {
-    e.printStackTrace();
+    println(e);
+    //e.printStackTrace();
   }  
 }

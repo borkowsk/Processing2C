@@ -90,6 +90,10 @@ namespace Processing
        virtual String print() const=0;
    };
 
+   //Processing like string -. value converters
+   inline int     Int(const String& sval) { return std::stoi(sval);}
+   inline float Float(const String& sval) { return std::stof(sval);}
+
    template<class T>
    class  self_printable_ptr:public ptr<T>,virtual public _self_printable
    {
@@ -117,6 +121,7 @@ namespace Processing
         _string_param(float  p);
         _string_param(int    p);
         _string_param(long unsigned int p);
+        _string_param(std::exception e);
         //explicit
         _string_param(const void*  p);
 
@@ -315,36 +320,67 @@ namespace Processing
 /// File streams
 ////////////////////////////////////////////////////////////////////////
 
+  class BufferedReader
+  {
+   ///INFO:
+      std::ifstream* ptr;
+   public:
+      virtual ~BufferedReader();// Zwalnianie zasobów
+
+      //Konstruktory
+      BufferedReader();
+      BufferedReader(std::nullptr_t& p): BufferedReader(){}
+      BufferedReader(std::ifstream* p) { ptr=p;}
+      BufferedReader(BufferedReader& );
+      BufferedReader(const BufferedReader& );
+
+      void _set(std::ifstream* p)  { ptr=p;} //for createReader ONLY
+      //operator std::ifstream& () {return *ptr;}
+
+      BufferedReader& operator = (std::ifstream* p) { ptr=p;}
+      BufferedReader& operator = (BufferedReader& );
+      BufferedReader* operator -> () { return this; }
+
+      bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
+      bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
+
+      String readLine() { String line; std::getline(*ptr, line);return line;}
+
+      void close() { if(ptr!=nullptr) ptr->close(); }
+  };
+
+  BufferedReader& createReader(_string_param _name);
+
+
   class PrintWriter
   {
    ///INFO:
-      std::fstream* ptr;
+      std::ofstream* ptr;
    public:
       virtual ~PrintWriter();// Zwalnianie zasobów
 
       //Konstruktory
       PrintWriter();
       PrintWriter(std::nullptr_t& p): PrintWriter(){}
-      PrintWriter(std::fstream* p) { ptr=p;}
+      PrintWriter(std::ofstream* p) { ptr=p;}
       PrintWriter(PrintWriter& );
       PrintWriter(const PrintWriter& );
 
-      void _set(std::fstream* p)  { ptr=p;} //for createWriter ONLY
-      operator std::fstream& () {return *ptr;}
+      void _set(std::ofstream* p)  { ptr=p;} //for createWriter ONLY
+      operator std::ofstream& () {return *ptr;}
 
-      PrintWriter& operator = (std::fstream* p) { ptr=p;}
-      PrintWriter& operator = (PrintWriter& );
-      std::fstream* operator -> ();
+      PrintWriter&   operator = (std::ofstream* p) { ptr=p;}
+      PrintWriter&   operator = (PrintWriter& );
+      PrintWriter* operator -> () { return this; }
+
       bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
       bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
 
-      void flush();
-      //Nie działa jako "friend"
-      //error: undefined reference to `Processing::PrintWriter::PrintWriter(std::basic_fstream<char, std::char_traits<char> >*)'
+      void flush() { if(ptr!=nullptr) ptr->flush(); }
+      void close() { if(ptr!=nullptr) ptr->close(); }
   };
 
-  PrintWriter& createWriter(const String&);
-  PrintWriter& createWriter(const char* );
+  PrintWriter& createWriter(_string_param _name);
 
   //void print();//To bez sensu
   void print(PrintWriter& o,_string_param _p1="");
@@ -493,7 +529,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-15                   */
+/*               PROCESSING2C  version 2020-12-11                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

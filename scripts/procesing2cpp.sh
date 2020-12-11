@@ -118,6 +118,9 @@ sed 's/super::exit()/processing_window_base::exit()/g' |\
 sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
 sed 's/Integer.parseInt/std::stoi/g' |\
 sed 's/Float.parseFloat/std::stof/g' |\
+#WYJĄTKI - EXCEPTIONS http://www.cplusplus.com/reference/ios/ios/exceptions/
+sed 's/IOException/std::ifstream::failure/g' |\
+sed 's/Exception/std::exception/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
