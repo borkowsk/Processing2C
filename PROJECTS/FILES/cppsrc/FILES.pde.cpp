@@ -40,9 +40,10 @@ void processing_window::setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions.txt");
+  reader = createReader("positions0.txt");
   
-  if(reader == nullptr )  exit();
+  if(reader == nullptr )   //<>//
+                  exit(); //<>//
   
   println("\npositions.txt is open");
 }
@@ -55,9 +56,9 @@ void processing_window::draw()
     if((line = reader->readLine() )!= nullptr)
     {
       sarray<String> pieces = split(line,"\t");
-      if(pieces->length<2) throw new std::ifstream::failure("File format error");
-      float x = Float(pieces[0]);
-      float y = Float(pieces[1]);
+      if(pieces->length<2) throw std::runtime_error("File format error");
+      float x = float(pieces[0]);
+      float y = float(pieces[1]);
       println(x+String("\t")+y);
       ellipse( x, y,10,10);
     }
@@ -67,7 +68,7 @@ void processing_window::draw()
     println("IOerror:",e); //<>//
     //e->printStackTrace(); //<>//
   }
-  catch (std::exception e)
+  catch (std::runtime_error e)
   {
     println("ERROR:",e);
   }
@@ -78,14 +79,19 @@ void processing_window::exit()
   noLoop();
   try 
   {
-    reader->close(); //<>//
-    println("positions.txt is closed");
+    if(reader!=nullptr)
+    {
+       reader->close(); //<>//
+       println("positions.txt is closed");
+    }
   }
   catch (std::ifstream::failure e) 
   {
     println(e);
     //e->printStackTrace();
   }  
+  
+  processing_window_base::exit();
 }
 ///home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 

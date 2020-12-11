@@ -27,9 +27,10 @@ void setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions.txt");
+  reader = createReader("positions0.txt");
   
-  if(reader == null )  exit();
+  if(reader == null )   //<>//
+                  exit(); //<>//
   
   println("\npositions.txt is open");
 }
@@ -42,7 +43,7 @@ void draw()
     if((line = reader.readLine() )!= null)
     {
       String[] pieces = split(line,"\t");
-      if(pieces.length<2) throw new IOException("File format error");
+      if(pieces.length<2) throw new Exception("File format error");
       float x = float(pieces[0]);
       float y = float(pieces[1]);
       println(x+"\t"+y);
@@ -65,12 +66,17 @@ void exit()
   noLoop();
   try 
   {
-    reader.close(); //<>//
-    println("positions.txt is closed");
+    if(reader!=null)
+    {
+       reader.close(); //<>//
+       println("positions.txt is closed");
+    }
   }
   catch (IOException e) 
   {
     println(e);
     //e.printStackTrace();
   }  
+  
+  super.exit();
 }
