@@ -62,7 +62,9 @@ BufferedReader::~BufferedReader()
 // Real ;-) constructor - TRANSFERING!
 BufferedReader::BufferedReader(BufferedReader& w)
 {
+#ifndef NDEBUG
     FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+#endif
     ptr=w.ptr;w.ptr=nullptr;
 }
 
@@ -70,7 +72,9 @@ BufferedReader::BufferedReader(BufferedReader& w)
 //TRANSFERING assigment
 BufferedReader& BufferedReader::operator = (BufferedReader& w)
 {
+#ifndef NDEBUG
     FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+#endif
     ptr=w.ptr;w.ptr=nullptr;
     return *this;
 }
@@ -114,7 +118,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-11                   */
+/*               PROCESSING2C  version 2020-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

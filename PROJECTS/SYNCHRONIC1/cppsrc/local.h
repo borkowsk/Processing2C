@@ -7,12 +7,11 @@
 
 
 //All classes from Processing files
-class singiel; typedef Processing::ptr<singiel> psingiel; // { //typ złożony
+class singiel; typedef Processing::ptr<singiel> psingiel; // { //klasa czyli typ złożony
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
 
 //All global functions from Processing files
-void draw(); ///
 #endif

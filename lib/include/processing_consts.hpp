@@ -44,9 +44,14 @@ const int BASELINE=104;
                                                 std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
                                          }
 
+#define ALWAYS_ERRMESSAGE( _XXX_ )       { \
+                                               std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
+                                         }
+
+
 
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2020-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -50,11 +50,15 @@ _string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy baz
 _string_param::_string_param(char p):String( p )// inline?
 {}
 
-_string_param::_string_param(double p):String( std::to_string(p) )// inline?
-{}
+_string_param::_string_param(double p)//:String( std::to_string(p) )// inline?
+{
+    (*this)=nf(p);//Formated more like in Processing
+}
 
-_string_param::_string_param(float  p):String( std::to_string(p) )// inline?
-{}
+_string_param::_string_param(float  p)//:String( std::to_string(p) )// inline?
+{
+    (*this)=nf(p);//Formated more like in Processing
+}
 
 _string_param::_string_param(int    p):String( std::to_string(p) )// inline?
 {}
@@ -146,7 +150,7 @@ String nfc(double num,int digits)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
@@ -156,68 +160,3 @@ String nfc(double num,int digits)
 /*                                                                  */
 /*                               (Don't change or remove this note) */
 /********************************************************************/
-/*
-String& String::operator += (const String& v)
-{
-    std::string::operator += (v.c_str());
-    return *this;
-}
-
-String& String::operator += (int v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-String& String::operator += (float v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-String& String::operator += (double v)
-{
-    (*this)+=nf(v);return *this;
-}
-
-
-String String::operator  + (int v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String String::operator  + (float v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String String::operator  + (double v) const
-{
-    String tmp(*this);
-    tmp+=nf(v);
-    return tmp;
-}
-
-String operator  + (int v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-
-String operator  + (float v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-
-String operator  + (double v,const String& self)
-{
-    std::string tmp=nf(v);
-    tmp+=self.c_str();
-    return tmp;
-}
-*/

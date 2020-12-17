@@ -6,8 +6,6 @@
 #include "processing_templates.hpp"
 #include <iostream>
 
-#define DEBUG 1
-
 using namespace Processing;
 
 Processing::processing_window Processing::_processing_window_instance;
@@ -16,9 +14,9 @@ int Processing::_INTERNAL_DELAY=10;
 
 int main(int argc,const char *argv[])
 {
-#ifdef DEBUG
-    std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<std::endl;//DEBUG
-    std::cout<<"SETUP:"<<std::endl;//DEBUG
+    std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<std::endl;
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( "SETUP:" );
 #endif
     setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
     _processing_window_instance.before_setup(argc,argv);
@@ -32,8 +30,8 @@ int main(int argc,const char *argv[])
 
     while(1)
     {
-#ifdef DEBUG
-        //std::cout<<"DRAW:"<<std::endl;//DEBUG
+#ifndef NDEBUG
+        FIRST_TIME_ERRMESSAGE( "DRAW:" );
 #endif
         delay(_INTERNAL_DELAY);
         if(_processing_window_instance.inLoop())
@@ -47,7 +45,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

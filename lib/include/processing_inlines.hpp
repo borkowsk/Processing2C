@@ -37,6 +37,14 @@ inline void stroke(float Red,float Green,float Blue)
     set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
 }
 
+inline void stroke(float Gray,float Alpha)
+{
+    int S=(int)Gray;
+    set_pen_rgba(S,S,S,(int)Alpha,
+                _LINE_WIDTH,1 /*style*/);
+}
+
+
 inline void noFill()
 {
     _filled=false;
@@ -52,6 +60,12 @@ inline void fill(float Gray)
 inline void fill(float Red,float Green,float Blue)
 {
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
+    _filled=true;
+}
+
+inline void fill(float Red,float Green,float Blue,float Alpha)
+{
+    set_brush_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha);
     _filled=true;
 }
 
@@ -74,7 +88,11 @@ inline void rect(float a,float  b,float  c,float  d)
     case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
     default:
     case CORNER:
-        x1=a; y1=b; x2=a+c; y2=b+d;break;
+        if(d<0)//Procesing can handle that strange situation
+        {x1=a; y1=b+d; x2=a+c; y2=b;}
+        else
+        {x1=a; y1=b; x2=a+c; y2=b+d;}
+        break;
     }
 
     if(_filled)

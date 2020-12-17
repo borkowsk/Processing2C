@@ -95,7 +95,7 @@ void processing_window_base::check_events()
         if(inp==EOF || inp==27 )
         {
             exit();
-            ::exit(0);//Na wypadek gdyby uztkownik zapomnial wywolac super.exit
+            ::exit(0);//Na wypadek gdyby uzytkownik zapomnial wywolac super.exit
         }
         _keyPressed=true;
         key=inp;
@@ -141,11 +141,10 @@ void processing_window_base::before_setup(int argc,const char *argv[])
         args[i]=String(argv[i]);//new String(argv[i]);???
     }
 
-    buffering_setup(SSH_YES);//buffered window!
-    fix_size(SSH_YES);
+    //fix_size(SSH_YES);//NOT WORK UNDER X11 - TODO?
     set_background(256+200);
     print_transparently(SSH_YES);
-
+    buffering_setup(SSH_YES);//buffered window!
     shell_setup(_PROGRAMNAME,argc,argv);
     milliseconds ms = duration_cast< milliseconds >(
         system_clock::now().time_since_epoch()

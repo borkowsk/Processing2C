@@ -45,8 +45,9 @@ void stroke(float Gray)
 void stroke(float Gray,float Alpha)
 {
     int S=(int)Gray;
-    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
-    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
+    set_pen_rgba(S,S,S,(int)Alpha,
+                _LINE_WIDTH,1 /*style*/);
+    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
 }
 
 void stroke(float Red,float Green,float Blue)
@@ -56,8 +57,9 @@ void stroke(float Red,float Green,float Blue)
 
 void stroke(float Red,float Green,float Blue,float Alpha)
 {
-    set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
-    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
+    set_pen_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha,
+                 _LINE_WIDTH,1 /*style*/);
+    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF stroke(color)
@@ -86,9 +88,9 @@ void fill(float Gray)
 void fill(float Gray,float Alpha)
 {
     int S=(int)Gray;
-    set_brush_rgb(S,S,S);
+    set_brush_rgba(S,S,S,(int)Alpha);
     _filled=true;
-    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
+    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
 }
 
 void fill(float Red,float Green,float Blue)
@@ -99,9 +101,9 @@ void fill(float Red,float Green,float Blue)
 
 void fill(float Red,float Green,float Blue,float Alpha)
 {
-    set_brush_rgb((int)Red,(int)Green,(int)Blue);
+    set_brush_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha);
     _filled=true;
-    FIRST_TIME_ERRMESSAGE( " - Alpha ignored!" );
+    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF fill(color)
@@ -132,12 +134,22 @@ void rect(float a,float  b,float  c,float  d)
 {
     int x1,y1,x2,y2;
     switch(_RECT_MODE){
-    case CORNERS:x1=a; y1=b; x2=c; y2=d;break;
-    case CENTER:x1=a-c/2;x2=a+c/2;y1=b-d/2;y2=b+d/2;break;
-    case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
-    default: FIRST_TIME_ERRMESSAGE( " - undefined rect mode!" );
+    case CORNERS:
+        x1=a; y1=b; x2=c; y2=d;
+        break;
+    case CENTER:
+        x1=a-c/2;x2=a+c/2;y1=b-d/2;y2=b+d/2;
+        break;
+    case RADIUS:
+        x1=a-c;x2=a+c;y1=b-d;y2=b+d;
+        break;
+    default: ALWAYS_ERRMESSAGE( " - undefined rect mode!" );
     case CORNER:
-        x1=a; y1=b; x2=a+c; y2=b+d;break;
+        if(d<0)//Procesing can handle that strange situation
+        {x1=a; y1=b+d; x2=a+c; y2=b;}
+        else
+        {x1=a; y1=b; x2=a+c; y2=b+d;}
+        break;
     }
 
     if(_filled)
@@ -182,7 +194,7 @@ void ellipse(float a,float  b,float  c,float  d)
     case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
     case CORNER:
          A=c/2;B=d/2;x1=a+A; y1=b+B;break;
-    default: FIRST_TIME_ERRMESSAGE( " - undefined ellipse mode!" );
+    default: ALWAYS_ERRMESSAGE( " - undefined ellipse mode!" );
     case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
     }
 
@@ -204,7 +216,7 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
     case CORNERS:A=abs(c-a)/2;x1=a+A; B=abs(d-b)/2;y1=b+B;break;
     case CORNER:
          A=c/2;B=d/2;x1=a+A; y1=b+B;break;
-    default: FIRST_TIME_ERRMESSAGE( " - undefined ellipse mode!" );
+    default: ALWAYS_ERRMESSAGE( " - undefined ellipse mode!" );
     case CENTER:x1=a; A=c/2; y1=b; B=d/2;break;
     }
 
@@ -252,13 +264,13 @@ float textWidth(_string_param str)
 void text(_string_param str,float x,float y)
 {
     switch(_TEXT_HORIZONTAL_AL){
-    default:FIRST_TIME_ERRMESSAGE( " - invalid horizontal alignment!" );
+    default:ALWAYS_ERRMESSAGE( " - invalid horizontal alignment!" );
     case LEFT:break;
     case CENTER:x-=string_width(str.c_str())/2;break;
     case RIGHT:x-=string_width(str.c_str());break;
     }
     switch(_TEXT_VERTICAL_AL){
-    default:FIRST_TIME_ERRMESSAGE( " - invalid vertical alignment!" );
+    default:ALWAYS_ERRMESSAGE( " - invalid vertical alignment!" );
     case BASELINE:
     case TOP: break;
     case BOTTOM:y-=char_height('X');break;
@@ -293,7 +305,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2020-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

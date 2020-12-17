@@ -88,6 +88,7 @@ sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
 sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
 sed 's/Math\./std::/g'  |\
+sed 's/abs(/std::abs(/g' |\
 sed "s/frameRate(/setFrameRate(/" |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\

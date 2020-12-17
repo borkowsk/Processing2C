@@ -37,7 +37,7 @@ int Step=0; ///!!!
 int empty=0;
 int alives=0;
 int burning=0;
-double meanSize=0;
+double meanSize=0;///Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
 
 //Initialisation
 void setup()
@@ -172,16 +172,22 @@ void doVisualisation() /// Must be predeclared
   else
     fill(50+random(205),random(255),0);
   meanSize/=alives;
-  text(" T:"+alives+" B:"+burning+" Speed:"+frameRate+"fr/sec",0,height-16);
+  textAlign(LEFT);
+  text(" T:"+alives+" B:"+burning,0,height-16);
   fill(0,255,0);
-  text(" Growing:"+GrowS+" Fire transfer p.:"+IgnitionP+" Fire p.:"
-       +LightP+"(all per step & per tree)", width/3, height-16);
+  textAlign(RIGHT);
+  text("Growing:"+GrowS+" Fire transfer p.:"+IgnitionP+" Fire p.:"
+       +LightP+" (per step and per tree)", width, height-16);
   fill(255,255,0); 
-  text(Step/Year+" years  = "+Step/Week+" weeks & " 
-    + (Step%Week)/24 + " days = " 
-    + Step + " h"  ,0,height);
+  textAlign(LEFT);
+  text(Step/Year+" years  = " 
+     + Step/Week + " weeks & " 
+     + (Step%Week)/24 + " days = " 
+     + Step + " h" 
+     + " Speed:" + frameRate + " fr/sec" ,0,height);
   fill(0,255,255);
-  text("Mean Size: "+meanSize+" ",width/2,height);
+  textAlign(RIGHT);
+  text(" Mean: "+meanSize+" ",width,height);
   
   Log.println(Step+"\t "+alives+"\t "+burning+"\t "+empty+"\t "+meanSize);
   if(Step % 5000==0) Log.flush();//Sometimes writes the buffer to the file

@@ -24,6 +24,7 @@ extern int MatureT;//=220; ///Max size of tree. Then will stop to grow
 extern PrintWriter Log;///For writing statistics into disk drive
 extern int S;//=20;       ///cell width & height
 extern int Step;//=0; ///!!!
+extern double meanSize;//=0;///Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
 extern float Burn;//=0;///Ile możliwości zapalenia na krok
 
 //All global functions from Processing files

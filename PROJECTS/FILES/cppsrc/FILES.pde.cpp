@@ -40,7 +40,7 @@ void processing_window::setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions0.txt");
+  reader = createReader("positions.txt");
   
   if(reader == nullptr )   //<>//
                   exit(); //<>//
@@ -57,8 +57,8 @@ void processing_window::draw()
     {
       sarray<String> pieces = split(line,"\t");
       if(pieces->length<2) throw std::runtime_error("File format error");
-      float x = float(pieces[0]);
-      float y = float(pieces[1]);
+      float x = Float(pieces[0]);
+      float y = Float(pieces[1]);
       println(x+String("\t")+y);
       ellipse( x, y,10,10);
     }

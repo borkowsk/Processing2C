@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
 //Source: FORESTFIRE.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -50,7 +50,7 @@ int Step=0; ///!!!
 int empty=0;
 int alives=0;
 int burning=0;
-double meanSize=0;
+double meanSize=0;///Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
 
 //Initialisation
 void processing_window::setup()
@@ -185,16 +185,22 @@ void doVisualisation() /// Must be predeclared
   else
     fill(50+random(205),random(255),0);
   meanSize/=alives;
-  text(String(" T:")+alives+String(" B:")+burning+String(" Speed:")+frameRate+ String("fr/sec"),0,height-16);
+  textAlign(LEFT);
+  text(String(" T:")+alives+String(" B:")+burning,0,height-16);
   fill(0,255,0);
-  text(String(" Growing:")+GrowS+String(" Fire transfer p.:")+IgnitionP+ String(" Fire p.:")
-       +LightP+ String("(all per step & per tree)"), width/3, height-16);
+  textAlign(RIGHT);
+  text(String("Growing:")+GrowS+String(" Fire transfer p.:")+IgnitionP+ String(" Fire p.:")
+       +LightP+ String(" (per step and per tree)"), width, height-16);
   fill(255,255,0); 
-  text(Step/Year+String(" years  = ")+Step/Week+ String(" weeks & ") 
-    + (Step%Week)/24 +  String(" days = ") 
-    + Step +  String(" h")  ,0,height);
+  textAlign(LEFT);
+  text(Step/Year+ String(" years  = ") 
+     + Step/Week +  String(" weeks & ") 
+     + (Step%Week)/24 +  String(" days = ") 
+     + Step +  String(" h") 
+     + String(" Speed:") + frameRate +  String(" fr/sec") ,0,height);
   fill(0,255,255);
-  text(String("Mean Size: ")+meanSize+ String(" "),width/2,height);
+  textAlign(RIGHT);
+  text(String(" Mean: ")+meanSize+ String(" "),width,height);
   
   println(Log,Step+String("\t ")+alives+String("\t ")+burning+String("\t ")+empty+String("\t ")+meanSize);
   if(Step % 5000==0) Log->flush();//Sometimes writes the buffer to the file
@@ -209,5 +215,5 @@ void processing_window::exit() //it is called whenever a window is closed.
   println("Thank You");
   processing_window_base::exit(); //What library superclass have to do at exit
 } 
-//../../scripts/procesing2cpp.sh did it
+///home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 
