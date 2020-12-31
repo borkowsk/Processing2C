@@ -222,7 +222,7 @@ namespace Processing
   float noise(float x);
   float noise(float x,float  y);
   float noise(float x,float  y,float  z);
-  void  noiseSeed(int seed);/// Parameters	seed 	int: seed value
+  void  noiseSeed(long seed);/// Parameters	seed 	int: seed value
   /// Adjusts the character and level of detail produced by the Perlin noise function.
   /// While any number between 0.0 and 1.0 is valid, note that values greater than 0.5 may result in noise()
   /// returning values greater than 1.0. By changing these parameters, the signal created by the noise()
