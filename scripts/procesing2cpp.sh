@@ -40,7 +40,7 @@ sed -E 's|class(.+)\{|class\1\, public virtual Object{|' |\
 sed 's|extends|: public virtual |g' |\
 #implementacje interfejsow sa tylko wirtualne
 sed 's|implements|: public virtual|g' |\
-#i czasem trzeba to jawnie podpowiedziec
+#i czasem trzeba to jawnie podpowiedziec DYREKTYWĄ
 sed 's|\/\*_pubext\*\/|public virtual|g' |\
 #jak sie wygeneruje za duzo : to je zmieniamy na przecinki
 sed -E 's|class(.+)(:\s*public\s*\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g' |\
@@ -80,19 +80,22 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
-sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
 sed -E 's/boolean([ >])/bool   \1/g' |\
 sed 's/this\./this->/g' |\
 sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
 sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
-sed 's/Math\./std::/g'  |\
-sed 's/abs(/std::abs(/g' |\
 sed "s/frameRate(/setFrameRate(/" |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 sed 's/final /const /g' |\
+#MATH & FLOATs
+sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
+sed 's/Math\./std::/g'  |\
+sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
+#sed 's/abs(/std::abs(/g' |\
+#DIRECTIVES
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
@@ -146,7 +149,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2020-11-19                   */
+#/*               PROCESSING2C  version 2021-07-12                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
