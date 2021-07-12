@@ -1,0 +1,8 @@
+#FILL THIS PATHS PROPERLY - SHOULD BE ABSOLUTE!!!
+#EGZ.:
+#WBRTM="/home/Kowalski/WBRTM"
+#SYMSHELL="/home/Kowalski/SymShellLight"
+#PROC2DIR="/home/Kowalski/Processing2C"
+
+SYMSHELL=/data/wb/SCC/__public_git/SymShellLight
+PROC2DIR=/data/wb/SCC/__public_git/Processing2C
