@@ -335,8 +335,10 @@ namespace Processing
       BufferedReader(const BufferedReader& );//need for nullptr initialisation  BUT NOT USED?
 
       void _set(std::ifstream* p)  { ptr=p;} //for createReader ONLY
-      //operator std::ifstream& () {return *ptr;}
+      std::ifstream* _get() const;
+      bool _ok() const { return ptr!=nullptr && ptr->is_open();}
 
+      operator std::ifstream& () {*_get();}
       BufferedReader& operator = (std::ifstream* p) { ptr=p;}
       BufferedReader& operator = (BufferedReader& );
       BufferedReader* operator -> () { return this; }
@@ -378,11 +380,13 @@ namespace Processing
       PrintWriter(const PrintWriter& );//need for nullptr initialisation BUT NOT USED?
 
       void _set(std::ofstream* p)  { ptr=p;} //for createWriter ONLY
-      operator std::ofstream& () {return *ptr;}
+      std::ofstream* _get() const;
+      bool _ok() const { return ptr!=nullptr && ptr->is_open();}
 
+      operator std::ofstream& () {*_get();}
       PrintWriter&   operator = (std::ofstream* p) { ptr=p;}
       PrintWriter&   operator = (PrintWriter& );
-      PrintWriter* operator -> () { return this; }
+      PrintWriter*   operator -> () { return this; }
 
       bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
       bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
@@ -540,7 +544,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-11                   */
+/*               PROCESSING2C  version 2021-07-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

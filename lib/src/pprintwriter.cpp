@@ -41,8 +41,14 @@ PrintWriter& createWriter(_string_param name)
     static PrintWriter tmp;
 
     if(file->is_open())
-        tmp._set(file);
-    else delete file;
+    {
+        tmp._set(file);                                                 assert(tmp._ok());
+    }
+    else
+    {
+        ALWAYS_ERRMESSAGE( "FILE "<<name<<"can't be open!" );
+        delete file;
+    }
 
     return tmp;
 }
@@ -88,16 +94,28 @@ BufferedReader& createReader(_string_param name)
 
     if(file->is_open())
     {
-        file->exceptions ( /*std::ifstream::failbit |*/ std::ifstream::badbit );
-        tmp._set(file);
+        file->exceptions( /*std::ifstream::failbit |*/ std::ifstream::badbit );
+        tmp._set(file);                                                 assert(tmp._ok());
     }
     else
     {
-        std::cerr << "File" << name << " cannot be open!" << std::endl;
+        ALWAYS_ERRMESSAGE( "FILE "<<name<<"can't be open!" );
         delete file;
     }
 
     return tmp;
+}
+
+std::ofstream* PrintWriter::_get() const
+{
+                                        assert(ptr!=nullptr);
+    return ptr;
+}
+
+std::ifstream* BufferedReader::_get() const
+{
+                                       assert(ptr!=nullptr);
+return ptr;
 }
 
 //void print();//To bez sensu
@@ -108,17 +126,18 @@ BufferedReader& createReader(_string_param name)
 
 void print(PrintWriter& o,_string_param _p1)
 {
-    (std::ostream&)o<<_p1;
+    *o._get()<<_p1;
 }
 
 void println(PrintWriter& o,_string_param _p1)
 {
-    (std::ostream&)o<<_p1<<std::endl;
+    *o._get()<<_p1<<std::endl;
 }
+
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-17                   */
+/*               PROCESSING2C  version 2021-07-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
