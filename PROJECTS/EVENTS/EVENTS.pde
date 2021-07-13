@@ -82,8 +82,7 @@ void mouseMoved() {
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
 
-void mouseDragged() 
-{
+void mouseDragged() {
     println("mouseDragged\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
