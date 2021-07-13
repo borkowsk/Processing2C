@@ -92,6 +92,8 @@ sed 's/final /const /g' |\
 #MATH & FLOATs
 sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
+sed 's/Integer.parseInt/std::stoi/g' |\
+sed 's/Float.parseFloat/std::stof/g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 #sed 's/abs(/std::abs(/g' |\
@@ -112,16 +114,21 @@ sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
 sed 's/import java.util.Collections;/#include\<algorithm\>/' |\
-#POJEDYNCZE FUNKCJE O ZNACZENIU SPECJALNYM
+#COLLECTIONS ALGORITHMS
+sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
+#processing_window METHODS
 sed 's/void setup()/void processing_window::setup()/' |\
 sed 's/void draw()/void processing_window::draw()/' |\
-sed 's/void mouseClicked()/void processing_window::mouseClicked()/' |\
-sed 's/void keyPressed()/void processing_window::keyPressed()/' |\
 sed 's/void exit()/void processing_window::exit()/' |\
 sed 's/super::exit()/processing_window_base::exit()/g' |\
-sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
-sed 's/Integer.parseInt/std::stoi/g' |\
-sed 's/Float.parseFloat/std::stof/g' |\
+#processing_window EVENTS
+sed 's/void keyPressed()/void processing_window::keyPressed()/' |\
+sed 's/void keyReleased()/void processing_window::keyReleased()/' |\
+sed 's/void mouseClicked()/void processing_window::mouseClicked()/' |\
+sed 's/void mousePressed()/void processing_window::mousePressed()/' |\
+sed 's/void mouseReleased()/void processing_window::mouseReleased()/' |\
+sed 's/void mouseMoved()/void processing_window::mouseMoved()/' |\
+sed 's/void mouseDragged()/void processing_window::mouseDragged()/' |\
 #WYJĄTKI - EXCEPTIONS http://www.cplusplus.com/reference/ios/ios/exceptions/
 sed 's/IOException/std::ifstream::failure/g' |\
 sed 's/Exception/std::runtime_error/g' |\
@@ -149,7 +156,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-07-12                   */
+#/*               PROCESSING2C  version 2021-07-13                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
