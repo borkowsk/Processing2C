@@ -26,8 +26,6 @@ class processing_window_base
   public:
     virtual ~processing_window_base();
     virtual void exit();
-    virtual void mouseClicked();
-    virtual void keyPressed();
     virtual void before_setup(int argc, const char *argv[]);
     virtual void setup()=0;//Must be provided!
     virtual void before_draw();//Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
@@ -35,6 +33,14 @@ class processing_window_base
     virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
     virtual void check_events();//If events are in queue, they are processed
     virtual void setTitle(_string_param bar);
+    //Event handlers
+    virtual void onMouseClicked()=0;
+    virtual void onMousePressed()=0;
+    virtual void onMouseReleased()=0;
+    virtual void onMouseMoved()=0;
+    virtual void onMouseDragged()=0;
+    virtual void onKeyPressed()=0;
+    virtual void onKeyReleased()=0;
 };
 
 extern class processing_window: public processing_window_base
@@ -45,8 +51,13 @@ extern class processing_window: public processing_window_base
   void setup();
   void draw();
   void exit();
-  void mouseClicked();
-  void keyPressed();
+  void onMouseClicked();
+  void onMousePressed();
+  void onMouseReleased();
+  void onMouseMoved();
+  void onMouseDragged();
+  void onKeyPressed();
+  void onKeyReleased();
   friend void loop();
   friend void noLoop();
 } _processing_window_instance;
@@ -114,6 +125,10 @@ extern const int&  mouseButton;/// When a mouse button is pressed, the value of 
                                /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
 extern const int&  mouseX;/// always contains the current horizontal coordinate of the mouse.
 extern const int&  mouseY;/// always contains the current vertical coordinate of the mouse.
+                          /// Note that Processing can only track the mouse position when the pointer is over the current window
+
+extern const int&  pmouseX;/// always contains the previous horizontal coordinate of the mouse.
+extern const int&  pmouseY;/// always contains the previous vertical coordinate of the mouse.
                           /// Note that Processing can only track the mouse position when the pointer is over the current window
 
 /// For non-ASCII keys, use the keyCode variable. The keys included in the ASCII specification (BACKSPACE, TAB, ENTER, RETURN, ESC, and DELETE)

@@ -122,13 +122,13 @@ sed 's/void draw()/void processing_window::draw()/' |\
 sed 's/void exit()/void processing_window::exit()/' |\
 sed 's/super::exit()/processing_window_base::exit()/g' |\
 #processing_window EVENTS
-sed 's/void keyPressed()/void processing_window::keyPressed()/' |\
-sed 's/void keyReleased()/void processing_window::keyReleased()/' |\
-sed 's/void mouseClicked()/void processing_window::mouseClicked()/' |\
-sed 's/void mousePressed()/void processing_window::mousePressed()/' |\
-sed 's/void mouseReleased()/void processing_window::mouseReleased()/' |\
-sed 's/void mouseMoved()/void processing_window::mouseMoved()/' |\
-sed 's/void mouseDragged()/void processing_window::mouseDragged()/' |\
+sed 's/void keyPressed()/void processing_window::onKeyPressed()/' |\
+sed 's/void keyReleased()/void processing_window::onKeyReleased()/' |\
+sed 's/void mouseClicked()/void processing_window::onMouseClicked()/' |\
+sed 's/void mousePressed()/void processing_window::onMousePressed()/' |\
+sed 's/void mouseReleased()/void processing_window::onMouseReleased()/' |\
+sed 's/void mouseMoved()/void processing_window::onMouseMoved()/' |\
+sed 's/void mouseDragged()/void processing_window::onMouseDragged()/' |\
 #WYJĄTKI - EXCEPTIONS http://www.cplusplus.com/reference/ios/ios/exceptions/
 sed 's/IOException/std::ifstream::failure/g' |\
 sed 's/Exception/std::runtime_error/g' |\

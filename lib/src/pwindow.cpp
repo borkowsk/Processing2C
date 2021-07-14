@@ -25,6 +25,8 @@ static bool _mousePressed=0;
 static int  _mouseButton=0;
 static int  _mouseX=0;
 static int  _mouseY=0;
+static int  _pmouseX=0;
+static int  _pmouseY=0;
 
 static bool _keyPressed=0;
 
@@ -35,18 +37,22 @@ int WB_error_enter_before_clean=0;
 namespace Processing
 {
 processing_window *const surface=&_processing_window_instance;
-const int&   width  =    _width;
-const int&   height =    _height;
-const int&   pixelWidth= _width;
-const int&   pixelHeight=_height;
-const float& frameRate=  _frameRate; ///Get aproximated frame rate achived;
-const int&   frameCount= _frameCount;///contains the number of frames that have been displayed since the program started.
+const int&   width=       _width;
+const int&   height=      _height;
+const int&   pixelWidth=  _width;
+const int&   pixelHeight= _height;
+const float& frameRate=   _frameRate; ///Get aproximated frame rate achived;
+const int&   frameCount=  _frameCount;///contains the number of frames that have been displayed since the program started.
 
 const bool& mousePressed = _mousePressed;
 const int&  mouseButton  = _mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
                                         /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
 const int&  mouseX = _mouseX;/// always contains the current horizontal coordinate of the mouse.
 const int&  mouseY = _mouseY;/// always contains the current vertical coordinate of the mouse.
+                             /// Note that Processing can only track the mouse position when the pointer is over the current window
+
+const int&  pmouseX=_pmouseX;/// always contains the previous horizontal coordinate of the mouse.
+const int&  pmouseY=_pmouseY;/// always contains the previous vertical coordinate of the mouse.
                              /// Note that Processing can only track the mouse position when the pointer is over the current window
 
 const bool&   keyPressed = _keyPressed;/// is true if any key is pressed and false if no keys are pressed.
@@ -121,12 +127,12 @@ void exit()
     _processing_window_instance.exit();
 }
 
-void processing_window_base::mouseClicked()
+void processing_window_base::onMouseClicked()
 {
     std::cerr<<__FUNCTION__<<" ignored"<<std::endl;//ANY TIME IS USED!
 }
 
-void processing_window_base::keyPressed()
+void processing_window_base::onKeyPressed()
 {
     std::cerr<<__FUNCTION__<<" ignored!"<<std::endl;//ANY TIME IS USED!
 }

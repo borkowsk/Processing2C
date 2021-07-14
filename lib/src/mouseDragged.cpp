@@ -8,14 +8,14 @@
 namespace Processing
 {
 
-void processing_window::onKeyPressed()
+void processing_window::onMouseDragged()
 {
 
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2021-07-14                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
