@@ -40,7 +40,7 @@ void processing_window::draw() {
   rect(25, 25, 50, 50);
 }
 
-void processing_window::keyPressed() {
+void processing_window::onKeyPressed() {
     println("keyPressed\t", 
     key, keyCode);
 }
@@ -50,7 +50,7 @@ void processing_window::keyPressed() {
 //  println(String("keyPressed EVENT ") + event);
 //}
 
-void processing_window::keyReleased() {
+void processing_window::onKeyReleased() {
     println("keyReleased\t", 
     key, keyCode);
 }
@@ -60,7 +60,7 @@ void processing_window::keyReleased() {
 //  println(String("keyReleased EVENT ") + event);
 //}
 
-void processing_window::mouseClicked() {
+void processing_window::onMouseClicked() {
     println("mouseClicked\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
@@ -70,7 +70,7 @@ void processing_window::mouseClicked() {
 //  println(String("mouseClicked EVENT ") + event);
 //}
 
-void processing_window::mousePressed() {
+void processing_window::onMousePressed() {
     println("mousePressed\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
@@ -80,7 +80,7 @@ void processing_window::mousePressed() {
 //  println(String("mousePressed EVENT ") + event);
 //}
 
-void processing_window::mouseReleased() {
+void processing_window::onMouseReleased() {
     println("mouseReleased\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
@@ -90,12 +90,12 @@ void processing_window::mouseReleased() {
 //  println(String("mouseReleased EVENT ") + event);
 //}
 
-void processing_window::mouseMoved() {
+void processing_window::onMouseMoved() {
     println("mouseMoved\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
 
-void processing_window::mouseDragged() {
+void processing_window::onMouseDragged() {
     println("mouseDragged\t",
     mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
 }
