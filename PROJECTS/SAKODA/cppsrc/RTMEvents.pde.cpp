@@ -25,7 +25,7 @@ pAgent theSelected=nullptr;
 double minDist2Selec=MAX_INT;
 double maxTransSelec=-MAX_INT;
 
-void processing_window::mouseClicked()
+void processing_window::onMouseClicked()
 {
   Clicked=true;
   theSelected=nullptr;
@@ -34,7 +34,7 @@ void processing_window::mouseClicked()
   key=0;
 }
 
-void processing_window::keyPressed() 
+void processing_window::onKeyPressed()
 {
   println("RECIVED:'",key,"\' CODE:",int(key)); 
   switch(key)
