@@ -6,6 +6,8 @@
 #include "processing_templates.hpp"
 #include <iostream>
 
+extern void* _ssh_window;//From symshell.h
+
 using namespace Processing;
 
 Processing::processing_window Processing::_processing_window_instance;
@@ -21,6 +23,12 @@ int main(int argc,const char *argv[])
     setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
     _processing_window_instance.before_setup(argc,argv);
     _processing_window_instance.setup();
+
+    if(_ssh_window==NULL)//setup nie zainicjowal okna!!!
+    {
+        size(100,100);
+        std::cerr<<"setup() should use size() function!"<<std::endl;
+    }
 
     if(!_processing_window_instance.inLoop())
     {
@@ -39,7 +47,13 @@ int main(int argc,const char *argv[])
             _processing_window_instance.draw();
             _processing_window_instance.after_draw();//Calculate frameRate and _INTERNAL_DELAY
         }
-        _processing_window_instance.check_events();//Should be repeated any way!
+        extern int   _exp_frame_rate;//From pwindow
+        //std::cerr<<"(("<<frameCount<<"*10)%"<<_exp_frame_rate<<")==0  == "<<(((frameCount*10)%_exp_frame_rate))<<std::endl;
+        //if( ((frameCount*10)%_exp_frame_rate)==0  )//Powinno byc mniej wiecej 10 razy na sekunde zeby bylo idealnie
+        {//Tak jak powyzej nie dziala, a bez tego ma krotszy czas widocznosci
+
+            _processing_window_instance.check_events();//Should be repeated any way!
+        }
     }
 
     return 0;

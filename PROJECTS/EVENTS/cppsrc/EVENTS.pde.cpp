@@ -20,21 +20,47 @@ using namespace Processing;
 // and press the 'B' key.
 // Also click one of mouse buttons
 
+void processing_window::setup() {
+  size(100,100);
+  setFrameRate(10);//Apart this fraquency,
+                // message are get only 10 times per second!
+}
+
 void processing_window::draw() {
   if (keyPressed) {
     if (key == 'b' || key == 'B') {
-      fill(0);
+      fill(0);    
+      println("keyPressed && 'B' detected in draw() - fill(BLACK)");
     }
+    else
+    if (key == ' ') {
+      fill(255,0,0);    
+      println("keyPressed && ' ' detected in draw() - fill(RED)");
+    }
+    else 
+    {
+      fill(255);
+      println("keyPressed &&",String("'")+key+ String("'"),"detected in draw() - fill(WHITE)");
+    }
+    //keyPressed=false;//NOW IS PROCESSED.
   } else {
     fill(255);
+    //println("keyPressed not detected in draw() - fill(WHITE)");
   }
   
   if (mousePressed && (mouseButton == LEFT)) {
-    background(0);
+    background(0); println("mousePressed && LEFT detected in draw()");
   } else if (mousePressed && (mouseButton == RIGHT)) {
-    background(255);
+    background(255);  println("mousePressed && RIGHT detected in draw()");
+  } else if (mousePressed && (mouseButton == 3)) {
+    background(255,0,0); println("mousePressed && MIDLE detected in draw()");
   } else if (mousePressed) {
-    background(126);
+    background(126); println("mousePressed &&",mouseButton,"detected in draw()");
+  }
+
+  if(mousePressed){
+      println("mousePressed detected in draw()");
+      //mousePressed=false;//NOW IS PROCESSED.
   }
   
   rect(25, 25, 50, 50);
@@ -42,21 +68,21 @@ void processing_window::draw() {
 
 void processing_window::onKeyPressed() {
     println("keyPressed\t", 
-    key, keyCode);
+    String("'")+key+ String("'"), keyCode,keyPressed);
 }
 
 // Method signature 2
-//void keyPressed(KeyEvent event) {
+//void keyPressed(KeyEvent event) { ///not implemented in P2C++
 //  println(String("keyPressed EVENT ") + event);
 //}
 
 void processing_window::onKeyReleased() {
     println("keyReleased\t", 
-    key, keyCode);
+    String("'")+key+ String("'"),int(key),keyCode,keyPressed); 
 }
 
 // Method signature 2
-//void keyReleased(KeyEvent event) {
+//void keyReleased(KeyEvent event) { ///not implemented in P2C++
 //  println(String("keyReleased EVENT ") + event);
 //}
 
@@ -66,7 +92,7 @@ void processing_window::onMouseClicked() {
 }
 
 // Method signature 2
-//void mouseClicked(MouseEvent event) {
+//void mouseClicked(MouseEvent event) { ///not implemented in P2C++
 //  println(String("mouseClicked EVENT ") + event);
 //}
 
@@ -76,7 +102,7 @@ void processing_window::onMousePressed() {
 }
 
 // Method signature 2
-//void mousePressed(MouseEvent event) {
+//void mousePressed(MouseEvent event) { ///not implemented in P2C++
 //  println(String("mousePressed EVENT ") + event);
 //}
 
@@ -90,17 +116,17 @@ void processing_window::onMouseReleased() {
 //  println(String("mouseReleased EVENT ") + event);
 //}
 
-void processing_window::onMouseMoved() {
-    println("mouseMoved\t",
-    mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
-}
+//void processing_window::onMouseMoved() {  ///not implemented in P2C++
+//    println("mouseMoved\t",
+//    mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
+//}
 
-void processing_window::onMouseDragged() {
-    println("mouseDragged\t",
-    mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
-}
+//void processing_window::onMouseDragged() {  ///not implemented in P2C++
+//    println("mouseDragged\t",
+//    mouseX,mouseY,pmouseX,pmouseY,mousePressed,mouseButton);
+//}
 
-//void mouseWheel(MouseEvent event) {
+//void mouseWheel(MouseEvent event) { ///not implemented in P2C++
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}

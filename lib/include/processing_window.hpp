@@ -121,6 +121,8 @@ extern const int& pixelHeight;
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
 /// The mouseButton variable can be used to determine which button has been pressed.
 extern const bool& mousePressed;
+extern       bool& mousePressedWr;//Writeable version. Rather not used in Processing examples.
+
 extern const int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
                                /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
 extern const int&  mouseX;/// always contains the current horizontal coordinate of the mouse.

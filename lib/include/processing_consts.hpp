@@ -31,8 +31,8 @@ const int MITER=1;
 const int BEVEL=2;
 //const int ROUND=3;
 //for textAligment
-const int RIGHT=100;
-const int LEFT=101;
+const int RIGHT=39;
+const int LEFT=37;
 const int TOP=102;
 const int BOTTOM=103;
 const int BASELINE=104;
