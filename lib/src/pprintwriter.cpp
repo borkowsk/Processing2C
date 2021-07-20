@@ -22,14 +22,18 @@ PrintWriter::~PrintWriter()
 // Real ;-) constructor - TRANSFERING!
 PrintWriter::PrintWriter(PrintWriter& w)
 {
-    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( " performed for PrintWriter::ptr="<<(unsigned long long)w.ptr );
+#endif
     ptr=w.ptr;w.ptr=nullptr;
 }
 
 //TRANSFERING assigment
 PrintWriter&  PrintWriter::operator = (PrintWriter& w)
 {
-    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( " performed for PrintWriter::ptr="<<(unsigned long long)w.ptr );
+#endif
     ptr=w.ptr;w.ptr=nullptr;
     return *this;
 }
@@ -69,7 +73,7 @@ BufferedReader::~BufferedReader()
 BufferedReader::BufferedReader(BufferedReader& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+    FIRST_TIME_ERRMESSAGE( " performed for BufferedReader::ptr="<<(unsigned long long)w.ptr );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
 }
@@ -79,7 +83,7 @@ BufferedReader::BufferedReader(BufferedReader& w)
 BufferedReader& BufferedReader::operator = (BufferedReader& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " used for ptr="<<(unsigned long long)w.ptr );
+    FIRST_TIME_ERRMESSAGE( " performed for BufferedReader::ptr="<<(unsigned long long)w.ptr );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
     return *this;

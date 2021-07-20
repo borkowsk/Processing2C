@@ -58,9 +58,12 @@ const int&  pmouseY=_pmouseY;/// always contains the previous vertical coordinat
                              /// Note that Processing can only track the mouse position when the pointer is over the current window
 
 const bool&   keyPressed = _keyPressed;/// is true if any key is pressed and false if no keys are pressed.
+bool&         keyPressedWr = _keyPressed;///Writable version! ADVANCED USAGE!
 
 char    key;    /// always contains the value of the most recent key on the keyboard that was used (either pressed or released)
-int     keyCode;/// The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
+
+int     keyCode;/// TODO!
+                             ///The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
                              /// as well as ALT, CONTROL, and SHIFT.
                              /// There are issues with how keyCode behaves across different renderers and operating systems.
                              /// Watch out for unexpected behavior as you switch renderers and operating systems.
@@ -129,7 +132,7 @@ void processing_window_base::check_events()
             _mousePressed=true;
             break;
         case '\n':
-        case '\r':
+        case '\r': draw();
             break;
         default:
             key=inp;
@@ -164,14 +167,20 @@ void exit()
 
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
+    extern sarray<String> args; /// JAVA LIKE PROGRAM PARAMETERS!!!
+                                /// So, without program name at the beginning.
+
+    args=new array<String>(argc-1);///Allocation of JAVA LIKE PROGRAM PARAMETERS!!!
+    int argpos=0;       /// When parameters beginning with '-' exist on list,
+                        /// some empty parameters appread at the end of args table.
+
+    for(int i=1;i<argc;i++)//In JAVA name of the program is not avalable as par0!!!
+        if(argv[i][0]!='-')//Parameters for X11 or symshell are skiped here.
+        {
+            args[argpos++]=String(argv[i]);//new String(argv[i]);???
+        }
+
     randomSeed(time(nullptr));
-
-    sarray<String> args=new array<String>(argc);//WHOLE PROGRAM PARAMETERS!!!
-    for(int i=0;i<argc;i++)
-    {
-        args[i]=String(argv[i]);//new String(argv[i]);???
-    }
-
     //fix_size(SSH_YES);//NOT WORK UNDER X11 - TODO?
     set_background(256+200);
     print_transparently(SSH_YES);
@@ -192,12 +201,14 @@ void processing_window_base::before_setup(int argc,const char *argv[])
 // inside setup() to set the background on the first frame of animation or if the backgound need only be set once.
 void background(float gray)
 {
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(256+gray);
     fill_rect(0,0,width,height,256+gray);
 }
 
 void background(float gray,float  alpha)
 {
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(256+gray);
     fill_rect(0,0,width,height,256+gray);
     FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
@@ -205,12 +216,14 @@ void background(float gray,float  alpha)
 
 void background(float v1,float v2,float v3)
 {
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(v1,v2,v3);
     fill_rect_rgb(0,0,width,height,v1,v2,v3);
 }
 
 void background(float v1,float v2,float v3,float  alpha)
 {
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(v1,v2,v3);
     fill_rect_rgb(0,0,width,height,v1,v2,v3);
     FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
@@ -228,7 +241,7 @@ void size(int width,int height)
 
 void fullScreen()
 {
-    init_plot(4096,2048,0,0);//Powinien dopasowac się do ekranu
+    init_plot(1800,1200,0,0);//Powinien dopasowac się do ekranu
     strokeWeight(1);
     stroke(0);
     fill(255);
@@ -260,7 +273,7 @@ void redraw()
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2021-07-20                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

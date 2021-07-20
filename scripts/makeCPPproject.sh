@@ -95,7 +95,11 @@ add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16
 
 include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}" "\${WBRTM}/INCLUDE" )
 
-add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_once"
+add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_x11"
+               "\${SRCPATH}project_at_once.cpp"
+              )
+
+add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_svg"
                "\${SRCPATH}project_at_once.cpp"
               )
 
@@ -117,12 +121,21 @@ popd >> /dev/null
 cat << EOF >> CMakeLists.txt
 #        )
 
-target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_once" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # -o3 ?
-
-target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_once"  
+target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_x11" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # -o3 ?
+target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_x11"  
      "-L\${PROC2C}/lib"
      "-L\${SYMSHELL}"
      wbprocess wbsyshX11 X11 Xpm
+     \${CMAKE_THREAD_LIBS_INIT}
+     pthread
+     rt
+     )
+
+target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_svg" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" "-o3" )
+target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"  
+     "-L\${PROC2C}/lib"
+     "-L\${SYMSHELL}"
+     wbprocess wbsyshSVG
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
      rt
@@ -142,7 +155,7 @@ EOF
 echo -e "\nProject ${PROJECT} DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-07-13                   */
+#/*               PROCESSING2C  version 2021-07-20                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

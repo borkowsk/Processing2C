@@ -26,19 +26,21 @@ String::String(char  c):std::string({c})
 
 bool String::operator == (nullptr_t v)
 {
-    //FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
+    //FIRST_TIME_ERRMESSAGE( " should not be performed for nullptr!" );// WHY???
     return empty();
 }
 
 bool String::operator != (nullptr_t)
 {
-    //FIRST_TIME_ERRMESSAGE( " should not be used for nullptr!" );// WHY???
+    //FIRST_TIME_ERRMESSAGE( " should not be performed for nullptr!" );// WHY???
     return !empty();
 }
 
 static int count_substrings(const char *str,const char *substr)
-        //https://www.sanfoundry.com/c-program-count-occurence-substring/
-{ return 0; }
+{
+              //https://www.sanfoundry.com/c-program-count-occurence-substring/
+    return 0; //TODO!
+}
 
 static int count_characters(const char *str, char character)
 {
@@ -55,7 +57,9 @@ static int count_characters(const char *str, char character)
 
  sarray<String> split(_string_param string2parse,_string_param delimiter)
  {
+
 #ifndef NDEBUG
+     if(0)//DEBUG
      std::cerr<<__FUNCTION__<<" called for:'"
                <<string2parse.get().c_str()<<"' with delimiter '"
                <<delimiter.get().c_str()<<"'"<<std::endl;
@@ -84,7 +88,7 @@ static int count_characters(const char *str, char character)
  }
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2021-07-20                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -4,6 +4,7 @@
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_library.hpp"
 #include <iostream>
 
 extern void* _ssh_window;//From symshell.h
@@ -16,7 +17,8 @@ int Processing::_INTERNAL_DELAY=10;
 
 int main(int argc,const char *argv[])
 {
-    std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<std::endl;
+    //extern sarray<String> args; //WHOLE PROGRAM PARAMETERS FOR PROCESSING
+    std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<"(c)"<<year()<<std::endl;
 #ifndef NDEBUG
     FIRST_TIME_ERRMESSAGE( "SETUP:" );
 #endif
@@ -47,6 +49,7 @@ int main(int argc,const char *argv[])
             _processing_window_instance.draw();
             _processing_window_instance.after_draw();//Calculate frameRate and _INTERNAL_DELAY
         }
+
         extern int   _exp_frame_rate;//From pwindow
         //std::cerr<<"(("<<frameCount<<"*10)%"<<_exp_frame_rate<<")==0  == "<<(((frameCount*10)%_exp_frame_rate))<<std::endl;
         //if( ((frameCount*10)%_exp_frame_rate)==0  )//Powinno byc mniej wiecej 10 razy na sekunde zeby bylo idealnie
@@ -59,7 +62,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-17                   */
+/*               PROCESSING2C  version 2021-07-20                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

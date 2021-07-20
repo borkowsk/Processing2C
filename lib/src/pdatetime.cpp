@@ -22,49 +22,48 @@ inline void _readTime()
 {
     tp=system_clock::now();
     std::time_t tt = std::chrono::system_clock::to_time_t(tp);
-    std::tm tm = std::tm{0};
     gmtime_r(&tt, &tm);
 }
 
 int year()   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_year+1900<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_year+1900<<std::endl;
     return tm.tm_year+1900;
 }
 
 int month()  /// The month() function returns the current month as a value from 1 - 12.
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_mon + 1<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_mon + 1<<std::endl;
     return tm.tm_mon + 1;
 }
 
 int day()    /// The day() function returns the current day as a value from 1 - 31.
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_mday<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_mday<<std::endl;
     return tm.tm_mday ;
 }
 
 int hour()   /// The hour() function returns the current hour as a value from 0 - 23.
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_hour<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_hour<<std::endl;
     return tm.tm_hour ;
 }
 
 int minute() /// The minute() function returns the current minute as a value from 0 - 59.
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_min<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_min<<std::endl;
     return tm.tm_min ;
 }
 
 int second() /// The second() function returns the current second as a value from 0 - 59.
 {
     _readTime();
-    std::cerr<<__FUNCTION__<<" will return "<<tm.tm_sec<<std::endl;
+    //std::cerr<<__FUNCTION__<<" will return "<<tm.tm_sec<<std::endl;
     return tm.tm_sec ;
 }
 
@@ -80,7 +79,7 @@ int millis() /// Returns the number of milliseconds (thousandths of a second) si
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2021-07-20                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
