@@ -98,6 +98,8 @@ sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 #sed 's/abs(/std::abs(/g' |\
 #DIRECTIVES
+sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|' |\
+sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
