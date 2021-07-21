@@ -72,14 +72,14 @@ int millis() /// Returns the number of milliseconds (thousandths of a second) si
 {
     tp=system_clock::now();
     auto tmp=tp.time_since_epoch();
-    auto mili=duration_cast<milliseconds>(tmp).count();
-    std::cerr<<__FUNCTION__<<" will return "<<mili<<std::endl;
+    auto mili=duration_cast<milliseconds>(tmp).count()%1000;
+    //std::cerr<<__FUNCTION__<<" will return "<<mili<<std::endl;
     return mili ;
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-20                   */
+/*               PROCESSING2C  version 2021-07-21                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

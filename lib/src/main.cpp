@@ -6,6 +6,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include <iostream>
+#include <iomanip>
 
 extern void* _ssh_window;//From symshell.h
 
@@ -18,12 +19,22 @@ int Processing::_INTERNAL_DELAY=10;
 int main(int argc,const char *argv[])
 {
     //extern sarray<String> args; //WHOLE PROGRAM PARAMETERS FOR PROCESSING
-    std::cout<<"DEFAULT MAIN FOR PROCESSING2C TRANSLATOR"<<"(c)"<<year()<<std::endl;
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( "SETUP:" );
+    FIRST_TIME_ERRMESSAGE( "-DEFAULT MAIN FOR PROCESSING2C TRANSLATOR" );
 #endif
+    std::cout<<"START:"<<year()<<std::setfill('0')
+            <<std:: setw(2)<<month()
+            <<std:: setw(2)<<day()<<'-'
+            <<std:: setw(2)<<hour()
+            <<std:: setw(2)<<minute()
+            <<std:: setw(2)<<second()<<'.'
+            <<std:: setw(3)<<millis()<<std::endl;
     setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
+
     _processing_window_instance.before_setup(argc,argv);
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( "-call setup()" );
+#endif
     _processing_window_instance.setup();
 
     if(_ssh_window==NULL)//setup nie zainicjowal okna!!!
@@ -34,6 +45,9 @@ int main(int argc,const char *argv[])
 
     if(!_processing_window_instance.inLoop())
     {
+#ifndef NDEBUG
+        FIRST_TIME_ERRMESSAGE( "-call draw() single time" );
+#endif
         _processing_window_instance.draw();//only once
         _processing_window_instance.after_draw();
     }
@@ -41,7 +55,7 @@ int main(int argc,const char *argv[])
     while(1)
     {
 #ifndef NDEBUG
-        FIRST_TIME_ERRMESSAGE( "DRAW:" );
+        FIRST_TIME_ERRMESSAGE( "-call draw() in loop" );
 #endif
         delay(_INTERNAL_DELAY);
         if(_processing_window_instance.inLoop())
