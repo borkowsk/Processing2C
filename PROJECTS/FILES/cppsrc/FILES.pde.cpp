@@ -1,14 +1,14 @@
-//Processing to C++ converter /home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: FILES.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
-//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp" //is optional. Should be deleted when not needed
+#include "processing_console.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //Is's for you. Could be deleted when not needed
+#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 //Używamy KLAS obsługi strumieni zdefiniowanych w bibliotece
@@ -40,7 +40,7 @@ void processing_window::setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions.txt");
+  reader = createReader("positions0.txt");
   
   if(reader == nullptr )   //<>//
                   exit(); //<>//
@@ -57,8 +57,8 @@ void processing_window::draw()
     {
       sarray<String> pieces = split(line,"\t");
       if(pieces->length<2) throw std::runtime_error("File format error");
-      float x = Float(pieces[0]);
-      float y = Float(pieces[1]);
+      float x = float(pieces[0]);
+      float y = float(pieces[1]);
       println(x+String("\t")+y);
       ellipse( x, y,10,10);
     }
@@ -93,5 +93,5 @@ void processing_window::exit()
   
   processing_window_base::exit();
 }
-///home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

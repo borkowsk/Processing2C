@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: EVENTS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -22,7 +22,7 @@ using namespace Processing;
 
 void processing_window::setup() {
   size(100,100);
-  setFrameRate(10);//Apart this fraquency,
+  setFrameRate(100);//Apart this fraquency,
                 // message are get only 10 times per second!
 }
 
@@ -40,7 +40,7 @@ void processing_window::draw() {
     else 
     {
       fill(255);
-      println("keyPressed &&",String("'")+key+ String("'"),"detected in draw() - fill(WHITE)");
+      println("keyPressed &&",String("'")+key+ String("'"),"detected in draw() - fill(RED)");
     }
     //keyPressed=false;//NOW IS PROCESSED.
   } else {
@@ -130,5 +130,5 @@ void processing_window::onMouseReleased() {
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}
-///data/wb/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

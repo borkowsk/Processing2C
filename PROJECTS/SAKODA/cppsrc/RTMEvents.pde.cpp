@@ -2,13 +2,13 @@
 //Source: RTMEvents.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
-//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp" //is optional. Should be deleted when not needed
+#include "processing_console.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //Is's for you. Could be deleted when not needed
+#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 /// ABM model of segregation (test project for Processing2C)
@@ -34,7 +34,7 @@ void processing_window::onMouseClicked()
   key=0;
 }
 
-void processing_window::onKeyPressed()
+void processing_window::onKeyPressed() 
 {
   println("RECIVED:'",key,"\' CODE:",int(key)); 
   switch(key)

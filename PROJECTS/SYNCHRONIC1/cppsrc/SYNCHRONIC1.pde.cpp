@@ -1,14 +1,14 @@
-//Processing to C++ converter /home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: SYNCHRONIC1.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
-//#include "processing_inlines.hpp" //is optional. Use when project is already compilable
+//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp" //is optional. Should be deleted when not needed
+#include "processing_console.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //Is's for you. Could be deleted when not needed
+#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 /// Simple model of synchronization of couple (test project for Processing2C)
@@ -93,7 +93,7 @@ void processing_window::draw()
     line(N-1,scaleY(Second->x1),N,scaleY(Second->x2));
     
     stroke(0,Grn,0);
-    point(N,scaleY(std::abs(First->x2-Second->x2)));
+    point(N,scaleY(abs(First->x2-Second->x2)));
     point(2*Ws+First->x2*Ws,scaleY(Second->x2));
     
     if(N>Rozbieg)//to wyrzucić to będzie widać dojście do atraktora
@@ -115,5 +115,5 @@ void processing_window::draw()
   }
 
 }
-///home/borkowsk/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 
