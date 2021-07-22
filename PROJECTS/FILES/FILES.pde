@@ -44,8 +44,8 @@ void draw()
     {
       String[] pieces = split(line,"\t");
       if(pieces.length<2) throw new Exception("File format error");
-      float x = float(pieces[0]);
-      float y = float(pieces[1]);
+      float x = Float.parseFloat(pieces[0]);
+      float y = Float.parseFloat(pieces[1]);
       println(x+"\t"+y);
       ellipse( x, y,10,10);
     }

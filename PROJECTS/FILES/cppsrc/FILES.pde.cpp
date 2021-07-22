@@ -57,8 +57,8 @@ void processing_window::draw()
     {
       sarray<String> pieces = split(line,"\t");
       if(pieces->length<2) throw std::runtime_error("File format error");
-      float x = float(pieces[0]);
-      float y = float(pieces[1]);
+      float x = std::stof(pieces[0]);
+      float y = std::stof(pieces[1]);
       println(x+String("\t")+y);
       ellipse( x, y,10,10);
     }
