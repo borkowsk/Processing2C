@@ -1,7 +1,13 @@
 #!/bin/bash
-# https://intoli.com/blog/exit-on-errors-in-bash-scripts/
+# Processing2C installation script
 #
-set -e
+
+EDIT=nano
+
+set -e # https://intoli.com/blog/exit-on-errors-in-bash-scripts/
+
+echo "Running" `realpath $0`
+echo -e "\n\tThis script stops on any error\!\n\tWhen it stop, remove source of the error & run it again!\n" 
 
 function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
  read -s -n 1 -p "Press ^C to abort, any key to continue . . ."
@@ -14,6 +20,7 @@ PROC2DIR=`realpath "./"`
 
 echo -e "$SYMSHELL\n$PROC2DIR"
 echo -e "Are the paths correct?\n"
+echo -e "If not, break script, edit it and run it again!"
 pause
 
 #prepare config.dat
@@ -32,13 +39,29 @@ echo "Ready to make library!"
 pause
 
 pushd lib/ 
-cmake . && make
+cmake . 
+make
 popd
 
-echo "Ready to make examples!"
+date > configured.txt #FINALLY SUCCESFULL
+
+echo "Ready to make examples?"
+echo "(You can skip this step just by Cntr-C at this moment)"
 pause
+
+rm -f configured.txt
 
 pushd "PROJECTS/"
 ./_translateProjects.sh
-cmake . && make
+echo "SELECT EXAMPLES by REMOVING 'EXCLUDE_FROM_ALL' CLAUSULES"
+$EDIT CMakeLists.txt
+cmake . 
+make
 popd
+
+date > configured.txt #FINALLY SUCCESFULL
+echo "With some examples" >> configured.txt
+echo -e "\nSCRIPT" `realpath $0` "FINISHED"
+
+
+

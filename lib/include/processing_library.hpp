@@ -338,8 +338,8 @@ namespace Processing
       std::ifstream* _get() const;
       bool _ok() const { return ptr!=nullptr && ptr->is_open();}
 
-      operator std::ifstream& () {*_get();}
-      BufferedReader& operator = (std::ifstream* p) { ptr=p;}
+      operator std::ifstream& () { return *_get();}
+      BufferedReader& operator = (std::ifstream* p) { ptr=p;return *this;}
       BufferedReader& operator = (BufferedReader& );
       BufferedReader* operator -> () { return this; }
 
@@ -383,8 +383,8 @@ namespace Processing
       std::ofstream* _get() const;
       bool _ok() const { return ptr!=nullptr && ptr->is_open();}
 
-      operator std::ofstream& () {*_get();}
-      PrintWriter&   operator = (std::ofstream* p) { ptr=p;}
+      operator std::ofstream& () {return *_get();}
+      PrintWriter&   operator = (std::ofstream* p) { ptr=p; return *this; }
       PrintWriter&   operator = (PrintWriter& );
       PrintWriter*   operator -> () { return this; }
 

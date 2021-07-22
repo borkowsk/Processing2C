@@ -93,11 +93,12 @@ float noise(float x,float  y,float  z)
 {
     //processing/core/src/processing/core/PApplet.java:5300
     FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    return -0;//TODO!!!
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-29                   */
+/*               PROCESSING2C  version 2022-07-22                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
