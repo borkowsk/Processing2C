@@ -4,8 +4,8 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title></title>
 	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
-	<meta name="created" content="2020-08-04T19:58:05.443455500"/>
-	<meta name="changed" content="2020-11-15T23:54:53.741681207"/>
+	<meta name="created" content="2020-08-04T20:58:05.443455500"/>
+	<meta name="changed" content="2021-07-28T14:36:45.938904968"/>
 	<style type="text/css">
 		@page { margin: 2cm }
 		p { margin-bottom: 0.25cm; direction: ltr; color: #000000; line-height: 115%; orphans: 2; widows: 2 }
@@ -20,6 +20,10 @@
 		h2.western { font-family: "Liberation Sans", "Arial", sans-serif; font-size: 16pt; so-language: en-US }
 		h2.cjk { font-family: "Noto Sans CJK SC"; font-size: 16pt; so-language: zh-CN }
 		h2.ctl { font-family: "Lohit Devanagari"; font-size: 16pt; so-language: hi-IN }
+		pre { margin-right: 0.4cm; margin-bottom: 0.5cm; direction: ltr; color: #000000; orphans: 2; widows: 2 }
+		pre.western { font-family: "Andale Mono"; font-size: 8pt; so-language: en-US }
+		pre.cjk { font-family: "Courier New", monospace; font-size: 8pt; so-language: zh-CN }
+		pre.ctl { font-size: 8pt; so-language: hi-IN }
 		a:link { so-language: zxx }
 	</style>
 </head>
@@ -32,7 +36,7 @@ To C </b></font></font>
 <font face="Liberation Sans, Arial, sans-serif"><font size="5" style="font-size: 18pt">translator
 with library</font></font></p>
 <p class="western" align="center"><font color="#00caca"><b>Version
-2020.11.15</b></font></p>
+2021.07.28</b></font></p>
 <p class="western"><br/>
 <br/>
 
@@ -41,239 +45,657 @@ with library</font></font></p>
 <font face="Liberation Sans, Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>Table
 of Contents</b></font></font></p>
 <div id="Table of Contents1" dir="ltr">
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc118_2434791125">Structure	2</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc120_2434791125">Control	3</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc117_4121486429">Goal	2</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc119_4121486429">Translation
+	mechanism	3</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc122_2434791125">Relational Operators	3</a></p>
+	<a href="#__RefHeading___Toc121_4121486429">Create a common header
+	file	3</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc124_2434791125">Iteration	3</a></p>
+	<a href="#__RefHeading___Toc123_4121486429">Specific translations
+	rules	3</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc134_4121486429">Compilation
+	using cmake	8</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc125_4121486429">Library	8</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc118_2434791125">Structure	8</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc120_2434791125">Control	9</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc126_2434791125">Conditionals	3</a></p>
+	<a href="#__RefHeading___Toc122_2434791125">Relational Operators	9</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc128_2434791125">Logical Operators	4</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc130_2434791125">Environment	4</a></p>
+	<a href="#__RefHeading___Toc124_2434791125">Iteration	9</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
+	<a href="#__RefHeading___Toc126_2434791125">Conditionals	10</a></p>
+	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
+	<a href="#__RefHeading___Toc128_2434791125">Logical Operators	10</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc130_2434791125">Environment	10</a></p>
 	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc132_2434791125">Event
-	handling	4</a></p>
+	handling	11</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc134_2434791125">Mouse	4</a></p>
+	<a href="#__RefHeading___Toc134_2434791125">Mouse	11</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc136_2434791125">Keyboard	5</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc138_2434791125">Data	5</a></p>
+	<a href="#__RefHeading___Toc136_2434791125">Keyboard	11</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc138_2434791125">Data	11</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc140_2434791125">Primitive	5</a></p>
+	<a href="#__RefHeading___Toc140_2434791125">Primitive	11</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc142_2434791125">Composite	5</a></p>
+	<a href="#__RefHeading___Toc142_2434791125">Composite	12</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc144_2434791125">Conversion	6</a></p>
+	<a href="#__RefHeading___Toc144_2434791125">Conversion	13</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc146_2434791125">String Functions	7</a></p>
+	<a href="#__RefHeading___Toc146_2434791125">String Functions	13</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc148_2434791125">Array Functions	7</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc150_2434791125">Math	7</a></p>
+	<a href="#__RefHeading___Toc148_2434791125">Array Functions	13</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc150_2434791125">Math	13</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc152_2434791125">Operators	7</a></p>
+	<a href="#__RefHeading___Toc152_2434791125">Operators	14</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc154_2434791125">Bitwise Operators	8</a></p>
+	<a href="#__RefHeading___Toc154_2434791125">Bitwise Operators	14</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc156_2434791125">Calculation	8</a></p>
+	<a href="#__RefHeading___Toc156_2434791125">Calculation	14</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc158_2434791125">Trigonometry	8</a></p>
+	<a href="#__RefHeading___Toc158_2434791125">Trigonometry	15</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc160_2434791125">Random	9</a></p>
+	<a href="#__RefHeading___Toc160_2434791125">Random	15</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc162_2434791125">Constants	9</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc164_2434791125">Color	9</a></p>
+	<a href="#__RefHeading___Toc162_2434791125">Constants	15</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc164_2434791125">Color	16</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc166_2434791125">Setting	9</a></p>
+	<a href="#__RefHeading___Toc166_2434791125">Setting	16</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc168_2434791125">Creating &amp; Reading	9</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc170_2434791125">Shape	10</a></p>
+	<a href="#__RefHeading___Toc168_2434791125">Creating &amp;
+	Reading	16</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc170_2434791125">Shape	16</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc172_2434791125">Attributes	10</a></p>
+	<a href="#__RefHeading___Toc172_2434791125">Attributes	16</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc174_2434791125">2D Primitives	10</a></p>
+	<a href="#__RefHeading___Toc174_2434791125">2D Primitives	16</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc176_2434791125">Curves	10</a></p>
+	<a href="#__RefHeading___Toc176_2434791125">Curves	17</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc178_2434791125">3D Primitives	11</a></p>
+	<a href="#__RefHeading___Toc178_2434791125">3D Primitives - NOT
+	IMPLEMENTED	17</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc180_2434791125">Vertex	11</a></p>
+	<a href="#__RefHeading___Toc180_2434791125">Vertex - NOT
+	IMPLEMENTED	17</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
 	<a href="#__RefHeading___Toc182_2434791125">Loading &amp;
-	Displaying	11</a></p>
+	Displaying	18</a></p>
 	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc184_2434791125">Input
-	- NOT IMPLEMENTED	11</a></p>
+	- NOT IMPLEMENTED	18</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc186_2434791125">Files	11</a></p>
+	<a href="#__RefHeading___Toc186_2434791125">Files	18</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc188_2434791125">Time &amp; Date	12</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc190_2434791125">Output	12</a></p>
+	<a href="#__RefHeading___Toc188_2434791125">Time &amp; Date	18</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc190_2434791125">Output	19</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc192_2434791125">Text Area	12</a></p>
+	<a href="#__RefHeading___Toc192_2434791125">Text Area	19</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc194_2434791125">Image	12</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc196_2434791125">Files	12</a></p>
+	<a href="#__RefHeading___Toc194_2434791125">Image	19</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc196_2434791125">Files	19</a></p>
 	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc198_2434791125">Transform
-	- NOT IMPLEMENTED	13</a></p>
+	- NOT IMPLEMENTED	19</a></p>
 	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc200_2434791125">Lights,
-	Camera - NOT IMPLEMENTED	13</a></p>
+	Camera - NOT IMPLEMENTED	20</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc202_2434791125">Lights	13</a></p>
+	<a href="#__RefHeading___Toc202_2434791125">Lights - NOT
+	IMPLEMENTED	20</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc204_2434791125">Camera	14</a></p>
+	<a href="#__RefHeading___Toc204_2434791125">Camera - NOT
+	IMPLEMENTED	20</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc206_2434791125">Coordinates	14</a></p>
+	<a href="#__RefHeading___Toc206_2434791125">Coordinates - NOT
+	IMPLEMENTED	20</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc208_2434791125">Material Properties	14</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc210_2434791125">Image	14</a></p>
+	<a href="#__RefHeading___Toc208_2434791125">Material Properties -
+	NOT IMPLEMENTED	21</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc210_2434791125">Image
+	- NOT IMPLEMENTED	21</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc212_2434791125">Loading &amp;
-	Displaying	14</a></p>
+	<a href="#__RefHeading___Toc212_2434791125">Loading &amp; Displaying
+	- NOT IMPLEMENTED	21</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc214_2434791125">Textures	15</a></p>
+	<a href="#__RefHeading___Toc214_2434791125">Textures- NOT
+	IMPLEMENTED	21</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc216_2434791125">Pixels	15</a></p>
+	<a href="#__RefHeading___Toc216_2434791125">Pixels - NOT
+	IMPLEMENTED	21</a></p>
 	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc218_2434791125">Rendering
-	- NOT IMPLEMENTED	15</a></p>
+	- NOT IMPLEMENTED	21</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
 	<a href="#__RefHeading___Toc220_2434791125">Shaders- NOT
-	IMPLEMENTED	15</a></p>
-	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc222_2434791125">Typography	15</a></p>
+	IMPLEMENTED	22</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc222_2434791125">Typography	22</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
 	<a href="#__RefHeading___Toc224_2434791125">Loading &amp;
-	Displaying	16</a></p>
+	Displaying	22</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc226_2434791125">Attributes	16</a></p>
+	<a href="#__RefHeading___Toc226_2434791125">Attributes	22</a></p>
 	<p style="margin-left: 0.5cm; margin-bottom: 0cm; line-height: 100%">
-	<a href="#__RefHeading___Toc228_2434791125">Metrics	16</a></p>
+	<a href="#__RefHeading___Toc228_2434791125">Metrics	22</a></p>
+	<p style="margin-bottom: 0cm; line-height: 100%"><a href="#__RefHeading___Toc127_4121486429">Final
+	remarks	22</a></p>
 </div>
 <p class="western"><br/>
 <br/>
 
 </p>
+<h1 class="western"><a name="__RefHeading___Toc117_4121486429"></a>Goal</h1>
+<p class="western">At our Robert Zajonc Institute of Social Studies,
+we have been dealing with simulations of social processes for over 30
+years. Initially, we used for this many variants of Pascal language
+(Turbo Pascal, Borland Pascal, Delphi and ALGO for didactic purposes)
+and, of course, C/C++.</p>
+<p class="western">As the Pascal language began to go down in
+history, we looked for another language that could be used both for
+educating students and for prototyping scientific simulations. We
+needed the same source code to be used on Windows and MacOS
+computers, and possibly also on Linux workstations, although that was
+our main use of C++ there. We wanted the language to have modern
+syntax with strong typing and classes, and to be as fast as possible.
+We also wanted the language to be easy to learn for beginners, but
+also very flexible as our students gain experience.</p>
+<p class="western">So, our choice fell on Processing, which we have
+been using for almost ten years.</p>
+<p class="western">The only problem we have struggled with over the
+years is the need to create two parallel applications for each model:
+one in Processing as a prototype, and the other in C++ for massive
+model testing on workstations. It seemed like a waste of time since
+the syntax of these languages is quite similar.</p>
+<p class="western">Processing to C translator &amp; library is an
+attempt to solve this dilemma.</p>
+<h1 class="western"><a name="__RefHeading___Toc119_4121486429"></a><b>Translation
+mechanism</b></h1>
+<p class="western">Processing uses a simplified JAVA language syntax,
+which makes it easier to translate than JAVA itself. The translator
+does not need to parse the entire code, it only modifies fragments in
+the context of one line. 
+</p>
+<p class="western">At the moment, for translation we use a script
+with several dozen <b>sed</b> calls combined into a long pipe, which
+in the linux system turned out to be quite efficient and effective
+solution (<i>processing2cpp.sh</i>). Only in some cases it requires
+taking care of the format in Processing - e.g. headers, class and
+function declarations must be on one line. In addition, sometimes
+additional directives are needed, which are simply comments in
+Processing.</p>
+<p class="western">The second script takes care of the translation of
+the entire Processing project and the preparation of auxiliary files,
+in particular the <i><b>CMakeLists.txt</b></i> file that allows for
+automatic compilation of the application (<i>makeCPPproject.s</i>h)</p>
+<p class="western">To ensure the general visibility of global
+variables and functions, which are visible in Processing also BEFORE
+DEFINING, we use a generated header file containing all variables and
+functions commented with a one-line comment starting with a triple
+'/' sign go. The third script takes care of it (<i>prepare_local_h.sh</i>)</p>
+<h2 class="western"><a name="__RefHeading___Toc121_4121486429"></a>Create
+a common header file</h2>
+<p class="western">All lines matching the following <i><b>regex</b></i>
+patterns shown below go to <i><b>local.h</b></i>.</p>
+<p class="western">Of course, they are properly translated.</p>
+<p class="western"><font face="Andale Mono"><font size="2" style="font-size: 10pt">'^\s*(final\s+int|final\s+float|final\s+double|final\s+String|final\s+boolean|final\s+\w+)\s+(\w+)\s*[;=].*///'</font></font></p>
+<p class="western"><font face="Andale Mono"><font size="2" style="font-size: 10pt">'^\s*(int|float|double|String|boolean|\w+)\s+(\w+)\s*[;=].*///'</font></font></p>
+<p class="western">
+<font face="Andale Mono"><font size="2" style="font-size: 10pt">'^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\{*\s*///'</font></font></p>
+<h2 class="western"><a name="__RefHeading___Toc123_4121486429"></a>Specific
+translations rules</h2>
+<p class="western">Each translation rule is described with a
+conversion pattern in sed syntax. The order is the same as in the
+real pipeline, and it matters.</p>
+<ul>
+	<li/>
+<p class="western">Enumeration declarations are copied to the
+	global head, and cannot appear twice in C ++ code, so everywhere
+	else they are turned into comments:</p>
+</ul>
+<pre class="western">    's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|'     </pre>
+<ul>
+	<li/>
+<p class="western">Constructor body that begins with the
+	keyword super can be automatically parsed if that beginning is on a
+	single line:</p>
+</ul>
+<pre class="western">    's|\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\:\1\2\(\3\)\4{|'     </pre>
+<ul>
+	<li/>
+<p class="western">Adding line ends after {} for functions but
+	not for &quot;enum&quot;:</p>
+</ul>
+<pre class="western">    's|\{(.*)}|{\n\t\1\n\t}|'     
+    's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|'     </pre>
+<ul>
+	<li/>
+<p class="western">Public / private declarations before
+	functions and variables, fortunately rarely used in Processing,
+	because their context-free translation does not always give the
+	right results:</p>
+</ul>
+<pre class="western">    &quot;s/^(\s*)public/\1public:\n\t/g&quot;     
+    &quot;s/^(\s*)private/\1private:\n\t/g&quot;     </pre>
+<ul>
+	<li/>
+<p class="western">Converting class declarations only works
+	for single-line declarations with '{' on the same line! There is no
+	equivalent to the abstract classes in C++, so they are changed to
+	normal.</p>
+</ul>
+<pre class="western">    's|\s*abstract\s*class(.+)\{|//abstract\nclass\1{|'     
+    's|class(\s+)(\w+)(\s*)extends|class\1\2\3: public |g'     </pre>
+<ul>
+	<li/>
+<p class="western">Class representing JAVA interfaces.
+	Inheritance can only be virtual. Processing assumes each class
+	inheriting from the Object class. In C++, we have to say this
+	explicitly:</p>
+</ul>
+<pre class="western">    's|\s*interface(.+)\{|//interface\nclass\1\{|'     
+    's|class(.+)\{|class\1\, public virtual Object{|'     
+    's|extends|: public virtual |g'     </pre>
+<ul>
+	<li/>
+<p class="western">Also, interface implementations can only be
+	virtual:</p>
+</ul>
+<pre class="western">    's|implements|: public virtual|g'     </pre>
+<ul>
+	<li/>
+<p class="western">For more complex declarations, you must
+	explicitly prompt the <font color="#ca00ca">/</font><font color="#ca00ca"><i>*_pubext*</i></font><font color="#ca00ca"><span style="font-style: normal">/</span></font>
+	DIRECTIVE</p>
+</ul>
+<pre class="western">    's|\/\*_<font color="#ca00ca">pubext</font>\*\/|<font color="#ca00ca">public virtual</font>|g'     </pre>
+<ul>
+	<li/>
+<p class="western">Change the excess ':' characters to commas</p>
+</ul>
+<pre class="western">    's|class(.+)(:\s*public\s*\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g'
+    's|class(.+)(:\s*public\s*virtual\s+)(\w+)\s*\:(\s*public\s*virtual)(.*)\{|class\1\2\3,\4\5\{|g'</pre>
+<ul>
+	<li/>
+<p class="western">When there is no base class, Processing
+	assumes inheriting from the Object class. In C++, we have to say
+	this explicitly:</p>
+</ul>
+<pre class="western">    's|class\s+(\w+)\s*\,\s*public|class \1: public|'     </pre>
+<ul>
+	<li/>
+<p class="western">By default, class members are public in
+	Processing, and private in C++. Therefore, each definition of class
+	members must begin with '<b>public</b>:'</p>
+</ul>
+<pre class="western">    's|(\s*)class(\s+)(\w+)(.*)\{|&amp;\n\1  public:|'     </pre>
+<ul>
+	<li/>
+<p class="western">Changing the syntax for <b>array</b>s of
+	simple values:</p>
+</ul>
+<pre class="western">    's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid&lt;\1&gt;/'     
+    's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*])/smatrix&lt;\1&gt;/'     
+    's/(int|float|double|boolean|String)(\s*)(\[\s*])/sarray&lt;\1&gt;/'     
+    's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]/new\1cuboid&lt;\2&gt;(\4,\6,\8)/'     
+    's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)](\s*)\[(.+)]/new\1matrix&lt;\2&gt;(\4,\6)/'     
+    's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)]/new\1array&lt;\2&gt;(\4)/'     </pre>
+<ul>
+	<li/>
+<p class="western">The other cases are <b>array</b>s of
+	objects:</p>
+</ul>
+<pre class="western">    's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid&lt;p\1&gt;|g'     
+    's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix&lt;p\1&gt;|g'     
+    's|(\w+)(\s*)(\[\s*])|sarray&lt;p\1&gt;|g'     
+    's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]|new\1cuboid&lt;p\2&gt;(\4,\6,\8)|'     
+    's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)]|new\1matrix&lt;p\2&gt;(\4,\6)|'     
+    's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array&lt;p\2&gt;(\4)|'     </pre>
+<ul>
+	<li/>
+<p class="western">Lists of objects are of special importance,
+	e.g. <b>ArrayList</b>&lt;Link&gt; connections; connections=new
+	<b>ArrayList</b>&lt;Link&gt;();</p>
+</ul>
+<pre class="western">    's|ArrayList&lt;(\s*)(\w+)(\s*)&gt;(\s+)(\w+)(\s*)([\),;:=])|sArrayList&lt;p\2&gt;\4\5\6\7|g'     
+    's|new(\s+)ArrayList&lt;(\s*)(\w+)(\s*)&gt;|new ArrayList&lt;p\3&gt;|g'     </pre>
+<ul>
+	<li/>
+<p class="western"><b>Assert</b>ion syntax modification:</p>
+</ul>
+<pre class="western">    's|assert (.+):|assert \1; // |g'     
+    's|assert ([^;]+);|assert(\1);\t//|g'     </pre>
+<ul>
+	<li/>
+<p class="western">Modifying <b>print</b> and <b>println</b>
+	calls for files:</p>
+</ul>
+<pre class="western">    's|(\w+)\.print\(|print(\1,|g'     
+    's|(\w+)\.println\(|println(\1,|g'     </pre>
+<ul>
+	<li/>
+<p class="western">More general modifications, little
+	dependent on the context:</p>
+</ul>
+<pre class="western">    's/boolean([ &gt;])/bool   \1/g'     
+    's/this\./this-&gt;/g'     
+    's|super\/\*(\w+)\*\/\.|\1::|g'     
+    's/super\./super::/'     
+    's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof&lt; \4 &gt;( \1 )/g'     
+    &quot;s/frameRate(/setFrameRate(/&quot;     
+    's/null/nullptr/g'     
+    's/final /const /g'     </pre>
+<ul>
+	<li/>
+<p class="western">Modifications specifically for MATH &amp;
+	FLOATs:</p>
+</ul>
+<pre class="western">    's/Float.MAX_VALUE/FLT_MAX/g'     
+    's/Float.MIN_VALUE/FLT_MIN/g'     
+    's/Integer.parseInt/std::stoi/g'     
+    's/Float.parseFloat/std::stof/g'     
+    's/Math\./std::/g'      </pre>
+<ul>
+	<li/>
+<p class="western">Provisional, context-free operator
+	translation &gt;&gt;&gt;:</p>
+</ul>
+<pre class="western">    's|&gt;&gt;&gt;(\s*)([0-9]+)|&gt;&gt;\1\2/*UNSIGNED SHIFT EXPECTED*/|g'     </pre>
+<ul>
+	<li/>
+<p class="western">DIRECTIVES to improve C ++ translation.
+	Sometimes it is impossible to do without them:</p>
+</ul>
+<pre class="western">    's|\/\*_<font color="#ca00ca">OnlyCppBlockBegin</font>|/*_OnlyCppBlockBegin*/|'     
+    's|_<font color="#ca00ca">OnlyCppBlockEnd</font>\*\/|/*_OnlyCppBlockEnd*/|'     
+    's|\/\*_<font color="#ca00ca">interfunc</font>\*\/|virtual|g'    
+    's|\/\*_<font color="#ca00ca">forcebody</font>\*\/|=0|g'    
+    's|\/\*_<font color="#ca00ca">downcast</font>\*\/\((\w+)\)|std::dynamic_pointer_cast\&lt;\1\&gt;|g'     
+    's|\/\*_<font color="#ca00ca">dncast</font>\*\/\((\w+)\)|std::dynamic_pointer_cast\&lt;\1\&gt;|g'     
+    's|\/\*_<font color="#ca00ca">upcast</font>\*\/\((\w+)\)|static_cast\&lt;p\1\&gt;|g'     
+    's|\/\*_<font color="#ca00ca">tmpfree</font>\*\/\((\w+)\)|_free_ptr_to\&lt;\1\&gt;|g'     
+    's|\/\*_<font color="#ca00ca">reference</font>\*\/|\&amp; |g'     
+    's|\s*\/\*_<font color="#ca00ca">tmpptr</font>\*\/|\* |g'     </pre>
+<ul>
+	<li/>
+<p class="western">Wrapping character and string literals in
+	string concatenation operations:</p>
+</ul>
+<pre class="western">    &quot;s|\+(\s*)('[^']')|\+\1String(\2)|g&quot;     
+    's|(\&quot;[^&quot;]*\&quot;)(\s*)\+|String(\1)\2\+|g'     
+    's|\+(\s*)(\&quot;[^&quot;]*\&quot;)|+\1 String(\2)|g'     </pre>
+<ul>
+	<li/>
+<p class="western">Translate some JAVA class imports:</p>
+</ul>
+<pre class="western">    's/import java.util.Map;/#include &quot;processing_map.hpp&quot;/'     
+    's/import java.util.Arrays;/#include &quot;processing_lists.hpp&quot;/'     
+    's/import java.util.Collections;/#include\&lt;algorithm\&gt;/'     </pre>
+<ul>
+	<li/>
+<p class="western">Translation of COLLECTIONS ALGORITHMS (only
+	one for now):</p>
+</ul>
+<pre class="western">    's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g'     </pre>
+<ul>
+	<li/>
+<p class="western">Methods for class 'processing_window':</p>
+</ul>
+<pre class="western">    's/void setup()/void processing_window::setup()/'     
+    's/void draw()/void processing_window::draw()/'     
+    's/void exit()/void processing_window::exit()/'     
+    's/super::exit()/processing_window_base::exit()/g'     </pre>
+<ul>
+	<li/>
+<p class="western">Events handled by the 'processing_window'
+	class:</p>
+</ul>
+<pre class="western">    's/void keyPressed()/void processing_window::onKeyPressed()/'     
+    's/void keyReleased()/void processing_window::onKeyReleased()/'     
+    's/void mouseClicked()/void processing_window::onMouseClicked()/'     
+    's/void mousePressed()/void processing_window::onMousePressed()/'     
+    's/void mouseReleased()/void processing_window::onMouseReleased()/'     
+    's/void mouseMoved()/void processing_window::onMouseMoved()/'     
+    's/void mouseDragged()/void processing_window::onMouseDragged()/'     </pre>
+<ul>
+	<li/>
+<p class="western">Translation of some JAVA exceptions
+	(<a href="http://www.cplusplus.com/reference/ios/ios/exceptions/">http://www.cplusplus.com/reference/ios/ios/exceptions/</a>
+	)</p>
+</ul>
+<pre class="western">    's/IOException/std::ifstream::failure/g'     
+    's/Exception/std::runtime_error/g'     
+    's/throw(\s+)new/throw/g'     </pre>
+<ul>
+	<li/>
+<p class="western">REPLACEMENT OF &quot;<font color="#ca00ca">AAA</font>&quot;
+	USER TYPES INTO intelligent &quot;<font color="#ca00ca">pAAA</font>&quot;
+	type pointers. The file '<i>userclasses.sed</i>' is created by the
+	script '<i>prepare_local_h.sh</i>':</p>
+</ul>
+<pre class="western">    -f userclasses.sed      </pre>
+<ul>
+	<li/>
+<p class="western">CONVERTING DOT CALLS TO ARROW CALLS:</p>
+	<ul>
+		<li/>
+<p class="western">First, we try to protect the names of
+		files enclosed in &quot;&quot; - this mainly applies to inclusions,
+		but may also cause problems in long text concatenations.</p>
+	</ul>
+</ul>
+<pre class="western" style="margin-left: 1.25cm">    's/&quot;(.+)\.(.+)&quot;/&quot;\1@@@\2&quot;/'     </pre>
+<ul>
+	<ul>
+		<li/>
+<p class="western">NOW A REAL SWITCH:</p>
+	</ul>
+</ul>
+<pre class="western" style="margin-left: 1.25cm">    's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1-&gt;\2/g'     
+    's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]-&gt;\1/g'     
+    's/\)\.([_a-zA-Z][_a-zA-Z0-9]*)/)-&gt;\1/g'     
+    's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1-&gt;\2/g'     </pre>
+<ul>
+	<ul>
+		<li/>
+<p class="western">Finally, restore the filenames:</p>
+	</ul>
+</ul>
+<pre class="western" style="margin-left: 1.25cm">    's/&quot;(.+)\@\@\@(.+)&quot;/&quot;\1.\2&quot;/'     </pre>
+<ul>
+	<li/>
+<p class="western">CLEANING. If by any chance any of the base
+	types are treated as an object in the &lt;&gt; template brackets:</p>
+</ul>
+<pre class="western">    's/\&lt;p(bool|int|long|float|double|String)(\s*)\&gt;/\1\2/g'     </pre>
+<ul>
+	<li/>
+<p class="western">CLEANING. Combining redundant comment
+	marks.</p>
+</ul>
+<pre class="western">    's|//\s+//|//|g'</pre><h1 class="western">
+<a name="__RefHeading___Toc134_4121486429"></a>Compilation using
+cmake</h1>
+<p class="western">The main script that translates the project is
+called '<i>processing2cpp.sh</i>'.</p>
+<p class="western">It must be used in the Processing project
+directory containing all its '<i>pde</i>' files.</p>
+<p class="western">As a result of its operation, the 'cppsrc'
+directory, the 'local.h' file and the '<i>CMakeList.txt</i>' file are
+created, which enables the compilation of the entire project. Then,
+the following commands make the application:</p>
+<pre class="western"><font size="2" style="font-size: 10pt">$ cmake .</font>
+<font size="2" style="font-size: 10pt">$ make</font></pre><p class="western">
+For now, as in Processing itself, compilation is done from one file,
+called here '<i>all_in_one.cpp</i>', which includes the actual source
+files resulting from translation with include directives.</p>
+<p class="western">We recommend QtCreator as an IDE as it can handle
+'<i>CMakeList.txt</i>' files directly.</p>
+<h1 class="western"><a name="__RefHeading___Toc125_4121486429"></a>Library</h1>
+<p class="western">Processing has a very extensive &quot;standard
+library&quot; with numerous functions and classes focused primarily
+on graphics programming. Much of it is based on JAVA libraries.</p>
+<p class="western">The translator is so far a one-man work, so
+creating a replica of the entire Processing library is beyond the
+author's ability.</p>
+<p class="western">Only a modest subset used in our simulation
+programs has been implemented. The following chapters detail what is
+implemented.</p>
 <h1 class="western"><a name="__RefHeading___Toc118_2434791125"></a><b>Structure</b>
 </h1>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/parentheses.html">()
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/parentheses.html">()
 (parentheses)</a></u></span></font> <font color="#00c462">– work
 like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"> <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/comma.html">,
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+ <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/comma.html">,
 (comma)</a></u></span></font><font color="#00c462">– work like in
 C++ (</font><font color="#ca00ca">probably</font><font color="#00c462">)</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"> <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/dot.html">.
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+ <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/dot.html">.
 </a><a href="../../../processing-3.5.3/modes/java/reference/dot.html">(dot)</a></u></span></font>
 – <font color="#b400b4">in most cases translated into </font><font color="#b400b4"><font size="4" style="font-size: 14pt"><b>-&gt;</b></font></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/multilinecomment.html">/*
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/multilinecomment.html">/*
 */ (multiline comment)</a></u></span></font> <font color="#00c462">–
 work like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/doccomment.html">/**
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/doccomment.html">/**
 */ (doc comment)</a></u></span></font> 
 </p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/comment.html">//
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/comment.html">//
 (comment)</a></u></span></font> <font color="#00c462">– work like
 in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/semicolon.html">;
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/semicolon.html">;
 (semicolon)</a></u></span></font> <font color="#00c462">– work like
 in C++, </font><font color="#ca00ca">but for the end of class
 declaration should be added manually.</font><font color="#00c462">
 Such modification work both in Processing and in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/assign.html">=
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/assign.html">=
 (assign)</a></u></span></font> <font color="#00c462">– work like in
 C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/arrayaccess.html">[]
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/arrayaccess.html">[]
 (array access)</a></u></span></font> <font color="#00c462">– work
 like in C++, because of library object </font><font color="#00c462"><b>array</b></font><font color="#00c462">,
 </font><font color="#00c462"><b>sarray</b></font><font color="#00c462">,
 </font><font color="#00c462"><b>matrix</b></font><font color="#00c462">,
 </font><font color="#00c462"><b>smatrix (</b></font><font color="#00c462"><span style="font-weight: normal">and
 others)</span></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/curlybraces.html">{}
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/curlybraces.html">{}
 (curly braces)</a></u></span></font> <font color="#00c462">– work
 like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/catch.html">catch</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/catch.html">catch</a></u></span></font>
 – <font color="#00c462">same syntax in Processing/Java/C++ </font><font color="#ce181e">but
 different exception names!</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><br/>
-
-</p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/class.html">clas</a><a href="../../../processing-3.5.3/modes/java/reference/class.html">s</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/class.html">clas</a><a href="../../../processing-3.5.3/modes/java/reference/class.html">s</a></u></span></font>
 <font color="#00c462">– syntax and semantics are different.
 Translator always try to make as many translation as possible, but
-</font><font color="#ca00ca">often manual changes are needed.</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><br/>
-
-</p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/draw_.html">draw()</a></u></span></font>
+</font><font color="#ca00ca">often special directives and/or manual
+changes are needed.</font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/draw_.html">draw()</a></u></span></font>
 – <font color="#b400b4">function with special meaning translated
 into </font><font color="#b400b4"><b>processing_window::draw()</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/exit_.html">exit()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/exit_.html">exit()</a></u></span></font>
 – <font color="#b400b4">function with special meaning translated
 into </font><font color="#b400b4"><b>processing_window::exit()</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/extends.html">extends</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/extends.html">extends</a></u></span></font>
 – <font color="#b400b4">translated into “</font><font color="#b400b4"><b>:
 public</b></font><font color="#b400b4">”</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/false.html">false</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/false.html">false</a></u></span></font>
 <font color="#00c462">– work like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/final.html">final</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/final.html">final</a></u></span></font>
 - <font color="#b400b4">translated into “</font><font color="#b400b4"><b>const</b></font><font color="#b400b4">”</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/implements.html">implements</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/implements.html">implements</a></u></span></font>
 - <font color="#b400b4">translated into “</font><font color="#b400b4"><b>:
-public</b></font><font color="#b400b4">” (redundancy with extend
+public</b></font><font color="#b400b4">” (redundancy with </font><font color="#b400b4"><b>extend</b></font><font color="#b400b4">
 are removed)</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/import.html">import</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/import.html">import</a></u></span></font>
 – <font color="#00e472">sometimes</font><font color="#ff0000">
 translated into </font><font color="#ca00ca">#include</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/loop_.html">loop()</a></u></span></font>
-- library <b>function</b></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/new.html">new</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/loop_.html">loop()</a></u></span></font>
+- as library <b>function</b></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/new.html">new</a></u></span></font>
 <font color="#00c462">– work like similar C++ because of
 implementation of Processing::ptr&lt;T&gt;, and sarray etc...</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/noLoop_.html">noLoop()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/noLoop_.html">noLoop()</a></u></span></font>
 - library <b>function</b></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/null.html">null</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/null.html">null</a></u></span></font>
 - - <font color="#b400b4">translated into “</font><font color="#b400b4"><b>nullptr</b></font><font color="#b400b4">”</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pop_.html">pop()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pop_.html">pop()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/popStyle_.html">popStyle()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/popStyle_.html">popStyle()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><br/>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<br/>
+<br/>
 
 </p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/private.html">private</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/private.html">private</a></u></span></font>
 <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/public.html">public</a></u></span></font>
 - <font color="#00c462">syntax and meaning is different. Translator
-always try to make as many translation as possible, but </font><font color="#00c462">sametimes</font><font color="#00c462">
-manual changes are needed (see → “class”)</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><br/>
+always try to make as many translation as possible, but special
+directives and/or manual changes may be needed (see → “class”)</font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<br/>
+<br/>
 
 </p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/push_.html">push()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/push_.html">push()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pushStyle_.html">pushStyle()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pushStyle_.html">pushStyle()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/redraw_.html">redraw()</a></u></span></font>
-- library function, still not used</p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/return.html">return</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/redraw_.html">redraw()</a></u></span></font>
+- <font color="#ca00ca">library function, still not used</font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/return.html">return</a></u></span></font>
 <font color="#00c462">– work like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/setup_.html">setup()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/setup_.html">setup()</a></u></span></font>
 – <font color="#b400b4">function with special meaning translated
 into </font><font color="#b400b4"><b>processing_window::setup()</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/static.html"><b>static</b></a></u></span></font><b>
-– </b><font color="#ff0000"><b>remain in code, bat may not work
-properly!</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/super.html"><font color="#ff0000"><b>super</b></font></a></u></span></font><font color="#ff0000"><b>
-– must be manually translated!</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/this.html">this</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/static.html"><font color="#ca00ca"><b>static</b></font></a></u></span></font><b>
+– </b><font color="#ff0000"><b>remain in code, b</b></font><font color="#ff0000"><b>u</b></font><font color="#ff0000"><b>t
+may not work properly!</b></font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/super.html"><font color="#ca00ca"><b>super</b></font></a></u></span></font><font color="#ff0000"><b>
+– it can be translated automatically in some contexts, but in many
+cases requires manual translation.!</b></font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u>t<a href="../../../processing-3.5.3/modes/java/reference/this.html">his</a>.</u></span></font>
 – <font color="#009e4f">All </font><font color="#009e4f"><i><b>this.</b></i></font><font color="#009e4f">
 are replaced by </font><font color="#009e4f"><b>this-&gt;</b></font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/thread_.html">thread()</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/thread_.html">thread()</a></u></span></font>
 - <font color="#e40072">there is different philosophy in C++, so</font>
-<font color="#ff0000">NOT IMPLEMENTED!</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/true.html">true</a></u></span></font>
+<font color="#ff0000"><b>NOT IMPLEMENTED</b></font><font color="#ff0000">!</font></p>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/true.html">true</a></u></span></font>
 <font color="#00c462">– work like in C++</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/try.html">try</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/try.html">try</a></u></span></font>
 - <font color="#00c462">same syntax in Processing/Java/C++ </font><font color="#ce181e">but
 different exception names!</font></p>
-<p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/void.html">void</a></u></span></font>
+<p class="western" style="margin-left: 1.48cm; text-indent: -1.48cm; margin-bottom: 0.28cm; line-height: 100%">
+<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/void.html">void</a></u></span></font>
 <font color="#00c462">– work like in C++</font></p>
 <h1 class="western"><a name="__RefHeading___Toc120_2434791125"></a><b>Control</b></h1>
 <h2 class="western"><a name="__RefHeading___Toc122_2434791125"></a><font size="4" style="font-size: 15pt">Relational
@@ -337,13 +759,14 @@ cursor visible if already hidden</b></font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/delay_.html">delay()</a></u></span></font>
 - library <b>function</b></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/displayDensity_.html">displayDensity()</a></u></span></font>
-<font color="#ca00ca">- always return 1</font></p>
+<font color="#ca00ca">- </font><font color="#ca00ca">dummy
+implementation, which </font><font color="#ca00ca">always return 1</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/focused.html">focused</a>
 - </u></span></font><font color="#000080"><span lang="zxx"><u><font color="#e40072"><span style="font-weight: normal">NOT
 IMPLEMENTED! </span></font></u></span></font><font color="#ff0000"><span style="font-weight: normal">Confirms
 if a Processing program is &quot;focused,&quot; meaning that it is
 active and will accept mouse or keyboard input. This variable is
-&quot;true&quot; if it is focused and &quot;false&quot; if not.</span></font><span style="font-weight: normal">
+&quot;true&quot;, if it is focused and &quot;false&quot;, if not.</span></font><span style="font-weight: normal">
 </span>
 </p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%">f<font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/frameCount.html">rameCount</a></u></span></font>
@@ -362,65 +785,73 @@ library function</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/noSmooth_.html">noSmooth()</a></u></span></font>
 - library <b>function</b></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pixelDensity_.html">pixelDensity()</a></u></span></font>
-<font color="#ff0000">- IGNORED</font></p>
+<font color="#ff0000">- </font><font color="#e300e3">dummy
+implemented.</font><font color="#ff0000"> IGNORED</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pixelHeight.html">pixelHeight</a></u></span></font>
-– <font color="#ca00ca">same </font><font color="#ca00ca">value </font><font color="#ca00ca">as
-height</font></p>
+– <font color="#ca00ca">same value as height</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pixelWidth.html">pixelWidth</a></u></span></font>
--<font color="#ca00ca">same </font><font color="#ca00ca">value </font><font color="#ca00ca">as
-width</font></p>
+-<font color="#ca00ca">same value as width</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/settings_.html"><font color="#e40072">settings()</font></a></u></span></font><font color="#e40072">
 - The </font><font color="#e40072"><b>settings()</b></font><font color="#e40072">
 function is new with Processing 3.0. It's not needed in most
-sketches. </font><font color="#e40072">NOT IMPLEMENTED</font></p>
+sketches. NOT IMPLEMENTED</font></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/size_.html">size()</a></u></span></font>
 - library <b>function</b></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/smooth_.html">smooth()</a></u></span></font>
 - library <b>function</b></p>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/width.html">width</a></u></span></font>
 - library variable with <b>const</b></p>
-<p class="western" style="margin-bottom: 0cm; font-weight: normal; line-height: 100%">
-<br/>
-
-</p>
 <h1 class="western"><a name="__RefHeading___Toc132_2434791125"></a>Event
 handling</h1>
 <h2 class="western"><a name="__RefHeading___Toc134_2434791125"></a>Mouse</h2>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseButton.html">MouseButton</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000">-
-NOT IMPLEMENTED YET</font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u>m<a href="../../../processing-3.5.3/modes/java/reference/mouseButton.html">ouseButton</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+-  library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseClicked_.html">mouseClicked()</a></u></span></font>
-- empty library <b>function for reiplementation by user</b></p>
+- empty library <b>function for reiplementation by user.</b><span style="font-weight: normal">
+Renamed for </span><font color="#b400b4"><b>processing_window::onMouseClicked()</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseDragged_.html">mouseDragged()</a></u></span></font>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseMoved_.html">mouseMoved()</a></u></span></font>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mousePressed_.html">mousePressed()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mousePressed.html">mousePressed</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- </font><font color="#000000">empty library
+</font><font color="#000000"><b>function for reiplementation by user.</b></font><font color="#000000"><span style="font-weight: normal">
+Renamed for</span></font><font color="#ff0000"><span style="font-weight: normal">
+</span></font><font color="#b400b4"><b>processing_window::onMousePressed</b></font><font color="#ff0000"><b>()</b></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mousePressed.html">mousePressed</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseReleased_.html">mouseReleased()</a></u></span></font>
- <font color="#ff0000">- NOT IMPLEMENTED</font></p>
+ <font color="#ff0000">- </font><font color="#000000">empty library
+</font><font color="#000000"><b>function for reiplementation by user.</b></font><font color="#000000"><span style="font-weight: normal">
+Renamed for</span></font><font color="#ff0000"><span style="font-weight: normal">
+</span></font><font color="#b400b4"><b>processing_window::onMouseReleased()</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseWheel_.html">mouseWheel()</a></u></span></font>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseX.html">mouseX</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseY.html">mouseY</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pmouseX.html">pmouseX</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pmouseY.html">pmouseY</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseX.html">mouseX</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/mouseY.html">mouseY</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pmouseX.html">pmouseX</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pmouseY.html">pmouseY</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
 <h2 class="western"><a name="__RefHeading___Toc136_2434791125"></a>Keyboard</h2>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/key.html">key</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000">-
-NOT IMPLEMENTED YET</font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/key.html">key</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000">
+- library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyCode.html">keyCode</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyPressed_.html">keyPressed()</a></u></span></font>
-- empty library <b>function for reiplementation by user</b></p>
+- empty library <b>function for reiplementation by user. </b><font color="#000000"><span style="font-weight: normal">Renamed
+for</span></font><font color="#ff0000"><span style="font-weight: normal">
+</span></font><font color="#b400b4"><b>processing_window::onKeyPressed()</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyPressed.html">keyPressed</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyReleased_.html">keyReleased()</a></u></span></font>
- <font color="#ff0000">- NOT IMPLEMENTED</font></p>
+<font color="#000080"><span lang="zxx"><u><font color="#000000"> -
+library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><b>variable</b></font></u></span></font></p>
+<p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyReleased_.html">keyReleased()</a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000">
+- empty library </font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000"><b>function
+for reiplementation by user. </b></font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#000000"><span style="font-weight: normal">Renamed
+for</span></font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000"><span style="font-weight: normal">
+</span></font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#b400b4"><b>processing_window::onKeyReleased</b></font></u></span></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/keyTyped_.html"><b>keyTyped()</b></a></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#ff0000"><b>-
 NOT IMPLEMENTED YET</b></font></u></span></font></p>
 <h1 class="western"><a name="__RefHeading___Toc138_2434791125"></a><b>Data</b>
@@ -469,8 +900,8 @@ But this should be done manually and very carefully.</span></font></p>
 <font color="#00e472">- translated into </font><font color="#00e472"><b>array,
 matrix</b></font><font color="#00e472"> library classes</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/ArrayList.html">ArrayList</a></u></span></font>
-–<font color="#00caca"> </font><font color="#00caca">implemented as
-class based on std::vector</font></p>
+–<font color="#00caca"> implemented as class based on std::vector.</font><font color="#fe007f">
+Only most important methods!</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/DoubleDict.html">DoubleDict</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/DoubleList.html">DoubleList</a></u></span></font>
@@ -478,15 +909,15 @@ class based on std::vector</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/FloatDict.html">FloatDict</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/FloatList.html">FloatList</a></u></span></font>
-<font color="#00caca"> </font><font color="#00caca">implemented as
-class based on std::vector</font></p>
+<font color="#00caca"> implemented as class based on std::vector.
+</font><font color="#fe007f">Only most important methods!</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/HashMap.html">HashMap</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/IntDict.html">IntDict</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/IntList.html">IntList</a></u></span></font>
-<font color="#00caca"> </font><font color="#00caca">implemented as
-class based on std::vector</font></p>
+<font color="#00caca"> implemented as class based on std::vector.
+</font><font color="#fe007f">Only most important methods!</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/JSONArray.html">JSONArray</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/JSONObject.html">JSONObject</a></u></span></font>
@@ -495,15 +926,11 @@ class based on std::vector</font></p>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/LongList.html">LongList</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western"><br/>
-<br/>
-
-</p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/StringDict.html">StringDict</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/StringList.html">StringList</a></u></span></font>
-<font color="#00caca"> </font><font color="#00caca">implemented as
-class based on std::vector</font></p>
+<font color="#00caca"> implemented as class based on std::vector.
+</font><font color="#fe007f">Only most important methods!</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/Table.html">Table</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/TableRow.html">TableRow</a></u></span></font>
@@ -512,23 +939,32 @@ class based on std::vector</font></p>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <h2 class="western"><a name="__RefHeading___Toc144_2434791125"></a>Conversion</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/binary_.html">binary()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED YET, but may work when is C++
+correct.</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/booleanconvert_.html">boolean()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED YET, but may work when is C++
+correct.</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/byteconvert_.html">byte()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED YET, but may work when is C++
+correct.</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/charconvert_.html">char()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED YET, but may work when is C++
+correct.</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/floatconvert_.html">float()</a></u></span></font>
-<font color="#00caca"> </font><font color="#00caca">implemented </font>
+<font color="#00caca"> - for float(String) need to be replaced by
+</font><font color="#00caca"><b>Float.parseFloat</b></font><font color="#00caca">
+and translated from this syntax. </font>
 </p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/hex_.html">hex()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/intconvert_.html">int()</a></u></span></font>
-- <font color="#00caca"> </font><font color="#00caca">implemented </font>
+- <font color="#00caca"> - for int(String) need to be replaced by
+</font><font color="#00caca"><b>Integer.parseInt</b></font><font color="#00caca">
+and translated from this syntax.  </font>
 </p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/strconvert_.html">str()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED YET, but may work when is C++
+correct.</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/unbinary_.html">unbinary()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/unhex_.html">unhex()</a></u></span></font>
@@ -545,11 +981,11 @@ Functions</h2>
 <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/nfc_.html">nfc()</a></u></span></font>
 <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/nfp_.html">nfp()</a></u></span></font>
 <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/nfs_.html">nfs()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">implemented as
-</font><font color="#00caca">library </font><font color="#00caca"><b>functions</b></font></p>
+<font color="#00caca">- implemented as library </font><font color="#00caca"><b>functions</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/split_.html">split()</a></u></span></font>
-<font color="#00caca">- </font><font color="#fe7f00">dummy
-implementation</font></p>
+ <font color="#00caca">- implemented as library </font><font color="#00caca"><b>functions</b></font><font color="#00caca">
+</font>
+</p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/splitTokens_.html">splitTokens()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/trim_.html">trim()</a></u></span></font>
@@ -568,9 +1004,8 @@ Functions</h2>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/shorten_.html">shorten()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
-<p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/sort_.html">sort()</a></u></span></font>
-<font color="#00caca"> - </font><font color="#00caca">translated int
-std::sort</font></p>
+<p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><font color="#ca00ca">a.</font></u></span></font><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/sort_.html">sort()</a></u></span></font>
+<font color="#00caca"> - translated int std::sort(</font><font color="#ca00ca">a</font><font color="#00caca">);</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/splice_.html">splice()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/subset_.html">subset()</a></u></span></font>
@@ -624,6 +1059,12 @@ like in C++</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/rightshift.html">&gt;&gt;
 (right shift)</a></u></span></font> <font color="#00c462">– work
 like in C++</font></p>
+<p class="western"><font color="#191919">&gt;&gt;&gt;</font><font color="#00c462">
+</font><font color="#b400b4">- translated into &gt;&gt; with
+comment:</font><font color="#00c462"><br/>
+	</font><font color="#7f00fe"><font face="Andale Mono">a
+&gt;&gt;&gt; b;  </font></font><font color="#fe7f00"><font face="Andale Mono">==&gt;</font></font><font color="#7f00fe"><font face="Andale Mono">
+ a &gt;&gt; b; /*UNSIGNED SHIFT EXPECTED*/</font></font></p>
 <p class="western"> <font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/bitwiseOR.html">|
 (bitwise OR)</a></u></span></font> <font color="#00c462">– work
 like in C++</font></p>
@@ -649,11 +1090,9 @@ like in C++</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/map_.html">map()</a></u></span></font>
 - <font color="#00caca">IMPLEMENTED AS INLINE FUNCTION</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/max_.html">max()</a></u></span></font>
- <font color="#00c462">– </font><font color="#00c462">implemented
-but mostly </font><font color="#00c462">work like in C++</font></p>
+ <font color="#00c462">– implemented but mostly work like in C++</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/min_.html">min()</a></u></span></font>
- <font color="#00c462">– </font><font color="#00c462">implemented
-but mostly </font><font color="#00c462">work like in C++</font></p>
+ <font color="#00c462">– implemented but mostly work like in C++</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/norm_.html">norm()</a></u></span></font>
 - <font color="#00caca">IMPLEMENTED AS INLINE FUNCTION</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/pow_.html">pow()</a></u></span></font>
@@ -714,7 +1153,7 @@ LIBRARY FUNCTION</font></p>
 </h1>
 <h2 class="western"><a name="__RefHeading___Toc166_2434791125"></a>Setting</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/background_.html">background()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
+<font color="#ff0000">- </font><font color="#00caca">library </font><font color="#00caca"><b>function</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/clear_.html">clear()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED YET</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/colorMode_.html">colorMode()</a></u></span></font>
@@ -747,20 +1186,14 @@ LIBRARY FUNCTION</font></p>
 - <font color="#00caca">library </font><font color="#00caca"><b>function</b></font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/saturation_.html"><b>saturation()</b></a></u></span></font><b>
 </b><font color="#ff0000"><b> - NOT IMPLEMENTED</b></font></p>
-<p class="western" style="margin-bottom: 0cm"><br/>
-
-</p>
 <h1 class="western"><a name="__RefHeading___Toc170_2434791125"></a><b>Shape</b>
 </h1>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/createShape_.html">createShape()</a></u></span></font>
-<font color="#ff0000"><b>- NOT IMPLEMENTED </b></font><font color="#ff0000"><b>(dummy
-only)</b></font></p>
+<font color="#ff0000"><b>- NOT IMPLEMENTED (dummy only)</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/loadShape_.html">loadShape()</a></u></span></font>
-<font color="#ff0000"><b>- NOT IMPLEMENTED </b></font><font color="#ff0000"><b>(dummy
-only)</b></font></p>
+<font color="#ff0000"><b>- NOT IMPLEMENTED (dummy only)</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/PShape.html">PShape</a></u></span></font>
-<font color="#ff0000"><b>- NOT IMPLEMENTED </b></font><font color="#ff0000"><b>(dummy
-only)</b></font></p>
+<font color="#ff0000"><b>- NOT IMPLEMENTED (dummy only)</b></font></p>
 <h2 class="western"><a name="__RefHeading___Toc172_2434791125"></a>Attributes</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/ellipseMode_.html">ellipseMode()</a></u></span></font>
 - library <b>function</b></p>
@@ -812,19 +1245,19 @@ Primitives</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/curveTightness_.html">curveTightness()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <h2 class="western"><a name="__RefHeading___Toc178_2434791125"></a>3D
-Primitives</h2>
+Primitives <font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/box_.html">box()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/sphere_.html">sphere()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/sphereDetail_.html">sphereDetail()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
-<h2 class="western"><a name="__RefHeading___Toc180_2434791125"></a>Vertex</h2>
+<h2 class="western"><a name="__RefHeading___Toc180_2434791125"></a>Vertex
+<font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/beginContour_.html">beginContour()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/beginShape_.html">beginShape()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED </font><font color="#ff0000">(dummy
-present)</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED (dummy present)</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/bezierVertex_.html">bezierVertex()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/curveVertex_.html">curveVertex()</a></u></span></font>
@@ -832,13 +1265,11 @@ present)</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/endContour_.html">endContour()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/endShape_.html">endShape()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED </font><font color="#ff0000">(dummy
-present)</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED (dummy present)</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/quadraticVertex_.html">quadraticVertex()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/vertex_.html">vertex()</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED </font><font color="#ff0000">(dummy
-present)</font></p>
+<font color="#ff0000">- NOT IMPLEMENTED (dummy present)</font></p>
 <h2 class="western"><a name="__RefHeading___Toc182_2434791125"></a>Loading
 &amp; Displaying</h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/shape_.html">shape()</a></u></span></font>
@@ -849,11 +1280,12 @@ present)</font></p>
 <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 <h2 class="western"><a name="__RefHeading___Toc186_2434791125"></a>Files</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/BufferedReader.html">BufferedReader</a></u></span></font>
-<font color="#ff0000">- NOT IMPLEMENTED</font></p>
+–<font color="#ff0000"> </font><font color="#ca00ca">library class
+wraping std::ifstream</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/createInput_.html">createInput()</a></u></span></font>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/createReader_.html">createReader()</a></u></span></font>
- <font color="#ff0000">- NOT IMPLEMENTED</font></p>
+ <font color="#ca00ca">- library function</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/launch_.html">launch()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/loadBytes_.html">loadBytes()</a></u></span></font>
@@ -881,27 +1313,21 @@ present)</font></p>
 <h2 class="western"><a name="__RefHeading___Toc188_2434791125"></a>Time
 &amp; Date</h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/day_.html">day()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/hour_.html">hour()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/millis_.html">millis()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/minute_.html">minute()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/month_.html">month()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/second_.html">second()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">library function</font></p>
+<font color="#00caca">- library function</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/year_.html">year()</a>
 </u></span></font><font color="#000080"><span lang="zxx"><u><font color="#00caca">-
-</font></u></span></font><font color="#000080"><span lang="zxx"><u><font color="#00caca">library
-function</font></u></span></font></p>
-<p class="western"><br/>
-<br/>
-
-</p>
-<h1 class="western"><a name="__RefHeading___Toc190_2434791125"></a><b>Output</b>
-</h1>
+library function</font></u></span></font></p>
+<h1 class="western"><a name="__RefHeading___Toc190_2434791125"></a><b>Output</b></h1>
 <h2 class="western"><a name="__RefHeading___Toc192_2434791125"></a>Text
 Area</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/print_.html">print()</a></u></span></font>
@@ -910,13 +1336,13 @@ Area</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/printArray_.html">printArray()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/println_.html">println()</a></u></span></font>
-<font color="#00caca">- library </font><font color="#00caca"><b>function</b></font><font color="#00caca"><b>s</b></font></p>
+<font color="#00caca">- library </font><font color="#00caca"><b>functions</b></font></p>
 <h2 class="western"><a name="__RefHeading___Toc194_2434791125"></a>Image</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/save_.html">save()</a></u></span></font>
-<font color="#00caca">- library </font><font color="#00caca"><b>function</b></font><font color="#00caca"><b>s
+<font color="#00caca">- library </font><font color="#00caca"><b>functions
 (not fully compatible)</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/saveFrame_.html">saveFrame()</a></u></span></font>
-<font color="#00caca">- library </font><font color="#00caca"><b>function</b></font><font color="#00caca"><b>s
+<font color="#00caca">- library </font><font color="#00caca"><b>functions
 (not fully compatible)</b></font></p>
 <h1 class="western"><a name="__RefHeading___Toc196_2434791125"></a>Files</h1>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/beginRaw_.html">beginRaw()</a></u></span></font>
@@ -950,9 +1376,6 @@ masking std::fstream</b></font></p>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/selectOutput_.html">selectOutput()</a></u></span></font>
  <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western" style="margin-bottom: 0cm"><br/>
-
-</p>
 <h1 class="western"><a name="__RefHeading___Toc198_2434791125"></a><b>Transform</b>
 <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 <p class="western" style="margin-bottom: 0cm; line-height: 100%"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/applyMatrix_.html">applyMatrix()</a></u></span></font>
@@ -981,12 +1404,10 @@ masking std::fstream</b></font></p>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/translate_.html">translate()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
-<p class="western" style="margin-bottom: 0cm"><br/>
-
-</p>
 <h1 class="western"><a name="__RefHeading___Toc200_2434791125"></a><b>Lights,
 Camera</b> <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
-<h2 class="western"><a name="__RefHeading___Toc202_2434791125"></a>Lights</h2>
+<h2 class="western"><a name="__RefHeading___Toc202_2434791125"></a>Lights
+<font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/ambientLight_.html">ambientLight()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/directionalLight_.html">directionalLight()</a></u></span></font>
@@ -1006,7 +1427,8 @@ Camera</b> <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/spotLight_.html">potLight()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
-<h2 class="western"><a name="__RefHeading___Toc204_2434791125"></a>Camera</h2>
+<h2 class="western"><a name="__RefHeading___Toc204_2434791125"></a>Camera
+<font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/beginCamera_.html">beginCamera()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/camera_.html">camera()</a></u></span></font>
@@ -1023,7 +1445,8 @@ Camera</b> <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/printProjection_.html">printProjection()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
-<h2 class="western"><a name="__RefHeading___Toc206_2434791125"></a>Coordinates</h2>
+<h2 class="western"><a name="__RefHeading___Toc206_2434791125"></a>Coordinates
+-<font color="#ff0000"> NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/modelX_.html">modelX()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/modelY_.html">modelY()</a></u></span></font>
@@ -1037,7 +1460,7 @@ Camera</b> <font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/screenZ_.html">screenZ()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <h2 class="western"><a name="__RefHeading___Toc208_2434791125"></a>Material
-Properties</h2>
+Properties <font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/ambient_.html">ambient()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/emissive_.html">emissive()</a></u></span></font>
@@ -1047,17 +1470,13 @@ Properties</h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/specular_.html">specular()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <h1 class="western"><a name="__RefHeading___Toc210_2434791125"></a><b>Image</b>
-</h1>
+<font color="#ff0000">- NOT IMPLEMENTED</font></h1>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/createImage_.html">createImage()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/PImage.html">PImage</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<p class="western"><br/>
-<br/>
-
-</p>
 <h2 class="western"><a name="__RefHeading___Toc212_2434791125"></a>Loading
-&amp; Displaying</h2>
+&amp; Displaying <font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/image_.html">image()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/imageMode_.html">imageMode()</a></u></span></font>
@@ -1070,14 +1489,16 @@ Properties</h2>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/tint_.html">tint()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
-<h2 class="western"><a name="__RefHeading___Toc214_2434791125"></a>Textures</h2>
+<h2 class="western"><a name="__RefHeading___Toc214_2434791125"></a>Textures<font color="#ff0000">-
+NOT IMPLEMENTED</font></h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/texture_.html">texture()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textureMode_.html">textureMode()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textureWrap_.html">textureWrap()</a></u></span></font>
 <font color="#ff0000">- 3D GRAPHIX NOT IN MY PLAN</font></p>
-<h2 class="western"><a name="__RefHeading___Toc216_2434791125"></a>Pixels</h2>
+<h2 class="western"><a name="__RefHeading___Toc216_2434791125"></a>Pixels
+<font color="#ff0000">- NOT IMPLEMENTED</font></h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/blend_.html">Blend()</a></u></span></font>
 <font color="#ff0000">- - NOT IMPLEMENTED</font></p>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/copy_.html">copy()</a></u></span></font>
@@ -1135,17 +1556,15 @@ NOT IMPLEMENTED</font></h2>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <h2 class="western"><a name="__RefHeading___Toc226_2434791125"></a>Attributes</h2>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textAlign_.html">TextAlign()</a></u></span></font>
-<font color="#00caca"><b>- </b></font><font color="#00caca"><b>implemented</b></font></p>
+<font color="#00caca"><b>- implemented</b></font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textLeading_.html">textLeading()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textMode_.html">textMode()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">dummy
-implementation</font></p>
+<font color="#00caca">- dummy implementation</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textSize_.html">textSize()</a></u></span></font>
-<font color="#00caca">- </font><font color="#00caca">dummy
-implementation</font></p>
+<font color="#00caca">- dummy implementation</font></p>
 <p class="western"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textWidth_.html">textWidth()</a></u></span></font>
-<font color="#00caca"><b>- </b></font><font color="#00caca"><b>implemented</b></font></p>
+<font color="#00caca"><b>- implemented</b></font></p>
 <h2 class="western"><a name="__RefHeading___Toc228_2434791125"></a>Metrics</h2>
 <p class="western" style="margin-bottom: 0cm"><font color="#000080"><span lang="zxx"><u><a href="../../../processing-3.5.3/modes/java/reference/textAscent_.html">textAscent()</a></u></span></font>
 <font color="#ff0000">- NOT IMPLEMENTED</font></p>
@@ -1154,9 +1573,22 @@ implementation</font></p>
 <p class="western" style="margin-bottom: 0cm"><br/>
 
 </p>
+<h1 class="western"><a name="__RefHeading___Toc127_4121486429"></a>Final
+remarks</h1>
+<p class="western" style="margin-bottom: 0cm"><font color="#ff0000">The
+list of unimplemented but expected functions can be found in the file
+'</font><font color="#ca00ca">not_implemented.h</font><font color="#ff0000">'</font></p>
+<p class="western" style="margin-bottom: 0cm"><br/>
+
+</p>
+<p class="western" style="margin-bottom: 0cm">Please send comments
+and implementation suggestions to my e-mail at Warsaw University:</p>
+<p class="western" style="margin-bottom: 0cm"><font color="#ff0000"><a href="mailto:uw.edu.pl">Wojciech Borkowski at 'uw.edu.pl'</a>
+</font>
+</p>
 <div title="footer">
 	<p style="margin-top: 0.89cm; margin-bottom: 0cm; line-height: 100%">
-	<sdfield type=PAGE subtype=RANDOM format=PAGE>16</sdfield></p>
+	<sdfield type=PAGE subtype=RANDOM format=PAGE>1</sdfield></p>
 </div>
 </body>
 </html>
