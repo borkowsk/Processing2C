@@ -22,9 +22,11 @@ See: _./scripts/doc.md_ for more!
 
 **REQUIREMENTS**
 
-Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ with source codes for __Processing 3.x__
+Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes for __Processing 3.x__ .
 
-Need also the following tools **bash**, **sed**, **cmake**, **make** , **gcc** , **g++**
+Toolbox need also the following tools: 
+
+**bash**, **sed**, **cmake**, **make** , **gcc** , **g++**
 
 
 **NOT IMPLEMENTED**
