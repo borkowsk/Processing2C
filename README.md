@@ -19,8 +19,8 @@ $ git clone https://github.com/borkowsk/Processing2C.git
 Then go into _Processing2C/_ and and run _config.sh_ bash script.
 
 For much more information see: 
-*      [ scripts/doc.md ](https://github.com/borkowsk/Processing2C/blob/master/scripts/doc.md)
-*      [ docs/interface.* ](https://github.com/borkowsk/Processing2C/blob/master/docs/Interface.html) 
+*   How to do doc:   [scripts/doc.md](https://github.com/borkowsk/Processing2C/blob/master/scripts/doc.md)
+*   Interface documenation in doc,pdf & html format   [docs/interface.*](https://github.com/borkowsk/Processing2C/blob/master/docs/Interface.html) 
 
 **SOFTWARE REQUIREMENTS**
 
