@@ -18,19 +18,21 @@ $ git clone https://github.com/borkowsk/Processing2C.git
 
 Then go into _Processing2C/_ and and run _config.sh_ bash script.
 
-See: _./scripts/doc.md_ for more!
+For much more information see: 
+*      _[./scripts/doc.md](https://github.com/borkowsk/Processing2C/blob/master/scripts/doc.md)_
+*      _[./docs/interface.*](https://github.com/borkowsk/Processing2C/blob/master/docs/Interface.html)_ 
 
-**REQUIREMENTS**
+**SOFTWARE REQUIREMENTS**
 
 Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes for __Processing 3.x__ .
 
-Toolbox need also the following tools: 
+Toolbox need the following tools available: 
 
 **bash**, **sed**, **cmake**, **make** , **gcc** , **g++**
 
 
 **NOT IMPLEMENTED**
 
-Functions already declared but still not implemented are listed in _not_implemented.h_ file. 
+Functions already declared but still not implemented are listed in _[not_implemented.h](https://github.com/borkowsk/Processing2C/blob/master/not_implemented.h)_ file. 
 
 
