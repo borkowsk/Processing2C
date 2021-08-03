@@ -19,7 +19,7 @@ The translation was implemented using the __sed__ program, so the syntax context
     - /*_tmpptr*/ translated into '*'
 
 
-**Visibility of identifiers - the biggest semantic difference between PDE and C++:**
+## Visibility of identifiers - the biggest semantic difference between PDE and C++:
 
 In _Processing_, the order in which you enter global identifiers does not matter - they are all visible everywhere.
 
@@ -31,7 +31,7 @@ The scripts also find class declarations and make foreshadowing from them, which
 
 Also, in _Processing_, variables and functions have separate namespaces. This means that a global variable can have the same name as a local method and both will be distinguished. Such name mixing is not allowed in C++ because function and method identifiers can also appear without the parentheses '()' in a pointer context. Hence a local method with the same name as the global variable will hide that variable, and vice versa, leading to strange phenomena. We try to detect such situations for symbols from the _Processingu_ interface and warn the user about them.
 
-**Classes:**
+## Classes:
 
 Default class settings pose a serious problem: in _Processing_ all content of the class is public by default, but private in C++. On the other hand, methods in Processing are virtual by default, not in C ++. The first problem has so far been solved partially for class declarations that have an opening '{' on the same line. The issue of virtual functions is solved by the directive /\*_interfunc\*/.
 
@@ -48,7 +48,7 @@ in the PDE file.
 
 These solutions allowed me to use Processing2C for my simulation models, but it's not convenient. I plan to write a separate applet which, when inserted into the translation stream, will deal with class declarations as a whole.
 
-**String concatenations**
+## String concatenations:
 
 In _Processing_, string constants are treated as objects of type __String__, which in turn are concatenated with almost any other underlying variable type. In C ++, the conversion of string constants to __Processing :: String__ must be enforced explicitly by adding a constructor call in expressions.
 
@@ -57,8 +57,7 @@ The scripts add such a call in detected concatenation operations, but unfortunat
 I have some ideas on how to improve it, but it takes quite a lot of work and testing, and the current solution works somehow.
 
  
-What changes should be made to the PDE files?
----------------------------------------------
+## What changes should be made to the PDE files?
 
 Before translating to C ++, you should make some changes to the _Processing_ code and check whether the program works by accident.
 
@@ -79,7 +78,7 @@ The character '{', if it is to appear on a line, must follow the declaration and
 
 ```C
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2021-08-02                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
