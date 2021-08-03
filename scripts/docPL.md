@@ -7,6 +7,8 @@ Oczywiście potrzebna jest też załączona biblioteka inplementująca interface
 pakiet SymShellLight zapewniający grafikę w __X11__, __MS Windows__, oraz grafikę __SVG__ do uruchamiania aplikacji
 na serwerach do których nie ma dostępu za pomoca _GUI_ a jedynie przez terminal tekstowy.
 
+## Translacja:
+
 Translacja została zaimplementowana za pomocą programu __sed__ więc kontekst składniowy ograniczony jest zawsze do jednej linii,
 co wymusza pewne zmiany z kodzie PDE, których trzeba dokonać przed translacją. Czasem konieczne są też drobne uzupełnienia 
 w wynikowym kodzie C++, które staramy się ograniczać przez zestaw dyrektyw w komentarzach takich jak:
@@ -22,7 +24,7 @@ w wynikowym kodzie C++, które staramy się ograniczać przez zestaw dyrektyw w 
     - /*_tmpptr*/ transformowane na '*'
 
 
-**Widoczność identyfikatorów - największą różnica semantyczna między PDE a C++:**
+## Widoczność identyfikatorów - największą różnica semantyczna między PDE a C++:
 
 W _Processingu_ kolejność wprowadzania identyfikatorów globalnych nie ma znaczenia - wszystkie widoczne są wszędzie.
 W C++ identyfikator widoczny jest od miejsca deklaracji w dół!
@@ -44,7 +46,7 @@ i metod mogą występować także bez nawiasów '()' w kontekście wskaźnikowym
 globalna zakryje tą zmienną, i vice versa, prowadząc do dziwnych zjawisk. Takie sytuacje dla symboli z interfejsu _Processingu_
 staramy się wykrywać i ostrzegać o nich.
 
-**Klasy:**
+## Klasy:
 
 Poważny problem stanowią domyślne ustawienia klas - w _Processingu_ cała zawartość klasy jest domyślnie publiczna, w C++
 prywatna. Z kolei metody w Processingu są domyślnie wirtualne, w C++ nie. Pierwszy problem na razie został rozwiązany częściowo dla
@@ -68,7 +70,7 @@ w pliku PDE.
 Te rozwiązania pozwoliły mi na uzycie Processing2C do moich modeli symulacyjnych, ale nie jest to wygodne. Planuje napisać osobny
 programik który wstawiony w strumień translacyjny będzie radził sobie całościowo z deklaracjami klas.
 
-**Konkatenacje stringów**
+## Konkatenacje stringów:
 
 W _Processingu_ stałe napisowe są traktowane jak obiekty typu __String__, które z kolei podlegają konkatenacji niemal z każdym
 innym podstawowym typem zmiennych. W C++ konwersja stałych łańcuchowych na typ __Processing::String__ musi zostać wymuszona jawnie przez dodanie
@@ -79,13 +81,12 @@ Skrypty dodają takie wywołanie w wykrytych operacjach konkatenacji, ale nieste
 Mam pewne pomysły jak to usprawnić, ale wymagają dosyć dużo pracy i testów, a aktualne rozwiązanie jakoś działa.
 
  
-Jakie zmiany należy wykonać w plikach PDE?
-------------------------------------------
+## Jakie zmiany należy wykonać w plikach PDE?
 
 Przed translacją na C++ należy dokonać nieco zmian w kodzie _Processingu_ i sprawdzić czy przez przypadek nie zmienił się sposób
 działania programu.
 
-1) Nawiasy '{' otwierające definicje klas przenieść do lini deklaracji klasy. Całość (łącznie z klasą bazową i ewentualnymi
+1) Nawiasy '{' otwierające definicje klas przenieść do linii deklaracji klasy. Całość (łącznie z klasą bazową i ewentualnymi
 interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej linii.
 
 2) Po nawiasie zamykającym klasę dopisujemy ';' - _Processingowi_ to nie przeszkadza, a w C++ jest wymagane.
@@ -102,7 +103,7 @@ interfejsami) od słowa kluczowego class do '{' musi zawierać się w jednej lin
 
 ```C
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-23                   */
+/*               PROCESSING2C  version 2021-08-02                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
