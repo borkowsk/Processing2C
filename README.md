@@ -28,7 +28,7 @@ Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes fo
 
 Toolbox need the following tools available: 
 
-**bash**, **sed**, **cmake**, **make** , **gcc** , **g++**
+**bash**, **sed**, **cmake**, **make** , **gcc** , **g++** , **ninja** (package ninja-build)
 
 
 **NOT IMPLEMENTED**
