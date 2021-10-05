@@ -28,11 +28,13 @@ Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes fo
 
 Toolbox need the following tools available: 
 
-**bash**, **sed**, **cmake**, **make** , **gcc** , **g++**
+**bash**, **sed**, **cmake**, **make** , **gcc** , **g++** , **ninja** (package ninja-build)
 
 
 **NOT IMPLEMENTED**
 
 Functions already declared but still not implemented are listed in _[not_implemented.h](https://github.com/borkowsk/Processing2C/blob/master/not_implemented.h)_ file. 
 
+**COFFE**
+https://www.buymeacoffee.com/wborkowsk
 
