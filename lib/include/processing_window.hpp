@@ -100,8 +100,12 @@ class color
     std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
 
     std::uint8_t blue() const  { return (val & 0x000000FF); }
+    
+    operator const std::uint32_t () const { return val; }
 };
 
+//inline String hex(const color& col) { return Processing::hex(col.val); }
+//inline String binary(const color& col) { return Processing::binary(col.val); }
 
 inline float  alfa(const color& col) { return col.alfa(); }
 inline float   red(const color& col) { return col.red(); }

@@ -94,6 +94,8 @@ sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
 sed 's/Integer.parseInt/std::stoi/g' |\
 sed 's/Float.parseFloat/std::stof/g' |\
+sed 's|hex(|Processing::hex(|g' |\
+#sed 's|binary(|Processing::binary(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 #sed 's/abs(/std::abs(/g' |\
