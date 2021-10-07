@@ -5,7 +5,9 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp"
+
 #include <iostream>
+
 namespace Processing
 {
 
@@ -148,9 +150,46 @@ String nfc(double num,int digits)
     return String(bufor);
 }
 
+String hex(int num)
+{
+    char bufor[1024];
+    sprintf(bufor,"%x",num);
+    return String(bufor);
+}
+
+String hex(int num,int dig)
+{
+    char bufor[1024];
+    sprintf(bufor,"%*x",dig,num);//NOT TESTED - TODO
+    return String(bufor);
+}
+
+//https://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
+static const char *bit_rep[16] = {
+    [ 0] = "0000", [ 1] = "0001", [ 2] = "0010", [ 3] = "0011",
+    [ 4] = "0100", [ 5] = "0101", [ 6] = "0110", [ 7] = "0111",
+    [ 8] = "1000", [ 9] = "1001", [10] = "1010", [11] = "1011",
+    [12] = "1100", [13] = "1101", [14] = "1110", [15] = "1111",
+};
+
+
+String binary(int num)
+{
+    char bufor[34];
+    uint8_t byte0=(num & 0xff000000)>>24;
+    uint8_t byte1=(num & 0x00ff0000)>>16;
+    uint8_t byte2=(num & 0x0000ff00)>>8;
+    uint8_t byte3=(num & 0xff);
+    sprintf(bufor,"%s%s%s%s%s%s%s%s",bit_rep[byte0 >> 4], bit_rep[byte0 & 0x0F],
+                                     bit_rep[byte1 >> 4], bit_rep[byte1 & 0x0F],
+                                     bit_rep[byte2 >> 4], bit_rep[byte2 & 0x0F],
+                                     bit_rep[byte3 >> 4], bit_rep[byte3 & 0x0F]);
+    return String(bufor);
+}
+
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-17                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

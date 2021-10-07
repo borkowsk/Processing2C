@@ -1,7 +1,7 @@
 int fontSize=16;
 void setup()
 {
-  size(300,700);
+  size(450,800);
   String forSplit="Ala ma kota i dwa psy";
   String[] splited=split(forSplit,' ');
   for(String s:splited)
@@ -68,4 +68,13 @@ void setup()
 //text("nfc2,1_0.0001:" + nfc(0.0001,2,1),10,pos+=fontSize);
   text("nfc2___10000.:" + nfc(10000.0,2),10,pos+=fontSize);
   text("nfc2__-10000.:" + nfc(-10000.0,2),10,pos+=fontSize);
+  pos+=fontSize;
+  int   value=0x5555;
+  color gray=0xAAAAAA;
+  text("hex____0x5555:" + hex(value)   ,10,pos+=fontSize);
+  text("binary_0x5555:",10,pos+=fontSize);
+  text("      " + binary(value),10,pos+=fontSize); 
+  text("hex______gray:" + hex(gray)   ,10,pos+=fontSize);
+  text("binary___gray:" ,10,pos+=fontSize);
+  text("      " + binary(gray),10,pos+=fontSize); 
 }
