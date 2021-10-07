@@ -21,7 +21,7 @@ String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
 String::String(const String& par):std::string( par.c_str() )
 {}
 
-String::String(char  c):std::string({c})
+String::String(const char c):std::string({c})
 {}
 
 bool String::operator == (nullptr_t v)
@@ -38,7 +38,8 @@ bool String::operator != (nullptr_t)
 
 static int count_substrings(const char *str,const char *substr)
 {
-              //https://www.sanfoundry.com/c-program-count-occurence-substring/
+    //https://www.sanfoundry.com/c-program-count-occurence-substring/
+    FIRST_TIME_ERRMESSAGE( "NOT IMPLEMENTED");
     return 0; //TODO!
 }
 
@@ -88,7 +89,7 @@ static int count_characters(const char *str, char character)
  }
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-20                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

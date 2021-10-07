@@ -305,7 +305,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-17                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

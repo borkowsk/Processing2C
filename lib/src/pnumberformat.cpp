@@ -21,7 +21,15 @@ String& String::operator += (_string_param v)// inline?
     std::string::operator += (v);return *this;
 }
 
+
 String String::operator  + (_string_param v) const
+{
+    String ret=(*this);
+    ret+=v;
+    return ret;
+}
+
+String String::operator  & (_string_param v) const
 {
     String ret=(*this);
     ret+=v;
@@ -36,6 +44,13 @@ _string_param _string_param::operator  + (_string_param v) const
 }
 
 String operator  + (_string_param v,const String& s)
+{
+    String ret=v;
+    ret+=s;
+    return ret;
+}
+
+String operator  + (_string_param v,_string_param s)
 {
     String ret=v;
     ret+=s;

@@ -61,7 +61,10 @@ void processing_window::draw()
   int b=(int)random(3);
   c[a][b]+=1;
   s[a][b]=nf(c[a][b]);
-  println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
+  println(a,b,c[a][b],
+          String{"'"}
+          + s[a][b]
+          + String{"'"});
 }
 //../../scripts/procesing2cpp.sh did it
 

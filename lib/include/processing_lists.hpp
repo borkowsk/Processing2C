@@ -59,7 +59,9 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
 
     String print() const
     {
-        String ret=String("Size:")+nf(this->size(),3)+String(" [");
+        String ret=String("Size:");
+        ret+=nf(this->size(),3);
+        ret+=String(" [");
         for(const T& val:*this)
         {
             ret+=val;
@@ -90,7 +92,7 @@ class sArrayList:public self_printable_ptr< ArrayList<T> >
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-09-29                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

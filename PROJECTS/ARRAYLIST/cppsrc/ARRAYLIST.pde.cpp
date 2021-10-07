@@ -61,8 +61,13 @@ void processing_window::draw() {
     println(i);
   for(String s:testStr)
     println(s);
-  text(item+String(';')+nums+String(';')+flos, width/2, height/2);
-  
+  text(item
+       +String{';'}
+       +nf(nums)
+       +String{';'}
+       +flos
+       , width/2, height/2);
+
 }
 //../../scripts/procesing2cpp.sh did it
 

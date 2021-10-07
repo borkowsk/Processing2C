@@ -79,6 +79,11 @@ inline void line(float  x1,float  y1,float  x2,float  y2)
     line_d((int)x1,(int)y1,(int)x2,(int)y2);
 }
 
+inline void rectMode(int mode)/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+{
+    _RECT_MODE=mode;
+}
+
 inline void rect(float a,float  b,float  c,float  d)
 {
     int x1,y1,x2,y2;
@@ -141,7 +146,7 @@ inline float lerp(float v0, float v1, float t) // Precise method, which guarante
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-18                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

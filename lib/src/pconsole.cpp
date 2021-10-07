@@ -9,6 +9,12 @@
 namespace Processing
 {
 
+static inline std::ostream& operator << (std::ostream& o,String& str)
+{
+    o<<str._std_str();
+    return o;
+}
+
 //void print();//To bez sensu
 void print(_string_param _p1)
 {
@@ -71,7 +77,7 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

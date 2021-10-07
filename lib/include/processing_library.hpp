@@ -32,6 +32,7 @@ namespace Processing
   class _string_param;//Zapowiadająca
 
   class String:public std::string
+               //private std::string - NIEUDANA PROBA - CIAGLE CZEGOS JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
   {
     ///INFO:
     public:
@@ -41,12 +42,14 @@ namespace Processing
       ~String();//??? Na pewno potrzebne?
 
       String(){}
-      String(const char* str):std::string(str){}
-      String(nullptr_t):String(){}
-      explicit
-      String(char  c);
-      String(const std::string& str):std::string(str){}
       String(const String&);
+
+      String(const char* str):std::string(str){}
+
+      explicit String(const char  c);
+      String(const std::string& str):std::string(str){}
+      String(nullptr_t p):String(){}
+
       String(double v);//:String(){ operator+=(v);}
       String(const Object* p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
 
@@ -56,8 +59,8 @@ namespace Processing
       String* operator -> () //Utożsamia operator -> z operatorem . dla tego typu!!!
       { return this; }//Sam z siebie robi pointer na siebie :-D HACK!!!
 
-      bool  equals(const char* wz) { return this->compare(wz)==0;}
       //operator bool () { return this->c_str()!=nullptr; }
+      bool  equals(const char* wz) { return this->compare(wz)==0;}
       bool  notEmpty() { return this->c_str()!=nullptr; }
       bool operator == (nullptr_t);
       bool operator != (nullptr_t);
@@ -65,21 +68,38 @@ namespace Processing
       String& operator = (_string_param v);
       String& operator += (_string_param v);
 
-      //template<class X>
-      //String& operator += (const ptr<X>&);
+      template<class X>
+      String& operator += (const ptr<X>& p)
+      {
+          this->operator += ( _string_param{ (long unsigned int)p.get() } );
+          return *this;
+      }
 
       String operator  + (_string_param) const;
-
+      String operator  & (_string_param) const;
       //template<class X>
       //String operator  + (const ptr<X>& p) const;
+
+      //DIRECT IMPORTS FROM basic_string
+      using std::string::length;
+      using std::string::c_str;
+      using std::string::operator [];
+      using std::string::erase;
+      using std::string::find;
+      using std::string::substr;
+      using std::string::find_first_of;
+
+      std::string& _std_str() { return *this;}
+      const std::string& _std_str() const { return *this;}
   };
 
    //String operator  + (_string_param,float); //A lot of conflicts :-(
    //String operator  + (_string_param,int); //A lot of conflicts :-(
-   String operator  + (_string_param,const String&);
+   //String operator  + (_string_param,const String&);
+   String operator  + (_string_param,_string_param);
 
-   //template<class X>
-   //String& operator + (const ptr<X>&,String&);
+   template<class X>
+   String& operator + (const ptr<X>&,String&);
 
    extern 
    sarray<String> args; //WHOLE PROGRAM PARAMETERS!!!
@@ -91,8 +111,8 @@ namespace Processing
    };
 
    //Processing like string -. value converters
-   inline int     Int(const String& sval) { return std::stoi(sval);}
-   inline float Float(const String& sval) { return std::stof(sval);}
+   inline int     Int(const String& sval) { return std::stoi(sval.c_str());}
+   inline float Float(const String& sval) { return std::stof(sval.c_str());}
 
    template<class T>
    class  self_printable_ptr:public ptr<T>,virtual public _self_printable
@@ -101,7 +121,7 @@ namespace Processing
        String print() const { return  this->get()->print(); }
        self_printable_ptr():ptr<T>(nullptr){}
        self_printable_ptr(T* ini):ptr<T>(ini){}
-       //using ptr<T>::operator = ;
+       //using ptr<T>::operator = ; //???
        self_printable_ptr<T>& operator = (T* other){ ptr<T>::operator = ((T*)other); return *this;}
        auto begin() { return this->get()->begin(); } //need C++14 !
        auto end()   { return this->get()->end(); } //need C++14 !
@@ -116,7 +136,7 @@ namespace Processing
         _string_param(const std::string& p):String(p){}
         _string_param(const char *p):String(p){}
         _string_param(const _self_printable& p):String(p.print()){}
-        _string_param(char   p);
+        _string_param(const char p);
         _string_param(double p);
         _string_param(float  p);
         _string_param(int    p);
@@ -129,6 +149,7 @@ namespace Processing
 
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
+
         //operator String& () {return *(String*)this;}
         String& get() {return *(String*)this;}
   };
@@ -359,10 +380,10 @@ namespace Processing
       if(ptr!=nullptr)
       {
           String line;
-          std::getline(*ptr, line);
+          std::getline(*ptr, line._std_str());
           return line;
       }
-      else return nullptr;
+      else return String(nullptr);
   }
 
   class PrintWriter
@@ -516,35 +537,50 @@ namespace Processing
 
   inline String FloatList::print() const
   {
-      String ret=_string_param("Size:")+_string_param(size());
+      String ret{"Size:"};
+      ret+=_string_param(size());
       ret+=String(" [");
       for(float val:*this)
-          ret+=_string_param(val)+_string_param(" ");
-      ret+=String("]");
+      {
+          ret+=_string_param(val);
+          ret+=String(" ");
+      }
+      ret+=String("]");//TODO +=char ?
       return ret;
   }
 
   inline String IntList::print() const
   {
-      String ret=_string_param("Size:")+_string_param(size())+_string_param(" [");
+      String ret{"Size:"};
+      ret+=_string_param(size());
+      ret+=String(" [");
       for(int val:*this)
-          ret+=_string_param(val)+_string_param(" ");
-      ret+=String("]");
+      {
+          ret+=_string_param(val);
+          ret+=String(" ");
+      }
+      ret+=String("]");//TODO +=char ?
       return ret;
   }
 
   inline String StringList::print() const
   {
-      String ret=_string_param("Size:")+_string_param(size())+_string_param(" [");
+      String ret{"Size:"};
+      ret+=_string_param(size());
+      ret+=String(" [");
       for(String val:*this)
-          ret+=_string_param('"')+_string_param(val)+_string_param("\" ");
-      ret+=String("]");
+      {
+          ret+=String('"');
+          ret+=_string_param(val);
+          ret+=String("\" ");
+      }
+      ret+=String("]");//TODO +=char ?
       return ret;
   }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-12                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

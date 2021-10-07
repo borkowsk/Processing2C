@@ -150,7 +150,7 @@ sarray<int>  IntList::array()// 	Create a new array with a copy of all the value
 String   StringList::remove(int index)// 	Remove an element from the specified index
 {
     FIRST_TIME_ERRMESSAGE( " not implemented!" );
-    return "<NOT IMPLEMENTED>";//TODO!!!
+    return String("<NOT IMPLEMENTED>");//TODO!!!
 }
 
 bool     StringList::hasValue(_string_param   what)// Check if a number is a part of the list
@@ -201,7 +201,7 @@ sarray<int>  StringList::array()// 	Create a new array with a copy of all the va
     abort();
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-22                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

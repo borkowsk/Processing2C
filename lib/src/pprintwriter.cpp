@@ -8,6 +8,12 @@
 namespace Processing
 {
 
+static inline std::ostream& operator << (std::ostream& o,String& str)
+{
+    o<<str._std_str();
+    return o;
+}
+
 /// File streams output
 PrintWriter::~PrintWriter()
 {
@@ -40,7 +46,7 @@ PrintWriter&  PrintWriter::operator = (PrintWriter& w)
 
 PrintWriter& createWriter(_string_param name)
 {
-    std::ofstream* file=new std::ofstream(name);                        assert(file!=nullptr);
+    std::ofstream* file=new std::ofstream(name._std_str());             assert(file!=nullptr);
 
     static PrintWriter tmp;
 
@@ -92,7 +98,7 @@ BufferedReader& BufferedReader::operator = (BufferedReader& w)
 
 BufferedReader& createReader(_string_param name)
 {
-    std::ifstream* file=new std::ifstream(name);                        assert(file!=nullptr);
+    std::ifstream* file=new std::ifstream(name._std_str());                        assert(file!=nullptr);
 
     static BufferedReader tmp;
 
@@ -141,7 +147,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-12                   */
+/*               PROCESSING2C  version 2021-10-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

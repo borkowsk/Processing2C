@@ -1,5 +1,5 @@
 #!/bin/bash
-# Processing2C version 0.12 installation script
+# Processing2C version 0.13 installation script
 #
 
 EDIT=nano
