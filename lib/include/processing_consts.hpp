@@ -36,6 +36,11 @@ const int LEFT=37;
 const int TOP=102;
 const int BOTTOM=103;
 const int BASELINE=104;
+
+//For angles, nosie, spheres etc...
+const float DEG_TO_RAD = 0.017453292519943295769236907684886f;
+const float RAD_TO_DEG = 57.295779513082320876798154814105f;
+
 }//END of namespace Processing
 
 //FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS isted also in 'not_implemented.h'
@@ -51,7 +56,7 @@ const int BASELINE=104;
 
 
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-17                   */
+/*               PROCESSING2C  version 2021-10-11                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

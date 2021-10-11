@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
 //Source: PERLIN.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -27,6 +27,7 @@ void processing_window::setup()
 void processing_window::draw()
 {
   draw3();
+  //draw4();//THIS IS STIL NOT COMPATIBLE WITH Processing2C
 }
 
 float xoff = 0.0;
@@ -54,7 +55,7 @@ void draw2() /// May be used before definition
 {
   background(0);
   for (int x=0; x < width; x++) {
-    float noiseVal = noise((mouseX+x)*noiseScale, mouseY*noiseScale);
+    float noiseVal = noise((mouseX+x)*noiseScale, mouseY*noiseScale);//!!! mouseMove not work under Processing2C
     stroke(noiseVal*255);
     line(x, mouseY+noiseVal*80, x, height);
   }
@@ -85,7 +86,7 @@ void draw4() /// May be used before definition
 
   fill(255);
   // We are going to draw a polygon out of the wave points
-  beginShape(); 
+  beginShape(); //THIS IS STIL NOT IMPLEMENTED IN Processing2C
   
   float xoff = 0;       // Option #1: 2D Noise
   //float xoff = yoff; // Option #2: 1D Noise
@@ -97,7 +98,7 @@ void draw4() /// May be used before definition
     // float y = map(noise(xoff), 0, 1, 200,300);    // Option #2: 1D Noise
     
     // Set the vertex
-    vertex(x, y); 
+    vertex(x, y); //THIS IS STIL NOT IMPLEMENTED IN Processing2C
     // Increment x dimension for noise
     xoff += 0.05;
   }
@@ -105,9 +106,9 @@ void draw4() /// May be used before definition
   yoff += 0.01;
   vertex(width, height);
   vertex(0, height);
-  endShape(CLOSE);
+  endShape(CLOSE);//THIS IS STIL NOT IMPLEMENTED IN Processing2C
 }
 
 //See also: https://www->openprocessing->org/sketch/494102/
-//../../scripts/procesing2cpp.sh did it
+///home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 
