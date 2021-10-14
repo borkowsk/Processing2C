@@ -121,7 +121,7 @@ popd >> /dev/null
 cat << EOF >> CMakeLists.txt
 #        )
 
-target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_x11" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" )
+target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_x11" PRIVATE "\${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" )
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_x11"  
      "-L\${PROC2C}/lib"
      "-L\${SYMSHELL}"
@@ -131,7 +131,7 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_x11"
      rt
      )
 
-target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_svg" PRIVATE "\${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" "-O3" )
+target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_svg" PRIVATE "\${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" "-O3" )
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"  
      "-L\${PROC2C}/lib"
      "-L\${SYMSHELL}"
@@ -155,7 +155,7 @@ EOF
 echo -e "\nProject ${PROJECT} DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-10-07                   */
+#/*               PROCESSING2C  version 2021-10-13                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

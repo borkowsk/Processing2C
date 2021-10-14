@@ -35,6 +35,7 @@ namespace Processing
                //private std::string - NIEUDANA PROBA - CIAGLE CZEGOS JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
   {
     ///INFO:
+      //String& operator = (const String&) = delete; //To nie zapobiega użyciu w konwersjach?!? :-(
     public:
       friend class Processing::_string_param;
 
@@ -580,7 +581,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
+/*               PROCESSING2C  version 2021-10-13                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

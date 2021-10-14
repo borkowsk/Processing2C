@@ -103,7 +103,9 @@ sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
+sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
+sed 's|\/\*_emptybody\*\/|{}|g'|\
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
@@ -114,6 +116,8 @@ sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
 sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
+#Stała stringowa jako drugi argument ?:
+sed -E 's|\?(\s*)(\"[^"]*\")|?\1 String(\2) |g' |\
 #IMPORTY
 sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
 sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
@@ -160,7 +164,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-07-13                   */
+#/*               PROCESSING2C  version 2021-10-13                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
