@@ -27,6 +27,12 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
         return this->at(index);// []?
     }
 
+    void remove(int index)
+    {
+       assert("NOT IMPLEMENTED"==nullptr);
+       // this->erase(index);//TODO CHECK
+    }
+
     bool remove(const T& o)
     {
        for (auto it = begin(); it != end(); )
@@ -70,6 +76,9 @@ class ArrayList:public std::vector<T>, virtual public _self_printable
         ret+=String("]");
         return ret;
     }
+    
+    //int 	size() const //Returns the number of elements in this list.
+    //{ return this->size(); }
 };
 
 template<class T>
@@ -88,11 +97,13 @@ class sArrayList:public self_printable_ptr< ArrayList<T> >
       auto  end() { return this->get()->end(); } //need C++14 !
       //T&        operator [] (size_t i) { return (*this->get())[i]; }
       //size_t    length() { return this->get()->length; }
+      int 	size() const //Returns the number of elements in this list.
+      { return this->get()->size(); }
 };
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

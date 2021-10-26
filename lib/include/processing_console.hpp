@@ -22,7 +22,9 @@ namespace Processing
                _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
                
   String hex(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent hexadecimal notation. 
+  String hex(int num,int digits); //TODO
   String binary(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent binary notation.
+  String binary(int value,int digits);//TODO
 
   String nf(double num);
   String nf(double num,int digits);
