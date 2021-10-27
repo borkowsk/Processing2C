@@ -6,9 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //...is optional. Should be deleted when not needed.
+#include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
@@ -61,13 +61,8 @@ void processing_window::draw() {
     println(i);
   for(String s:testStr)
     println(s);
-  text(item
-       +String{';'}
-       +nf(nums)
-       +String{';'}
-       +flos
-       , width/2, height/2);
-
+  text(item+String(';')+nums+String(';')+flos, width/2, height/2);
+  
 }
 //../../scripts/procesing2cpp.sh did it
 

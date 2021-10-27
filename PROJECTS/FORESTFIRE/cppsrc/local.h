@@ -4,8 +4,6 @@
 #ifndef LOCAL_H
 #define LOCAL_H
 
-
-
 //All classes from Processing files
 
 //All global finals (consts) from Processing files

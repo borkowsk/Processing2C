@@ -1,4 +1,4 @@
-//Processing to C++ converter /home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: PERLIN.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -6,9 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //...is optional. Should be deleted when not needed.
+#include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 /// Perlin noise test for Processing2C
@@ -110,5 +110,5 @@ void draw4() /// May be used before definition
 }
 
 //See also: https://www->openprocessing->org/sketch/494102/
-///home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

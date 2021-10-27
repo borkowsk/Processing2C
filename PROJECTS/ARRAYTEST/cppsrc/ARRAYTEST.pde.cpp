@@ -6,9 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //...is optional. Should be deleted when not needed.
+#include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 /// Array and matrix test for Processing2C
@@ -61,10 +61,7 @@ void processing_window::draw()
   int b=(int)random(3);
   c[a][b]+=1;
   s[a][b]=nf(c[a][b]);
-  println(a,b,c[a][b],
-          String{"'"}
-          + s[a][b]
-          + String{"'"});
+  println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
 }
 //../../scripts/procesing2cpp.sh did it
 

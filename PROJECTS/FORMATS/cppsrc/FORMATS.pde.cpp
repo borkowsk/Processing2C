@@ -6,9 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp" //...is optional. Should be deleted when not needed.
+#include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
-#include "project.h" //...is for you. Could be deleted when not needed.
 //==================================================================================
 
 int fontSize=16;
@@ -89,7 +89,7 @@ void processing_window::setup()
   text(String("      ") + binary(value),10,pos+=fontSize); 
   text(String("hex______gray:") + Processing::hex(gray)   ,10,pos+=fontSize);
   text("binary___gray:" ,10,pos+=fontSize);
-  text(String("      ") + binary(gray),10,pos+=fontSize);   //???
+  text(String("      ") + binary(gray),10,pos+=fontSize); 
 }
 //../../scripts/procesing2cpp.sh did it
 

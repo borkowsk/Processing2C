@@ -7,10 +7,9 @@
 #include "processing_console.hpp" //...is optional. Should be deleted when not needed!
 #include "processing_lists.hpp"   //...is optional. Should be deleted when not needed!
 #include "processing_map.hpp"     //...is optional. Should be deleted when not needed!
-
+#include "project.h"              //...is for you. Could be deleted when not needed!
 using namespace Processing;
 #include "local.h"
-#include "project.h" //...is for you. Could be deleted when not needed
 //==================================================================================
 const char* Processing::_PROGRAMNAME="FILES";
 #include "FILES.pde.cpp"
