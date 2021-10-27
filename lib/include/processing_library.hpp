@@ -2,15 +2,18 @@
 #pragma once
 #ifndef PROCESSING_LIBRARY_H
 #define PROCESSING_LIBRARY_H
+
+
 #include <string>
 #include <cassert>
 #include <cfloat>
 #define _USE_MATH_DEFINES
 #include <cmath>
-#include <fstream>
 #include <vector>
-#include <climits>
+//#include <climits>
+#include <limits>       // std::numeric_limits
 #include <algorithm>
+
 ///
 ///
 ///
@@ -24,7 +27,7 @@ namespace Processing
     const auto TAU=6.2831855f;
     const auto HALF_PI=M_PI_2;
     const auto QUARTER_PI=M_PI_4;
-    const auto MAX_INT=INT_MAX;
+    const auto MAX_INT=std::numeric_limits<int>::max();
 
 /// Classes
 /////////////////////////////////////////////////////////////
@@ -339,95 +342,6 @@ namespace Processing
   int millis(); /// Returns the number of milliseconds (thousandths of a second) since starting the program.
                 /// This information is often used for timing events and animation sequences.
 
-/// File streams
-////////////////////////////////////////////////////////////////////////
-
-  class BufferedReader
-  {
-   ///INFO:
-      std::ifstream* ptr;
-   public:
-      virtual ~BufferedReader();// zamknięcie i zwalnianie zasobów
-
-      //Konstruktory
-      BufferedReader(){ptr=nullptr;}
-      BufferedReader(const std::nullptr_t& p): BufferedReader(){}
-      BufferedReader(std::ifstream* p) { ptr=p;}
-      BufferedReader(BufferedReader& );
-      BufferedReader(const BufferedReader& );//need for nullptr initialisation  BUT NOT USED?
-
-      void _set(std::ifstream* p)  { ptr=p;} //for createReader ONLY
-      std::ifstream* _get() const;
-      bool _ok() const { return ptr!=nullptr && ptr->is_open();}
-
-      operator std::ifstream& () { return *_get();}
-      BufferedReader& operator = (std::ifstream* p) { ptr=p;return *this;}
-      BufferedReader& operator = (BufferedReader& );
-      BufferedReader* operator -> () { return this; }
-
-      bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
-      bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
-
-      String readLine();
-
-      void close() { if(ptr!=nullptr) ptr->close(); }
-  };
-
-  BufferedReader& createReader(_string_param _name);
-
-  inline
-  String BufferedReader::readLine()
-  {
-      if(ptr!=nullptr)
-      {
-          String line;
-          std::getline(*ptr, line._std_str());
-          return line;
-      }
-      else return String(nullptr);
-  }
-
-  class PrintWriter
-  {
-   ///INFO:
-      std::ofstream* ptr;
-   public:
-      virtual ~PrintWriter();// zamknięcie i zwalnianie zasobów
-
-      //Konstruktory
-      PrintWriter() {ptr=nullptr;}
-      PrintWriter(const std::nullptr_t& p): PrintWriter(){}
-      PrintWriter(std::ofstream* p) { ptr=p;}
-      PrintWriter(PrintWriter& );
-      PrintWriter(const PrintWriter& );//need for nullptr initialisation BUT NOT USED?
-
-      void _set(std::ofstream* p)  { ptr=p;} //for createWriter ONLY
-      std::ofstream* _get() const;
-      bool _ok() const { return ptr!=nullptr && ptr->is_open();}
-
-      operator std::ofstream& () {return *_get();}
-      PrintWriter&   operator = (std::ofstream* p) { ptr=p; return *this; }
-      PrintWriter&   operator = (PrintWriter& );
-      PrintWriter*   operator -> () { return this; }
-
-      bool operator == (std::nullptr_t p) const { return ptr==nullptr; }
-      bool operator != (std::nullptr_t p) const { return ptr!=nullptr; }
-
-      void flush() { if(ptr!=nullptr) ptr->flush(); }
-      void close() { if(ptr!=nullptr) ptr->close(); }
-  };
-
-  PrintWriter& createWriter(_string_param _name);
-
-  //void print();//To bez sensu
-  void print(PrintWriter& o,_string_param _p1="");
-  //void print(PrintWriter& o,const String& );
-  //void print(PrintWriter& o,const std::string& );
-
-  void println(PrintWriter& o,_string_param _p1="");
-  //void println(PrintWriter& o,const String& );
-  //void println(PrintWriter& o,const std::string& );
-
 /// Processing specialised lists
 ///////////////////////////////////////////////////////
 
@@ -581,7 +495,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-13                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

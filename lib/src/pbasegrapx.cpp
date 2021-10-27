@@ -4,7 +4,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "symshell.h"
-#include <iostream>
+#include "_impl_errors.h"
 
 namespace Processing
 {
@@ -305,7 +305,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

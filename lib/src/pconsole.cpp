@@ -1,4 +1,4 @@
-// Processing like console functions
+/// Processing like console functions
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -6,8 +6,9 @@
 #include "processing_console.hpp"
 #include <iostream>
 
-namespace Processing
-{
+using namespace  Processing;
+
+namespace Processing {
 
 static inline std::ostream& operator << (std::ostream& o,String& str)
 {

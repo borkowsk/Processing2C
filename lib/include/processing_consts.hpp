@@ -43,20 +43,9 @@ const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
 }//END of namespace Processing
 
-//FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS isted also in 'not_implemented.h'
-#define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;\
-                                            if(0==flag++) \
-                                                std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
-                                         }
-
-#define ALWAYS_ERRMESSAGE( _XXX_ )       { \
-                                               std::cerr<<__FUNCTION__<< _XXX_ <<std::endl;\
-                                         }
-
-
 
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-11                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -10,6 +10,8 @@
 
 namespace Processing
 {
+class String;
+class _string_param;
 
 String& String::operator = (_string_param v)// inline?
 {
@@ -172,7 +174,7 @@ String hex(int num)
     return String(bufor);
 }
 
-String hex(int num,int dig)
+String hex(int num,int dig)//String hex(int num,int digits); //TODO
 {
     char bufor[1024];
     sprintf(bufor,"%*x",dig,num);//NOT TESTED - TODO
@@ -202,9 +204,17 @@ String binary(int num)
     return String(bufor);
 }
 
+String binary(int value,int digits)
+{
+    int mask=0xffffffff;
+    mask>>=32-digits;
+    value&=mask;
+    return binary(value);//TEMP solution - TODO!
+}
+
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

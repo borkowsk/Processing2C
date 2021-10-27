@@ -7,6 +7,7 @@
 ///
 namespace Processing
 {
+  class _string_param;
   //void print();//To bez sensu
   void print(_string_param _p1);//The print() function writes to the console
   void print(_string_param _p1,_string_param _p2);
@@ -22,7 +23,7 @@ namespace Processing
                _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="");
                
   String hex(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent hexadecimal notation. 
-  String hex(int num,int digits); //TODO
+  String hex(int num,int digits); //jest
   String binary(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent binary notation.
   String binary(int value,int digits);//TODO
 

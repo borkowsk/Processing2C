@@ -4,7 +4,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "symshell.h"
-#include <iostream>
+#include "_impl_errors.h"
 
 namespace Processing
 {
@@ -56,7 +56,7 @@ void vertex(float x,float y,float z,float u,float v)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

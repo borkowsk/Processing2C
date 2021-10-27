@@ -5,7 +5,7 @@
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
-#include <iostream>
+#include "_impl_errors.h"
 #include <iomanip>
 
 extern void* _ssh_window;//From symshell.h
@@ -76,7 +76,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-20                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

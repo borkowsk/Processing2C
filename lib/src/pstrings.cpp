@@ -4,7 +4,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_console.hpp"
-#include <iostream>
+#include "_impl_errors.h"
 
 //#define DEBUG 1
 
@@ -89,7 +89,7 @@ static int count_characters(const char *str, char character)
  }
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

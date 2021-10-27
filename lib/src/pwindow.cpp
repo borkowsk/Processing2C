@@ -4,7 +4,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "symshell.h"
-#include <iostream>
+#include "_impl_errors.h"
 #include <chrono>
                             //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
 using namespace std::chrono;//https://en.cppreference.com/w/cpp/chrono/duration
@@ -273,7 +273,7 @@ void redraw()
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-07-20                   */
+/*               PROCESSING2C  version 2021-10-26                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
