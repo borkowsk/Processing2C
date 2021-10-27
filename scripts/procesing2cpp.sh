@@ -13,9 +13,9 @@ echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project i
 echo "#include \"processing_window.hpp\""
 echo "#include \"processing_library.hpp\""
 echo "#include \"processing_console.hpp\" //...is optional. Should be deleted when not needed."
+echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 echo "using namespace Processing;"
 echo "#include \"local.h\""
-echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 echo "//=================================================================================="
 echo ""
 
