@@ -14,7 +14,7 @@ echo
 rm -f trash.txt
 cat <<EOF > "CMakeLists.txt"
 # Examples for Processing2C
-# Remove EXCLUDE_FROM_ALL if you want compile all in one build\n"
+# Add or remove EXCLUDE_FROM_ALL, if you want (not) compile a particular example\n
 cmake_minimum_required(VERSION 3.0)
 project(PROCESSING2C_EXAMPLES)
 #LIBRARIES
@@ -37,7 +37,7 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
      echo "Processing projekt '$f'" 
      #echo $LST
      ../../scripts/makeCPPproject.sh
-     echo -e "add_subdirectory( $f \t EXCLUDE_FROM_ALL )" >> ../CMakeLists.txt
+     echo -e "add_subdirectory( $f \t)" >> ../CMakeLists.txt
      git add *.sed
     fi
     popd > /dev/null
@@ -47,3 +47,4 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
     echo "'$f' niespodziewany typ pliku" >> lista.txt
   fi
 done
+
