@@ -3,6 +3,7 @@
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
+#include "processing_lists.hpp"
 #include "_impl_errors.h"
 
 using namespace Processing;
