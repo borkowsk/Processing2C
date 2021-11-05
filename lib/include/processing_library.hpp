@@ -3,15 +3,9 @@
 #ifndef PROCESSING_LIBRARY_H
 #define PROCESSING_LIBRARY_H
 
-
 #include <string>
 #include <cassert>
-#include <cfloat>
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <vector>
-//#include <climits>
-#include <limits>       // std::numeric_limits
 #include <algorithm>
 
 ///
@@ -19,16 +13,6 @@
 ///
 namespace Processing
 {
-/// MATH CONSTANTS
-/// # define M_PI_2		1.57079632679489661923	/* pi/2 */
-/// # define M_PI_4		0.78539816339744830962	/* pi/4 */
-    const auto PI=M_PI;//3.6651914291881;
-    const auto TWO_PI=2*M_PI;//6.2831855f
-    const auto TAU=6.2831855f;
-    const auto HALF_PI=M_PI_2;
-    const auto QUARTER_PI=M_PI_4;
-    const auto MAX_INT=std::numeric_limits<int>::max();
-
 /// Classes
 /////////////////////////////////////////////////////////////
 
@@ -342,160 +326,9 @@ namespace Processing
   int millis(); /// Returns the number of milliseconds (thousandths of a second) since starting the program.
                 /// This information is often used for timing events and animation sequences.
 
-/// Processing specialised lists
-///////////////////////////////////////////////////////
-
-  class FloatList:private std::vector<float>,virtual public _self_printable
-  {
-     public:
-      using     std::vector<float>::begin;
-      using     std::vector<float>::end;
-      FloatList(){}
-      FloatList(int initialSize):std::vector<float>(initialSize){}
-      int       size() const;// 	Get the length of the list
-      void      clear();// 	Remove all entries from the list
-      float     get(int index);// 	Get an entry at a particular index
-      void      append(float what);// 	Add a new entry to the list (.append(values) .append(list) )
-      void      set(int index,float what);// 	Set the entry at a particular index
-
-      float     remove(int index);// 	Remove an element from the specified index
-      bool      hasValue(float what);// 	Check if a number is a part of the list
-      void      add(int index,float amount);// 	Add to a value
-      void      sub(int index,float amount);// 	Subtract from a value
-      void      mult(int index,float amount);// 	Multiply a value
-      void      div(int index,float amount);// 	Divide a value
-      float     min();// 	Return the smallest value
-      float     max();// 	Return the largest value
-      void      sort();// 	Sorts an array, lowest to highest
-      void      sortReverse();// 	Reverse sort, orders values from highest to lowest
-      void      reverse();// 	Reverse the order of the list elements
-      void      shuffle();// 	Randomize the order of the list elements
-      sarray<float>     array();// 	Create a new array with a copy of all the values
-      String print() const;
-  };
-
-  class IntList:private std::vector<int>,virtual public _self_printable
-  {
-     public:
-       using     std::vector<int>::begin;
-       using     std::vector<int>::end;
-       int      size() const;// 	Get the length of the list
-       void     clear();// 	Remove all entries from the list
-       int      get(int index);// 	Get an entry at a particular index
-       void     append(int   what);// 	Add a new entry to the list (.append(values) .append(list) )
-       void     set(int index,int   what);// 	Set the entry at a particular index
-
-       int      remove(int index);// 	Remove an element from the specified index
-       bool     hasValue(int   what);// 	Check if a number is a part of the list
-       void     add(int index,int   amount);// 	Add to a value
-       void     sub(int index,int   amount);// 	Subtract from a value
-       void     mult(int index,int   amount);// 	Multiply a value
-       void     div(int index,int   amount);// 	Divide a value
-       int      min();// 	Return the smallest value
-       int      max();// 	Return the largest value
-       void     sort();// 	Sorts an array, lowest to highest
-       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
-       void     reverse();// 	Reverse the order of the list elements
-       void     shuffle();// 	Randomize the order of the list elements
-       sarray<int>  array();// 	Create a new array with a copy of all the values
-       String print() const;
-  };
-
-  class StringList:private std::vector<Processing::String>, virtual public _self_printable
-  {
-     public:
-       using     std::vector<Processing::String>::begin;
-       using     std::vector<Processing::String>::end;
-       int      size() const;// 	Get the length of the list
-       void     clear();// 	Remove all entries from the list
-       String   get(int index);// 	Get an entry at a particular index
-       void     append(_string_param   what);// Add a new entry to the list (.append(values) .append(list) )
-       void     append(String& what);
-       void     set(int index,_string_param   what);// 	Set the entry at a particular index
-
-       String   remove(int index);// 	Remove an element from the specified index
-       bool     hasValue(_string_param   what);// Check if a number is a part of the list
-       void     sort();// 	Sorts an array, lowest to highest
-       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
-       void     reverse();// 	Reverse the order of the list elements
-       void     shuffle();// 	Randomize the order of the list elements
-       void     lower();// 	Make the entire list lower case
-       void     upper();// 	Make the entire list upper case
-       sarray<int>  array();// 	Create a new array with a copy of all the values
-       String print() const;
-  };
-
-  typedef Processing::self_printable_ptr<FloatList>  pFloatList;
-  typedef Processing::self_printable_ptr<IntList>    pIntList;
-  typedef Processing::self_printable_ptr<StringList> pStringList;
-
-  inline int  FloatList::size() const { return std::vector<float>::size();}
-  inline int    IntList::size() const { return std::vector<int>::size();}
-  inline int StringList::size() const { return std::vector<Processing::String>::size();}
-
-  inline void  FloatList::clear() { return std::vector<float>::clear();}
-  inline void    IntList::clear() { return std::vector<int>::clear();}
-  inline void StringList::clear() { return std::vector<Processing::String>::clear();}
-
-  inline void  FloatList::append(float what){std::vector<float>::push_back(what);}
-  inline void    IntList::append(int what){std::vector<int>::push_back(what);}
-  inline void StringList::append(_string_param what){std::vector<Processing::String>::push_back((String)what);}
-  //inline void StringList::append(Processing::String& what){std::vector<Processing::String>::push_back(what);}
-
-  inline float   FloatList::get(int index){ return (*this)[index];}
-  inline int       IntList::get(int index){ return (*this)[index];}
-  inline String StringList::get(int index){ return (*this)[index];}
-
-  inline void  FloatList::set(int index,float what){ (*this)[index]=what;}
-  inline void    IntList::set(int index,int what){ (*this)[index]=what;}
-  inline void StringList::set(int index,_string_param what){ (*this)[index]=what;}
-
-  inline String FloatList::print() const
-  {
-      String ret{"Size:"};
-      ret+=_string_param(size());
-      ret+=String(" [");
-      for(float val:*this)
-      {
-          ret+=_string_param(val);
-          ret+=String(" ");
-      }
-      ret+=String("]");//TODO +=char ?
-      return ret;
-  }
-
-  inline String IntList::print() const
-  {
-      String ret{"Size:"};
-      ret+=_string_param(size());
-      ret+=String(" [");
-      for(int val:*this)
-      {
-          ret+=_string_param(val);
-          ret+=String(" ");
-      }
-      ret+=String("]");//TODO +=char ?
-      return ret;
-  }
-
-  inline String StringList::print() const
-  {
-      String ret{"Size:"};
-      ret+=_string_param(size());
-      ret+=String(" [");
-      for(String val:*this)
-      {
-          ret+=String('"');
-          ret+=_string_param(val);
-          ret+=String("\" ");
-      }
-      ret+=String("]");//TODO +=char ?
-      return ret;
-  }
-
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-26                   */
+/*               PROCESSING2C  version 2021-11-05                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
