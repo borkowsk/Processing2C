@@ -18,7 +18,7 @@ sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g' | LC_COLLAT
 
 echo "s/([\,\(\s]*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
-echo 'FloatList|IntList|StringList|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed
+echo 'FloatList|IntList|StringList|HashMap|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed
 
 #TO DZIAŁA NIE TAK JAK BYM CHCIAŁ TODO!!!
 #echo "_@ENTER_" >> userclasses.sed
@@ -78,7 +78,7 @@ echo "#endif" >> local.h
 #cat userclasses.sed
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2020-11-19                   */
+#/*               PROCESSING2C  version 2021-11-05                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

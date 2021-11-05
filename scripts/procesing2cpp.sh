@@ -66,11 +66,12 @@ sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]|new\1cuboid<p\2>(\4,\6,\8)|' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)](\s*)\[(.+)]|new\1matrix<p\2>(\4,\6)|' |\
 sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
-#listy obiektów np.
+#listy i mapy obiektów np.
 #ArrayList<Link> connections;
 #connections=new ArrayList<Link>();
 sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([\),;:=])|sArrayList<p\2>\4\5\6\7|g' |\
 sed -E 's|new(\s+)ArrayList<(\s*)(\w+)(\s*)>|new ArrayList<p\3>|g' |\
+sed -E 's|HashMap<(.+)>(\s+)(\w+)(\s*)([\),;:=])|sHashMap<\1>\2\3\4\5|g' |\
 #sed -E 's|ArrayList<(\s*)(\w+)(\s*)>|sArrayList<p\2>|g' |\
 #modyfikacja składni asercji - chyba spacje po assert zbędne
 #sed -E 's|assert (.+);|assert(\1);|g'
@@ -145,14 +146,15 @@ sed -E 's/throw(\s+)new/throw/g' |\
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów
-#ale sprawia kłopoty w długich konkatenacjach tekstów
+#ale sprawia kłopoty w dłuższych konkatenacjach tekstów
 sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
-#WŁAŚCIWA ZAMIANA - próba uniknięcia ingerencji w dyrektywy kompilatora # blokuje podwójne wymiany w linii
-#sed -E 's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\
-sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
-sed -E 's/\]\.([_a-zA-Z][_a-zA-Z0-9]*)/]->\1/g' |\
-sed -E 's/\)\.([_a-zA-Z][_a-zA-Z0-9]*)/)->\1/g' |\
-sed -E 's/([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1->\2/g' |\
+#WŁAŚCIWA ZAMIANA 
+#sed -E  's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\ #dawna próba uniknięcia ingerencji w dyrektywy kompilatora (#)
+#sed -E  's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.|\1->|g' |\ #TO PSUJE KOŃCE ZDAŃ W KOMENTARZACH!!!
+sed -E   's|(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|->\3|g'  |\
+sed -E   's|\](\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|]->\3|g' |\
+sed -E   's|\)(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|)->\3|g' |\
+sed -E   's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|\1->\4|g' |\
 #Odbezpieczenie nazw plików
 sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
 #jeśli przypadkiem któryś z typów podstawowych zostanie potraktowany jako object w <> szablonu:
@@ -164,7 +166,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-10-13                   */
+#/*               PROCESSING2C  version 2021-11-05                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
