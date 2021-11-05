@@ -145,18 +145,19 @@ sed -E 's/throw(\s+)new/throw/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
-#nazwy plików zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to includów
-#ale sprawia kłopoty w dłuższych konkatenacjach tekstów
-sed -E 's/"(.+)\.(.+)"/"\1@@@\2"/' |\
+#kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
+#Może sprawiać kłopoty w dłuższych konkatenacjach tekstów
+sed -E 's/"([^"]*)\.([^"]+)"/"\1@@@\2"/g' |\
 #WŁAŚCIWA ZAMIANA 
 #sed -E  's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\ #dawna próba uniknięcia ingerencji w dyrektywy kompilatora (#)
 #sed -E  's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.|\1->|g' |\ #TO PSUJE KOŃCE ZDAŃ W KOMENTARZACH!!!
-sed -E   's|(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|->\3|g'  |\
-sed -E   's|\](\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|]->\3|g' |\
-sed -E   's|\)(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|)->\3|g' |\
-sed -E   's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.(\s*)([_a-zA-Z][_a-zA-Z0-9]*)|\1->\4|g' |\
-#Odbezpieczenie nazw plików
-sed -E 's/"(.+)\@\@\@(.+)"/"\1.\2"/' |\
+# patern <.><white><ident> też jest niedozwolony bo nie do odróżnienia od końca zdania w komentarzu!
+sed -E   's|([^.])\.([_a-zA-Z][_a-zA-Z0-9]*)|\1->\2|g' |\
+sed -E   's|\](\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|]->\2|g' |\
+sed -E   's|\)(\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|)->\2|g' |\
+sed -E   's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|\1->\3|g' |\
+#Odbezpieczenie kropek w cudzysłowach
+sed -E 's/\@\@\@/./g' |\
 #jeśli przypadkiem któryś z typów podstawowych zostanie potraktowany jako object w <> szablonu:
 sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
