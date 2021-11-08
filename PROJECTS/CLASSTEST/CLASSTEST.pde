@@ -50,7 +50,6 @@ void setup()
     cat.meow(0);
     //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
                  //error: ambiguous overload for ‘operator=’ 
-                 //operand types are ‘Processing::pObject (aka Processing::ptr<Processing::Object>)’ and ‘pCat (aka Processing::ptr<Cat>)’
     object = /*_upcast*/(Object)(cat);//works using static_cast in C++
     object = /*_downcast*/(Object)(cat);//works using dynamic_cast in C++
     
@@ -58,7 +57,6 @@ void setup()
     mew.meow(1);
     //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
               //error: ambiguous overload for ‘operator=’ 
-              //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
     mew = /*_upcast*/(Mew)(cat);//works using COMPILE TIME static_cast in C++
     mew = /*_downcast*/(Mew)(cat);//dynamic_cast is usualy resolved at RUN TIME
     
@@ -80,11 +78,11 @@ void setup()
     
     Cat ancat=/*_downcast*/(Cat)( animal );
     ancat.meow(5);
-    (/*_downcast*/(Cat)( animal ) ).meow(6);//Second parentheses required
+    (/*_downcast*/(Cat)( animal ) ).meow(6);//Second parentheses in cast required
    
     if (animal instanceof Cat) { //downcast with check
       println("This animal is a cat");
-      (/*_downcast*/(Cat)( animal ) ).meow(7);
+      (/*_downcast*/(Cat)( animal ) ).meow(7);//Second parentheses in cast required
     }
     
     animal = new Dog();
