@@ -72,7 +72,6 @@ void processing_window::setup()
     cat->meow(0);
     //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
                  //error: ambiguous overload for ‘operator=’ 
-                 //operand types are ‘Processing::pObject (aka Processing::ptr<Processing::Object>)’ and ‘pCat (aka Processing::ptr<Cat>)’
     object = static_cast<pObject>(cat);//works using static_cast in C++
     object = std::dynamic_pointer_cast<Object>(cat);//works using dynamic_cast in C++
     
@@ -80,7 +79,6 @@ void processing_window::setup()
     mew->meow(1);
     //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
               //error: ambiguous overload for ‘operator=’ 
-              //operand types are ‘pMew (aka Processing::ptr<Mew>)’ and ‘pCat (aka Processing::ptr<Cat>)
     mew = static_cast<pMew>(cat);//works using COMPILE TIME static_cast in C++
     mew = std::dynamic_pointer_cast<Mew>(cat);//dynamic_cast is usualy resolved at RUN TIME
     
@@ -102,11 +100,11 @@ void processing_window::setup()
     
     pCat ancat=std::dynamic_pointer_cast<Cat>( animal );
     ancat->meow(5);
-    (std::dynamic_pointer_cast<Cat>( animal ) )->meow(6);//Second parentheses required
+    (std::dynamic_pointer_cast<Cat>( animal ) )->meow(6);//Second parentheses in cast required
    
     if (instanceof< Cat >( animal )) { //downcast with check
       println("This animal is a cat");
-      (std::dynamic_pointer_cast<Cat>( animal ) )->meow(7);
+      (std::dynamic_pointer_cast<Cat>( animal ) )->meow(7);//Second parentheses in cast required
     }
     
     animal = new Dog();
