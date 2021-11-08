@@ -15,9 +15,9 @@ using namespace Processing;
 //file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap->html
 #include "processing_map.hpp"
 
-sHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
-sHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
-sHashMap<String,float>    mapString2Float=new HashMap<String,float>();
+sHashMap<String,Integer>  mapString2Integer=new HashMap<String,Integer>();
+sHashMap<Integer,String>  mapInteger2String=new HashMap<Integer,String>();
+sHashMap<String,Float>    mapString2Float=new HashMap<String,Float>();
 sHashMap<String,String>   mapString2String=new HashMap<String,String>();
 
 class myObject: public virtual Object{
@@ -29,7 +29,7 @@ class myObject: public virtual Object{
   }
 };
 
-sHashMap<String,pmyObject> mapString2Object;
+sHashMap<String,myObject> mapString2Object;
 
 void processing_window::setup()
 {
@@ -39,7 +39,7 @@ void processing_window::setup()
   mapString2Integer->put("Casey", 36);
   
   // Using an enhanced loop to iterate over each entry
-  for (auto me : mapString2Integer->entrySet())
+  for(Map->Entry me : mapString2Integer->entrySet()) 
   {
     print(me->getKey() +  String(" is "));
     println(me->getValue());
@@ -53,19 +53,21 @@ void processing_window::setup()
   
   //More complicated
   println("\nUsing myObject");
-  mapString2Object=new HashMap<String,pmyObject>();
+  mapString2Object=new HashMap<String,myObject>();
   mapString2Object->put("Ataga",new myObject(-1,-0.99999));
   mapString2Object->put("Bulba",new myObject(0,0.0));
   mapString2Object->put("Cebas",new myObject(1,+0.99999));
   
   // Using an enhanced loop to iterate over each entry
-  for (auto me : mapString2Object->entrySet())
+  for(Map->Entry me : mapString2Object->entrySet()) 
   {
     print(me->getKey() +  String(" is { "));
-    pmyObject obj=(myObject*)me->getValue();
+    pmyObject obj=(myObject)me->getValue();
     println(obj->A,obj->B,"}");
   }
-
-  print(mapString2Integer);
-}//../../scripts/procesing2cpp.sh did it
+  
+  println("\nDefault print method:");
+  println(mapString2Object);
+}
+//../../scripts/procesing2cpp.sh did it
 

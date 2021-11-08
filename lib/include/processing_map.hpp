@@ -11,6 +11,10 @@
 namespace Processing
 {
 
+/** Hash table based implementation of the Map interface.
+ * See: https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+ * See: https://en.cppreference.com/w/cpp/container/map
+ */
 template<class K,class V>
 class HashMap:public std::map<K,V>
 {
@@ -23,27 +27,27 @@ public:
         //Entry& operator -> () const { return *this;} //circular pointer references are not allowed
     };
 
-    V 	get(K key) ///Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+    V   get(K key) ///Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
     { return (*this)[key]; }
 
-    V 	put(K key, V value) ///Associates the specified value with the specified key in this map.
+    V   put(K key, V value) ///Associates the specified value with the specified key in this map.
     { (*this)[key]=value;return value;}
 
-    V 	replace(K key, V value) ///Replaces the entry for the specified key only if it is currently mapped to some value.
+    V   replace(K key, V value) ///Replaces the entry for the specified key only if it is currently mapped to some value.
     { (*this)[key]=value;return value;}
 
-    sarray<const Entry*> 	entrySet()///Returns a Set view of the mappings contained in this map.
+    sarray<const Entry*>    entrySet()///Returns a Set view of the mappings contained in this map.
     {
         sarray<const Entry*> ret{ new array<const Entry*>{ this->size() } };
         int i=0;
         for (auto&  ent: *this)
         {
-            ret[i++]=(const Entry*)&ent;//HACK!!!
+            ret[i++]=(const Entry*)&ent;//HACK!!! Entry must not have any fields or virtual methods!
         }
         return ret;
     }
 
-    String print() const
+    String  print() const
     {
         String ret;
         for(auto val:*this)
@@ -69,9 +73,10 @@ public:
     //sArrayList(std::initializer_list<T> lst);
     sHashMap(HashMap<K,V>* tab): self_printable_ptr< HashMap<K,V> >(tab){}
     HashMap<K,V>* operator -> () { return this->get();}
-    auto  begin() { return this->get()->begin(); } //need C++14 !
-    auto  end() { return this->get()->end(); } //need C++14 !
-    int 	size() const //Returns the number of elements in this list.
+
+    auto    begin() { return this->get()->begin(); } //need C++14 !
+    auto    end() { return this->get()->end(); } //need C++14 !
+    int     size() const //Returns the number of elements in this list.
     { return this->get()->size(); }
 };
 

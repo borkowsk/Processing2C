@@ -25,7 +25,7 @@ void setup()
   mapString2Integer.put("Casey", 36);
   
   // Using an enhanced loop to iterate over each entry
-  for (Map.Entry me : mapString2Integer.entrySet()) 
+  for(Map.Entry me : mapString2Integer.entrySet()) 
   {
     print(me.getKey() + " is ");
     println(me.getValue());
@@ -45,10 +45,13 @@ void setup()
   mapString2Object.put("Cebas",new myObject(1,+0.99999));
   
   // Using an enhanced loop to iterate over each entry
-  for (Map.Entry me : mapString2Object.entrySet()) 
+  for(Map.Entry me : mapString2Object.entrySet()) 
   {
     print(me.getKey() + " is { ");
     myObject obj=(myObject)me.getValue();
     println(obj.A,obj.B,"}");
   }
+  
+  println("\nDefault print method:");
+  println(mapString2Object);
 }
