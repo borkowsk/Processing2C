@@ -34,7 +34,7 @@ void setup() {
   inventoryI.append(102);
   println(inventoryI);
   
-  noLoop();// ONLY ONE CALL OF draw()
+  noLoop();// ONLY ONE CALL OF draw FUNCTION!
   fill(0);
   textAlign(CENTER);
 }
@@ -49,5 +49,4 @@ void draw() {
   for(String s:testStr)
     println(s);
   text(item+';'+nums+';'+flos, width/2, height/2);
-  
 }

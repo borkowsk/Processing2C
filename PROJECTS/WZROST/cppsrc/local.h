@@ -13,7 +13,7 @@ class KLASA; typedef Processing::ptr<KLASA> pKLASA; // {
 
 //All global variables from Processing files
 extern int KLASA_Counter;//=0;/// Globalny licznik obiektów typu RGB
-extern int          Side;  /// Bok macieży
+extern int          Side;  /// Bok macierzy
 extern int          W;     /// Mnożnik dla kwadracika
 
 //All global functions from Processing files

@@ -17,36 +17,36 @@ void draw() {
   if (keyPressed) {
     if (key == 'b' || key == 'B') {
       fill(0);    
-      println("keyPressed && 'B' detected in draw() - fill(BLACK)");
+      println("keyPressed && 'B' detected in draw function - fill(BLACK)");
     }
     else
     if (key == ' ') {
       fill(255,0,0);    
-      println("keyPressed && ' ' detected in draw() - fill(RED)");
+      println("keyPressed && ' ' detected in draw function - fill(RED)");
     }
     else 
     {
       fill(255);
-      println("keyPressed &&","'"+key+"'","detected in draw() - fill(RED)");
+      println("keyPressed &&","'"+key+"'","detected in draw function - fill(RED)");
     }
     //keyPressed=false;//NOW IS PROCESSED.
   } else {
     fill(255);
-    //println("keyPressed not detected in draw() - fill(WHITE)");
+    //println("keyPressed not detected in draw function - fill(WHITE)");
   }
   
   if (mousePressed && (mouseButton == LEFT)) {
-    background(0); println("mousePressed && LEFT detected in draw()");
+    background(0); println("mousePressed && LEFT detected in draw function");
   } else if (mousePressed && (mouseButton == RIGHT)) {
-    background(255);  println("mousePressed && RIGHT detected in draw()");
+    background(255);  println("mousePressed && RIGHT detected in draw function");
   } else if (mousePressed && (mouseButton == 3)) {
-    background(255,0,0); println("mousePressed && MIDLE detected in draw()");
+    background(255,0,0); println("mousePressed && MIDLE detected in draw function");
   } else if (mousePressed) {
-    background(126); println("mousePressed &&",mouseButton,"detected in draw()");
+    background(126); println("mousePressed &&",mouseButton,"detected in draw function");
   }
 
   if(mousePressed){
-      println("mousePressed detected in draw()");
+      println("mousePressed detected in draw function");
       //mousePressed=false;//NOW IS PROCESSED.
   }
   

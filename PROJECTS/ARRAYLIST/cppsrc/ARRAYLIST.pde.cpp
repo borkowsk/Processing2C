@@ -47,7 +47,7 @@ void processing_window::setup() {
   inventoryI->append(102);
   println(inventoryI);
   
-  noLoop();// ONLY ONE CALL OF draw()
+  noLoop();// ONLY ONE CALL OF draw FUNCTION!
   fill(0);
   textAlign(CENTER);
 }
@@ -62,7 +62,6 @@ void processing_window::draw() {
   for(String s:testStr)
     println(s);
   text(item+String(';')+nums+String(';')+flos, width/2, height/2);
-  
 }
 //../../scripts/procesing2cpp.sh did it
 

@@ -9,12 +9,12 @@ class singiel { //klasa czyli typ złożony
   //pola obiektu czyli dane 
   float x1,x2;
   float r;// np. wspolczynik kontroli
-  float alfa; //jedno z pól, zależne do czego używamy obiektu, tu jest to wartośc sychronizacji
+  float sync; //jedno z pól, zależne do czego używamy obiektu, tu jest to wartośc sychronizacji
   
   //Metody. Kazda klasa ma jedną metodę, ktora nazywa sie jak nazwa klasy
-  singiel(float iX,float iR,float iAlfa)// konstruktor nie ma wart. zwracanej, nadaje stan obiektowi, 
+  singiel(float iX,float iR,float iSync)// konstruktor nie ma wart. zwracanej, nadaje stan obiektowi, 
   {                                     // wszystkie pola musza mieć wartość nie przypadkową
-    x1=x2=iX; r=iR; alfa=iAlfa;
+    x1=x2=iX; r=iR; sync=iSync;
   }
   
   //zwykła metoda, czyli zmienia wart. przynajmniej jednego pola
@@ -44,10 +44,10 @@ void setup()
  
  println("1st:",First.x1+
          " "+First.r+
-         " alfa:"+First.alfa);//uchwyt do biektu, robi za nazwe obiektu, kropka i nazwa pola wiec czytamy z pola (lub mozna też z funkcją)
+         " alfa:"+First.sync);//uchwyt do biektu, robi za nazwe obiektu, kropka i nazwa pola wiec czytamy z pola (lub mozna też z funkcją)
  println("2st:",Second.x1+
          " "+Second.r+
-         " alfa:"+Second.alfa);
+         " alfa:"+Second.sync);
 }
 
 int N=0;

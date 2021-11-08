@@ -5,8 +5,8 @@
 void exit()          //it is called whenever a window is closed. 
 {
   noLoop();          //For to be sure...
-  delay(100);        // it is possible to close window when draw() is still working!
   //write(world,modelName+"."+nf((float)StepCounter,5,5));//end state of the system
+  delay(100);        //???
   
   if(outstat!=null)
   {

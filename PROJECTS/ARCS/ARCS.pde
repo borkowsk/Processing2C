@@ -20,5 +20,5 @@ arc(400,400,100,100,radians(10),radians(180),PIE);
 
 
 //http://processingwedukacji.blogspot.com
-saveFrame();//If saveFrame() is used without parameters, it will save files as "screen-0000.tif", "screen-0001.tif" etc.
+saveFrame();//If saveFrame function is used without parameters, it will save files as "screen-0000.tif", "screen-0001.tif" etc.
 }

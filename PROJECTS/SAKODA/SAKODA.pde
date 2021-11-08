@@ -11,7 +11,7 @@ int side=100;/// side of main table
 String modelName="ABMSakoda";///
 float density=0.55;///
 
-World TheWorld=new World(side); ///... but also will be initialised inside setup()
+World TheWorld=new World(side); ///... but also will be initialised inside setup function
 
 //Parameters of visualisation etc...
 int cwidth=8;/// size of cell

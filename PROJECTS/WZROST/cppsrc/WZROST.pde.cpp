@@ -26,8 +26,8 @@ int STARTG=128;//W jakiej szarości pierwsza komórka
 bool    ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
-//Ważne globalne zmienne, ale inicjowane w setup()
-int          Side;  /// Bok macieży
+//Ważne globalne zmienne, ale inicjowane w funkcji setup
+int          Side;  /// Bok macierzy
 int          W;     /// Mnożnik dla kwadracika
 smatrix<pKLASA>    World; /// TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
