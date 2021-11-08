@@ -48,7 +48,7 @@ void setup()
   for(Map.Entry me : mapString2Object.entrySet()) 
   {
     print(me.getKey() + " is { ");
-    myObject obj=(myObject)me.getValue();
+    myObject obj=/*_upcast*/(myObject)(me.getValue());//Second () required by C++ translation
     println(obj.A,obj.B,"}");
   }
   

@@ -50,14 +50,15 @@ public:
     String  print() const
     {
         String ret;
+        ret+='{';
         for(auto val:*this)
         {
-            ret+='{';
             ret+=val.first;
-            ret+=' ';
+            ret+='=';
             ret+=val.second;
-            ret+='}';
+            ret+=' ';
         }
+        ret+='}';
         return ret;
     }
 };

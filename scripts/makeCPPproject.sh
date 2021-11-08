@@ -81,7 +81,7 @@ cmake_minimum_required(VERSION 2.8)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project($PROJECT)
-set( VERSION_NUM 0.13 ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.14 ) #MUST BE NUMERIC 
 
 set( SRCPATH  "$SOURCES/cppsrc/" )
 set( PROC2C   "$PROC2DIR" )
@@ -154,7 +154,7 @@ EOF
 echo -e "\nProject ${PROJECT} DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-10-13                   */
+#/*               PROCESSING2C  version 2021-11-08                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

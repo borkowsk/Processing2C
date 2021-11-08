@@ -71,7 +71,12 @@ sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
 #connections=new ArrayList<Link>();
 sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([\),;:=])|sArrayList<p\2>\4\5\6\7|g' |\
 sed -E 's|new(\s+)ArrayList<(\s*)(\w+)(\s*)>|new ArrayList<p\3>|g' |\
-sed -E 's|HashMap<(.+)>(\s+)(\w+)(\s*)([\),;:=])|sHashMap<\1>\2\3\4\5|g' |\
+sed -E 's|HashMap\s*<(.+)>(\s+)(\w+)(\s*)([\),;:=])|sHashMap<\1>\2\3\4\5|g' |\
+sed -E 's|HashMap\s*<([^,]+),\s*Integer\s*>|HashMap<\1,int>|g' |\
+sed -E 's|HashMap\s*<\s*Integer\s*,|HashMap<int,|g' |\
+sed -E 's|HashMap\s*<([^,]+),\s*Float\s*>|HashMap<\1,float>|g' |\
+sed -E 's|HashMap\s*<\s*Float\s*,|HashMap<float,|g' |\
+sed 's|Map.Entry|auto|g' |\
 #sed -E 's|ArrayList<(\s*)(\w+)(\s*)>|sArrayList<p\2>|g' |\
 #modyfikacja składni asercji - chyba spacje po assert zbędne
 #sed -E 's|assert (.+);|assert(\1);|g'
@@ -107,10 +112,6 @@ sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
 sed 's|\/\*_emptybody\*\/|{}|g'|\
-sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
-sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
-sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
-sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
 sed -E 's|\/\*_reference\*\/|\& |g'|\
 sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
@@ -144,6 +145,11 @@ sed 's/Exception/std::runtime_error/g' |\
 sed -E 's/throw(\s+)new/throw/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
+#Tutaj dopiero dyrektywy zależne od templeatów C++
+sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
+sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
+sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
+sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Może sprawiać kłopoty w dłuższych konkatenacjach tekstów
@@ -167,7 +173,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-05                   */
+#/*               PROCESSING2C  version 2021-11-08                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

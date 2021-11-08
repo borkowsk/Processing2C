@@ -16,9 +16,16 @@ sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g' | LC_COLLAT
 #sed program for replacing user defined classes
 #egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's|(\w+)|s/(&)(\\s+)(\\w+)/bla/g|'
 
-echo "s/([\,\(\s]*)(" > userclasses.sed
+#... inside declarations
+echo "s/([\,\(\s*]*\s*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
 echo 'FloatList|IntList|StringList|HashMap|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed
+
+#...inside templates parameter lists
+echo -e "_@ENTER_" >> userclasses.sed
+echo "s/([,<])(" >> userclasses.sed
+egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
+echo 'Object)>/\1p\2>/g' >> userclasses.sed
 
 #TO DZIAŁA NIE TAK JAK BYM CHCIAŁ TODO!!!
 #echo "_@ENTER_" >> userclasses.sed
@@ -29,7 +36,7 @@ echo 'FloatList|IntList|StringList|HashMap|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(
 
 #https://stackoverflow.com/questions/1251999/how-can-i-replace-a-newline-n-using-sed
 sed -i ':a;N;$!ba;s/\n//g' userclasses.sed 
-#sed -i "s/_@ENTER_/\n/" userclasses.sed
+sed -i "s/_@ENTER_/\n/" userclasses.sed
 
 #TEMPORARY
 echo "s/<(Link)>/<p\1>/g"  >> userclasses.sed
@@ -65,12 +72,13 @@ sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*])/sarray<\1>/' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
-#podmiana boolean i String
+#podmiana boolean
 sed 's|boolean|bool   |g' |\
-#sed 's|String|std::string|g' |\
 sed 's|\/\*_reference\*\/|\& |g' |\
 sed -E -f userclasses.sed  |\
+#poprawianie komentarzy
 sed -E 's|//\s*\{*\s*///|///|' |\
+#usuwanie zbędnych odstępów
 sed 's|) ;|);|' >> local.h
 
 echo "#endif" >> local.h
@@ -78,7 +86,7 @@ echo "#endif" >> local.h
 #cat userclasses.sed
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-05                   */
+#/*               PROCESSING2C  version 2021-11-08                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
