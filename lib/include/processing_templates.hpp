@@ -38,12 +38,16 @@ class ptr:public std::shared_ptr<T>
       ptr(T* ini):std::shared_ptr<T>(ini){}   //from raw pointer for new T
 
       template<class B>
-      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)//konwersja z gołych shared_ptr'ów (potrzebna?)
-      {assert(ini.get()==nullptr || this->get()!=nullptr);}
+      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)//konwersja z gołych shared_ptr'ów potrzebna dla dynamic_ptr_cast<>
+      {
+          assert(ini.get()==nullptr || this->get()!=nullptr);//std::cerr<<ini.get()<<std::endl;
+      }
 
       template<class B>
       ptr(ptr<B>& ini):std::shared_ptr<T>(ini)//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
-      {assert(ini.get()==nullptr || this->get()!=nullptr);}
+      {
+          assert(ini.get()==nullptr || this->get()!=nullptr);
+      }
 
       //Przypisania  //using std::shared_ptr<T>::operator = ;//kipisz!!! :-(
       //^^^^^^^^^^^

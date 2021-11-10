@@ -51,7 +51,7 @@ int main(int argc,const char *argv[])
         _processing_window_instance.draw();//only once
         _processing_window_instance.after_draw();
     }
-
+    else
     while(1)
     {
 #ifndef NDEBUG
