@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -33,8 +33,10 @@ class Eat: public virtual Object{
 //abstract
 class Animal: public virtual Object{
   public:
+    float mass;
     virtual void eat(int l) {
         println(l,"Animal eats"); 
+        mass+=l;
     }
 };
 
@@ -128,6 +130,11 @@ void processing_window::setup()
     animals->add(new Dog());
     pAnimalFeeder feeder=new AnimalFeeder();
     feeder->feed(animals);
+    
+    for(pAnimal a:animals)
+      println(a);
+      
+    println(animals);  
 }
-//../../scripts/procesing2cpp.sh did it
+///home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 

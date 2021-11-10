@@ -14,8 +14,10 @@ interface Eat {
 };
 
 abstract class Animal {
+    float mass;
     /*_interfunc*/ void eat(int l) {
         println(l,"Animal eats"); 
+        mass+=l;
     }
 };
 
@@ -106,4 +108,9 @@ void setup()
     animals.add(new Dog());
     AnimalFeeder feeder=new AnimalFeeder();
     feeder.feed(animals);
+    
+    for(Animal a:animals)
+      println(a);
+      
+    println(animals);  
 }
