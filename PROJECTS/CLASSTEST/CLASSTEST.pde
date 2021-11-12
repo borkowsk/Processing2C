@@ -108,9 +108,14 @@ void setup()
     animals.add(new Dog());
     AnimalFeeder feeder=new AnimalFeeder();
     feeder.feed(animals);
-    
-    for(Animal a:animals)
-      println(a);
-      
+
+    print_animals(animals);  
     println(animals);  
+    print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
+}
+
+void print_animals(ArrayList<Animal> anim)
+{
+      for(Animal a:anim)
+        println(a);
 }
