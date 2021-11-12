@@ -11,9 +11,14 @@
 namespace Processing
 {
 
+/**
+ * @brief The Object class
+ * Base class for all Processing/JAVA like class but not pointers
+ * see:
+ * @link https://www.javatpoint.com/object-class
+ */
 class Object
 {
-  ///INFO: see https://www.javatpoint.com/object-class
   private: Object& operator = (const Object&);
   public:
     virtual ~Object(){}
@@ -22,10 +27,13 @@ class Object
     { return this==&obj; }
 };
 
+/**
+ * @brief The template class ptr<>
+ * Proxy for standard shared_ptr but mimic Procesing "object references" behaviour
+ */
 template<class T>
 class ptr:public std::shared_ptr<T>
 {
-  ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
   public:
       ~ptr(){}// Destruktor - zwalnianie zasobów
 
@@ -80,26 +88,12 @@ class ptr:public std::shared_ptr<T>
       //Dostęp do wskaźnika przechowywanego
       //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       T* operator -> () { return this->get();}
-      //operator T& () { return *(this->get());}
       operator T* () { return this->get();}
 };
 
-typedef ptr<Object> pObject;
-
-template<class A,class B>
-inline A*
-_free_ptr_to(ptr<B>& b)//release the pointer to A
-{
-    return (A*)(B*)b;
-}
-
-template<typename Base, typename T> //inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
-inline 
-bool instanceof(ptr<T>& p)
-{
-   return dynamic_cast<Base*>(p.get()) != nullptr;
-}
-
+/**
+ * Representation of JAVA "Comparable" interface
+ */
 template<class T>
 /*interface*/ class Comparable
 {
@@ -108,72 +102,76 @@ template<class T>
       virtual int compareTo(ptr<T> o) = 0;
 };
 
+/**
+ * @brief pObject is aliasing for ptr<Object>
+ * Represents "object references" for object of basic class Object
+ */
+typedef ptr<Object> pObject;
+
+/**
+ * @brief The template class array
+ * Array of T, sized when constructed
+ */
 template<class T>
 class array
 {
-  ///INFO: Array of T, sized when constructed
-  T* _ptr;
+      T* _ptr;
   public:
-      size_t length;
+      size_t length;//Processing ma to jako goły atrybut a nie akcessor
 
       ~array() { delete [] _ptr; } // Zwalnianie zasobów
-      array(size_t N): length{N} { _ptr = new T[N]; }
+      array(size_t N); //Jedyny konstruktor
       T& operator [] (size_t i) { return _ptr[i]; }
 };
 
+/**
+ * @brief The template class ptr< array >
+ * Represents "object references" for array of T
+ * Implements Processing semantics for one dimensional array
+ */
 template<class T>
 class sarray:public ptr< array<T> >
 {
-      ///INFO: Processing semantics for one dimensional array
   public:
-      ~sarray(){}// Zwalnianie zasobów
+      ~sarray(){}// Odziedziczone zwalnianie zasobów
       sarray(){}
-      sarray(std::initializer_list<T> lst);
       sarray(array<T>* tab): ptr< array<T> >(tab){}
+      sarray(std::initializer_list<T> lst);
 
-      array<T>* operator -> () { return this->get();}
-      T&        operator [] (size_t i) { return (*this->get())[i]; }
-      T*        begin() { return &(*this)[0]; }
-      T*        end() { return &(*this)[ length() ]; }
-      size_t    length() { return this->get()->length; }
+      array<T>*   operator -> () { return this->get();}
+      T&          operator [] (std::size_t i) { return (*this->get())[i]; }
+      T*          begin() { return &(*this)[0]; }
+      T*          end() { return &(*this)[ length() ]; }
+      std::size_t length() { return this->get()->length; }
 };
 
-template<class T>
-inline  
-sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.size()))
-{ //NOT TESTED YET? TODO?
-    size_t i=0;
-    for(auto e:l)
-        (*this)[i++]=e;
-}
-
+/**
+ * @brief The template class matrix (2D array)
+ * Matrix of T, sized when constructed
+ * (Tablica dwuwymiarowa opiera się na jednowymiarowych (PL))
+ */
 template<class T>
 class matrix:public array< sarray<T> >
 {
-  ///INFO: tablica dwuwymiarowa opiera się na jednowymiarowych
   public:
-      ~matrix(){}// Zwalnianie zasobów
-       matrix(size_t N,size_t M);
-      //sarray<T>& operator [] (size_t j);//Potrzebne?
+      ~matrix(){}// Odziedziczone zwalnianie zasobów
+       matrix(std::size_t N,std::size_t M);//Jedyny konstruktor
+      //sarray<T>& operator [] (size_t j);//???
 };
 
-template<class T>
-inline 
-matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
-{ //NOT TESTED YET! TODO!
-    for(size_t i=0;i<this->length;i++)
-        (*this)[i]=new array<T>( M );
-}
-
+/**
+ * @brief The template class ptr< matrix >
+ * Represents "object references" for matrix of T
+ * Implements Processing semantics for two dimensional array
+ */
 template<class T>
 class smatrix:public ptr< matrix<T> >
 {
-  ///INFO:Processing semantics for two dimensional array
   public:
-      ~smatrix(){}// Zwalnianie zasobów
+      ~smatrix(){}// Odziedziczone zwalnianie zasobów
       smatrix(){}
       smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
-      //smatrix(std::initializer_list<T> lst);//Potrzebne?
+      //smatrix(std::initializer_list<T> lst);//Na razie nigdzie nie używane. Potrzebne?
 
       matrix<T>* operator -> () { return this->get();}
       sarray<T>& operator [] (size_t j) { return (*this->get())[j]; }
@@ -182,9 +180,66 @@ class smatrix:public ptr< matrix<T> >
       size_t     length() { return this->get()->length; }
 };
 
+// PODRĘCZNE IMPLEMETACJE INLINE
+//**********************************
+
+/**
+ * @brief Function _free_ptr_to releases the raw pointer to A
+ */
+template<class A,class B>
+inline
+A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
+{
+    return (A*)(B*)b;
+}
+
+/**
+ * @brief JAVA like instanceof function
+ * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
+ */
+template<typename Base, typename T>
+inline
+bool instanceof(ptr<T>& p)
+{
+   return dynamic_cast<Base*>(p.get()) != nullptr;
+}
+
+/**
+ * @brief Template of sarray<> constructor with initialiser list
+ */
+template<class T>
+inline
+sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.size()))
+{
+    size_t i=0;
+    for(auto e:l)
+        (*this)[i++]=e;
+}
+
+/**
+ * @brief The sole constructor of inside template array<T> class
+ */
+template<class T>
+inline
+array<T>::array(size_t N): length{N}
+{
+    _ptr = new T[N];
+}
+
+/**
+ * @brief The sole constructor of inside template matrix<T> class
+ */
+template<class T>
+inline
+matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
+{
+    for(size_t i=0;i<this->length;i++)
+        (*this)[i]=new array<T>( M );
+}
+
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-18                   */
+/*               PROCESSING2C  version 2021-11-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

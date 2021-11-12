@@ -10,7 +10,7 @@
 
 #define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;            \
                                             if(0==flag)                   \
-                                            { flag=1;ERRMESSAGE( _XXX_ )} \
+                                            { flag=1;ERRMESSAGE( _XXX_ );} \
                                          }
 
 

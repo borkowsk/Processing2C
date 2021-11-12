@@ -6,9 +6,10 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "_impl_errors.h"
+#include <iostream>
 #include <iomanip>
 
-extern void* _ssh_window;//From symshell.h
+extern unsigned long _ssh_window;//From symshell, ale to juz nie jest ptr!
 
 using namespace Processing;
 
@@ -37,7 +38,7 @@ int main(int argc,const char *argv[])
 #endif
     _processing_window_instance.setup();
 
-    if(_ssh_window==NULL)//setup nie zainicjowal okna!!!
+    if(_ssh_window==0)//setup nie zainicjowal okna!!!
     {
         size(100,100);
         std::cerr<<"setup() should use size() function!"<<std::endl;
@@ -76,7 +77,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-26                   */
+/*               PROCESSING2C  version 2021-11-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -3,8 +3,8 @@
 #ifndef PROCESSING_LIBRARY_H
 #define PROCESSING_LIBRARY_H
 
-#include <string>
 #include <cassert>
+#include <string>
 #include <vector>
 #include <algorithm>
 
@@ -21,8 +21,11 @@ namespace Processing
   class String:public std::string
                //private std::string - NIEUDANA PROBA - CIAGLE CZEGOS JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
   {
-    ///INFO:
       //String& operator = (const String&) = delete; //To nie zapobiega użyciu w konwersjach?!? :-(
+      //https://stackoverflow.com/questions/17907453/hiding-base-class-method-with-using-declaration-doesnt-work-for-assignment-op
+      //using std::string::operator + ;     // hide the below method for `Derived` objects - also does not work
+      //
+      // ‘std::__cxx11::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
     public:
       friend class Processing::_string_param;
 
@@ -103,10 +106,11 @@ namespace Processing
    inline float Float(const String& sval) { return std::stof(sval.c_str());}
 
    template<class T>
-   class  self_printable_ptr:public ptr<T>,virtual public _self_printable
+   class  self_printable_ptr:public ptr<T>,virtual public _self_printable/*_interface*/
    {
      public:
        String print() const { return  this->get()->print(); }
+
        self_printable_ptr():ptr<T>(nullptr){}
        self_printable_ptr(T* ini):ptr<T>(ini){}
        //using ptr<T>::operator = ; //???
@@ -139,7 +143,9 @@ namespace Processing
         _string_param(ptr<T> p):_string_param(p.get()){}
 
         //operator String& () {return *(String*)this;}
-        String& get() {return *(String*)this;}
+        String& _str() {return *(String*)this;}
+        String const& _str() const {return *(String*)this;}
+        String& get() {return *(String*)this;}//Obsolete
   };
 
   inline String::String(double v):String()

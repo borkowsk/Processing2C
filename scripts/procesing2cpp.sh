@@ -9,10 +9,15 @@ echo "//Processing to C++ converter $0"
 echo "//Source: $1"
 echo "#include \"processing_consts.hpp\""
 echo "#include \"processing_templates.hpp\""
-echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
-echo "#include \"processing_window.hpp\""
 echo "#include \"processing_library.hpp\""
-echo "#include \"processing_console.hpp\" //...is optional. Should be deleted when not needed."
+echo "#include \"processing_window.hpp\""
+#TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
+echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
+echo "#include \"processing_console.hpp\"   //...is optional. Should be deleted when not needed."
+echo "#include \"processing_alist.hpp\" //...is optional. Should be deleted when not needed."
+echo "#include \"processing_lists.hpp\" //...is optional. Should be deleted when not needed."
+echo "#include \"processing_map.hpp\"   //...is optional. Should be deleted when not needed."
+echo "#include \"processing_files.hpp\" //...is optional. Should be deleted when not needed."
 echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 echo "using namespace Processing;"
 echo "#include \"local.h\""
@@ -69,6 +74,7 @@ sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
 #listy i mapy obiektów np.
 #ArrayList<Link> connections;
 #connections=new ArrayList<Link>();
+#TODO - to dodawanie p do typu w ArrayList jest podejrzane. Powinno działać ogólnie a nie tak dziwnie
 sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([\),;:=])|sArrayList<p\2>\4\5\6\7|g' |\
 sed -E 's|new(\s+)ArrayList<(\s*)(\w+)(\s*)>|new ArrayList<p\3>|g' |\
 sed -E 's|HashMap\s*<(.+)>(\s+)(\w+)(\s*)([\),;:=])|sHashMap<\1>\2\3\4\5|g' |\
@@ -120,10 +126,11 @@ sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
 sed -E 's|\+(\s*)(\"[^"]*\")|+\1 String(\2)|g' |\
 #Stała stringowa jako drugi argument ?:
 sed -E 's|\?(\s*)(\"[^"]*\")|?\1 String(\2) |g' |\
-#IMPORTY
-sed 's/import java.util.Map;/#include "processing_map.hpp"/' |\
-sed 's/import java.util.Arrays;/#include "processing_lists.hpp"/' |\
+#IMPORTY 
 sed 's/import java.util.Collections;/#include\<algorithm\>/' |\
+#TE SĄ JUŻ PRZESTARZAŁE W PROCESSINGU
+sed 's#import java.util.Map;#//HashMap is used here#' |\
+sed 's#import java.util.Arrays;#//ArrayList is used here#' |\
 #COLLECTIONS ALGORITHMS
 sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
 #processing_window METHODS
@@ -173,7 +180,7 @@ echo -e "//$0 did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-08                   */
+#/*               PROCESSING2C  version 2021-11-12                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

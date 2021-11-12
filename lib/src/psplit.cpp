@@ -11,15 +11,28 @@
 namespace Processing
 {
 
+static int count_characters(const char *str, char character)
+{
+    const char *p = str;
+    int count = 0;
+
+    do {
+        if (*p == character)
+            count++;
+    } while (*(p++));
+
+    return count;
+}
+
 sarray<String> split(_string_param string2parse,_string_param delimiter)
 {
 
 #ifndef NDEBUG
     if(0)//DEBUG
-    ERRMESSAGE(String(" called for:'")+string2parse+String("' with delimiter '")+delimiter+String("'") );
+    ERRMESSAGE( (String(" called for:'")+string2parse._str()+String("' with delimiter '")+delimiter._str()+String("'")) );
 #endif
     //Calculate number of strings?
-    int numberOfstrings=1+count_characters(string2parse.c_str(),delimiter[0]);
+    int numberOfstrings=1+count_characters(string2parse._std_str().c_str(),delimiter[0]);
     //Make output array
     sarray<String> out=new array<String>(numberOfstrings);
     //Find substrings

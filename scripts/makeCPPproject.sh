@@ -1,6 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
+Pr2CVERSION="0.15"
 
 if [ $# -ne 0 ]; 
 then
@@ -53,13 +54,14 @@ cat <<EOF > "./cppsrc/project_at_once.cpp"
 //All sources in one file 
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
-#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
-#include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp" //...is optional. Should be deleted when not needed!
-#include "processing_lists.hpp"   //...is optional. Should be deleted when not needed!
-#include "processing_map.hpp"     //...is optional. Should be deleted when not needed!
-#include "project.h"              //...is for you. Could be deleted when not needed!
+#include "processing_window.hpp"
+//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
+#include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
+#include "processing_alist.hpp"     //...is optional. Should be deleted when not needed.
+#include "processing_lists.hpp"     //...is optional. Should be deleted when not needed.
+#include "processing_map.hpp"       //...is optional. Should be deleted when not needed.
+#include "processing_files.hpp"     //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
@@ -81,7 +83,7 @@ cmake_minimum_required(VERSION 2.8)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project($PROJECT)
-set( VERSION_NUM 0.14 ) #MUST BE NUMERIC 
+set( VERSION_NUM $Pr2CVERSION ) #MUST BE NUMERIC 
 
 set( SRCPATH  "$SOURCES/cppsrc/" )
 set( PROC2C   "$PROC2DIR" )
@@ -154,7 +156,7 @@ EOF
 echo -e "\nProject ${PROJECT} DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-08                   */
+#/*               PROCESSING2C  version 2021-11-12                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

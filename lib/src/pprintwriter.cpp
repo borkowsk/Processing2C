@@ -5,6 +5,8 @@
 #include "processing_library.hpp"
 #include "processing_files.hpp"
 #include "_impl_errors.h"
+#include <iostream>
+#include <fstream>
 
 namespace Processing
 {
@@ -30,7 +32,9 @@ PrintWriter::~PrintWriter()
 PrintWriter::PrintWriter(PrintWriter& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " performed for PrintWriter::ptr="<<(unsigned long long)w.ptr );
+    String tmp{" performed PrintWriter copy constructor "};
+    tmp+=w.ptr;
+    FIRST_TIME_ERRMESSAGE( tmp );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
 }
@@ -39,7 +43,9 @@ PrintWriter::PrintWriter(PrintWriter& w)
 PrintWriter&  PrintWriter::operator = (PrintWriter& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " performed for PrintWriter::ptr="<<(unsigned long long)w.ptr );
+    String tmp{" performed PrintWriter operator= "};
+    tmp+=w.ptr;
+    FIRST_TIME_ERRMESSAGE( tmp );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
     return *this;
@@ -57,7 +63,7 @@ PrintWriter& createWriter(_string_param name)
     }
     else
     {
-        ALWAYS_ERRMESSAGE( "FILE "<<name<<"can't be open!" );
+        ALWAYS_ERRMESSAGE( String("FILE ")+name+String("can't be open!") );
         delete file;
     }
 
@@ -80,7 +86,9 @@ BufferedReader::~BufferedReader()
 BufferedReader::BufferedReader(BufferedReader& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " performed for BufferedReader::ptr="<<(unsigned long long)w.ptr );
+    String tmp{" performed BufferedReader copy constructor "};
+    tmp+=w.ptr;
+    FIRST_TIME_ERRMESSAGE( tmp );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
 }
@@ -90,7 +98,9 @@ BufferedReader::BufferedReader(BufferedReader& w)
 BufferedReader& BufferedReader::operator = (BufferedReader& w)
 {
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( " performed for BufferedReader::ptr="<<(unsigned long long)w.ptr );
+    String tmp{" performed BufferedReader operator= "};
+    tmp+=w.ptr;
+    FIRST_TIME_ERRMESSAGE( tmp );
 #endif
     ptr=w.ptr;w.ptr=nullptr;
     return *this;
@@ -110,7 +120,7 @@ BufferedReader& createReader(_string_param name)
     }
     else
     {
-        ALWAYS_ERRMESSAGE( "FILE "<<name<<"can't be open!" );
+        ALWAYS_ERRMESSAGE( String("FILE ")+name+String("can't be open!") );
         delete file;
     }
 
@@ -149,7 +159,7 @@ void println(PrintWriter& o,_string_param _p1)
 }//END of namespace Processing
 
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-26                   */
+/*               PROCESSING2C  version 2021-11-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
