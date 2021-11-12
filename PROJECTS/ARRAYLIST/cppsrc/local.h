@@ -13,4 +13,5 @@
 //All global variables from Processing files
 
 //All global functions from Processing files
+void user_print(pIntList intInv); ///
 #endif

@@ -130,11 +130,16 @@ void processing_window::setup()
     animals->add(new Dog());
     pAnimalFeeder feeder=new AnimalFeeder();
     feeder->feed(animals);
-    
-    for(pAnimal a:animals)
-      println(a);
-      
+
+    print_animals(animals);  
     println(animals);  
+    print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
+}
+
+void print_animals(sArrayList<pAnimal> anim)
+{
+      for(pAnimal a:anim)
+        println(a);
 }
 ///home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
 //Source: ARRAYLIST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,7 +15,7 @@ using namespace Processing;
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: ARRAYLIST->pde
 ////////////////////////////////////////////////////////////////////
-sArrayList<String> testStr=nullptr;
+sArrayList<String> testStrings=nullptr;
 pStringList inventory=new StringList();
 pFloatList inventoryF;
 pIntList inventoryI;
@@ -23,10 +23,10 @@ pIntList inventoryI;
 void processing_window::setup() {
   size(200, 200);
   
-  testStr=new ArrayList<String>();
-  bool    res=testStr->add("bulba?");
-  res=testStr->add("buuulba!");
-  println(testStr);
+  testStrings=new ArrayList<String>();
+  bool    res=testStrings->add("bulba?");
+  res=testStrings->add("buuulba!");
+  println(testStrings);
   
   inventory = new StringList();
   inventory->append("coffee");
@@ -47,21 +47,36 @@ void processing_window::setup() {
   inventoryI->append(102);
   println(inventoryI);
   
-  noLoop();// ONLY ONE CALL OF draw FUNCTION!
+  //noLoop();// ONLY ONE CALL OF draw FUNCTION!
+  //or
+  setFrameRate(1);
+  
   fill(0);
   textAlign(CENTER);
 }
 
-void processing_window::draw() {
-  //Called only once!
+
+void user_print(pIntList intInv)///
+{
+  for(int i:intInv)
+      println(Processing::hex(i));
+}
+
+
+void processing_window::draw() { //May be called only once, or many times
+  println();
+  println(testStrings);
+  
+  inventoryI->add(2,1);
+  int nums = inventoryI->get(2);
   String item = inventory->get(2);
   float flos = inventoryF->get(2);
-  int nums = inventoryI->get(2);
-  for(int i:inventoryI)
-    println(i);
-  for(String s:testStr)
-    println(s);
+
+  background(255);
   text(item+String(';')+nums+String(';')+flos, width/2, height/2);
+    
+  println(inventoryI);
+  user_print(inventoryI);
 }
-//../../scripts/procesing2cpp.sh did it
+///home/borkowsk/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
 
