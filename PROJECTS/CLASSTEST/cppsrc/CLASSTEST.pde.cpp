@@ -136,7 +136,7 @@ void processing_window::setup()
     print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
 }
 
-void print_animals(sArrayList<pAnimal> anim)
+void print_animals(sArrayList<pAnimal> anim) /// Drukowanie własną metodą
 {
       for(pAnimal a:anim)
         println(a);

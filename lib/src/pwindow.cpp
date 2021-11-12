@@ -6,6 +6,7 @@
 #include "symshell.h"
 #include "_impl_errors.h"
 #include <chrono>
+#include <iostream>
                             //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
 using namespace std::chrono;//https://en.cppreference.com/w/cpp/chrono/duration
                             //https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets

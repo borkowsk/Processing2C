@@ -114,7 +114,7 @@ void setup()
     print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
 }
 
-void print_animals(ArrayList<Animal> anim)
+void print_animals(ArrayList<Animal> anim) /// Drukowanie własną metodą
 {
       for(Animal a:anim)
         println(a);

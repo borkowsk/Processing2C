@@ -22,22 +22,22 @@ bool      FloatList::hasValue(float what)// 	Check if a number is a part of the 
 
 void      FloatList::add(int index,float amount)// 	Add to a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]+=amount;
 }
 
 void      FloatList::sub(int index,float amount)// 	Subtract from a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]-=amount;
 }
 
 void      FloatList::mult(int index,float amount)// 	Multiply a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]*=amount;
 }
 
 void      FloatList::div(int index,float amount)// 	Divide a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]/=amount;
 }
 
 float     FloatList::min()// 	Return the smallest value
@@ -81,6 +81,7 @@ sarray<float>     FloatList::array()// 	Create a new array with a copy of all th
 int      IntList::remove(int index)// 	Remove an element from the specified index
 {
     FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    //std::vector<int>::remove(index);//NOT SO EASY! :-D
     return -1;//TODO!!!
 }
 
@@ -92,22 +93,22 @@ bool     IntList::hasValue(int   what)// 	Check if a number is a part of the lis
 
 void     IntList::add(int index,int   amount)// 	Add to a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]+=amount;
 }
 
 void     IntList::sub(int index,int   amount)// 	Subtract from a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]-=amount;
 }
 
 void     IntList::mult(int index,int   amount)// 	Multiply a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]*=amount;
 }
 
 void     IntList::div(int index,int   amount)// 	Divide a value
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    (*this)[index]/=amount;
 }
 
 int      IntList::min()// 	Return the smallest value
@@ -124,12 +125,14 @@ int      IntList::max()// 	Return the largest value
 
 void     IntList::sort()// 	Sorts an array, lowest to highest
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    //FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    std::sort(this->begin(),this->end());//TODO TEST
 }
 
 void     IntList::sortReverse()// 	Reverse sort, orders values from highest to lowest
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    //FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    std::sort(this->cbegin(),this->cend());//TODO TEST
 }
 
 void     IntList::reverse()// 	Reverse the order of the list elements
@@ -162,13 +165,15 @@ bool     StringList::hasValue(_string_param   what)// Check if a number is a par
 
 void     StringList::sort()// 	Sorts an array, lowest to highest
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    //FIRST_TIME_ERRMESSAGE( " not implemented!" );
+     std::sort(this->begin(),this->end());//TODO TEST
 }
 
 
 void     StringList::sortReverse()// 	Reverse sort, orders values from highest to lowest
 {
-    FIRST_TIME_ERRMESSAGE( " not implemented!" );
+    //FIRST_TIME_ERRMESSAGE( " not implemented!" );
+     std::sort(this->cbegin(),this->cend());//TODO TEST
 }
 
 
@@ -196,7 +201,7 @@ void     StringList::upper()// 	Make the entire list upper case
 }
 
 
-sarray<int>  StringList::array()// 	Create a new array with a copy of all the values
+sarray<int>  StringList::array()// 	Create a new array with a copy of all the values ???
 {
     FIRST_TIME_ERRMESSAGE( " not implemented!" );
     abort();

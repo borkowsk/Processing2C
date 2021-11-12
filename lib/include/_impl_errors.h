@@ -1,21 +1,21 @@
 #ifndef _IMPL_ERRORS_H
 #define _IMPL_ERRORS_H
 
-#include <iostream>
-
 //FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS also in 'not_implemented.h'
-#define ERRMESSAGE( _XXX_ )              { std::cerr<<__FUNCTION__<< _XXX_ <<std::endl; std::cerr.flush(); }
+#include "_errMessage.hpp"
+
+#define ERRMESSAGE( _XXX_ )              { _errMessage( _XXX_ , __FUNCTION__ , __LINE__ , __FILE__ ); }
 
 #define ALWAYS_ERRMESSAGE( _XXX_ )       ERRMESSAGE( _XXX_ );
 
-#define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;      \
-                                            if(0==flag++)           \
-                                                ERRMESSAGE( _XXX_ ) \
+#define FIRST_TIME_ERRMESSAGE( _XXX_ )   {  static int flag=0;            \
+                                            if(0==flag)                   \
+                                            { flag=1;ERRMESSAGE( _XXX_ )} \
                                          }
 
 
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-10                   */
+/*               PROCESSING2C  version 2021-11-12                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
