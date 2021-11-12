@@ -209,19 +209,31 @@ class sArrayList:public self_printable_ptr< ArrayList<T> >
       sArrayList(ArrayList<T>* tab): self_printable_ptr< ArrayList<T> >(tab){}
       //using self_printable_ptr< ArrayList<T> >::operator =;
       //using self_printable_ptr< ArrayList<T> >::operator ->;
-      ArrayList<T>* operator -> () { return this->get();}
-      auto  begin()
-      {
-          return this->get()->begin();
-      } //need C++14 !
-      auto  end()
-      {
-          return this->get()->end();
-      } //need C++14 !
       //T&        operator [] (size_t i) { return (*this->get())[i]; }
       //size_t    length() { return this->get()->length; }
-      int 	size() const //Returns the number of elements in this list.
-      { return this->get()->size(); }
+      ArrayList<T>* operator -> ()
+      {
+          auto ret=this->get();//Potrzebne dla debugingu
+          return ret;
+      }
+
+      auto  begin()
+      {
+          auto ret=this->get()->begin();
+          return ret;
+      } //need C++14 !
+
+      auto  end()
+      {
+          auto ret=this->get()->end();
+          return ret;
+      } //need C++14 !
+
+      int   size() const //Returns the number of elements in this list.
+      {
+          int ret=this->get()->size();//Potrzebne dla debugingu
+          return ret;
+      }
 };
 
 //  Implementation part
