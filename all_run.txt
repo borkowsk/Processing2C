@@ -1,0 +1,170 @@
+#'245\ albo '1' i tak oznacza w zasadzie prawidłowe zakończenie kliknięciem. Ale to słaba diagnostyka
+#przy kończeniu ESC powinno być 0 czyli OK
+find . -type f -name *12_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/CLASSTEST ---> CLASSTEST_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.12_x11 : OK
+
+ find . -type f -name *12_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.12_x11 : OK
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/CLASSTEST ---> CLASSTEST_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.12_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.12_x11 : 245
+
+ find . -type f -name *13_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/CLASSTEST ---> CLASSTEST_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.13_x11 : OK
+
+ find . -type f -name *13_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.13_x11 : OK
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/CLASSTEST ---> CLASSTEST_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.13_x11 : 245
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.13_x11 : 245
+
+find . -type f -name *13_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/CLASSTEST ---> CLASSTEST_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.13_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.13_x11 : 1
+
+ find . -type f -name *14_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.14_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.14_x11 : 1
+
+ find . -type f -name *14_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.14_x11 : 139
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.14_x11 : 139
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.14_x11 : 139
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.14_x11 : 139
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.14_x11 : 139
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.14_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.14_x11 : OK
+
+find . -type f -name *15_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.15_x11 : OK
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.15_x11 : OK
+
+ find . -type f -name *15_x11 -executable
+./build-PROJECTS-Desktop-Debug/SYNCHRONIC1 ---> SYNCHRONIC1_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/ELIPSY ---> ELIPSY_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORMATS ---> FORMATS_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/EPIDEMIA ---> EPIDEMIA_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/PERLIN ---> PERLIN_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/WZROST ---> WZROST_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/FILES ---> FILES_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/MROWKI ---> MROWKI_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/FORESTFIRE ---> FORESTFIRE_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYLIST ---> ARRAYLIST_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/EVENTS ---> EVENTS_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/SAKODA ---> SAKODA_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARRAYTEST ---> ARRAYTEST_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/ALIGNMENT ---> ALIGNMENT_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/MAPTEST ---> MAPTEST_0.15_x11 : 1
+./build-PROJECTS-Desktop-Debug/ARCS ---> ARCS_0.15_x11 : 1
+
+ find . -type f -name *16_x11 -executable
+
+
