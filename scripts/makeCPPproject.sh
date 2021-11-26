@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.15"
+Pr2CVERSION="0.151"
 
 if [ $# -ne 0 ]; 
 then
@@ -79,7 +79,7 @@ done
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 echo -e "\nCreating CMakeLists.txt"
 cat << EOF > CMakeLists.txt
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.9)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project($PROJECT)
@@ -156,11 +156,11 @@ EOF
 echo -e "\nProject ${PROJECT} DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-12                   */
+#/*               PROCESSING2C  version 2021-11-25                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
-#/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+#/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 #/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 #/*    GITHUB: https://github.com/borkowsk                           */
 #/*                                                                  */

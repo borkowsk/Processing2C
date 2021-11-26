@@ -1,0 +1,51 @@
+# Prerequisites
+*.d
+*.*~
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Linux executables - specific for this repository
+*_x11
+*_svg
+
+
+# IDE configs or cmake temporaries
+*.cmake
+cmake*
+CMakeFiles/
+cmake-build-debug/
+CMakeLists.txt.user
+Makefile
+
+*.cbp
+.idea
+.idea/*
+.qtcreator.err

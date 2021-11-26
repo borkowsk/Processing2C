@@ -36,12 +36,12 @@ bool String::operator != (nullptr_t)
     return !empty();
 }
 
-static int count_substrings(const char *str,const char *substr)
-{
-    //https://www.sanfoundry.com/c-program-count-occurence-substring/
-    FIRST_TIME_ERRMESSAGE( "NOT IMPLEMENTED");
-    return 0; //TODO!
-}
+    static int count_substrings(const char *str,const char *substr)
+    {
+        //https://www.sanfoundry.com/c-program-count-occurence-substring/
+        FIRST_TIME_ERRMESSAGE( "NOT IMPLEMENTED");
+        return 0; //TODO!
+    }
 
 
 }//END of namespace Processing
