@@ -17,7 +17,7 @@ using namespace Processing;
 
 /// Simple model of colony growth with mutations (test project for Processing2C)
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: WZROST->pde
+/// ORIGINAL FILE: "WZROST.pde"
 //////////////////////////////////////////////////////////////////////////////////
 //Wzrost losowo z punktu środkowego z mutacjami kolorów
 //////////////////////////////////////////////////////////////////////////////////

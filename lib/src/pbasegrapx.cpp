@@ -1,4 +1,4 @@
-/// podstawy obsługo okienka pseudo-processingowego
+/// podstawy obsługi okienka pseudo-processingowego
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -16,7 +16,7 @@ void noSmooth()
 
 void smooth()
 {
-    FIRST_TIME_ERRMESSAGE( " not available under X11!" );
+    FIRST_TIME_ERRMESSAGE( " not available under X11! Sorry." );
 }
 
 void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
@@ -47,7 +47,7 @@ void stroke(float Gray,float Alpha)
     int S=(int)Gray;
     set_pen_rgba(S,S,S,(int)Alpha,
                 _LINE_WIDTH,1 /*style*/);
-    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
+    FIRST_TIME_ERRMESSAGE( "!!! Alpha not tested!" );
 }
 
 void stroke(float Red,float Green,float Blue)
@@ -59,24 +59,25 @@ void stroke(float Red,float Green,float Blue,float Alpha)
 {
     set_pen_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha,
                  _LINE_WIDTH,1 /*style*/);
-    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
+    FIRST_TIME_ERRMESSAGE( "!!! Alpha not tested!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF stroke(color)
 void stroke(const color& col)//Until update of symshell.h (TODO!)
 {
-    //FIRST_TIME_ERRMESSAGE( ' '<<std::hex<<col.val );
     stroke(red(col),green(col),blue(col));
+    //FIRST_TIME_ERRMESSAGE( ' '<<std::hex<<col.val );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void noStroke()
 {
     line_width(0);//??? TODO?
     _LINE_WIDTH=0;
-    FIRST_TIME_ERRMESSAGE( " - not inline called" );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
-bool _filled=true;//TODO _FILLED !!!
+bool _filled=true;//TODO _FILLED !!!???
 
 void fill(float Gray)
 {
@@ -90,7 +91,7 @@ void fill(float Gray,float Alpha)
     int S=(int)Gray;
     set_brush_rgba(S,S,S,(int)Alpha);
     _filled=true;
-    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
+    FIRST_TIME_ERRMESSAGE( "!!! Alpha not tested!" );
 }
 
 void fill(float Red,float Green,float Blue)
@@ -103,7 +104,7 @@ void fill(float Red,float Green,float Blue,float Alpha)
 {
     set_brush_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha);
     _filled=true;
-    FIRST_TIME_ERRMESSAGE( " - Alpha not tested!" );
+    FIRST_TIME_ERRMESSAGE( "!!! Alpha not tested!" );
 }
 
 //TEMPORARY IMPLEMENTATION OF fill(color)
@@ -115,7 +116,7 @@ void fill(const color& col)//Until update of symshell.h (TODO!)
 void noFill()
 {
     _filled=false;
-    FIRST_TIME_ERRMESSAGE( " - not inline called" );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void point(float x,float y)
@@ -128,8 +129,21 @@ void line(float  x1,float  y1,float  x2,float  y2)
     line_d((int)x1,(int)y1,(int)x2,(int)y2);
 }
 
+/// Set driving mode for rects. Either CENTER, RADIUS, CORNER, or CORNERS
+int _RECT_MODE=CORNER;
 
-int _RECT_MODE=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+/// Set driving mode for rects
+/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+void rectMode(int mode)
+{
+    _RECT_MODE=mode;
+}
+
+/// Driving a filled (by default) rectangle
+/// \param a : meaning depend of mode
+/// \param b : meaning depend of mode
+/// \param c : meaning depend of mode
+/// \param d : meaning depend of mode
 void rect(float a,float  b,float  c,float  d)
 {
     int x1,y1,x2,y2;
@@ -155,7 +169,7 @@ void rect(float a,float  b,float  c,float  d)
     if(_filled)
         fill_rect_d(x1,y1,x2,y2);
 
-    if(get_line_width()>0) //TODO - eliminate it!!!
+    if(get_line_width()>0) //TODO - eliminate it!!!???
     {
         ::line_d(x1,y1,x1,y2);
         ::line_d(x1,y1,x2,y1);
@@ -163,29 +177,36 @@ void rect(float a,float  b,float  c,float  d)
         ::line_d(x1,y2,x2,y2);
     }
 
-    FIRST_TIME_ERRMESSAGE( " - not inline called" );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
+/// Driving a filled (by default) rectangle, witch rounded corners
+/// \param a  : meaning depend of mode
+/// \param b  : meaning depend of mode
+/// \param c  : meaning depend of mode
+/// \param d  : meaning depend of mode
+/// \param r : radius for rounding corners (CURRENTLY IGNORED)
 void rect(float a,float  b,float  c,float  d,float r)
 {
     rect(a,b,c,d);
-    FIRST_TIME_ERRMESSAGE( " - r parameter is ignored!" );
+    FIRST_TIME_ERRMESSAGE( " !!! 'r' parameter is ignored here!" );
 }
 
-/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
-void rectMode(int mode)
+/// Current mode for driving ellipses. Either CENTER, RADIUS, CORNER, or CORNERS
+int  _ELLIPSE_MODE=CENTER;
+
+/// Set driving mode for ellipses and elliptical arcs
+/// \param	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
+void ellipseMode(int mode)
 {
-    _RECT_MODE=mode;
+    _ELLIPSE_MODE=mode;
 }
 
-/// Parameters
-///  a 	float: x-coordinate of the ellipse
-///  b 	float: y-coordinate of the ellipse
-///  c 	float: width of the ellipse by default
-///  d 	float: height of the ellipse by default
-///  start 	float: angle to start the arc, specified in radians
-///  stop 	float: angle to stop the arc, specified in radians
-int  _ELLIPSE_MODE=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
+///  Functions for driving ellipse
+///  \param a 	float: x-coordinate of the ellipse
+///  \param b 	float: y-coordinate of the ellipse
+///  \param c 	float: width of the ellipse by default
+///  \param d 	float: height of the ellipse by default
 void ellipse(float a,float  b,float  c,float  d)
 {
     int x1,y1,A,B;
@@ -204,10 +225,17 @@ void ellipse(float a,float  b,float  c,float  d)
     if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
 
-    FIRST_TIME_ERRMESSAGE( " - not inline called" );
+    FIRST_TIME_ERRMESSAGE( "!!! not inline called" );
 }
 
-
+///  Functions for driving elliptical arc
+///  \param a 	float: x-coordinate of the ellipse
+///  \param b 	float: y-coordinate of the ellipse
+///  \param c 	float: width of the ellipse by default
+///  \param d 	float: height of the ellipse by default
+///  \param start 	float: angle to start the arc, specified in radians
+///  \param stop 	float: angle to stop the arc, specified in radians
+///  \param mode arc connecting mode (STILL IGNORED?)
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*=0*/)
 {
     int x1,y1,A,B;
@@ -232,13 +260,7 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
         FIRST_TIME_ERRMESSAGE( " mode ignored!!" );
 }
 
-/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
-void ellipseMode(int mode)
-{
-    _ELLIPSE_MODE=mode;
-}
-
-/// Extended graphix text() & Attributes
+/// Extended graphics text() & Attributes
 int _TEXT_HORIZONTAL_AL=LEFT;
 int _TEXT_VERTICAL_AL=BOTTOM;
 
@@ -246,6 +268,7 @@ void textAlign(int hor)
 // Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
 {
     _TEXT_HORIZONTAL_AL=hor;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void textAlign(int hor,int ver)
@@ -253,6 +276,7 @@ void textAlign(int hor,int ver)
 {
     _TEXT_HORIZONTAL_AL=hor;
     _TEXT_VERTICAL_AL=ver;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 float textWidth(_string_param str)
@@ -305,11 +329,11 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-26                   */
+/*               PROCESSING2C  version 2021-11-29                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 /*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 /*    GITHUB: https://github.com/borkowsk                           */
 /*                                                                  */

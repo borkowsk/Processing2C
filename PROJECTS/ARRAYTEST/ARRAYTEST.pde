@@ -1,6 +1,6 @@
 /// Array and matrix test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: ARRAYTEST.pde
+/// ORIGINAL FILE: "ARRAYTEST.pde"
 ////////////////////////////////////////////////////////////////////
 
 int[][] c;

@@ -21,7 +21,7 @@ int main(int argc,const char *argv[])
 {
     //extern sarray<String> args; //WHOLE PROGRAM PARAMETERS FOR PROCESSING
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( "-DEFAULT MAIN FOR PROCESSING2C TRANSLATOR" );
+    FIRST_TIME_ERRMESSAGE( "DEFAULT MAIN FOR PROCESSING2C TRANSLATOR" );
 #endif
     std::cout<<"START:"<<year()<<std::setfill('0')
             <<std:: setw(2)<<month()
@@ -34,11 +34,11 @@ int main(int argc,const char *argv[])
 
     _processing_window_instance.before_setup(argc,argv);
 #ifndef NDEBUG
-    FIRST_TIME_ERRMESSAGE( "-call setup()" );
+    FIRST_TIME_ERRMESSAGE( "setup() called" );
 #endif
     _processing_window_instance.setup();
 
-    if(_ssh_window==0)//setup nie zainicjowal okna!!!
+    if(_ssh_window==0)//setup nie zainicjował okna!!!
     {
         size(100,100);
         std::cerr<<"setup() should use size() function!"<<std::endl;
@@ -47,7 +47,7 @@ int main(int argc,const char *argv[])
     if(!_processing_window_instance.inLoop())
     {
 #ifndef NDEBUG
-        FIRST_TIME_ERRMESSAGE( "-call draw() single time" );
+        FIRST_TIME_ERRMESSAGE( "draw() called for single time" );
 #endif
         _processing_window_instance.draw();//only once
         _processing_window_instance.after_draw();
@@ -56,7 +56,7 @@ int main(int argc,const char *argv[])
     while(1)
     {
 #ifndef NDEBUG
-        FIRST_TIME_ERRMESSAGE( "-call draw() in loop" );
+        FIRST_TIME_ERRMESSAGE( "call a draw() in loop" );
 #endif
         delay(_INTERNAL_DELAY);
         if(_processing_window_instance.inLoop())
@@ -77,7 +77,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-11-29                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

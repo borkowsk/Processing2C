@@ -17,7 +17,7 @@ using namespace Processing;
 
 /// Sophisticated :-) PCA (Probabilistic Cellular Automaton) model test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: FORESTFIRE->pde
+/// ORIGINAL FILE: "FORESTFIRE.pde"
 /////////////////////////////////////////////////////////////////////////////////////////
 // "Forest fire with regeneration" - my private version 
 // Model "pożaru lasu" jest bardzo klasyczny, choć tu mamy wersję autorską
@@ -209,15 +209,5 @@ void doVisualisation() /// Must be predeclared
   println(Log,Step+String("\t ")+alives+String("\t ")+burning+String("\t ")+empty+String("\t ")+meanSize);
   if(Step % 5000==0) Log->flush();//Sometimes writes the buffer to the file
 }
-
-void processing_window::exit() //it is called whenever a window is closed. 
-{
-  noLoop();   // For to be sure...
-  delay(100); // it is quite possible to close window when draw( ) is currently working!
-  Log->flush();// Writes the remaining data to the file
-  Log->close();// Finishes the file
-  println("Thank You");
-  processing_window_base::exit(); //What library superclass have to do at exit
-} 
 //../../scripts/procesing2cpp.sh did it
 

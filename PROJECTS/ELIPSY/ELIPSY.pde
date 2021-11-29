@@ -1,6 +1,6 @@
 /// Simple graphics test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: ELIPSY.pde
+/// ORIGINAL FILE: "ELIPSY.pde"
 ////////////////////////////////////////////////////////////////////
 
 int W=600;//Control parameter

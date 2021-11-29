@@ -13,6 +13,7 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="MROWKI";
+#include "exit.pde.cpp"
 #include "klasaAnt.pde.cpp"
 #include "klasaBack.pde.cpp"
 #include "klasaWorld.pde.cpp"

@@ -18,7 +18,7 @@ using namespace Processing;
 /// Events example.
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// base on Processing examples
-/// ORIGINAL FILE: EVENTS->pde
+/// ORIGINAL FILE: "EVENTS.pde"
 /////////////////////////////////////////////////////
 // Click on the window to give it focus,
 // and press the 'B' key.

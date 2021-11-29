@@ -13,4 +13,5 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="MAPTEST";
+#include "exit.pde.cpp"
 #include "MAPTEST.pde.cpp"

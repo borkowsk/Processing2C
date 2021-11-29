@@ -1,14 +1,17 @@
-//Używamy KLAS obsługi strumieni zdefiniowanych w bibliotece
+/// TEST KLAS obsługi strumieni
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "FILES.pde"
+//////////////////////////////////////////////////////////////////////////////////
 
 PrintWriter    writer = null;
 BufferedReader reader = null;
 
 void setup()
 {
-  size(200,200);
+  size(200,216);
+  background(0);
     
   // Create a new file in the sketch directory
-
   writer = createWriter("positions.txt");
  
   if(writer == null )  exit();
@@ -19,7 +22,7 @@ void setup()
   {
     float x = random(width);
     float y = random(height);
-    println(x+"\t"+y);
+    println("Save line #",i,x+"\t"+y);
     writer.println(x+"\t"+y);
   }
 
@@ -27,7 +30,7 @@ void setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions0.txt");
+  reader = createReader("positions.txt");
   
   if(reader == null )   //<>//
                   exit(); //<>//
@@ -35,18 +38,22 @@ void setup()
   println("\npositions.txt is open");
 }
 
+int counter=0;
 void draw()
 {
+  fill(random(256));
   String line = null;
   try 
   {
     if((line = reader.readLine() )!= null)
     {
-      String[] pieces = split(line,"\t");
-      if(pieces.length<2) throw new Exception("File format error");
+      text(line,0,height);
+      String[] pieces = split(line,"\t"); //println(pieces.length,pieces);
+      if(pieces.length<2) //May appears eg. at the end of file!
+        throw new Exception("Line "+counter+"th Two colums expected");
       float x = Float.parseFloat(pieces[0]);
       float y = Float.parseFloat(pieces[1]);
-      println(x+"\t"+y);
+      println("Read line #",counter++,x+"\t"+y);
       ellipse( x, y,10,10);
     }
   }
@@ -78,5 +85,6 @@ void exit()
     //e.printStackTrace();
   }  
   
+  save("exit.png");
   super.exit();
 }

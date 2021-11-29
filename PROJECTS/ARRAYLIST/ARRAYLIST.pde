@@ -1,6 +1,6 @@
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: ARRAYLIST.pde
+/// ORIGINAL FILE: "ARRAYLIST.pde"
 ////////////////////////////////////////////////////////////////////
 ArrayList<String> testStrings=null;
 StringList        inventory=new StringList();

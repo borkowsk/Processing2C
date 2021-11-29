@@ -15,9 +15,12 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//Test obiektow mapowych
-//file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap->html
-//HashMap is used here
+//Test for HashMaps
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "MAPTEST.pde"
+//////////////////////////////////////////////////////////////////////////////////
+/// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
+//HashMap is used here//To wciąż potrzebne do for(auto me : <<AnyHashMap>>->entrySet()) 
 
 sHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
 sHashMap<int,String>  mapInteger2String=new HashMap<int,String>();

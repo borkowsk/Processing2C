@@ -13,4 +13,5 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="FORESTFIRE";
+#include "exit.pde.cpp"
 #include "FORESTFIRE.pde.cpp"

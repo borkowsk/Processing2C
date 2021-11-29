@@ -2,7 +2,7 @@
 /// Also class demonstration
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// Comments from lecture: Małgorzata Filon
-/// ORIGINAL FILE: synchronizacja1.pde -> SYNCHRONIC1.pde
+/// ORIGINAL FILE: "synchronizacja1.pde" -> "SYNCHRONIC1.pde"
 //////////////////////////////////////////////////////////////////////////////////
 
 class singiel { //klasa czyli typ złożony

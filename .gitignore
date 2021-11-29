@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 *.*~
+config.dat
 
 # Compiled Object files
 *.slo
@@ -49,3 +50,7 @@ Makefile
 .idea
 .idea/*
 .qtcreator.err
+
+#produced graphics
+*.png
+*.tif

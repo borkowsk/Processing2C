@@ -14,3 +14,4 @@ using namespace Processing;
 //==================================================================================
 const char* Processing::_PROGRAMNAME="CLASSTEST";
 #include "CLASSTEST.pde.cpp"
+#include "exit.pde.cpp"

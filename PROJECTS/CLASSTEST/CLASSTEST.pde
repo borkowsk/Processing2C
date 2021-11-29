@@ -1,6 +1,6 @@
 /// Class hierarchy test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: CLASSTEST.pde
+/// ORIGINAL FILE: "CLASSTEST.pde"
 ///////////////////////////////////////////////////////////////////////////
 // INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
 ///////////////////////////////////////////////////////////////////////////

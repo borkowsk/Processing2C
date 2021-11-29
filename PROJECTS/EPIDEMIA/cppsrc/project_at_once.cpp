@@ -17,6 +17,7 @@ const char* Processing::_PROGRAMNAME="EPIDEMIA";
 #include "AgentSupl.pde.cpp"
 #include "AssemblingOfWorld.pde.cpp"
 #include "EPIDEMIA.pde.cpp"
+#include "exit.pde.cpp"
 #include "Histogram.pde.cpp"
 #include "History.pde.cpp"
 #include "ModelVisual.pde.cpp"

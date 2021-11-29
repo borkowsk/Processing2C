@@ -17,7 +17,7 @@ using namespace Processing;
 
 /// Ellipse,Rect & Text aligment test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: ALIGMENT->PDE
+/// ORIGINAL FILE: "ALIGMENT.PDE"
 /////////////////////////////////////////////////////////////////
 void cross(float x,float y)
 {

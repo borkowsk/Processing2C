@@ -1,6 +1,9 @@
-//Test obiektow mapowych
-//file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html
-import java.util.Map;
+//Test for HashMaps
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "MAPTEST.pde"
+//////////////////////////////////////////////////////////////////////////////////
+/// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
+import java.util.Map;//To wciąż potrzebne do for(Map.Entry me : <<AnyHashMap>>.entrySet()) 
 
 HashMap<String,Integer>  mapString2Integer=new HashMap<String,Integer>();
 HashMap<Integer,String>  mapInteger2String=new HashMap<Integer,String>();

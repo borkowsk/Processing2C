@@ -13,4 +13,5 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="FORMATS";
+#include "exit.pde.cpp"
 #include "FORMATS.pde.cpp"

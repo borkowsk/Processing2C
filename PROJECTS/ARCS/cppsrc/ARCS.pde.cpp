@@ -15,11 +15,14 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//Division of the ellipse into sectors
-//The coordinate system is treated as rotated!
+/// Division of the ellipse into sectors
+/// The coordinate system is treated as rotated!
+/// This is a test for Processing2C
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "ARCS.pde"
+////////////////////////////////////////////////////
 void processing_window::setup()
 {
-  
 size(500,500);
 
 ellipseMode(CENTER);
@@ -34,10 +37,6 @@ fill(255);
 
 ellipseMode(CORNER);
 arc(400,400,100,100,radians(10),radians(180),PIE);
-
-
-//http://processingwedukacji->blogspot->com
-saveFrame();//If saveFrame function is used without parameters, it will save files as "screen-0000.tif", "screen-0001.tif" etc.
 }
 //../../scripts/procesing2cpp.sh did it
 

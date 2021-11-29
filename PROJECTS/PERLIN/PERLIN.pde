@@ -1,6 +1,6 @@
 /// Perlin noise test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: PERLIN.pde
+/// ORIGINAL FILE: "PERLIN.pde"
 ////////////////////////////////////////////////////////////////////
 // Based on Processing examples for Perlin noise
 // See also: https://en.wikipedia.org/wiki/Perlin_noise

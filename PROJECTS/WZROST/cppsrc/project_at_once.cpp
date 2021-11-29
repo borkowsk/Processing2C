@@ -13,5 +13,6 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="WZROST";
+#include "exit.pde.cpp"
 #include "KLASA.pde.cpp"
 #include "WZROST.pde.cpp"

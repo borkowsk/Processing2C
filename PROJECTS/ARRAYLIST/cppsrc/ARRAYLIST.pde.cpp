@@ -17,7 +17,7 @@ using namespace Processing;
 
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: ARRAYLIST->pde
+/// ORIGINAL FILE: "ARRAYLIST.pde"
 ////////////////////////////////////////////////////////////////////
 sArrayList<String> testStrings=nullptr;
 pStringList inventory=new StringList();

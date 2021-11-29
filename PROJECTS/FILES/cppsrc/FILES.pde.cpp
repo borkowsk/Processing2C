@@ -15,17 +15,20 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//Używamy KLAS obsługi strumieni zdefiniowanych w bibliotece
+/// TEST KLAS obsługi strumieni
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "FILES.pde"
+//////////////////////////////////////////////////////////////////////////////////
 
 PrintWriter    writer = nullptr;
 BufferedReader reader = nullptr;
 
 void processing_window::setup()
 {
-  size(200,200);
+  size(200,216);
+  background(0);
     
   // Create a new file in the sketch directory
-
   writer = createWriter("positions.txt");
  
   if(writer == nullptr )  exit();
@@ -36,7 +39,7 @@ void processing_window::setup()
   {
     float x = random(width);
     float y = random(height);
-    println(x+String("\t")+y);
+    println("Save line #",i,x+String("\t")+y);
     println(writer,x+String("\t")+y);
   }
 
@@ -44,7 +47,7 @@ void processing_window::setup()
   println("positions.txt is closed");
    
   delay(1000);
-  reader = createReader("positions0.txt");
+  reader = createReader("positions.txt");
   
   if(reader == nullptr )   //<>//
                   exit(); //<>//
@@ -52,18 +55,22 @@ void processing_window::setup()
   println("\npositions.txt is open");
 }
 
+int counter=0;
 void processing_window::draw()
 {
+  fill(random(256));
   String line = nullptr;
   try 
   {
     if((line = reader->readLine() )!= nullptr)
     {
-      sarray<String> pieces = split(line,"\t");
-      if(pieces->length<2) throw std::runtime_error("File format error");
+      text(line,0,height);
+      sarray<String> pieces = split(line,"\t"); //println(pieces->length,pieces);
+      if(pieces->length<2) //May appears eg. at the end of file!
+        throw std::runtime_error(String("Line ")+counter+ String("th Two colums expected"));
       float x = std::stof(pieces[0]);
       float y = std::stof(pieces[1]);
-      println(x+String("\t")+y);
+      println("Read line #",counter++,x+String("\t")+y);
       ellipse( x, y,10,10);
     }
   }
@@ -95,6 +102,7 @@ void processing_window::exit()
     //e->printStackTrace();
   }  
   
+  save("exit.png");
   processing_window_base::exit();
 }
 //../../scripts/procesing2cpp.sh did it

@@ -14,3 +14,4 @@ using namespace Processing;
 //==================================================================================
 const char* Processing::_PROGRAMNAME="ARCS";
 #include "ARCS.pde.cpp"
+#include "exit.pde.cpp"

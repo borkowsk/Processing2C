@@ -1,12 +1,15 @@
-int fontSize=16;
+/// Test foir number formating functions (test project for Processing2C)
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// ORIGINAL FILE: "FORMATS.pde"
+//////////////////////////////////////////////////////////////////////////////////
+
+int fontSize=16;//FontSize is not implemented in Pricessing2C
+                //but 16px is a default font hight there!
+
 void setup()
 {
   size(450,800);
-  String forSplit="Ala ma kota i dwa psy";
-  String[] splited=split(forSplit,' ');
-  for(String s:splited)
-    println(s);
-    
+  
   //Uncomment the following two lines to see the available fonts 
   //String[] fontList = PFont.list();
   //printArray(fontList);
@@ -14,6 +17,11 @@ void setup()
   textFont(myFont);
   textSize(fontSize);
   
+  String forSplit="Ala ma kota i dwa psy";
+  String[] splited=split(forSplit,' ');
+  for(String s:splited)
+    println(s);
+    
   int pos=0;
   textAlign(LEFT,BOTTOM);
   text("nf*_________4:" + nf(4),10,pos+=fontSize);
