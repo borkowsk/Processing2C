@@ -82,7 +82,7 @@ namespace Processing
         /// Alternatywna funkcja zaprzyjaźniona do konkatenacji _Stringów poprzez _string_param
         friend String operator  + (_string_param,_string_param);
 
-        /// DIRECT IMPORTS FROM basic_string, even if made private
+        /// DIRECT IMPORTS FROM basic_string, even if will be made private
         using std::string::length;
         using std::string::c_str;
         using std::string::operator [];
@@ -145,7 +145,11 @@ namespace Processing
         self_printable_ptr():ptr<T>(nullptr){}
         self_printable_ptr(T* ini):ptr<T>(ini){}
         //using ptr<T>::operator = ; //Tak to nie działa. TODO: A w ogóle po co???
-        self_printable_ptr<T>& operator = (T* other){ ptr<T>::operator = ((T*)other); return *this;}
+        self_printable_ptr<T>& operator = (T*& other)
+        {
+            ptr<T>::operator = (other);
+            return *this;
+        }
         auto begin() { return this->get()->begin(); } //need C++14 !
         auto end()   { return this->get()->end(); } //need C++14 !
     };
