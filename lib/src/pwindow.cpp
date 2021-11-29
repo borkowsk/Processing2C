@@ -71,7 +71,7 @@ int     keyCode;/// TODO!
                              /// When checking for these keys, it can be useful to first check if the key is coded.
                              /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 
-sarray<String> args=nullptr;//WHOLE PROGRAM PARAMETERS!!!
+sarray<String> args;//WHOLE PROGRAM PARAMETERS!!!
 
 void processing_window_base::before_draw()
 {
@@ -173,10 +173,10 @@ void processing_window_base::before_setup(int argc,const char *argv[])
 
     args=new array<String>(argc-1);///Allocation of JAVA LIKE PROGRAM PARAMETERS!!!
     int argpos=0;       /// When parameters beginning with '-' exist on list,
-                        /// some empty parameters appread at the end of args table.
+                        /// some empty parameters appeared at the end of args table.
 
-    for(int i=1;i<argc;i++)//In JAVA name of the program is not avalable as par0!!!
-        if(argv[i][0]!='-')//Parameters for X11 or symshell are skiped here.
+    for(int i=1;i<argc;i++)//In JAVA name of the program is not available as par0!!!
+        if(argv[i][0]!='-')//Parameters for X11 or symshell are skipped here.
         {
             args[argpos++]=String(argv[i]);//new String(argv[i]);???
         }
