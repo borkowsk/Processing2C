@@ -11,15 +11,16 @@
 
 namespace Processing
 {
-
 extern int _ELLIPSE_MODE;//=CENTER?
 extern int _RECT_MODE;//=CORNER?
 extern int _STROKE_CAP;//=SQUARE?;
 extern int _STROKE_JOIN;//=MITER?;
 extern int _TEXT_HORIZONTAL_AL;//=LEFT;
 extern int _TEXT_VERTICAL_AL;//=TOP;
+extern const int OPENPIE;//default arc open_mode
 
-class _string_param;//Zapowiadająca
+/// A declaration that announces a type that implements various conversions to a String
+class _string_param;
 
 class processing_window_base
 {
