@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+void _errMessage(const char* msg,const char* func,int line=-1,const char* file="");
 void _errMessage(std::string msg,const char* func,int line=-1,const char* file="");
 /********************************************************************/
 /*               PROCESSING2C  version 2021-11-26                   */
