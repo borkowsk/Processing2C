@@ -13,9 +13,19 @@
                                             { flag=1;ERRMESSAGE( _XXX_ );} \
                                          }
 
+namespace Processing
+{
+    /// A function(s) that replaces ineffective "+" sequences,
+    /// which also generate unnecessary warnings
+    String concat(const _string_param& a1,const _string_param& a2);
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3);
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4);
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5);
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5,const _string_param& a6);
+}//END of namespace Processing
 
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-12-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -3,41 +3,69 @@
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp"
+//#include "processing_console.hpp"
 #include "_impl_errors.h"
 #include <string>
 //#define DEBUG 1
 
 namespace Processing
 {
+    String concat(const _string_param& a1,const _string_param& a2)
+    {
+        String ret=a1; ret+=a2;
+        return ret;
+    }
 
-static int count_characters(const char *str, char character)
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3)
+    {
+        String ret=a1; ret+=a2; ret+=a3;
+        return ret;
+    }
+
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4)
+    {
+        String ret=a1; ret+=a2; ret+=a3;ret+=a4;
+        return ret;
+    }
+
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5)
+    {
+        String ret=a1; ret+=a2; ret+=a3;ret+=a4;ret+=a5;
+        return ret;
+    }
+
+    String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5,const _string_param& a6)
+    {
+        String ret=a1; ret+=a2; ret+=a3;ret+=a4;ret+=a5;ret+=a6;
+        return ret;
+    }
+
+    static int count_characters(const char *str, char character)
+    {
+        const char *p = str;
+        int count = 0;
+
+        do {
+            if (*p == character)
+                count++;
+        } while (*(p++));
+
+        return count;
+    }
+
+sarray<String> split(_string_param string2parse,_string_param delimiter) // TODO tab-shift ->
 {
-    const char *p = str;
-    int count = 0;
-
-    do {
-        if (*p == character)
-            count++;
-    } while (*(p++));
-
-    return count;
-}
-
-sarray<String> split(_string_param string2parse,_string_param delimiter)
-{
-
 #ifndef NDEBUG
-    if(0)//DEBUG
-    ERRMESSAGE( (String(" called for:'")+string2parse._str()+String("' with delimiter '")+delimiter._str()+String("'")) );
+   if(false)//DEBUG
+    ERRMESSAGE( concat(" called for:'",string2parse._str(),"' with delimiter '",delimiter._str(),"'") )
 #endif
     //Calculate number of strings?
-    int numberOfstrings=1+count_characters(string2parse._std_str().c_str(),delimiter[0]);
+    int numberOfStrings=1+count_characters(string2parse._std_str().c_str(),delimiter[0]);
     //Make output array
-    sarray<String> out=new array<String>(numberOfstrings);
+    sarray<String> out=new array<String>(numberOfStrings);
     //Find substrings
-    if(numberOfstrings>1)
-    { //https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c POPRAWIONE!
+    if(numberOfStrings>1)
+    { //https://stackoverflow.com/questions/14265581/parse-split-a-string-in-c-using-string-delimiter-standard-c Is ok!
         std::size_t ind = 0;
         std::size_t pos = 0;
         std::size_t dln = delimiter.length(); //std::cout << dln <<  std::endl;
@@ -56,11 +84,11 @@ sarray<String> split(_string_param string2parse,_string_param delimiter)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-12-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 /*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 /*    GITHUB: https://github.com/borkowsk                           */
 /*                                                                  */
