@@ -1,21 +1,24 @@
-// Obligatoryjne szablony dla obiektów i tablic
+///\file processing_templates.hpp
+/// Mandatory templates for objects and arrays
+///--------------------------------------------
 #pragma once
+/// https://en.cppreference.com/w/cpp/utility/initializer_list
+/// https://en.cppreference.com/w/cpp/language/constructor
+/// https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
 #include <cassert>
 #include <memory>
 #include <initializer_list>
-/// https://en.cppreference.com/w/cpp/utility/initializer_list
-/// https://en.cppreference.com/w/cpp/language/constructor
-/// https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
+
+///\namespace XXX
 namespace Processing
 {
-
 /**
- * @brief The Object class
+ * \brief The Object class
  * Base class for all Processing/JAVA like class but not pointers
  * see:
- * @link https://www.javatpoint.com/object-class
+ * \a https://www.javatpoint.com/object-class
  */
 class Object
 {
@@ -28,37 +31,40 @@ class Object
 };
 
 /**
- * @brief The template class ptr<>
- * Proxy for standard shared_ptr but mimic Procesing "object references" behaviour
+ * \brief The template class ptr<>
+ * Proxy for standard shared_ptr but mimic Processing "object references" behaviour
  */
 template<class T>
 class ptr:public std::shared_ptr<T>
 {
   public:
-      ~ptr(){}// Destruktor - zwalnianie zasobów
+      ///Constructors
+      ptr():std::shared_ptr<T>(nullptr)//empty
+      {}
+      ptr(nullptr_t p):std::shared_ptr<T>(p)//visible empty
+      {}
+      ptr(T* ini):std::shared_ptr<T>(ini)//from raw pointer for new T
+      {}
 
-      //Konstruktory
-      //^^^^^^^^^^^^
-      ptr():std::shared_ptr<T>(nullptr){}     //empty
-
-      ptr(nullptr_t p):std::shared_ptr<T>(p){}//visible empty
-
-      ptr(T* ini):std::shared_ptr<T>(ini){}   //from raw pointer for new T
-
+      ///konwersja z gołych shared_ptr'ów potrzebna dla dynamic_ptr_cast<>
       template<class B>
-      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)//konwersja z gołych shared_ptr'ów potrzebna dla dynamic_ptr_cast<>
+      ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)
       {
           assert(ini.get()==nullptr || this->get()!=nullptr);//std::cerr<<ini.get()<<std::endl;
       }
 
+      ///Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
       template<class B>
-      ptr(ptr<B>& ini):std::shared_ptr<T>(ini)//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+      ptr(ptr<B>& ini):std::shared_ptr<T>(ini)
       {
           assert(ini.get()==nullptr || this->get()!=nullptr);
       }
 
+      /// Destructor
+      ~ptr(){} // = default; ??? TODO?
+
       //Przypisania  //using std::shared_ptr<T>::operator = ;//kipisz!!! :-(
-      //^^^^^^^^^^^
+      //^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
       ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
       ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
       ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
@@ -86,7 +92,7 @@ class ptr:public std::shared_ptr<T>
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
       //Dostęp do wskaźnika przechowywanego
-      //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ // TODO ? CZY TO POTRZEBNE?
       T* operator -> () { return this->get();}
       operator T* () { return this->get();}
 };
@@ -103,13 +109,13 @@ template<class T>
 };
 
 /**
- * @brief pObject is aliasing for ptr<Object>
+ * \brief pObject is aliasing for ptr<Object>
  * Represents "object references" for object of basic class Object
  */
 typedef ptr<Object> pObject;
 
 /**
- * @brief The template class array
+ * \brief The template class array
  * Array of T, sized when constructed
  */
 template<class T>
@@ -125,7 +131,7 @@ class array
 };
 
 /**
- * @brief The template class ptr< array >
+ * \brief The template class ptr< array >
  * Represents "object references" for array of T
  * Implements Processing semantics for one dimensional array
  */
@@ -146,7 +152,7 @@ class sarray:public ptr< array<T> >
 };
 
 /**
- * @brief The template class matrix (2D array)
+ * \brief The template class matrix (2D array)
  * Matrix of T, sized when constructed
  * (Tablica dwuwymiarowa opiera się na jednowymiarowych (PL))
  */
@@ -160,7 +166,7 @@ class matrix:public array< sarray<T> >
 };
 
 /**
- * @brief The template class ptr< matrix >
+ * \brief The template class ptr< matrix >
  * Represents "object references" for matrix of T
  * Implements Processing semantics for two dimensional array
  */
@@ -181,10 +187,10 @@ class smatrix:public ptr< matrix<T> >
 };
 
 // PODRĘCZNE IMPLEMETACJE INLINE
-//**********************************
+//===========================================================
 
 /**
- * @brief Function _free_ptr_to releases the raw pointer to A
+ * \brief Function _free_ptr_to releases the raw pointer to A
  */
 template<class A,class B>
 inline
@@ -194,7 +200,7 @@ A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
 }
 
 /**
- * @brief JAVA like instanceof function
+ * \brief JAVA like instanceof function
  * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
  */
 template<typename Base, typename T>
@@ -205,7 +211,7 @@ bool instanceof(ptr<T>& p)
 }
 
 /**
- * @brief Template of sarray<> constructor with initialiser list
+ * \brief Template of sarray<> constructor with initialiser list
  */
 template<class T>
 inline
@@ -217,7 +223,7 @@ sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.siz
 }
 
 /**
- * @brief The sole constructor of inside template array<T> class
+ * \brief The sole constructor of inside template array<T> class
  */
 template<class T>
 inline
@@ -227,7 +233,7 @@ array<T>::array(size_t N): length{N}
 }
 
 /**
- * @brief The sole constructor of inside template matrix<T> class
+ * \brief The sole constructor of inside template matrix<T> class
  */
 template<class T>
 inline
@@ -239,11 +245,11 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-12-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 /*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 /*    GITHUB: https://github.com/borkowsk                           */
 /*                                                                  */
