@@ -42,7 +42,7 @@ int MatureT=220; ///Max size of tree. Then will stop to grow
 //2D "World" of trees
 smatrix<float> World = new matrix<float>(N,N); ///!!!
 PrintWriter Log;///For writing statistics into disk drive
-
+                ///Używamy KLASY zdefiniowanej w bibliotece Processing
 //For visualisation
 int S=20;       ///cell width & height
 bool    is_burning=false;
