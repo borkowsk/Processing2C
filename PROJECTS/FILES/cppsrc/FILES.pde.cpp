@@ -23,6 +23,17 @@ using namespace Processing;
 PrintWriter    writer = nullptr;
 BufferedReader reader = nullptr;
 
+void write_someting(PrintWriter wr)
+{
+  for(int i=0;i<100;i++)
+  {
+    float x = random(width);
+    float y = random(height);
+    println("Save line #",i,x+String("\t")+y);
+    println(wr,x+String("\t")+y);
+  }
+}
+
 void processing_window::setup()
 {
   size(200,216);
@@ -35,13 +46,9 @@ void processing_window::setup()
   
   println("positions.txt is open");
   
-  for(int i=0;i<100;i++)
-  {
-    float x = random(width);
-    float y = random(height);
-    println("Save line #",i,x+String("\t")+y);
-    println(writer,x+String("\t")+y);
-  }
+  write_someting(writer);// Reference semantic test
+  
+  println(writer,"0\t0");
 
   writer->close();
   println("positions.txt is closed");

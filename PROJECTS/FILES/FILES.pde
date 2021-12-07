@@ -6,6 +6,17 @@
 PrintWriter    writer = null;
 BufferedReader reader = null;
 
+void write_someting(PrintWriter wr)
+{
+  for(int i=0;i<100;i++)
+  {
+    float x = random(width);
+    float y = random(height);
+    println("Save line #",i,x+"\t"+y);
+    wr.println(x+"\t"+y);
+  }
+}
+
 void setup()
 {
   size(200,216);
@@ -18,13 +29,9 @@ void setup()
   
   println("positions.txt is open");
   
-  for(int i=0;i<100;i++)
-  {
-    float x = random(width);
-    float y = random(height);
-    println("Save line #",i,x+"\t"+y);
-    writer.println(x+"\t"+y);
-  }
+  write_someting(writer);// Reference semantic test
+  
+  writer.println("0\t0");
 
   writer.close();
   println("positions.txt is closed");
@@ -36,6 +43,8 @@ void setup()
                   exit(); //<>//
   
   println("\npositions.txt is open");
+  
+  //println(reader.hashCode());// :-D TODO!
 }
 
 int counter=0;
