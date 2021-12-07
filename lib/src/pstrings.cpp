@@ -1,12 +1,14 @@
 // most commonly used library functions
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
+//#include "processing_window.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp"
+//#include "processing_console.hpp"
 #include "_impl_errors.h"
 #include <string>
-//#define DEBUG 1
+#include <iostream> // Tylko z powodu _errMessage(Processing::String...)
+
+//#define DEBUG 1 /* TODO??? */
 
 namespace Processing
 {
@@ -43,14 +45,21 @@ bool String::operator != (nullptr_t)
         return 0; //TODO!
     }
 
+    void _errMessage(Processing::String msg,const char* func,int line,const char* file)
+    {
+        std::cerr<<func<<":\""<<msg._std_str()<<"\"";
+        if(line!=-1)
+            std::cerr<<" src: "<<file<<":"<<line;
+        std::cerr<<std::endl;
+    }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-12-07                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 /*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 /*    GITHUB: https://github.com/borkowsk                           */
 /*                                                                  */
