@@ -128,6 +128,9 @@ namespace Processing
         //operator String& () {return *(String*)this;}
     };
 
+    /// Alternatywna wersja _errMessage
+    void _errMessage(String msg,const char* func,int line=-1,const char* file="");
+
     /// Interface for classes able to make printable representation
     class _self_printable
     {
