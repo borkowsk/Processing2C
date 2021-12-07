@@ -35,7 +35,7 @@ int          Side;  /// Bok macierzy
 int          W;     /// Mnożnik dla kwadracika
 smatrix<pKLASA>    World; /// TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
-PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
+PrintWriter output;/// A tu używamy KLASY zdefiniowanej w bibliotece
 
 void processing_window::setup() //Window and model initialization
 {
