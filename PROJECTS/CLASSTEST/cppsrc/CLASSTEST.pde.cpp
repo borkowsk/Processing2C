@@ -135,11 +135,19 @@ void processing_window::setup()
     pAnimalFeeder feeder=new AnimalFeeder();
     feeder->feed(animals);
 
-    print_animals(animals);  
+    print_animals(animals);  //\TODO - JEST PROBLEM Z KONWERSJĄ... DZIWNY
     println(animals);  
     print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
+    // error: could not convert ‘animals’ from ‘Processing::sArrayList<Processing::ptr<Animal> >’
+    //                                      to ‘Processing::ArrayList<Processing::ptr<Animal> >’
+    //138 |     print_animals(animals);
+    //    |                   ^~~~~~~
+    //    |                   |
+    //    |                   Processing::sArrayList<Processing::ptr<Animal> >
 }
 
+//Deklaracja z local.h - \TODO JEST Z BŁEÐEM!!! Poprawić trzeba w skryptach
+//void print_animals(ArrayList<pAnimal> anim); /// Drukowanie własną metodą
 void print_animals(sArrayList<pAnimal> anim) /// Drukowanie własną metodą
 {
       for(pAnimal a:anim)
