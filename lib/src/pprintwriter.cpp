@@ -27,12 +27,13 @@ static inline std::ostream& operator << (std::ostream& o,String& str)
 void BufferedReader::_set(std::ifstream* p)
 {
     // HACK!!!
-    (*this)=(_Jifstream*)p;//TODO DEBUG - looks like it works
+    (*this)=(_JAVAInputStream*)p;//TODO DEBUG - looks like it works
 }
 
 void PrintWriter::_set(std::ofstream* p)
 {
-    (*this)=p;//TODO DEBUG - looks like it works
+    // HACK!!!
+    (*this)=(_JAVAOutputStream*)p;//TODO DEBUG - looks like it works
 }
 
 PrintWriter& createWriter(_string_param name)

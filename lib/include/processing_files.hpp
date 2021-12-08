@@ -14,9 +14,9 @@
 namespace Processing
 {
   // An alternative to the currently used method of creating a reference to a type that mimics the JAVA class
-  /// A class that adds methods that are not in std::ifstream but are in a JAVA class that we are faking
+  /// A "hidden" class that adds methods that are not in std::ifstream but are in a JAVA class that we are faking
   /// See https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html for method details
-  class _Jifstream:public std::ifstream
+  class _JAVAInputStream:public std::ifstream
   {
   public:
       /// Tells whether this stream is ready to be read.
@@ -28,52 +28,76 @@ namespace Processing
       String readLine();
 
       /// Reads a single character.
-      //int	read()
-
+      //int	read();//TODO - need implementation?
       ///Reads characters into a portion of an array.
-      //int	read(char[] cbuf, int off, int len)
+      //int	read(char[] cbuf, int off, int len);//TODO - need implementation?
 
       ///Returns a Stream, the elements of which are lines read from this BufferedReader.
-      //Stream<String>	lines();
+      //Stream<String>	lines();//TODO - implement???
 
       /// Tells whether this stream supports the mark() operation, which it does.
       bool	markSupported() { return false; }
-
       /// Marks the present position in the stream.
-      //void	mark(int readAheadLimit);
-
+      //void	mark(int readAheadLimit);//TODO - implement?
       /// Resets the stream to the most recent mark.
-      //void	reset()
+      //void	reset();//TODO - implement?
 
       /// Skips characters.
-      //long	skip(long n)
+      //long	skip(long n);//TODO - implement?
   };
 
-  /// A class that adds methods that are not in std::ofstream but are in a JAVA class that we are faking
+  /// A "hidden" class that adds methods that are not in std::ofstream but are in a JAVA class that we are faking
   /// See https://docs.oracle.com/javase/7/docs/api/java/io/PrintWriter.html for method details
-  //class _Jofstream:public std::ofstream
-  //{
-  //};
+  class _JAVAOutputStream:public std::ofstream
+  {
+      ///Appends the specified character to this writer.
+      //PrintWriter 	append(char c);//TODO - implement?
+      ///Appends the specified character sequence to this writer.
+      //PrintWriter 	append(CharSequence csq);//TODO - implement?
+      ///Appends a subsequence of the specified character sequence to this writer.
+      //PrintWriter 	append(CharSequence csq, int start, int end);//TODO - implement?
+      ///Flushes the stream if it's not closed and checks its error state.
+      bool 	checkError();//TODO - need implementation?
 
-  class BufferedReader: public  ptr<_Jifstream>
+      ///Writes a formatted string to this writer using the specified format string and arguments.
+      //PrintWriter 	format(Locale l, String format, Object... args);//TODO - implement?
+      ///Writes a formatted string to this writer using the specified format string and arguments.
+      //PrintWriter 	format(String format, Object... args);//TODO - implement?
+      //PrintWriter 	printf(Locale l, String format, Object... args);//TODO - implement?
+      ///A convenience method to write a formatted string to this writer using the specified format string and arguments.
+      //PrintWriter 	printf(String format, Object... args);//TODO - implement?
+
+      ///Writes an array of characters.
+      void 	write(char buf[]);//TODO - need implementation?
+      ///Writes A Portion of an array of characters.
+      void 	write(char buf[], int off, int len);//TODO - need implementation?
+      ///Writes a single character.
+      void 	write(int c);//TODO - need implementation?
+      ///Writes a string.
+      void 	write(String s);//TODO - need implementation?
+      ///Writes a portion of a string.
+      void 	write(String s, int off, int len);//TODO - need implementation?
+  };
+
+  class BufferedReader: public  ptr<_JAVAInputStream>
   {
    public:
       /// Constructors
-      BufferedReader():  ptr<_Jifstream>(nullptr)
+      BufferedReader():  ptr<_JAVAInputStream>(nullptr)
       {}
       BufferedReader(const std::nullptr_t&): BufferedReader()
       {}
-      BufferedReader(_Jifstream* p):ptr<_Jifstream>(p)
+      BufferedReader(_JAVAInputStream* p):ptr<_JAVAInputStream>(p)
       {}
-      BufferedReader(BufferedReader& w):ptr<_Jifstream>(w)
+      BufferedReader(BufferedReader& w):ptr<_JAVAInputStream>(w)
       {}
-      BufferedReader(const BufferedReader& w):ptr<_Jifstream>(w)
+      BufferedReader(const BufferedReader& w):ptr<_JAVAInputStream>(w)
       {}
       /// Destructor
       virtual ~BufferedReader() = default;
 
       /// Default conversion
-      operator _Jifstream& () { return *this->_get();}
+      operator _JAVAInputStream& () { return *this->_get();}
 
       //??? is it really needed?
       void close() { if(_ok()) this->_get()->close(); }
@@ -97,26 +121,26 @@ namespace Processing
           return  pom != nullptr
                   && pom->is_open();
       }
-      _Jifstream* _get() const
+      _JAVAInputStream* _get() const
       {
-          return this->ptr<_Jifstream>::get();
+          return this->ptr<_JAVAInputStream>::get();
       }
       void _set(std::ifstream* p); //for createReader ONLY
   };
 
-  class PrintWriter:public ptr<std::ofstream>
+  class PrintWriter:public ptr<_JAVAOutputStream>
   {
    public:
       /// Constructors
-      PrintWriter(): ptr<std::ofstream>(nullptr)
+      PrintWriter(): ptr<_JAVAOutputStream>(nullptr)
       {}
       PrintWriter(const std::nullptr_t&): PrintWriter()
       {}
-      PrintWriter(std::ofstream* p): ptr<std::ofstream>(p)
+      PrintWriter( _JAVAOutputStream* p): ptr<_JAVAOutputStream>(p)
       {}
-      PrintWriter(PrintWriter& w):ptr<std::ofstream>(w)
+      PrintWriter(PrintWriter& w):ptr<_JAVAOutputStream>(w)
       {}
-      PrintWriter(const PrintWriter& w):ptr<std::ofstream>(w)
+      PrintWriter(const PrintWriter& w):ptr<_JAVAOutputStream>(w)
       {}
 
       /// Destructor - // close the stream and release resources
@@ -124,7 +148,7 @@ namespace Processing
       {}
 
       /// Default conversion
-      operator std::ofstream& () {return *this->_get();}
+      operator _JAVAOutputStream& () {return *this->_get();}
 
       //??? is it really needed?
       //void flush() { if(_ok()) this->_get()->flush(); }
@@ -145,9 +169,9 @@ namespace Processing
           return  pom != nullptr
                   && pom->is_open();
       }
-      std::ofstream* _get() const
+      _JAVAOutputStream* _get() const
       {
-          return this->ptr<std::ofstream>::get();
+          return this->ptr<_JAVAOutputStream>::get();
       }
       void _set(std::ofstream* p); //for createWriter ONLY
   };
@@ -182,7 +206,7 @@ namespace Processing
   //}
 
   /// Read whole line from the stream (using -> )
-  inline String _Jifstream::readLine()
+  inline String _JAVAInputStream::readLine()
   {
       if(this->is_open())
       {
@@ -195,7 +219,7 @@ namespace Processing
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-12-07                   */
+/*               PROCESSING2C  version 2021-12-08                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
