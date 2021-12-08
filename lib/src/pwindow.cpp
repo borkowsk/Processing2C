@@ -1,4 +1,4 @@
-/// podstawy obsługo okienka pseudo-processingowego
+/// podstawy obsługi okienka pseudo-processingowego
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -37,13 +37,19 @@ int WB_error_enter_before_clean=0;
 
 namespace Processing
 {
+/// \brief Alias for _processing_window_instance
+/// \ingroup rtm
 processing_window *const surface=&_processing_window_instance;
+
 const int&   width=       _width;
 const int&   height=      _height;
 const int&   pixelWidth=  _width;
 const int&   pixelHeight= _height;
-const float& frameRate=   _frameRate; ///Get aproximated frame rate achived;
-const int&   frameCount=  _frameCount;///contains the number of frames that have been displayed since the program started.
+
+///Get approximated frame rate achieved;
+const float& frameRate=   _frameRate;
+///contains the number of frames that have been displayed since the program started.
+const int&   frameCount=  _frameCount;
 
 const bool& mousePressed = _mousePressed;
 bool&       mousePressedWr = _mousePressed;///Writable version! ADVANCED USAGE!

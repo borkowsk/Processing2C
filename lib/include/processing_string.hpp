@@ -1,6 +1,13 @@
-///\file processing_string.hpp
-/// Created by borkowsk on 26.11.2021.
-//
+/** \brief JAVA like String
+ * \file processing_string.hpp
+ * \classes String
+ * \ingroup strings
+ * \author Created by "wborkowsk-at-uw.edu.pl" on 26.11.2021.
+ * \last_modification  see the bottom lines
+ */
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING2C_PROCESSING_STRING_HPP
 #define PROCESSING2C_PROCESSING_STRING_HPP
@@ -11,9 +18,12 @@
 ///\namespace Processing2C compatibility libraries
 namespace Processing
 {
-    class _string_param;//Zapowiadająca deklaracja tej klasy, bo użyta jako parametr
-    class _self_printable;//Zapowiadająca deklaracja tej klasy, bo użyta jako parametr
+    /// A foreshadowing declaration of this class to be used hereafter as a method parameter
+    class _string_param;
+    /// A foreshadowing declaration of this class to be used hereafter as a method parameter
+    class _self_printable;
 
+    /// A class that mimics the String capabilities in Processing programs
     class String:public std::string //private std::string - ŚLAD PO NIEUDANEJ PRóBIE - CIĄGLE CZEGOŚ JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
     {
     public:
@@ -42,35 +52,39 @@ namespace Processing
         /// Destructor
         virtual ~String();//??? Na pewno potrzebne?
 
-        /// Sam z siebie robi pointer na siebie :-D, taki HACK...
+        /// It makes a pointer on itself :-D, such a ugly HACK ...
+        /// But it works
         String* operator -> () { return this; }
 
-        /// Back, named conversion to base class
+        /// Back, named "conversion", to base class
         const std::string& _std_str() const { return *this;}
         std::string& _std_str() { return *this;}
 
-        /// Porównanie ze stałą łańcuchową
+        /// Comparison with the string constant
         bool  equals(const char* wz) const { return this->compare(wz)==0;}
 
-        /// Porównanie z innym Stringiem   - TODO TEST!
+        /// Comparison with another String \TODO - MORE TESTS!
         bool equals(const String& wz) const { return this->compare(wz._std_str())==0;}
 
-        /// Tests for empties
+        /// Explicit test for empties
         bool  notEmpty() { return this->c_str()!=nullptr; }
-        //operator bool () { return this->c_str()!=nullptr; }
+
+        /// Implicit tests for empties
         bool operator == (nullptr_t);
         bool operator != (nullptr_t);
 
-        ///Przypisywanie niemal czegokolwiek, dzięki sztuczce z parametrem
+        ///Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
         String& operator = (_string_param v);
-        ///Przedłużanie stringu o niemal cokolwiek, dzięki sztuczce z parametrem
+        ///Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
         String& operator += (_string_param v);
         template<class X>
         String& operator += (const ptr<X>& p);
-        ///Konkatenacja na wzór Processingu. Niestety w C++ wciąż generuje liczne ostrzeżenia
+
+        ///Konkatenacja na wzór Processing-u. Niestety w C++ wciąż generuje liczne ostrzeżenia
         String operator  + (_string_param v) const;
-        ///Operator konkatenacji - nie ma go w Processingu, ale może pomagać rozwiązywać kłopoty z operatorem '+'
+        ///Operator konkatenacji - nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
         String operator  & (_string_param v) const;
+
         //template<class X>
         //String operator  + (const ptr<X>& p) const; //Generuje multum kłopotów
         //Nie chcę domyślnego operatora = z klasy bazowej, ale to nie dzoiała
@@ -79,6 +93,7 @@ namespace Processing
         //using std::string::operator + ;     // hide the below method for `Derived` objects - also does not work
         //
         // ‘std::__cxx11::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+
         /// Alternatywna funkcja zaprzyjaźniona do konkatenacji _Stringów poprzez _string_param
         friend String operator  + (_string_param,_string_param);
 
@@ -139,20 +154,25 @@ namespace Processing
     };
 
     /// Wskaźnik na klasy zdolne do samodzielnego stworzenia sobie drukowalnej reprezentacji
+    /// czyli spełniającej interface _self_printable
     template<class T>
     class  self_printable_ptr:public ptr<T>,virtual public _self_printable/*interface*/
     {
     public:
+        //using ptr<T>::operator = ; //Tak to nie działa. TODO: A w ogóle po co???
         String print() const { return  this->get()->print(); }
 
         self_printable_ptr():ptr<T>(nullptr){}
         self_printable_ptr(T* ini):ptr<T>(ini){}
-        //using ptr<T>::operator = ; //Tak to nie działa. TODO: A w ogóle po co???
-        self_printable_ptr<T>& operator = (T*& other)
-        {
-            ptr<T>::operator = (other);
-            return *this;
-        }
+
+        ///\todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
+        // Bez tej metody projekt się kompiluje ale czy działa?
+        //self_printable_ptr<T>& operator = (T*& other)
+        //{
+        //    ptr<T>::operator = (other);
+        //    return *this;
+        //}
+
         auto begin() { return this->get()->begin(); } //need C++14 !
         auto end()   { return this->get()->end(); } //need C++14 !
     };
@@ -160,19 +180,19 @@ namespace Processing
     // Implementacje
     // ////////////////////////////////////
 
-    /// Inicjalizacja obiektu String liczbą
+    /// Constructor: Inicjalizacja obiektu String jakąś liczbą
     inline String::String(double v):String()
     {
         operator+=(v);
     }
 
-    /// Inicjalizacja obiektu String reprezentacją tekstową adresu jakiegoś obiektu
+    /// Constructor: Inicjalizacja obiektu String reprezentacją tekstową adresu jakiegoś obiektu
     inline String::String(const Object* p):String("@")
     {
         operator += ( (long unsigned int)p );
     }
 
-    /// Inicjalizacja klasy String reprezentacją tekstową adresu trzymanego w obiekcie
+    /// Constructor: Inicjalizacja klasy String reprezentacją tekstową adresu trzymanego w obiekcie
     /// z szablonu Processing::ptr<T>
     template<class T>
     inline String::String(const ptr<T> p):String("@")
@@ -180,7 +200,7 @@ namespace Processing
         operator += ( (long unsigned int)p.get() );
     }
 
-    /// Dopisanie do zawartości Stringu reprezentacji tekstowej adresu trzymanego w obiekcie
+    /// Dopisanie do zawartości String-u reprezentacji tekstowej adresu trzymanego w obiekcie
     /// z szablonu Processing::ptr<T>
     template<class X>
     String& String::operator += (const ptr<X>& p)
@@ -189,25 +209,28 @@ namespace Processing
         return *this;
     }
 
-    /// Inicjalizacja _string_param z typów _self_printable
+    /// Constructor: Inicjalizacja _string_param z typów _self_printable
     inline _string_param::_string_param(const _self_printable& p):String(p.print())
     {}
 
     //String operator  + (_string_param,float); //A lot of conflicts :-(
     //String operator  + (_string_param,int); //A lot of conflicts :-(
-    //template<class X> /// TODO: Czy to jest potrzebne
+    //template<class X> /// TODO: Czy to jest potrzebne - RACZEJ NIE
     //String& operator + (const ptr<X>&,String&);
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-11-29                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ******************************************************************
+ *               PROCESSING2C  version 2021-12-08                   *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/
 #endif //PROCESSING2C_PROCESSING_STRING_HPP

@@ -1,27 +1,48 @@
-// processing_window.hpp
+/** \brief Processing like main window
+ * \file processing_window.hpp
+ * \classes processing_window; color
+ * \ingroup drawing
+ * \author Created by "wborkowsk-at-uw.edu.pl" in 2020.
+ * \last_modification  see the bottom lines
+ * \see Doxygen
+ */
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_WINDOW_H
 #define PROCESSING_WINDOW_H
 
 #ifndef OPTINLINE
-#define OPTINLINE /* EPMTY */
+#define OPTINLINE /* EMPTY */
 #endif
 
 #include<cstdint>
 
+///\namespace Processing2C compatibility libraries
 namespace Processing
 {
+///\brief Mode for driving ellipses \ingroup drawing
 extern int _ELLIPSE_MODE;//=CENTER?
+///\brief Mode for driving rectangles \ingroup drawing
 extern int _RECT_MODE;//=CORNER?
-extern int _STROKE_CAP;//=SQUARE?;
-extern int _STROKE_JOIN;//=MITER?;
+///\brief Mode for driving heads of lines \ingroup drawing
+extern int STROKE_CAP;//=SQUARE?;
+///\brief Mode for driving conjunctions of lines \ingroup drawing
+extern int STROKE_JOIN;//=MITER?;
+///\brief Mode for horizontal text alignment \ingroup drawing
 extern int _TEXT_HORIZONTAL_AL;//=LEFT;
+///\brief Mode for vertical text alignment \ingroup drawing
 extern int _TEXT_VERTICAL_AL;//=TOP;
+///\brief Mode for closing arcs \ingroup drawing
 extern const int OPENPIE;//default arc open_mode
 
-/// A declaration that announces a type that implements various conversions to a String
+/// An announcement declaration for type that implements various conversions to a String
+/// \ingroup strings
 class _string_param;
 
+/// \brief Interface for the main window class that mimics the Processing window
+/// \ingroup rtm
 class processing_window_base
 {
   public:
@@ -44,51 +65,102 @@ class processing_window_base
     virtual void onKeyReleased()=0;
 };
 
+/// \brief The classes of the main window that mimics the Processing window
+/// \methods The methods of this class are all empty.
+/// They are defined in the library in individual source files and are linked
+/// only if the user does not define his own versions of these methods.
+/// \note _processing_window_instance is a single allowed object of this class
+/// \ingroup rtm
 extern class processing_window: public processing_window_base
 {
   bool _loop=true;
   public:
   bool inLoop() {return _loop;}
-  void setup();
-  void draw();
-  void exit();
-  void onMouseClicked();
-  void onMousePressed();
-  void onMouseReleased();
-  void onMouseMoved();
-  void onMouseDragged();
-  void onKeyPressed();
-  void onKeyReleased();
+  void setup() override ;
+  void draw() override ;
+  void exit() override ;
+  void onMouseClicked() override ;
+  void onMousePressed() override ;
+  void onMouseReleased() override ;
+  void onMouseMoved() override ;
+  void onMouseDragged() override ;
+  void onKeyPressed() override ;
+  void onKeyReleased() override ;
   friend void loop();
   friend void noLoop();
 } _processing_window_instance;
 
+/// \brief Alias for _processing_window_instance
+/// \ingroup rtm
 extern processing_window *const surface;//=&_processing_window_instance;
 
-inline void loop()
-{
-    _processing_window_instance._loop=true;
-}
-
+/// \brief Stops continuously executing the code within draw().
+/// \note By default, Processing loops through draw() continuously,
+/// executing the code within it. However, the draw() loop may be stopped
+/// by calling noLoop(). In that case, the draw() loop can be resumed with loop().
+/// \see \a https://processing.org/reference/noLoop_.html
+/// \ingroup rtm
 inline void noLoop()
 {
     _processing_window_instance._loop=false;
 }
 
-/// Class color
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Resume execution of draw()
+/// \note By default, Processing loops through draw() continuously,
+/// executing the code within it. However, the draw() loop may be stopped
+/// by calling noLoop(). In that case, the draw() loop can be resumed with loop().
+/// \see \a https://processing.org/reference/loop_.html
+/// \ingroup rtm
+inline void loop()
+{
+    _processing_window_instance._loop=true;
+}
 
+/// \brief Defines the dimension of the display window width and height in units of pixels.
+/// \param width
+/// \param height
+/// \note In Processing2C program in this point of run the window is made and begin to be visible
+/// \see \a https://processing.org/reference/size_.html
+void size(int width,int height);
+
+/// \brief Defines the dimension of the display as size of whole screen
+/// \note In Processing2C program in this point of run the window is made and begin to be visible
+/// \see \a https://processing.org/reference/fullScreen_.html
+void fullScreen();
+
+/// \brief Specifies the number of frames to be displayed every second.
+/// \note function corresponds to frameRate () in Processing. The name had to be changed because
+/// 'framRate' means the variable from which you can read the currently achieved number of frames.
+/// \param fps : requested number of frames per second
+/// \see \a https://processing.org/reference/frameRate_.html
+void setFrameRate(float fps); ///Set desired frame rate
+
+/// Class implementing an RGBA model of color
+/// \todo Move it to its own hpp!
+/// \ingroup drawing
 class color
 {
   public:
     std::uint32_t val;
+
+    /// Constructor from int
+    /// \param value unsigned int 32b : hexadecimal form of RGBA color
     color(std::uint32_t value):val(value){}
 
+    /// Constructor from components
+    /// \param R : red component
+    /// \param G : green component
+    /// \param B : blue component
     color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
     {
         val=B + 256*G + 256*256*R;
     }
 
+    /// Constructor from components and alpha channel
+    /// \param R : red component
+    /// \param G : green component
+    /// \param B : blue component
+    /// \param alfa : alpha channel
     color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
     {
         val|=alfa<<24;//??? TODO! TEST IT!
@@ -113,14 +185,19 @@ inline float   red(const color& col) { return col.red(); }
 inline float green(const color& col) { return col.green(); }
 inline float  blue(const color& col) { return col.blue(); }
 
-/// Global "system" variables
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Global "system" variables
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+///
 extern const char* _PROGRAMNAME;
 extern const int& width;
 extern const int& height;
 extern const int& pixelWidth;
 extern const int& pixelHeight;
+
+extern const float& frameRate; /// Get approximated frame rate achieved;
+extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
+extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
 
 /// The mousePressed variable stores whether or not a mouse button is currently being pressed.
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
@@ -151,26 +228,27 @@ extern       int     keyCode;/// The variable keyCode is used to detect special 
                              /// When checking for these keys, it can be useful to first check if the key is coded.
                              /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 
-void size(int width,int height);
-void fullScreen();
-void loop();
-void noLoop();
-void setFrameRate(float fps); ///Set desired frame rate
+//  Most important driving functions
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-extern const float& frameRate; /// Get aproximated frame rate achived;
-extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
-extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
-
+///
 void noSmooth();
+
+///
 void smooth();
 
-// The background() function sets the color used for the background of the Processing window. The default background is light gray.
-// This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used
-// inside setup() to set the background on the first frame of animation or if the backgound need only be set once.
+/// \brief The background() function sets the color used for the background of the Processing window.
+/// \note The default background is light gray.
+/// This function is typically used within draw() to clear the display window at the beginning of each frame,
+/// but it can be used inside setup() to set the background on the first frame of animation or
+/// if the background need only be set once.
 void background(float gray);
 void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
 void background(float v1,float v2,float v3,float  alpha);
+/// \todo Now not implemented
+/// \param col
+void background(const color& col);
 
 OPTINLINE
 void stroke(float Gray);
@@ -275,15 +353,18 @@ int displayDensity(int display=0) {return 1;}
 /// Parameters	display 	int: the display number to check
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-10-07                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ******************************************************************
+ *               PROCESSING2C  version 2021-12-08                   *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/
 #endif

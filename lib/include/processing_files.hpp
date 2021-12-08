@@ -1,4 +1,13 @@
-// processing_files.hpp
+/** \brief JAVA like streams
+ * \file processing_files.hpp
+ * \classes BufferedReader; PrintWriter;
+ * \ingroup file_streams
+ * \author Created by borkowsk on 26.11.2021.
+ * \last_modification  see the bottom lines
+ */
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_FILES_HPP
 #define PROCESSING_FILES_HPP
@@ -8,9 +17,7 @@
 #include "processing_library.hpp"
 #include <fstream>
 
-/// File streams
-////////////////////////////////////////////////////////////////////////
-
+///\namespace Processing2C compatibility libraries
 namespace Processing
 {
   // An alternative to the currently used method of creating a reference to a type that mimics the JAVA class
@@ -79,6 +86,7 @@ namespace Processing
       void 	write(String s, int off, int len);//TODO - need implementation?
   };
 
+  /// A class that mimics the read access handle from a text file
   class BufferedReader: public  ptr<_JAVAInputStream>
   {
    public:
@@ -93,15 +101,15 @@ namespace Processing
       {}
       BufferedReader(const BufferedReader& w):ptr<_JAVAInputStream>(w)
       {}
-      /// Destructor
+      /// Destructor - it calls base classes destructors
       virtual ~BufferedReader() = default;
 
       /// Default conversion
       operator _JAVAInputStream& () { return *this->_get();}
 
       //??? is it really needed?
-      void close() { if(_ok()) this->_get()->close(); }
-      //BufferedReader& operator = (_Jifstream* p) { ptr=p;return *this;}
+      //void close() { if(_ok()) this->_get()->close(); }
+      //BufferedReader& operator = (_JAVAInputStream* p) { ptr=p;return *this;}
       //BufferedReader& operator = (BufferedReader& );
       //BufferedReader* operator -> () { return this; }
       //bool operator == (const std::nullptr_t&) const { return ptr==nullptr; }
@@ -115,19 +123,23 @@ namespace Processing
 
   //Not for outside use
   protected:
+      /// Checks whether the stream is fit for use
       bool _ok() const
       {
           auto pom=_get();
           return  pom != nullptr
                   && pom->is_open();
       }
+      /// Returns a pointer to the hidden class object derived from std::ifstream
       _JAVAInputStream* _get() const
       {
           return this->ptr<_JAVAInputStream>::get();
       }
-      void _set(std::ifstream* p); //for createReader ONLY
+      /// for use inside createReader() ONLY
+      void _set(std::ifstream* p);
   };
 
+  /// A class that mimics the write access handle to a text file
   class PrintWriter:public ptr<_JAVAOutputStream>
   {
    public:
@@ -143,16 +155,13 @@ namespace Processing
       PrintWriter(const PrintWriter& w):ptr<_JAVAOutputStream>(w)
       {}
 
-      /// Destructor - // close the stream and release resources
-      virtual ~PrintWriter()
-      {}
+      /// Destructor - it calls base classes destructors
+      virtual ~PrintWriter() = default;
 
       /// Default conversion
       operator _JAVAOutputStream& () {return *this->_get();}
 
       //??? is it really needed?
-      //void flush() { if(_ok()) this->_get()->flush(); }
-      //void close() { if(_ok()) this->_get()->close(); }
       //PrintWriter&   operator = (std::ofstream* p) { ptr=p; return *this; }
       //PrintWriter&   operator = (PrintWriter& );
       //PrintWriter*   operator -> () { return this; }
@@ -163,32 +172,34 @@ namespace Processing
 
   //Not for outside use
   protected:
+      /// Checks whether the stream is fit for use
       bool _ok() const
       {
           auto pom=_get();
           return  pom != nullptr
                   && pom->is_open();
       }
+      /// Returns a pointer to the hidden class object derived from std::ofstream
       _JAVAOutputStream* _get() const
       {
           return this->ptr<_JAVAOutputStream>::get();
       }
-      void _set(std::ofstream* p); //for createWriter ONLY
+      /// for use inside createWriter() ONLY
+      void _set(std::ofstream* p);
   };
 
   /// Create opaque std::ifstream connected to file 'name'
-  BufferedReader& createReader(_string_param _name);
+  /// \param name : any form of text/string
+  /// \return opaque handle to readable std::ifstream
+  BufferedReader& createReader(_string_param name);
 
   /// Create opaque std::ofstream connected to file 'name'
-  PrintWriter& createWriter(_string_param _name);
+  /// \param name : any form of text/string
+  /// \return opaque handle to writable std::ofstream
+  PrintWriter& createWriter(_string_param name);
 
-  /// Write something to opaqued stream
-  void print(PrintWriter& o,_string_param _p1="");
-
-  /// Write something to opaqued stream with \n at the end
-  void println(PrintWriter& o,_string_param _p1="");
-
-  /// Read whole line from opaqued stream (using .)
+  /// Read whole line from opaqued stream (when you want to use '.' access.)
+  /// \return whole line as a String
   inline String BufferedReader::readLine()
   {
     if(_ok())
@@ -200,12 +211,8 @@ namespace Processing
     else return String(nullptr);// Totally empty string
   }
 
-  //inline String readLine(BufferedReader& r)
-  //{
-  //  return r.readLine();
-  //}
-
-  /// Read whole line from the stream (using -> )
+  /// Read whole line from the stream (using -> access)
+  /// \return whole line as a String
   inline String _JAVAInputStream::readLine()
   {
       if(this->is_open())
@@ -217,16 +224,37 @@ namespace Processing
       else return String(nullptr);// Totally empty string
   }
 
+  /// Read whole line from the stream using function syntax
+  /// \param r : input file stream (BufferedReader)
+  /// \return whole line as a String
+  inline String readLine(BufferedReader& r)
+  {
+    return r.readLine();
+  }
+
+  /// Write something to opaqued stream using function syntax
+  /// \param   o : output file stream (PrintWriter)
+  /// \param   p : something to write
+  void print(PrintWriter& o,_string_param p="");
+
+  /// Write something to opaqued stream with \n at the end (using function syntax)
+  /// \param  o : output stream (PrintWriter)
+  /// \param  p : something to write
+  void println(PrintWriter& o,_string_param p="");
+
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-12-08                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ******************************************************************
+ *               PROCESSING2C  version 2021-12-08                   *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/
 #endif

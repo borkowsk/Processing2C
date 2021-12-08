@@ -1,4 +1,13 @@
-// PrintWriter class
+/** \brief JAVA like streams
+ * \file pprintwriter.cpp
+ * \classes BufferedReader; PrintWriter;
+ * \ingroup file_streams
+ * \author Created by borkowsk in 2020.
+ * \last_modification  see the bottom lines
+ */
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 //#include "processing_consts.hpp"
 //#include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -8,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 
+///\namespace Processing2C compatibility libraries
 namespace Processing
 {
 
@@ -16,13 +26,6 @@ static inline std::ostream& operator << (std::ostream& o,String& str)
     o<<str._std_str();
     return o;
 }
-
-/// File streams output
-//PrintWriter::~PrintWriter()
-//{
-//    if (_ok() && (*this)->is_open()) //
-//        this->get()->close();// Czy podwójne zamknięcie jest bezpieczne?
-//}
 
 void BufferedReader::_set(std::ifstream* p)
 {
@@ -36,6 +39,9 @@ void PrintWriter::_set(std::ofstream* p)
     (*this)=(_JAVAOutputStream*)p;//TODO DEBUG - looks like it works
 }
 
+/// Create opaque std::ofstream connected to file 'name'
+/// \param name : any form of text/string
+/// \return opaque handle to writable std::ofstream
 PrintWriter& createWriter(_string_param name)
 {
     auto file=new std::ofstream(name._std_str());                       assert(file!=nullptr);
@@ -55,6 +61,9 @@ PrintWriter& createWriter(_string_param name)
     return tmp;
 }
 
+/// Create opaque std::ifstream connected to file 'name'
+/// \param name : any form of text/string
+/// \return opaque handle to readable std::ifstream
 BufferedReader& createReader(_string_param name)
 {
     auto file=new std::ifstream(name._std_str());                        assert(file!=nullptr);
@@ -87,16 +96,18 @@ void println(PrintWriter& o,_string_param _p1)
 
 
 }//END of namespace Processing
-
-/********************************************************************/
-/*               PROCESSING2C  version 2021-12-07                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ******************************************************************
+ *               PROCESSING2C  version 2021-12-08                   *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/
 
