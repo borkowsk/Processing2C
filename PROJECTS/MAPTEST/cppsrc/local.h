@@ -7,7 +7,7 @@
 
 
 //All classes from Processing files
-class myObject; typedef Processing::ptr<myObject> pmyObject; // {
+class myTest; typedef Processing::ptr<myTest> pmyTest; // {
 
 //All global finals (consts) from Processing files
 

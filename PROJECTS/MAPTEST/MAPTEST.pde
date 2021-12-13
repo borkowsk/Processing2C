@@ -1,4 +1,4 @@
-//Test for HashMaps
+/// Test for HashMaps
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "MAPTEST.pde"
 //////////////////////////////////////////////////////////////////////////////////
@@ -9,24 +9,38 @@ HashMap<String,Integer>  mapString2Integer=new HashMap<String,Integer>();
 HashMap<Integer,String>  mapInteger2String=new HashMap<Integer,String>();
 HashMap<String,Float>    mapString2Float=new HashMap<String,Float>();
 HashMap<String,String>   mapString2String=new HashMap<String,String>();
+HashMap<String,myTest>   mapString2Object;
 
-class myObject {
+class myTest {
   int A;float B;
-  myObject(int iA,float iB)
+  myTest(int iA,float iB)
   {
     A=iA;B=iB;
   }
 };
 
-HashMap<String,myObject> mapString2Object;
+void adding(HashMap<String,myTest>   map)
+{
+  map.put("Daga",new myTest(-1,-0.99999));
+  map.put("Elfaba",new myTest(0,0.0));
+  map.put("Fasaba",new myTest(1,+0.99999));
+}
+
+void texting(HashMap<String,myTest>   map)
+{
+  int y=0;
+  for(Map.Entry me:map.entrySet())
+    text(me.getKey()+"!",width/2,y+=16);
+}
 
 void setup()
 {
+  size(200,200);
   // Putting key-value pairs in the HashMap
   mapString2Integer.put("Ava", 1);
   mapString2Integer.put("Cait", 35);
   mapString2Integer.put("Casey", 36);
-  
+
   // Using an enhanced loop to iterate over each entry
   for(Map.Entry me : mapString2Integer.entrySet()) 
   {
@@ -42,16 +56,18 @@ void setup()
   
   //More complicated
   println("\nUsing myObject");
-  mapString2Object=new HashMap<String,myObject>();
-  mapString2Object.put("Ataga",new myObject(-1,-0.99999));
-  mapString2Object.put("Bulba",new myObject(0,0.0));
-  mapString2Object.put("Cebas",new myObject(1,+0.99999));
+  mapString2Object=new HashMap<String,myTest>();
+  mapString2Object.put("Ataga",new myTest(-1,-0.99999));
+  mapString2Object.put("Bulba",new myTest(0,0.0));
+  mapString2Object.put("Cebas",new myTest(1,+0.99999));
+  adding(mapString2Object);
+  texting(mapString2Object);
   
   // Using an enhanced loop to iterate over each entry
   for(Map.Entry me : mapString2Object.entrySet()) 
   {
     print(me.getKey() + " is { ");
-    myObject obj=/*_upcast*/(myObject)(me.getValue());//Second () required by C++ translation
+    myTest obj=/*_upcast*/(myTest)(me.getValue());//Second () required by C++ translation
     println(obj.A,obj.B,"}");
   }
   

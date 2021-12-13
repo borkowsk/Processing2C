@@ -1,4 +1,5 @@
-s/([\,\(\s*]*\s*)(myObject|FloatList|IntList|StringList|HashMap|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g
-s/([,<])(myObject|Object)>/\1p\2>/g
+s/([\,\(\s*]*\s*)(myTest|FloatList|IntList|StringList|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g
+s/([\,\(\s*]*\s*)(ArrayList|HashMap)\s*(<[A-Za-z1-9_,<>]+>)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g
+s/([,<])(myTest|Object)>/\1p\2>/g
 s/<(Link)>/<p\1>/g
 s/(aNetworkType|aCriterion)\./\1\:\:/g

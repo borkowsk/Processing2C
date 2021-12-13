@@ -60,6 +60,8 @@ void processing_window::setup()
                   exit(); //<>//
   
   println("\npositions.txt is open");
+  
+  //println(reader->hashCode());// :-D TODO!
 }
 
 int counter=0;

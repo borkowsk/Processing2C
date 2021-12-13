@@ -15,36 +15,50 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//Test for HashMaps
+/// Test for HashMaps
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "MAPTEST.pde"
 //////////////////////////////////////////////////////////////////////////////////
 /// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
 //HashMap is used here//To wciąż potrzebne do for(auto me : <<AnyHashMap>>->entrySet()) 
 
-sHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
-sHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
-sHashMap<String,float>    mapString2Float=new HashMap<String,float>();
-sHashMap<String,String>   mapString2String=new HashMap<String,String>();
+pHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
+pHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
+pHashMap<String,float>    mapString2Float=new HashMap<String,float>();
+pHashMap<String,String>   mapString2String=new HashMap<String,String>();
+pHashMap<String,pmyTest>   mapString2Object;
 
-class myObject: public virtual Object{
+class myTest: public virtual Object{
   public:
   int A;float B;
-  myObject(int iA,float iB)
+  myTest(int iA,float iB)
   {
     A=iA;B=iB;
   }
 };
 
-sHashMap<String,pmyObject> mapString2Object;
+void adding(pHashMap<String,pmyTest>   map)
+{
+  map->put("Daga",new myTest(-1,-0.99999));
+  map->put("Elfaba",new myTest(0,0.0));
+  map->put("Fasaba",new myTest(1,+0.99999));
+}
+
+void texting(pHashMap<String,pmyTest>   map)
+{
+  int y=0;
+  for(auto me:map->entrySet())
+    text(me->getKey()+ String("!"),width/2,y+=16);
+}
 
 void processing_window::setup()
 {
+  size(200,200);
   // Putting key-value pairs in the HashMap
   mapString2Integer->put("Ava", 1);
   mapString2Integer->put("Cait", 35);
   mapString2Integer->put("Casey", 36);
-  
+
   // Using an enhanced loop to iterate over each entry
   for(auto me : mapString2Integer->entrySet()) 
   {
@@ -60,16 +74,18 @@ void processing_window::setup()
   
   //More complicated
   println("\nUsing myObject");
-  mapString2Object=new HashMap<String,pmyObject>();
-  mapString2Object->put("Ataga",new myObject(-1,-0.99999));
-  mapString2Object->put("Bulba",new myObject(0,0.0));
-  mapString2Object->put("Cebas",new myObject(1,+0.99999));
+  mapString2Object=new HashMap<String,pmyTest>();
+  mapString2Object->put("Ataga",new myTest(-1,-0.99999));
+  mapString2Object->put("Bulba",new myTest(0,0.0));
+  mapString2Object->put("Cebas",new myTest(1,+0.99999));
+  adding(mapString2Object);
+  texting(mapString2Object);
   
   // Using an enhanced loop to iterate over each entry
   for(auto me : mapString2Object->entrySet()) 
   {
     print(me->getKey() +  String(" is { "));
-    pmyObject obj=static_cast<pmyObject>(me->getValue());//Second () required by C++ translation
+    pmyTest obj=static_cast<pmyTest>(me->getValue());//Second () required by C++ translation
     println(obj->A,obj->B,"}");
   }
   

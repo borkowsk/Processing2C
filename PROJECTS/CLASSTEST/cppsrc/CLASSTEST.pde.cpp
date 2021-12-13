@@ -70,8 +70,6 @@ class AnimalFeeder: public virtual Object{
         }
 };
 
-void print_animals(pArrayList<pAnimal> anim);
-
 void processing_window::setup()
 {
     size(150,100);
@@ -131,25 +129,17 @@ void processing_window::setup()
     //  println("Any dog is an animal");
 
     //Polymorphism
-    pArrayList<pAnimal> animals = new ArrayList<pAnimal>();
+    pArrayList<pAnimal> animals= new ArrayList<pAnimal>();
     animals->add(new Cat());
     animals->add(new Dog());
     pAnimalFeeder feeder=new AnimalFeeder();
     feeder->feed(animals);
 
-    print_animals(animals);  //\TODO - JEST PROBLEM Z KONWERSJĄ... DZIWNY
+    print_animals(animals);  
     println(animals);  
-    print_animals(animals); //Sprawdzenie czy wywołanie funkcji z parametrem obiektowym nie niszczy pamięci!
-    // error: could not convert ‘animals’ from ‘Processing::sArrayList<Processing::ptr<Animal> >’
-    //                                      to ‘Processing::ArrayList<Processing::ptr<Animal> >’
-    //138 |     print_animals(animals);
-    //    |                   ^~~~~~~
-    //    |                   |
-    //    |                   Processing::sArrayList<Processing::ptr<Animal> >
+    print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
 }
 
-//Deklaracja z local.h - \TODO JEST Z BŁĘDEM!!! Poprawić trzeba w skryptach
-//void print_animals(ArrayList<pAnimal> anim); /// Drukowanie własną metodą
 void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
 {
       for(pAnimal a:anim)

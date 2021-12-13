@@ -21,7 +21,7 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 // Simulation have to collect and write down statistics from every step
 /////////////////////////////////////////////////////////////////////////////////////////
-PrintWriter outstat;/// A tu używamy KLASY zdefiniowanej w bibliotece
+PrintWriter outstat;
 
 void initializeStats() { ///
   String FileName=modelName+=String("_s")+side+String("d")+density+String("i")+Number_of_identities
