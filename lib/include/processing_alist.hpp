@@ -113,25 +113,33 @@ public:
     using std::vector<T>::operator[];
 };
 
+    //template<class T>
+    //using Vec = vector<T, Alloc<T>>; // type-id is vector<T, Alloc<T>>
+    //Vec<int> v; // Vec<int> is the same as vector<int, Alloc<int>>
+template<class T>
+using pArrayList = self_printable_ptr< ArrayList<T> >;
+//typedef Processing::self_printable_ptr< ArrayList<T> > pArrayList<T>;
+
 /// \brief Template for interface for ArrayLists of objects
 /// Processing/JAVA handle semantics for list
+/*
 template<class T>
-class sArrayList:public self_printable_ptr< ArrayList<T> >
+class pArrayList:public self_printable_ptr< ArrayList<T> >
 {
 public:
     ///Default (Empty) constructor
-    sArrayList()
+    pArrayList()
     {}
 
     ///RAW POINTER constructor
-    sArrayList(ArrayList<T>* lst): self_printable_ptr< ArrayList<T> >(lst)
+    pArrayList(ArrayList<T>* lst): self_printable_ptr< ArrayList<T> >(lst)
     {}
 
     /// Initializer list constructor
-    sArrayList(std::initializer_list<T> lst);
+    pArrayList(std::initializer_list<T> lst);
 
     /// Destructor
-    ~sArrayList(){}// Dziedziczone zwalnianie zasobów
+    ~pArrayList(){}// Dziedziczone zwalnianie zasobów
 
     /// Most important operator
     ArrayList<T>* operator -> ()
@@ -168,7 +176,7 @@ public:
     //T&        operator [] (size_t i) { return (*this->get())[i]; }
     //size_t    length() { return this->get()->length; }
 };
-
+*/
 
 }//END of namespace Processing
 /********************************************************************/

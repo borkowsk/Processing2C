@@ -19,7 +19,7 @@ using namespace Processing;
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
 ////////////////////////////////////////////////////////////////////
-sArrayList<String> testStrings=nullptr;
+pArrayList<String> testStrings=nullptr;
 pStringList inventory=new StringList();
 pFloatList inventoryF;
 pIntList inventoryI;

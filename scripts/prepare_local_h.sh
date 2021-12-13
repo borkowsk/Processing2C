@@ -86,11 +86,11 @@ echo "#endif" >> local.h
 #cat userclasses.sed
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-08                   */
+#/*               PROCESSING2C  version 2021-12-13                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
-#/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+#/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 #/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 #/*    GITHUB: https://github.com/borkowsk                           */
 #/*                                                                  */
