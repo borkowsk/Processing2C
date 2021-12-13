@@ -63,7 +63,10 @@ public:
     }
 };
 
+template<class K,class V>
+using pHashMap = self_printable_ptr< HashMap<K,V> >;
 
+/*
 template<class K,class V>
 class sHashMap:public self_printable_ptr< HashMap<K,V> >
 {
@@ -80,7 +83,7 @@ public:
     int     size() const //Returns the number of elements in this list.
     { return this->get()->size(); }
 };
-
+*/
 
 }//END of namespace Processing
 /********************************************************************/
