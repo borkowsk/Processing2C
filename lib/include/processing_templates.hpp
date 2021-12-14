@@ -38,6 +38,9 @@ template<class T>
 class ptr:public std::shared_ptr<T>
 {
   public:
+      /// Destructor
+      ~ptr(){} // = default; ??? TODO?
+
       ///Constructors
       ptr():std::shared_ptr<T>(nullptr)//empty
       {}
@@ -59,9 +62,6 @@ class ptr:public std::shared_ptr<T>
       {
           assert(ini.get()==nullptr || this->get()!=nullptr);
       }
-
-      /// Destructor
-      ~ptr(){} // = default; ??? TODO?
 
       //Przypisania  //using std::shared_ptr<T>::operator = ;//kipisz!!! :-(
       //^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
@@ -91,8 +91,7 @@ class ptr:public std::shared_ptr<T>
       bool operator == (std::nullptr_t p) const { return this->get()==p;}
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
-      //Dostęp do wskaźnika przechowywanego
-      //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ // TODO ? CZY TO POTRZEBNE?
+      /// Dostęp do wskaźnika przechowywanego obiektu
       T* operator -> () { return this->get();}
       operator T* () { return this->get();}
 };
@@ -123,7 +122,7 @@ class array
 {
       T* _ptr;
   public:
-      size_t length;//Processing ma to jako goły atrybut a nie akcessor
+      size_t length;//Processing ma to jako goły atrybut, a nie metodę akcesorową
 
       ~array() { delete [] _ptr; } // Zwalnianie zasobów
       array(size_t N); //Jedyny konstruktor
@@ -139,16 +138,20 @@ template<class T>
 class sarray:public ptr< array<T> >
 {
   public:
-      ~sarray(){}// Odziedziczone zwalnianie zasobów
-      sarray(){}
+      //using ptr< array<T> >::operator ->;??? //NIE?
+
+     ~sarray() = default;// Odziedziczone zwalnianie zasobów
+      sarray() = default;
+      sarray(sarray const&) = default; //??? TODO TODO ? chyba OK
       sarray(array<T>* tab): ptr< array<T> >(tab){}
       sarray(std::initializer_list<T> lst);
 
-      array<T>*   operator -> () { return this->get();}
-      T&          operator [] (std::size_t i) { return (*this->get())[i]; }
-      T*          begin() { return &(*this)[0]; }
-      T*          end() { return &(*this)[ length() ]; }
-      std::size_t length() { return this->get()->length; }
+      array<T>*   operator -> () { return this->get();} // dublet? TODO usunąć?
+      T&          operator [] (std::size_t i) const { return (*this->get())[i]; }
+      T*          begin() const { return &(*this)[0]; }
+      T*          end() const { return &(*this)[ length() ]; }
+
+      std::size_t length() const { return this->get()->length; }
 };
 
 /**
@@ -159,10 +162,9 @@ class sarray:public ptr< array<T> >
 template<class T>
 class matrix:public array< sarray<T> >
 {
-  public:
-      ~matrix(){}// Odziedziczone zwalnianie zasobów
-       matrix(std::size_t N,std::size_t M);//Jedyny konstruktor
-      //sarray<T>& operator [] (size_t j);//???
+public:
+    ~matrix() = default;// Odziedziczone zwalnianie zasobów
+    matrix(std::size_t N,std::size_t M);//Jedyny konstruktor
 };
 
 /**
@@ -174,19 +176,22 @@ template<class T>
 class smatrix:public ptr< matrix<T> >
 {
   public:
-      ~smatrix(){}// Odziedziczone zwalnianie zasobów
-      smatrix(){}
-      smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
-      //smatrix(std::initializer_list<T> lst);//Na razie nigdzie nie używane. Potrzebne?
+      //using ptr< matrix<T> >::operator ->; //NIE?
 
-      matrix<T>* operator -> () { return this->get();}
-      sarray<T>& operator [] (size_t j) { return (*this->get())[j]; }
-      sarray<T>* begin() { return &(*this)[0]; }
-      sarray<T>* end() { return &(*this)[ length() ]; }
-      size_t     length() { return this->get()->length; }
+     ~smatrix() = default; // Odziedziczone zwalnianie zasobów
+      smatrix() = default;
+      smatrix(smatrix const&) = default; //???  TODO ? chyba OK
+      smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
+      smatrix(std::initializer_list<T> lst);//Jak na razie nigdzie nie używane. TODO TEST!
+
+      //matrix<T>* operator -> () { return this->get();} // dublet? TODO usunąć?
+      sarray<T>& operator [] (size_t j) const { return (*this->get())[j]; } // dublet? NIE!
+      sarray<T>* begin() const { return &(*this)[0]; } // dublet? NIE!
+      sarray<T>* end() const { return &(*this)[ this->get()->length ]; } // dublet? NIE!
+      //size_t     length() { return this->get()->length; } // dublet? TODO usunąć?
 };
 
-// PODRĘCZNE IMPLEMETACJE INLINE
+// PODRĘCZNE IMPLEMENTACJE INLINE
 //===========================================================
 
 /**
@@ -245,7 +250,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-12-07                   */
+/*               PROCESSING2C  version 2021-12-14                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

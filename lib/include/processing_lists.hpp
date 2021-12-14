@@ -17,7 +17,8 @@ namespace Processing
   ///
   /// \brief The FloatList class
   ///
-  /// \link https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
   class FloatList:private std::vector<float>,virtual public _self_printable
   {
      public:
@@ -25,8 +26,12 @@ namespace Processing
       using     std::vector<float>::end;
       using     std::vector<float>::operator[];
 
-      FloatList(){}
+      ~FloatList()=default;
+      FloatList()=default;
+      FloatList(FloatList const&) = default;  // copy-constructor (not aggregate initialization)
+      FloatList(std::initializer_list<int>);// initializer-list constructor (not copy constructor)
       FloatList(int initialSize):std::vector<float>(initialSize){}
+
       int       size() const;// 	Get the length of the list
       void      clear();// 	Remove all entries from the list
       float     get(int index);// 	Get an entry at a particular index
@@ -45,6 +50,7 @@ namespace Processing
       void      sortReverse();// 	Reverse sort, orders values from highest to lowest
       void      reverse();// 	Reverse the order of the list elements
       void      shuffle();// 	Randomize the order of the list elements
+
       sarray<float>     array();// 	Create a new array with a copy of all the values
       String print() const;
   };
@@ -52,7 +58,8 @@ namespace Processing
   ///
   /// \brief The IntList class
   ///
-  /// \link https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
   class IntList:private std::vector<int>,virtual public _self_printable
   {
      public:
@@ -60,8 +67,12 @@ namespace Processing
        using     std::vector<int>::end;
        using     std::vector<int>::operator[];
 
-       IntList(){}
+       ~IntList()=default;
+       IntList()=default;
+       IntList(IntList const&) = default;  // copy-constructor (not aggregate initialization)
+       IntList(std::initializer_list<int>);// initializer-list constructor (not copy constructor)
        IntList(int initialSize):std::vector<int>(initialSize){}
+
        int      size() const;// 	Get the length of the list
        void     clear();// 	Remove all entries from the list
        int      get(int index);// 	Get an entry at a particular index
@@ -80,6 +91,7 @@ namespace Processing
        void     sortReverse();// 	Reverse sort, orders values from highest to lowest
        void     reverse();// 	Reverse the order of the list elements
        void     shuffle();// 	Randomize the order of the list elements
+
        sarray<int>  array();// 	Create a new array with a copy of all the values
        String print() const;
   };
@@ -87,7 +99,8 @@ namespace Processing
   ///
   /// \brief The StringList class
   ///
-  /// \link https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/container/vector
+  /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
   class StringList:private std::vector<Processing::String>, virtual public _self_printable
   {
      public:
@@ -95,8 +108,13 @@ namespace Processing
        using     std::vector<Processing::String>::end;
        using     std::vector<Processing::String>::operator[];
 
-       StringList(){}
+       ~StringList() = default;
+       StringList() = default;
+       StringList(StringList const&) = default;  // copy-constructor (not aggregate initialization)
+       StringList(std::initializer_list<String> lst);// initializer-list constructor (not copy constructor)
+       StringList(sarray<String> const& arr);
        StringList(int initialSize):std::vector<Processing::String>(initialSize){}
+
        int      size() const;// 	Get the length of the list
        void     clear();// 	Remove all entries from the list
        String   get(int index);// 	Get an entry at a particular index
@@ -112,6 +130,7 @@ namespace Processing
        void     shuffle();// 	Randomize the order of the list elements
        void     lower();// 	Make the entire list lower case
        void     upper();// 	Make the entire list upper case
+
        sarray<int>  array();// 	Create a new array with a copy of all the values
        String print() const;
   };
@@ -187,10 +206,23 @@ inline String StringList::print() const
     return ret;
 }
 
+inline void StringList::append(String &what)
+{
+    assert("Not implemented"== nullptr);
+}
+
+inline StringList::StringList(const sarray<String> &arr):
+        std::vector<Processing::String>(arr.length())
+{
+    int i=0;
+    for(String const& s:arr)
+        (*this)[i++]=s;
+}
+
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
+/*               PROCESSING2C  version 2021-12-14                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -30,10 +30,10 @@ config.dat
 
 # Executables
 *.exe
-*.out
 *.app
 
 # Linux executables - specific for this repository
+*.out
 *_x11
 *_svg
 
@@ -41,10 +41,11 @@ config.dat
 # IDE configs or cmake temporaries
 *.cmake
 cmake*
-CMakeFiles/
-cmake-build-debug/
 CMakeLists.txt.user
 Makefile
+CMakeFiles/
+cmake-build-debug/
+NBuild/
 
 *.cbp
 .idea
