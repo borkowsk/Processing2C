@@ -11,6 +11,7 @@
 //#include "processing_consts.hpp"
 //#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_string.hpp"
 #include "processing_library.hpp"
 #include "processing_files.hpp"
 #include "_impl_errors.h"
@@ -22,7 +23,7 @@ namespace Processing
 {
 
 static inline std::ostream& operator << (std::ostream& o,String& str)
-{
+{                               assert(str.notEmpty());
     o<<str._std_str();
     return o;
 }

@@ -50,7 +50,7 @@ namespace Processing
         String(const ptr<T> p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
 
         /// Destructor
-        virtual ~String();//??? Na pewno potrzebne?
+        ~String();//??? Na pewno potrzebne?
 
         /// It makes a pointer on itself :-D, such a ugly HACK ...
         /// But it works
@@ -130,7 +130,7 @@ namespace Processing
         _string_param(ptr<T> p):_string_param(p.get()){}
 
         /// Destructor
-        virtual ~_string_param();// Zwalnianie zasobów
+        ~_string_param();// Zwalnianie zasobów - czy ta deklaracja potrzebna?
 
         ///Operator konkatenacji dla _string_param.
         ///Wydaje się niepotrzebny, ale bez niego dłuższe konkatenacje czasem się nie udają

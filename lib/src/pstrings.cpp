@@ -24,9 +24,9 @@ namespace Processing
 
 String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
 {
-#ifdef DEBUG
-    FIRST_TIME_ERRMESSAGE( " called!" );
-#endif
+//#ifdef DEBUG
+    FIRST_TIME_ERRMESSAGE( " called for " + (*this) );
+//#endif
 }
 
 String::String(const String& par):std::string( par.c_str() )

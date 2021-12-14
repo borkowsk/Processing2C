@@ -19,12 +19,12 @@ sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g' | LC_COLLAT
 #... inside declarations
 echo "s/([\,\(\s*]*\s*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
- # (\&*)(\s+) ? To się powinno pojawiać tylko w wyniku rozwinięcia dyrektywy, więc po wszystkim innym
-echo 'FloatList|IntList|StringList|Object)\s*(\&*)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed 
+ # (\&*)(\s+) -> \/\*_reference\*\/ : & powinien pojawiać tylko w wyniku rozwinięcia dyrektywy, więc po wszystkim innym
+echo 'FloatList|IntList|StringList|Object)(\s*\/\*_reference\*\/\s*|\s+)([A-Za-z1-9_]+)\s*([:;,\)\(\=])/\1p\2\3\4\5/g'  >> userclasses.sed 
 #... predefined JAVA templates
 echo -e "_@ENTER_" >> userclasses.sed
 # (\&*)(\s+) ? Potrzebne?
-echo 's/([\,\(\s*]*\s*)(ArrayList|HashMap)\s*(<[A-Za-z1-9_,<>]+>)(\s+)(\w+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed  
+echo 's/([\,\(\s*]*\s*)(ArrayList|HashMap)\s*(<[A-Za-z1-9_,<>]+>)(\s+)([A-Za-z1-9_]+)\s*([:;,\)\(\=])/\1p\2\3\4\5\6/g'  >> userclasses.sed  
 
 #...inside templates parameter lists
 echo -e "_@ENTER_" >> userclasses.sed
@@ -79,8 +79,8 @@ sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 #podmiana boolean
 sed 's|boolean|bool   |g' |\
-sed 's|\/\*_reference\*\/|\& |g' |\
 sed -E -f userclasses.sed  |\
+sed 's|\/\*_reference\*\/|\&|g' |\
 #poprawianie komentarzy
 sed -E 's|//\s*\{*\s*///|///|' |\
 #usuwanie zbędnych odstępów
