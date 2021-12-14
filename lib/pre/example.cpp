@@ -7,7 +7,7 @@ namespace Processing
 template<class T>
 class ptr
 {
-  ///INFO: Proxy for standard shared_ptr for mimic Procesing "object references" behaviour
+  ///INFO: Proxy for standard shared_ptr for mimic Processing "object references" behaviour
       std::shared_ptr<T> _ptr;
   public:
       ~ptr(){}
