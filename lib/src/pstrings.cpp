@@ -22,15 +22,17 @@
 namespace Processing
 {
 
-String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
-{
+//String::~String()// Zwalnianie zasobów przez destruktor klasy bazowej
+//{
 //#ifdef DEBUG
-    FIRST_TIME_ERRMESSAGE( " called for " + (*this) );
+//    FIRST_TIME_ERRMESSAGE( " called for " + (*this) );
 //#endif
-}
+//}
 
-String::String(const String& par):std::string( par.c_str() )
-{}
+//String::String(const String& par):std::string( par.c_str() )
+//{
+//    FIRST_TIME_ERRMESSAGE( " called for " + (*this) );
+//}
 
 String::String(const char c):std::string({c})
 {}
@@ -64,7 +66,7 @@ void _errMessage(Processing::String msg,const char* func,int line,const char* fi
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
+ *               PROCESSING2C  version 2021-12-14                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

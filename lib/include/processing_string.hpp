@@ -28,13 +28,14 @@ namespace Processing
     {
     public:
         friend class Processing::_string_param;
-
+        /// Destructor
+        ~String() = default ;//raczej potrzebne?
         /// Default constructor
-        String(){}
-        /// NULL init constructor
-        String(nullptr_t p):String(){}
+        String() = default ;
         /// Copy constructor
-        String(const String&);
+        String(String const&) = default ;
+        /// NULL init constructor
+        String(nullptr_t p):String(){} //POTRZEBNE?
         /// From std::string constructor
         String(const std::string& str):std::string(str){}
         /// From C like string and const string constructor
@@ -49,8 +50,6 @@ namespace Processing
         template<class T>
         String(const ptr<T> p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
 
-        /// Destructor
-        ~String();//??? Na pewno potrzebne?
 
         /// It makes a pointer on itself :-D, such a ugly HACK ...
         /// But it works
