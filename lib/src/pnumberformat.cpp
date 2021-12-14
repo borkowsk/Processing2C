@@ -59,12 +59,9 @@ String operator  + (_string_param v,_string_param s)
     return ret;
 }
 
-_string_param::~_string_param()// Zwalnianie zasobów przez destruktor klasy bazowej
-{
-#ifdef DEBUG
-    std::cerr<<__FUNCTION__<<" called!"<<std::endl;
-#endif
-}
+//_string_param::~_string_param()// przerobiony na = default
+//{
+//}
 
 _string_param::_string_param(char p):String( p )// inline?
 {}

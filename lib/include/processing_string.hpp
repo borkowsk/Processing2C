@@ -114,7 +114,14 @@ namespace Processing
     class _string_param:public String
     {
     public:
-        _string_param(const _self_printable& p);
+        /// Destructor
+        ~_string_param() = default; // Zwalnianie zasobów - czy ta deklaracja potrzebna?
+        /// Default constructor
+        _string_param() = default;
+        /// Copy constructor
+        _string_param(_string_param const& ) = default;
+        /// Non trivial constructors
+        /// \param p : any type
         _string_param(const String&          p):String(p){}
         _string_param(const std::string&     p):String(p){}
         _string_param(const char*    p):String(p){}
@@ -124,12 +131,11 @@ namespace Processing
         _string_param(float          p);
         _string_param(int            p);
         _string_param(long unsigned  p);
+        _string_param(_self_printable const& p);
         _string_param(std::exception &e);
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
 
-        /// Destructor
-        ~_string_param();// Zwalnianie zasobów - czy ta deklaracja potrzebna?
 
         ///Operator konkatenacji dla _string_param.
         ///Wydaje się niepotrzebny, ale bez niego dłuższe konkatenacje czasem się nie udają
@@ -158,10 +164,16 @@ namespace Processing
     class  self_printable_ptr:public ptr<T>,virtual public _self_printable/*interface*/
     {
     public:
-        //using ptr<T>::operator = ; //Tak to nie działa. TODO: A w ogóle po co???
+        /// Najważniejsza metoda wymagana przez interface
         String print() const { return  this->get()->print(); }
 
-        self_printable_ptr():ptr<T>(nullptr){}
+        /// Destructor
+        ~self_printable_ptr() = default ;
+        /// Default, empty constructor
+        self_printable_ptr() = default ;
+        /// Copy constructor
+        self_printable_ptr(self_printable_ptr const& ) = default ;
+        /// MOST IMPORTANT CONSTRUCTOR (for accept " new T() " )
         self_printable_ptr(T* ini):ptr<T>(ini){}
 
         ///\todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
@@ -172,8 +184,19 @@ namespace Processing
         //    return *this;
         //}
 
-        auto begin() { return this->get()->begin(); } //need C++14 !
-        auto end()   { return this->get()->end(); } //need C++14 !
+        auto begin() //auto return need C++14 !
+        {
+            T* raw=this->get(); //Code splited for DEBUGing
+            auto iter=raw->begin();
+            return iter;
+        }
+
+        auto end() //auto return need C++14 !
+        {
+            T* raw=this->get(); //Code splited for DEBUGing
+            auto iter=raw->end();
+            return iter;
+        }
     };
 
     // Implementacje
