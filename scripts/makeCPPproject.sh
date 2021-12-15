@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.151"
+Pr2CVERSION="0.16"
 
 if [ $# -ne 0 ]; 
 then
@@ -91,6 +91,11 @@ set( SYMSHELL "$SYMSHELL" )
 set( WBRTM    "$WBRTM" )
 
 set( MYLIBS   "$WBRTM/lib" )
+
+#add_subdirectory( "\${SYMSHELL}"
+#                  "\${SYMSHELL}" )
+#add_subdirectory( "\${PROC2C}/lib/"
+#                  "\${PROC2C}/lib/" )
 
 add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 

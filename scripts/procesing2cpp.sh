@@ -93,6 +93,7 @@ sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
 sed -E 's/boolean([ >])/bool   \1/g' |\
 sed 's/this\./this->/g' |\
+sed -E 's/([(,]\s*)(this)(\s*[,)])/\1SAFE_THIS\3/g' |\
 sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
 sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
@@ -175,15 +176,15 @@ sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
-echo -e "//$0 did it\n"
+echo -e "//$(dirname $0) did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-12-13                   */
+#/*               PROCESSING2C  version 2021-12-15                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
-#/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
+#/*    Instytut Studów Społecznych Uniwersytetu Warszawskiego        */
 #/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 #/*    GITHUB: https://github.com/borkowsk                           */
 #/*                                                                  */
