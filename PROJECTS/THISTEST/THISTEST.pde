@@ -21,6 +21,7 @@ void call_outside(C obj,String msg) /// dla C++ musi być deklaracja zapowiadaj�
 
 void setup()
 {
+  size(200,200); //Musi być bo pośrednio używamy w setupie funkcji graficznych (text)
   C c=new C(5);
   c.call_inside("First time");
   c.i=10;

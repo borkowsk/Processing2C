@@ -27,7 +27,7 @@ class C: public virtual Object{
   int i;
   void call_inside(String msg)
   {
-     call_outside(this,msg);    
+     call_outside(this,msg);
   }
 };
 
@@ -41,6 +41,7 @@ void call_outside(pC obj,String msg) /// dla C++ musi być deklaracja zapowiadaj
 
 void processing_window::setup()
 {
+  size(200,200); //Musi być, bo pośrednio używamy w setupie funkcji graficznych (text)
   pC c=new C(5);
   c->call_inside("First time");
   c->i=10;
