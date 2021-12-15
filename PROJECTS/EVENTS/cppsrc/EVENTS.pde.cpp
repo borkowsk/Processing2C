@@ -134,5 +134,5 @@ void processing_window::onMouseReleased() {
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

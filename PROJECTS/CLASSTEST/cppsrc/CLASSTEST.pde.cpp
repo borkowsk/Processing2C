@@ -145,5 +145,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

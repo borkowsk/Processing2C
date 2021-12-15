@@ -92,5 +92,5 @@ void processing_window::setup()
   println("\nDefault print method:");
   println(mapString2Object);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

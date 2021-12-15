@@ -67,5 +67,5 @@ void processing_window::draw()
   s[a][b]=nf(c[a][b]);
   println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

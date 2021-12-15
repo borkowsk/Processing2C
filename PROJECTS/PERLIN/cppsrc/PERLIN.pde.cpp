@@ -114,5 +114,5 @@ void draw4() /// May be used before definition
 }
 
 //See also: https://www->openprocessing->org/sketch/494102/
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

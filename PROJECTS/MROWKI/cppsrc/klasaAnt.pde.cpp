@@ -93,5 +93,5 @@ class Ant: public virtual Object{
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

@@ -119,5 +119,5 @@ void processing_window::draw()
   }
 
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

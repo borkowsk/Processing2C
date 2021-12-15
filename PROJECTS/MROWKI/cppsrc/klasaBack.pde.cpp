@@ -67,5 +67,5 @@ class Back: public virtual Object{
     if (amountFood<=0) id = 0;
   }
 };
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

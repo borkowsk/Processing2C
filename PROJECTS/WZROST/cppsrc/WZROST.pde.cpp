@@ -115,5 +115,5 @@ void processing_window::draw()
     Step++;
   }
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

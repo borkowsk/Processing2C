@@ -82,5 +82,5 @@ void processing_window::draw() { //May be called only once, or many times
   println(inventoryI);
   user_print(inventoryI);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

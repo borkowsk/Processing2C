@@ -38,5 +38,5 @@ fill(255);
 ellipseMode(CORNER);
 arc(400,400,100,100,radians(10),radians(180),PIE);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

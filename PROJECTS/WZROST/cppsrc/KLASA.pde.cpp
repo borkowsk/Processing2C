@@ -69,5 +69,5 @@ class KLASA: public virtual Object{
     //super::finalize();//Ale na to Processing robi blup...
   }
 };
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

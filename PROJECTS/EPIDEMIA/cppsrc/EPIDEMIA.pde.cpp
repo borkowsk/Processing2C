@@ -92,7 +92,7 @@ void processing_window::setup()
   //INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo->pde)
   //if(WITH_VIDEO) 
   //{ 
-  //  initVideoExport(this,modelName+ String(".mp4"),FRAMEFREQ);
+  //  initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
   //  FirstVideoFrame();
   //}
   
@@ -159,5 +159,5 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM MAIN TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

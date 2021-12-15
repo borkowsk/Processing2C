@@ -67,5 +67,5 @@ void processing_window::setup()  ///
   toScreen(SL);
   toScreen(SAL);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

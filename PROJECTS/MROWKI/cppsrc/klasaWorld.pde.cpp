@@ -274,5 +274,5 @@ class World: public virtual Object{
     }
   }
 };
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

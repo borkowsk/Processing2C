@@ -209,5 +209,5 @@ void doVisualisation() /// Must be predeclared
   println(Log,Step+String("\t ")+alives+String("\t ")+burning+String("\t ")+empty+String("\t ")+meanSize);
   if(Step % 5000==0) Log->flush();//Sometimes writes the buffer to the file
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /home/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: THISTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,7 +15,6 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących Processing::ptr<...>
 /// To powoduje GPF bo tworzy się nowy _shared_ptr<...> nie powiązany z tym trzymającym obiekt! 
 
@@ -27,11 +26,8 @@ class C: public virtual Object{
 	}
   int i;
   void call_inside(String msg)
-  {  // The best way to do this is to use the aliasing constructor:
-     // nasty_function(std::shared_ptr<MyType>(std::shared_ptr<MyType>{}, &t));
-     auto safe_this=SAFE_RAW_PTR( this );
-     call_outside(safe_this,msg);
-     call_outside(SAFE_THIS,msg);
+  {
+     call_outside(SAFE_THIS,msg);    
   }
 };
 
@@ -45,7 +41,7 @@ void call_outside(pC obj,String msg) /// dla C++ musi być deklaracja zapowiadaj
 
 void processing_window::setup()
 {
-  size(200,200); //Musi być, bo pośrednio używamy w setupie funkcji graficznych (text)
+  size(200,200); //Musi być bo pośrednio używamy w setupie funkcji graficznych (text)
   pC c=new C(5);
   c->call_inside("First time");
   c->i=10;
@@ -54,5 +50,5 @@ void processing_window::setup()
   c->call_inside("Third time");
   saveFrame();
 }
-///home/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts did it
 

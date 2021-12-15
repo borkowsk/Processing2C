@@ -103,5 +103,5 @@ void processing_window::setup()
   text("binary___gray:" ,10,pos+=fontSize);
   text(String("      ") + binary(gray),10,pos+=fontSize); 
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

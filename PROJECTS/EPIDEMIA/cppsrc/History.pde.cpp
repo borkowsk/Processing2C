@@ -209,5 +209,5 @@ void dottedLine(float x1, float y1, float x2, float y2, float steps) ///Potrzebn
    point(x,y);
  }
 } 
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

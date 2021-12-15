@@ -114,5 +114,5 @@ void processing_window::exit()
   save("exit.png");
   processing_window_base::exit();
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

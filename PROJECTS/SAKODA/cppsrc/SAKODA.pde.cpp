@@ -57,7 +57,7 @@ void processing_window::setup()
     
   if(WITH_VIDEO) 
   {
-    //initVideoExport(this,modelName+ String(".mp4"),FRAMEFREQ);
+    //initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
     //FirstVideoFrame();
   }
   
@@ -104,5 +104,5 @@ void writeStatusLine() /// Used also for stats
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

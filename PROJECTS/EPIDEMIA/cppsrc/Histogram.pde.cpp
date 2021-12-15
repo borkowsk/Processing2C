@@ -61,5 +61,5 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
    fill(random(255),random(255),random(255));
    text(String("N:")+N+String("\nMax:")+Max,startx+NumOfBaskets,starty);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

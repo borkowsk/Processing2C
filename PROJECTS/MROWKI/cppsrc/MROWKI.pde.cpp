@@ -143,5 +143,5 @@ void petla() { /// Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

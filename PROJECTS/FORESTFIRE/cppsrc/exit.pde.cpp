@@ -25,5 +25,5 @@ void processing_window::exit() //it is called whenever a window is closed.
   println("Thank You");
   processing_window_base::exit(); //What library superclass have to do at exit
 } 
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 

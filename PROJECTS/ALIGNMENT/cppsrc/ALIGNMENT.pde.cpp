@@ -4,7 +4,7 @@
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include "processing_window.hpp"
-//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
+#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
 #include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
 #include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
@@ -15,9 +15,9 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-/// Ellipse,Rect & Text aligment test for Processing2C
+/// Ellipse,Rect & Text alignment test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: "ALIGMENT.PDE"
+/// ORIGINAL FILE: "ALIGNMENT.PDE"
 /////////////////////////////////////////////////////////////////
 void cross(float x,float y)
 {
@@ -135,5 +135,5 @@ void processing_window::draw()
   cross(width3_4,height1_4);
   cross(width-1,height-1);
 }
-//../../scripts/procesing2cpp.sh did it
+//../../scripts did it
 
