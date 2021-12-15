@@ -24,7 +24,7 @@ using namespace Processing;
 int searchedX=-1;
 int searchedY=-1;
 bool    Clicked=false;
-pAgent theSelected=nullptr; 
+pAgent  theSelected=nullptr; 
 
 double minDist2Selec=MAX_INT;
 double maxTransSelec=-MAX_INT;

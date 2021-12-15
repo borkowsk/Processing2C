@@ -1,4 +1,4 @@
-//Processing to C++ converter /home/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: STRINGTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -67,5 +67,5 @@ void processing_window::setup()  ///
   toScreen(SL);
   toScreen(SAL);
 }
-///home/data/SCC/__public_git/Processing2C/scripts/procesing2cpp.sh did it
+//../../scripts/procesing2cpp.sh did it
 

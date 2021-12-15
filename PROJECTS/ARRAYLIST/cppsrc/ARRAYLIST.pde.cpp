@@ -20,9 +20,9 @@ using namespace Processing;
 /// ORIGINAL FILE: "ARRAYLIST.pde"
 ////////////////////////////////////////////////////////////////////
 pArrayList<String> testStrings=nullptr;
-pStringList inventory=new StringList();
-pFloatList inventoryF;
-pIntList inventoryI;
+pStringList        inventory=new StringList();
+pFloatList         inventoryF;
+pIntList           inventoryI;
 
 void processing_window::setup() {
   size(200, 200);

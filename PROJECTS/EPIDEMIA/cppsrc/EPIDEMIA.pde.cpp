@@ -53,7 +53,7 @@ int     sumDeath=0;///Ci co umarli
 //HISTORIE DO WYŚWIETLANIA
 pFloatList deaths=new FloatList();///Historia śmierci 
 pFloatList newcas=new FloatList();///Historia nowych zachorowań
-pFloatList cured=new FloatList();///Historia wyleczeń
+pFloatList  cured=new FloatList();///Historia wyleczeń
 
 //PARAMETRY WIZUALIZACJI, STATYSTYKI ITP.
 int cwidth=3;///DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
