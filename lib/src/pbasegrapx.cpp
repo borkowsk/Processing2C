@@ -321,15 +321,19 @@ void saveFrame(_string_param filename)
         FIRST_TIME_ERRMESSAGE( " - special meaning of # ignored!" );
 }
 
+
 void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will save files as screen-0000.tif, screen-0001.tif,
 {
-    dump_screen("screen-");
+    extern String nf(double num,int digits);//Tylko tu potrzeba, szkoda wołać cały nagłówek
+    String name="screen-";
+    name+=nf(frameCount,4);
+    dump_screen(name.c_str());
     FIRST_TIME_ERRMESSAGE( ": files numbering not implemented!" );
 }
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-29                   */
+/*               PROCESSING2C  version 2021-12-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
