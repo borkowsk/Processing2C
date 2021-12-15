@@ -15,25 +15,29 @@
 namespace Processing
 {
 /**
- * \brief The Object class
- * Base class for all Processing/JAVA like class but not pointers
- * see:
+ * The "Object" class.
+ * This is a base class for all Processing/JAVA like class but not pointers
+ * \See
  * \a https://www.javatpoint.com/object-class
  */
 class Object
 {
   private: Object& operator = (const Object&);
   public:
-    virtual ~Object(){}
-    virtual long hashCode() const;///	returns the hashcode number for this object
-    virtual bool equals(const Object& obj) const///	compares the given object to this object.
-    { return this==&obj; }
+    virtual ~Object(){} //TODO =0; ???
+    ///	returns the hashcode number for this object
+    virtual long hashCode() const;
+    ///	compares the given object to this object based on address.
+    /// TODO CHECK what happened with ptrs to inside base classes?
+    virtual bool equals(const Object& obj) const { return this==&obj; }
 };
 
 /**
- * \brief The template class ptr<>
- * Proxy for standard shared_ptr but mimic Processing "object references" behaviour
- * See \a https://en.cppreference.com/w/cpp/memory/shared_ptr
+ * The template class "ptr\<T\>".
+ * Proxy for standard shared_ptr which mimic Processing "object references"
+ * behaviours
+ * \tparam T : any class
+ * \See \a https://en.cppreference.com/w/cpp/memory/shared_ptr
  */
 template<class T>
 class ptr:public std::shared_ptr<T>
@@ -92,30 +96,83 @@ class ptr:public std::shared_ptr<T>
       bool operator == (std::nullptr_t p) const { return this->get()==p;}
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
-      /// Dostęp do wskaźnika przechowywanego obiektu
+      /// Dostęp do atrybutów przechowywanego obiektu
       T* operator -> () { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      /// Dostęp do całości przechowywanego obiektu
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
 
 /**
+ * 'Typedef' pObject is an alias for "ptr\<Object\>" .
+ * Represents "object references" for object of basic class Object
+ * using the same convention like any other Processing like objects.
+ */
+typedef ptr<Object> pObject;
+
+/**
+ * Template function _free_ptr_to releases the raw pointer to A
+ * from shared ptr to (potentially) derived class B
+ */
+    template<class A,class B>
+    inline
+    A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
+    {
+        return (A*)(B*)b;
+    }
+
+/**
+ * Template which imitates JAVA like 'instanceof' function
+ * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
+ */
+    template<typename Base, typename T>
+    inline
+    bool instanceof(ptr<T>& p)
+    {
+        return dynamic_cast<Base*>(p.get()) != nullptr;
+    }
+
+/** Raw pointer de-referencing template.
+ * Needed mostly for extract class type from 'this'.
+ * \example                                             \code
+ *          decltype( _dereference_ptr(this) )
+ *                                                      \endcode
+ * \tparam T : any class
+ * \param ptr : raw ptr to class, typically this
+ * \return de-referenced object
+ * \See \a https://en.cppreference.com/w/cpp/language/decltype
+ */
+template<class T>
+    T _dereference_ptr(T* ptr){ return *ptr;}
+
+/** Macro for creating dummy _shared_ptr from prevent non needed de-allocation
+ * \example                                                 \code
+ *          auto safe_this=SAFE_RAW_PTR( this );
+ *                                                          \endcode
+ * \See \a https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete
+ */
+#define    SAFE_RAW_PTR( ptr )     (std::shared_ptr< decltype( _dereference_ptr( ptr ) ) >( \
+                                    std::shared_ptr< decltype( _dereference_ptr( ptr ) ) >{}, ptr ))
+
+/** Macro for creating dummy _shared_ptr of 'this'
+ * \example                                     \code
+ *              call_outside(SAFE_THIS,msg);
+ *                                              \endcode
+ */
+#define    SAFE_THIS                SAFE_RAW_PTR( this )
+
+/**
  * Representation of JAVA "Comparable" interface
+ * \tparam T : any class
  */
 template<class T>
 /*interface*/ class Comparable
 {
-  ///INFO:
   public:
       virtual int compareTo(ptr<T> o) = 0;
 };
 
 /**
- * \brief pObject is aliasing for ptr<Object>
- * Represents "object references" for object of basic class Object
- */
-typedef ptr<Object> pObject;
-
-/**
- * \brief The template class array
+ * The template class for any simple array.
  * Array of T, sized when constructed
  */
 template<class T>
@@ -131,9 +188,9 @@ class array
 };
 
 /**
- * \brief The template class ptr< array >
+ * The template class "ptr\< array \>" .
  * Represents "object references" for array of T
- * Implements Processing semantics for one dimensional array
+ * Implements additional Processing semantics for one dimensional array
  */
 template<class T>
 class sarray:public ptr< array<T> >
@@ -156,8 +213,8 @@ class sarray:public ptr< array<T> >
 };
 
 /**
- * \brief The template class matrix (2D array)
- * Matrix of T, sized when constructed
+ * The template class matrix (2D array)
+ * Represent Matrix of T, sized when constructed
  * (Tablica dwuwymiarowa opiera się na jednowymiarowych (PL))
  */
 template<class T>
@@ -169,9 +226,9 @@ public:
 };
 
 /**
- * \brief The template class ptr< matrix >
+ * The template class "ptr\< matrix \>" .
  * Represents "object references" for matrix of T
- * Implements Processing semantics for two dimensional array
+ * Implements additional Processing semantics for two dimensional array
  */
 template<class T>
 class smatrix:public ptr< matrix<T> >
@@ -194,27 +251,6 @@ class smatrix:public ptr< matrix<T> >
 
 // PODRĘCZNE IMPLEMENTACJE INLINE
 //===========================================================
-
-/**
- * \brief Function _free_ptr_to releases the raw pointer to A
- */
-template<class A,class B>
-inline
-A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
-{
-    return (A*)(B*)b;
-}
-
-/**
- * \brief JAVA like instanceof function
- * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
- */
-template<typename Base, typename T>
-inline
-bool instanceof(ptr<T>& p)
-{
-   return dynamic_cast<Base*>(p.get()) != nullptr;
-}
 
 /**
  * \brief Template of sarray<> constructor with initialiser list
@@ -251,7 +287,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-12-14                   */
+/*               PROCESSING2C  version 2021-12-15                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

@@ -15,9 +15,6 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-template<class T>
-T _dereference_ptr(T* ptr){ return *ptr;}
-
 
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących Processing::ptr<...>
 /// To powoduje GPF bo tworzy się nowy _shared_ptr<...> nie powiązany z tym trzymającym obiekt! 
@@ -30,13 +27,11 @@ class C: public virtual Object{
 	}
   int i;
   void call_inside(String msg)
-  {
-     auto safe_this=std::shared_ptr< decltype( _dereference_ptr(this) ) >(
-                 std::shared_ptr< decltype( _dereference_ptr(this) ) >{},
-                        this);
-     // The best way to do this is to use the aliasing constructor:
+  {  // The best way to do this is to use the aliasing constructor:
      // nasty_function(std::shared_ptr<MyType>(std::shared_ptr<MyType>{}, &t));
+     auto safe_this=SAFE_RAW_PTR( this );
      call_outside(safe_this,msg);
+     call_outside(SAFE_THIS,msg);
   }
 };
 
