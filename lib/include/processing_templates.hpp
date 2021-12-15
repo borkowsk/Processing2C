@@ -33,6 +33,7 @@ class Object
 /**
  * \brief The template class ptr<>
  * Proxy for standard shared_ptr but mimic Processing "object references" behaviour
+ * See \a https://en.cppreference.com/w/cpp/memory/shared_ptr
  */
 template<class T>
 class ptr:public std::shared_ptr<T>
@@ -92,8 +93,8 @@ class ptr:public std::shared_ptr<T>
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
       /// Dostęp do wskaźnika przechowywanego obiektu
-      T* operator -> () { return this->get();}
-      operator T* () { return this->get();}
+      T* operator -> () { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
 
 /**
