@@ -57,6 +57,7 @@ namespace Processing
   /// See https://docs.oracle.com/javase/7/docs/api/java/io/PrintWriter.html for method details
   class _JAVAOutputStream:public std::ofstream
   {
+  public:
       ///Appends the specified character to this writer.
       //PrintWriter 	append(char c);//TODO - implement?
       ///Appends the specified character sequence to this writer.
@@ -121,6 +122,7 @@ namespace Processing
 
       friend BufferedReader& createReader(_string_param _name);
 
+      bool isOpen() { return _ok();}
   //Not for outside use
   protected:
       /// Checks whether the stream is fit for use
@@ -137,6 +139,9 @@ namespace Processing
       }
       /// for use inside createReader() ONLY
       void _set(std::ifstream* p);
+
+      ///Raw inside ptr for the sake of compatibility ???
+      const _JAVAInputStream* in = nullptr;
   };
 
   /// A class that mimics the write access handle to a text file
@@ -170,6 +175,7 @@ namespace Processing
 
       friend PrintWriter& createWriter(_string_param _name);
 
+      bool isOpen() { return _ok();}
   //Not for outside use
   protected:
       /// Checks whether the stream is fit for use
@@ -186,6 +192,9 @@ namespace Processing
       }
       /// for use inside createWriter() ONLY
       void _set(std::ofstream* p);
+
+      ///Raw inside ptr for compatibility
+      const _JAVAOutputStream* out = nullptr;
   };
 
   /// Create opaque std::ifstream connected to file 'name'

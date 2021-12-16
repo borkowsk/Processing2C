@@ -15,6 +15,7 @@
 #include "processing_library.hpp"
 #include "processing_files.hpp"
 #include "_impl_errors.h"
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 
@@ -55,7 +56,11 @@ PrintWriter& createWriter(_string_param name)
     }
     else
     {
-        ALWAYS_ERRMESSAGE( concat("FILE ",name,"can't be open!") )
+        perror("STORAGE ERROR");
+        ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
+        std::cerr.flush();std::cout.flush();
+        system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
+        //system("/bin/bash ");
         delete file;
     }
 
@@ -78,7 +83,11 @@ BufferedReader& createReader(_string_param name)
     }
     else
     {
-        ALWAYS_ERRMESSAGE( concat("FILE ",name,"can't be open!") )
+        perror("STORAGE ERROR");
+        ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
+        std::cerr.flush();std::cout.flush();
+        system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
+        //system("/bin/bash ");
         delete file;
     }
 
@@ -98,7 +107,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
+ *               PROCESSING2C  version 2021-12-16                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

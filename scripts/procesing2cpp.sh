@@ -114,6 +114,8 @@ sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 #DIRECTIVES
 sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|' |\
+sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|' |\
+sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g'|\
