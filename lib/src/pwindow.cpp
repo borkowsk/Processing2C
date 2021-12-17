@@ -239,6 +239,7 @@ void background(float v1,float v2,float v3,float  alpha)
 void size(int width,int height)
 {
     init_plot(width,height,0,0);
+                                                                                                 assert(_ssh_window!=0);
     strokeWeight(1);
     stroke(0);
     fill(255);
@@ -248,7 +249,7 @@ void size(int width,int height)
 
 void fullScreen()
 {
-    init_plot(1800,1200,0,0);//Powinien dopasowac się do ekranu
+    init_plot(1800,1200,0,0);//Powinien dopasować się do ekranu
     strokeWeight(1);
     stroke(0);
     fill(255);

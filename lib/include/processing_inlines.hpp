@@ -17,33 +17,36 @@ extern int _ELLIPSE_MODE;//=CENTER; /// either CENTER, RADIUS, CORNER, or CORNER
 
 inline void strokeWeight(float Weight)
 {
-    line_width(_LINE_WIDTH=(int)Weight);
+    _LINE_WIDTH=(int)Weight;
+    line_width(_LINE_WIDTH);
 }
 
 inline void noStroke()
 {
-    //line_width(0);//??? TODO?
     _LINE_WIDTH=0;
+    line_width(0);//??? TODO TEST?
 }
 
 inline void stroke(float Gray)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     int S=(int)Gray;
     set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void stroke(float Red,float Green,float Blue)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void stroke(float Gray,float Alpha)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     int S=(int)Gray;
     set_pen_rgba(S,S,S,(int)Alpha,
                 _LINE_WIDTH,1 /*style*/);
 }
-
 
 inline void noFill()
 {

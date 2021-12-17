@@ -34,16 +34,20 @@ int _LINE_WIDTH=1;
 void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
 {
     line_width(_LINE_WIDTH=(int)Weight);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void stroke(float Gray)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     int S=(int)Gray;
     set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void stroke(float Gray,float Alpha)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     int S=(int)Gray;
     set_pen_rgba(S,S,S,(int)Alpha,
                 _LINE_WIDTH,1 /*style*/);
@@ -52,7 +56,9 @@ void stroke(float Gray,float Alpha)
 
 void stroke(float Red,float Green,float Blue)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void stroke(float Red,float Green,float Blue,float Alpha)
@@ -65,6 +71,7 @@ void stroke(float Red,float Green,float Blue,float Alpha)
 //TEMPORARY IMPLEMENTATION OF stroke(color)
 void stroke(const color& col)//Until update of symshell.h (TODO!)
 {
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     stroke(red(col),green(col),blue(col));
     //FIRST_TIME_ERRMESSAGE( ' '<<std::hex<<col.val );
     FIRST_TIME_ERRMESSAGE( " not inline called" );
@@ -84,6 +91,7 @@ void fill(float Gray)
     int S=(int)Gray;
     set_brush_rgb(S,S,S);
     _filled=true;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void fill(float Gray,float Alpha)
@@ -98,6 +106,7 @@ void fill(float Red,float Green,float Blue)
 {
     set_brush_rgb((int)Red,(int)Green,(int)Blue);
     _filled=true;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void fill(float Red,float Green,float Blue,float Alpha)
@@ -122,11 +131,13 @@ void noFill()
 void point(float x,float y)
 {
     plot_d((int)x,(int)y);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void line(float  x1,float  y1,float  x2,float  y2)
 {
     line_d((int)x1,(int)y1,(int)x2,(int)y2);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 /// Set driving mode for rects. Either CENTER, RADIUS, CORNER, or CORNERS
@@ -137,6 +148,7 @@ int _RECT_MODE=CORNER;
 void rectMode(int mode)
 {
     _RECT_MODE=mode;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 /// Driving a filled (by default) rectangle
@@ -200,6 +212,7 @@ int  _ELLIPSE_MODE=CENTER;
 void ellipseMode(int mode)
 {
     _ELLIPSE_MODE=mode;
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 ///  Functions for driving ellipse
@@ -258,6 +271,7 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
 
     if(mode!=0)
         FIRST_TIME_ERRMESSAGE( " mode ignored!!" );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 /// Extended graphics text() & Attributes
@@ -282,6 +296,7 @@ void textAlign(int hor,int ver)
 float textWidth(_string_param str)
 // Calculates and returns the width of any character or text string.
 {
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
     return string_width(str.c_str());
 }
 
@@ -301,6 +316,7 @@ void text(_string_param str,float x,float y)
     case CENTER: y-=char_height('X')/2;break;
     }
     print_d(x,y,"%s",str.c_str());//Kolor wypełnienia nie działa! TODO!
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
 void text(_string_param str,float x1,float y1,float x2,float y2)
@@ -333,7 +349,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-12-15                   */
+/*               PROCESSING2C  version 2021-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

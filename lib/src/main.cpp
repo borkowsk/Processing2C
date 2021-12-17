@@ -1,6 +1,7 @@
-// main.cpp must be for Processing derived application
-// but user may generate and use its own versions
-//////////////////////////////////////////////////////////////
+/// @file main.cpp
+/// main() function must exists for Processing2C++ applications
+/// but user may generate and use its own versions
+/////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -53,7 +54,7 @@ int main(int argc,const char *argv[])
         _processing_window_instance.after_draw();
     }
     else
-    while(1)
+    while(true)
     {
 #ifndef NDEBUG
         FIRST_TIME_ERRMESSAGE( "call a draw() in loop" );
@@ -67,8 +68,8 @@ int main(int argc,const char *argv[])
 
         extern int   _exp_frame_rate;//From pwindow
         //std::cerr<<"(("<<frameCount<<"*10)%"<<_exp_frame_rate<<")==0  == "<<(((frameCount*10)%_exp_frame_rate))<<std::endl;
-        //if( ((frameCount*10)%_exp_frame_rate)==0  )//Powinno byc mniej wiecej 10 razy na sekunde zeby bylo idealnie
-        {//Tak jak powyzej nie dziala, a bez tego ma krotszy czas widocznosci
+        //if( ((frameCount*10)%_exp_frame_rate)==0  )//Powinno byc mniej więcej 10 razy na sekundę żeby było idealnie
+        {//Tak jak powyżej nie działa, a bez tego ma krótszy czas widoczności
 
             _processing_window_instance.check_events();//Should be repeated any way!
         }
@@ -77,7 +78,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /********************************************************************/
-/*               PROCESSING2C  version 2021-11-29                   */
+/*               PROCESSING2C  version 2021-12-17                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */
