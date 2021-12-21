@@ -180,28 +180,41 @@ class color
 //inline String hex(const color& col) { return Processing::hex(col.val); }
 //inline String binary(const color& col) { return Processing::binary(col.val); }
 
+/// \fn Extracted alpha from 'color'
 inline float  alfa(const color& col) { return col.alfa(); }
+/// \fn Extracted red from 'color'
 inline float   red(const color& col) { return col.red(); }
+/// \fn Extracted green from 'color'
 inline float green(const color& col) { return col.green(); }
+/// \fn Extracted blue from 'color'
 inline float  blue(const color& col) { return col.blue(); }
 
 // Global "system" variables
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///
+///\var Internal name of the program. Typically equal to base part of main source file in Processing. \ingroup rtm
 extern const char* _PROGRAMNAME;
+
+///\var width of a screen/window/virtual screen  \ingroup rtm
 extern const int& width;
+///\var height of a screen/window/virtual screen  \ingroup rtm
 extern const int& height;
+///\var width (in real pixels) of a screen/window/virtual screen  \ingroup rtm
 extern const int& pixelWidth;
+///\var height (in real pixels) of a screen/window/virtual screen  \ingroup rtm
 extern const int& pixelHeight;
 
-extern const float& frameRate; /// Get approximated frame rate achieved;
-extern const int&   frameCount;/// The system variable frameCount contains the number of frames that have been displayed since the program started.
-extern int _INTERNAL_DELAY;//=100; // Used by set_delay();
+///\var Approximated frame rate achieved;  \ingroup rtm
+extern const float& frameRate;
+///\var The system variable frameCount contains the number of frames that have been displayed since the program started. \ingroup rtm
+extern const int&   frameCount;
+///\var Internal variable used by set_delay(); \ingroup rtm
+/// DO NOT USE DIRECTLY!!!
+extern int _INTERNAL_DELAY;//=100; //
 
 /// The mousePressed variable stores whether or not a mouse button is currently being pressed.
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
-/// The mouseButton variable can be used to determine which button has been pressed.
+/// The mouseButton variable can be used to determine which button has been pressed. \ingroup rtm
 extern const bool& mousePressed;
 extern       bool& mousePressedWr;//Writeable version. Rather not used in Processing examples.
 

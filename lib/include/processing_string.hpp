@@ -254,5 +254,5 @@ namespace Processing
  *    GITHUB: https://github.com/borkowsk                           *
  *                                                                  *
  *                               (Don't change or remove this note) *
- ********************************************************************/
+ ****************************************************************** */
 #endif //PROCESSING2C_PROCESSING_STRING_HPP

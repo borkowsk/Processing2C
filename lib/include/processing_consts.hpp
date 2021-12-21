@@ -60,20 +60,17 @@ const auto MAX_INT=std::numeric_limits<int>::max();
 const float DEG_TO_RAD = 0.017453292519943295769236907684886f;
 const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
-
-
 }//END of namespace Processing
-
-
-/********************************************************************/
-/*               PROCESSING2C  version 2021-11-05                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ****************************************************************** */
+/*               PROCESSING2C  version 2021-12-21                     */
+/* ****************************************************************** */
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
+/*            W O J C I E C H   B O R K O W S K I                     */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */
+/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */
+/*    GITHUB: https://github.com/borkowsk                             */
+/*                                                                    */
+/*                                 (Don't change or remove this note) */
+/* ****************************************************************** */
 #endif // PROCESSING_CONSTS_HPP

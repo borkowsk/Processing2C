@@ -4,9 +4,7 @@
 #pragma once
 #ifndef PROCESSING_ArrayLIST_H
 #define PROCESSING_ArrayLIST_H
-///
-///
-///
+
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include <vector>
@@ -33,7 +31,9 @@ public:
 
     /// NULL init constructor
     ArrayList(nullptr_t p)
-    { this->reserve(4); }
+    {
+        this->reserve(4); // TODO Why 4?
+    }
 
     //int 	size() const //Returns the number of elements in this list.
     //{ return std::vector<T>::size(); } // Is available in vector<>
@@ -51,23 +51,26 @@ public:
         return this->at(index);// []?
     }
 
-    /// Index Specific Item Removal Method (NOT YET IMPLEMENTED)
+    /// Index Specific Item Removal Method
+    /// \See \a "https://stackoverflow.com/questions/875103/how-do-i-erase-an-element-from-stdvector-by-index"
     void remove(int index)
     {
-       assert("NOT IMPLEMENTED"==nullptr);
-       // this->erase(index);//TODO CHECK
+       //assert("NOT IMPLEMENTED"==nullptr);
+       std::vector<T>::erase(this->begin() + index);//TODO CHECK - look OK
     }
 
     /// A method for removing a specific item based on the comparison.
     /// It uses the one with the index.
     bool remove(const T& o)
     {
-       for (auto it = begin(); it != end(); )
-         if(it->equals(o))
-         {
-           this->erase(it);
-           return true;
-         }
+        for (auto it = begin(); it != end();  it++ )//: *this )
+        {
+            if (it->equals(o))
+            {
+                this->erase(it);
+                return true;
+            }
+        }
       return false;
     }
 
@@ -179,15 +182,16 @@ public:
 */
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-11-29                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ****************************************************************** */
+/*               PROCESSING2C  version 2021-12-21                     */
+/* ****************************************************************** */
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
+/*            W O J C I E C H   B O R K O W S K I                     */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */
+/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */
+/*    GITHUB: https://github.com/borkowsk                             */
+/*                                                                    */
+/*                                 (Don't change or remove this note) */
+/* ****************************************************************** */
 #endif //PROCESSING_ArrayLIST_H

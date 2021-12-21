@@ -1,33 +1,65 @@
-///\file processing_templates.hpp
-/// Mandatory templates for objects and arrays
-///--------------------------------------------
+/** ****************************************************************
+* \file 'processing_templates.hpp'
+* \brief Mandatory templates for objects and arrays
+* \links <ul>
+* <li> \a "https://en.cppreference.com/w/cpp/utility/initializer_list"
+* <li> \a "https://en.cppreference.com/w/cpp/language/constructor"
+* <li> \a "https://en.cppreference.com/w/cpp/language/decltype"
+* <li> \a "https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design"
+* <li> \a "https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete"
+* </ul>
+*/
+/*
+    \class is used to indicate that the comment block contains documentation for the class
+    \struct to document a C-struct.
+    \union to document a union.
+    \enum to document an enumeration type.
+    \fn to document a function.
+    \var to document a variable or typedef or enum value.
+    \def to document a #define.
+    \typedef to document a type definition.
+    \file to document a file.
+    \namespace to document a namespace.
+    \package to document a Java package.
+    \interface to document an IDL interface.
+    See: https://www.doxygen.nl/manual/docblocks.html
+ */
+
 #pragma once
-/// https://en.cppreference.com/w/cpp/utility/initializer_list
-/// https://en.cppreference.com/w/cpp/language/constructor
-/// https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
+
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
 #include <cassert>
 #include <memory>
 #include <initializer_list>
 
-///\namespace XXX
+///\namespace Processing2C compatibility libraries
 namespace Processing
 {
+
 /**
- * The "Object" class.
+ * \class "Object"
  * This is a base class for all Processing/JAVA like class but not pointers
+ * \ingroup JAVA_compatibility
  * \See
  * \a https://www.javatpoint.com/object-class
  */
 class Object
 {
-  private: Object& operator = (const Object&);
+  private:
+    /// Assign operator
+    /// \return derefered 'this' of L-value
+    Object& operator = (const Object&);
   public:
+    /// Destructor
     virtual ~Object(){} //TODO =0; ???
-    ///	returns the hashcode number for this object
+    /// Make hashcode number for this object
+    ///	\return the hashcode
     virtual long hashCode() const;
-    ///	compares the given object to this object based on address.
+    ///	Compares the given object \p 'obj' to this object based on address.
+    /// \param obj
+    /// \return logical result
+    ///
     /// TODO CHECK what happened with ptrs to inside base classes?
     virtual bool equals(const Object& obj) const { return this==&obj; }
 };
@@ -37,6 +69,7 @@ class Object
  * Proxy for standard shared_ptr which mimic Processing "object references"
  * behaviours
  * \tparam T : any class
+ * \ingroup JAVA_compatibility
  * \See \a https://en.cppreference.com/w/cpp/memory/shared_ptr
  */
 template<class T>
@@ -68,14 +101,16 @@ class ptr:public std::shared_ptr<T>
           assert(ini.get()==nullptr || this->get()!=nullptr);
       }
 
-      //Przypisania  //using std::shared_ptr<T>::operator = ;//kipisz!!! :-(
-      //^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
+      // Przypisania  //using std::shared_ptr<T>::operator = ;//robi kipisz!!! :-(
+      // ^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
       ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
       ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
       ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
 
-      //Porównania
-      //^^^^^^^^^^
+      // Porównania
+      // ^^^^^^^^^^
+
+      /// \brief Template method for compared ptr\<T\> for any others ptr\<\>
       template<class B>
       bool equals(const ptr<B>& p) const //Same object pointed
       {
@@ -84,9 +119,11 @@ class ptr:public std::shared_ptr<T>
           return tmp1==tmp2;
       }
 
+      /// \brief Template operator == for compared ptr<T> for any others ptr<>
       template<class B>
       bool operator == (const ptr<B>& p) const { return this->equals(p);}
 
+      /// \brief Template operator != for compared ptr<T> for any others ptr<>
       template<class B>
       bool operator != (const ptr<B>& p) const { return !(this->equals(p));}
 
@@ -102,17 +139,17 @@ class ptr:public std::shared_ptr<T>
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
 
-/**
- * 'Typedef' pObject is an alias for "ptr\<Object\>" .
- * Represents "object references" for object of basic class Object
- * using the same convention like any other Processing like objects.
- */
-typedef ptr<Object> pObject;
+    /**
+     * \typedef pObject is an alias for "ptr\<Object\>" .
+     * Represents "object references" for object of basic class Object
+     * using the same convention like any other Processing like objects.
+     */
+    typedef ptr<Object> pObject;
 
-/**
- * Template function _free_ptr_to releases the raw pointer to A
- * from shared ptr to (potentially) derived class B
- */
+    /**
+     * \fn Template function _free_ptr_to releases the raw pointer to A
+     * from shared ptr to (potentially) derived class B
+     */
     template<class A,class B>
     inline
     A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
@@ -120,10 +157,10 @@ typedef ptr<Object> pObject;
         return (A*)(B*)b;
     }
 
-/**
- * Template which imitates JAVA like 'instanceof' function
- * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
- */
+    /**
+     * \fn Template function which imitates JAVA like 'instanceof' function
+     * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
+     */
     template<typename Base, typename T>
     inline
     bool instanceof(ptr<T>& p)
@@ -131,18 +168,18 @@ typedef ptr<Object> pObject;
         return dynamic_cast<Base*>(p.get()) != nullptr;
     }
 
-/** Raw pointer de-referencing template.
- * Needed mostly for extract class type from 'this'.
- * \example                                             \code
- *          decltype( _dereference_ptr(this) )
- *                                                      \endcode
- * \tparam T : any class
- * \param ptr : raw ptr to class, typically this
- * \return de-referenced object
- * \See \a https://en.cppreference.com/w/cpp/language/decltype
- */
-template<class T>
-    T _dereference_ptr(T* ptr){ return *ptr;}
+    /** \fn Raw pointer de-referencing template.
+     * Needed mostly for extract class type from 'this'.
+     * \example                                             \code
+     *          decltype( _dereference_ptr(this) )
+     *                                                      \endcode
+     * \tparam T : any class
+     * \param ptr : raw ptr to class, typically this
+     * \return de-referenced object
+     * \See \a https://en.cppreference.com/w/cpp/language/decltype
+     */
+    template<class T>
+        T _dereference_ptr(T* ptr){ return *ptr;}
 
 /** Macro for creating dummy _shared_ptr from prevent non needed de-allocation
  * \example                                                 \code
@@ -157,12 +194,15 @@ template<class T>
  * \example                                     \code
  *              call_outside(SAFE_THIS,msg);
  *                                              \endcode
+ * \ingroup JAVA_compatibility
  */
 #define    SAFE_THIS                SAFE_RAW_PTR( this )
 
 /**
- * Representation of JAVA "Comparable" interface
+ * \interface
+ * C++ class representation of JAVA "Comparable" interface
  * \tparam T : any class
+ * \ingroup JAVA_compatibility
  */
 template<class T>
 /*interface*/ class Comparable
@@ -174,6 +214,7 @@ template<class T>
 /**
  * The template class for any simple array.
  * Array of T, sized when constructed
+ * \ingroup JAVA_compatibility
  */
 template<class T>
 class array
@@ -191,6 +232,7 @@ class array
  * The template class "ptr\< array \>" .
  * Represents "object references" for array of T
  * Implements additional Processing semantics for one dimensional array
+ * \ingroup JAVA_compatibility
  */
 template<class T>
 class sarray:public ptr< array<T> >
@@ -216,6 +258,7 @@ class sarray:public ptr< array<T> >
  * The template class matrix (2D array)
  * Represent Matrix of T, sized when constructed
  * (Tablica dwuwymiarowa opiera się na jednowymiarowych (PL))
+ * \ingroup JAVA_compatibility
  */
 template<class T>
 class matrix:public array< sarray<T> >
@@ -229,6 +272,7 @@ public:
  * The template class "ptr\< matrix \>" .
  * Represents "object references" for matrix of T
  * Implements additional Processing semantics for two dimensional array
+ * \ingroup JAVA_compatibility
  */
 template<class T>
 class smatrix:public ptr< matrix<T> >
@@ -250,7 +294,7 @@ class smatrix:public ptr< matrix<T> >
 };
 
 // PODRĘCZNE IMPLEMENTACJE INLINE
-//===========================================================
+// ==============================
 
 /**
  * \brief Template of sarray<> constructor with initialiser list
@@ -286,15 +330,16 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 }
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-12-15                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ****************************************************************** */
+/*               PROCESSING2C  version 2021-12-21                     */
+/* ****************************************************************** */
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
+/*            W O J C I E C H   B O R K O W S K I                     */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */
+/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */
+/*    GITHUB: https://github.com/borkowsk                             */
+/*                                                                    */
+/*                                 (Don't change or remove this note) */
+/* ****************************************************************** */
 #endif
