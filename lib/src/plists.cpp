@@ -1,4 +1,7 @@
-// Non inline methods of FloatList IntList & StringList 
+/// \file plist.cpp
+/// \ingroup PROCESSING_compatibility
+/// \brief Non inline methods of FloatList IntList & StringList
+/// \n TODO - implement more of them!
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -10,14 +13,18 @@ using std::string;
 
 float     FloatList::remove(int index)// 	Remove an element from the specified index
 {
-    FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
-    Processing::exit();
-    return -0;//TODO!!!
+    //FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
+    //Processing::exit();
+    FIRST_TIME_ERRMESSAGE( string(" This is very inefficient!") );
+    float ret=*(this->begin() + index);
+    std::vector<float>::erase(this->begin() + index);//Very slow in std::vector implementation!
+    return ret;//TODO - is it compatible?
 }
 
 bool      FloatList::hasValue(float what)// 	Check if a number is a part of the list
 {
     FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
+    Processing::exit();
     return false;//TODO!!!
 }
 
@@ -44,18 +51,21 @@ void      FloatList::div(int index,float amount)// 	Divide a value
 float     FloatList::min()// 	Return the smallest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
+    Processing::exit();
     return -0;//TODO!!!
 }
 
 float     FloatList::max()// 	Return the largest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
+    Processing::exit();
     return -0;//TODO!!!
 }
 
 void      FloatList::sort()// 	Sorts an array, lowest to highest
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
+    Processing::exit();
 }
 
 void      FloatList::sortReverse()// 	Reverse sort, orders values from highest to lowest
@@ -76,7 +86,7 @@ void      FloatList::shuffle()// 	Randomize the order of the list elements
     Processing::exit();
 }
 
-sarray<float>     FloatList::array()// 	Create a new array with a copy of all the values
+sarray<float>     FloatList::array() const // 	Create a new array with a copy of all the values
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
     Processing::exit();abort();
@@ -85,10 +95,12 @@ sarray<float>     FloatList::array()// 	Create a new array with a copy of all th
 
 int      IntList::remove(int index)// 	Remove an element from the specified index
 {
-    FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    //std::vector<int>::remove(index);//NOT SO EASY! :-D
-    Processing::exit();
-    return -1;//TODO!!!
+    //FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
+    //Processing::exit();
+    FIRST_TIME_ERRMESSAGE( string(" This is very inefficient!") );
+    int ret=*(this->begin() + index);
+    std::vector<int>::erase(this->begin() + index);//Very slow in std::vector implementation!
+    return ret;//TODO - is it compatible?
 }
 
 bool     IntList::hasValue(int   what)// 	Check if a number is a part of the list
@@ -158,7 +170,7 @@ void     IntList::shuffle()// 	Randomize the order of the list elements
     Processing::exit();
 }
 
-sarray<int>  IntList::array()// 	Create a new array with a copy of all the values
+sarray<int>  IntList::array() const // 	Create a new array with a copy of all the values
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
     Processing::exit();abort();
@@ -167,13 +179,18 @@ sarray<int>  IntList::array()// 	Create a new array with a copy of all the value
 
 String   StringList::remove(int index)// 	Remove an element from the specified index
 {
-    FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    return String("<NOT IMPLEMENTED>");//TODO!!!
+    //FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
+    //Processing::exit();
+    FIRST_TIME_ERRMESSAGE( string(" This is very inefficient!") );
+    String ret=*(this->begin() + index);
+    std::vector<String>::erase(this->begin() + index);//Very slow in std::vector implementation!
+    return ret;//TODO - is it compatible?
 }
 
 bool     StringList::hasValue(_string_param   what)// Check if a number is a part of the list
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
+    Processing::exit();
     return false;//TODO!!!
 }
 
@@ -221,20 +238,22 @@ void     StringList::upper()// 	Make the entire list upper case
 }
 
 
-sarray<int>  StringList::array()// 	Create a new array with a copy of all the values ???
+sarray<int>  StringList::array()  const // 	Create a new array with a copy of all the values ???
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
     Processing::exit();abort();
     return nullptr;
 }
-/********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ****************************************************************** */
+/*               PROCESSING2C  version 2021-12-22                     */
+/* ****************************************************************** */
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
+/*            W O J C I E C H   B O R K O W S K I                     */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */
+/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */
+/*    GITHUB: https://github.com/borkowsk                             */
+/*                                                                    */
+/*                                 (Don't change or remove this note) */
+/* ****************************************************************** */
+

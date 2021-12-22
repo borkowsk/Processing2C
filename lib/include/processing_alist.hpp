@@ -13,6 +13,10 @@
 namespace Processing
 {
 /// Template for ArrayLists of objects
+///
+/// \note Implementation based on \b std::vector is very inefficient in remove() method!
+///       Consider to use alternative implementation, if this method is frequently used.
+/// \tparam T
 template<class T>
 class ArrayList:public/*private?*/ std::vector<T>, virtual public _self_printable
 {
@@ -56,7 +60,7 @@ public:
     void remove(int index)
     {
        //assert("NOT IMPLEMENTED"==nullptr);
-       std::vector<T>::erase(this->begin() + index);//TODO CHECK - look OK
+       std::vector<T>::erase(this->begin() + index);//Very slow in std::vector implementation!
     }
 
     /// A method for removing a specific item based on the comparison.
@@ -183,7 +187,7 @@ public:
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-22                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

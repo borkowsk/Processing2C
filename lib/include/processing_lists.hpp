@@ -1,24 +1,25 @@
-// processing_lists.hpp
+/// \file processing_lists.hpp
+/// \brief Processing specialised lists
+/// \ingroup PROCESSING_compatibility
 #pragma once
 #ifndef PROCESSING_LISTS_H
 #define PROCESSING_LISTS_H
-///
-///
-///
+
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
 #include <vector>
 
+///\namespace Processing2C compatibility libraries
 namespace Processing
 {
-/// Processing specialised lists
-/////////////////////////////////////
-
-  ///
-  /// \brief The FloatList class
+  /// \class FloatList
+  /// \brief The FloatList is offten used as replacement of a array<float>
   ///
   /// \link \a https://en.cppreference.com/w/cpp/container/vector
   /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
+  /// \note Implementation based on \b std::vector is very inefficient in remove() method!
+  ///       Consider to use alternative implementation, if this method is frequently used.
+  ///       \n But only this version is very efficient in get and set method, so be carrefull :-)
   class FloatList:private std::vector<float>,virtual public _self_printable
   {
      public:
@@ -34,7 +35,7 @@ namespace Processing
 
       int       size() const;// 	Get the length of the list
       void      clear();// 	Remove all entries from the list
-      float     get(int index);// 	Get an entry at a particular index
+      float     get(int index) const;// Get an entry at a particular index
       void      append(float what);// 	Add a new entry to the list (.append(values) .append(list) )
       void      set(int index,float what);// 	Set the entry at a particular index
 
@@ -51,15 +52,18 @@ namespace Processing
       void      reverse();// 	Reverse the order of the list elements
       void      shuffle();// 	Randomize the order of the list elements
 
-      sarray<float>     array();// 	Create a new array with a copy of all the values
+      sarray<float>     array() const;// 	Create a new array with a copy of all the values
       String print() const;
   };
 
-  ///
-  /// \brief The IntList class
+  /// \class IntList
+  /// \brief The IntList is offten used as replacement of a array<int>
   ///
   /// \link \a https://en.cppreference.com/w/cpp/container/vector
   /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
+  /// \note Implementation based on \b std::vector is very inefficient in remove() method!
+  ///       Consider to use alternative implementation, if this method is frequently used.
+  ///       \n But only this version is very efficient in get and set method, so be carrefull :-)
   class IntList:private std::vector<int>,virtual public _self_printable
   {
      public:
@@ -75,7 +79,7 @@ namespace Processing
 
        int      size() const;// 	Get the length of the list
        void     clear();// 	Remove all entries from the list
-       int      get(int index);// 	Get an entry at a particular index
+       int      get(int index) const;// Get an entry at a particular index
        void     append(int   what);// 	Add a new entry to the list (.append(values) .append(list) )
        void     set(int index,int   what);// 	Set the entry at a particular index
 
@@ -92,15 +96,18 @@ namespace Processing
        void     reverse();// 	Reverse the order of the list elements
        void     shuffle();// 	Randomize the order of the list elements
 
-       sarray<int>  array();// 	Create a new array with a copy of all the values
+       sarray<int>  array() const;// 	Create a new array with a copy of all the values
        String print() const;
   };
 
-  ///
-  /// \brief The StringList class
+  /// \class StringList
+  /// \brief The StringList is offten used as replacement of a array<String>
   ///
   /// \link \a https://en.cppreference.com/w/cpp/container/vector
   /// \link \a https://en.cppreference.com/w/cpp/language/list_initialization
+  /// \note Implementation based on \b std::vector is very inefficient in remove() method!
+  ///       Consider to use alternative implementation, if this method is frequently used.
+  ///       \n But only this version is very efficient in get and set method, so be carrefull :-)
   class StringList:private std::vector<Processing::String>, virtual public _self_printable
   {
      public:
@@ -117,7 +124,7 @@ namespace Processing
 
        int      size() const;// 	Get the length of the list
        void     clear();// 	Remove all entries from the list
-       String   get(int index);// 	Get an entry at a particular index
+       String   get(int index) const;// 	Get an entry at a particular index
        void     append(_string_param   what);// Add a new entry to the list (.append(values) .append(list) )
        void     append(String& what);
        void     set(int index,_string_param   what);// 	Set the entry at a particular index
@@ -131,7 +138,7 @@ namespace Processing
        void     lower();// 	Make the entire list lower case
        void     upper();// 	Make the entire list upper case
 
-       sarray<int>  array();// 	Create a new array with a copy of all the values
+       sarray<int>  array() const;// 	Create a new array with a copy of all the values
        String print() const;
   };
 
@@ -153,11 +160,12 @@ inline void StringList::clear() { return std::vector<Processing::String>::clear(
 inline void  FloatList::append(float what){std::vector<float>::push_back(what);}
 inline void    IntList::append(int what){std::vector<int>::push_back(what);}
 inline void StringList::append(_string_param what){std::vector<Processing::String>::push_back((String)what);}
-//inline void StringList::append(Processing::String& what){std::vector<Processing::String>::push_back(what);}
+//Not needed now:\
+inline void StringList::append(Processing::String& what){std::vector<Processing::String>::push_back(what);}
 
-inline float   FloatList::get(int index){ return (*this)[index];}
-inline int       IntList::get(int index){ return (*this)[index];}
-inline String StringList::get(int index){ return (*this)[index];}
+inline float   FloatList::get(int index) const { return (*this)[index];}
+inline int       IntList::get(int index) const { return (*this)[index];}
+inline String StringList::get(int index) const { return (*this)[index];}
 
 inline void  FloatList::set(int index,float what){ (*this)[index]=what;}
 inline void    IntList::set(int index,int what){ (*this)[index]=what;}
