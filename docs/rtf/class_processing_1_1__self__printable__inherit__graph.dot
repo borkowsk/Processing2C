@@ -1,0 +1,18 @@
+digraph "Processing::_self_printable"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Processing::_self_printable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Interface for classes able to make printable representation."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Processing::ArrayList\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1_array_list.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Processing::FloatList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1_float_list.html",tooltip="The FloatList is offten used as replacement of a array<float>"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Processing::IntList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1_int_list.html",tooltip="The IntList is offten used as replacement of a array<int>"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Processing::self_printable\l_ptr\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1self__printable__ptr.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Processing::StringList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1_string_list.html",tooltip="The StringList is offten used as replacement of a array<String>"];
+}

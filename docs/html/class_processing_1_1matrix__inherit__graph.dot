@@ -1,0 +1,9 @@
+digraph "Processing::matrix&lt; T &gt;"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Processing::matrix\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The template class matrix (2D array) Matrix of T, sized when constructed (Tablica dwuwymiarowa opiera..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Processing::array\<\l sarray\< T \> \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_processing_1_1array.html",tooltip=" "];
+}
