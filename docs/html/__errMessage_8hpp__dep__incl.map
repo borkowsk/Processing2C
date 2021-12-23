@@ -1,0 +1,13 @@
+<map id="lib/include/_errMessage.hpp" name="lib/include/_errMessage.hpp">
+<area shape="rect" id="node1" title="Functions for printing or logging error messages." alt="" coords="694,5,898,32"/>
+<area shape="rect" id="node2" href="$__impl__errors_8h.html" title="Macros for errors and function(s) for string concatenation which may helps." alt="" coords="600,80,787,107"/>
+<area shape="rect" id="node11" href="$__errMessage_8cpp.html" title="Funkcja drukująca błędy na konsolę" alt="" coords="811,80,986,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="main() function for Processing like application" alt="" coords="5,155,131,181"/>
+<area shape="rect" id="node4" href="$parrayformat_8cpp.html" title="Processing functions for formated arrays into Strings." alt="" coords="155,155,333,181"/>
+<area shape="rect" id="node5" href="$pobject_8cpp.html" title="Processing &amp; Java Object base class." alt="" coords="358,155,498,181"/>
+<area shape="rect" id="node6" href="$pprintwriter_8cpp.html" title="JAVA like streams \classes BufferedReader; PrintWriter;." alt="" coords="522,155,689,181"/>
+<area shape="rect" id="node7" href="$pshape_8cpp.html" title="Processing shapes." alt="" coords="713,155,852,181"/>
+<area shape="rect" id="node8" href="$psplit_8cpp.html" title="split &amp; concat functions" alt="" coords="876,155,1004,181"/>
+<area shape="rect" id="node9" href="$pstrings_8cpp.html" title="Most commonly used strings functions." alt="" coords="1028,155,1172,181"/>
+<area shape="rect" id="node10" href="$pwindow_8cpp.html" title="podstawy obsługi okienka pseudo&#45;processingowego" alt="" coords="1196,155,1345,181"/>
+</map>

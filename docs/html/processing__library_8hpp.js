@@ -15,7 +15,7 @@ var processing__library_8hpp =
     [ "hour", "processing__library_8hpp.html#ac4636104556b233de3aef7ec8ac79026", null ],
     [ "Int", "processing__library_8hpp.html#a7fecaa26651f39f78b166de65dbde986", null ],
     [ "lerp", "processing__library_8hpp.html#a6e4eadf9eaf340a457d692f285767f11", null ],
-    [ "map", "processing__library_8hpp.html#a23c4ecc7bfe0629506e16f86c5971bf1", null ],
+    [ "map", "processing__library_8hpp.html#a6aa946212725e17154de216f5977ec49", null ],
     [ "max", "processing__library_8hpp.html#a23e56a71b56189b0a22d3b9b7ea25f8d", null ],
     [ "max", "processing__library_8hpp.html#af6bd91d1b1cb762ef140d5d9c5a39097", null ],
     [ "max", "processing__library_8hpp.html#a60c26212a66f9561a24a9ed0da783fd7", null ],

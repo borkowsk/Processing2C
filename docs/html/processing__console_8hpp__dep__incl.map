@@ -1,0 +1,6 @@
+<map id="lib/include/processing_console.hpp" name="lib/include/processing_console.hpp">
+<area shape="rect" id="node1" title="Związane z konsolą funkcje print i println oraz formatowanie." alt="" coords="159,5,322,47"/>
+<area shape="rect" id="node2" href="$max_8cpp.html" title="Implementations of mixed type &#39;max&#39; functions." alt="" coords="5,95,127,121"/>
+<area shape="rect" id="node3" href="$parrayformat_8cpp.html" title="Processing functions for formated arrays into Strings." alt="" coords="151,95,330,121"/>
+<area shape="rect" id="node4" href="$pnumberformat_8cpp.html" title="Processing like numbers to string and string to number conversions." alt="" coords="354,95,549,121"/>
+</map>

@@ -87,86 +87,90 @@ $(document).ready(function(){initNavTree('processing__consts_8hpp_source.html','
 <div class="title">processing_consts.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROCESSING_CONSTS_HPP</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROCESSING_CONSTS_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cfloat&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define _USE_MATH_DEFINES</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//#include &lt;climits&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span>       <span class="comment">// std::numeric_limits</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceProcessing.html">Processing</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//CHAR CONSTANTS</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">const</span> char16_t CODED=65535;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> ESC=27;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//SETTINGS CONSTANTS</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">   18</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">CENTER</a>=1;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RADIUS=2;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CORNER=3;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CORNERS=4;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">   23</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">OPENPIE</a>=1;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> OPEN=0;<span class="comment">//Open CHORD</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CHORD=2;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> PIE=3;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//const int CENTER=1;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//const int RADIUS=2;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//const int CORNER=3;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//const int CORNERS=4;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">   33</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">SQUARE</a>=1;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> PROJECT=2;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> ROUND=3;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">   37</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">MITER</a>=1;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BEVEL=2;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//const int ROUND=3;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//for textAligment</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RIGHT=39;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> LEFT=37;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TOP=102;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BOTTOM=103;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BASELINE=104;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">   52</a></span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">PI</a>=M_PI;<span class="comment">//3.6651914291881;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> TWO_PI=2*M_PI;<span class="comment">//6.2831855f</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> TAU=6.2831855f;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> HALF_PI=M_PI_2;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> QUARTER_PI=M_PI_4;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> MAX_INT=<a class="code" href="namespaceProcessing.html#a60c26212a66f9561a24a9ed0da783fd7">std::numeric_limits&lt;int&gt;::max</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//For angles, nosie, spheres etc...</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> DEG_TO_RAD = 0.017453292519943295769236907684886f;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> RAD_TO_DEG = 57.295779513082320876798154814105f;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}<span class="comment">//END of namespace Processing</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*               PROCESSING2C  version 2021-12-21                     */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*           THIS CODE IS DESIGNED &amp; COPYRIGHT  BY:                   */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*            W O J C I E C H   B O R K O W S K I                     */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/*    GITHUB: https://github.com/borkowsk                             */</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*                                                                    */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*                                 (Don&#39;t change or remove this note) */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif // PROCESSING_CONSTS_HPP</span></div>
+<a href="processing__consts_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// //////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// This file is part of the Processing2C++ Library. See bottom lines.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// //////////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef PROCESSING_CONSTS_HPP</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define PROCESSING_CONSTS_HPP</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;cfloat&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define _USE_MATH_DEFINES</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//#include &lt;climits&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span>       <span class="comment">// std::numeric_limits</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceProcessing.html">Processing</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//CHAR CONSTANTS</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">const</span> char16_t CODED=65535;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> ESC=27;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//SETTINGS CONSTANTS</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">   28</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">CENTER</a>=1;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RADIUS=2;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CORNER=3;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CORNERS=4;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">   33</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">OPENPIE</a>=1;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> OPEN=0;<span class="comment">//Open CHORD</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> CHORD=2;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> PIE=3;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//const int CENTER=1;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//const int RADIUS=2;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//const int CORNER=3;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//const int CORNERS=4;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">   43</a></span>&#160;<span class="comment"></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">SQUARE</a>=1;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> PROJECT=2;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> ROUND=3;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">   47</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">MITER</a>=1;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BEVEL=2;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//const int ROUND=3;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">//for textAligment</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RIGHT=39;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> LEFT=37;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TOP=102;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BOTTOM=103;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> BASELINE=104;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">   62</a></span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">PI</a>=M_PI;<span class="comment">//3.6651914291881;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> TWO_PI=2*M_PI;<span class="comment">//6.2831855f</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> TAU=6.2831855f;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> HALF_PI=M_PI_2;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> QUARTER_PI=M_PI_4;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">const</span> <span class="keyword">auto</span> MAX_INT=<a class="code" href="namespaceProcessing.html#a60c26212a66f9561a24a9ed0da783fd7">std::numeric_limits&lt;int&gt;::max</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//For angles, nosie, spheres etc...</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> DEG_TO_RAD = 0.017453292519943295769236907684886f;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> RAD_TO_DEG = 57.295779513082320876798154814105f;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}<span class="comment">//END of namespace Processing</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*               PROCESSING2C  version 2021-12-23                     */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*           THIS CODE IS DESIGNED &amp; COPYRIGHT  BY:                   */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/*            W O J C I E C H   B O R K O W S K I                     */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*    GITHUB: https://github.com/borkowsk                             */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*                                                                    */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*                                 (Don&#39;t change or remove this note) */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/* ****************************************************************** */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif // PROCESSING_CONSTS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespaceProcessing_html_af7dfb77099fee69d0a98ed890950ee08"><div class="ttname"><a href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">Processing::SQUARE</a></div><div class="ttdeci">const int SQUARE</div><div class="ttdoc">rectMode(mode)parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:33</div></div>
-<div class="ttc" id="anamespaceProcessing_html"><div class="ttname"><a href="namespaceProcessing.html">Processing</a></div><div class="ttdoc">podstawy obsługi okienka pseudo-processingowego</div><div class="ttdef"><b>Definition:</b> _impl_errors.h:16</div></div>
-<div class="ttc" id="anamespaceProcessing_html_a188ae46ad1e11fc2c7488781aa871a12"><div class="ttname"><a href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">Processing::CENTER</a></div><div class="ttdeci">const int CENTER</div><div class="ttdoc">ellipseMode(mode) parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:18</div></div>
-<div class="ttc" id="anamespaceProcessing_html_a3aa0a73eeff9fdead60090084c90f74c"><div class="ttname"><a href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">Processing::PI</a></div><div class="ttdeci">const auto PI</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:52</div></div>
+<div class="ttc" id="anamespaceProcessing_html_af7dfb77099fee69d0a98ed890950ee08"><div class="ttname"><a href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">Processing::SQUARE</a></div><div class="ttdeci">const int SQUARE</div><div class="ttdoc">rectMode(mode)parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:43</div></div>
+<div class="ttc" id="anamespaceProcessing_html"><div class="ttname"><a href="namespaceProcessing.html">Processing</a></div><div class="ttdoc">P2C compatibility libraries.</div></div>
+<div class="ttc" id="anamespaceProcessing_html_a188ae46ad1e11fc2c7488781aa871a12"><div class="ttname"><a href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">Processing::CENTER</a></div><div class="ttdeci">const int CENTER</div><div class="ttdoc">ellipseMode(mode) parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:28</div></div>
+<div class="ttc" id="anamespaceProcessing_html_a3aa0a73eeff9fdead60090084c90f74c"><div class="ttname"><a href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">Processing::PI</a></div><div class="ttdeci">const auto PI</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:62</div></div>
 <div class="ttc" id="anamespaceProcessing_html_a60c26212a66f9561a24a9ed0da783fd7"><div class="ttname"><a href="namespaceProcessing.html#a60c26212a66f9561a24a9ed0da783fd7">Processing::max</a></div><div class="ttdeci">value max(value a, value b)</div><div class="ttdoc">'max' as 2 parameters template</div><div class="ttdef"><b>Definition:</b> processing_library.hpp:209</div></div>
-<div class="ttc" id="anamespaceProcessing_html_aabc3adfb1916c43bce4f4f2298a56b1b"><div class="ttname"><a href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">Processing::OPENPIE</a></div><div class="ttdeci">const int OPENPIE</div><div class="ttdoc">for arc's</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:23</div></div>
-<div class="ttc" id="anamespaceProcessing_html_ab4df5de47ec316965de4af68acdd37d4"><div class="ttname"><a href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">Processing::MITER</a></div><div class="ttdeci">const int MITER</div><div class="ttdoc">strokeJoin(join) parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:37</div></div>
+<div class="ttc" id="anamespaceProcessing_html_aabc3adfb1916c43bce4f4f2298a56b1b"><div class="ttname"><a href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">Processing::OPENPIE</a></div><div class="ttdeci">const int OPENPIE</div><div class="ttdoc">for arc's</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:33</div></div>
+<div class="ttc" id="anamespaceProcessing_html_ab4df5de47ec316965de4af68acdd37d4"><div class="ttname"><a href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">Processing::MITER</a></div><div class="ttdeci">const int MITER</div><div class="ttdoc">strokeJoin(join) parameters</div><div class="ttdef"><b>Definition:</b> processing_consts.hpp:47</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><b>processing_consts.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="processing__consts_8hpp.html">processing_consts.hpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
