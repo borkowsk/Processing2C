@@ -46,6 +46,7 @@ Makefile
 CMakeFiles/
 cmake-build-debug/
 NBuild/
+docs/latex/
 
 *.cbp
 .idea
