@@ -15,3 +15,8 @@ using namespace Processing;
 const char* Processing::_PROGRAMNAME="ALIGNMENT";
 #include "ALIGNMENT.pde.cpp"
 #include "exit.pde.cpp"
+
+/// TEST:
+/// @startuml{myimage.png} "Image Caption" width=5cm
+///Alice -> Bob : Hello
+///@enduml
