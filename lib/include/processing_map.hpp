@@ -1,13 +1,20 @@
-// processing_map.hpp
+/// \file processing_map.hpp
+/// \brief Java like map template
+/// \author 'borkowsk'
+/// \ingroup JAVA_compatibility
+///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_MAP_H
 #define PROCESSING_MAP_H
-///
-///
-///
+
 #include "processing_lists.hpp"
 #include <map>
 #include <set>
+
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
 
@@ -87,7 +94,7 @@ public:
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

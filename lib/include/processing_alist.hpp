@@ -1,6 +1,12 @@
 /// \file processing_alist.hpp
-/// IMPLEMENTATION OF JAVA LIKE ArrayList
-/// \link https://en.cppreference.com/w/cpp/container/vector
+/// \brief IMPLEMENTATION OF JAVA LIKE ArrayList
+/// \author 'borkowsk'
+/// \ingroup JAVA_compatibility
+///
+/// \see \a https://en.cppreference.com/w/cpp/container/vector
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_ArrayLIST_H
 #define PROCESSING_ArrayLIST_H
@@ -9,7 +15,7 @@
 #include "processing_library.hpp"
 #include <vector>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
 /// Template for ArrayLists of objects
@@ -187,7 +193,7 @@ public:
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-22                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

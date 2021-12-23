@@ -1,6 +1,11 @@
 /// \file processing_lists.hpp
 /// \brief Processing specialised lists
-/// \ingroup PROCESSING_compatibility
+/// \author 'borkowsk'
+/// \ingroup Processing_compatibility
+///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_LISTS_H
 #define PROCESSING_LISTS_H
@@ -9,7 +14,7 @@
 #include "processing_library.hpp"
 #include <vector>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
   /// \class FloatList
@@ -230,7 +235,7 @@ inline StringList::StringList(const sarray<String> &arr):
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -1,7 +1,7 @@
 /** \brief Processing like main window
  * \file processing_window.hpp
  * \classes processing_window; color
- * \ingroup drawing
+ * \ingroup drawing , rtm
  * \author Created by "wborkowsk-at-uw.edu.pl" in 2020.
  * \last_modification  see the bottom lines
  * \see Doxygen
@@ -19,9 +19,15 @@
 
 #include<cstdint>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
+/// An announcement declaration for type that implements various conversions to a String
+class _string_param;
+/// An announcement declaration for mode of closing arcs
+extern const int OPENPIE;//default arc open_mode
+
+//TODO - make file for internal variables? Exp.: "processing_ivars.hpp" ?
 ///\brief Mode for driving ellipses \ingroup drawing
 extern int _ELLIPSE_MODE;//=CENTER?
 ///\brief Mode for driving rectangles \ingroup drawing
@@ -34,12 +40,7 @@ extern int STROKE_JOIN;//=MITER?;
 extern int _TEXT_HORIZONTAL_AL;//=LEFT;
 ///\brief Mode for vertical text alignment \ingroup drawing
 extern int _TEXT_VERTICAL_AL;//=TOP;
-///\brief Mode for closing arcs \ingroup drawing
-extern const int OPENPIE;//default arc open_mode
 
-/// An announcement declaration for type that implements various conversions to a String
-/// \ingroup strings
-class _string_param;
 
 /// \brief Interface for the main window class that mimics the Processing window
 /// \ingroup rtm
@@ -136,7 +137,7 @@ void fullScreen();
 void setFrameRate(float fps); ///Set desired frame rate
 
 /// Class implementing an RGBA model of color
-/// \todo Move it to its own hpp!
+/// \n TODO Move it to its own "color.hpp"!
 /// \ingroup drawing
 class color
 {
@@ -192,6 +193,8 @@ inline float  blue(const color& col) { return col.blue(); }
 // Global "system" variables
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//TODO - make file for internal variables? Exp.: "processing_ivars.hpp" ?
+
 ///\var Internal name of the program. Typically equal to base part of main source file in Processing. \ingroup rtm
 extern const char* _PROGRAMNAME;
 
@@ -214,9 +217,12 @@ extern int _INTERNAL_DELAY;//=100; //
 
 /// The mousePressed variable stores whether or not a mouse button is currently being pressed.
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
-/// The mouseButton variable can be used to determine which button has been pressed. \ingroup rtm
+/// The mouseButton variable can be used to determine which button has been pressed.
 extern const bool& mousePressed;
-extern       bool& mousePressedWr;//Writeable version. Rather not used in Processing examples.
+
+///Writeable version. \ingroup rtm
+extern       bool& mousePressedWr;/// Rather not used in Processing examples.
+
 
 extern const int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
                                /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
@@ -244,10 +250,10 @@ extern       int     keyCode;/// The variable keyCode is used to detect special 
 //  Most important driving functions
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///
+/// Not implemented!
 void noSmooth();
 
-///
+/// Not implemented!
 void smooth();
 
 /// \brief The background() function sets the color used for the background of the Processing window.
@@ -259,7 +265,7 @@ void background(float gray);
 void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
 void background(float v1,float v2,float v3,float  alpha);
-/// \todo Now not implemented
+/// \a TODO Currently not implemented
 /// \param col
 void background(const color& col);
 
@@ -367,7 +373,7 @@ int displayDensity(int display=0) {return 1;}
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
+ *               PROCESSING2C  version 2021-12-23                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

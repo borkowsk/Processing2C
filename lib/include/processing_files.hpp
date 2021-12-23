@@ -1,8 +1,8 @@
 /** \brief JAVA like streams
  * \file processing_files.hpp
- * \classes BufferedReader; PrintWriter;
  * \ingroup file_streams
- * \author Created by borkowsk on 26.11.2021.
+ * \author 'borkowsk'
+ * \classes BufferedReader; PrintWriter;
  * \last_modification  see the bottom lines
  */
 // //////////////////////////////////////////////////////////////////////
@@ -12,12 +12,12 @@
 #ifndef PROCESSING_FILES_HPP
 #define PROCESSING_FILES_HPP
 
-//#include <type_traits> //W fstream jest problem dla QtCreatora z type_false z <type_traits>
+//#include <type_traits> //W fstream jest problem dla QtCreator-a z type_false z <type_traits>
 //Ale ten include nie pomaga
 #include "processing_library.hpp"
 #include <fstream>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
   // An alternative to the currently used method of creating a reference to a type that mimics the JAVA class
@@ -252,18 +252,16 @@ namespace Processing
   void println(PrintWriter& o,_string_param p="");
 
 }//END of namespace Processing
-/* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
- ********************************************************************
- *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
- *            W O J C I E C H   B O R K O W S K I                   *
- *          Robert Zajonc Institute for Social Studies,             *
- *                     UNIVERSITY OF WARSAW                         *
- *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
- *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
- *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
- *    GITHUB: https://github.com/borkowsk                           *
- *                                                                  *
- *                               (Don't change or remove this note) *
- ********************************************************************/
+/* ****************************************************************** */
+/*               PROCESSING2C  version 2021-12-23                     */
+/* ****************************************************************** */
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
+/*            W O J C I E C H   B O R K O W S K I                     */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego         */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI    */
+/*    RG : https://www.researchgate.net/profile/Wojciech-Borkowski    */
+/*    GITHUB: https://github.com/borkowsk                             */
+/*                                                                    */
+/*                                 (Don't change or remove this note) */
+/* ****************************************************************** */
 #endif

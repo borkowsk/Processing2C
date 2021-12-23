@@ -2,7 +2,7 @@
  * \file processing_string.hpp
  * \classes String
  * \ingroup strings
- * \author Created by "wborkowsk-at-uw.edu.pl" on 26.11.2021.
+ * \author "wborkowsk-at-uw.edu.pl"
  * \last_modification  see the bottom lines
  */
 // //////////////////////////////////////////////////////////////////////
@@ -15,7 +15,7 @@
 #include <cassert>
 #include <string>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
     /// A foreshadowing declaration of this class to be used hereafter as a method parameter
@@ -242,7 +242,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
+ *               PROCESSING2C  version 2021-12-23                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

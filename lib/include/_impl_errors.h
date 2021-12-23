@@ -1,3 +1,11 @@
+/// \file _impl_errors.h
+/// \brief Macros for errors and function(s) for string concatenation which may helps
+/// \author 'borkowsk'
+/// \ingroup rtm
+///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #ifndef _IMPL_ERRORS_H
 #define _IMPL_ERRORS_H
 
@@ -13,18 +21,41 @@
                                             { flag=1;ERRMESSAGE( _XXX_ );} \
                                          }
 
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
-    /// A function(s) that replaces ineffective "+" sequences,
+    /// Function(s) that replaces ineffective "+" sequences,
     /// which also generate unnecessary warnings
+
+    /// String concatenation in efficient function form
+    ///  Both parameters may be String or what is convertable to String
+    /// \param a1
+    /// \param a2
+    /// \return concatenated string
     String concat(const _string_param& a1,const _string_param& a2);
+
+    /// Strong concatenation with 3 parameters
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3);
+
+    /// Strong concatenation with 4 parameters
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4);
+
+    /// Strong concatenation with 5 parameters
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5);
+
+    /// String concatenation in efficient function form
+    /// All parameters may be String or what is convertable to String
+    /// \param a1
+    /// \param a2
+    /// \param a3
+    /// \param a4
+    /// \param a5
+    /// \param a6
+    /// \return concatenated string
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5,const _string_param& a6);
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

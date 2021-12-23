@@ -16,7 +16,7 @@
 
 #include "processing_string.hpp"
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
   // Simple functions:
@@ -357,7 +357,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-08                   *
+ *               PROCESSING2C  version 2021-12-23                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

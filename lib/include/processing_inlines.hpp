@@ -1,13 +1,23 @@
-// processing_inlines.hpp
+/// \file processing_inlines.hpp
+/// \brief Procedury graficzne w wersji inline, dla przyśpieszenia wykonania
+/// \author 'borkowsk'
+/// \ingroup graphics
+///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_INLINES_H
 #define PROCESSING_INLINES_H
 #include "symshell.h"
 #include <cmath>
 //using namespace std::math;
-///
+
 /// ???
 #define OPTINLINE inline
+///
+
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
 extern bool _filled;//=true;
@@ -134,22 +144,39 @@ inline void ellipse(float a,float  b,float  c,float  d)
         ellipse_d(x1,y1,A,B);
 }
 
-/// map & lerp - nie graficzne ale też czesto używane
-//////////////////////////////////////////////////////////////
+/// map & lerp - nie graficzne, ale też często używane z grafiką
+/// \ingroup math
+
+/// \fn map
+/// \param s
+/// \param a1
+/// \param a2
+/// \param b1
+/// \param b2
+/// \return float
+/// \see https://rosettacode.org/wiki/Map_range#C
+/// \n TODO TEST & IMPROVE?
 inline float map(float s,float a1,float a2,float b1,float b2)//float value,float start1,float stop1,float start2,float stop2)
 {
-    return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
+    return b1 + (s-a1)*(b2-b1)/(a2-a1);
 }
 
+/// \fn lerp
+/// \param v0
+/// \param v1
+/// \param t
+/// \return float
+/// \see \a https://en.wikipedia.org/wiki/Linear_interpolation
+/// \n TODO TEST & IMPROVE?
 inline float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
-{                                       // https://en.wikipedia.org/wiki/Linear_interpolation
+{
   return (1 - t) * v0 + t * v1;
 }
 
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -1,7 +1,9 @@
 /** ****************************************************************
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
-* \links <ul>
+* \author 'borkowsk'
+* \ingroup Processing_compatibility
+* \see <ul>
 * <li> \a "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> \a "https://en.cppreference.com/w/cpp/language/constructor"
 * <li> \a "https://en.cppreference.com/w/cpp/language/decltype"
@@ -9,6 +11,9 @@
 * <li> \a "https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete"
 * </ul>
 */
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 /*
     \class is used to indicate that the comment block contains documentation for the class
     \struct to document a C-struct.
@@ -33,7 +38,7 @@
 #include <memory>
 #include <initializer_list>
 
-///\namespace Processing2C compatibility libraries
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
 
@@ -331,7 +336,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

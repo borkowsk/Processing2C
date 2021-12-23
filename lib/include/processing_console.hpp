@@ -1,13 +1,20 @@
-// processing_console.h
+/// \file processing_console.hpp
+/// \brief Związane z konsolą funkcje print i println oraz formatowanie
+/// \author 'borkowsk'
+/// \ingroup console
+///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
 #ifndef PROCESSING_CONSOLE_H
 #define PROCESSING_CONSOLE_H
-///
-///
-///
+
+///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
   class _string_param;
+
   //void print();//To bez sensu
   void print(_string_param _p1);//The print() function writes to the console
   void print(_string_param _p1,_string_param _p2);
@@ -93,7 +100,7 @@ namespace Processing
   
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-21                     */
+/*               PROCESSING2C  version 2021-12-23                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
