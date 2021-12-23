@@ -1,5 +1,9 @@
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
 //Obsługa zmiany kroju i parametrów fontu
-//NIE ZAIPLEMENTOWANA!
+// TODO - FONTY NIE ZAIPLEMENTOWANE!
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

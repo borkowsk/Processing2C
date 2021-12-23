@@ -1,5 +1,7 @@
-//Domyślna obsługa myszy polegająca na jej ignorowaniu
-//Domyślna obsługa zakończenia aplikacji polegająca jedynie na wywołaniu metody exit klasy bazowej
+/// \file keyPressed.cpp
+/// \brief  Domyślna obsługa klawiatury polegająca na jej ignorowaniu
+/// \author 'borkowsk'
+///
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 //#include "processing_templates.hpp"
@@ -15,7 +17,7 @@ void processing_window::onKeyPressed()
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2020-11-19                   */
+/*               PROCESSING2C  version 2020-12-23                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

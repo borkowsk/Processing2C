@@ -1,4 +1,8 @@
-// most commonly used library functions
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
+/// most commonly used library functions
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

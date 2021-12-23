@@ -1,4 +1,9 @@
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
 /// Processing like console functions
+
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

@@ -1,6 +1,9 @@
-/// Processing functions for formated arrays into Strings
-/// Still not implemented!
-//////////////////////////////////////////////////////////////////////
+/// \file parrayformat.cpp
+/// \brief  Processing functions for formated arrays into Strings
+/// \author 'borkowsk'
+///
+/// TODO Still not implemented!
+///
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -230,7 +233,7 @@ String nfc(sarray<double> nums,int digits)
 
 }//END of namespace Processing
 /********************************************************************/
-/*               PROCESSING2C  version 2021-10-26                   */
+/*               PROCESSING2C  version 2021-12-23                   */
 /********************************************************************/
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 /*            W O J C I E C H   B O R K O W S K I                   */

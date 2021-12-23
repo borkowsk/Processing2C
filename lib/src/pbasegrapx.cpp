@@ -1,3 +1,7 @@
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
 /// podstawy obsługi okienka pseudo-processingowego
 #include "processing_consts.hpp"
 #include "processing_window.hpp"

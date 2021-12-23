@@ -1,4 +1,7 @@
-//Funkcja drukująca błędy na konsolę
+/// \file _errMessage.cpp
+/// \brief  Funkcja drukująca błędy na konsolę
+/// \author 'borkowsk'
+///
 #include "_errMessage.hpp"
 #include <iostream>
 

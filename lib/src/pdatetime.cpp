@@ -1,4 +1,8 @@
-// Processing library functions connected with data & time
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
+/// Processing library functions connected with data & time
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

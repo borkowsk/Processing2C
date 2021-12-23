@@ -1,7 +1,8 @@
-/** \brief Most commonly used strings functions
+/**
  * \file pstrings.cpp
+ * \brief Most commonly used strings functions
  * \ingroup strings
- * \author Created by borkowsk in 2020.
+ * \author 'borkowsk'
  * \last_modification  see the bottom lines
  */
 // //////////////////////////////////////////////////////////////////////
@@ -66,7 +67,7 @@ void _errMessage(Processing::String msg,const char* func,int line,const char* fi
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-14                   *
+ *               PROCESSING2C  version 2021-12-23                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

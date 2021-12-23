@@ -1,4 +1,8 @@
-//noise set of functions
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
+///noise set of functions
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

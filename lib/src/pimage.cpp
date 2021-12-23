@@ -1,4 +1,9 @@
-//PImage and cursors
+/// \file ***.cpp
+/// \brief
+/// \author 'borkowsk'
+///
+///PImage and cursors
+/// TODO implement PImage and cursors
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"

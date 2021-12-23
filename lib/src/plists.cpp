@@ -1,6 +1,8 @@
 /// \file plist.cpp
-/// \ingroup PROCESSING_compatibility
+/// \author 'borkowsk'
 /// \brief Non inline methods of FloatList IntList & StringList
+///
+/// \ingroup PROCESSING_compatibility
 /// \n TODO - implement more of them!
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"

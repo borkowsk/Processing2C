@@ -1,8 +1,9 @@
-/** \brief JAVA like streams
+/**
  * \file pprintwriter.cpp
+ * \brief JAVA like streams
  * \classes BufferedReader; PrintWriter;
  * \ingroup file_streams
- * \author Created by borkowsk in 2020.
+ * \author 'borkowsk'
  * \last_modification  see the bottom lines
  */
 // //////////////////////////////////////////////////////////////////////
@@ -107,7 +108,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-16                   *
+ *               PROCESSING2C  version 2021-12-23                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *
@@ -120,4 +121,6 @@ void println(PrintWriter& o,_string_param _p1)
  *                                                                  *
  *                               (Don't change or remove this note) *
  ********************************************************************/
+
+
 
