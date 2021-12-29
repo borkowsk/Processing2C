@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['openpie_415',['OPENPIE',['../namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b',1,'Processing']]],
-  ['out_416',['out',['../classProcessing_1_1PrintWriter.html#a1ed971fcb698146f5ae744e5e2233156',1,'Processing::PrintWriter']]]
+  ['half_5fpi_440',['HALF_PI',['../namespaceProcessing.html#a5b08b1d58f8764300fce9cbaacfca019',1,'Processing']]]
 ];

@@ -145,6 +145,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The template class ptr&lt;&gt; Proxy for standard shared_ptr but mimic Processing/JAVA "object references" behaviour.  <a href="classProcessing_1_1ptr.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProcessing_1_1Comparable.html">Processing::Comparable&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ class representation of JAVA <em><a class="el" href="classProcessing_1_1Comparable.html" title="C++ class representation of JAVA Comparable interface.">Comparable</a></em> interface.  <a href="classProcessing_1_1Comparable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProcessing_1_1array.html">Processing::array&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The template class array Array of T, sized when constructed.  <a href="classProcessing_1_1array.html#details">More...</a><br /></td></tr>
@@ -170,24 +171,21 @@ Macros</h2></td></tr>
 <tr class="memitem:ab00dd36d99c0f33bd541a19d962505fc"><td class="memItemLeft" align="right" valign="top"><a id="ab00dd36d99c0f33bd541a19d962505fc"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>PROCESSING_TEMPLATES_H</b></td></tr>
 <tr class="separator:ab00dd36d99c0f33bd541a19d962505fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50a65d72c354147c82b9c9dd86bf9cb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>SAFE_RAW_PTR</b>(ptr)</td></tr>
+<tr class="memitem:a50a65d72c354147c82b9c9dd86bf9cb3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processing__templates_8hpp.html#a50a65d72c354147c82b9c9dd86bf9cb3">SAFE_RAW_PTR</a>(ptr)</td></tr>
 <tr class="separator:a50a65d72c354147c82b9c9dd86bf9cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f10cf8cd537d747645c15023a89496f"><td class="memItemLeft" align="right" valign="top"><a id="a5f10cf8cd537d747645c15023a89496f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SAFE_THIS</b>&#160;&#160;&#160;SAFE_RAW_PTR( this )</td></tr>
-<tr class="separator:a5f10cf8cd537d747645c15023a89496f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f10cf8cd537d747645c15023a89496f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__JAVA__compatibility.html#ga5f10cf8cd537d747645c15023a89496f">SAFE_THIS</a>&#160;&#160;&#160;<a class="el" href="processing__templates_8hpp.html#a50a65d72c354147c82b9c9dd86bf9cb3">SAFE_RAW_PTR</a>( this )</td></tr>
+<tr class="separator:ga5f10cf8cd537d747645c15023a89496f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplParams" colspan="2"><a id="a3041d080419aabc1e91f20644baa98d1"></a>
-template&lt;class A , class B &gt; </td></tr>
+<tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplParams" colspan="2">template&lt;class A , class B &gt; </td></tr>
 <tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplItemLeft" align="right" valign="top">A *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3041d080419aabc1e91f20644baa98d1">Processing::_free_ptr_to</a> (ptr&lt; B &gt; &amp;b)</td></tr>
-<tr class="memdesc:a3041d080419aabc1e91f20644baa98d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function _free_ptr_to releases the raw pointer to A. <br /></td></tr>
+<tr class="memdesc:a3041d080419aabc1e91f20644baa98d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function _free_ptr_to releases the raw pointer to A.  <a href="namespaceProcessing.html#a3041d080419aabc1e91f20644baa98d1">More...</a><br /></td></tr>
 <tr class="separator:a3041d080419aabc1e91f20644baa98d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplParams" colspan="2"><a id="a8f1b7c8353f0e1cffe9ef4cf2a4aa116"></a>
-template&lt;typename Base , typename T &gt; </td></tr>
-<tr class="memitem:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a8f1b7c8353f0e1cffe9ef4cf2a4aa116">Processing::instanceof</a> (ptr&lt; T &gt; &amp;p)</td></tr>
-<tr class="memdesc:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">JAVA like instanceof function inspired by <a href="https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof">https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof</a>. <br /></td></tr>
-<tr class="separator:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplParams" colspan="2">template&lt;typename Base , typename T &gt; </td></tr>
+<tr class="memitem:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__JAVA__compatibility.html#ga8f1b7c8353f0e1cffe9ef4cf2a4aa116">Processing::instanceof</a> (ptr&lt; T &gt; &amp;p)</td></tr>
+<tr class="memdesc:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">JAVA like instanceof function inspired by <a href="https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof">https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof</a>.  <a href="group__JAVA__compatibility.html#ga8f1b7c8353f0e1cffe9ef4cf2a4aa116">More...</a><br /></td></tr>
+<tr class="separator:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8806a7ddc012074300a427adb787ca3a"><td class="memTemplParams" colspan="2"><a id="a8806a7ddc012074300a427adb787ca3a"></a>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:a8806a7ddc012074300a427adb787ca3a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Processing::_dereference_ptr</b> (T *ptr)</td></tr>
@@ -196,18 +194,18 @@ template&lt;class T &gt; </td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Mandatory templates for objects and arrays. </p>
 <hr  />
-<p> ' </p><dl class="section author"><dt>Author</dt><dd>'borkowsk'</dd></dl>
+<p> ' </p><dl class="section author"><dt>Author</dt><dd>'borkowsk' </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><ul>
 <li>
-<em>"https://en.cppreference.com/w/cpp/utility/initializer_list"</em> </li>
+"https://en.cppreference.com/w/cpp/utility/initializer_list" </li>
 <li>
-<em>"https://en.cppreference.com/w/cpp/language/constructor"</em> </li>
+"https://en.cppreference.com/w/cpp/language/constructor" </li>
 <li>
-<em>"https://en.cppreference.com/w/cpp/language/decltype"</em> </li>
+"https://en.cppreference.com/w/cpp/language/decltype" </li>
 <li>
-<em>"https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design"</em> </li>
+"https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design" </li>
 <li>
-<em>"https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete"</em> </li>
+"https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete" </li>
 </ul>
 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -228,11 +226,14 @@ template&lt;class T &gt; </td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">                                    (std::shared_ptr&lt; decltype( _dereference_ptr( ptr ) ) &gt;( \</div>
 <div class="line">                                    std::shared_ptr&lt; decltype( _dereference_ptr( ptr ) ) &gt;{}, ptr ))</div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>Macro for creating dummy _shared_ptr from prevent non needed de-allocation </p><div class="fragment"><div class="line"><span class="keyword">auto</span> safe_this=<a class="code" href="processing__templates_8hpp.html#a50a65d72c354147c82b9c9dd86bf9cb3">SAFE_RAW_PTR</a>( <span class="keyword">this</span> );</div>
+</div><!-- fragment --><p> See: <a href="https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete">https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete</a> </p>
+
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aprocessing__templates_8hpp_html_a50a65d72c354147c82b9c9dd86bf9cb3"><div class="ttname"><a href="processing__templates_8hpp.html#a50a65d72c354147c82b9c9dd86bf9cb3">SAFE_RAW_PTR</a></div><div class="ttdeci">#define SAFE_RAW_PTR(ptr)</div><div class="ttdef"><b>Definition:</b> processing_templates.hpp:201</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

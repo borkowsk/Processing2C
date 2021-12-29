@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('namespaceProcessing.html',''); initRes
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Processing Namespace Reference</div>  </div>
+<div class="title">Processing Namespace Reference<div class="ingroups"><a class="el" href="group__Processing__compatibility.html">Functions and classes which mimic Processing interface</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -120,6 +120,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set desired frame rate.  <a href="classProcessing_1_1color.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProcessing_1_1Comparable.html">Comparable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ class representation of JAVA <em><a class="el" href="classProcessing_1_1Comparable.html" title="C++ class representation of JAVA Comparable interface.">Comparable</a></em> interface.  <a href="classProcessing_1_1Comparable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProcessing_1_1FloatList.html">FloatList</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classProcessing_1_1FloatList.html" title="The FloatList is offten used as replacement of a array&lt;float&gt;">FloatList</a> is offten used as replacement of a array&lt;float&gt;  <a href="classProcessing_1_1FloatList.html#details">More...</a><br /></td></tr>
@@ -172,9 +173,8 @@ Typedefs</h2></td></tr>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:aabe60f6231f5a049eb8e706a108f94e5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>pArrayList</b> = <a class="el" href="classProcessing_1_1self__printable__ptr.html">self_printable_ptr</a>&lt; <a class="el" href="classProcessing_1_1ArrayList.html">ArrayList</a>&lt; T &gt; &gt;</td></tr>
 <tr class="separator:aabe60f6231f5a049eb8e706a108f94e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f1f95b6a9914dfb9fad945407ad6735"><td class="memItemLeft" align="right" valign="top"><a id="a3f1f95b6a9914dfb9fad945407ad6735"></a>
-typedef <a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; <a class="el" href="classProcessing_1_1Object.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3f1f95b6a9914dfb9fad945407ad6735">pObject</a></td></tr>
-<tr class="memdesc:a3f1f95b6a9914dfb9fad945407ad6735"><td class="mdescLeft">&#160;</td><td class="mdescRight">pObject is aliasing for ptr&lt;Object&gt; Represents "object references" for object of basic class <a class="el" href="classProcessing_1_1Object.html" title="The base class for all &quot;JAVAlike&quot; objects \info Base class for all Processing/JAVA like class but not...">Object</a> <br /></td></tr>
+<tr class="memitem:a3f1f95b6a9914dfb9fad945407ad6735"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; <a class="el" href="classProcessing_1_1Object.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3f1f95b6a9914dfb9fad945407ad6735">pObject</a></td></tr>
+<tr class="memdesc:a3f1f95b6a9914dfb9fad945407ad6735"><td class="mdescLeft">&#160;</td><td class="mdescRight">pObject is aliasing for ptr&lt;Object&gt; Represents "object references" for object of basic class <a class="el" href="classProcessing_1_1Object.html" title="The base class for all &quot;JAVAlike&quot; objects \info Base class for all Processing/JAVA like class but not...">Object</a>  <a href="namespaceProcessing.html#a3f1f95b6a9914dfb9fad945407ad6735">More...</a><br /></td></tr>
 <tr class="separator:a3f1f95b6a9914dfb9fad945407ad6735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226dfd7a31e7a1849a2398de5b028b1c"><td class="memItemLeft" align="right" valign="top"><a id="a226dfd7a31e7a1849a2398de5b028b1c"></a>
 typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a226dfd7a31e7a1849a2398de5b028b1c">PFont</a></td></tr>
@@ -212,16 +212,14 @@ Functions</h2></td></tr>
 <tr class="separator:ade7b1887464082502ad0fc5201958bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c4d507a7e45170968cc82980e85638b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProcessing_1_1String.html">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a7c4d507a7e45170968cc82980e85638b">concat</a> (const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a1, const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a2, const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a3, const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a4, const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a5, const <a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> &amp;a6)</td></tr>
 <tr class="separator:a7c4d507a7e45170968cc82980e85638b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplParams" colspan="2"><a id="a3041d080419aabc1e91f20644baa98d1"></a>
-template&lt;class A , class B &gt; </td></tr>
+<tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplParams" colspan="2">template&lt;class A , class B &gt; </td></tr>
 <tr class="memitem:a3041d080419aabc1e91f20644baa98d1"><td class="memTemplItemLeft" align="right" valign="top">A *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3041d080419aabc1e91f20644baa98d1">_free_ptr_to</a> (<a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; B &gt; &amp;b)</td></tr>
-<tr class="memdesc:a3041d080419aabc1e91f20644baa98d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function _free_ptr_to releases the raw pointer to A. <br /></td></tr>
+<tr class="memdesc:a3041d080419aabc1e91f20644baa98d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function _free_ptr_to releases the raw pointer to A.  <a href="namespaceProcessing.html#a3041d080419aabc1e91f20644baa98d1">More...</a><br /></td></tr>
 <tr class="separator:a3041d080419aabc1e91f20644baa98d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplParams" colspan="2"><a id="a8f1b7c8353f0e1cffe9ef4cf2a4aa116"></a>
-template&lt;typename Base , typename T &gt; </td></tr>
-<tr class="memitem:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a8f1b7c8353f0e1cffe9ef4cf2a4aa116">instanceof</a> (<a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; T &gt; &amp;p)</td></tr>
-<tr class="memdesc:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">JAVA like instanceof function inspired by <a href="https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof">https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof</a>. <br /></td></tr>
-<tr class="separator:a8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplParams" colspan="2">template&lt;typename Base , typename T &gt; </td></tr>
+<tr class="memitem:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__JAVA__compatibility.html#ga8f1b7c8353f0e1cffe9ef4cf2a4aa116">instanceof</a> (<a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; T &gt; &amp;p)</td></tr>
+<tr class="memdesc:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="mdescLeft">&#160;</td><td class="mdescRight">JAVA like instanceof function inspired by <a href="https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof">https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof</a>.  <a href="group__JAVA__compatibility.html#ga8f1b7c8353f0e1cffe9ef4cf2a4aa116">More...</a><br /></td></tr>
+<tr class="separator:ga8f1b7c8353f0e1cffe9ef4cf2a4aa116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab93c5e58bf73a2421900db6d7fe6d838"><td class="memItemLeft" align="right" valign="top"><a id="ab93c5e58bf73a2421900db6d7fe6d838"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (<a class="el" href="classProcessing_1_1__string__param.html">_string_param</a> _p1)</td></tr>
 <tr class="separator:ab93c5e58bf73a2421900db6d7fe6d838"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -760,101 +758,127 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>noise_fsc</b> (float
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a3a41ab0885c4b25fb967fb6fde692277"><td class="memItemLeft" align="right" valign="top"><a id="a3a41ab0885c4b25fb967fb6fde692277"></a>
-const char16_t&#160;</td><td class="memItemRight" valign="bottom"><b>CODED</b> =65535</td></tr>
-<tr class="separator:a3a41ab0885c4b25fb967fb6fde692277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e95abec43502b6bc4b2b05f8ced023"><td class="memItemLeft" align="right" valign="top"><a id="a25e95abec43502b6bc4b2b05f8ced023"></a>
-const char&#160;</td><td class="memItemRight" valign="bottom"><b>ESC</b> =27</td></tr>
+const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a25e95abec43502b6bc4b2b05f8ced023">ESC</a> =27</td></tr>
+<tr class="memdesc:a25e95abec43502b6bc4b2b05f8ced023"><td class="mdescLeft">&#160;</td><td class="mdescRight">'ESC' key integer representation <br /></td></tr>
 <tr class="separator:a25e95abec43502b6bc4b2b05f8ced023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a188ae46ad1e11fc2c7488781aa871a12"><td class="memItemLeft" align="right" valign="top"><a id="a188ae46ad1e11fc2c7488781aa871a12"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">CENTER</a> =1</td></tr>
-<tr class="memdesc:a188ae46ad1e11fc2c7488781aa871a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">ellipseMode(mode) parameters <br /></td></tr>
-<tr class="separator:a188ae46ad1e11fc2c7488781aa871a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bdd031f5e67e65d89ca7f67aa5b2a1d"><td class="memItemLeft" align="right" valign="top"><a id="a3bdd031f5e67e65d89ca7f67aa5b2a1d"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>RADIUS</b> =2</td></tr>
-<tr class="separator:a3bdd031f5e67e65d89ca7f67aa5b2a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01b21ffde28b8d182b535ed04e42f37a"><td class="memItemLeft" align="right" valign="top"><a id="a01b21ffde28b8d182b535ed04e42f37a"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>CORNER</b> =3</td></tr>
-<tr class="separator:a01b21ffde28b8d182b535ed04e42f37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c5a0d2d53dd0eaa33d3af03033d3741"><td class="memItemLeft" align="right" valign="top"><a id="a7c5a0d2d53dd0eaa33d3af03033d3741"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>CORNERS</b> =4</td></tr>
-<tr class="separator:a7c5a0d2d53dd0eaa33d3af03033d3741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a41ab0885c4b25fb967fb6fde692277"><td class="memItemLeft" align="right" valign="top"><a id="a3a41ab0885c4b25fb967fb6fde692277"></a>
+const char16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3a41ab0885c4b25fb967fb6fde692277">CODED</a> =65535</td></tr>
+<tr class="memdesc:a3a41ab0885c4b25fb967fb6fde692277"><td class="mdescLeft">&#160;</td><td class="mdescRight">??? <br /></td></tr>
+<tr class="separator:a3a41ab0885c4b25fb967fb6fde692277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88a45de85a8c647c1dbbb4aa154a57c"><td class="memItemLeft" align="right" valign="top"><a id="af88a45de85a8c647c1dbbb4aa154a57c"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#af88a45de85a8c647c1dbbb4aa154a57c">CENTER</a> =1</td></tr>
+<tr class="memdesc:af88a45de85a8c647c1dbbb4aa154a57c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a6b2e30420dc0bf626177395be1e24be6" title="Parameter: mode int: either CORNER, CORNERS, CENTER, or RADIUS.">rectMode()</a> and <a class="el" href="namespaceProcessing.html#a7db101f802ec0ae5aaff85413cf948eb">ellipseMode()</a> parameter value <br /></td></tr>
+<tr class="separator:af88a45de85a8c647c1dbbb4aa154a57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd543474d13226fad9b4ef9da566565c"><td class="memItemLeft" align="right" valign="top"><a id="abd543474d13226fad9b4ef9da566565c"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#abd543474d13226fad9b4ef9da566565c">RADIUS</a> =2</td></tr>
+<tr class="memdesc:abd543474d13226fad9b4ef9da566565c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a6b2e30420dc0bf626177395be1e24be6" title="Parameter: mode int: either CORNER, CORNERS, CENTER, or RADIUS.">rectMode()</a> and <a class="el" href="namespaceProcessing.html#a7db101f802ec0ae5aaff85413cf948eb">ellipseMode()</a> parameter value <br /></td></tr>
+<tr class="separator:abd543474d13226fad9b4ef9da566565c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f65ce92cc09200370a0255a8683327"><td class="memItemLeft" align="right" valign="top"><a id="ab4f65ce92cc09200370a0255a8683327"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ab4f65ce92cc09200370a0255a8683327">CORNER</a> =3</td></tr>
+<tr class="memdesc:ab4f65ce92cc09200370a0255a8683327"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a6b2e30420dc0bf626177395be1e24be6" title="Parameter: mode int: either CORNER, CORNERS, CENTER, or RADIUS.">rectMode()</a> and <a class="el" href="namespaceProcessing.html#a7db101f802ec0ae5aaff85413cf948eb">ellipseMode()</a> parameter value <br /></td></tr>
+<tr class="separator:ab4f65ce92cc09200370a0255a8683327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34096e54bc3b4e8ad6200347a89aaeff"><td class="memItemLeft" align="right" valign="top"><a id="a34096e54bc3b4e8ad6200347a89aaeff"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a34096e54bc3b4e8ad6200347a89aaeff">CORNERS</a> =4</td></tr>
+<tr class="memdesc:a34096e54bc3b4e8ad6200347a89aaeff"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a6b2e30420dc0bf626177395be1e24be6" title="Parameter: mode int: either CORNER, CORNERS, CENTER, or RADIUS.">rectMode()</a> and <a class="el" href="namespaceProcessing.html#a7db101f802ec0ae5aaff85413cf948eb">ellipseMode()</a> parameter value <br /></td></tr>
+<tr class="separator:a34096e54bc3b4e8ad6200347a89aaeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc3adfb1916c43bce4f4f2298a56b1b"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">OPENPIE</a> =1</td></tr>
-<tr class="memdesc:aabc3adfb1916c43bce4f4f2298a56b1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">for arc's  <a href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">More...</a><br /></td></tr>
+<tr class="memdesc:aabc3adfb1916c43bce4f4f2298a56b1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">An announcement declaration for mode of closing arcs.  <a href="namespaceProcessing.html#aabc3adfb1916c43bce4f4f2298a56b1b">More...</a><br /></td></tr>
 <tr class="separator:aabc3adfb1916c43bce4f4f2298a56b1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5be1d481764a4929eab79e408669032"><td class="memItemLeft" align="right" valign="top"><a id="ac5be1d481764a4929eab79e408669032"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>OPEN</b> =0</td></tr>
-<tr class="separator:ac5be1d481764a4929eab79e408669032"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2935285966d192b508e42424b9de3b0"><td class="memItemLeft" align="right" valign="top"><a id="aa2935285966d192b508e42424b9de3b0"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>CHORD</b> =2</td></tr>
-<tr class="separator:aa2935285966d192b508e42424b9de3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a50142b13f6380529afe4faaf9503f1"><td class="memItemLeft" align="right" valign="top"><a id="a2a50142b13f6380529afe4faaf9503f1"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>PIE</b> =3</td></tr>
-<tr class="separator:a2a50142b13f6380529afe4faaf9503f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7dfb77099fee69d0a98ed890950ee08"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">SQUARE</a> =1</td></tr>
-<tr class="memdesc:af7dfb77099fee69d0a98ed890950ee08"><td class="mdescLeft">&#160;</td><td class="mdescRight">rectMode(mode)parameters  <a href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">More...</a><br /></td></tr>
+<tr class="memitem:a19183ee9ab6ce06d0f3c54df68b479a1"><td class="memItemLeft" align="right" valign="top"><a id="a19183ee9ab6ce06d0f3c54df68b479a1"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a19183ee9ab6ce06d0f3c54df68b479a1">OPEN</a> =0</td></tr>
+<tr class="memdesc:a19183ee9ab6ce06d0f3c54df68b479a1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5673801e961c0a120e16af28ed2d9390">arc()</a> parameter value <br /></td></tr>
+<tr class="separator:a19183ee9ab6ce06d0f3c54df68b479a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8253c540350a3074719e0f5262db5431"><td class="memItemLeft" align="right" valign="top"><a id="a8253c540350a3074719e0f5262db5431"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a8253c540350a3074719e0f5262db5431">CHORD</a> =2</td></tr>
+<tr class="memdesc:a8253c540350a3074719e0f5262db5431"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5673801e961c0a120e16af28ed2d9390">arc()</a> parameter value <br /></td></tr>
+<tr class="separator:a8253c540350a3074719e0f5262db5431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1232561d8604e9437b466119e32de80"><td class="memItemLeft" align="right" valign="top"><a id="ad1232561d8604e9437b466119e32de80"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ad1232561d8604e9437b466119e32de80">PIE</a> =3</td></tr>
+<tr class="memdesc:ad1232561d8604e9437b466119e32de80"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5673801e961c0a120e16af28ed2d9390">arc()</a> parameter value <br /></td></tr>
+<tr class="separator:ad1232561d8604e9437b466119e32de80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dfb77099fee69d0a98ed890950ee08"><td class="memItemLeft" align="right" valign="top"><a id="af7dfb77099fee69d0a98ed890950ee08"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#af7dfb77099fee69d0a98ed890950ee08">SQUARE</a> =1</td></tr>
+<tr class="memdesc:af7dfb77099fee69d0a98ed890950ee08"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a4f280247ee1bb57725bc5beefd9d3acd" title="Parameters weight float: the weight (in pixels) of the stroke.">strokeCap()</a> parameter <br /></td></tr>
 <tr class="separator:af7dfb77099fee69d0a98ed890950ee08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb800553e61b3c26981a08bd9ad6d005"><td class="memItemLeft" align="right" valign="top"><a id="abb800553e61b3c26981a08bd9ad6d005"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>PROJECT</b> =2</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#abb800553e61b3c26981a08bd9ad6d005">PROJECT</a> =2</td></tr>
+<tr class="memdesc:abb800553e61b3c26981a08bd9ad6d005"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a4f280247ee1bb57725bc5beefd9d3acd" title="Parameters weight float: the weight (in pixels) of the stroke.">strokeCap()</a> parameter <br /></td></tr>
 <tr class="separator:abb800553e61b3c26981a08bd9ad6d005"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafd9494d8b80e041e7878e4b227ed552"><td class="memItemLeft" align="right" valign="top"><a id="aafd9494d8b80e041e7878e4b227ed552"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>ROUND</b> =3</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#aafd9494d8b80e041e7878e4b227ed552">ROUND</a> =3</td></tr>
+<tr class="memdesc:aafd9494d8b80e041e7878e4b227ed552"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a4f280247ee1bb57725bc5beefd9d3acd" title="Parameters weight float: the weight (in pixels) of the stroke.">strokeCap()</a> parameter <br /></td></tr>
 <tr class="separator:aafd9494d8b80e041e7878e4b227ed552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4df5de47ec316965de4af68acdd37d4"><td class="memItemLeft" align="right" valign="top"><a id="ab4df5de47ec316965de4af68acdd37d4"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ab4df5de47ec316965de4af68acdd37d4">MITER</a> =1</td></tr>
-<tr class="memdesc:ab4df5de47ec316965de4af68acdd37d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">strokeJoin(join) parameters <br /></td></tr>
+<tr class="memdesc:ab4df5de47ec316965de4af68acdd37d4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#aa426681922312d077ab22e3a19760eb9" title="Parameters cap int: either SQUARE, PROJECT, or ROUND.">strokeJoin()</a> parameters <br /></td></tr>
 <tr class="separator:ab4df5de47ec316965de4af68acdd37d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89d151a89e40f07c5d553c4a620f30ea"><td class="memItemLeft" align="right" valign="top"><a id="a89d151a89e40f07c5d553c4a620f30ea"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>BEVEL</b> =2</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a89d151a89e40f07c5d553c4a620f30ea">BEVEL</a> =2</td></tr>
+<tr class="memdesc:a89d151a89e40f07c5d553c4a620f30ea"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#aa426681922312d077ab22e3a19760eb9" title="Parameters cap int: either SQUARE, PROJECT, or ROUND.">strokeJoin()</a> parameters <br /></td></tr>
 <tr class="separator:a89d151a89e40f07c5d553c4a620f30ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accd906a8a367a5dee3039abd464b22db"><td class="memItemLeft" align="right" valign="top"><a id="accd906a8a367a5dee3039abd464b22db"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>RIGHT</b> =39</td></tr>
-<tr class="separator:accd906a8a367a5dee3039abd464b22db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9efaca9de0fce4aa60837a336225a76"><td class="memItemLeft" align="right" valign="top"><a id="ad9efaca9de0fce4aa60837a336225a76"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>LEFT</b> =37</td></tr>
-<tr class="separator:ad9efaca9de0fce4aa60837a336225a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5000d7bb82881a6ee8b1ec2011ae1805"><td class="memItemLeft" align="right" valign="top"><a id="a5000d7bb82881a6ee8b1ec2011ae1805"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>TOP</b> =102</td></tr>
-<tr class="separator:a5000d7bb82881a6ee8b1ec2011ae1805"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28d5cf4c87698adb196623db000b5203"><td class="memItemLeft" align="right" valign="top"><a id="a28d5cf4c87698adb196623db000b5203"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>BOTTOM</b> =103</td></tr>
-<tr class="separator:a28d5cf4c87698adb196623db000b5203"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55b49f831248b776f34183249d4814c9"><td class="memItemLeft" align="right" valign="top"><a id="a55b49f831248b776f34183249d4814c9"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>BASELINE</b> =104</td></tr>
-<tr class="separator:a55b49f831248b776f34183249d4814c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aa0a73eeff9fdead60090084c90f74c"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3aa0a73eeff9fdead60090084c90f74c">PI</a> =M_PI</td></tr>
-<tr class="separator:a3aa0a73eeff9fdead60090084c90f74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabea1e34a7836f711617cd762a260acb"><td class="memItemLeft" align="right" valign="top"><a id="aabea1e34a7836f711617cd762a260acb"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>TWO_PI</b> =2*M_PI</td></tr>
-<tr class="separator:aabea1e34a7836f711617cd762a260acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7675facca2e88ef332a5e12205bec3"><td class="memItemLeft" align="right" valign="top"><a id="aba7675facca2e88ef332a5e12205bec3"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#aba7675facca2e88ef332a5e12205bec3">RIGHT</a> =39</td></tr>
+<tr class="memdesc:aba7675facca2e88ef332a5e12205bec3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5d9ab4f7c881157b057def166a25209e" title="Sets the current alignment for drawing text.">textAlign()</a> parameter value <br /></td></tr>
+<tr class="separator:aba7675facca2e88ef332a5e12205bec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf094e68a1594ef40c8c3138673ba080"><td class="memItemLeft" align="right" valign="top"><a id="aaf094e68a1594ef40c8c3138673ba080"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#aaf094e68a1594ef40c8c3138673ba080">LEFT</a> =37</td></tr>
+<tr class="memdesc:aaf094e68a1594ef40c8c3138673ba080"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5d9ab4f7c881157b057def166a25209e" title="Sets the current alignment for drawing text.">textAlign()</a> parameter value <br /></td></tr>
+<tr class="separator:aaf094e68a1594ef40c8c3138673ba080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad34c293fe0df4820eeaaefbdcb886a42"><td class="memItemLeft" align="right" valign="top"><a id="ad34c293fe0df4820eeaaefbdcb886a42"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ad34c293fe0df4820eeaaefbdcb886a42">TOP</a> =102</td></tr>
+<tr class="memdesc:ad34c293fe0df4820eeaaefbdcb886a42"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5d9ab4f7c881157b057def166a25209e" title="Sets the current alignment for drawing text.">textAlign()</a> parameter value <br /></td></tr>
+<tr class="separator:ad34c293fe0df4820eeaaefbdcb886a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64de242e63b12aede1595afa35696903"><td class="memItemLeft" align="right" valign="top"><a id="a64de242e63b12aede1595afa35696903"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a64de242e63b12aede1595afa35696903">BOTTOM</a> =103</td></tr>
+<tr class="memdesc:a64de242e63b12aede1595afa35696903"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5d9ab4f7c881157b057def166a25209e" title="Sets the current alignment for drawing text.">textAlign()</a> parameter value <br /></td></tr>
+<tr class="separator:a64de242e63b12aede1595afa35696903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de9e78a484cfdb8e0e8130024efc672"><td class="memItemLeft" align="right" valign="top"><a id="a8de9e78a484cfdb8e0e8130024efc672"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a8de9e78a484cfdb8e0e8130024efc672">BASELINE</a> =104</td></tr>
+<tr class="memdesc:a8de9e78a484cfdb8e0e8130024efc672"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceProcessing.html#a5d9ab4f7c881157b057def166a25209e" title="Sets the current alignment for drawing text.">textAlign()</a> parameter value <br /></td></tr>
+<tr class="separator:a8de9e78a484cfdb8e0e8130024efc672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5d3ec6c6104344cdb77c61faddfc59"><td class="memItemLeft" align="right" valign="top"><a id="afe5d3ec6c6104344cdb77c61faddfc59"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#afe5d3ec6c6104344cdb77c61faddfc59">PI</a> =M_PI</td></tr>
+<tr class="memdesc:afe5d3ec6c6104344cdb77c61faddfc59"><td class="mdescLeft">&#160;</td><td class="mdescRight">M_PI is imported from &lt;cmath&gt; <br /></td></tr>
+<tr class="separator:afe5d3ec6c6104344cdb77c61faddfc59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b0ecefaacc9e7336757aea847c0eea"><td class="memItemLeft" align="right" valign="top"><a id="ad9b0ecefaacc9e7336757aea847c0eea"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ad9b0ecefaacc9e7336757aea847c0eea">TWO_PI</a> =2*M_PI</td></tr>
+<tr class="memdesc:ad9b0ecefaacc9e7336757aea847c0eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">M_PI is imported from &lt;cmath&gt; then TWO_PI is generated on this base. <br /></td></tr>
+<tr class="separator:ad9b0ecefaacc9e7336757aea847c0eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b08b1d58f8764300fce9cbaacfca019"><td class="memItemLeft" align="right" valign="top"><a id="a5b08b1d58f8764300fce9cbaacfca019"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a5b08b1d58f8764300fce9cbaacfca019">HALF_PI</a> =M_PI_2</td></tr>
+<tr class="memdesc:a5b08b1d58f8764300fce9cbaacfca019"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>M_PI_2</em> is imported from &lt;cmath&gt;, <br /></td></tr>
+<tr class="separator:a5b08b1d58f8764300fce9cbaacfca019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5bb2431ba12f03d57fb0624a405d70"><td class="memItemLeft" align="right" valign="top"><a id="a0d5bb2431ba12f03d57fb0624a405d70"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a0d5bb2431ba12f03d57fb0624a405d70">QUARTER_PI</a> =M_PI_4</td></tr>
+<tr class="memdesc:a0d5bb2431ba12f03d57fb0624a405d70"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>M_PI_4</em> is imported from &lt;cmath&gt;, <br /></td></tr>
+<tr class="separator:a0d5bb2431ba12f03d57fb0624a405d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a985c15edb377dccb5531a2136d19ccfb"><td class="memItemLeft" align="right" valign="top"><a id="a985c15edb377dccb5531a2136d19ccfb"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>TAU</b> =6.2831855f</td></tr>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a985c15edb377dccb5531a2136d19ccfb">TAU</a> =6.2831855f</td></tr>
+<tr class="memdesc:a985c15edb377dccb5531a2136d19ccfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Why not TWO_PI? TODO? <br /></td></tr>
 <tr class="separator:a985c15edb377dccb5531a2136d19ccfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9c5e36b63f3c4504ba8cc30044a5c85"><td class="memItemLeft" align="right" valign="top"><a id="aa9c5e36b63f3c4504ba8cc30044a5c85"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>HALF_PI</b> =M_PI_2</td></tr>
-<tr class="separator:aa9c5e36b63f3c4504ba8cc30044a5c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a959a33a732233767a529009b8ec56d"><td class="memItemLeft" align="right" valign="top"><a id="a1a959a33a732233767a529009b8ec56d"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>QUARTER_PI</b> =M_PI_4</td></tr>
-<tr class="separator:a1a959a33a732233767a529009b8ec56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5d9b8b58b33f02d585d6544e157d18e"><td class="memItemLeft" align="right" valign="top"><a id="ac5d9b8b58b33f02d585d6544e157d18e"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_INT</b> =std::numeric_limits&lt;int&gt;::<a class="el" href="namespaceProcessing.html#a60c26212a66f9561a24a9ed0da783fd7">max</a>()</td></tr>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ac5d9b8b58b33f02d585d6544e157d18e">MAX_INT</a> =std::numeric_limits&lt;int&gt;::<a class="el" href="namespaceProcessing.html#a60c26212a66f9561a24a9ed0da783fd7">max</a>()</td></tr>
+<tr class="memdesc:ac5d9b8b58b33f02d585d6544e157d18e"><td class="mdescLeft">&#160;</td><td class="mdescRight">MAX_INT is imported from std::numeric_limits. <br /></td></tr>
 <tr class="separator:ac5d9b8b58b33f02d585d6544e157d18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f67dc014cce4eb6a866a0f48b41154e"><td class="memItemLeft" align="right" valign="top"><a id="a5f67dc014cce4eb6a866a0f48b41154e"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><b>DEG_TO_RAD</b> = 0.017453292519943295769236907684886f</td></tr>
-<tr class="separator:a5f67dc014cce4eb6a866a0f48b41154e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c07f90f2175c6a46f7ea850ff7256ba"><td class="memItemLeft" align="right" valign="top"><a id="a5c07f90f2175c6a46f7ea850ff7256ba"></a>
-const float&#160;</td><td class="memItemRight" valign="bottom"><b>RAD_TO_DEG</b> = 57.295779513082320876798154814105f</td></tr>
-<tr class="separator:a5c07f90f2175c6a46f7ea850ff7256ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a394d0f9d6168fd3a3d5fb659350b400b"><td class="memItemLeft" align="right" valign="top"><a id="a394d0f9d6168fd3a3d5fb659350b400b"></a>
+const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a394d0f9d6168fd3a3d5fb659350b400b">DEG_TO_RAD</a> = 0.017453292519943295769236907684886f</td></tr>
+<tr class="memdesc:a394d0f9d6168fd3a3d5fb659350b400b"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convert value from degrees to radians <br /></td></tr>
+<tr class="separator:a394d0f9d6168fd3a3d5fb659350b400b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2fb8a617aab897c102f320c8d1121a7"><td class="memItemLeft" align="right" valign="top"><a id="ac2fb8a617aab897c102f320c8d1121a7"></a>
+const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ac2fb8a617aab897c102f320c8d1121a7">RAD_TO_DEG</a> = 57.295779513082320876798154814105f</td></tr>
+<tr class="memdesc:ac2fb8a617aab897c102f320c8d1121a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">a convert value from radians to degrees <br /></td></tr>
+<tr class="separator:ac2fb8a617aab897c102f320c8d1121a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d33a016ef7036bae690b546abe035d3"><td class="memItemLeft" align="right" valign="top"><a id="a8d33a016ef7036bae690b546abe035d3"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_filled</b> =true</td></tr>
 <tr class="separator:a8d33a016ef7036bae690b546abe035d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb4421bc8b20587e067de1568030236c"><td class="memItemLeft" align="right" valign="top"><a id="aeb4421bc8b20587e067de1568030236c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_LINE_WIDTH</b> =1</td></tr>
 <tr class="separator:aeb4421bc8b20587e067de1568030236c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa3c6b9a87717dd74fc018ee4b790d9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#afa3c6b9a87717dd74fc018ee4b790d9d">_RECT_MODE</a> =CORNER</td></tr>
+<tr class="memitem:afa3c6b9a87717dd74fc018ee4b790d9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#afa3c6b9a87717dd74fc018ee4b790d9d">_RECT_MODE</a> =<a class="el" href="namespaceProcessing.html#ab4f65ce92cc09200370a0255a8683327">CORNER</a></td></tr>
 <tr class="memdesc:afa3c6b9a87717dd74fc018ee4b790d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for driving rectangles.  <a href="namespaceProcessing.html#afa3c6b9a87717dd74fc018ee4b790d9d">More...</a><br /></td></tr>
 <tr class="separator:afa3c6b9a87717dd74fc018ee4b790d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3141e2de5fa4b7a3cfa136ee3abb020a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3141e2de5fa4b7a3cfa136ee3abb020a">_ELLIPSE_MODE</a> =<a class="el" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">CENTER</a></td></tr>
+<tr class="memitem:a3141e2de5fa4b7a3cfa136ee3abb020a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a3141e2de5fa4b7a3cfa136ee3abb020a">_ELLIPSE_MODE</a> =<a class="el" href="namespaceProcessing.html#af88a45de85a8c647c1dbbb4aa154a57c">CENTER</a></td></tr>
 <tr class="memdesc:a3141e2de5fa4b7a3cfa136ee3abb020a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for driving ellipses.  <a href="namespaceProcessing.html#a3141e2de5fa4b7a3cfa136ee3abb020a">More...</a><br /></td></tr>
 <tr class="separator:a3141e2de5fa4b7a3cfa136ee3abb020a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac66eb6193ecae5dafef3162e577ca85d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classProcessing_1_1sarray.html">sarray</a>&lt; <a class="el" href="classProcessing_1_1String.html">String</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#ac66eb6193ecae5dafef3162e577ca85d">args</a></td></tr>
@@ -870,11 +894,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="names
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a464de140910299aaadaab0581a1bcb31">STROKE_JOIN</a></td></tr>
 <tr class="memdesc:a464de140910299aaadaab0581a1bcb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for driving conjunctions of lines. <br /></td></tr>
 <tr class="separator:a464de140910299aaadaab0581a1bcb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2969a4e6d49b3916205c5939bdf3deb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a2969a4e6d49b3916205c5939bdf3deb5">_TEXT_HORIZONTAL_AL</a> =LEFT</td></tr>
+<tr class="memitem:a2969a4e6d49b3916205c5939bdf3deb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a2969a4e6d49b3916205c5939bdf3deb5">_TEXT_HORIZONTAL_AL</a> =<a class="el" href="namespaceProcessing.html#aaf094e68a1594ef40c8c3138673ba080">LEFT</a></td></tr>
 <tr class="memdesc:a2969a4e6d49b3916205c5939bdf3deb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for horizontal text alignment.  <a href="namespaceProcessing.html#a2969a4e6d49b3916205c5939bdf3deb5">More...</a><br /></td></tr>
 <tr class="separator:a2969a4e6d49b3916205c5939bdf3deb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97544b4b38be4fd70c490ac1e49d614a"><td class="memItemLeft" align="right" valign="top"><a id="a97544b4b38be4fd70c490ac1e49d614a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a97544b4b38be4fd70c490ac1e49d614a">_TEXT_VERTICAL_AL</a> =BOTTOM</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceProcessing.html#a97544b4b38be4fd70c490ac1e49d614a">_TEXT_VERTICAL_AL</a> =<a class="el" href="namespaceProcessing.html#a64de242e63b12aede1595afa35696903">BOTTOM</a></td></tr>
 <tr class="memdesc:a97544b4b38be4fd70c490ac1e49d614a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for vertical text alignment. <br /></td></tr>
 <tr class="separator:a97544b4b38be4fd70c490ac1e49d614a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46b0540bc7b525a8b0c714ae472aa157"><td class="memItemLeft" align="right" valign="top"><a id="a46b0540bc7b525a8b0c714ae472aa157"></a>
@@ -963,7 +987,56 @@ bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>P2C compatibility libraries. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a3f1f95b6a9914dfb9fad945407ad6735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f1f95b6a9914dfb9fad945407ad6735">&#9670;&nbsp;</a></span>pObject</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; <a class="el" href="classProcessing_1_1Object.html">Object</a> &gt; <a class="el" href="namespaceProcessing.html#a3f1f95b6a9914dfb9fad945407ad6735">Processing::pObject</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pObject is aliasing for ptr&lt;Object&gt; Represents "object references" for object of basic class <a class="el" href="classProcessing_1_1Object.html" title="The base class for all &quot;JAVAlike&quot; objects \info Base class for all Processing/JAVA like class but not...">Object</a> </p>
+<p>This is an alias for "ptr\&lt;Object\&gt;" . Represents "object references" for object of basic class <a class="el" href="classProcessing_1_1Object.html" title="The base class for all &quot;JAVAlike&quot; objects \info Base class for all Processing/JAVA like class but not...">Object</a> using the same convention like any other <a class="el" href="namespaceProcessing.html" title="P2C compatibility libraries.">Processing</a> like objects. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a3041d080419aabc1e91f20644baa98d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3041d080419aabc1e91f20644baa98d1">&#9670;&nbsp;</a></span>_free_ptr_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class A , class B &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">A * Processing::_free_ptr_to </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classProcessing_1_1ptr.html">ptr</a>&lt; B &gt; &amp;&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function _free_ptr_to releases the raw pointer to A. </p>
+<p>Template function _free_ptr_to releases the raw pointer to A from shared ptr to (potentially) derived class B </p>
+
+</div>
+</div>
 <a id="a5673801e961c0a120e16af28ed2d9390"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5673801e961c0a120e16af28ed2d9390">&#9670;&nbsp;</a></span>arc()</h2>
 
@@ -2503,7 +2576,7 @@ PApplet::random(float,float) </dd></dl>
 </div><div class="memdoc">
 
 <p>It produces an "unpredictable" value within the specified range. </p>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 \note Generates random numbers:</h1>
 <p>Each time the <a class="el" href="namespaceProcessing.html#adf270841df88563155bc4e05ae3bed79" title="It produces an &quot;unpredictable&quot; value within the specified range.">random()</a> function is called, it returns an unexpected value within the specified range. If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter. For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5). If two parameters are specified, the function will return a float with a value between the two values. For example, random(-5, 10.2) returns values starting at -5 and up to (but not including) 10.2. To convert a floating-point random number to an integer, use the int() function. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -3047,7 +3120,7 @@ PApplet::random(float,float) </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Processing::_ELLIPSE_MODE =<a class="el" href="namespaceProcessing.html#a188ae46ad1e11fc2c7488781aa871a12">CENTER</a></td>
+          <td class="memname">int Processing::_ELLIPSE_MODE =<a class="el" href="namespaceProcessing.html#af88a45de85a8c647c1dbbb4aa154a57c">CENTER</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -3064,7 +3137,7 @@ PApplet::random(float,float) </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Processing::_RECT_MODE =CORNER</td>
+          <td class="memname">int Processing::_RECT_MODE =<a class="el" href="namespaceProcessing.html#ab4f65ce92cc09200370a0255a8683327">CORNER</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -3081,7 +3154,7 @@ PApplet::random(float,float) </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Processing::_TEXT_HORIZONTAL_AL =LEFT</td>
+          <td class="memname">int Processing::_TEXT_HORIZONTAL_AL =<a class="el" href="namespaceProcessing.html#aaf094e68a1594ef40c8c3138673ba080">LEFT</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -3119,7 +3192,7 @@ PApplet::random(float,float) </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md0"></a>
 \note Shapes</h1>
 <p>Using the <a class="el" href="namespaceProcessing.html#a0b582295d4c16e8a4fc2ee73c6a09ba5" title="Using the beginShape() and endShape() functions allow creating more complex forms....">beginShape()</a> and <a class="el" href="namespaceProcessing.html#a56e4ac05b5640e167f35923af2de5b82" title="Using the beginShape() and endShape() functions allow creating more complex forms....">endShape()</a> functions allow creating more complex forms. <a class="el" href="namespaceProcessing.html#a0b582295d4c16e8a4fc2ee73c6a09ba5" title="Using the beginShape() and endShape() functions allow creating more complex forms....">beginShape()</a> begins recording vertices for a shape and <a class="el" href="namespaceProcessing.html#a56e4ac05b5640e167f35923af2de5b82" title="Using the beginShape() and endShape() functions allow creating more complex forms....">endShape()</a> stops recording. The value of the kind parameter tells it which types of shapes to create from the provided vertices. With no mode specified, the shape can be any irregular polygon. kind int: Either POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, or QUAD_STRIP TODO - IMPLEMENTATION!!! </p>
 
@@ -3219,27 +3292,8 @@ PApplet::random(float,float) </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>for arc's </p>
 <p>An announcement declaration for mode of closing arcs. </p>
-
-</div>
-</div>
-<a id="a3aa0a73eeff9fdead60090084c90f74c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3aa0a73eeff9fdead60090084c90f74c">&#9670;&nbsp;</a></span>PI</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const auto Processing::PI =M_PI</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>MATH CONSTANTS </p>
-<h1><a class="anchor" id="autotoc_md0"></a>
-define M_PI_2     1.57079632679489661923  /* pi/2 *‍/</h1>
-<h1><a class="anchor" id="autotoc_md1"></a>
-define M_PI_4     0.78539816339744830962  /* pi/4 *‍/</h1>
+<p><a class="el" href="namespaceProcessing.html#a5673801e961c0a120e16af28ed2d9390">arc()</a> parameter value </p>
 
 </div>
 </div>
@@ -3255,23 +3309,6 @@ define M_PI_4     0.78539816339744830962  /* pi/4 *‍/</h1>
       </table>
 </div><div class="memdoc">
 <p>always contains the current vertical coordinate of the mouse. Note that <a class="el" href="namespaceProcessing.html" title="P2C compatibility libraries.">Processing</a> can only track the mouse position when the pointer is over the current window </p>
-
-</div>
-</div>
-<a id="af7dfb77099fee69d0a98ed890950ee08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7dfb77099fee69d0a98ed890950ee08">&#9670;&nbsp;</a></span>SQUARE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int Processing::SQUARE =1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>rectMode(mode)parameters </p>
-<p>strokeCap(cap) parameters </p>
 
 </div>
 </div>
