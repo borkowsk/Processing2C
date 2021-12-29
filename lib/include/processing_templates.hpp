@@ -2,18 +2,14 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
-* \ingroup Processing_compatibility
 * \see <ul>
-* <li> \a "https://en.cppreference.com/w/cpp/utility/initializer_list"
-* <li> \a "https://en.cppreference.com/w/cpp/language/constructor"
-* <li> \a "https://en.cppreference.com/w/cpp/language/decltype"
-* <li> \a "https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design"
-* <li> \a "https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete"
+* <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
+* <li> "https://en.cppreference.com/w/cpp/language/constructor"
+* <li> "https://en.cppreference.com/w/cpp/language/decltype"
+* <li> "https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design"
+* <li> "https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete"
 * </ul>
 */
-// //////////////////////////////////////////////////////////////////////
-// This file is part of the Processing2C++ Library. See bottom lines.
-// //////////////////////////////////////////////////////////////////////
 /*
     \class is used to indicate that the comment block contains documentation for the class
     \struct to document a C-struct.
@@ -30,15 +26,20 @@
     See: https://www.doxygen.nl/manual/docblocks.html
  */
 
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #pragma once
-
 #ifndef PROCESSING_TEMPLATES_H
 #define PROCESSING_TEMPLATES_H
+
 #include <cassert>
 #include <memory>
 #include <initializer_list>
 
-///\namespace Processing \brief P2C compatibility libraries
+/// \namespace Processing \brief P2C compatibility libraries
+/// \addtogroup Processing_compatibility
+/// @{
 namespace Processing
 {
 
@@ -46,14 +47,14 @@ namespace Processing
  * \class "Object"
  * This is a base class for all Processing/JAVA like class but not pointers
  * \ingroup JAVA_compatibility
- * \See
- * \a https://www.javatpoint.com/object-class
+ * \n See:
+ * https://www.javatpoint.com/object-class
  */
 class Object
 {
   private:
     /// Assign operator
-    /// \return derefered 'this' of L-value
+    /// \return deferred 'this' of L-value
     Object& operator = (const Object&);
   public:
     /// Destructor
@@ -70,12 +71,12 @@ class Object
 };
 
 /**
- * The template class "ptr\<T\>".
+ * The template class "ptr\<T>".
  * Proxy for standard shared_ptr which mimic Processing "object references"
  * behaviours
  * \tparam T : any class
+ * \n See: https://en.cppreference.com/w/cpp/memory/shared_ptr
  * \ingroup JAVA_compatibility
- * \See \a https://en.cppreference.com/w/cpp/memory/shared_ptr
  */
 template<class T>
 class ptr:public std::shared_ptr<T>
@@ -144,15 +145,15 @@ class ptr:public std::shared_ptr<T>
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
 
-    /**
-     * \typedef pObject is an alias for "ptr\<Object\>" .
+    /** \typedef pObject
+     * \brief This is an alias for "ptr\<Object\>" .
      * Represents "object references" for object of basic class Object
      * using the same convention like any other Processing like objects.
      */
     typedef ptr<Object> pObject;
 
     /**
-     * \fn Template function _free_ptr_to releases the raw pointer to A
+     * Template function _free_ptr_to releases the raw pointer to A
      * from shared ptr to (potentially) derived class B
      */
     template<class A,class B>
@@ -163,8 +164,9 @@ class ptr:public std::shared_ptr<T>
     }
 
     /**
-     * \fn Template function which imitates JAVA like 'instanceof' function
+     * Template function which imitates JAVA like 'instanceof' function
      * inspired by https://www.tutorialspoint.com/cplusplus-equivalent-of-instanceof
+     * \ingroup JAVA_compatibility
      */
     template<typename Base, typename T>
     inline
@@ -173,39 +175,43 @@ class ptr:public std::shared_ptr<T>
         return dynamic_cast<Base*>(p.get()) != nullptr;
     }
 
-    /** \fn Raw pointer de-referencing template.
-     * Needed mostly for extract class type from 'this'.
-     * \example                                             \code
-     *          decltype( _dereference_ptr(this) )
-     *                                                      \endcode
-     * \tparam T : any class
-     * \param ptr : raw ptr to class, typically this
+    /** \fn _dereference_ptr
+     * \brief Raw pointer de-referencing template.
+     * \tparam T  : any class
+     * \param ptr : raw ptr to class, i.e: this
      * \return de-referenced object
-     * \See \a https://en.cppreference.com/w/cpp/language/decltype
+     *
+     * Needed mostly for extract class type from 'this'.
+     *                                                      \code
+     *          decltype( _dereference_ptr(this) )
+     *                                                     \endcode
+     *
+     * \n See: https://en.cppreference.com/w/cpp/language/decltype
      */
     template<class T>
         T _dereference_ptr(T* ptr){ return *ptr;}
 
-/** Macro for creating dummy _shared_ptr from prevent non needed de-allocation
- * \example                                                 \code
+/** \def SAFE_RAW_PTR
+ * Macro for creating dummy _shared_ptr from prevent non needed de-allocation
+ *                                                          \code
  *          auto safe_this=SAFE_RAW_PTR( this );
  *                                                          \endcode
- * \See \a https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete
+ * See:  https://stackoverflow.com/questions/20131877/how-do-you-make-stdshared-ptr-not-call-delete
  */
 #define    SAFE_RAW_PTR( ptr )     (std::shared_ptr< decltype( _dereference_ptr( ptr ) ) >( \
                                     std::shared_ptr< decltype( _dereference_ptr( ptr ) ) >{}, ptr ))
 
-/** Macro for creating dummy _shared_ptr of 'this'
- * \example                                     \code
+/**  \def SAFE_THIS
+ * Macro for creating dummy _shared_ptr of 'this'
+ *                                              \code
  *              call_outside(SAFE_THIS,msg);
  *                                              \endcode
  * \ingroup JAVA_compatibility
  */
 #define    SAFE_THIS                SAFE_RAW_PTR( this )
 
-/**
- * \interface
- * C++ class representation of JAVA "Comparable" interface
+/** \class Comparable
+ * \brief C++ class representation of JAVA _Comparable_ interface
  * \tparam T : any class
  * \ingroup JAVA_compatibility
  */
@@ -302,7 +308,7 @@ class smatrix:public ptr< matrix<T> >
 // ==============================
 
 /**
- * \brief Template of sarray<> constructor with initialiser list
+ * \brief Template of sarray<> constructor with initializer list
  */
 template<class T>
 inline
@@ -334,9 +340,9 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
         (*this)[i]=new array<T>( M );
 }
 
-}//END of namespace Processing
+}/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2021-12-28                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
