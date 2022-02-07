@@ -1,9 +1,9 @@
 /// \file processing_templates.hpp
-/// Mandatory templates for objects and arrays
+/// \brief Mandatory templates for objects and arrays
 /// \see
-/// \link https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
-/// \link https://en.cppreference.com/w/cpp/utility/initializer_list
-/// \link https://en.cppreference.com/w/cpp/language/constructor
+/// \n https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
+/// \n https://en.cppreference.com/w/cpp/utility/initializer_list
+/// \n https://en.cppreference.com/w/cpp/language/constructor
 
 #pragma once
 #ifndef PROCESSING_TEMPLATES_H
@@ -20,7 +20,7 @@ namespace Processing
 {
 
 /// \brief The base class for all "JAVAlike" objects
-/// \info Base class for all Processing/JAVA like class but not pointers
+/// \details Base class for all Processing/JAVA like class but not pointers
 /// \link  https://www.javatpoint.com/object-class
 /// \see ptr
 class Object
@@ -56,7 +56,7 @@ class ptr:public std::shared_ptr<T>
     ptr(T* ini):std::shared_ptr<T>(ini){}
 
     /// \brief shared_ptr<> template constructor
-    /// \info Initial conversion from compatible shared_ptrs, needed for dynamic_pointer_cast<>
+    /// \details Initial conversion from compatible shared_ptrs, needed for dynamic_pointer_cast<>
     template<class B>
     ptr(std::shared_ptr<B>& ini):std::shared_ptr<T>(ini)
     {
@@ -64,7 +64,7 @@ class ptr:public std::shared_ptr<T>
     }
 
     /// \brief ptr<B> template constructor
-    /// \info Initial conversion from compatible ptr<B>. For types accepted by shared_ptr<T>
+    /// \details Initial conversion from compatible ptr<B>. For types accepted by shared_ptr<T>
     template<class B>
     ptr(ptr<B>& ini):std::shared_ptr<T>(ini)//Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
     {
