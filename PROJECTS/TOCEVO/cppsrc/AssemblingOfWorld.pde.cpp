@@ -17,10 +17,10 @@ using namespace Processing;
 
 //*   World is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
-int StepCounter=0;
+int StepCounter=0; ///< globalny licznik kroków
 
-class World 
-{
+class World: public virtual Object{
+  public:
   int smatrix<pcells>;//Two dimensional array of resources
   Agent smatrix<pagents>;//Two dimensional array of agents
   
@@ -29,19 +29,19 @@ class World
     cells=new matrix<int>(side,side);
     agents=new matrix<pAgent>(side,side);
   }
-}
+};
 
-//More alaborated functionalities are defined as stand-alone functions,
-//not as methods because of not enought flexible syntax of Processing
-///////////////////////////////////////////////////////////////////////////
+// More elaborated functionalities are defined as stand-alone functions,
+// not as methods because of not enough flexible syntax of Processing
+//*/////////////////////////////////////////////////////////////////////////
 
-void initializeModel(pWorld world)
+void initializeModel(pWorld world)   ///<
 {
   initializeCells(world->cells);
   initializeAgents(world->agents);
 }
 
-void visualizeModel(pWorld world)
+void visualizeModel(pWorld world)    ///<
 {
   noStroke();
   visualizeCells(world->cells);
@@ -49,7 +49,7 @@ void visualizeModel(pWorld world)
   float maxL=log(side*side);
   
   fill(128);noStroke();rect(side*cwidth,0,50,eatCounters->length);
-  fill(200);noStroke();rect(side*cwidth,eatCounters->length,50,panCounters->length);
+  fill(200);noStroke();rect(side*cwidth,eatCounters->length,50,punCounters->length);
   strokeWeight(1);
   
   for(int i=0;i<eatCounters->length;i++)
@@ -60,24 +60,24 @@ void visualizeModel(pWorld world)
     line(side*cwidth,i,side*cwidth+len,i);
   }
   
-  for(int i=0;i<panCounters->length;i++)
-  if(panCounters[i]>0)
+  for(int i=0;i<punCounters->length;i++)
+  if(punCounters[i]>0)
   {
-    float len=log(panCounters[i])/maxL*50.0; //println(len);
+    float len=log(punCounters[i])/maxL*50.0; //println(len);
     stroke(128,0,128+i);
     line(side*cwidth,eatCounters->length+i,side*cwidth+len,eatCounters->length+i);
   }
   
 }
 
-void changes(pWorld world)
+void changes(pWorld world)   ///<
 {
   cleanDeaths(world->agents);
   synchChangeCells(world->cells,world->cells);//No intercells interactions
   changeAgents(world->agents,world->cells);//Agents influence the resource layer
 }
 
-void modelStep(pWorld world)
+void modelStep(pWorld world) ///<
 {
    changes(world);
    

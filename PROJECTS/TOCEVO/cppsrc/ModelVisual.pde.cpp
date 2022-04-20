@@ -18,7 +18,7 @@ using namespace Processing;
 //*   World full of agents need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeAgents(smatrix<pAgent> agents)
+void visualizeAgents(smatrix<pAgent> agents) ///<
 {
   double maxSt=std::pow(maxStock,1/3.0); //println(maxSt);
   pAgent curra;
@@ -33,8 +33,11 @@ void visualizeAgents(smatrix<pAgent> agents)
       if(curra->energy>0)
       {
         fill(curra->genEat,0,curra->genPan);
-        if(curra->panished>0) stroke(255);
-        else noStroke();
+        
+        if(curra->punished>0) 
+            stroke(255);
+        else 
+            noStroke();
         
         float radius=(float)(cwidth*(std::pow(min(curra->energy,maxStock),1/3.0)/maxSt));  
 

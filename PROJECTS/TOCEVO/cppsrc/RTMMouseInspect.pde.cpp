@@ -17,19 +17,19 @@ using namespace Processing;
 
 //*   Obsługa wyszukiwania obiektu po kliknięciu myszy
 //*/////////////////////////////////////////////////////////////////////
-int searchedX=-1;
-int searchedY=-1;
-bool    Clicked=false;
-int selectedX=-1;
-int selectedY=-1;
-pAgent selected=nullptr;
+int searchedX=-1;   ///<
+int searchedY=-1;   ///<
+bool    Clicked=false;///<
+int selectedX=-1;   ///<
+int selectedY=-1;   ///<
+pAgent selected=nullptr;///<
 
-//double minDist2Selec=MAX_INT;//???
-//double maxTransSelec=-MAX_INT;//???
+//double minDist2Selec=MAX_INT;///???
+//double maxTransSelec=-MAX_INT;///???
 
-class PairOfInt
-//Simple version of Pair returning a pair of Int
-{
+/// Simple version of Pair returning a pair of Int
+class PairOfInt: public virtual Object{
+  public:
     public:
 	 const int a;
     public:
@@ -65,7 +65,7 @@ void processing_window::onMouseClicked()
   }
 }
 
-pPairOfInt findCell(smatrix<pAgent> agents)//Używamy gobalnych zmiennych mouseX i mouseY dla szybkości
+pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
 { //Przeliczanie współrzędnych myszy na współrzędne komórki 
   //Parametr jest tylko do sprawdzenie typu i ROZMIARÓW
   //Działa o tyle o ile wizualizacja komórek startuje w punkcie 0,0
@@ -78,8 +78,8 @@ pPairOfInt findCell(smatrix<pAgent> agents)//Używamy gobalnych zmiennych mouseX
       return nullptr;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts did it
 

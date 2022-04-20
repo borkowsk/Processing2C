@@ -17,37 +17,37 @@ using namespace Processing;
 
 //*   Simulation have to collect and write down statistics from every step
 //*/////////////////////////////////////////////////////////////////////////////////////
-PrintWriter outstat;
+PrintWriter outstat;    ///< główny plik wynikowy
 
-void initializeStats()
+void initializeStats()  ///<
 {
   String FileName=String("ToC_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(String("Results/")+FileName+ String(".out"));
   println(outstat,"$STEP\tAlive\t.....");//<-- complete the header fields!
 }
 
-int   prevStep=0;
-float meanAgentsEn=0;
-float meanCells=0;
-int   liveAgentsCount=0;
-int   liveCellsCount=0;
+int   prevStep=0;           ///<
+float meanAgentsEn=0;       ///<
+float meanCells=0;          ///<
+int   liveAgentsCount=0;    ///<
+int   liveCellsCount=0;     ///<
 
-int   numOfPanishments=0;
-float panPerStep=0;///Panishment per step
+int   numOfPunishments=0;   ///<
+float punPerStep=0;         ///< Punishment per step
 
-int   numOfBorns=0;//number of newborns
-float bornsPerStep=0;
+int   numOfBorns=0;         ///< number of newborns
+float bornsPerStep=0;       ///<
 
-sarray<int> eatCounters=new array<int>(256);   
-sarray<int> panCounters=new array<int>(256);   
+sarray<int> eatCounters=new array<int>(256);///<
+sarray<int> punCounters=new array<int>(256);///<
 
-void doStatistics(pWorld world)
+void doStatistics(pWorld world)  ///<
 {
   doStatisticsOnAgents(world->agents);
   doStatisticsOnCells(world->cells);
 }
 
-void doStatisticsOnAgents(smatrix<pAgent> agents)
+void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
 {  
   pAgent curra;
   
@@ -55,7 +55,7 @@ void doStatisticsOnAgents(smatrix<pAgent> agents)
   liveAgentsCount=0;
     
   for(int i=0;i<eatCounters->length;i++) eatCounters[i]=0;//Zero counters!
-  for(int i=0;i<panCounters->length;i++) panCounters[i]=0;//Zero counters!
+  for(int i=0;i<punCounters->length;i++) punCounters[i]=0;//Zero counters!
   
   for(int a=0;a<agents->length;a++)
    for(int b=0;b<agents[a]->length;b++)
@@ -66,26 +66,26 @@ void doStatisticsOnAgents(smatrix<pAgent> agents)
      
       /*count genoms*/                //assert(curra->genEat<256);	//
       eatCounters[curra->genEat]++;
-      panCounters[curra->genPan]++;
+      punCounters[curra->genPan]++;
       
       liveAgentsCount++;
     }
   
-   panPerStep=(float)((numOfPanishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
+   punPerStep=(float)((numOfPunishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
    bornsPerStep=(float)((numOfBorns)/((double)StepCounter-prevStep));
    meanAgentsEn=(float)(summ/liveAgentsCount);
    
    if(outstat!=nullptr)
-      print(outstat,StepCounter+String("\t")+liveAgentsCount+String("\t")+(summ/liveAgentsCount)+String("\t")+panPerStep+String("\t")+bornsPerStep);
+      print(outstat,StepCounter+String("\t")+liveAgentsCount+String("\t")+(summ/liveAgentsCount)+String("\t")+punPerStep+String("\t")+bornsPerStep);
    
    prevStep=StepCounter;
    
-   numOfPanishments=0;//Liczone "on run"
+   numOfPunishments=0;//Liczone "on run"
    numOfBorns=0;//number of newborns
    //outstat should be closed in exit() --> see Exit->pde
 }
 
-void doStatisticsOnCells(smatrix<int> cells)
+void doStatisticsOnCells(smatrix<int> cells) ///<
 {  
   long summ=0;
   int curr;

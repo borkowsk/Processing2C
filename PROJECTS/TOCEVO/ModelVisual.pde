@@ -16,8 +16,11 @@ void visualizeAgents(Agent[][] agents) ///<
       if(curra.energy>0)
       {
         fill(curra.genEat,0,curra.genPan);
-        if(curra.punished>0) stroke(255);
-        else noStroke();
+        
+        if(curra.punished>0) 
+            stroke(255);
+        else 
+            noStroke();
         
         float radius=(float)(cwidth*(Math.pow(min(curra.energy,maxStock),1/3.0)/maxSt));  
 

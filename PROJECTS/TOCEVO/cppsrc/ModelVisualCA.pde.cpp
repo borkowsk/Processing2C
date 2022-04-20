@@ -18,16 +18,16 @@ using namespace Processing;
 //*   World full of cells need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeCells(smatrix<int> cells)
+void visualizeCells(smatrix<int> cells)  ///<
 {
-  double max=std::log10(MAX_INT);
+  double maximum=std::log10(MAX_INT);
   for(int a=0;a<cells->length;a++)
    for(int b=0;b<cells[a]->length;b++)
    {
       //Colorisation
       double val=std::log10(cells[a][b]);
       
-      fill(0,(int)(val/max*255),0);
+      fill(0,(int)(val/maximum*255),0);
     
       rect(b*cwidth,a*cwidth,cwidth,cwidth);//a is vertical!
    }
