@@ -2,7 +2,7 @@
 //*   Agent need to be initialised & they need logic of change 
 //*/////////////////////////////////////////////////////////////
 
-void initializeCells(int[][] cells)     ///<
+void initializeCells( int[][] cells )     ///<
 {
    for(int a=0;a<cells.length;a++)
     for(int b=0;b<cells[a].length;b++)
@@ -18,7 +18,7 @@ void initializeCells(int[][] cells)     ///<
 // Implement rules
 //*///////////////////////////////////////////////
 
-void synchChangeCells(int[][] cells,int[][] newcells)   ///<
+void synchChangeCells( int[][] cells , int[][] newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
 {
   float R=treesR-1.0;
   int N=cells.length;

@@ -19,7 +19,7 @@ using namespace Processing;
 //*   Agent need to be initialised & they need logic of change 
 //*/////////////////////////////////////////////////////////////
 
-void initializeCells(smatrix<int> cells)     ///<
+void initializeCells( smatrix<int> cells )     ///<
 {
    for(int a=0;a<cells->length;a++)
     for(int b=0;b<cells[a]->length;b++)
@@ -35,7 +35,7 @@ void initializeCells(smatrix<int> cells)     ///<
 // Implement rules
 //*///////////////////////////////////////////////
 
-void synchChangeCells(smatrix<int> cells,sarray<int>[] newcells)   ///<
+void synchChangeCells( smatrix<int> cells , sarray<int>[] newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
 {
   float R=treesR-1.0;
   int N=cells->length;

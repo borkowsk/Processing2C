@@ -21,11 +21,13 @@ float punPerStep=0;         ///< Punishment per step
 int   numOfBorns=0;         ///< number of newborns
 float bornsPerStep=0;       ///<
 
-int[] eatCounters=new int[256];///<
-int[] punCounters=new int[256];///<
+int[] eatCounters=null; ///< TU JEST PROBLEM
+int[] punCounters=null; ///< Chyba tablica nie jest akceptowana. TODO!!!
 
 void doStatistics(World world)  ///<
 {
+  if(eatCounters==null) eatCounters=new int[256];
+  if(punCounters==null) punCounters=new int[256];
   doStatisticsOnAgents(world.agents);
   doStatisticsOnCells(world.cells);
 }

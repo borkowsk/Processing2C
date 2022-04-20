@@ -38,11 +38,13 @@ float punPerStep=0;         ///< Punishment per step
 int   numOfBorns=0;         ///< number of newborns
 float bornsPerStep=0;       ///<
 
-sarray<int> eatCounters=new array<int>(256);///<
-sarray<int> punCounters=new array<int>(256);///<
+sarray<int> eatCounters=nullptr; ///< TU JEST PROBLEM
+sarray<int> punCounters=nullptr; ///< Chyba tablica nie jest akceptowana. TODO!!!
 
 void doStatistics(pWorld world)  ///<
 {
+  if(eatCounters==nullptr) eatCounters=new array<int>(256);
+  if(punCounters==nullptr) punCounters=new array<int>(256);
   doStatisticsOnAgents(world->agents);
   doStatisticsOnCells(world->cells);
 }

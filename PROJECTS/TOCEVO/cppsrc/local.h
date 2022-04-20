@@ -60,8 +60,8 @@ void initializeModel(pWorld world)   ; ///<
 void visualizeModel(pWorld world)    ; ///<
 void changes(pWorld world)   ; ///<
 void modelStep(pWorld world); ///<
-void initializeCells(smatrix<int> cells)     ; ///<
-void synchChangeCells(smatrix<int> cells,sarray<int>[] newcells)   ; ///<
+void initializeCells( smatrix<int> cells )     ; ///<
+void synchChangeCells( smatrix<int> cells , sarray<int>[] newcells )   ; ///< Drugi parametr tłumaczony jest błędnie! TODO
 void initializeStats()  ; ///<
 void doStatistics(pWorld world)  ; ///<
 void doStatisticsOnAgents(smatrix<pAgent> agents); ///<
