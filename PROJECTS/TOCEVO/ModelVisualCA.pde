@@ -1,7 +1,7 @@
 //*   World full of cells need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeCells(int[][] cells)
+void visualizeCells(int[][] cells)  ///<
 {
   double max=Math.log10(MAX_INT);
   for(int a=0;a<cells.length;a++)

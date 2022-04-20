@@ -1,36 +1,36 @@
 //*   Simulation have to collect and write down statistics from every step
 //*/////////////////////////////////////////////////////////////////////////////////////
-PrintWriter outstat;
+PrintWriter outstat;    ///< główny plik wynikowy
 
-void initializeStats()
+void initializeStats()  ///<
 {
   String FileName="ToC_"+year()+'.'+nf(month(),2)+'.'+nf(day(),2)+'.'+nf(hour(),2)+'.'+nf(minute(),2)+'.'+nf(second(),2)+'.'+millis();
   outstat=createWriter("Results/"+FileName+".out");
   outstat.println("$STEP\tAlive\t.....");//<-- complete the header fields!
 }
 
-int   prevStep=0;
-float meanAgentsEn=0;
-float meanCells=0;
-int   liveAgentsCount=0;
-int   liveCellsCount=0;
+int   prevStep=0;           ///<
+float meanAgentsEn=0;       ///<
+float meanCells=0;          ///<
+int   liveAgentsCount=0;    ///<
+int   liveCellsCount=0;     ///<
 
-int   numOfPanishments=0;
-float panPerStep=0;///Panishment per step
+int   numOfPunishments=0;   ///<
+float punPerStep=0;         ///< Punishment per step
 
-int   numOfBorns=0;//number of newborns
-float bornsPerStep=0;
+int   numOfBorns=0;         ///< number of newborns
+float bornsPerStep=0;       ///<
 
-int[] eatCounters=new int[256];   
-int[] panCounters=new int[256];   
+int[] eatCounters=new int[256];///<
+int[] punCounters=new int[256];///<
 
-void doStatistics(World world)
+void doStatistics(World world)  ///<
 {
   doStatisticsOnAgents(world.agents);
   doStatisticsOnCells(world.cells);
 }
 
-void doStatisticsOnAgents(Agent[][] agents)
+void doStatisticsOnAgents(Agent[][] agents) ///<
 {  
   Agent curra;
   
@@ -38,7 +38,7 @@ void doStatisticsOnAgents(Agent[][] agents)
   liveAgentsCount=0;
     
   for(int i=0;i<eatCounters.length;i++) eatCounters[i]=0;//Zero counters!
-  for(int i=0;i<panCounters.length;i++) panCounters[i]=0;//Zero counters!
+  for(int i=0;i<punCounters.length;i++) punCounters[i]=0;//Zero counters!
   
   for(int a=0;a<agents.length;a++)
    for(int b=0;b<agents[a].length;b++)
@@ -49,26 +49,26 @@ void doStatisticsOnAgents(Agent[][] agents)
      
       /*count genoms*/                //assert curra.genEat<256;
       eatCounters[curra.genEat]++;
-      panCounters[curra.genPan]++;
+      punCounters[curra.genPan]++;
       
       liveAgentsCount++;
     }
   
-   panPerStep=(float)((numOfPanishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
+   punPerStep=(float)((numOfPunishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
    bornsPerStep=(float)((numOfBorns)/((double)StepCounter-prevStep));
    meanAgentsEn=(float)(summ/liveAgentsCount);
    
    if(outstat!=null)
-      outstat.print(StepCounter+"\t"+liveAgentsCount+"\t"+(summ/liveAgentsCount)+"\t"+panPerStep+"\t"+bornsPerStep);
+      outstat.print(StepCounter+"\t"+liveAgentsCount+"\t"+(summ/liveAgentsCount)+"\t"+punPerStep+"\t"+bornsPerStep);
    
    prevStep=StepCounter;
    
-   numOfPanishments=0;//Liczone "on run"
+   numOfPunishments=0;//Liczone "on run"
    numOfBorns=0;//number of newborns
    //outstat should be closed in exit() --> see Exit.pde
 }
 
-void doStatisticsOnCells(int[][] cells)
+void doStatisticsOnCells(int[][] cells) ///<
 {  
   long summ=0;
   int curr;

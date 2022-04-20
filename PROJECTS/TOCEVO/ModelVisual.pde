@@ -1,7 +1,7 @@
 //*   World full of agents need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeAgents(Agent[][] agents)
+void visualizeAgents(Agent[][] agents) ///<
 {
   double maxSt=Math.pow(maxStock,1/3.0); //println(maxSt);
   Agent curra;
@@ -16,7 +16,7 @@ void visualizeAgents(Agent[][] agents)
       if(curra.energy>0)
       {
         fill(curra.genEat,0,curra.genPan);
-        if(curra.panished>0) stroke(255);
+        if(curra.punished>0) stroke(255);
         else noStroke();
         
         float radius=(float)(cwidth*(Math.pow(min(curra.energy,maxStock),1/3.0)/maxSt));  

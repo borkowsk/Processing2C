@@ -2,7 +2,7 @@
 //*  Agent need to be initialised & they need logic of change 
 //*/////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents)
+void initializeAgents(Agent[][] agents) ///<
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -13,7 +13,7 @@ void initializeAgents(Agent[][] agents)
     }
 }
 
-void cleanDeaths(Agent[][] agents)
+void cleanDeaths(Agent[][] agents)      ///<
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -27,7 +27,7 @@ void cleanDeaths(Agent[][] agents)
 //*  EVERY STEP CHANGE == MAIN DYNAMICS
 //*//////////////////////////////////////
 
-void  changeAgents(Agent[][] agents,int[][] cells)
+void  changeAgents(Agent[][] agents,int[][] cells)  ///<
 {
   int MC=agents.length*agents[0].length;
   
@@ -38,7 +38,7 @@ void  changeAgents(Agent[][] agents,int[][] cells)
     
     if(agents[a][b]!= null && agents[a][b].energy>0 )//Exists and not death
     {
-      //Zurzycie zasobów na koszty metaboliczne
+      //Zużycie zasobów na koszty metaboliczne
       if(agents[a][b].energy>costOfStep) 
           agents[a][b].energy-=costOfStep; //Metabolic costs
       else
@@ -51,10 +51,10 @@ void  changeAgents(Agent[][] agents,int[][] cells)
           continue;//Now is death
       }
       
-      if(agents[a][b].panished>0)//Czy jest sparaliżowany?
+      if(agents[a][b].punished>0) //Czy jest sparaliżowany?
       {
-        agents[a][b].panished--;
-        continue;//Nic nie może zrobić poza zużywaniem zasobów
+        agents[a][b].punished--;
+        continue; //Nic nie może zrobić poza zużywaniem zasobów
       }
       
       //CELL OF INTEREST
@@ -99,18 +99,18 @@ void  changeAgents(Agent[][] agents,int[][] cells)
           continue;
       }
       
-      //Maybe panishment
-      if( agents[a][b].genPan>0 //Czy ma skłonnośc do karania?
+      //Maybe punishment
+      if( agents[a][b].genPan>0 //Czy ma skłonności do karania?
       && agents[ma][mb]!=null                        //Czy to ktoś do ukarania?
-      && agents[ma][mb].panished==0                  //Czy nie jest już ukarany?
+      && agents[ma][mb].punished==0                  //Czy nie jest już ukarany?
       && agents[ma][mb].genEat > agents[a][b].genEat //Czy jest za co go ukarać
-      && (enableKilling || agents[ma][mb].energy > (panishmentTime+1) * costOfStep)     //Czy chce go tak całkiem zabić!
+      && (enableKilling || agents[ma][mb].energy > (punishmentTime+1) * costOfStep)     //Czy chce go tak całkiem zabić!
       && (agents[a][b].genPan/255.0) > random(1.0) ) //Czynnik losowy
       {
           if(WITH_NEW_DEL_LOG)
-            println("Panishment at",ma,mb);
-          numOfPanishments++;  
-          agents[ma][mb].panished=panishmentTime;
+            println("Punishment at",ma,mb);
+          numOfPunishments++;  
+          agents[ma][mb].punished=punishmentTime;
           continue;
       }
       
@@ -125,6 +125,6 @@ void  changeAgents(Agent[][] agents,int[][] cells)
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////////

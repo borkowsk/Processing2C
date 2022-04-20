@@ -1,18 +1,17 @@
 //*   Obsługa wyszukiwania obiektu po kliknięciu myszy
 //*/////////////////////////////////////////////////////////////////////
-int searchedX=-1;
-int searchedY=-1;
-boolean Clicked=false;
-int selectedX=-1;
-int selectedY=-1;
-Agent selected=null;
+int searchedX=-1;   ///<
+int searchedY=-1;   ///<
+boolean Clicked=false;///<
+int selectedX=-1;   ///<
+int selectedY=-1;   ///<
+Agent selected=null;///<
 
-//double minDist2Selec=MAX_INT;//???
-//double maxTransSelec=-MAX_INT;//???
+//double minDist2Selec=MAX_INT;///???
+//double maxTransSelec=-MAX_INT;///???
 
-class PairOfInt
-//Simple version of Pair returning a pair of Int
-{
+/// Simple version of Pair returning a pair of Int
+class PairOfInt {
     public final int a;
     public final int b;
 
@@ -45,7 +44,7 @@ void mouseClicked()
   }
 }
 
-PairOfInt findCell(Agent[][] agents)//Używamy gobalnych zmiennych mouseX i mouseY dla szybkości
+PairOfInt findCell(Agent[][] agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
 { //Przeliczanie współrzędnych myszy na współrzędne komórki 
   //Parametr jest tylko do sprawdzenie typu i ROZMIARÓW
   //Działa o tyle o ile wizualizacja komórek startuje w punkcie 0,0
@@ -58,6 +57,6 @@ PairOfInt findCell(Agent[][] agents)//Używamy gobalnych zmiennych mouseX i mous
       return null;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////

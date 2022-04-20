@@ -1,4 +1,4 @@
-//*   Tool for made video from simulation
+//*   Tool for made video from simulation - DO NOT HAVE C++ VERSION!
 //*///////////////////////////////////////////////////////////////////////////////////
 // http://funprogramming.org/VideoExport-for-Processing/examples/basic/basic.pde
 //
@@ -8,8 +8,8 @@ import com.hamoid.*;//Oraz importujemy niezbędną biblioteką zawierającą kla
 // USAGE:
 // To wywołanie musi być w setup() żeby zadziałało Video:
 //
-//  initVideoExport(this,FileName,int Frames)); // Klasa VideoExport musi mieć dostęp do obiektu aplikacji Processingu
-//                                              // Najlepiej wywołać na koncu setupu. 
+//  initVideoExport(this,FileName,int Frames)); // Klasa VideoExport musi mieć dostęp do obiektu aplikacji Processing'u
+//                                              // Najlepiej wywołać na końcu setupu.
 //                                              // UWAGA!!!: Okno musi mieć PARZYSTE rozmiary
 //  
 // a to wywołujemy dla każdej klatki
@@ -26,7 +26,7 @@ static boolean     videoExportEnabled=false;//init will set up it for true
 void initVideoExport(processing.core.PApplet parent, String Name,int Frames)
 {
   videoFramesFreq=Frames;
-  videoExport = new VideoExport(parent,Name); //Klasa VideoExport musi mieć dostep do obiektu aplikacji Processingu
+  videoExport = new VideoExport(parent,Name); //Klasa VideoExport musi mieć dostęp do obiektu aplikacji Processing'u
   videoExport.setFrameRate(Frames);//Nie za szybko
   videoExport.startMovie();
   fill(0,128,255);text(Name,1,20);
