@@ -3,8 +3,8 @@
 int StepCounter=0; ///< globalny licznik kroków
 
 class World {
-  int cells[][];//Two dimensional array of resources
-  Agent agents[][];//Two dimensional array of agents
+  int[][]     cells;//Two dimensional array of resources
+  Agent[][]   agents;//Two dimensional array of agents
   
   World(int side)//Constructor of the World
   {

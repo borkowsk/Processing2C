@@ -21,8 +21,8 @@ int StepCounter=0; ///< globalny licznik kroków
 
 class World: public virtual Object{
   public:
-  int smatrix<pcells>;//Two dimensional array of resources
-  Agent smatrix<pagents>;//Two dimensional array of agents
+  smatrix<int>     cells;//Two dimensional array of resources
+  smatrix<pAgent>   agents;//Two dimensional array of agents
   
   World(int side)//Constructor of the World
   {

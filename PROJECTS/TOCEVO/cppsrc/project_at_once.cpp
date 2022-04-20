@@ -13,8 +13,8 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="TOCEVO";
-#include "AgentBasics.pde.cpp"
 #include "Agent.pde.cpp"
+#include "AgentBasics.pde.cpp"
 #include "AssemblingOfWorld.pde.cpp"
 #include "CABasics.pde.cpp"
 #include "ModelStats.pde.cpp"
