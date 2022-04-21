@@ -23,7 +23,7 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 int searchedX=-1;
 int searchedY=-1;
-bool    Clicked=false;
+bool Clicked=false;
 pAgent  theSelected=nullptr; 
 
 double minDist2Selec=MAX_INT;

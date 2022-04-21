@@ -25,9 +25,9 @@ using namespace Processing;
 //void timeline(pFloatList data,             //dane do wykresu
 //              float startX, float startY, //Położenie początku
 //              float height,               //wysokość
-//              bool    logaritm);          //czy logarytmować dane
+//              bool logaritm);          //czy logarytmować dane
               
-void timeline(pFloatList data,float startX, float startY, float height,bool    logaritm)/// Dla C++ ta deklaracja musi być umieszczona w HPP
+void timeline(pFloatList data,float startX, float startY, float height,bool logaritm)/// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-FLT_MAX;
   int     whMax=-1;//Gdzie jest maksimum
@@ -88,7 +88,7 @@ void timeline(pFloatList data,float startX, float startY, float height,bool    l
 
 //A jakby miało być więcej zmiennych? UWAGA!:  wspólna skala!!!
 //Wtedy np. tak jak poniżej, co jest wersją bardzo prymitywną, ale będzie działać :-D
-void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool    logaritm,color color_a,color color_b,color color_c)/// Dla C++ ta deklaracja musi być umieszczona w HPP
+void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c)/// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-FLT_MAX;//Tu będzie prawdziwa wartość
   float   gMax=0;//A tu przeliczona dla grafiki

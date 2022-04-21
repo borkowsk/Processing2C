@@ -35,8 +35,8 @@ int cwidth=8;/// size of cell
 int STATUSHEIGH=40;///
 int STEPSperVIS=1;///
 int FRAMEFREQ=20;///
-bool    WITH_VIDEO=false;///
-bool    simulationRun=true;///Start/stop flag
+bool WITH_VIDEO=false;///
+bool simulationRun=true;///Start/stop flag
 
 void processing_window::setup()
 {

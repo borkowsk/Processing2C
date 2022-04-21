@@ -13,5 +13,9 @@ class singiel; typedef Processing::ptr<singiel> psingiel; // { //klasa czyli typ
 
 //All global variables from Processing files
 
+//All global arrays from Processing files
+
+//All global matrices from Processing files
+
 //All global functions from Processing files
 #endif

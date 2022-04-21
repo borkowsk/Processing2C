@@ -18,6 +18,10 @@ class Dog; typedef Processing::ptr<Dog> pDog; // extends Animal {
 
 //All global variables from Processing files
 
+//All global arrays from Processing files
+
+//All global matrices from Processing files
+
 //All global functions from Processing files
-void print_animals(pArrayList<pAnimal> anim); /// Drukowanie własną metodą
+void	print_animals(pArrayList<pAnimal> anim);  /// Drukowanie własną metodą
 #endif

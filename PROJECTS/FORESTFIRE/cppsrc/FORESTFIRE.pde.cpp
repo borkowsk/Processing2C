@@ -45,7 +45,7 @@ PrintWriter Log;///For writing statistics into disk drive
 
 //For visualisation
 int S=20;       ///cell width & height
-bool    is_burning=false;
+bool is_burning=false;
 
 //For statistics
 int Step=0; ///!!!

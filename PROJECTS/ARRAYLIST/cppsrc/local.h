@@ -12,6 +12,10 @@
 
 //All global variables from Processing files
 
+//All global arrays from Processing files
+
+//All global matrices from Processing files
+
 //All global functions from Processing files
-void user_print(pIntList intInv); ///
+void	user_print(pIntList intInv); ///
 #endif

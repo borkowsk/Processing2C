@@ -42,10 +42,10 @@ int ileje = 80; ///ile jest maksymalnie jedzenia na miejscu jedzenia
 float quiet = 0.5;   ///tempo uciszania dźwięku
 
 //manipulowalne
-bool    may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
-bool    szlak;    ///
-bool    pamiec;  ///
-bool    losowo;  ///
+bool may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
+bool szlak;    ///
+bool pamiec;  ///
+bool losowo;  ///
 int ileSymulacji = 2; ///
 
 
@@ -105,8 +105,8 @@ void inicjacja() { /// Funkcja wymagająca deklaracji zapowiadającej
 
 //++++++++++++ FUNKCJE DO SPRAWNEGO SYMULOWANIA ++++++++++++
 
-smatrix<bool   > permutacje = new matrix<bool   >(16,4);
-sarray<bool   > doIteracji = new array<bool   >(2);
+smatrix<bool> permutacje = new matrix<bool>(16,4);
+sarray<bool> doIteracji = new array<bool>(2);
 int pet = 0;
 
 void pomocPetli() { /// Funkcja wymagająca deklaracji zapowiadającej

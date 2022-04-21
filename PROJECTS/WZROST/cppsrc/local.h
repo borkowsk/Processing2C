@@ -12,9 +12,13 @@ class KLASA; typedef Processing::ptr<KLASA> pKLASA; // {
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern int KLASA_Counter;//=0;/// Globalny licznik obiektów typu RGB
-extern int          Side;  /// Bok macierzy
-extern int          W;     /// Mnożnik dla kwadracika
+extern	int 		KLASA_Counter;///< =0; Globalny licznik obiektów typu RGB
+extern	int          		Side;  /// Bok macierzy
+extern	int          		W;     /// Mnożnik dla kwadracika
+
+//All global arrays from Processing files
+
+//All global matrices from Processing files
 
 //All global functions from Processing files
 #endif

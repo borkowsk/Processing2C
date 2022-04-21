@@ -63,8 +63,8 @@ int STATUSHEIGH=150;///WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
 int STEPSperVIS=1;///JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
 int FRAMEFREQ=30; ///ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
 
-//bool    WITH_VIDEO=false;//CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo->pde)
-bool    simulationRun=true;//FLAGA Start/stop DZIAŁANIA SYMULACJI
+//bool WITH_VIDEO=false;//CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo->pde)
+bool simulationRun=true;//FLAGA Start/stop DZIAŁANIA SYMULACJI
 
 int fontHeight=16;
 

@@ -27,7 +27,7 @@ using namespace Processing;
 int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
 int STARTG=128;//W jakiej szarości pierwsza komórka
-bool    ScreenDumps=false; //Zrzucanie obrazków co krok wcale
+bool ScreenDumps=false; //Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; //co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w funkcji setup
@@ -58,7 +58,7 @@ void processing_window::setup() //Window and model initialization
 }
 
 int Step=0;
-bool    Stop=false;
+bool Stop=false;
 void processing_window::draw()
 //Monte Carlo Step
 {

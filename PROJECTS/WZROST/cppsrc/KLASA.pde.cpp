@@ -39,7 +39,7 @@ class KLASA: public virtual Object{
     R=iR;G=iG;B=iB;
   }
   
-  bool    isEmpty()
+  bool isEmpty()
   {
     return R<=0 && G<=0 && B<=0;
   }

@@ -28,7 +28,7 @@ void processing_window::setup() {
   size(200, 200);
   
   testStrings=new ArrayList<String>();
-  bool    res=testStrings->add("bulba?");
+  bool res=testStrings->add("bulba?");
   res=testStrings->add("buuulba!");
   println(testStrings);
   
