@@ -28,10 +28,10 @@ float treesDensity=0.250;     ///<
 float treesR=1.015;           ///< from 1..1.1 !
 float agentsDensity=0.005;    ///< Initial density of agents
 
-bool    usePunishment=true;   ///< Punishment swith off/on
-bool    enableKilling=false;  ///<
-//bool    symPunishment=true; ///< Punishment genes defines tolerance window for others behavior
-char   punishmentTime=20;     ///< How long punished agent is paralysed
+bool usePunishment=true;   ///< Punishment swith off/on
+bool enableKilling=false;  ///<
+//bool symPunishment=true; ///< Punishment genes defines tolerance window for others behavior
+char16_t   punishmentTime=20;     ///< How long punished agent is paralysed
 
 int   costOfStep=10;          ///< Metabolic cost for agent to live one step more.
 float maxStock=costOfStep*50; ///< maximal stock per agent. The storage of unused energy is limited!
@@ -45,9 +45,11 @@ int cwidth=8;                   ///<size of cell
 int STATUSHEIGH=40;             ///<
 int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
 int FRAMEFREQ=1000;             ///<
-bool    WITH_NEW_DEL_LOG=false; ///<
-bool    WITH_VIDEO=false;       ///<
-bool    simulationRun=true;     ///< Start/stop flag
+bool WITH_NEW_DEL_LOG=false; ///<
+/*_OnlyProcessingBlockBegin
+bool WITH_VIDEO=false;       ///<
+_OnlyProcessingBlockEnd*/
+bool simulationRun=true;     ///< Start/stop flag
 
 void processing_window::setup()
 {
@@ -70,11 +72,14 @@ void processing_window::setup()
   //Optionals:
   //setupMenu();//ISSUE: Size of MenuBar is not counted by Processing!
   //...
+  
+  /*_OnlyProcessingBlockBegin
   if(WITH_VIDEO) 
   {
     initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
     FirstVideoFrame();
   }
+  _OnlyProcessingBlockEnd*/
   
   //Finishing setup stage
   println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
@@ -84,7 +89,10 @@ void processing_window::setup()
     println("PRESS 'r' or 'ESC' to start simulation");
   else
     println("PRESS 's' or 'ESC' to pause simulation");
+    
+/*_OnlyProcessingBlockBegin   
   NextVideoFrame();//It utilise inside variable to check if is enabled
+_OnlyProcessingBlockEnd*/  
 }
 
 void processing_window::draw()
@@ -104,8 +112,9 @@ void processing_window::draw()
     //WARUNEK STOPU
     if(liveAgentsCount==0) 
             simulationRun=false;//stop when agents are extinct
-    
+/*_OnlyProcessingBlockBegin    
     NextVideoFrame();//It utilise inside variable to check if is enabled
+_OnlyProcessingBlockEnd*/  
   }
 
 }

@@ -29,7 +29,9 @@ int STATUSHEIGH=40;             ///<
 int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
 int FRAMEFREQ=1000;             ///<
 boolean WITH_NEW_DEL_LOG=false; ///<
+/*_OnlyProcessingBlockBegin*/
 boolean WITH_VIDEO=false;       ///<
+/*_OnlyProcessingBlockEnd*/
 boolean simulationRun=true;     ///< Start/stop flag
 
 void setup()
@@ -53,11 +55,14 @@ void setup()
   //Optionals:
   //setupMenu();//ISSUE: Size of MenuBar is not counted by Processing!
   //...
+  
+  /*_OnlyProcessingBlockBegin*/
   if(WITH_VIDEO) 
   {
     initVideoExport(this,modelName+".mp4",FRAMEFREQ);
     FirstVideoFrame();
   }
+  /*_OnlyProcessingBlockEnd*/
   
   //Finishing setup stage
   println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
@@ -67,7 +72,10 @@ void setup()
     println("PRESS 'r' or 'ESC' to start simulation");
   else
     println("PRESS 's' or 'ESC' to pause simulation");
+    
+/*_OnlyProcessingBlockBegin*/   
   NextVideoFrame();//It utilise inside variable to check if is enabled
+/*_OnlyProcessingBlockEnd*/  
 }
 
 void draw()
@@ -87,8 +95,9 @@ void draw()
     //WARUNEK STOPU
     if(liveAgentsCount==0) 
             simulationRun=false;//stop when agents are extinct
-    
+/*_OnlyProcessingBlockBegin*/    
     NextVideoFrame();//It utilise inside variable to check if is enabled
+/*_OnlyProcessingBlockEnd*/  
   }
 
 }

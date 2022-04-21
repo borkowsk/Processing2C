@@ -35,7 +35,7 @@ void initializeCells( smatrix<int> cells )     ///<
 // Implement rules
 //*///////////////////////////////////////////////
 
-void synchChangeCells( smatrix<int> cells , sarray<int>[] newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
+void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
 {
   float R=treesR-1.0;
   int N=cells->length;

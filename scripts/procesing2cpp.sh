@@ -58,12 +58,12 @@ sed -E 's|(\s*)class(\s+)(\w+)(.*)\{|&\n\1  public:|' |\
 #sed -E 's|class(\s+)(\w+)(.*)\{|&\npublic:|M' |\ ?????
 #https://serverfault.com/questions/272033/sed-replace-across-multiple-lines
 #składnia prostych tablic
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/' |\
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/' |\
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*])/sarray<\1>/' |\
-sed -E 's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]/new\1cuboid<\2>(\4,\6,\8)/' |\
-sed -E 's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)](\s*)\[(.+)]/new\1matrix<\2>(\4,\6)/' |\
-sed -E 's/new(\s+)(int|float|double|boolean|String)(\s*)\[(.+)]/new\1array<\2>(\4)/' |\
+sed -E 's/(int|float|double|boolean|char|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/' |\
+sed -E 's/(int|float|double|boolean|char|String)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\
+sed -E 's/(int|float|double|boolean|char|String)(\s*)(\[\s*])/sarray<\1>/g' |\
+sed -E 's/new(\s+)(int|float|double|boolean|char|String)(\s*)\[(.+)](\s*)\[(.+)](\s*)\[(.+)]/new\1cuboid<\2>(\4,\6,\8)/' |\
+sed -E 's/new(\s+)(int|float|double|boolean|char|String)(\s*)\[(.+)](\s*)\[(.+)]/new\1matrix<\2>(\4,\6)/' |\
+sed -E 's/new(\s+)(int|float|double|boolean|char|String)(\s*)\[(.+)]/new\1array<\2>(\4)/' |\
 #pozostałe to składnia tablic obiektów
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
@@ -91,7 +91,8 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed -E 's/boolean([ >])/bool   \1/g' |\
+sed -E 's|boolean([ >)])|bool\1|g'  |\
+sed -E 's|char([ >)])|char16_t\1|g' |\
 sed 's/this\./this->/g' |\
 sed -E 's/([(,]\s*)(this)(\s*[,)])/\1SAFE_THIS\3/g' |\
 sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
@@ -118,8 +119,9 @@ sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|' |\
 sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
-sed 's|\/\*_forcebody\*\/|=0|g'|\
-sed 's|\/\*_emptybody\*\/|{}|g'|\
+sed 's|\/\*_forcebody\*\/|=0|g' |\
+sed 's|\/\*_emptybody\*\/|{}|g' |\
+sed 's|\/\*_endOfClass\*\/|;/*_endOfClass*/|'  |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\

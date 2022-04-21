@@ -20,9 +20,9 @@ using namespace Processing;
 
 class Agent: public virtual Object{
   public:
-  char  genEat; //< Gene for probability of eating
-  char  genPan; //< Gene for probability of punishment
-  char  punished=0; //< NOT USED
+  char16_t  genEat; //< Gene for probability of eating
+  char16_t  genPan; //< Gene for probability of punishment
+  char16_t  punished=0; //< NOT USED
   float energy; //< Agent resources
   
   /// Information for inspection or so...
@@ -38,13 +38,13 @@ class Agent: public virtual Object{
     
     if(igenEat<0) igenEat=0;
     if(igenEat>255) igenEat=255;
-    genEat=(char)igenEat;
+    genEat=(char16_t)igenEat;
     
     if(usePunishment)
     {
       if(igenPan<0) igenPan=0;
       if(igenPan>255) igenPan=255;
-      genPan=(char)igenPan;
+      genPan=(char16_t)igenPan;
     }
     else genPan=0;
   }
@@ -53,8 +53,8 @@ class Agent: public virtual Object{
   Agent()
   {
     energy=(int)random(maxInitialEnergyOfAgent);
-    genEat=(char)(random(255));
-    genPan=usePunishment?(char)(random(255)):0;//A jeśli startujemy z małej skłonności?
+    genEat=(char16_t)(random(255));
+    genPan=usePunishment?(char16_t)(random(255)):0;//A jeśli startujemy z małej skłonności?
   }
   
   /// Offspring constructor for Agent

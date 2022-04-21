@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.16"
+Pr2CVERSION="0.17"
 
 if [ $# -ne 0 ]; 
 then

@@ -10,8 +10,10 @@ void exit()          //it is called whenever a window is closed.
     outstat.close();  // Finishes the file
   }
   
+/*_OnlyProcessingBlockBegin*/
   if(WITH_VIDEO) CloseVideo();    //Finalise of Video export
-  
+/*_OnlyProcessingBlockEnd*/
+
   println(modelName,"said: Thank You!");
   super.exit();       //What library superclass have to do at exit()
 } 

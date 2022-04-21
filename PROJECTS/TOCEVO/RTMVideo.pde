@@ -1,5 +1,6 @@
 //*   Tool for made video from simulation - DO NOT HAVE C++ VERSION!
 //*///////////////////////////////////////////////////////////////////////////////////
+/*_OnlyProcessingBlockBegin*/
 // http://funprogramming.org/VideoExport-for-Processing/examples/basic/basic.pde
 //
 // Trzeba zainstalować program ffmpeg żeby działało!!!
@@ -64,7 +65,7 @@ void CloseVideo() //To wołamy gdy chcemy zamknąć
    videoExport.endMovie();//Koniec filma
   }
 }
-
+/*_OnlyProcessingBlockEnd*/
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - MOVIE MAKER 
 ///////////////////////////////////////////////////////////////////////////////////////////

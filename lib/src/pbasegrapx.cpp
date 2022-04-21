@@ -15,7 +15,7 @@ namespace Processing
 
 void noSmooth()
 {
-    FIRST_TIME_ERRMESSAGE( " is default for X11!" );
+    FIRST_TIME_ERRMESSAGE( " is default and only possible for X11!" );
 }
 
 void smooth()

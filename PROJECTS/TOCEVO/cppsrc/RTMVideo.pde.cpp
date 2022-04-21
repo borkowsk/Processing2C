@@ -17,6 +17,7 @@ using namespace Processing;
 
 //*   Tool for made video from simulation - DO NOT HAVE C++ VERSION!
 //*///////////////////////////////////////////////////////////////////////////////////
+/*_OnlyProcessingBlockBegin
 // http://funprogramming->org/VideoExport-for-Processing/examples/basic/basic->pde
 //
 // Trzeba zainstalować program ffmpeg żeby działało!!!
@@ -38,7 +39,7 @@ import com->hamoid.*;//Oraz importujemy niezbędną biblioteką zawierającą kl
 
 VideoExport        videoExport;//KLASA z biblioteki VideoExport Abe Pazosa - trzeba zainstalować
 static int         videoFramesFreq=0;   
-static bool        videoExportEnabled=false;//init will set up it for true
+static bool     videoExportEnabled=false;//init will set up it for true
 
 void initVideoExport(processing->core->PApplet parent, String Name,int Frames)
 {
@@ -81,7 +82,7 @@ void CloseVideo() //To wołamy gdy chcemy zamknąć
    videoExport->endMovie();//Koniec filma
   }
 }
-
+_OnlyProcessingBlockEnd*/
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - MOVIE MAKER 
 ///////////////////////////////////////////////////////////////////////////////////////////

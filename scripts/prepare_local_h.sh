@@ -47,51 +47,93 @@ sed -i "s/_@ENTER_/\n/g" userclasses.sed
 echo "s/<(Link)>/<p\1>/g"  >> userclasses.sed
 echo "s/(aNetworkType|aCriterion)\./\1\:\:/g" >> userclasses.sed
 
-
+#Stałe czyli 'finals'
 echo -e "\n//All global finals (consts) from Processing files" >> local.h
 
 egrep -h '^\s*(final\s+int|final\s+float|final\s+double|final\s+String|final\s+boolean|final\s+\w+)\s+(\w+)\s*[;=].*///' *.pde |\
-sed 's|boolean|bool   |g' |\
 sed 's|final|const|g' |\
-sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+bool|const\s+\w+)/extern &/' |\
+sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)/extern &/' |\
+#podmiana boolean i nazw klas
+sed 's|boolean|bool   |g' |\
 sed -E -f userclasses.sed  |\
+sed 's|\/\*_reference\*\/|\&|g' |\
 sed 's|=|;//=|' >> local.h
 
+#zmienne
 echo -e "\n//All global variables from Processing files" >> local.h
-egrep -h '^\s*(int|float|double|String|boolean|\w+)\s+(\w+)\s*[;=].*///' *.pde |\
-sed 's|boolean|bool|g' |\
-sed -E 's/^\s*(int|float|double|String|bool|\w+)/extern &/' |\
+
+egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\s+(\w+)\s*[;=].*///' *.pde |\
+sed -E 's/^\s*(int|float|double|String|boolean|char|\w+)\s+/extern\t&\t\t/' |\
+#podmiana boolean i nazw klas
+sed 's|boolean |bool |g'  |\
+sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
-sed 's|=|;//=|' >> local.h
+sed 's|\/\*_reference\*\/|\&|g' |\
+#poprawianie komentarzy i interpunkcji
+sed 's|=|;//=|' |\
+sed -E 's|//(.*)///|///< \1|' >> local.h
+
+
+#zmienne tablicowe
+echo -e "\n//All global arrays from Processing files" >> local.h
+
+egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\[\s*\]\s+(\w+)\s*[;=].*///' *.pde |\
+sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/extern\tsarray<\1>/g' |\
+#podmiana boolean i nazw klas
+sed 's|boolean |bool |g'  |\
+sed 's|char |char16_t |g' |\
+sed -E -f userclasses.sed  |\
+sed 's|\/\*_reference\*\/|\&|g' |\
+#poprawianie komentarzy i interpunkcji
+sed 's|=|;//=|' |\
+sed -E 's|//(.*)///|///< \1|' >> local.h
+
+#zmienne matrycowe
+echo -e "\n//All global matrices from Processing files" >> local.h
+
+egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\[\s*\]\s*[\s*\]\s+(\w+)\s*[;=].*///' *.pde |\
+sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/extern\tsmatrix<\1>/g' |\
+#podmiana boolean i nazw klas
+sed 's|boolean |bool |g'  |\
+sed 's|char |char16_t |g' |\
+sed -E -f userclasses.sed  |\
+sed 's|\/\*_reference\*\/|\&|g' |\
+#poprawianie komentarzy i interpunkcji
+sed 's|=|;//=|' |\
+sed -E 's|//(.*)///|///< \1|' >> local.h
+
 
 #Funkcje wymagające deklaracji zapowiadających
 echo -e "\n//All global functions from Processing files" >> local.h
 
-egrep -h '^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
-sed -E 's#^\s*(void|int|float|double|String|boolean)\s+(\w+)\s*\(.*\)\s*#&; //#' |\
+egrep -h '^\s*(void|int|float|double|String|boolean|char)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
+sed -E 's#^\s*(void|int|float|double|String|boolean|char)\s+(\w+)\s*(\(.*\)\s*)#\1\t\2\3; //#' |\
 #składnia prostych tablic w parametrach
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/' |\
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/' |\
-sed -E 's/(int|float|double|boolean|String)(\s*)(\[\s*])/sarray<\1>/' |\
+sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/g' |\
+sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\
+sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/sarray<\1>/g' |\
 #pozostałe to składnia tablic obiektów w parametrach
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
-#podmiana boolean
-sed 's|boolean|bool   |g' |\
+#podmiana boolean i nazw klas
+sed 's|boolean |bool |g'  |\
+sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g' |\
-#poprawianie komentarzy
+#poprawianie komentarzy i interpunkcji
 sed -E 's|//\s*\{*\s*///|///|' |\
+sed -E 's|(//)(.*)///|///< \2|' |\
 #usuwanie zbędnych odstępów
-sed 's|) ;|);|' >> local.h
+sed -E 's|\)\s+;|); |' >> local.h
+#sed 's|) ;|);|' >> local.h
 
 echo "#endif" >> local.h
 #cat local.h
 #cat userclasses.sed
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-12-13                   */
+#/*               PROCESSING2C  version 2022-04-21                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
