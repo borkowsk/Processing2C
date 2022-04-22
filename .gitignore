@@ -2,6 +2,8 @@
 *.d
 *.*~
 config.dat
+lista.txt
+headers.tmp
 
 # Compiled Object files
 *.slo
