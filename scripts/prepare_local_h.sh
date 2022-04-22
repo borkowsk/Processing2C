@@ -51,13 +51,14 @@ echo "s/(aNetworkType|aCriterion)\./\1\:\:/g" >> userclasses.sed
 echo -e "\n//All global finals (consts) from Processing files" >> local.h
 
 egrep -h '^\s*(final\s+int|final\s+float|final\s+double|final\s+String|final\s+boolean|final\s+\w+)\s+(\w+)\s*[;=].*///' *.pde |\
-sed 's|final|const|g' |\
-sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)/extern &/' |\
+sed -E 's|final\s+|const |g' |\
+# Może: static constexpr ?
+sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)/static \t\1/' |\
 #podmiana boolean i nazw klas
 sed 's|boolean|bool   |g' |\
 sed -E -f userclasses.sed  |\
-sed 's|\/\*_reference\*\/|\&|g' |\
-sed 's|=|;//=|' >> local.h
+sed 's|\/\*_reference\*\/|\&|g'  >> local.h
+#sed 's|=|;//=|' >> local.h --- bez usuwania =
 
 #zmienne
 echo -e "\n//All global variables from Processing files" >> local.h

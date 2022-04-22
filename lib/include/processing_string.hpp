@@ -73,7 +73,7 @@ namespace Processing
         bool operator != (nullptr_t);
 
         ///Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
-        String& operator = (_string_param v);
+        String& operator = (_string_param v); ///< blabla
         ///Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
         String& operator += (_string_param v);
         template<class X>

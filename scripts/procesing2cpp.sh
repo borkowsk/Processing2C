@@ -27,6 +27,10 @@ echo ""
 cat $1 |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
+#także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu
+sed -E 's|final\s+|const |g' |\
+# Może: static constexpr ?
+sed -E 's#^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)\s+(\w+)\s*[;=].*///#//declared in local@@@h: &#' |\
 #przeorganizowywanie konstruktorow
 sed -E 's|\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\:\1\2\(\3\)\4{|' |\
 #Dodawanie ENTER po { ale nie dla "enum"
@@ -101,7 +105,6 @@ sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
 sed "s/frameRate(/setFrameRate(/" |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
-sed 's/final /const /g' |\
 #MATH & FLOATs
 sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
