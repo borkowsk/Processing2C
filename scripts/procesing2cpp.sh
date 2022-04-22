@@ -113,15 +113,15 @@ sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 #sed 's/abs(/std::abs(/g' |\
 #DIRECTIVES
-sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|' |\
-sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|' |\
-sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|' |\
-sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|' |\
+sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
+sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i' |\
+sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|i' |\
+sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|i' |\
 sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g' |\
 sed 's|\/\*_emptybody\*\/|{}|g' |\
-sed 's|\/\*_endOfClass\*\/|;/*_endOfClass*/|'  |\
+sed 's|\/\*_endOfClass\*\/|;/*_endOfClass*/|i'  |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
@@ -184,7 +184,7 @@ echo -e "//$(dirname $0) did it\n"
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-12-15                   */
+#/*               PROCESSING2C  version 2022-04-22                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
