@@ -55,6 +55,20 @@ echo SYMSHELL=${SYMSHELL} >> scripts/config.dat
 echo PROC2DIR=${PROC2DIR} >> scripts/config.dat
 echo -e "see $COLOR1 scripts/config.dat !"$NORMCO
 
+#set variable with path in .profile
+set +e
+grep -q "P2Cscr" $HOME/.profile
+
+if [  $? != 0  ]
+then
+     P2Cscr="$PROC2DIR/scripts"
+     echo -e "\nProcessing to C++ scripts are in" $P2Cscr
+     echo -e "\nexport P2Cscr=\"${P2Cscr}\"" >> $HOME/.profile
+fi
+echo "In $HOME/.profile:"
+grep --color "P2Cscr" $HOME/.profile
+set -e
+
 #prepare CMakeLists.txt
 echo
 cat lib/CMakeLists.tmpl |\

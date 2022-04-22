@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.9)
 
 project(WBProcessing)
 
@@ -10,7 +10,8 @@ include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}" )
 
 if(true)
 add_definitions( -DHAVE_X11 -DUSE_X11 )
-add_library( wbprocess STATIC 
+add_library( wbprocess STATIC
+    "${PROC2CDIR}/lib/src/_errMessage.cpp"
     "${PROC2CDIR}/lib/src/main.cpp"
     "${PROC2CDIR}/lib/src/delay.cpp"
     "${PROC2CDIR}/lib/src/pwindow.cpp"
@@ -26,6 +27,7 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/pprintwriter.cpp"
     "${PROC2CDIR}/lib/src/plibrary.cpp"
     "${PROC2CDIR}/lib/src/plists.cpp"
+    "${PROC2CDIR}/lib/src/psplit.cpp"
     "${PROC2CDIR}/lib/src/pdatetime.cpp"
     "${PROC2CDIR}/lib/src/max.cpp"
     "${PROC2CDIR}/lib/src/min.cpp"

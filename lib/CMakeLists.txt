@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.82)
+cmake_minimum_required(VERSION 2.9)
 
 project(WBProcessing)
 
@@ -25,9 +25,9 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/pnumberformat.cpp"
     "${PROC2CDIR}/lib/src/parrayformat.cpp"
     "${PROC2CDIR}/lib/src/pprintwriter.cpp"
-    "${PROC2CDIR}/lib/src/psplit.cpp"
     "${PROC2CDIR}/lib/src/plibrary.cpp"
     "${PROC2CDIR}/lib/src/plists.cpp"
+    "${PROC2CDIR}/lib/src/psplit.cpp"
     "${PROC2CDIR}/lib/src/pdatetime.cpp"
     "${PROC2CDIR}/lib/src/max.cpp"
     "${PROC2CDIR}/lib/src/min.cpp"
