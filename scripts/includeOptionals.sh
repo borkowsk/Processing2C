@@ -35,4 +35,12 @@ echo -e $COLOR2"Is \"processing_StringDict.hpp\" needed?"$NORMCO 1>&2
 grep $GREPOPTIONS "(StringDict\s+)" $* 1>&2 \
 && echo "#include \"processing_StringDict.hpp\" //...is optional. Should be deleted when not needed."
 
+echo -e $COLOR2"Is \"processing_IntDict.hpp\" needed?"$NORMCO 1>&2
+grep $GREPOPTIONS "(IntDict\s+)" $* 1>&2 \
+&& echo "#include \"processing_IntDict.hpp\" //...is optional. Should be deleted when not needed."
+
+echo -e $COLOR2"Is \"processing_FloatDict.hpp\" needed?"$NORMCO 1>&2
+grep $GREPOPTIONS "(FloatDict\s+)" $* 1>&2 \
+&& echo "#include \"processing_FloatDict.hpp\" //...is optional. Should be deleted when not needed."
+
 echo -e $COLOR1"Searching includes finished for"$COLOR2 $* "\n"$NORMCO 1>&2
