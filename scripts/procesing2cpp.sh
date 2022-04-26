@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# -ne 1 ]; 
 then
-   echo "$# is invalid number of parameters!" 1>&2
+   echo -e $COLOR2"$# is invalid number of parameters!"$NORMCO 1>&2
    exit -1
 fi
 
@@ -13,11 +13,7 @@ echo "#include \"processing_library.hpp\""
 echo "#include \"processing_window.hpp\""
 #TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
 echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
-echo "#include \"processing_console.hpp\"   //...is optional. Should be deleted when not needed."
-echo "#include \"processing_alist.hpp\" //...is optional. Should be deleted when not needed."
-echo "#include \"processing_lists.hpp\" //...is optional. Should be deleted when not needed."
-echo "#include \"processing_map.hpp\"   //...is optional. Should be deleted when not needed."
-echo "#include \"processing_files.hpp\" //...is optional. Should be deleted when not needed."
+${SCRIPTS}/includeOptionals.sh $1
 echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 echo "using namespace Processing;"
 echo "#include \"local.h\""
@@ -124,7 +120,8 @@ sed 's|\/\*_interfunc\*\/|virtual|g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g' |\
 sed 's|\/\*_emptybody\*\/|{}|g' |\
-sed 's|\/\*_endOfClass\*\/|;/*_endOfClass*/|i'  |\
+sed 's|\/\*_endOfClass|;/*_endOfClass|i'  |\
+sed 's|\/\/\_endOfClass|;//_endOfClass|i'  |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\

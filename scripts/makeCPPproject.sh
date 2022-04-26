@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.17"
+Pr2CVERSION="0.18"
 
 if [ $# -ne 0 ]; 
 then
@@ -10,9 +10,9 @@ then
 fi
 
 #CONFIGURATION
-SCRIPTS=$(dirname "$0")
-SOURCES=`pwd`
-PROJECT=$(basename "$SOURCES")
+export SCRIPTS=$(dirname "$0")
+export SOURCES=`pwd`
+export PROJECT=$(basename "$SOURCES")
 source $SCRIPTS/config.dat
 
 echo "Directories:"
@@ -50,23 +50,19 @@ fi
 mv "$SOURCES/local.h" "$SOURCES/cppsrc/"
 
 #Preparing C++ source files
-cat <<EOF > "./cppsrc/project_at_once.cpp"
-//All sources in one file 
-#include "processing_consts.hpp"
-#include "processing_templates.hpp"
-#include "processing_library.hpp"
-#include "processing_window.hpp"
-//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
-#include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_alist.hpp"     //...is optional. Should be deleted when not needed.
-#include "processing_lists.hpp"     //...is optional. Should be deleted when not needed.
-#include "processing_map.hpp"       //...is optional. Should be deleted when not needed.
-#include "processing_files.hpp"     //...is optional. Should be deleted when not needed.
-using namespace Processing;
-#include "local.h"
-//==================================================================================
-const char* Processing::_PROGRAMNAME="$PROJECT";
-EOF
+
+echo "/*All sources in one file?*/" > ./cppsrc/project_at_once.cpp
+echo "#include \"processing_consts.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_templates.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_library.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_window.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!" >> ./cppsrc/project_at_once.cpp
+${SCRIPTS}/includeOptionals.sh *.pde >> ./cppsrc/project_at_once.cpp
+echo "using namespace Processing;" >> ./cppsrc/project_at_once.cpp
+echo "#include \"local.h\"" >> ./cppsrc/project_at_once.cpp
+echo "//==================================================================================" >> ./cppsrc/project_at_once.cpp
+echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at_once.cpp
+
 
 FILES=*.pde
 for f in $FILES
