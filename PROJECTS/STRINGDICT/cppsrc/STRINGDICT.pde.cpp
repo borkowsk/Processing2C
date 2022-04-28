@@ -19,7 +19,7 @@ using namespace Processing;
 ///   String "keys" are associated with String values.
 ///   In Pr2C it is implemented as class used std::map
 //*///////////////////////////////////////////////////////////////////
-StringDict inventory;
+pStringDict inventory;
 
 void processing_window::setup() {
   size(200, 200);
