@@ -13,9 +13,8 @@
 #include <cmath>
 //using namespace std::math;
 
-/// ???
+/// To nie do końca działa :-/
 #define OPTINLINE inline
-///
 
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
@@ -24,6 +23,8 @@ extern bool _filled;//=true;
 extern int _LINE_WIDTH;//=1;
 extern int _RECT_MODE;//=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 extern int _ELLIPSE_MODE;//=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _TEXT_HORIZONTAL_AL;//=LEFT;
+extern int _TEXT_VERTICAL_AL;//=BOTTOM;
 
 inline void strokeWeight(float Weight)
 {
@@ -44,6 +45,12 @@ inline void stroke(float Gray)
 }
 
 inline void stroke(float Red,float Green,float Blue)
+{
+    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
+    set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
+}
+
+inline void stroke(float Red,float Green,float Blue,float Alfa)
 {
     if(_LINE_WIDTH<0) _LINE_WIDTH=1;
     set_pen_rgb((int)Red,(int)Green,(int)Blue,_LINE_WIDTH,1 /*style*/);
@@ -94,6 +101,11 @@ inline void line(float  x1,float  y1,float  x2,float  y2)
 inline void rectMode(int mode)/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 {
     _RECT_MODE=mode;
+}
+
+inline void ellipseMode(int mode)
+{
+    _ELLIPSE_MODE=mode;
 }
 
 inline void rect(float a,float  b,float  c,float  d)
@@ -172,10 +184,20 @@ inline float lerp(float v0, float v1, float t) // Precise method, which guarante
   return (1 - t) * v0 + t * v1;
 }
 
+inline  void textAlign(int hor)
+{
+    _TEXT_HORIZONTAL_AL=hor;
+}
+
+inline void textAlign(int hor,int ver)
+{
+    _TEXT_HORIZONTAL_AL=hor;
+    _TEXT_VERTICAL_AL=ver;
+}
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-04-28                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -16,7 +16,7 @@ grep $GREPOPTIONS "(print\s*\(|println\s*\()" $* 1>&2 \
 && echo "#include \"processing_console.hpp\"   //...is optional. Should be deleted when not needed."
 
 echo -e $COLOR2"Is \"processing_alist.hpp\" needed?"$NORMCO 1>&2
-grep $GREPOPTIONS "(ArrayList\s+)" $* 1>&2 \
+grep $GREPOPTIONS "(ArrayList\s*<)" $* 1>&2 \
 && echo "#include \"processing_alist.hpp\" //...is optional. Should be deleted when not needed."
 
 echo -e $COLOR2"Is \"processing_lists.hpp\" needed?"$NORMCO 1>&2
@@ -24,7 +24,7 @@ grep $GREPOPTIONS "(FloatList\s+|IntList\s+|StringList\s+)" $* 1>&2 \
 && echo "#include \"processing_lists.hpp\" //...is optional. Should be deleted when not needed."
 
 echo -e $COLOR2"Is \"processing_map.hpp\" needed?"$NORMCO 1>&2
-grep $GREPOPTIONS "(HashMap\s+)" $* 1>&2 \
+grep $GREPOPTIONS "(HashMap\s*<)" $* 1>&2 \
 && echo "#include \"processing_map.hpp\"   //...is optional. Should be deleted when not needed."
 
 echo -e $COLOR2"Is \"processing_files.hpp\" needed?"$NORMCO 1>&2

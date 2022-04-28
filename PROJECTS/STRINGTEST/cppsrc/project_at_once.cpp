@@ -6,6 +6,7 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
+#include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
 #include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"

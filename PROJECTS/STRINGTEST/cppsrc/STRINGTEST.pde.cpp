@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: STRINGTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -7,6 +7,7 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
+#include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
 #include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
 #include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
@@ -65,5 +66,5 @@ void processing_window::setup()  ///
   toScreen(SL);
   toScreen(SAL);
 }
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

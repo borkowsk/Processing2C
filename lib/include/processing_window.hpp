@@ -269,40 +269,45 @@ void background(float v1,float v2,float v3,float  alpha);
 /// \param col
 void background(const color& col);
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void stroke(float Gray);
-OPTINLINE
 void stroke(float Gray,float Alpha);
-OPTINLINE
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
 void stroke(const color& col);
-OPTINLINE
 void noStroke();
+#endif
 
-OPTINLINE
-void strokeWeight(float Weight);/// Parameters	weight 	float: the weight (in pixels) of the stroke
-void strokeCap(int cap);/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
-void strokeJoin(int join);/// Parameters	join 	int: either MITER, BEVEL, ROUND
+#ifndef PROCESSING_INLINES_H
+void strokeWeight(float Weight);//!< Parameters	weight 	float: the weight (in pixels) of the stroke
+#endif
+void strokeCap(int cap);  //!< Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
+void strokeJoin(int join);//!< Parameters	join 	int: either MITER, BEVEL, ROUND
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void fill(float Gray);
 void fill(float Gray,float Alpha);
+#endif
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
 void fill(const color& col);
+#endif
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void noFill();
+#endif
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void point(float x,float y);
+#endif
 
-OPTINLINE
+#ifndef PROCESSING_INLINES_H
 void line(float  x1,float  y1,float  x2,float  y2);
+#endif
 
+#ifndef PROCESSING_INLINES_H
 /// "ellipse" draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
 /// By default, the first two parameters set the location, and the third and fourth parameters set
 /// the shape's width and height.
@@ -314,15 +319,12 @@ void line(float  x1,float  y1,float  x2,float  y2);
 ///  d 	float: height of the ellipse by default
 ///  start 	float: angle to start the arc, specified in radians
 ///  stop 	float: angle to stop the arc, specified in radians
-
-OPTINLINE
 void ellipse(float a,float  b,float  c,float  d);
+void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
+#endif
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
-OPTINLINE
-void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
-
-
+#ifndef PROCESSING_INLINES_H
 /// "rect" draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at ninety degrees.
 /// By default, the first two parameters set the location of the upper-left corner, the third sets the width, and
 /// the fourth sets the height.
@@ -338,14 +340,11 @@ void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORN
 /// br 	float: radius for bottom-right corner
 /// bl 	float: radius for bottom-left corner
 /// Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
-OPTINLINE
 void rect(float a,float  b,float  c,float  d);
-OPTINLINE
 void rect(float a,float  b,float  c,float  d,float r);
-OPTINLINE
 void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl);
-OPTINLINE
 void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+#endif
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
 /// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw() does not run draw() immediately (it only sets a flag that indicates an update is needed).

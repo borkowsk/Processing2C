@@ -282,23 +282,23 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
 int _TEXT_HORIZONTAL_AL=LEFT;
 int _TEXT_VERTICAL_AL=BOTTOM;
 
+/// Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
 void textAlign(int hor)
-// Sets the current alignment for drawing text. The parameters are LEFT, CENTER, or RIGHT for horizontal
 {
     _TEXT_HORIZONTAL_AL=hor;
     FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
+/// and TOP, BOTTOM, CENTER, or BASELINE for vertical
 void textAlign(int hor,int ver)
-// and TOP, BOTTOM, CENTER, or BASELINE for vertical
 {
     _TEXT_HORIZONTAL_AL=hor;
     _TEXT_VERTICAL_AL=ver;
     FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
+/// Calculates and returns the width of any character or text string.
 float textWidth(_string_param str)
-// Calculates and returns the width of any character or text string.
 {
     FIRST_TIME_ERRMESSAGE( " not inline called" );
     return string_width(str.c_str());
