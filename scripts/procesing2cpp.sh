@@ -10,9 +10,9 @@ echo "//Source: $1"
 echo "#include \"processing_consts.hpp\""
 echo "#include \"processing_templates.hpp\""
 echo "#include \"processing_library.hpp\""
+echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
 echo "#include \"processing_window.hpp\""
 #TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
-echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
 ${SCRIPTS}/includeOptionals.sh $1
 echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 echo "using namespace Processing;"

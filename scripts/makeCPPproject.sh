@@ -55,8 +55,8 @@ echo "/*All sources in one file?*/" > ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\"" >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\"" >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!" >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_window.hpp\"" >> ./cppsrc/project_at_once.cpp
-echo "//#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!" >> ./cppsrc/project_at_once.cpp
 ${SCRIPTS}/includeOptionals.sh *.pde >> ./cppsrc/project_at_once.cpp
 echo "using namespace Processing;" >> ./cppsrc/project_at_once.cpp
 echo "#include \"local.h\"" >> ./cppsrc/project_at_once.cpp

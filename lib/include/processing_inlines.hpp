@@ -27,8 +27,7 @@ extern int _ELLIPSE_MODE;//=CENTER; /// either CENTER, RADIUS, CORNER, or CORNER
 
 inline void strokeWeight(float Weight)
 {
-    _LINE_WIDTH=(int)Weight;
-    line_width(_LINE_WIDTH);
+    line_width(_LINE_WIDTH=(int)Weight);
 }
 
 inline void noStroke()

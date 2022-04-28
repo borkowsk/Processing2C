@@ -11,12 +11,12 @@ class Agent; typedef Processing::ptr<Agent> pAgent; // {
 class World; typedef Processing::ptr<World> pWorld; // {
 
 //All global finals (consts) from Processing files
-extern const int Duration;//=7;/// Czas trwania infekcji!
-extern const int Susceptible;//=1;/// Oznaczenie podatnego
-extern const int Infected;//=2;/// Oznaczenie zainfekowanego
-extern const int Recovered;//=Infected+Duration;/// Oznaczenie wyleczonego
-extern const int Death;//=100;/// Oznaczenie zmarłego
-extern const float PDeath;//=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
+static 	const int Duration=7;/// Czas trwania infekcji!
+static 	const int Susceptible=1;/// Oznaczenie podatnego
+static 	const int Infected=2;/// Oznaczenie zainfekowanego
+static 	const int Recovered=Infected+Duration;/// Oznaczenie wyleczonego
+static 	const int Death=100;/// Oznaczenie zmarłego
+static 	const float PDeath=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
 //All global variables from Processing files
 extern	int 		side;///< =200; DŁUGOŚĆ BOKU ŚWIATA

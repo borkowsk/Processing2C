@@ -3,13 +3,9 @@
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
+#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
-//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_map.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_files.hpp" //...is optional. Should be deleted when not needed.
 #include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
@@ -44,7 +40,7 @@ class singiel: public virtual Object{
 };
 
 //zdefiniowaliśmy klasę, teraz jej użyjemy. Potrzebna bedzie wartość wspólczynnika spięcia, czyli synchronizacji
-const   float DefaultAlfa=0.25;
+const float DefaultAlfa=0.25;
 
 int     Rozbieg=100;//Ile kroków traktujemy jako rozbieg do zsynchronizowania
 

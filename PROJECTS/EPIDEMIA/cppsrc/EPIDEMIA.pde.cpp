@@ -3,13 +3,11 @@
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
+#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
-//#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
+#include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
 #include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_map.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_files.hpp" //...is optional. Should be deleted when not needed.
 #include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
@@ -32,16 +30,16 @@ pWorld TheWorld=new World(side);//INICJALIZACJA JEST KONCZONA
                                //W FUNKCJI setup( )
 
 //Inne parametry symulacji jako const - coś w rodzaju stałych ;-)
-const int Duration=7;/// Czas trwania infekcji!
+//declared in local.h: const int Duration=7;/// Czas trwania infekcji!
 //const int Empty=0;//NIEPOTRZEBNE. Zamiast tego jest nullptr w komórce tablicy uchwytów do agetów 
-const int Susceptible=1;/// Oznaczenie podatnego
-const int Infected=2;/// Oznaczenie zainfekowanego
-const int Recovered=Infected+Duration;/// Oznaczenie wyleczonego
-const int Death=100;/// Oznaczenie zmarłego
+//declared in local.h: const int Susceptible=1;/// Oznaczenie podatnego
+//declared in local.h: const int Infected=2;/// Oznaczenie zainfekowanego
+//declared in local.h: const int Recovered=Infected+Duration;/// Oznaczenie wyleczonego
+//declared in local.h: const int Death=100;/// Oznaczenie zmarłego
 //const float PTransfer=???;  //Prawdopodobieństwo zarażenia agenta w pojedynczej interakcji
                               //teraz zależy od indywidualnej wartości immunity!
                               
-const float PDeath=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
+//declared in local.h: const float PDeath=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
 //STATYSTYKI LICZONE W TRAKCIE SYMULACJI
 int liveCount=0;/// Ile aktualnie żywych

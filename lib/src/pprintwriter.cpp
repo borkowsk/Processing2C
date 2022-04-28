@@ -60,7 +60,7 @@ PrintWriter& createWriter(_string_param name)
         perror("STORAGE ERROR");
         ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
         std::cerr.flush();std::cout.flush();
-        system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
+        auto res=system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
         //system("/bin/bash ");
         delete file;
     }
@@ -87,7 +87,7 @@ BufferedReader& createReader(_string_param name)
         perror("STORAGE ERROR");
         ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
         std::cerr.flush();std::cout.flush();
-        system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
+        auto res=system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
         //system("/bin/bash ");
         delete file;
     }

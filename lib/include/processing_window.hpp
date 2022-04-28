@@ -271,6 +271,7 @@ void background(const color& col);
 
 OPTINLINE
 void stroke(float Gray);
+OPTINLINE
 void stroke(float Gray,float Alpha);
 OPTINLINE
 void stroke(float Red,float Green,float Blue);
@@ -292,10 +293,13 @@ OPTINLINE
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
 void fill(const color& col);
+
 OPTINLINE
 void noFill();
 
+OPTINLINE
 void point(float x,float y);
+
 OPTINLINE
 void line(float  x1,float  y1,float  x2,float  y2);
 
@@ -315,7 +319,7 @@ OPTINLINE
 void ellipse(float a,float  b,float  c,float  d);
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
-
+OPTINLINE
 void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 
 
@@ -373,7 +377,7 @@ int displayDensity(int display=0) {return 1;}
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022-04-28                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *
