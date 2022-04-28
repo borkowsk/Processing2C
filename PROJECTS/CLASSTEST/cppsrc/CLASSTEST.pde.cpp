@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -142,5 +142,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 
