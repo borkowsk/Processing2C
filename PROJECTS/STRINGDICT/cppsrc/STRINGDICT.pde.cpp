@@ -21,20 +21,24 @@ using namespace Processing;
 //*///////////////////////////////////////////////////////////////////
 pStringDict inventory;
 
-void processing_window::setup() {
-  size(200, 200);
+void processing_window::setup() 
+{
+  size(300, 300);
   inventory = new StringDict();
   inventory->set("coffee","black");
   inventory->set("flour","white");
   inventory->set("tea","green");
   println(inventory);
-  noLoop();
-  fill(0);
+
   textAlign(CENTER);
+  setFrameRate(2);
+  //noLoop();//W C++ program kończy się po mignięciu oknem! TODO
 }
 
 void processing_window::draw() 
 {
+  background(random(255));
+  fill(random(255),random(255),random(255));
   String s = inventory->get("tea");
   text(s, width/2, height/2);
 }

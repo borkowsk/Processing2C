@@ -6,20 +6,24 @@
 //*///////////////////////////////////////////////////////////////////
 StringDict inventory;
 
-void setup() {
-  size(200, 200);
+void setup() 
+{
+  size(300, 300);
   inventory = new StringDict();
   inventory.set("coffee","black");
   inventory.set("flour","white");
   inventory.set("tea","green");
   println(inventory);
-  noLoop();
-  fill(0);
+
   textAlign(CENTER);
+  frameRate(2);
+  //noLoop();//W C++ program kończy się po mignięciu oknem! TODO
 }
 
 void draw() 
 {
+  background(random(255));
+  fill(random(255),random(255),random(255));
   String s = inventory.get("tea");
   text(s, width/2, height/2);
 }

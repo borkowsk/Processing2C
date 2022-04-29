@@ -1,5 +1,6 @@
 /// A simple class to use a String as a lookup for an String value. 
 /// String "keys" are associated with String values.
+/// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 /// \file processing_StringDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE StringDict
 /// \author 'borkowsk'
@@ -22,18 +23,24 @@ namespace Processing {
 
 class StringDict: private std::map<String,String>, virtual public _self_printable {
     public:
-        ///Constructor(s)	
-        StringDict() = default;
-        //StringDict(pairs);
-        //StringDict(row);
+        using     std::map<String,String>::begin;
+        using     std::map<String,String>::end;
+        using     std::map<String,String>::operator[];
 
         /// Destructor
         ~StringDict() = default ;
 
+        ///Constructor(s)	
+        StringDict() = default;
+        StringDict(StringDict const&) = default;  //!< copy-constructor (not aggregate initialization)
+        //StringDict(pairs);
+        //StringDict(row);
+
+        /// Printing device for whole container
         String print() const; //!< forced by _self_printable
 
-        int size(); //!<	Returns the number of key/value pairs
-        void clear() { std::map<String,String>::clear(); } //!<	Remove all entries
+        int size() const; //!<	Returns the number of key/value pairs
+        void clear();  //!<	Remove all entries
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_values_.html
         //iterable<String>        values(); //!< Return the internal array being used to store the values
@@ -44,13 +51,13 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
         sarray<String> valueArray(); //!< Create a new array and copy each of the values into it
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_get_.html
-        String get(const String &key); //!< Return a value for the specified key
-        String get(const String &key,const String &alternate);
+        String get(const String &key) const; //!< Return a value for the specified key
+        String get(const String &key,const String &alternate) const;
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_set_.html
         void set(const String &key,const String &value); //!< Create a new key/value pair or change the value of one
 
-        bool hasKey(const String &key); //!< Check if a key is a part of the data structure
+        bool hasKey(const String &key) const; //!< Check if a key is a part of the data structure
         String remove(const String &key); //!< Remove a key/value pair
 
         /// Sorting tools:
@@ -60,37 +67,70 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
         void sortValuesReverse(); //!< Sort by values in descending order
     };
 
-    inline int StringDict::size()
+    inline int StringDict::size() const
     {
-        return 0;
+        return std::map<String,String>::size();
     }
 
-    String StringDict::get(const String &key)
+    inline void StringDict::clear()
     {
-        return String();
+        std::map<String,String>::clear();
     }
 
-    void StringDict::set(const String &key, const String &value)
+    inline void StringDict::set(const String &key, const String &value)
     {
-
+        (*this)[key]=value;
     }
 
-    String StringDict::remove(const String &key)
+    inline String StringDict::get(const String &key)  const
     {
-        return String();
+        auto where=find(key);
+        return where->second;
     }
 
-    /// Not implemented
+    inline String StringDict::get(const String &key, const String &alternate) const
+    {
+        auto where=find(key);
+        if(where != std::map<String,String>::end())
+            return where->second;
+        else
+            return alternate;
+    }
+
+    inline bool StringDict::hasKey(const String &key) const
+    {
+        auto where=find(key);
+        return where != std::map<String,String>::end();
+    }
+
+    inline String StringDict::remove(const String &key)
+    {
+        auto where=find(key);
+        String ret=where->second;
+        std::map<String,String>::erase(where);
+        return ret;
+    }
+
+    /// Processing like implementation produce something like that:
+    /// StringDict size=3 { "coffee": "black", "flour": "white", "tea": "green" }
     inline String StringDict::print() const
     {
-        return String();
+        String ret="StringDict size=";
+        ret+= std::to_string(size());
+        ret+=" {";
+        for (const auto& [key, value] : *this )
+        {
+            ret+=" \""+ key +"\": \""+ value + "\",";
+        }
+        ret+=" }";
+        return ret;
     }
 
     typedef Processing::self_printable_ptr<StringDict> pStringDict;
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-04-28                     */
+/*               PROCESSING2C  version 2022-04-29                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
