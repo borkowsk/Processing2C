@@ -1,13 +1,13 @@
-/// A simple class to use a String as a lookup for an integer value.
-/// String "keys" are associated with int values.
+/// A simple class to use a String as a lookup for an floating point value.
+/// String "keys" are associated with float values.
 /// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 /// \file processing_IntDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE IntDict
 /// \author 'borkowsk'
 /// \ingroup JAVA_compatibility
 /// \see
-/// * file:///.../processing-3.5.4/modes/java/reference/IntDict.html
-/// * https://processing.org/reference/IntDict.html
+/// * file:///.../processing-3.5.4/modes/java/reference/FloatDict.html
+/// * https://processing.org/reference/FloatDict.html
 /// * https://en.cppreference.com/w/cpp/container/map
 /// \alternative
 /// * https://en.cppreference.com/w/cpp/utility/hash
