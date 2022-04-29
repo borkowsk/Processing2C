@@ -17,7 +17,7 @@ using namespace Processing;
 /// @class StringDict:
 ///   A simple class to use a String as a lookup for an String value. 
 ///   String "keys" are associated with String values.
-///   In Pr2C it is implemented as class used std::map
+///   In Pr2C it is implemented as class derived from std::map
 //*///////////////////////////////////////////////////////////////////
 pStringDict inventory;
 

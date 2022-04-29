@@ -5,7 +5,13 @@
 /// \brief IMPLEMENTATION OF Processing LIKE StringDict
 /// \author 'borkowsk'
 /// \ingroup JAVA_compatibility
-/// \see file:///.../processing-3.5.4/modes/java/reference/StringDict.html
+/// \see
+/// * file:///.../processing-3.5.4/modes/java/reference/StringDict.html
+/// * https://processing.org/reference/StringDict.html
+/// * https://en.cppreference.com/w/cpp/container/map
+/// \alternative
+/// * https://en.cppreference.com/w/cpp/utility/hash
+/// * https://en.cppreference.com/w/cpp/container/unordered_map
 // This file is part of the Processing2C++ Library. See bottom lines.
 //*//////////////////////////////////////////////////////////////////////
 #pragma once
