@@ -51,10 +51,10 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_values_.html
         //iterable<String>        values(); //!< Return the internal array being used to store the values
 
-        sarray<String> keyArray(); //!< Return a copy of the internal keys array
+        sarray<String> keyArray() const; //!< Return a copy of the internal keys array
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_valueArray_.html
-        sarray<String> valueArray(); //!< Create a new array and copy each of the values into it
+        sarray<String> valueArray() const; //!< Create a new array and copy each of the values into it
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_get_.html
         String get(const String &key) const; //!< Return a value for the specified key
