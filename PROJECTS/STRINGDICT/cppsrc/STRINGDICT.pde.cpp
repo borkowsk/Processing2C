@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: STRINGDICT.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -17,7 +17,7 @@ using namespace Processing;
 /// @class StringDict:
 ///   A simple class to use a String as a lookup for an String value. 
 ///   String "keys" are associated with String values.
-///   In Pr2C it is implemented as class derived from std::map
+///   In Pr2C it is implemented as class used std::map
 //*///////////////////////////////////////////////////////////////////
 pStringDict inventory;
 
@@ -42,5 +42,5 @@ void processing_window::draw()
   String s = inventory->get("tea");
   text(s, width/2, height/2);
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 
