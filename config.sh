@@ -69,6 +69,17 @@ echo "In $HOME/.profile:"
 grep --color "P2Cscr" $HOME/.profile
 set -e
 
+#make the tools app
+pushd tools/
+cmake .
+make
+cp tools* ../scripts/
+popd
+
+echo
+echo -e $COLOR2"Prepare to make library?"$NORMCO
+pause
+
 #prepare CMakeLists.txt
 echo
 cat lib/CMakeLists.tmpl |\
