@@ -16,6 +16,7 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
     rm -f Makefile
     rm -f cmake_install.cmake
     rm -Rf CMakeFiles
+    rm -Rf cmake-build-*/
     rm -f headers.tmp
     popd > /dev/null
   elif [ -f "$f" ]; then
@@ -33,3 +34,4 @@ rm -f CMakeCache.txt
 rm -f Makefile
 rm -f cmake_install.cmake
 rm -Rf CMakeFiles
+rm -Rf cmake-build-*/

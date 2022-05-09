@@ -5,6 +5,14 @@ echo "Directory is" `pwd`
 ./_cleanCmake.sh
 echo "Finished for" `pwd`
 popd > /dev/null
+
+#Cleaning cmake files
+pushd tools/ > /dev/null
+echo "Directory is" `pwd`
+./_cleanCmake.sh
+echo "Finished for" `pwd`
+popd > /dev/null
+
 pushd PROJECTS/ > /dev/null
 echo "Directory is" `pwd`
 ./_cleanProjects.sh
