@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ModelVisualCA.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -24,12 +24,12 @@ void visualizeCells(smatrix<int> cells)  ///<
       
       fill(0,(int)(val/maximum*255),0);
     
-      rect(b*cwidth,a*cwidth,cwidth,cwidth);//a is vertical!
+      rect(b*cwidth,a*cwidth,cwidth,cwidtha is vertical!
    }
 }
 
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

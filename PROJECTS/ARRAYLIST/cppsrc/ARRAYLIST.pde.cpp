@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ARRAYLIST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -23,7 +23,8 @@ pStringList        inventory=new StringList();
 pFloatList         inventoryF;
 pIntList           inventoryI;
 
-void processing_window::setup() {
+void processing_window::setup() // Preparing for draw() loop
+{
   size(200, 200);
   
   testStrings=new ArrayList<String>();
@@ -59,14 +60,8 @@ void processing_window::setup() {
 }
 
 
-void user_print(pIntList intInv)///
-{
-  for(int i:intInv)
-      println(Processing::hex(i));
-}
-
-
-void processing_window::draw() { //May be called only once, or many times
+void processing_window::draw() // May be called only once, or many times
+{ 
   println();
   println(testStrings);
   
@@ -81,5 +76,13 @@ void processing_window::draw() { //May be called only once, or many times
   println(inventoryI);
   user_print(inventoryI);
 }
-//../../scripts did it
+
+void user_print(pIntList intInv) /// USED before definition!
+{
+  for(int i:intInv)
+      println(Processing::hex(i));
+}
+
+
+///data/wb/SCC/public/Processing2C/scripts did it
 

@@ -1,13 +1,15 @@
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
+
 ArrayList<String> testStrings=null;
 StringList        inventory=new StringList();
 FloatList         inventoryF;
 IntList           inventoryI;
 
-void setup() {
+void setup() // Preparing for draw() loop
+{
   size(200, 200);
   
   testStrings=new ArrayList<String>();
@@ -43,14 +45,8 @@ void setup() {
 }
 
 
-void user_print(IntList intInv)///
-{
-  for(int i:intInv)
-      println(hex(i));
-}
-
-
-void draw() { //May be called only once, or many times
+void draw() // May be called only once, or many times
+{ 
   println();
   println(testStrings);
   
@@ -65,3 +61,11 @@ void draw() { //May be called only once, or many times
   println(inventoryI);
   user_print(inventoryI);
 }
+
+void user_print(IntList intInv) ///< USED before definition!
+{
+  for(int i:intInv)
+      println(hex(i));
+}
+
+

@@ -1,16 +1,16 @@
 /// Simple graphics test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ELIPSY.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
 
-int W=600;//Control parameter
+int W=600; /// Control parameter
 
-int radius()
+int radius() ///< Example of the user declared function
 {
   return int(random(W/10));
 }
 
-//Initialisation
+/// Initialisation
 void setup()
 {
   size(600,600);
@@ -18,7 +18,7 @@ void setup()
                   //Nie za dużo bo Xorg zablokuje kompa!
 }
 
-//Running - visualisation and dynamics
+/// Running - visualisation and dynamics
 void draw()
 {
   fill(random(255),random(255),random(255),random(255));
@@ -30,3 +30,4 @@ void draw()
   point(x,y);
   println(frameRate);
 }
+

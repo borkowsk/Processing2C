@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: RTMExit.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -24,8 +24,10 @@ void processing_window::exit()          //it is called whenever a window is clos
   }
   
 /*_OnlyProcessingBlockBegin
+
   if(WITH_VIDEO) CloseVideo();    //Finalise of Video export
 _OnlyProcessingBlockEnd*/
+
 
   println(modelName,"said: Thank You!");
   processing_window_base::exit();       //What library superclass have to do at exit()
@@ -34,5 +36,5 @@ _OnlyProcessingBlockEnd*/
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

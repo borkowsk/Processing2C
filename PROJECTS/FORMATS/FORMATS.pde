@@ -1,10 +1,10 @@
 /// Test foir number formating functions (test project for Processing2C)
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "FORMATS.pde"
-//////////////////////////////////////////////////////////////////////////////////
+//*////////////////////////////////////////////////////////////////////////////////
 
-int fontSize=16;//FontSize is not implemented in Pricessing2C
-                //but 16px is a default font hight there!
+int fontSize=16; ///< FontSize is not implemented in Pricessing2C
+                 ///  but 16px is a default font hight there!
 
 void setup()
 {
@@ -13,7 +13,7 @@ void setup()
   //Uncomment the following two lines to see the available fonts 
   //String[] fontList = PFont.list();
   //printArray(fontList);
-  PFont myFont = createFont("Courier", 16);//Fixed width font
+  PFont myFont = createFont("Courier", 16); //Fixed width font
   textFont(myFont);
   textSize(fontSize);
   
@@ -86,3 +86,4 @@ void setup()
   text("binary___gray:" ,10,pos+=fontSize);
   text("      " + binary(gray),10,pos+=fontSize); 
 }
+

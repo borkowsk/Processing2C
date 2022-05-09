@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: STRINGTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -19,44 +19,44 @@ using namespace Processing;
 /// ORIGINAL FILE: "STRINGTEST.PDE"
 /////////////////////////////////////////////////////////////////
 
-String A;                     ///
-String B=nullptr;                ///
-String C="Ala ma kota!";      ///
-String D="😜👍 😡 🤼‍♂️ 🧐";///
-String E=String("Number")+1;          ///
+String A;                     ///< declared globally
+String B=nullptr;                ///< declared globally
+String C="Ala ma kota!";      ///< declared globally
+String D="😜👍 😡 🤼‍♂️ 🧐";   ///< declared globally
+String E=String("Number")+1;          ///< declared globally
 
 sarray<String> SA={
 	A,B,C,D,E
-	};      ///
+	};      ///< declared globally
 
-pStringList SL=new StringList(SA);///
+pStringList SL=new StringList(SA); ///< declared globally
 
-pArrayList<String> SAL=new ArrayList<String>();///
+pArrayList<String> SAL=new ArrayList<String>(); ///< declared globally
 
-int y=0;///
+int y=0; ///< declared globally
 
-void toScreen(pStringList lst)  ///
+void toScreen(pStringList lst)  ///< declared globally
 {
   for(String s:lst)
   if(s!=nullptr)
       text(s,1,y+=16);
 }
 
-void toScreen(pArrayList<String> lst)  ///
+void toScreen(pArrayList<String> lst)  ///< declared globally
 {
   for(String s:lst)
   if(s!=nullptr)
       text(s,1,y+=16);
 }
 
-void addStrings(pStringList lst1,pArrayList<String> lst2)  ///
+void addStrings(pStringList lst1,pArrayList<String> lst2)  ///< declared globally
 {
   lst1->append(C+String("? & ")+E);
   for(String s:lst1)
     lst2->add(s);
 }
 
-void processing_window::setup()  ///
+void processing_window::setup()  // Must be
 {
   size(300,200);
   for(String s:SA)
@@ -66,5 +66,5 @@ void processing_window::setup()  ///
   toScreen(SL);
   toScreen(SAL);
 }
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

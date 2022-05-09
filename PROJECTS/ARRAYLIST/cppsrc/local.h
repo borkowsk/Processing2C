@@ -17,5 +17,5 @@
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	user_print(pIntList intInv); ///
+void	user_print(pIntList intInv);  /// USED before definition!
 #endif

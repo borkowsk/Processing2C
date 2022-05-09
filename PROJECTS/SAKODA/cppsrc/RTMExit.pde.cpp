@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: RTMExit.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -36,5 +36,5 @@ void processing_window::exit()          //it is called whenever a window is clos
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

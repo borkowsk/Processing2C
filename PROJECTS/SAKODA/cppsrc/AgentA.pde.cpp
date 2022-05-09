@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: AgentA.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -16,17 +16,17 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 // Agent is a one of two central class of each ABM model
 //////////////////////////////////////////////////////////////////
-int Number_of_identities=2;/// Ile jest wykluczających się tożsamości
+int Number_of_identities=2 Ile jest wykluczających się tożsamości
 
 class Agent: public virtual Object{
   public: 
   ///INFO: Agent class
-  float identity;//Tożsamość agenta: [1..Number_of_identities]
-  float stress;//Stress w aktualnej pozycji [0..1]
+  float identityTożsamość agenta: [1..Number_of_identities]
+  float stressStress w aktualnej pozycji [0..1]
   
-  Agent()//Constructor of the Agent
+  AgentConstructor of the Agent
   {
-    identity=round(random(1,Number_of_identities));//Muszą bywać te same
+    identity=round(random(1,Number_of_identitiesMuszą bywać te same
     stress=0;
   }
 };
@@ -34,5 +34,5 @@ class Agent: public virtual Object{
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT OF SAKODA MODEL
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

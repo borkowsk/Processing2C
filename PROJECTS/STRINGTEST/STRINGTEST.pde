@@ -3,42 +3,42 @@
 /// ORIGINAL FILE: "STRINGTEST.PDE"
 /////////////////////////////////////////////////////////////////
 
-String A;                     ///
-String B=null;                ///
-String C="Ala ma kota!";      ///
-String D="😜👍 😡 🤼‍♂️ 🧐";///
-String E="Number"+1;          ///
+String A;                     ///< declared globally
+String B=null;                ///< declared globally
+String C="Ala ma kota!";      ///< declared globally
+String D="😜👍 😡 🤼‍♂️ 🧐";   ///< declared globally
+String E="Number"+1;          ///< declared globally
 
-String[] SA={A,B,C,D,E};      ///
+String[] SA={A,B,C,D,E};      ///< declared globally
 
-StringList SL=new StringList(SA);///
+StringList SL=new StringList(SA); ///< declared globally
 
-ArrayList<String> SAL=new ArrayList<String>();///
+ArrayList<String> SAL=new ArrayList<String>(); ///< declared globally
 
-int y=0;///
+int y=0; ///< declared globally
 
-void toScreen(StringList lst)  ///
+void toScreen(StringList lst)  ///< declared globally
 {
   for(String s:lst)
   if(s!=null)
       text(s,1,y+=16);
 }
 
-void toScreen(ArrayList<String> lst)  ///
+void toScreen(ArrayList<String> lst)  ///< declared globally
 {
   for(String s:lst)
   if(s!=null)
       text(s,1,y+=16);
 }
 
-void addStrings(StringList lst1,ArrayList<String> lst2)  ///
+void addStrings(StringList lst1,ArrayList<String> lst2)  ///< declared globally
 {
   lst1.append(C+"? & "+E);
   for(String s:lst1)
     lst2.add(s);
 }
 
-void setup()  ///
+void setup()  // Must be
 {
   size(300,200);
   for(String s:SA)

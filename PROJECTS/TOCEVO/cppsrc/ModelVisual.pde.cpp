@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ModelVisual.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -35,9 +35,9 @@ void visualizeAgents(smatrix<pAgent> agents) ///<
         else 
             noStroke();
         
-        float radius=(float)(cwidth*(std::pow(min(curra->energy,maxStock),1/3.0)/maxSt));  
+        float radius=(float)(cwidth*(std::pow(min(curra->energy,maxStock),1/3.0maxSt));  
 
-        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radius);//'a' is vertical! 
+        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radiusa' is vertical! 
       }
       else
       {
@@ -53,5 +53,5 @@ void visualizeAgents(smatrix<pAgent> agents) ///<
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

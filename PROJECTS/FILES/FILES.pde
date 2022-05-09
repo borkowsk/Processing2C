@@ -29,7 +29,7 @@ void setup()
   
   println("positions.txt is open");
   
-  write_someting(writer);// Reference semantic test
+  write_someting(writer); // Reference semantic test
   
   writer.println("0\t0");
 
@@ -39,8 +39,8 @@ void setup()
   delay(1000);
   reader = createReader("positions.txt");
   
-  if(reader == null )   //<>//
-                  exit(); //<>//
+  if(reader == null )
+                  exit();
   
   println("\npositions.txt is open");
   
@@ -68,8 +68,8 @@ void draw()
   }
   catch (IOException e) 
   {
-    println("IOerror:",e); //<>//
-    //e.printStackTrace(); //<>//
+    println("IOerror:",e);
+    //e.printStackTrace();
   }
   catch (Exception e)
   {
@@ -84,7 +84,7 @@ void exit()
   {
     if(reader!=null)
     {
-       reader.close(); //<>//
+       reader.close();
        println("positions.txt is closed");
     }
   }
@@ -97,3 +97,4 @@ void exit()
   save("exit.png");
   super.exit();
 }
+

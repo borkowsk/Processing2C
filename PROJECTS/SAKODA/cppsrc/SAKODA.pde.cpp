@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: SAKODA.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -21,19 +21,19 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //Model parameters
-int side=100;/// side of main table
-String modelName="ABMSakoda";///
-float density=0.55;///
+int side=100 side of main table
+String modelName="ABMSakoda
+float density=0.55
 
 pWorld TheWorld=new World(side); ///... but also will be initialised inside setup function
 
 //Parameters of visualisation etc...
-int cwidth=8;/// size of cell
-int STATUSHEIGH=40;///
-int STEPSperVIS=1;///
-int FRAMEFREQ=20;///
-bool WITH_VIDEO=false;///
-bool simulationRun=true;///Start/stop flag
+int cwidth=8 size of cell
+int STATUSHEIGH=40
+int STEPSperVIS=1
+int FRAMEFREQ=20
+bool WITH_VIDEO=false
+bool simulationRun=trueStart/stop flag
 
 void processing_window::setup()
 {
@@ -45,12 +45,12 @@ void processing_window::setup()
   
   //Model
   initializeModel(TheWorld);
-  initializeStats();//Wykomentowanie blokuje tworzenie pliku log
+  initializeStatsWykomentowanie blokuje tworzenie pliku log
   doStatistics(TheWorld);
   
   //Window 
   println(String("REQUIRED SIZE OF PAINTING AREA IS ")+(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
-  cwidth=(height-STATUSHEIGH)/side;
+  cwidth=(height-STATUSHEIGHside;
     
   if(WITH_VIDEO) 
   {
@@ -59,8 +59,8 @@ void processing_window::setup()
   }
   
   //Finishing setup stage
-  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
-  visualizeModel(TheWorld);//First time visualisation
+  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+heightmyMenu->bounds->height???
+  visualizeModel(TheWorldFirst time visualisation
   if(!simulationRun)
     println("PRESS 'r' or 'ESC' to start simulation");
   else
@@ -101,5 +101,5 @@ void writeStatusLine() /// Used also for stats
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

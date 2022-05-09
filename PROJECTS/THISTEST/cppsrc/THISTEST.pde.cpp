@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: THISTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -14,6 +14,7 @@ using namespace Processing;
 
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących Processing::ptr<...>
 /// To powoduje GPF bo tworzy się nowy _shared_ptr<...> nie powiązany z tym trzymającym obiekt! 
+//*//////////////////////////////////////////////////////////////////////////////////////////////
 
 ///Info: klasa testowa
 class C: public virtual Object{
@@ -28,9 +29,9 @@ class C: public virtual Object{
   }
 };
 
-int y=0;/// Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
+int y=0; ///< Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
 
-void call_outside(pC obj,String msg) /// dla C++ musi być deklaracja zapowiadająca
+void call_outside(pC obj,String msg) ///< dla C++ musi być deklaracja zapowiadająca
 {
   println(msg,obj->i);
   text(msg+String(" ")+obj->i,0,y+=16);
@@ -47,5 +48,6 @@ void processing_window::setup()
   c->call_inside("Third time");
   saveFrame();
 }
-//../../scripts did it
+
+///data/wb/SCC/public/Processing2C/scripts did it
 

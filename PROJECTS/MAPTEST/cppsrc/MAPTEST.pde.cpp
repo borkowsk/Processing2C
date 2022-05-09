@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: MAPTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,9 +15,10 @@ using namespace Processing;
 /// Test for HashMaps
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "MAPTEST.pde"
-//////////////////////////////////////////////////////////////////////////////////
+//*////////////////////////////////////////////////////////////////////////////////
 /// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
-//HashMap is used here//To wciąż potrzebne do for(auto me : <<AnyHashMap>>->entrySet()) 
+
+//HashMap is used here // To wciąż potrzebne (?) do for(auto me : <<AnyHashMap>>->entrySet()) 
 
 pHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
 pHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
@@ -82,12 +83,13 @@ void processing_window::setup()
   for(auto me : mapString2Object->entrySet()) 
   {
     print(me->getKey() +  String(" is { "));
-    pmyTest obj=static_cast<pmyTest>(me->getValue());//Second () required by C++ translation
+    pmyTest obj= /*_upcast*/
+(myTest)(me->getValue()); // Second () required by C++ translation
     println(obj->A,obj->B,"}");
   }
   
   println("\nDefault print method:");
   println(mapString2Object);
 }
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

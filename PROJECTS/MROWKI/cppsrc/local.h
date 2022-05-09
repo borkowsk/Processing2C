@@ -21,34 +21,34 @@ extern	int 		yNest ;///< = int(worozmiar/7);
 extern	int 		siNest ;///< = 3;                
 extern	int 		foodSupply;  /// początkowa ilość jedzenia w gnieździe
 extern	int 		ileWsumieMrowek ;///< = sizew/10;   maksymalna dopuszczalna liczba mrówek
-extern	PrintWriter 		output;///Globalny output
-extern	PrintWriter 		stan;///
-extern	pWorld 		world;///
-extern	int 		ws ;///< = 10;
-extern	int 		sizew ;///< = 900;
-extern	float 		ts ;///< = 0.5; wzmocnienie szlaku po zebraniu jedzenia
-extern	int 		memo ;///< = 10;  długość pamięci
-extern	float 		distrail ;///< = 0.1; osłabienie szlaku, gdy nie ma jedzenia
-extern	float 		pLosowe ;///< = 0.01;  prawdopodobieństwo odejścia od reguł, w klasieWorld
-extern	float 		disp ;///< = 0.01; tempo zanikania szlaku 
-extern	float 		pe ;///< = 0.1; normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
-extern	int 		ileje ;///< = 80; ile jest maksymalnie jedzenia na miejscu jedzenia
-extern	float 		quiet ;///< = 0.5;   tempo uciszania dźwięku
-extern	bool 		may_vibrate;  ///Globalna zmienna nie może nazywać się tak jak lokalne metody
-extern	bool 		szlak;    ///
-extern	bool 		pamiec;  ///
-extern	bool 		losowo;  ///
-extern	int 		ileSymulacji ;///< = 2; 
-extern	int 		iteracja;  ///
-extern	int 		dra ;///< = 0;   
-extern	int 		lpsym ;///< = 1;  do nazewnictwa
+extern	PrintWriter 		output; ///< Globalny output
+extern	PrintWriter 		stan;   ///< stany
+extern	pWorld 		world;        ///< ŚWIAT MRÓWEK
+extern	int 		ws ;///< = 10;        < ???
+extern	int 		sizew ;///< = 900;    < ???
+extern	float 		ts ;///< = 0.5;         < wzmocnienie szlaku po zebraniu jedzenia
+extern	int 		memo ;///< = 10;          < długość pamięci
+extern	float 		distrail ;///< = 0.1;   < osłabienie szlaku, gdy nie ma jedzenia
+extern	float 		pLosowe ;///< = 0.01;   < prawdopodobieństwo odejścia od reguł, w klasieWorld
+extern	float 		disp ;///< = 0.01;      < tempo zanikania szlaku 
+extern	float 		pe ;///< = 0.1;         < normalne p przejścia, niby 0.125, bo 8 dróg, ale nie
+extern	int 		ileje ;///< = 80;         < ile jest maksymalnie jedzenia na miejscu jedzenia
+extern	float 		quiet ;///< = 0.5;      < tempo uciszania dźwięku
+extern	bool 		may_vibrate;    ///< Globalna zmienna nie może nazywać się tak jak lokalne metody
+extern	bool 		szlak;          ///< ???
+extern	bool 		pamiec;         ///< ???
+extern	bool 		losowo;         ///< ???
+extern	int 		ileSymulacji ;///< = 2;   < ???
+extern	int 		iteracja;  ///< ???
+extern	int 		dra ;///< = 0;   < ???
+extern	int 		lpsym ;///< = 1; < do nazewnictwa
 
 //All global arrays from Processing files
 
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	inicjacja();  /// Funkcja wymagająca deklaracji zapowiadającej
-void	pomocPetli();  /// Funkcja wymagająca deklaracji zapowiadającej
-void	petla();  /// Funkcja wymagająca deklaracji zapowiadającej
+void	inicjacja();  ///< Funkcja wymagająca deklaracji zapowiadającej
+void	pomocPetli();  ///< Funkcja wymagająca deklaracji zapowiadającej
+void	petla();  ///< Funkcja wymagająca deklaracji zapowiadającej
 #endif

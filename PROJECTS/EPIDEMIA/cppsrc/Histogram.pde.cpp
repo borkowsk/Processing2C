@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: Histogram.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -16,7 +16,7 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 // Bardzo prosty histogram agentów wg jednej właściwości
 /////////////////////////////////////////////////////////////////////////////////////////
-int Max=0;//Max wspólny dla całej symulacji
+int Max=0Max wspólny dla całej symulacji
 
 void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.
 {
@@ -24,7 +24,7 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
   sarray<int> Basket=new array<int>(NumOfBaskets+1);
   int N=0; //Licznik żywych
   //int Max=0;//Albo Max resetowany dla każdego kroku
-  pAgent curra;//Pomocniczy uchwyt agenta
+  Agent curraPomocniczy uchwyt agenta
   
   //Zliczanie 
   for(int a=0;a<agents->length;a++)
@@ -35,10 +35,10 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
         && curra->state!=Death //Uwzględniamy zmarłych przy statystyce
     )
     {
-      N++;//Żywy
-      int cl=round(curra->immunity*NumOfBaskets);//Z odporniością w klasie "cl"
-      Basket[cl]++;//Doliczamy go
-      if(Basket[cl]>Max) Max=Basket[cl];//Sprawdzamy czy nie urosło "Max"
+      NŻywy
+      int cl=round(curra->immunity*NumOfBasketsZ odporniością w klasie "cl"
+      Basket[clDoliczamy go
+      if(Basket[cl]>Max) Max=Basket[clSprawdzamy czy nie urosło "Max"
     }
    }
    
@@ -56,5 +56,5 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
    fill(random(255),random(255),random(255));
    text(String("N:")+N+String("\nMax:")+Max,startx+NumOfBaskets,starty);
 }
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

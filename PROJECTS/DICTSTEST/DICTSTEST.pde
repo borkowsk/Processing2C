@@ -2,6 +2,7 @@
 /// String "keys" are associated with integer or float values.
 /// In Pr2C it is implemented as class derived from std::map
 //*/////////////////////////////////////////////////////////////////////////
+
 FloatDict inventoryF;
 IntDict   inventoryI;
 

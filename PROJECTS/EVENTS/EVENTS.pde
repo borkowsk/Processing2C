@@ -2,15 +2,15 @@
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// base on Processing examples
 /// ORIGINAL FILE: "EVENTS.pde"
-/////////////////////////////////////////////////////
-// Click on the window to give it focus,
-// and press the 'B' key.
-// Also click one of mouse buttons
+//*///////////////////////////////////////////////////
+// * Click on the window to give it focus,
+// * Or press the 'B' key.
+// * Also click one of mouse buttons
 
 void setup() {
   size(100,100);
-  frameRate(100);//Apart this fraquency,
-                // message are get only 10 times per second!
+  frameRate(100); // Apart this fraquency,
+                  // events are get only 10 times per second!
 }
 
 void draw() {
@@ -117,3 +117,5 @@ void mouseReleased() {
 //  float e = event.getCount();
 //  println("mouseWheel",e);
 //}
+
+

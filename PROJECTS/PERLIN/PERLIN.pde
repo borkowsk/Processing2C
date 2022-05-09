@@ -1,9 +1,10 @@
 /// Perlin noise test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "PERLIN.pde"
-////////////////////////////////////////////////////////////////////
-// Based on Processing examples for Perlin noise
+//*//////////////////////////////////////////////////////////////////
+/// Based on Processing examples for Perlin noise
 // See also: https://en.wikipedia.org/wiki/Perlin_noise
+//      and: https://www.openprocessing.org/sketch/494102/
 
 void setup() 
 {
@@ -20,15 +21,15 @@ void draw()
 float xoff = 0.0;
 float yoff = 0.1;   // 2nd dimension of perlin noise
 
-void draw0() /// Used before definition
+void draw0() ///< Used before definition
 {
-  stroke(random(256),0,0);//stroke(frameCount%256,2*frameCount/100,0);//stroke(0, 10);
+  stroke(random(256),0,0); //stroke(frameCount%256,2*frameCount/100,0); //stroke(0, 10);
   xoff = xoff + .01;
   float n = noise(xoff) * width;
   line(n, 0, n, height);
 }
 
-void draw1() /// May be used before definition
+void draw1() ///< May be used before definition
 {
   background(255);
   xoff = xoff + .01;
@@ -38,11 +39,11 @@ void draw1() /// May be used before definition
 
 float noiseScale = 0.10;
 
-void draw2() /// May be used before definition
+void draw2() ///< May be used before definition
 {
   background(0);
   for (int x=0; x < width; x++) {
-    float noiseVal = noise((mouseX+x)*noiseScale, mouseY*noiseScale);//!!! mouseMove not work under Processing2C
+    float noiseVal = noise((mouseX+x)*noiseScale, mouseY*noiseScale); // !!! mouseMove not work under Processing2C
     stroke(noiseVal*255);
     line(x, mouseY+noiseVal*80, x, height);
   }
@@ -93,7 +94,7 @@ void draw4() /// May be used before definition
   yoff += 0.01;
   vertex(width, height);
   vertex(0, height);
-  endShape(CLOSE);//THIS IS STIL NOT IMPLEMENTED IN Processing2C
+  endShape(CLOSE); // THIS IS STIL NOT IMPLEMENTED IN Processing2C
 }
 
-//See also: https://www.openprocessing.org/sketch/494102/
+

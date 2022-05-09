@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: FILES.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -44,7 +44,7 @@ void processing_window::setup()
   
   println("positions.txt is open");
   
-  write_someting(writer);// Reference semantic test
+  write_someting(writer); // Reference semantic test
   
   println(writer,"0\t0");
 
@@ -54,8 +54,8 @@ void processing_window::setup()
   delay(1000);
   reader = createReader("positions.txt");
   
-  if(reader == nullptr )   //<>//
-                  exit(); //<>//
+  if(reader == nullptr )
+                  exit();
   
   println("\npositions.txt is open");
   
@@ -83,8 +83,8 @@ void processing_window::draw()
   }
   catch (std::ifstream::failure e) 
   {
-    println("IOerror:",e); //<>//
-    //e->printStackTrace(); //<>//
+    println("IOerror:",e);
+    //e->printStackTrace();
   }
   catch (std::runtime_error e)
   {
@@ -99,7 +99,7 @@ void processing_window::exit()
   {
     if(reader!=nullptr)
     {
-       reader->close(); //<>//
+       reader->close();
        println("positions.txt is closed");
     }
   }
@@ -112,5 +112,6 @@ void processing_window::exit()
   save("exit.png");
   processing_window_base::exit();
 }
-//../../scripts did it
+
+///data/wb/SCC/public/Processing2C/scripts did it
 

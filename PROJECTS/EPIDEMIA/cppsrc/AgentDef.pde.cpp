@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: AgentDef.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -19,13 +19,13 @@ using namespace Processing;
 class Agent: public virtual Object{
   public:
   int   state;
-  float immunity;//Zamiast PTransfer!
+  float immunityZamiast PTransfer!
   
-  Agent()//Konstruktor agenta. Inicjuje atrybuty
+  AgentKonstruktor agenta. Inicjuje atrybuty
   {
     state=Susceptible;
     immunity=( random(1.0)+random(1.0)+random(1.0)
-              +random(1.0)+random(1.0)+random(1.0) )/6.0;//Średnia 0.5
+              +random(1.0)+random(1.0)+random(1.0) 6.0Średnia 0.5
              //random(1.0);//Srednia taka sama, ale rozkład płaski
   }
 };
@@ -33,5 +33,5 @@ class Agent: public virtual Object{
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT FOR FILL UP
 ///////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

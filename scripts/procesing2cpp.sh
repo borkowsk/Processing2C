@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ $# -ne 1 ]; 
 then
-   echo -e $COLOR2"$# is invalid number of parameters!"$NORMCO 1>&2
+   echo -e "${COLOR2}$# ${COLOR1}is invalid number of parameters!"$NORMCO 1>&2
    exit -1
 fi
 
@@ -20,7 +20,10 @@ echo "#include \"local.h\""
 echo "//=================================================================================="
 echo ""
 
+echo -e $COLOR1 1>&2 #ERRORS!
+
 cat $1 |\
+${SCRIPTS}/tools  |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
 #także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu
@@ -182,9 +185,11 @@ sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
 echo -e "//$(dirname $0) did it\n"
 
+echo -e "END" $NORMCO 1>&2 #end of colored errors
+
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-04-22                   */
+#/*               PROCESSING2C  version 2022-05-09                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

@@ -1,5 +1,6 @@
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących Processing::ptr<...>
 /// To powoduje GPF bo tworzy się nowy _shared_ptr<...> nie powiązany z tym trzymającym obiekt! 
+//*//////////////////////////////////////////////////////////////////////////////////////////////
 
 ///Info: klasa testowa
 class C {
@@ -11,9 +12,9 @@ class C {
   }
 };
 
-int y=0;/// Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
+int y=0; ///< Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
 
-void call_outside(C obj,String msg) /// dla C++ musi być deklaracja zapowiadająca
+void call_outside(C obj,String msg) ///< dla C++ musi być deklaracja zapowiadająca
 {
   println(msg,obj.i);
   text(msg+" "+obj.i,0,y+=16);
@@ -30,3 +31,4 @@ void setup()
   c.call_inside("Third time");
   saveFrame();
 }
+

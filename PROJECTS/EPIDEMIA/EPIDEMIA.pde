@@ -1,55 +1,57 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "EPIDEMIA.pde"
-/////////////////////////////////////////////////////////////////////////////////////////
-// Model of epidemic using template for AGENT BASE MODEL in 1D & 2D discrete geometry
-// implemented by Wojciech Borkowski
-/////////////////////////////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////////////////////////
+/// Model of epidemic using template for AGENT BASE MODEL in 1D & 2D discrete geometry
+//  implemented by Wojciech Borkowski
+//*///////////////////////////////////////////////////////////////////////////////////////
+
+//TODO - liczne podejrzane bloki znaków z komentarzami w pozostałych plikach projektu!!!
 
 //PARAMETRY MODELU
-int side=200;/// DŁUGOŚĆ BOKU ŚWIATA
-String modelName="ABMEpidemia";/// Nazwa modelu, np. dla plików wyjściowych
-float density=0.66;/// główny MERYTORYCZNY parametr modelu
+int side=200; ///< DŁUGOŚĆ BOKU ŚWIATA
+String modelName="ABMEpidemia"; ///< Nazwa modelu, np. dla plików wyjściowych
+float density=0.66; ///< główny MERYTORYCZNY parametr modelu
 
-World TheWorld=new World(side);//INICJALIZACJA JEST KONCZONA 
-                               //W FUNKCJI setup( )
+World TheWorld=new World(side);///< INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
 
 //Inne parametry symulacji jako final - coś w rodzaju stałych ;-)
-final int Duration=7;/// Czas trwania infekcji!
-//final int Empty=0;//NIEPOTRZEBNE. Zamiast tego jest null w komórce tablicy uchwytów do agetów 
-final int Susceptible=1;/// Oznaczenie podatnego
-final int Infected=2;/// Oznaczenie zainfekowanego
-final int Recovered=Infected+Duration;/// Oznaczenie wyleczonego
-final int Death=100;/// Oznaczenie zmarłego
-//final float PTransfer=???;  //Prawdopodobieństwo zarażenia agenta w pojedynczej interakcji
-                              //teraz zależy od indywidualnej wartości immunity!
+final int Duration=7;   ///< Czas trwania infekcji!
+//final int Empty=0;    ///< NIEPOTRZEBNE. 
+                        // Zamiast tego jest null w komórce tablicy uchwytów do agetów 
+final int Susceptible=1; ///< Oznaczenie podatnego
+final int Infected=2;    ///< Oznaczenie zainfekowanego
+final int Recovered=Infected+Duration; ///< Oznaczenie wyleczonego
+final int Death=100;     ///< Oznaczenie zmarłego
+//final float PTransfer=???;  /// Prawdopodobieństwo zarażenia agenta w pojedynczej interakcji
+                              /// teraz zależy od indywidualnej wartości immunity!
                               
-final float PDeath=0.015;     /// Średnie prawdopodobieństwo śmierci w danym dniu choroby
+final float PDeath=0.015;     ///< Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
 //STATYSTYKI LICZONE W TRAKCIE SYMULACJI
-int liveCount=0;/// Ile aktualnie żywych
+int liveCount=0;        ///< Ile aktualnie żywych
 
-int  sumInfected=0;///Zachorowanie
-int sumRecovered=0;///Wyzdrowienia
-int     sumDeath=0;///Ci co umarli
+int  sumInfected=0;     ///< Zachorowanie
+int sumRecovered=0;     ///< Wyzdrowienia
+int     sumDeath=0;     ///< Ci co umarli
 
 //HISTORIE DO WYŚWIETLANIA
-FloatList deaths=new FloatList();///Historia śmierci 
-FloatList newcas=new FloatList();///Historia nowych zachorowań
-FloatList  cured=new FloatList();///Historia wyleczeń
+FloatList deaths=new FloatList(); ///< Historia śmierci 
+FloatList newcas=new FloatList(); ///< Historia nowych zachorowań
+FloatList  cured=new FloatList(); ///< Historia wyleczeń
 
 //PARAMETRY WIZUALIZACJI, STATYSTYKI ITP.
-int cwidth=3;///DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
-             //WARTOSC NADANA TU JEST TYLKO WSTĘPNA
-int STATUSHEIGH=150;///WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
+int cwidth=3; ///< DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
+              ///WARTOSC NADANA TU JEST TYLKO WSTĘPNA
+int STATUSHEIGH=150; ///< WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
 
-int STEPSperVIS=1;///JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
-int FRAMEFREQ=30; ///ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
+int STEPSperVIS=1; ///< JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
+int FRAMEFREQ=30;  ///< ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
 
-//boolean WITH_VIDEO=false;//CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo.pde)
-boolean simulationRun=true;//FLAGA Start/stop DZIAŁANIA SYMULACJI
+//boolean WITH_VIDEO=false; ///< CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo.pde)
+boolean simulationRun=true; ///< FLAGA Start/stop DZIAŁANIA SYMULACJI
 
-int fontHeight=16;
+int fontHeight=16; ///< Wysokość napisów (działa tylko w Processingu, ale 16 to domyslne w X11
 
 void setup()
 {
@@ -139,6 +141,6 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
   text(StepCounter+")  Fps:"+ frameRate,0,side*cwidth+STATUSHEIGH);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM MAIN TEMPLATE
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////

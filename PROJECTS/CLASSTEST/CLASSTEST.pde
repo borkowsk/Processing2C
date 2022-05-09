@@ -1,9 +1,9 @@
 /// Class hierarchy test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "CLASSTEST.pde"
-///////////////////////////////////////////////////////////////////////////
-// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
-///////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////
+/// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
+//*/////////////////////////////////////////////////////////////////////////
 
 interface Mew {
     /*_interfunc*/ void meow(int l) /*_forcebody*/ ;
@@ -119,3 +119,4 @@ void print_animals(ArrayList<Animal> anim) /// Drukowanie własną metodą
       for(Animal a:anim)
         println(a);
 }
+

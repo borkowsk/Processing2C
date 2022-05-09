@@ -1,24 +1,24 @@
 /// Simple model of colony growth with mutations (test project for Processing2C)
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "WZROST.pde"
-//////////////////////////////////////////////////////////////////////////////////
-//Wzrost losowo z punktu środkowego z mutacjami kolorów
-//////////////////////////////////////////////////////////////////////////////////
-//uzywamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
+//*////////////////////////////////////////////////////////////////////////////////
+// Wzrost losowo z punktu środkowego z mutacjami kolorów
+//*////////////////////////////////////////////////////////////////////////////////
+// UWAGA! Uzywamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
 
 //Parametry modelu  
-int JUMP=3;//skok pozycji "zarodnika". Nieparzysty!
-int CJUMP=9;//skok koloru. Tez lepiej nieparzysty.
-int STARTG=128;//W jakiej szarości pierwsza komórka
-boolean ScreenDumps=false; //Zrzucanie obrazków co krok wcale
-int VIS_FRQ=100; //co ile kroków zrzut ekranu
+int JUMP=3;     ///< skok pozycji "zarodnika". Nieparzysty!
+int CJUMP=9;    ///< skok koloru. Tez lepiej nieparzysty.
+int STARTG=128; ///< W jakiej szarości pierwsza komórka
+boolean ScreenDumps=false; ///< Zrzucanie obrazków co krok wcale
+int VIS_FRQ=100; ///< co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w funkcji setup
-int          Side;  /// Bok macierzy
-int          W;     /// Mnożnik dla kwadracika
-KLASA[][]    World; /// TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
+int          Side;  ///< Bok macierzy
+int          W;     ///< Mnożnik dla kwadracika
+KLASA[][]    World; ///< TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
 
-PrintWriter output;//A tu używamy KLASY zdefiniowanej w bibliotece
+PrintWriter output; ///< A tu używamy KLASY zdefiniowanej w bibliotece
 
 void setup() //Window and model initialization
 {
@@ -26,28 +26,29 @@ void setup() //Window and model initialization
   W=3;
   Side=900/W;
 
-  World = new KLASA[Side][Side]; //<>//
+  World = new KLASA[Side][Side];
   World[Side/2][Side/2]= new KLASA();
 
-  World[Side/2][Side/2].Set(STARTG,STARTG,STARTG);//Inicjalize 
+  World[Side/2][Side/2].Set(STARTG,STARTG,STARTG); // Inicjalize 
   World[Side/2][Side/2].Visualise(Side/2,Side/2);
   
   output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
   output.println("Step\tCounter");
   
-  noSmooth(); //Fast visualization
+  noSmooth(); // Fast visualization
   noStroke();
-  frameRate(1000); //maximize speed
+  frameRate(1000); // maximize speed
 }
 
 int Step=0;
 boolean Stop=false;
+
+/// Monte Carlo Step
 void draw()
-//Monte Carlo Step
 {
   //Zapis tego co jest
   output.println(Step+"\t"+KLASA_Counter); // Write the statistics to the file
-  output.flush();//Upewnij się że bufor "poszedł na dysk"
+  output.flush(); //Upewnij się że bufor "poszedł na dysk"
   
   //Nowy stan
   if(!Stop)
@@ -79,22 +80,23 @@ void draw()
             World[Yt][Xt].Set(nR,nG,nB);
             World[Yt][Xt].Visualise(Xt,Yt);
             
-            if(Xt==0 || Yt==0)//Doszło do brzegu z jednej z dwu stron - a rośnie w zasadzie symetrycznie
+            if(Xt==0 || Yt==0) //Doszło do brzegu z jednej z dwu stron - a rośnie w zasadzie symetrycznie
                   Stop=true; 
           }  
       }
     }
       
-    if(Step % VIS_FRQ == 0)//Zrzucanie obrazków co VIS_FRQ krok lub wcale
+    if(Step % VIS_FRQ == 0) //Zrzucanie obrazków co VIS_FRQ krok lub wcale
     //if(ScreenDumps) //Zrzucanie obrazków co krok lub wcale
     {
-       //saveFrame("wzrost_step"+Step+".png");//Wersja z niewygodną numeracją
-       //saveFrame("wzrost_"+"f########.png");//Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
-       String sc = nf(Step, 8);//Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
-       if(ScreenDumps) saveFrame("wzrost_step"+sc+".png");//Wersja z wygodną numeracją
+       //saveFrame("wzrost_step"+Step+".png"); //Wersja z niewygodną numeracją
+       //saveFrame("wzrost_"+"f########.png"); //Wersja z numeracją ramek - będzie też zrzucać kolejne ramki jak właściwa symulacja stanie
+       String sc = nf(Step, 8); //Jawne użycie KLASY String oraz funkcji formatującej numery (nUMBER fORMAT)
+       if(ScreenDumps) saveFrame("wzrost_step"+sc+".png"); //Wersja z wygodną numeracją
        println("Frame rate:",frameRate);
     }
     
     Step++;
   }
 }
+

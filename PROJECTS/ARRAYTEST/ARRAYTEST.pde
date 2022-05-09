@@ -1,7 +1,7 @@
 /// Array and matrix test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYTEST.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
 
 int[][] c;
 String[][] s;
@@ -50,3 +50,4 @@ void draw()
   s[a][b]=nf(c[a][b]);
   println(a,b,c[a][b],"'"+s[a][b]+"'");
 }
+

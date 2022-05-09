@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ModelVisual.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -28,11 +28,11 @@ void visualizeAgents(smatrix<pAgent> agents) /// Wizualizacja wszystkich agentó
     {
       float Green=curra->immunity*255;
       switch(curra->state){ //Instrukcja wyboru pozwala nam wybrać dowolny kolor
-      case Recovered:  fill(0,255,0);break;//Wyleczony
-      case Infected:   fill(255,Green,0);break;//Zachorował
-      case Susceptible:fill(0,Green,255);break;//Podatny
-      case Death:      fill(0);break;//Zmarły
-      default:         fill(random(255),Green,random(255));//Chory
+      case Recovered:  fill(0,255,0);breakWyleczony
+      case Infected:   fill(255,Green,0);breakZachorował
+      case Susceptible:fill(0,Green,255);breakPodatny
+      case Death:      fill(0);breakZmarły
+      default:         fill(random(255),Green,random(255Chory
       break;
       } 
     }
@@ -42,7 +42,7 @@ void visualizeAgents(smatrix<pAgent> agents) /// Wizualizacja wszystkich agentó
     }
     
     noStroke();
-    rect(b*cwidth,a*cwidth,cwidth,cwidth);//WŁAŚCIWE RYSOWANIE 
+    rect(b*cwidth,a*cwidth,cwidth,cwidthWŁAŚCIWE RYSOWANIE 
    }
 }
 //OR
@@ -55,10 +55,10 @@ void visualizeAgents(sarray<pAgent> agents) /// Wizualizacja wszystkich agentów
     if( (curra=agents[a]) != nullptr )
     {
       switch(curra->state){ //Instrukcja wyboru pozwala nam wybrać dowolny kolor
-      case Recovered:  fill(0,255,0);break;//Wyleczony
-      case Infected:   fill(255,0,0);break;//Zachorował
-      case Susceptible:fill(0,0,255);break;//Podatny
-      default:         fill(random(255),0,random(255));//Chory
+      case Recovered:  fill(0,255,0);breakWyleczony
+      case Infected:   fill(255,0,0);breakZachorował
+      case Susceptible:fill(0,0,255);breakPodatny
+      default:         fill(random(255),0,random(255Chory
       break;
       } 
     }
@@ -69,15 +69,15 @@ void visualizeAgents(sarray<pAgent> agents) /// Wizualizacja wszystkich agentów
     
     int t=StepCounter%side;
     noStroke();
-    rect(a*cwidth,t*cwidth,cwidth,cwidth);//WŁAŚCIWE RYSOWANIE 
+    rect(a*cwidth,t*cwidth,cwidth,cwidthWŁAŚCIWE RYSOWANIE 
     
     stroke(255);
-    line(0,(t+1)*cwidth+1,width,(t+1)*cwidth+1);//LINIA CZASU TERAŹNIEJSZEGO
+    line(0,(t+1)*cwidth+1,width,(t+1)*cwidth+1LINIA CZASU TERAŹNIEJSZEGO
    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

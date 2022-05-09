@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ModelStats.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -21,7 +21,7 @@ void initializeStats()  ///<
 {
   String FileName=String("ToC_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(String("Results/")+FileName+ String(".out"));
-  println(outstat,"$STEP\tAlive\t.....");//<-- complete the header fields!
+  println(outstat,"$STEP\tAlive\t complete the header fields!
 }
 
 int   prevStep=0;           ///<
@@ -54,8 +54,8 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
   double summ=0;
   liveAgentsCount=0;
     
-  for(int i=0;i<eatCounters->length;i++) eatCounters[i]=0;//Zero counters!
-  for(int i=0;i<punCounters->length;i++) punCounters[i]=0;//Zero counters!
+  for(int i=0;i<eatCounters->length;i++) eatCounters[i]=0Zero counters!
+  for(int i=0;i<punCounters->length;i++) punCounters[i]=0Zero counters!
   
   for(int a=0;a<agents->length;a++)
    for(int b=0;b<agents[a]->length;b++)
@@ -64,15 +64,16 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
       //Dummy statistic
       summ+=curra->energy;
      
-      /*count genoms*/                //assert(curra->genEat<256);	//
+      /*count genoms*/
+                //assert(curra->genEat<256);	//
       eatCounters[curra->genEat]++;
       punCounters[curra->genPan]++;
       
       liveAgentsCount++;
     }
   
-   punPerStep=(float)((numOfPunishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
-   bornsPerStep=(float)((numOfBorns)/((double)StepCounter-prevStep));
+   punPerStep=(float)((numOfPunishmentsdouble)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
+   bornsPerStep=(float)((numOfBornsdouble)StepCounter-prevStep));
    meanAgentsEn=(float)(summ/liveAgentsCount);
    
    if(outstat!=nullptr)
@@ -80,8 +81,8 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
    
    prevStep=StepCounter;
    
-   numOfPunishments=0;//Liczone "on run"
-   numOfBorns=0;//number of newborns
+   numOfPunishments=0Liczone "on run"
+   numOfBorns=0number of newborns
    //outstat should be closed in exit() --> see Exit->pde
 }
 
@@ -102,7 +103,7 @@ void doStatisticsOnCells(smatrix<int> cells) ///<
       //if(curr==1) 
       //.....THIS PART IS FOR YOU!
       
-      liveCellsCount++;//Alive cells
+      liveCellsCountAlive cells
     }
   
    if(liveCellsCount>0)
@@ -124,5 +125,5 @@ void doStatisticsOnCells(smatrix<int> cells) ///<
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS FOR TragedyOfCommons
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

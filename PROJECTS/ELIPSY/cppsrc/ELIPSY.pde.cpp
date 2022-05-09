@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ELIPSY.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -14,16 +14,16 @@ using namespace Processing;
 /// Simple graphics test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ELIPSY.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
 
-int W=600;//Control parameter
+int W=600; /// Control parameter
 
 int radius()
 {
   return int(random(W/10));
 }
 
-//Initialisation
+/// Initialisation
 void processing_window::setup()
 {
   size(600,600);
@@ -31,7 +31,7 @@ void processing_window::setup()
                   //Nie za dużo bo Xorg zablokuje kompa!
 }
 
-//Running - visualisation and dynamics
+/// Running - visualisation and dynamics
 void processing_window::draw()
 {
   fill(random(255),random(255),random(255),random(255));
@@ -43,5 +43,6 @@ void processing_window::draw()
   point(x,y);
   println(frameRate);
 }
-//../../scripts did it
+
+///data/wb/SCC/public/Processing2C/scripts did it
 

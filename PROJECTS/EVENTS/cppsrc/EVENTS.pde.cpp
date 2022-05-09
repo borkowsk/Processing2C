@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: EVENTS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,15 +15,15 @@ using namespace Processing;
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// base on Processing examples
 /// ORIGINAL FILE: "EVENTS.pde"
-/////////////////////////////////////////////////////
-// Click on the window to give it focus,
-// and press the 'B' key.
-// Also click one of mouse buttons
+//*///////////////////////////////////////////////////
+// * Click on the window to give it focus,
+// * Or press the 'B' key.
+// * Also click one of mouse buttons
 
 void processing_window::setup() {
   size(100,100);
-  setFrameRate(100);//Apart this fraquency,
-                // message are get only 10 times per second!
+  setFrameRate(100); // Apart this fraquency,
+                  // events are get only 10 times per second!
 }
 
 void processing_window::draw() {
@@ -130,5 +130,7 @@ void processing_window::onMouseReleased() {
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}
-//../../scripts did it
+
+
+///data/wb/SCC/public/Processing2C/scripts did it
 

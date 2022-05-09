@@ -1,7 +1,9 @@
 /// Ellipse,Rect & Text alignment test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ALIGNMENT.PDE"
-/////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////
+
+
 void cross(float x,float y)
 {
   line(x-5,y,x+5,y);
@@ -118,3 +120,4 @@ void draw()
   cross(width3_4,height1_4);
   cross(width-1,height-1);
 }
+

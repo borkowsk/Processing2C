@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: klasaAnt.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -40,7 +40,8 @@ class Ant: public virtual Object{
 
   //++++++++++++ FUNKCJE WYKONAWCZE ++++++++++++
 
-   /*virtual*/ void takeFood(int x, int y) {
+   /*virtual*/
+ void takeFood(int x, int y) {
     memory[0][0] +=1; //zbiera jedzenie do pamięci
     czyCosNiosla = true;
     if (trailS<0.95 && szlak) trailS+=ts;  //wzmacnia swój zostawiany szlak
@@ -66,7 +67,7 @@ class Ant: public virtual Object{
       memory[2][1] = y;
   }
 
-  void slyszy1() {//inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
+  void slyszy1() inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
     if (trailS<0.95 && szlak) trailS=0.94;
   }
 
@@ -79,7 +80,7 @@ class Ant: public virtual Object{
     memory[2][1] = memory[1][1];
   }
 
-  bool memoryCheck(int a, int b) {//sprawdzanie, czy dane pole jest w pamięci
+  bool memoryCheck(int a, int b) sprawdzanie, czy dane pole jest w pamięci
     for (int i=3; i<memo; i++) {
       if (a==memory[i][0] && b==memory[i][1]) {
         return(false);  //fałsz, gdy jest
@@ -88,5 +89,5 @@ class Ant: public virtual Object{
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

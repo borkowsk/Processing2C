@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: FORMATS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -17,7 +17,7 @@ using namespace Processing;
 /// ORIGINAL FILE: "FORMATS.pde"
 //////////////////////////////////////////////////////////////////////////////////
 
-int fontSize=16;//FontSize is not implemented in Pricessing2C
+int fontSize=16FontSize is not implemented in Pricessing2C
                 //but 16px is a default font hight there!
 
 void processing_window::setup()
@@ -27,7 +27,7 @@ void processing_window::setup()
   //Uncomment the following two lines to see the available fonts 
   //sarray<String> fontList = PFont->list();
   //printArray(fontList);
-  PFont myFont = createFont("Courier", 16);//Fixed width font
+  PFont myFont = createFont("Courier", 16Fixed width font
   textFont(myFont);
   textSize(fontSize);
   
@@ -100,5 +100,5 @@ void processing_window::setup()
   text("binary___gray:" ,10,pos+=fontSize);
   text(String("      ") + binary(gray),10,pos+=fontSize); 
 }
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 
