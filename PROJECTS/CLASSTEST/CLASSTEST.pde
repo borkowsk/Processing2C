@@ -6,11 +6,11 @@
 ///////////////////////////////////////////////////////////////////////////
 
 interface Mew {
-    /*_interfunc*/ void meow(int l)/*_forcebody*/;
+    /*_interfunc*/ void meow(int l) /*_forcebody*/ ;
 };
 
 interface Eat {
-    /*_interfunc*/ void eat(int l)/*_forcebody*/;
+    /*_interfunc*/ void eat(int l) /*_forcebody*/ ;
 };
 
 abstract class Animal {
@@ -48,43 +48,43 @@ void setup()
 {
     size(150,100);
     Object object = new Cat();
-    Cat cat = /*_downcast*/(Cat)(object);//Second parentheses required
+    Cat cat = /*_downcast*/(Cat)(object); //Second parentheses required
     cat.meow(0);
     //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
                  //error: ambiguous overload for ‘operator=’ 
-    object = /*_upcast*/(Object)(cat);//works using static_cast in C++
-    object = /*_downcast*/(Object)(cat);//works using dynamic_cast in C++
+    object = /*_upcast*/(Object)(cat); //works using static_cast in C++
+    object = /*_downcast*/(Object)(cat); //works using dynamic_cast in C++
     
     Mew mew = new Cat();
     mew.meow(1);
     //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
               //error: ambiguous overload for ‘operator=’ 
-    mew = /*_upcast*/(Mew)(cat);//works using COMPILE TIME static_cast in C++
-    mew = /*_downcast*/(Mew)(cat);//dynamic_cast is usualy resolved at RUN TIME
+    mew = /*_upcast*/(Mew)(cat); //works using COMPILE TIME static_cast in C++
+    mew = /*_downcast*/(Mew)(cat); //dynamic_cast is usualy resolved at RUN TIME
     
     mew.meow(2);
     
-    Animal animal = cat;//OK
+    Animal animal = cat; //OK
     //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
-    animal = /*_upcast*/(Animal)( cat );//use static_cast in C++
+    animal = /*_upcast*/(Animal)( cat ); //use static_cast in C++
     animal.eat(3);
     
-    //animal = mew;//Not work in Processing, also in C++ does not
-    //animal = (Cat) mew;//Work in Processing, in C++ does not
-    //animal = (Animal) mew;//Work in Processing, in C++ does not
-    //animal = /*_upcast*/(Animal)( mew );//in Processing same as below, but not in C++
-    animal = /*_downcast*/(Animal)( mew );//With _downcast work always
+    //animal = mew; //Not work in Processing, also in C++ does not
+    //animal = (Cat) mew; //Work in Processing, in C++ does not
+    //animal = (Animal) mew; //Work in Processing, in C++ does not
+    //animal = /*_upcast*/(Animal)( mew ); //in Processing same as below, but not in C++
+    animal = /*_downcast*/(Animal)( mew ); //With _downcast work always
     animal.eat(4);
     
 //  animal.meow(4); ///Error: The method meow() is undefined for the type Animal
     
-    Cat ancat=/*_downcast*/(Cat)( animal );
+    Cat ancat = /*_downcast*/(Cat)( animal );
     ancat.meow(5);
-    (/*_downcast*/(Cat)( animal ) ).meow(6);//Second parentheses in cast required
+    ( /*_downcast*/(Cat)( animal ) ).meow(6); //Second parentheses in cast required
    
     if (animal instanceof Cat) { //downcast with check
       println("This animal is a cat");
-      (/*_downcast*/(Cat)( animal ) ).meow(7);//Second parentheses in cast required
+      ( /*_downcast*/(Cat)( animal ) ).meow(7); //Second parentheses in cast required
     }
     
     animal = new Dog();
@@ -92,7 +92,7 @@ void setup()
     
     if (animal instanceof Cat) { //downcast with check
       println("This animal is a cat");
-      (/*_downcast*/(Cat)(animal) ).meow(9); /// Does not happen
+      ( /*_downcast*/(Cat)(animal) ).meow(9); /// Does not happen
     }
     
     if ( animal instanceof Dog ) { //Type check

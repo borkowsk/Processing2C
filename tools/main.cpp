@@ -1,5 +1,8 @@
 #include <locale>
 #include <iostream>
+#include <fstream>
+
+std::ofstream mylog("tools.log");
 
 std::string print_type(std::ctype<char>::mask interest)
 {
@@ -87,22 +90,34 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
     return 0;
 }
 
+int  line_counter=1;
+void calculate_lines(std::string& line)
+{
+    auto pos = line.find('\n');
+    while(pos != std::string::npos)
+    { line_counter++; pos = line.find('\n',pos+1); }
+}
+
 int main(int argc,const char** argv)
 {
-    std::cout << "Processing refactor" << std::endl;
+    std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
 
     std::string line="s";
 
     while(true) {
         auto t = next_block(std::cin, line);
+        calculate_lines(line);
+
         if(t==EOF) break;
+
         if((t & std::ctype_base::punct) != 0
            && line.length() > 1
-           && line[0] != '/'
+           && line[0] != '/' && line[0] != '*'
            && line.find('/')!=std::string::npos
                 )
         {
-            std::cerr<<std::endl<<"Suspicious string of punctuation marks: "<<"'"<<line<<"'"<<std::endl;
+            std::cerr<<std::endl<<"Line "<<line_counter<<" Suspicious string of punctuation marks: "<<"'"<<line<<"'"<<std::endl;
+                mylog<<std::endl<<"Line "<<line_counter<<" Suspicious string of punctuation marks: "<<"'"<<line<<"'"<<std::endl;
             std::cerr.flush();
         }
         else
@@ -114,7 +129,9 @@ int main(int argc,const char** argv)
         {
             std::string restOfComment;
             getline(std::cin, restOfComment);
+            line_counter++;//?
             std::cout << line << restOfComment << std::endl;
+                mylog << line << restOfComment << std::endl;
         }
         else
         if ((t & std::ctype_base::punct) != 0
@@ -125,14 +142,19 @@ int main(int argc,const char** argv)
         {
             std::string restOfComment;
             all_until(std::cin,"*/",restOfComment);
+            calculate_lines(restOfComment);
             std::cout << line << restOfComment << std::endl;
+                mylog << line << restOfComment << std::endl;
         }
         else
         {
-            std::cout << "'" << line << "'";
-            std::cout<<"\t\t\t"<<print_type(t);
-            std::cout << std::endl;
+            std::cout << line;
+
+            mylog << "'" << line << "'";
+            mylog <<"\t\t\t"<<print_type(t);
+            mylog << std::endl;
         }
     }
+
     return 0;
 }
