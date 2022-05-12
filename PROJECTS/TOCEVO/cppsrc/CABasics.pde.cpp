@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: CABasics.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -50,10 +50,10 @@ void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi
      }
      else
      {
-        val+=(int)(R*valUps, przekraczając max giną :-D (ze starości?)
+        val+=(int)(R*val);//Ups, przekraczając max giną :-D (ze starości?)
      }
      
-     if(val<0) val=MAX_INTTak już nie giną
+     if(val<0) val=MAX_INT;//Tak już nie giną
      
      newcells[a][b]=val;
   }  
@@ -62,5 +62,5 @@ void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

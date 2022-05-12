@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: SYNCHRONIC1.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -116,5 +116,5 @@ void processing_window::draw()
 
 }
 
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

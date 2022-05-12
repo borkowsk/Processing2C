@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AgentSupl.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -32,7 +32,7 @@ void initializeAgents(smatrix<pAgent> agents) /// Inicjalizacja wszystkich agent
       }
       
    //Inicjowanie infekcji od środka
-   if(agents[agents->length/2][agents->length/2]==nullptrGdyby go nie było
+   if(agents[agents->length/2][agents->length/2]==nullptr)//Gdyby go nie było
    {
       agents[agents->length/2][agents->length/2]=new Agent();
       liveCount++;
@@ -52,7 +52,7 @@ void initializeAgents(sarray<pAgent> agents) /// Inicjalizacja wszystkich agent�
     }
    
    //Inicjowanie infekcji od środka
-   if(agents[agents->length/2]==nullptrGdyby go nie było
+   if(agents[agents->length/2]==nullptr)//Gdyby go nie było
    {
       agents[agents->length/2]=new Agent();
       liveCount++;
@@ -86,7 +86,7 @@ void  agentsChange(smatrix<pAgent> agents) /// Główna dynamika symulacji 2D
   for(int i=0;i<MC;i++)
   {
     int a=(int)random(0,agents->length);   //agents[a]->lenght na wypadek gdyby nam przyszło do głowy zrobić prostokąt
-    int b=(int)random(0,agents[a]->lengthprint(a,b,' '); DEBUG
+    int b=(int)random(0,agents[a]->length);//print(a,b,' '); DEBUG
     if(agents[a][b]!= nullptr )
     {
        //Jesli pusty lub zdrowy to nic nie robimy
@@ -122,12 +122,12 @@ void  agentsChange(smatrix<pAgent> agents) /// Główna dynamika symulacji 2D
 	agents[dw][b]->state=Infected; sumInfected++;
 	}
 
-       float prob=random(1Los na dany dzień
+       float prob=random(1);//Los na dany dzień
        
        if(prob<PDeath) //Albo tego dnia umiera
         { 
           sumDeath++;liveCount--;
-          agents[a][b]->state=DeathAle to trzeba też uwzglednić przy statystyce!
+          agents[a][b]->state=Death;//Ale to trzeba też uwzglednić przy statystyce!
         }
         else
         {
@@ -151,5 +151,5 @@ void  agentsChange(smatrix<pAgent> agents) /// Główna dynamika symulacji 2D
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -7,7 +7,7 @@
 
 
 //All classes from Processing files
-class KLASA; typedef Processing::ptr<KLASA> pKLASA; // {
+class KLASA; typedef Processing::ptr<KLASA> pKLASA; // 
 
 //All global finals (consts) from Processing files
 

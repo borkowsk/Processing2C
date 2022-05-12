@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: exit.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,5 +15,5 @@ void processing_window::exit()
   save("exit.png"); //Without extension in Processing it produce TIFF, in C++ file format depend on implementation
   processing_window_base::exit(); //What shoud be done by default!
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AgentBasics.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -33,7 +33,7 @@ void cleanDeaths(smatrix<pAgent> agents)      ///<
     if(agents[a][b]!= nullptr) 
       if(agents[a][b]->energy<=0)
       {
-        agents[a][b]=nullptrremove death agent from the world 
+        agents[a][b]=nullptr;//remove death agent from the world 
       }
 }
 
@@ -49,19 +49,19 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
     int a=(int)random(0,agents->length);
     int b=(int)random(0,agents[a]->length);
     
-    if(agents[a][b]!= nullptr && agents[a][b]->energy>0 Exists and not death
+    if(agents[a][b]!= nullptr && agents[a][b]->energy>0 )//Exists and not death
     {
       //Zużycie zasobów na koszty metaboliczne
       if(agents[a][b]->energy>costOfStep) 
           agents[a][b]->energy-=costOfStep; //Metabolic costs
       else
-          agents[a][b]->energy=0Not enough!
+          agents[a][b]->energy=0;//Not enough!
           
       if(agents[a][b]->energy<=0) //Czy nie umarł od tego?
       {
           if(WITH_NEW_DEL_LOG) 
             println("Agent death",(int)agents[a][b]->genEat,(int)agents[a][b]->genPan);
-          continueNow is death
+          continue;//Now is death
       }
       
       if(agents[a][b]->punished>0) //Czy jest sparaliżowany?
@@ -80,7 +80,7 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
         float rpOfEat=agents[a][b]->genEat/255.0;
         int consumption=(int)(cells[ma][mb]*rpOfEat);
         
-        if(consumption<1 && random(1.0) < rpOfEatWhen too small resources
+        if(consumption<1 && random(1.0) < rpOfEat)//When too small resources
             consumption=1;
             
         if(consumption>0)
@@ -89,7 +89,7 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
           agents[a][b]->energy+=consumption;
           //To jednak powinno być tu! TODO DONE
           if(agents[a][b]->energy>maxStock)
-            agents[a][b]->energy=maxStockthe storage of unused energy is limited
+            agents[a][b]->energy=maxStock;//the storage of unused energy is limited
         }
       }
       
@@ -99,10 +99,10 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
       //Maybe offspring?
       if(agents[ma][mb]==nullptr     //Tylko gdy wolne miejsce
       && agents[a][b]->energy > 4 * costOfStep //Jest minimalny zapas
-      && pOffspring > random(1.0) I jest DECYZJA!
+      && pOffspring > random(1.0) )//I jest DECYZJA!
       {
           agents[ma][mb]=new Agent(agents[a][b]->energy/2,
-                                  (agents[a][b]->genEat+(int)random(-1.5,1.5With mutation possible
+                                  (agents[a][b]->genEat+(int)random(-1.5,1.5)),//With mutation possible
                                   (agents[a][b]->genPan+(int)random(-1.5,1.5)) //With mutation possible
                                   );
           if(WITH_NEW_DEL_LOG)
@@ -130,7 +130,7 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
       //NON-BLOCKING RANDOM WALK
       pAgent tmp=agents[a][b];
       agents[a][b]=agents[ma][mb];
-      agents[ma][mb]=tmpAgent ready at new position
+      agents[ma][mb]=tmp;//Agent ready at new position
     }
   }
   
@@ -141,5 +141,5 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///<
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -18,4 +18,5 @@ extern	int 		W;///< =600;  Control parameter
 //All global matrices from Processing files
 
 //All global functions from Processing files
+int	radius();  ///< Example of the user declared function
 #endif

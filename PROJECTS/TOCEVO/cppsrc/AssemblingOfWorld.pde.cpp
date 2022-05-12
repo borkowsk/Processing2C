@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AssemblingOfWorld.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -17,10 +17,10 @@ int StepCounter=0; ///< globalny licznik kroków
 
 class World: public virtual Object{
   public:
-  smatrix<int>     cellsTwo dimensional array of resources
-  smatrix<pAgent>   agentsTwo dimensional array of agents
+  smatrix<int>     cells;//Two dimensional array of resources
+  smatrix<pAgent>   agents;//Two dimensional array of agents
   
-  World(int sideConstructor of the World
+  World(int side)//Constructor of the World
   {
     cells=new matrix<int>(side,side);
     agents=new matrix<pAgent>(side,side);
@@ -51,7 +51,7 @@ void visualizeModel(pWorld world)    ///<
   for(int i=0;i<eatCounters->length;i++)
   if(eatCounters[i]>0)
   {
-    float len=log(eatCounters[imaxL*50.0; //println(len);
+    float len=log(eatCounters[i])/maxL*50.0; //println(len);
     stroke(i,0,128);
     line(side*cwidth,i,side*cwidth+len,i);
   }
@@ -59,7 +59,7 @@ void visualizeModel(pWorld world)    ///<
   for(int i=0;i<punCounters->length;i++)
   if(punCounters[i]>0)
   {
-    float len=log(punCounters[imaxL*50.0; //println(len);
+    float len=log(punCounters[i])/maxL*50.0; //println(len);
     stroke(128,0,128+i);
     line(side*cwidth,eatCounters->length+i,side*cwidth+len,eatCounters->length+i);
   }
@@ -69,8 +69,8 @@ void visualizeModel(pWorld world)    ///<
 void changes(pWorld world)   ///<
 {
   cleanDeaths(world->agents);
-  synchChangeCells(world->cells,world->cellsNo intercells interactions
-  changeAgents(world->agents,world->cellsAgents influence the resource layer
+  synchChangeCells(world->cells,world->cells);//No intercells interactions
+  changeAgents(world->agents,world->cells);//Agents influence the resource layer
 }
 
 void modelStep(pWorld world) ///<
@@ -83,5 +83,5 @@ void modelStep(pWorld world) ///<
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD FOR TragedyOfCommons
 ///////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

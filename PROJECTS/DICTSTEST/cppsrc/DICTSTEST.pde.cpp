@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: DICTSTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -18,6 +18,7 @@ using namespace Processing;
 /// String "keys" are associated with integer or float values.
 /// In Pr2C it is implemented as class derived from std::map
 //*/////////////////////////////////////////////////////////////////////////
+
 pFloatDict inventoryF;
 pIntDict   inventoryI;
 
@@ -58,5 +59,5 @@ void processing_window::draw()
   int numRecords = inventoryI->get("records");
   text(numRecords, width/2, height/2);
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

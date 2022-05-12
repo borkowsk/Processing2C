@@ -22,7 +22,8 @@ add_subdirectory( "${SYMSHELL}"
                   "${SYMSHELL}" ) 
 add_subdirectory( "../lib/" 
                   "../lib/" )
-
+add_subdirectory( "../tools/" 
+                  "../tools/" )
 #EXAMPLES
 EOF
 

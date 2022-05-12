@@ -48,9 +48,9 @@ else
 fi
 
 if [ -d "${SRCDIR}toolsouts/" ]; then
-   echo #"Directory $SRCDIR/toolsouts/ already exists."
+   echo -e $COLOR1"Directory $SRCDIR/toolsouts/ already exists."
    echo -e $COLOR2
-   rm -f "${SRCDIR}toolsouts/*"
+   rm   ${SRCDIR}toolsouts/*
    echo -e $NORMCO
 else
    echo -e $COLOR1"Folder ${SRCDIR}toolsouts/ does not exist. Will be created"$COLOR2

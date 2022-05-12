@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ModelStats.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -25,7 +25,7 @@ void initializeStats() { ///
   String FileName=modelName+=String("_s")+side+String("d")+density+String("i")+Number_of_identities
                            +String("_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(FileName+ String(".out"));
-  println(outstat,"$STEP\tAlive\tStress\t complete the header fields!
+  println(outstat,"$STEP\tAlive\tStress\t");//<-- complete the header fields!
 }
 
 float meanStress=0;
@@ -87,5 +87,5 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) {  ///
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS LOG TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -11,6 +11,7 @@
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
+extern	int 		fontSize;///< =16; < FontSize is not implemented in Pricessing2C
 
 //All global arrays from Processing files
 

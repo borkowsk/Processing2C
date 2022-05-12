@@ -5,15 +5,18 @@
 /// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
 
-interface Mew {
+interface Mew 
+{
     /*_interfunc*/ void meow(int l) /*_forcebody*/ ;
 };
 
-interface Eat {
+interface Eat 
+{
     /*_interfunc*/ void eat(int l) /*_forcebody*/ ;
 };
 
-abstract class Animal {
+abstract class Animal 
+{
     float mass;
     /*_interfunc*/ void eat(int l) {
         println(l,"Animal eats"); 
@@ -21,7 +24,8 @@ abstract class Animal {
     }
 };
 
-class Cat extends Animal implements Mew, /*_pubext*/ Eat {
+class Cat extends Animal implements Mew, /*_pubext*/ Eat 
+{
     void eat(int l) {
          println(l,"Cat eats");  
     }
@@ -31,13 +35,15 @@ class Cat extends Animal implements Mew, /*_pubext*/ Eat {
     }
 };
 
-class Dog extends Animal {
+class Dog extends Animal 
+{
     void eat(int l) {
          println(l,"Dog eats");  
     }
 };
 
-class AnimalFeeder {
+class AnimalFeeder 
+{
     void feed(ArrayList<Animal> animals) {
         for(Animal a:animals)
             a.eat(10);
@@ -119,4 +125,3 @@ void print_animals(ArrayList<Animal> anim) /// Drukowanie własną metodą
       for(Animal a:anim)
         println(a);
 }
-

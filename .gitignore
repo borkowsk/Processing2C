@@ -4,6 +4,8 @@
 config.dat
 lista.txt
 headers.tmp
+tools.log
+CMakeLists.txt
 
 # Compiled Object files
 *.slo
@@ -48,6 +50,7 @@ Makefile
 CMakeFiles/
 cmake-build-debug/
 NBuild/
+Ninja/
 docs/latex/
 
 *.cbp

@@ -12,7 +12,7 @@ class Agent {
   {
     state=Susceptible;
     immunity=( random(1.0)+random(1.0)+random(1.0)
-              +random(1.0)+random(1.0)+random(1.0) )/6.0;//Średnia 0.5
+              +random(1.0)+random(1.0)+random(1.0) )/6.0; //Średnia 0.5
              //random(1.0);//Srednia taka sama, ale rozkład płaski
   }
 };

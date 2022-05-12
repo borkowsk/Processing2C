@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AssemblingOfWorld.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -16,15 +16,15 @@ using namespace Processing;
 /////////////////////////////////////////////////////////////////////////////////////////
 // World is a one of two central class of each ABM model
 ///////////////////////////////////////////////////////////////
-int StepCounter=0GLOBALNY LICZNIK KROKÓW SYMULACJI
+int StepCounter=0;//GLOBALNY LICZNIK KROKÓW SYMULACJI
 
 class World: public virtual Object{
   public:
   //sarray<pAgent> agents;//JEDNOWYMIAROWA TABLICA AGENTÓW
   //OR
-  smatrix<pAgent> agentsDWUWYMIAROWA TABLICA AGENTÓW
+  smatrix<pAgent> agents;//DWUWYMIAROWA TABLICA AGENTÓW
   
-  World(int sideKONSTRUKTOR ŚWIATA
+  World(int side)//KONSTRUKTOR ŚWIATA
   {
     //agents=new array<pAgent>(side);
     //OR
@@ -39,12 +39,12 @@ class World: public virtual Object{
 
 void initializeModel(pWorld world) /// Zwyczajowa nazwa funkcji
 {
-  initializeAgents(world->agentsTU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
+  initializeAgents(world->agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
 }
 
 void visualizeModel(pWorld world) /// Zwyczajowa nazwa funkcji
 {
-  visualizeAgents(world->agentsTU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
+  visualizeAgents(world->agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
 }
 
 //void dummyChange(pWorld world) //FUKCJE MOŻNA USUNĄĆ GDY POJAWI SIĘ
@@ -57,7 +57,7 @@ void modelStep(pWorld world) /// Zwyczajowa nazwa funkcji
    //dummyChange(world);//TYMCZASOWE WYWOŁANIE TRYWIALNEJ DYNAMIKI
    //OR
    //REALNY KOD MODELU
-   agentsChange(world->agentsTU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
+   agentsChange(world->agents);//TU NASTĄPI WYBÓR FUNKCJI PRZECIĄŻONEJ!
    
    StepCounter++;
 }
@@ -65,5 +65,5 @@ void modelStep(pWorld world) /// Zwyczajowa nazwa funkcji
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD OF AGENTS FOR FILL UP
 ///////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AgentBasics.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -62,10 +62,10 @@ void  changeAgents(sarray<pAgent> agents) ///
       && random(1)<agents[a]->stress)
       {
         int target=(int)random(0,agents->length);
-        if(agents[target]==nullptrJest miejsce
+        if(agents[target]==nullptr)//Jest miejsce
         {
-          agents[target]=agents[aPrzeprowadzka
-          agents[a]=nullptrWymeldowanie ze starego miejsca
+          agents[target]=agents[a];//Przeprowadzka
+          agents[a]=nullptr;//Wymeldowanie ze starego miejsca
         }
       }
     }
@@ -108,10 +108,10 @@ void  changeAgents(smatrix<pAgent> agents) ///
         int tara=(int)random(0,agents->length);
         int tarb=(int)random(0,agents[a]->length);
         
-        if(agents[tara][tarb]==nullptrJest miejsce
+        if(agents[tara][tarb]==nullptr)//Jest miejsce
         {
-          agents[tara][tarb]=agents[a][bPrzeprowadzka
-          agents[a][b]=nullptrWymeldowanie ze starego miejsca
+          agents[tara][tarb]=agents[a][b];//Przeprowadzka
+          agents[a][b]=nullptr;//Wymeldowanie ze starego miejsca
         }
       }
     }
@@ -121,5 +121,5 @@ void  changeAgents(smatrix<pAgent> agents) ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

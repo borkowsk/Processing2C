@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: klasaBack.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -39,13 +39,13 @@ class Back: public virtual Object{
   //++++++++++++ FUNKCJE WYKONAWCZE ++++++++++++
 
 
-  void makeAsound(int x, int ydźwięk zadaje kolor tła i kierunek, skąd dobiega
+  void makeAsound(int x, int y){//dźwięk zadaje kolor tła i kierunek, skąd dobiega
     sound = 1;
     where[0] = x;
     where[1] = y;
   }
 
-  void diss() poza bazowym prawdopodobieństwem, feromon zawsze się zmiejsza z czasem
+  void diss() {//poza bazowym prawdopodobieństwem, feromon zawsze się zmiejsza z czasem
     if (p_follow>pe) p_follow-=disp;
   }
 
@@ -53,14 +53,14 @@ class Back: public virtual Object{
     if (sound>0) sound-=quiet;
   }
 
-  void trail(float amount) wzmocnienie następuje, gdy szlak nie jest już przepełniony
+  void trail(float amount) {//wzmocnienie następuje, gdy szlak nie jest już przepełniony
     if (p_follow<0.95) p_follow+=amount;
   }
 
-  void takeFood() funkcja pokazująca zabranie jedzenia z miejsca przez mrówkę 
+  void takeFood() {//funkcja pokazująca zabranie jedzenia z miejsca przez mrówkę 
     if (id == 2) amountFood-=1;
     if (amountFood<=0) id = 0;
   }
 };
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

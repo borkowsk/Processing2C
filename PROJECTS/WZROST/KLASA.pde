@@ -8,7 +8,8 @@
 int KLASA_Counter=0; ///< Globalny licznik obiektów typu RGB
 
 /// Info: obiekt przykładowy z polami Red,Green,Blue
-class KLASA {
+class KLASA 
+{
   int R,G,B;
   
   KLASA() //Konstruktor
@@ -52,4 +53,3 @@ class KLASA {
     //super.finalize();//A na to Processing robi blup...
   }
 };
-

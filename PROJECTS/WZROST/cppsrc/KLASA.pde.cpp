@@ -25,13 +25,13 @@ class KLASA: public virtual Object{
   public:
   int R,G,B;
   
-  KLASA() //Konstruktor
+  KLASA() //!< Constructor TODO in comments
   { 
     R=G=B=0; 
     KLASA_Counter++;
   }
   
-  void Set(int iR,int iG,int iB) //Setter
+  void Set(int iR,int iG,int iB) //!< Setter TODO in comments
   {
     R=iR;G=iG;B=iB;
   }
@@ -41,9 +41,9 @@ class KLASA: public virtual Object{
     return R<=0 && G<=0 && B<=0;
   }
   
-  void Visualise(int X,int Y) //Method
+  void Visualise(int X,int Y) //!< Method TODO in comments
   {
-    if(!isEmpty()) //<>//
+    if(!isEmpty())
     {
       stroke(R,G,B);
       if(W>1)
@@ -66,6 +66,5 @@ class KLASA: public virtual Object{
     //super::finalize();//A na to Processing robi blup...
   }
 };
-
 ///data/wb/SCC/public/Processing2C/scripts did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: EPIDEMIA.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -28,7 +28,7 @@ int side=200; ///< DŁUGOŚĆ BOKU ŚWIATA
 String modelName="ABMEpidemia"; ///< Nazwa modelu, np. dla plików wyjściowych
 float density=0.66; ///< główny MERYTORYCZNY parametr modelu
 
-pWorld TheWorld=new World(side INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
+pWorld TheWorld=new World(side);///< INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
 
 //Inne parametry symulacji jako const - coś w rodzaju stałych ;-)
 //declared in local.h: const int Duration=7;   ///< Czas trwania infekcji!
@@ -72,7 +72,7 @@ void processing_window::setup()
 {
   //GRAFIKA
   textSize(fontHeight); //Same size as default for Processing2C, where textSize function does not work.
-  size(1200,750NIESTETY TU MOGĄ BYĆ TYLKO WARTOŚCI PODANE LITERALNIE CZYLI "LITERAŁY"!!!
+  size(1200,750);//NIESTETY TU MOGĄ BYĆ TYLKO WARTOŚCI PODANE LITERALNIE CZYLI "LITERAŁY"!!!
   noSmooth();   //Znacząco przyśpiesza wizualizacje
   setFrameRate(FRAMEFREQ);
   background(255,255,200);
@@ -80,14 +80,14 @@ void processing_window::setup()
   //randomSeed(-1013);//Zasianie generatora gdy chcemy mieć powtarzalny przebieg np. 107 albo 1013
   
   //INICJALIZACJA MODELU I (ewentualnie) STATYSTYK
-  initializeModel(TheWorldDOKONCZENIE INICJALIZACJI ŚWIATA
+  initializeModel(TheWorld);//DOKONCZENIE INICJALIZACJI ŚWIATA
   //initializeStats();      //ODKOMENTOWAĆ JEŚLI UŻYWAMY STATYSTYK
   //doStatistics(TheWorld); //J->W.
   
   //OBLICZAMY WYMAGANY ROZMIAR OKNA DLA funkcji size 
   println(modelName+ String(": REQUIRED SIZE OF PAINTING AREA IS ")
           +(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
-  cwidth=(height-STATUSHEIGHsideDOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
+  cwidth=(height-STATUSHEIGH)/side;//DOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
   
   //INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo->pde)
   //if(WITH_VIDEO) 
@@ -97,8 +97,8 @@ void processing_window::setup()
   //}
   
   //INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup( )
-  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+heightmyMenu->bounds->height???
-  visualizeModel(TheWorldPIERWSZA PO INICJALIZACJI WIZUALIZACJA ŚWIATA
+  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
+  visualizeModel(TheWorld);//PIERWSZA PO INICJALIZACJI WIZUALIZACJA ŚWIATA
   
   //if(!simulationRun) //WYMAGA MODUŁU RTMEvents->pde
   //  println("PRESS 'r' or 'ESC' to start simulation");
@@ -130,7 +130,7 @@ void processing_window::draw()
 void writeStatusLine() ///Ta nazwa musi być znana globalnie
 {
   fill(64);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
-  histogram(TheWorld->agents,0,height-fontHeight-fontHeight/2,STATUSHEIGH-fontHeight-fontHeight/2Histogram wg. odporności  
+  histogram(TheWorld->agents,0,height-fontHeight-fontHeight/2,STATUSHEIGH-fontHeight-fontHeight/2);//Histogram wg. odporności  
    
   //Legenda i historie trzech zmiennych dziennych każda w swojej skali
   stroke(0,0,255);fill(0,0,200);text("newly infected",300,height-fontHeight);
@@ -141,13 +141,13 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
   //timeline(cured, 200,height,STATUSHEIGH-fontHeight,false);
   
   //Historie trzech zmiennych we wspólnej skali
-  fill(0,128,255Tylko kolor napisów tu możemy ustalić
+  fill(0,128,255);//Tylko kolor napisów tu możemy ustalić
   timeline(newcas,deaths,cured, 200,height,STATUSHEIGH-fontHeight,false,
            color(0,0,255),color(255,0,0),color(0,255,0));
   
   fill(128);noStroke();
   textAlign(CENTER, TOP);
-  text(String("Still Alive:")+liveCount+String(" Sum of infected:")+sumInfected+String(" sum of healed:")+sumRecovered+String(" sum of dead:")+sumDeath+ String("     "),width/2,side*cwidthMiejce dla NAJWAŻNIEJSZYCH STATYSTYK
+  text(String("Still Alive:")+liveCount+String(" Sum of infected:")+sumInfected+String(" sum of healed:")+sumRecovered+String(" sum of dead:")+sumDeath+ String("     "),width/2,side*cwidth);//Miejce dla NAJWAŻNIEJSZYCH STATYSTYK
   println(String("ST:")+StepCounter+String("\tZ\t")+sumInfected+String("\t")+newcas->get(newcas->size()-1)
                            +String("\tW\t")+sumRecovered+String("\t")+cured->get(cured->size()-1)
                            +String("\tU\t")+sumDeath+String("\t")+deaths->get(deaths->size()-1)
@@ -159,5 +159,5 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM MAIN TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

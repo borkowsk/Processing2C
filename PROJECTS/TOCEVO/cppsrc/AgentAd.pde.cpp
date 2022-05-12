@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AgentAd.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -50,7 +50,7 @@ class Agent: public virtual Object{
   {
     energy=(int)random(maxInitialEnergyOfAgent);
     genEat=(char16_t)(random(255));
-    genPan=usePunishment?(char16_t)(random(255)):0A jeśli startujemy z małej skłonności?
+    genPan=usePunishment?(char16_t)(random(255)):0;//A jeśli startujemy z małej skłonności?
   }
   
   /// Offspring constructor for Agent
@@ -63,5 +63,5 @@ class Agent: public virtual Object{
 //*////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT for TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

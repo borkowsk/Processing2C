@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ELIPSY.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -18,7 +18,7 @@ using namespace Processing;
 
 int W=600; /// Control parameter
 
-int radius()
+int radius() ///< Example of the user declared function
 {
   return int(random(W/10));
 }
@@ -44,5 +44,5 @@ void processing_window::draw()
   println(frameRate);
 }
 
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

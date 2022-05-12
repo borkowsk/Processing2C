@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: RTMMouseInspect.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,10 +15,10 @@ using namespace Processing;
 //*/////////////////////////////////////////////////////////////////////
 int searchedX=-1;   ///<
 int searchedY=-1;   ///<
-bool Clicked=false
+bool Clicked=false;///<
 int selectedX=-1;   ///<
 int selectedY=-1;   ///<
-pAgent selected=nullptr
+pAgent selected=nullptr;///<
 
 //double minDist2Selec=MAX_INT;///???
 //double maxTransSelec=-MAX_INT;///???
@@ -34,7 +34,7 @@ class PairOfInt: public virtual Object{
         this->a = a;
         this->b = b;
     }
-endOfClass*/
+};/*_endOfClass*/
 
 
 pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
@@ -52,13 +52,13 @@ pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych m
 
 void processing_window::onMouseClicked()
 {
-  println("Mouse clicked at ",mouseX,mouseYDEBUG
+  println("Mouse clicked at ",mouseX,mouseY);//DEBUG
   Clicked=true;
   searchedX=mouseX;
   searchedY=mouseY; 
   
-  pPairOfInt result=findCell(TheWorld->agentsBut 1D searching is belong to you!
-  if(result!=nullptrZnaleziono
+  pPairOfInt result=findCell(TheWorld->agents);//But 1D searching is belong to you!
+  if(result!=nullptr)//Znaleziono
   {
     selectedX=result->a;
     selectedY=result->b;
@@ -75,5 +75,5 @@ void processing_window::onMouseClicked()
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

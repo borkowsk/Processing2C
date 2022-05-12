@@ -1,6 +1,9 @@
 #include <locale>
+#include <ctime>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <string>
 
 std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to put?
 std::ofstream mylog;           ///< Mainly for error checking
@@ -26,7 +29,7 @@ std::string print_type(std::ctype<char>::mask interest)
 
 int all_until(std::istream& inp,const std::string finish,std::string& block)
 {
-    int explen=finish.length();
+    int exp_len=finish.length();
     block="";
 
     while(true)
@@ -37,8 +40,8 @@ int all_until(std::istream& inp,const std::string finish,std::string& block)
             return EOF;
         }
         block+=iC;
-        if(block.length() >= explen
-           && finish.compare(block.substr(block.length() - explen, explen) ) == 0
+        if(block.length() >= exp_len
+           && finish.compare(block.substr(block.length() - exp_len, exp_len) ) == 0
                 )
             return 1;
     }
@@ -106,13 +109,19 @@ int main(int argc,const char** argv)
     if(argc>0)
         OutDir=argv[1];
 
-    mylog.open(OutDir+"/tools.log");
+    mylog.open(OutDir+"/tools.log",std::ios::app);
     if(!mylog.is_open())
     {
         std::cerr << "Cant open file \"" <<  OutDir+"/tools.log" <<"\"\n";
         perror("System message:");
         std::cerr << "Check if directory exists and proper rights are assigned to it."<<std::endl;
         return -1;
+    }
+    else
+    {
+        auto tim=time(nullptr);
+        auto loc=localtime(&tim);
+        mylog << std::endl << asctime(loc) << "#=============================================================" << std::endl;
     }
 
     std::string curr_block="s";
@@ -129,6 +138,8 @@ int main(int argc,const char** argv)
            && curr_block.find('/',1) != std::string::npos
                 )
         {
+            std::cout << curr_block;
+
             std::cerr << std::endl << "Line " << line_counter << " Suspicious string of punctuation marks: " << "'" << curr_block << "'" << std::endl;
                 mylog << std::endl << "Line " << line_counter << " Suspicious string of punctuation marks: " << "'" << curr_block << "'" << std::endl;
             std::cerr.flush();
@@ -156,8 +167,27 @@ int main(int argc,const char** argv)
             std::string rest_of_comment;
             all_until(std::cin, "*/", rest_of_comment);
             count_lines(rest_of_comment);
-            std::cout << curr_block << rest_of_comment << std::endl;
+            std::cout << curr_block << rest_of_comment;
                 mylog << curr_block << rest_of_comment << std::endl;
+        }
+        else
+        if(curr_block.compare("class")==0
+        || curr_block.compare("interface")==0
+        )
+        {
+            std::string rest_of_header;
+            all_until(std::cin, "{", rest_of_header);
+            curr_block+=rest_of_header;
+            std::replace( curr_block.begin(), curr_block.end(),
+                          '\n', ' '); // replace all '\n' to ' '
+            //When Windows source code remain
+            std::replace( curr_block.begin(), curr_block.end(),
+                          '\r', ' '); // replace all '\r' to ' '
+            //Into outputs now
+            std::cout << curr_block;
+
+            mylog << "CLASS:\t'" << curr_block << "'";
+            mylog << std::endl;
         }
         else
         {

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ModelVisual.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -23,8 +23,8 @@ void visualizeAgents(smatrix<pAgent> agents) { ///
    for(int b=0;b<agents[a]->length;b++)
    {
       //Background
-      noStroke();fill(200Lepiej dopasowa tło
-      rect(b*cwidth,a*cwidth,cwidth,cwidtha is vertical!
+      noStroke();fill(200);//Lepiej dopasowa tło
+      rect(b*cwidth,a*cwidth,cwidth,cwidth);//a is vertical!
       
       //Colorisation of agent
       if( (curra=agents[a][b]) != nullptr )
@@ -34,7 +34,7 @@ void visualizeAgents(smatrix<pAgent> agents) { ///
         else
           noStroke();
            
-        float forFill=(curra->identity*255.0Number_of_identities;
+        float forFill=(curra->identity*255.0)/Number_of_identities;
         fill(forFill,forFill,0);
         ellipse(b*cwidth,a*cwidth,cwidth,cwidth);
       }  
@@ -53,7 +53,7 @@ void visualizeAgents(sarray<pAgent> agents) { ///
         else
           noStroke();
            
-        float forFill=(curra->identity*255.0Number_of_identities;
+        float forFill=(curra->identity*255.0)/Number_of_identities;
         fill(forFill,forFill,0);
     }
     else
@@ -62,7 +62,7 @@ void visualizeAgents(sarray<pAgent> agents) { ///
       fill(128);
     }
     
-    int t=(StepCounter/STEPSperVIS)%sideUwzględniamy różne częstości wizualizacji
+    int t=(StepCounter/STEPSperVIS)%side;//Uwzględniamy różne częstości wizualizacji
     rect(a*cwidth,t*cwidth,cwidth,cwidth);
     stroke(255);
     line(0,(t+1)*cwidth+1,width,(t+1)*cwidth+1);
@@ -72,5 +72,5 @@ void visualizeAgents(sarray<pAgent> agents) { ///
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

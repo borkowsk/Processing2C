@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: CLASSTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,39 +15,34 @@ using namespace Processing;
 /// Class hierarchy test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "CLASSTEST.pde"
-///////////////////////////////////////////////////////////////////////////
-// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
-///////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////
+/// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
+//*/////////////////////////////////////////////////////////////////////////
 
 //interface
 class Mew: public virtual Object{
   public:
-    virtual
- void meow(int l) =0
- ;
+    virtual void meow(int l) =0 ;
 };
 
 //interface
 class Eat: public virtual Object{
   public:
-    virtual
- void eat(int l) =0
- ;
+    virtual void eat(int l) =0 ;
 };
 
 //abstract
 class Animal: public virtual Object{
   public:
     float mass;
-    virtual
- void eat(int l) {
+    virtual void eat(int l) {
         println(l,"Animal eats"); 
         mass+=l;
     }
 };
 
-class Cat : public  Animal : public virtual Mew, public virtual
- Eat {
+class Cat : public  Animal, public virtual Mew, public virtual Eat  , public virtual Object{
+  public:
     void eat(int l) {
          println(l,"Cat eats");  
     }
@@ -57,7 +52,7 @@ class Cat : public  Animal : public virtual Mew, public virtual
     }
 };
 
-class Dog : public  Animal , public virtual Object{
+class Dog : public  Animal  , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Dog eats");  
@@ -76,53 +71,43 @@ void processing_window::setup()
 {
     size(150,100);
     pObject object= new Cat();
-    pCat cat= /*_downcast*/
-(Cat)(object); //Second parentheses required
+    pCat cat= std::dynamic_pointer_cast<Cat>(object); //Second parentheses required
     cat->meow(0);
     //object = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
                  //error: ambiguous overload for ‘operator=’ 
-    object = /*_upcast*/
-(Object)(cat); //works using static_cast in C++
-    object = /*_downcast*/
-(Object)(cat); //works using dynamic_cast in C++
+    object = static_cast<pObject>(cat); //works using static_cast in C++
+    object = std::dynamic_pointer_cast<Object>(cat); //works using dynamic_cast in C++
     
     pMew mew= new Cat();
     mew->meow(1);
     //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
               //error: ambiguous overload for ‘operator=’ 
-    mew = /*_upcast*/
-(Mew)(cat); //works using COMPILE TIME static_cast in C++
-    mew = /*_downcast*/
-(Mew)(cat); //dynamic_cast is usualy resolved at RUN TIME
+    mew = static_cast<pMew>(cat); //works using COMPILE TIME static_cast in C++
+    mew = std::dynamic_pointer_cast<Mew>(cat); //dynamic_cast is usualy resolved at RUN TIME
     
     mew->meow(2);
     
     pAnimal animal= cat; //OK
     //animal = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
-    animal = /*_upcast*/
-(Animal)( cat ); //use static_cast in C++
+    animal = static_cast<pAnimal>( cat ); //use static_cast in C++
     animal->eat(3);
     
     //animal = mew; //Not work in Processing, also in C++ does not
     //animal = (Cat) mew; //Work in Processing, in C++ does not
     //animal = (Animal) mew; //Work in Processing, in C++ does not
     //animal = static_cast<pAnimal>( mew ); //in Processing same as below, but not in C++
-    animal = /*_downcast*/
-(Animal)( mew ); //With _downcast work always
+    animal = std::dynamic_pointer_cast<Animal>( mew ); //With _downcast work always
     animal->eat(4);
     
 //  animal->meow(4); ///Error: The method meow() is undefined for the type Animal
     
-    pCat ancat= /*_downcast*/
-(Cat)( animal );
+    pCat ancat= std::dynamic_pointer_cast<Cat>( animal );
     ancat->meow(5);
-    ( /*_downcast*/
-(Cat)( animal ) )->meow(6); //Second parentheses in cast required
+    ( std::dynamic_pointer_cast<Cat>( animal ) )->meow(6); //Second parentheses in cast required
    
     if (instanceof< Cat >( animal )) { //downcast with check
       println("This animal is a cat");
-      ( /*_downcast*/
-(Cat)( animal ) )->meow(7); //Second parentheses in cast required
+      ( std::dynamic_pointer_cast<Cat>( animal ) )->meow(7); //Second parentheses in cast required
     }
     
     animal = new Dog();
@@ -130,8 +115,7 @@ void processing_window::setup()
     
     if (instanceof< Cat >( animal )) { //downcast with check
       println("This animal is a cat");
-      ( /*_downcast*/
-(Cat)(animal) )->meow(9); /// Does not happen
+      ( std::dynamic_pointer_cast<Cat>(animal) )->meow(9); /// Does not happen
     }
     
     if ( instanceof< Dog >( animal ) ) { //Type check
@@ -158,5 +142,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

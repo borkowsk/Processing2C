@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: klasaWorld.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -173,7 +173,7 @@ class World: public virtual Object{
   }  
 
 
-  bool czyMoze(int i, int j, int p, int r) nie może iść na swoje obecne miejsce lub na czyjeś
+  bool czyMoze(int i, int j, int p, int r) {//nie może iść na swoje obecne miejsce lub na czyjeś
     return (p!=i || r!=j) && antsWorld[p][r]==nullptr;
   }
 
@@ -270,5 +270,5 @@ class World: public virtual Object{
     }
   }
 };
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

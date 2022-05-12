@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: TOCEVO.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -35,26 +35,24 @@ float maxStock=costOfStep*50; ///< maximal stock per agent. The storage of unuse
 float maxInitialEnergyOfAgent=costOfStep*50;    ///<
 float pOffspring=0.05;        ///< How often agent WANTs split into 2 agents
 
-pWorld TheWorld=new World(side Made here, but also will be completed inside setup()
+pWorld TheWorld=new World(side);///< Made here, but also will be completed inside setup()
 
 //Parameters of visualisation etc...
 int cwidth=8;                   ///<size of cell
 int STATUSHEIGH=40;             ///<
-int STEPSperVIS=usePunishment?100:10 Jak nie ma punishment'u to mogą szybko wymrzeć
+int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
 int FRAMEFREQ=1000;             ///<
 bool WITH_NEW_DEL_LOG=false; ///<
 /*_OnlyProcessingBlockBegin
-
 bool WITH_VIDEO=false;       ///<
 _OnlyProcessingBlockEnd*/
-
 bool simulationRun=true;     ///< Start/stop flag
 
 void processing_window::setup()
 {
   //Graphics
   size(850,840);
-  noSmoothTrochę szybciej
+  noSmooth();//Trochę szybciej
   background(0);
   strokeWeight(2);
   setFrameRate(FRAMEFREQ);
@@ -66,36 +64,32 @@ void processing_window::setup()
   
   //Window 
   println(String("REQUIRED SIZE OF PAINTING AREA IS ")+(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
-  cwidth=(height-STATUSHEIGHside;
+  cwidth=(height-STATUSHEIGH)/side;
     
   //Optionals:
   //setupMenu();//ISSUE: Size of MenuBar is not counted by Processing!
   //...
   
   /*_OnlyProcessingBlockBegin
-
   if(WITH_VIDEO) 
   {
     initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
     FirstVideoFrame();
   }
   _OnlyProcessingBlockEnd*/
-
   
   //Finishing setup stage
-  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+heightmyMenu->bounds->height???
-  visualizeModel(TheWorldFirst time visualisation
+  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
+  visualizeModel(TheWorld);//First time visualisation
   
   if(!simulationRun)
     println("PRESS 'r' or 'ESC' to start simulation");
   else
     println("PRESS 's' or 'ESC' to pause simulation");
     
-/*_OnlyProcessingBlockBegin
-   
-  NextVideoFrameIt utilise inside variable to check if is enabled
-_OnlyProcessingBlockEnd*/
-  
+/*_OnlyProcessingBlockBegin   
+  NextVideoFrame();//It utilise inside variable to check if is enabled
+_OnlyProcessingBlockEnd*/  
 }
 
 void processing_window::draw()
@@ -114,12 +108,10 @@ void processing_window::draw()
     
     //WARUNEK STOPU
     if(liveAgentsCount==0) 
-            simulationRun=falsestop when agents are extinct
-/*_OnlyProcessingBlockBegin
-    
-    NextVideoFrameIt utilise inside variable to check if is enabled
-_OnlyProcessingBlockEnd*/
-  
+            simulationRun=false;//stop when agents are extinct
+/*_OnlyProcessingBlockBegin    
+    NextVideoFrame();//It utilise inside variable to check if is enabled
+_OnlyProcessingBlockEnd*/  
   }
 
 }
@@ -136,12 +128,12 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
   if(usePunishment)
   {
     textAlign(RIGHT, BOTTOM);
-    text(String("NofPanst: ")+punPerStep+ String(" ..."),width,height);
+    text(String("NofPan./st: ")+punPerStep+ String(" ..."),width,height);
   }
 }
 
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

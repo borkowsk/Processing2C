@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ARCS.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -15,7 +15,8 @@ using namespace Processing;
 /// This is a test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARCS.pde"
-////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////
+
 void processing_window::setup()
 {
         size(500,500);
@@ -33,5 +34,6 @@ void processing_window::setup()
         ellipseMode(CORNER);
         arc(400,400,100,100,radians(10),radians(180),PIE);
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+
+//../../scripts did it
 

@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: FORESTFIRE.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -24,22 +24,22 @@ using namespace Processing;
 
 //One step is equivalential to one hour
 int Week=24*7;    ///how many steps is equivalential to one week?
-float Year=365.5*24how many steps is equivalential to one YEAR?
+float Year=365.5*24;///how many steps is equivalential to one YEAR?
 
 //Model parameters
 int N=100;        ///array side
 
-int FireTimeDiv=50How long the tree is burning (divider for size)
-float IgnitionP = 0.10Probability of fire transfer
+int FireTimeDiv=50;///How long the tree is burning (divider for size)
+float IgnitionP = 0.10;///Probability of fire transfer
 float InitT=  0.00; ///How many trees at start
 float GrowS=  0.0005; ///Growt per step
-float SeedP=  0.0005How often new ofspring emerging (per free cell)
-float LightP= 0.000000005How often fire emerge (per tree)
+float SeedP=  0.0005;///How often new ofspring emerging (per free cell)
+float LightP= 0.000000005;///How often fire emerge (per tree)
 int MatureT=220; ///Max size of tree. Then will stop to grow
 
 //2D "World" of trees
 smatrix<float> World = new matrix<float>(N,N); ///!!!
-PrintWriter LogFor writing statistics into disk drive
+PrintWriter Log;///For writing statistics into disk drive
 
 //For visualisation
 int S=20;       ///cell width & height
@@ -52,7 +52,7 @@ int Step=0; ///!!!
 int empty=0;
 int alives=0;
 int burning=0;
-double meanSize=0Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
+double meanSize=0;///Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
 
 //Initialisation
 void processing_window::setup()
@@ -76,7 +76,7 @@ void processing_window::setup()
   
   String LogName=String("FF") + IgnitionP + String("_") + GrowS + String("_") + LightP +  String(".log");
   Log = createWriter(LogName); // Create a new file in the sketch directory
-  println(Log,"step\t alives\t burning\t empty\t meanSizeHeader
+  println(Log,"step\t alives\t burning\t empty\t meanSize");//Header
 }
 
 void processing_window::draw()
@@ -85,38 +85,38 @@ void processing_window::draw()
      Step % (4*Week) == 0)
       doVisualisation();
   
-  is_burning=falseWe will check it in a moment
+  is_burning=false;//We will check it in a moment
   
   doMonteCarloStep();
 }
 
-float Burn=0Ile możliwości zapalenia na krok
+float Burn=0;///Ile możliwości zapalenia na krok
 void doMonteCarloStep() ///MAIN FUNCTION OF THE MODEL
 {
   //Bardzo rzadkie zapalanie - trochę oszukujemy, ale unikamy wywołań random na każdą niemal komórkę!
-  Burn+=N*N*LightPPrawdopodobieństwo jest na komórkę na krok. Z czasem licznik rośnie
-  for(;Burn>1Spontanic fireing
+  Burn+=N*N*LightP;//Prawdopodobieństwo jest na komórkę na krok. Z czasem licznik rośnie
+  for(;Burn>1;)//Spontanic fireing
       {
         int i=(int)random(N);
         int j=(int)random(N);
         if(World[i][j]>0)
         {
-          World[i][j]=(int)(-World[i][jFireTimeDiv - 1At least one step 
+          World[i][j]=(int)(-World[i][j]/FireTimeDiv - 1);//At least one step 
           Burn--;
-          is_burning=trueAt least one! DO VISUALISATION!
+          is_burning=true;//At least one! DO VISUALISATION!
         }
       }
       
   //Reszta akcji
   int M=N*N;
-  for(int m=0;m<M;mProcessing is CASE SENSITIVE. 
+  for(int m=0;m<M;m++)//Processing is CASE SENSITIVE. 
   {
     int i=(int)random(N);
     int j=(int)random(N);
-    if(World[i][j]==0Free or burned cell
+    if(World[i][j]==0)//Free or burned cell
     {
       if(random(0,1)<SeedP)
-          World[i][j]=1New seedling
+          World[i][j]=1;//New seedling
     }
     else
     if(World[i][j]>0) //TREE
@@ -133,15 +133,15 @@ void doMonteCarloStep() ///MAIN FUNCTION OF THE MODEL
             int a=(N+i+l)%N;
             int b=(N+j+k)%N;
             if(World[a][b]>0 //If is still not burning
-            && random(0,1)<IgnitionPMay ignite
+            && random(0,1)<IgnitionP)//May ignite
              {
-               World[a][b]=(int)(-World[a][bFireTimeDiv - 1At least one step
+               World[a][b]=(int)(-World[a][b]/FireTimeDiv - 1);//At least one step
                //println(World[a][b],"!");
-               is_burning=trueAt least one! DO VISUALISATION!
+               is_burning=true;//At least one! DO VISUALISATION!
              }
         }
        //Burn more
-       World[i][jUntil 0
+       World[i][j]++;//Until 0
     }
   }
   //Step completed
@@ -150,13 +150,13 @@ void doMonteCarloStep() ///MAIN FUNCTION OF THE MODEL
 
 void doVisualisation() /// Must be predeclared
 {
-  empty=0;alives=0;burning=0Simple counting will be done during visualisation
+  empty=0;alives=0;burning=0;//Simple counting will be done during visualisation
   meanSize=0;
   
- for(int i=0;i<N;ivisualisation
+ for(int i=0;i<N;i++)//visualisation
   for(int j=0;j<N;j++)
   {
-    if(World[i][j]==0Free or burned cell
+    if(World[i][j]==0)//Free or burned cell
     {
       fill(20,20,20);
       empty++;
@@ -197,7 +197,7 @@ void doVisualisation() /// Must be predeclared
   textAlign(LEFT);
   text(Step/Year+ String(" years  = ") 
      + Step/Week +  String(" weeks & ") 
-     + (Step%Week24 +  String(" days = ") 
+     + (Step%Week)/24 +  String(" days = ") 
      + Step +  String(" h") 
      + String(" Speed:") + frameRate +  String(" fr/sec") ,0,height);
   fill(0,255,255);
@@ -205,7 +205,7 @@ void doVisualisation() /// Must be predeclared
   text(String(" Mean: ")+meanSize+ String(" "),width,height);
   
   println(Log,Step+String("\t ")+alives+String("\t ")+burning+String("\t ")+empty+String("\t ")+meanSize);
-  if(Step % 5000==0) Log->flushSometimes writes the buffer to the file
+  if(Step % 5000==0) Log->flush();//Sometimes writes the buffer to the file
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

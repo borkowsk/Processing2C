@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: ARRAYTEST.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -14,7 +14,7 @@ using namespace Processing;
 /// Array and matrix test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYTEST.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
 
 smatrix<int> c;
 smatrix<String> s;
@@ -63,5 +63,6 @@ void processing_window::draw()
   s[a][b]=nf(c[a][b]);
   println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
 }
-///data/wb/SCC/public/Processing2C/scripts did it
+
+//../../scripts did it
 

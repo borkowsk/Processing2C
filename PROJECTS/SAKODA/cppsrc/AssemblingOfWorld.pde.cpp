@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: AssemblingOfWorld.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -22,9 +22,9 @@ class World: public virtual Object{
   public:
   //sarray<pAgent> agents;//One dimensional array of agents
   //OR
-  smatrix<pAgent> agentsTwo dimensional array of agents
+  smatrix<pAgent> agents;//Two dimensional array of agents
   
-  World(int sideConstructor of the World
+  World(int side)//Constructor of the World
   {
     //agents=new array<pAgent>(side);
     //OR
@@ -56,5 +56,5 @@ void modelStep(pWorld world) { ///
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD OF SAKODA
 ///////////////////////////////////////////////////////////////////////////////////////////////
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 
