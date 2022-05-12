@@ -2,7 +2,8 @@
 #include <iostream>
 #include <fstream>
 
-std::ofstream mylog("tools.log");
+std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to put?
+std::ofstream mylog;           ///< Mainly for error checking
 
 std::string print_type(std::ctype<char>::mask interest)
 {
@@ -23,10 +24,10 @@ std::string print_type(std::ctype<char>::mask interest)
     return out;
 }
 
-int all_until(std::istream& inp,const std::string finish,std::string& line)
+int all_until(std::istream& inp,const std::string finish,std::string& block)
 {
     int explen=finish.length();
-    line="";
+    block="";
 
     while(true)
     {
@@ -35,16 +36,16 @@ int all_until(std::istream& inp,const std::string finish,std::string& line)
         {
             return EOF;
         }
-        line+=iC;
-        if(line.length()>=explen
-        &&  finish.compare(line.substr(line.length()-explen,explen) ) == 0
+        block+=iC;
+        if(block.length() >= explen
+           && finish.compare(block.substr(block.length() - explen, explen) ) == 0
                 )
             return 1;
     }
     return 0;//Never used
 }
 
-int next_block(std::istream& inp,std::string& line,std::ctype<char>::mask interest=
+int next_block(std::istream& inp,std::string& block,std::ctype<char>::mask interest=
 std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::ctype_base::punct
         )
 {
@@ -53,7 +54,7 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
     static const std::ctype<char>& ct = std::use_facet< std::ctype<char> >(loc);
     static const std::ctype<char>::mask* table=ct.table();
 
-    line="";
+    block="";
 
     std::ctype<char>::mask typek1 = 0;
     std::ctype<char>::mask typek2 = 0;
@@ -64,7 +65,7 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 
         if(iC==EOF)
         {
-            if(line.length()>0)
+            if(block.length()>0)
                 return typek1;
             else
                 return EOF;
@@ -74,12 +75,12 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 
         if(typek1==0) //Pierwszy znak ciągu
         {
-            typek1=typek2;line+=iC;
+            typek1=typek2;block+=iC;
         }
         else
             if( typek1 == typek2 ) //Kolejny znak ciągu
             {
-                line+=iC;
+                block+=iC;
             }
             else //Niepasujący znak
             {
@@ -91,66 +92,78 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 }
 
 int  line_counter=1;
-void calculate_lines(std::string& line)
+void count_lines(std::string& block)
 {
-    auto pos = line.find('\n');
+    auto pos = block.find('\n');
     while(pos != std::string::npos)
-    { line_counter++; pos = line.find('\n',pos+1); }
+    { line_counter++; pos = block.find('\n', pos + 1); }
 }
 
 int main(int argc,const char** argv)
 {
     std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
 
-    std::string line="s";
+    if(argc>0)
+        OutDir=argv[1];
+
+    mylog.open(OutDir+"/tools.log");
+    if(!mylog.is_open())
+    {
+        std::cerr << "Cant open file \"" <<  OutDir+"/tools.log" <<"\"\n";
+        perror("System message:");
+        std::cerr << "Check if directory exists and proper rights are assigned to it."<<std::endl;
+        return -1;
+    }
+
+    std::string curr_block="s";
 
     while(true) {
-        auto t = next_block(std::cin, line);
-        calculate_lines(line);
+        auto t = next_block(std::cin, curr_block);
+        count_lines(curr_block);
 
         if(t==EOF) break;
 
         if((t & std::ctype_base::punct) != 0
-           && line.length() > 1
-           && line[0] != '/' && line[0] != '*'
-           && line.find('/')!=std::string::npos
+           && curr_block.length() > 1
+           && curr_block[0] != '/' && curr_block[0] != '*'
+           && curr_block.find('/',1) != std::string::npos
                 )
         {
-            std::cerr<<std::endl<<"Line "<<line_counter<<" Suspicious string of punctuation marks: "<<"'"<<line<<"'"<<std::endl;
-                mylog<<std::endl<<"Line "<<line_counter<<" Suspicious string of punctuation marks: "<<"'"<<line<<"'"<<std::endl;
+            std::cerr << std::endl << "Line " << line_counter << " Suspicious string of punctuation marks: " << "'" << curr_block << "'" << std::endl;
+                mylog << std::endl << "Line " << line_counter << " Suspicious string of punctuation marks: " << "'" << curr_block << "'" << std::endl;
             std::cerr.flush();
         }
         else
         if ((t & std::ctype_base::punct) != 0
-            && line.length() >= 2
-            && line[0] == '/'
-            && line[1] == '/'
+            && curr_block.length() >= 2
+            && curr_block[0] == '/'
+            && curr_block[1] == '/'
                 )
         {
-            std::string restOfComment;
-            getline(std::cin, restOfComment);
+            std::string rest_of_comment;
+            getline(std::cin, rest_of_comment);
             line_counter++;//?
-            std::cout << line << restOfComment << std::endl;
-                mylog << line << restOfComment << std::endl;
+            std::cout << curr_block << rest_of_comment << std::endl;
+                mylog << curr_block << rest_of_comment << std::endl;
         }
         else
         if ((t & std::ctype_base::punct) != 0
-            && line.length() >= 2
-            && line[0] == '/'
-            && line[1] == '*'
+            && curr_block.length() >= 2
+            && curr_block[0] == '/'
+            && curr_block[1] == '*'
                 )
         {
-            std::string restOfComment;
-            all_until(std::cin,"*/",restOfComment);
-            calculate_lines(restOfComment);
-            std::cout << line << restOfComment << std::endl;
-                mylog << line << restOfComment << std::endl;
+            std::string rest_of_comment;
+            all_until(std::cin, "*/", rest_of_comment);
+            count_lines(rest_of_comment);
+            std::cout << curr_block << rest_of_comment << std::endl;
+                mylog << curr_block << rest_of_comment << std::endl;
         }
         else
         {
-            std::cout << line;
+            std::cout << curr_block;
 
-            mylog << "'" << line << "'";
+            mylog << "'" << curr_block << "'";
             mylog <<"\t\t\t"<<print_type(t);
             mylog << std::endl;
         }

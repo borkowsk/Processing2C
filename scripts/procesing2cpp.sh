@@ -23,7 +23,7 @@ echo ""
 echo -e $COLOR1 1>&2 #ERRORS!
 
 cat $1 |\
-${SCRIPTS}/tools  |\
+${SCRIPTS}/tools "${SRCDIR}toolsouts/" |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
 #także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu

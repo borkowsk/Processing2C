@@ -39,12 +39,23 @@ echo "Translating project..."
 $SCRIPTS/prepare_local_h.sh
 
 #https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
-SRCDIR="./cppsrc/"    
+export SRCDIR="./cppsrc/"    
 if [ -d $SRCDIR ]; then
    echo #"Directory $SRCDIR already exists."
 else
    echo "Folder $SRCDIR does not exist. Will be created"
    mkdir -p $SRCDIR  # -p, --parents     no error if existing, make parent directories as needed
+fi
+
+if [ -d "${SRCDIR}toolsouts/" ]; then
+   echo #"Directory $SRCDIR/toolsouts/ already exists."
+   echo -e $COLOR2
+   rm -f "${SRCDIR}toolsouts/*"
+   echo -e $NORMCO
+else
+   echo -e $COLOR1"Folder ${SRCDIR}toolsouts/ does not exist. Will be created"$COLOR2
+   mkdir -p "${SRCDIR}toolsouts/" 
+   echo -e $NORMCO
 fi
 
 mv "$SOURCES/local.h" "$SOURCES/cppsrc/"
@@ -62,7 +73,6 @@ echo "using namespace Processing;" >> ./cppsrc/project_at_once.cpp
 echo "#include \"local.h\"" >> ./cppsrc/project_at_once.cpp
 echo "//==================================================================================" >> ./cppsrc/project_at_once.cpp
 echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at_once.cpp
-
 
 FILES=*.pde
 for f in $FILES

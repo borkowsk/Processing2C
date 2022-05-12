@@ -17,7 +17,8 @@ using namespace Processing;
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
-////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////
+
 pArrayList<String> testStrings=nullptr;
 pStringList        inventory=new StringList();
 pFloatList         inventoryF;
@@ -77,7 +78,7 @@ void processing_window::draw() // May be called only once, or many times
   user_print(inventoryI);
 }
 
-void user_print(pIntList intInv) /// USED before definition!
+void user_print(pIntList intInv) ///< USED before definition!
 {
   for(int i:intInv)
       println(Processing::hex(i));
