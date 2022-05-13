@@ -4,6 +4,7 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#include <cstring>
 
 std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to put?
 std::ofstream mylog;           ///< Mainly for error checking
@@ -94,6 +95,39 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
     return 0;
 }
 
+std::string take_identifier(const std::string& curr_block,size_t pos)
+{
+    std::cerr << "\n::";
+    for(size_t i=pos;curr_block[i]!='\0';i++)
+    {
+        std::cerr << curr_block[i];
+    }
+
+    return "!!!";
+}
+
+std::string detect_super_class(const std::string& curr_block)
+{
+    std::string super_class="???";
+    auto pos=curr_block.find("extends",0);
+    if(pos!=std::string::npos)
+    {
+        pos+=strlen("extends")+1;
+        super_class=take_identifier(curr_block,pos);
+    }
+    else
+    {
+        pos=curr_block.find("implements",0);
+        if(pos!=std::string::npos)
+        {
+            pos+=strlen("implements")+1;
+            super_class=take_identifier(curr_block,pos);
+        }
+    }
+
+    return super_class;
+}
+
 int  line_counter=1;
 void count_lines(std::string& block)
 {
@@ -173,20 +207,31 @@ int main(int argc,const char** argv)
         else
         if(curr_block.compare("class")==0
         || curr_block.compare("interface")==0
+        || curr_block.compare("abstract")==0
         )
         {
             std::string rest_of_header;
             all_until(std::cin, "{", rest_of_header);
+            count_lines(rest_of_header);
+
             curr_block+=rest_of_header;
+
             std::replace( curr_block.begin(), curr_block.end(),
                           '\n', ' '); // replace all '\n' to ' '
             //When Windows source code remain
             std::replace( curr_block.begin(), curr_block.end(),
                           '\r', ' '); // replace all '\r' to ' '
+
+            std::string super_class=detect_super_class(curr_block);
+
             //Into outputs now
+            if( super_class.length()>0
+            && super_class.compare("???")!=0
+            )
+                std::cout << "\n/*_superclass:"<<super_class<<"*/\n";
             std::cout << curr_block;
 
-            mylog << "CLASS:\t'" << curr_block << "'";
+            mylog << "CLASS derived from "<<super_class<<":\t'" << curr_block << "'";
             mylog << std::endl;
         }
         else
