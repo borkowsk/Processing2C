@@ -1,4 +1,5 @@
 #include <locale>
+#include <cassert>
 #include <ctime>
 #include <iostream>
 #include <fstream>
@@ -28,7 +29,7 @@ std::string print_type(std::ctype<char>::mask interest)
     return out;
 }
 
-int all_until(std::istream& inp,const std::string finish,std::string& block)
+int all_until(std::istream& inp,const std::string finish,std::string& block,char escape='\0')
 {
     int exp_len=finish.length();
     block="";
@@ -36,11 +37,15 @@ int all_until(std::istream& inp,const std::string finish,std::string& block)
     while(true)
     {
         auto iC = inp.get();
+
         if(iC==EOF)
-        {
             return EOF;
-        }
+
         block+=iC;
+
+        if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPEm to nie sprawdzamy zakończenia
+            continue;
+
         if(block.length() >= exp_len
            && finish.compare(block.substr(block.length() - exp_len, exp_len) ) == 0
                 )
@@ -79,10 +84,13 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 
         if(typek1==0) //Pierwszy znak ciągu
         {
-            typek1=typek2;block+=iC;
+            block+=iC;
+            typek1=typek2;
+            if(iC=='"' || iC=='\'') //Te znaki muszą być obrabiane samotnie
+                return typek1;
         }
         else
-            if( typek1 == typek2 ) //Kolejny znak ciągu
+            if( typek1 == typek2 && iC!='"' && iC!='\'') //Kolejny znak ciągu
             {
                 block+=iC;
             }
@@ -97,12 +105,12 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 
 std::string take_identifier(const std::string& curr_block,size_t pos)
 {
-    std::cerr << "\n::";
-    for(size_t i=pos;curr_block[i]!='\0';i++)
+    std::cerr << "\n";
+    for(size_t i=pos;curr_block[i]!='\0' && curr_block[i]!=' ' && curr_block[i]!='\t' && curr_block[i]!='\n';i++)
     {
         std::cerr << curr_block[i];
     }
-
+    std::cerr <<" ???"<<std::endl;
     return "!!!";
 }
 
@@ -201,10 +209,20 @@ int main(int argc,const char** argv)
             std::string rest_of_comment;
             all_until(std::cin, "*/", rest_of_comment);
             count_lines(rest_of_comment);
-            std::cout << curr_block << rest_of_comment;
+
+            std::cout << curr_block << rest_of_comment ;//<<"/*!?!?!*/";
                 mylog << curr_block << rest_of_comment << std::endl;
         }
-        else
+        else if(curr_block[0] == '"'
+        || curr_block[0] == '\'')
+            {
+                std::string rest_of_string;
+                                                                            assert(curr_block.length()==1);
+                all_until(std::cin, curr_block, rest_of_string,'\\');
+                std::cout << curr_block << rest_of_string ;//<< "/*SP*/";
+                mylog <<"STRING/CHAR: "<< curr_block << rest_of_string << std::endl;
+            }
+            else
         if(curr_block.compare("class")==0
         || curr_block.compare("interface")==0
         || curr_block.compare("abstract")==0
