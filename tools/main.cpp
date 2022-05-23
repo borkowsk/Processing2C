@@ -105,13 +105,15 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 
 std::string take_identifier(const std::string& curr_block,size_t pos)
 {
-    std::cerr << "\n";
+    std::string out="";
+    //std::cerr << "\n";
     for(size_t i=pos;curr_block[i]!='\0' && curr_block[i]!=' ' && curr_block[i]!='\t' && curr_block[i]!='\n';i++)
     {
-        std::cerr << curr_block[i];
+        out+=curr_block[i];
+        //std::cerr << curr_block[i];
     }
-    std::cerr <<" ???"<<std::endl;
-    return "!!!";
+    //std::cerr <<" ???"<<std::endl;
+    return out;
 }
 
 std::string detect_super_class(const std::string& curr_block)
@@ -246,7 +248,7 @@ int main(int argc,const char** argv)
             if( super_class.length()>0
             && super_class.compare("???")!=0
             )
-                std::cout << "\n/*_superclass:"<<super_class<<"*/\n";
+                std::cout << "\n//_superclass:"<<super_class<<"\n";
             std::cout << curr_block;
 
             mylog << "CLASS derived from "<<super_class<<":\t'" << curr_block << "'";
@@ -261,6 +263,6 @@ int main(int argc,const char** argv)
             mylog << std::endl;
         }
     }
-
+    std::cerr<<"\nEnd of Processing refactor tools error stream!\n"<< std::endl;
     return 0;
 }

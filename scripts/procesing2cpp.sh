@@ -24,6 +24,8 @@ echo -e $COLOR1 1>&2 #ERRORS!
 
 cat $1 |\
 ${SCRIPTS}/tools "${SRCDIR}toolsouts/" |\
+#Brutalne dodawanie średników za końcem klasy.
+sed -E 's|\/\/\_endOfClass(.*)|;//_endOfClass\1\n|i'  |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
 #także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu
@@ -32,7 +34,7 @@ sed -E 's|final\s+|const |g' |\
 sed -E 's#^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)\s+(\w+)\s*[;=].*///#//declared in local@@@h: &#' |\
 #przeorganizowywanie konstruktorow
 sed -E 's|\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\:\1\2\(\3\)\4{|' |\
-#Dodawanie ENTER po { ale nie dla "enum"
+#Dodawanie ENTER po { ale nie dla "enum""!!!"
 sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
 #wolne public/private przed funkcjami i zmiennymi - rzadko stosowane w Processingu
@@ -124,7 +126,6 @@ sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g' |\
 sed 's|\/\*_emptybody\*\/|{}|g' |\
 sed 's|\/\*_endOfClass|;/*_endOfClass|i'  |\
-sed 's|\/\/\_endOfClass|;//_endOfClass|i'  |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\
