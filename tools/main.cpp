@@ -9,6 +9,7 @@
 
 std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to put?
 std::ofstream mylog;           ///< Mainly for error checking
+bool EXTRACT_CLASSES=false;    ///< Make separate header file for all detected classes
 
 std::string print_type(std::ctype<char>::mask interest)
 {
@@ -138,6 +139,28 @@ std::string detect_super_class(const std::string& curr_block)
     return super_class;
 }
 
+std::string detect_class_name(const std::string& curr_block)
+{
+    std::string this_class="???";
+    auto pos=curr_block.find("class",0);
+    if(pos!=std::string::npos)
+    {
+        pos+=strlen("class")+1;
+        this_class=take_identifier(curr_block, pos);
+    }
+    else
+    {
+        pos=curr_block.find("interface",0);
+        if(pos!=std::string::npos)
+        {
+            pos+=strlen("interface")+1;
+            this_class=take_identifier(curr_block, pos);
+        }
+    }
+
+    return this_class;
+}
+
 int  line_counter=1;
 void count_lines(std::string& block)
 {
@@ -151,7 +174,10 @@ int main(int argc,const char** argv)
     std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
 
     if(argc>0)
-        OutDir=argv[1];
+    {
+        OutDir = argv[1];
+        //EXTRACT_CLASSES = ???
+    }
 
     mylog.open(OutDir+"/tools.log",std::ios::app);
     if(!mylog.is_open())
@@ -243,16 +269,24 @@ int main(int argc,const char** argv)
                           '\r', ' '); // replace all '\r' to ' '
 
             std::string super_class=detect_super_class(curr_block);
+            std::string this_class=detect_class_name(curr_block);
 
-            //Into outputs now
-            if( super_class.length()>0
-            && super_class.compare("???")!=0
-            )
-                std::cout << "\n//_superclass:"<<super_class<<"\n";
-            std::cout << curr_block;
+            if(EXTRACT_CLASSES) // When user want to have separate files for all classes
+            {
+                std::cerr<<"EXTRACT_CLASSES not implemented jet!"<<std::endl;
+                exit(-1);
+            }
+            else // ALL_IN_ONE_FILE - Into outputs now
+            {
+                if( super_class.length()>0
+                    && super_class.compare("???")!=0
+                )
+                    std::cout << "\n//_superclass:"<<super_class<<"\n//_derivedclass:"<<this_class<<"\n";
 
-            mylog << "CLASS derived from "<<super_class<<":\t'" << curr_block << "'";
-            mylog << std::endl;
+                std::cout << curr_block;
+                mylog << "CLASS derived from " << super_class << ":\t'" << curr_block << "'";
+                mylog << std::endl;
+            }
         }
         else
         {
