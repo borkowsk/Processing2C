@@ -107,18 +107,32 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
 std::string take_identifier(const std::string& curr_block,size_t pos)
 {
     std::string out="";
-    //std::cerr << "\n";
-    while(iswblank(curr_block[pos])) pos++;
-    // TODO -   COMMENTS INSIDE!!!
-    // while(iswblank(curr_block[pos])) pos++;
+
+    while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
+    // WHEN COMMENTS INSIDE!!!
+    if(curr_block[pos]=='/')
+    {                                                                       //std::cerr << "'" << curr_block[pos] <<"' ";
+        if(curr_block[++pos]!='*') return "?????";
+                                                                            //std::cerr << "'" << curr_block[pos] <<"' ";
+        std::string finish="*/";
+        int exp_len=2;
+
+        do { pos++;                                                         //std::cerr << "'" << curr_block[pos] <<"' ";
+            if( finish.compare(curr_block.substr(pos, exp_len) ) == 0 )
+                break;
+        }while(true);
+
+        pos+=exp_len;
+
+        while(iswblank(curr_block[pos])) pos++;// EAT BLANKS AFTER COMMENT
+    }
+
     for(size_t i=pos;    curr_block[i]!=','  && curr_block[i]!='<' && curr_block[i]!=',' //IS IdentIFIER? todo!
                       && curr_block[i]!=' '  && curr_block[i]!='\t'
                       && curr_block[i]!='\n' && curr_block[i]!='\0' ; i++)
     {
-        out+=curr_block[i];
-        //std::cerr << curr_block[i];
-    }
-    //std::cerr <<" ???"<<std::endl;
+        out+=curr_block[i];  //std::cerr << curr_block[i];
+    }                        //std::cerr <<" ???"<<std::endl;
     return out;
 }
 
@@ -131,7 +145,8 @@ std::string detect_super_class(const std::string& curr_block)
         pos+=strlen("extends")+1;
         super_class=take_identifier(curr_block,pos);
     }
-    else
+    /*
+    else //interfejsy? Ale one nie są superklasami w języku JAVA!
     {
         pos=curr_block.find("implements",0);
         if(pos!=std::string::npos)
@@ -140,7 +155,7 @@ std::string detect_super_class(const std::string& curr_block)
             super_class=take_identifier(curr_block,pos);
         }
     }
-
+    */
     return super_class;
 }
 
@@ -168,13 +183,24 @@ std::string detect_class_name(const std::string& curr_block)
 
 std::string interfaces_imports(const std::string& curr_block,bool isInterface)
 {
-    std::string identifier;
+    std::string identifier, output="";
     auto pos=curr_block.find("implements",0);
     if(pos!=std::string::npos)
     {
         pos+=strlen("implements")+1;
-        identifier=take_identifier(curr_block,pos);
-        return "//_import:"+identifier;
+        identifier=take_identifier(curr_block,pos);         std::cerr << identifier <<",";
+        output+="//_import:"+identifier+"\n";
+        pos+=identifier.length();
+        while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
+        while(curr_block[pos]==',')
+        {
+            pos++;
+            identifier=take_identifier(curr_block,pos);     std::cerr << identifier <<",";
+            output+="//_import:"+identifier+"\n";
+            pos+=identifier.length();
+            while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
+        }                                                   std::cerr << std::endl;
+        return output;
     }
     return "";
 }
@@ -304,13 +330,15 @@ int main(int argc,const char** argv)
                 std::ofstream newheader(headersrc);
                 newheader<<"//#pragma once\n"
                          <<"//#ifndef "<<"HEADER_"<<this_class<<"_INCLUDED\n"
-                         <<"//#define "<<"HEADER_"<<this_class<<"_INCLUDED\n";
+                         <<"//#define "<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
 
-                if(super_class.compare("???")!=0)
+                if(super_class[0]!='?')
                 {
-                    newheader<<"//_import:" << super_class << "\n"
-                             << interfaces_imports(curr_block, isInterface) <<std::endl
-                             <<"//_superclass:"<<super_class<<"\n";
+                    newheader<<"//_import:" << super_class << "\n";
+                    auto imports=interfaces_imports(curr_block, isInterface);
+                    mylog << "DETECTED IMPORTS:" << imports << std::endl;
+                    newheader << imports <<std::endl
+                              <<"//_superclass:"<<super_class<<"\n";
                 }
 
                 newheader<<"/// Automatic header for class "<<this_class<<"\n"
