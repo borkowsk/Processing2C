@@ -108,7 +108,12 @@ std::string take_identifier(const std::string& curr_block,size_t pos)
 {
     std::string out="";
     //std::cerr << "\n";
-    for(size_t i=pos;curr_block[i]!='\0' && curr_block[i]!=' ' && curr_block[i]!='\t' && curr_block[i]!='\n';i++)
+    while(iswblank(curr_block[pos])) pos++;
+    // TODO -   COMMENTS INSIDE!!!
+    // while(iswblank(curr_block[pos])) pos++;
+    for(size_t i=pos;    curr_block[i]!=','  && curr_block[i]!='<' && curr_block[i]!=',' //IS IdentIFIER? todo!
+                      && curr_block[i]!=' '  && curr_block[i]!='\t'
+                      && curr_block[i]!='\n' && curr_block[i]!='\0' ; i++)
     {
         out+=curr_block[i];
         //std::cerr << curr_block[i];
@@ -163,7 +168,15 @@ std::string detect_class_name(const std::string& curr_block)
 
 std::string interfaces_imports(const std::string& curr_block,bool isInterface)
 {
-    return "//_import:?interfaces?";
+    std::string identifier;
+    auto pos=curr_block.find("implements",0);
+    if(pos!=std::string::npos)
+    {
+        pos+=strlen("implements")+1;
+        identifier=take_identifier(curr_block,pos);
+        return "//_import:"+identifier;
+    }
+    return "";
 }
 
 int  line_counter=1;
@@ -309,7 +322,7 @@ int main(int argc,const char** argv)
                 newheader.close();
                 std::cout<<"//_import:"<<this_class<<"\n";
                 std::cerr<<"EXTRACT_CLASSES not implemented jet!"<<std::endl;
-                exit(-1);
+                //exit(-1);
             }
             else // ALL_IN_ONE_FILE - Into outputs now
             {
