@@ -218,26 +218,32 @@ std::string detect_class_name(const std::string& curr_block)
 
 std::string interfaces_imports(const std::string& curr_block,bool isInterface)
 {
-    std::string identifier, output="";
+    std::string identifier, output="???";
     auto pos=curr_block.find("implements",0);
     if(pos!=std::string::npos)
     {
         pos+=strlen("implements")+1;
-        identifier=take_identifier(curr_block,pos);         std::cerr << identifier <<",";
-        output+="//_import:"+identifier+"\n";
+        identifier=take_identifier(curr_block,pos);         //std::cerr << identifier <<",";
+
+        if(identifier.empty() || identifier.length()==0 || identifier[0]=='?')
+            return output; //Coś poszło nie tak
+
+        output="//_import:"+identifier+"\n";
         pos+=identifier.length();
+
         while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
         while(curr_block[pos]==',')
         {
             pos++;
-            identifier=take_identifier(curr_block,pos);     std::cerr << identifier <<",";
+            identifier=take_identifier(curr_block,pos);     //std::cerr << identifier <<",";
+            // if(identifier.empty() || identifier.length()==0 || identifier[0]=='?')
+            //            return output+"???"; //Coś poszło nie tak w tym miejscu
             output+="//_import:"+identifier+"\n";
             pos+=identifier.length();
-            while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
-        }                                                   std::cerr << std::endl;
-        return output;
+            while(iswblank(curr_block[pos])) pos++; // EAT BLANKS!
+        }                                                   //std::cerr << std::endl;
     }
-    return "";
+    return output;
 }
 
 int  line_counter=1;
@@ -252,18 +258,25 @@ int main(int argc,const char** argv)
 {
     std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
 
-    if(argc>0)
+    if(argc>1)
     {
+        std::cerr << "ARGC:" <<argc<< std::endl;
+        std::cerr << "ARG1:" <<argv[1]<< std::endl;
         OutDir = argv[1];
-        if(argc>1)
-            EXTRACT_CLASSES = ( strcasecmp(argv[2],"-ECLL") == 0 );
+        if(argc>2)
+        {
+            std::cerr << "ARG2:" <<argv[2]<< std::endl;
+            EXTRACT_CLASSES = (strcasecmp(argv[2], "-ECLL") == 0);
+        }
     }
 
-    mylog.open(OutDir+"/tools.log",std::ios::app);
+    std::string logName= OutDir + "/tools.log";
+    mylog.open(logName, std::ios::app);
     if(!mylog.is_open())
     {
-        std::cerr << "Cant open file \"" <<  OutDir+"/tools.log" <<"\"\n";
+        std::cerr << "Cant open file \"" << logName << "\"\n";
         perror("System message:");
+        std::cerr.flush();
         std::cerr << "Check if directory exists and proper rights are assigned to it."<<std::endl;
         return -1;
     }
@@ -308,7 +321,7 @@ int main(int argc,const char** argv)
             getline(std::cin, rest_of_comment);
             line_counter++;//?
             std::cout << curr_block << rest_of_comment << std::endl;
-                mylog << curr_block << rest_of_comment << std::endl;
+                mylog << curr_block << rest_of_comment <<"\t\t\tCOMMENT"<< std::endl;
         }
         else
         if ((t & std::ctype_base::punct) != 0
@@ -322,16 +335,17 @@ int main(int argc,const char** argv)
             count_lines(rest_of_comment);
 
             std::cout << curr_block << rest_of_comment ;//<<"/*!?!?!*/";
-                mylog << curr_block << rest_of_comment << std::endl;
+                mylog << curr_block << rest_of_comment <<"\t\t\tCOMMENT"<< std::endl;
         }
-        else if(curr_block[0] == '"'
+        else
+        if(curr_block[0] == '"'
         || curr_block[0] == '\'')
             {
                 std::string rest_of_string;
                                                                             assert(curr_block.length()==1);
                 all_until(std::cin, curr_block, rest_of_string,'\\');
                 std::cout << curr_block << rest_of_string ;//<< "/*SP*/";
-                mylog <<"STRING/CHAR: "<< curr_block << rest_of_string << std::endl;
+                mylog << curr_block << rest_of_string <<"\t\t\tSTRING or CHAR"<< std::endl;
             }
             else
         if(curr_block.compare("class")==0
@@ -351,6 +365,8 @@ int main(int argc,const char** argv)
             std::replace( curr_block.begin(), curr_block.end(),
                           '\r', ' '); // replace all '\r' to ' '
 
+            mylog <<"\nCLASS HEAD:\n\t"<<curr_block<<std::endl;
+
             std::string super_class=detect_super_class(curr_block);
             std::string this_class=detect_class_name(curr_block);
 
@@ -361,24 +377,32 @@ int main(int argc,const char** argv)
                 headersrc+=this_class;
                 headersrc+="_clss.pde";
 
-                mylog << "CREATE HEADER "<< headersrc << std::endl;
+                mylog << "CREATE CLASS HEADER FILE:\t"<< headersrc << std::endl;
 
                 std::ofstream newheader(headersrc);
                 newheader<<"//#pragma once\n"
                          <<"//#ifndef "<<"HEADER_"<<this_class<<"_INCLUDED\n"
                          <<"//#define "<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
 
-                if(super_class[0]!='?')
+                auto imports=interfaces_imports(curr_block, isInterface);
+                if(imports[0]!='?')
                 {
-                    newheader<<"//_import:" << super_class << "\n";
-                    auto imports=interfaces_imports(curr_block, isInterface);
-                    mylog << "DETECTED IMPORTS:" << imports << std::endl;
-                    newheader << imports <<std::endl
-                              <<"//_superclass:"<<super_class<<"\n";
+                    newheader << imports << std::endl;
+
+                    mylog << "DETECTED\n"
+                          << "\tIMPORTS:\t" << imports << std::endl;
                 }
 
-                std::string class_code;
+                if(super_class[0]!='?')
+                {
+                    newheader<<"//_import:" << super_class << "\n"
+                             <<"//_superclass:"<<super_class << "\n"<<std::endl;
 
+                    mylog << "DETECTED\n"
+                          << "\tSUPERCLASS:\t" << super_class<<std::endl;
+                }
+
+                std::string class_code; // Class definition code
                 if( parentheses_block(std::cin,'{','}',class_code,1) !=0 )
                 {
                     count_lines(class_code);
@@ -389,30 +413,43 @@ int main(int argc,const char** argv)
 
                     class_code+=last_line;
 
-                    mylog << "DETECTED CLASS DEFINITION:\n" << class_code << std::endl;
+                    mylog << "DETECTED\n\tCLASS DEFINITION:\n" << class_code << std::endl;
                 }
 
-                newheader<<"/// Automatic header for class "<<this_class<<"\n"
+                newheader<<"/// Automatically extracted definition of @class "<<this_class<<"\n"
                          << curr_block << std::endl
-                         << class_code << std::endl
-                         <<"/// Generated by Processing2C++ extraction Tools\n"
-                         <<"//#endif //"<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
+                         << class_code << std::endl;
+
+                if(super_class[0]!='?')
+                {
+                    newheader << "\n//_endofsuperclass:" << super_class << std::endl;
+                }
+
+                newheader <<"\n/// Generated by Processing2C++ extraction Tools\n"
+                          <<"//#endif //"<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
                 newheader.close();
 
+                std::cout<<"/** @class "<< this_class <<" */" << std::endl;
                 std::cout<<"//_import:"<<this_class<<"\n";
 
-                std::cerr<<"EXTRACT_CLASSES not implemented jet!"<<std::endl;
+                //std::cerr<<"EXTRACT_CLASSES not implemented jet!"<<std::endl;
                 //exit(-1);
             }
             else // ALL_IN_ONE_FILE - Into outputs now
             {
                 if( super_class.length()>0
-                    && super_class.compare("???")!=0
+                    && super_class[0]!='?'
                 )
-                    std::cout << "\n//_superclass:"<<super_class<<"\n//_derivedclass:"<<this_class<<"\n";
+                {
+                    std::cout << "\n// Now will be change of superclass!";
+                    std::cout << "\n//_endofsuperclass:_anyPreviousSuperClass";
+                    std::cout << "\n//_superclass:" << super_class << "\n" << std::endl;
+                            //<<"//_derivedclass:"<<this_class<<"\n";
+                }
 
                 std::cout << curr_block;
-                mylog << "CLASS derived from " << super_class << ":\t'" << curr_block << "'";
+
+                mylog << "CLASS derived from " << super_class ; //<< ":\t'" << curr_block << "'";
                 mylog << std::endl;
             }
         }
