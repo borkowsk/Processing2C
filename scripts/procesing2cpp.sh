@@ -5,6 +5,7 @@ then
    exit -1
 fi
 
+
 echo "//Processing to C++ converter $0"
 echo "//Source: $1"
 echo "#include \"processing_consts.hpp\""
@@ -20,12 +21,16 @@ echo "#include \"local.h\""
 echo "//=================================================================================="
 echo ""
 
-echo -e $COLOR1 1>&2 #ERRORS!
+echo -e "\n${NORMCO}START TRANSLATION OF $COLOR2 $1 $COLOR1" 1>&2 #Colored ERRORS!
 
 cat $1 |\
-${SCRIPTS}/tools "${SRCDIR}toolsouts/" |\
+${SCRIPTS}/tools "${SRCDIR}toolsouts" |\
 #Brutalne dodawanie średników za końcem klasy.
 sed -E 's|\/\/\_endOfClass(.*)|;//_endOfClass\1\n|i'  |\
+#//_endofsuperclass:_anyPreviousSuperClass
+sed -E 's|\/\/\_endofsuperclass:(.*)|//Undefined any base class preprosessor definition: \1\n#undef _superclass|i'  |\
+#//_superclass:Colorable
+sed -E 's|\/\/\_superclass:(.*)|//Base class is now:\n#define _superclass \1|i'  |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
 #także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu
@@ -186,11 +191,11 @@ sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
 echo -e "//$(dirname $0) did it\n"
 
-echo -e "END" $NORMCO 1>&2 #end of colored errors
+echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-05-09                   */
+#/*               PROCESSING2C  version 2022-06-02                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

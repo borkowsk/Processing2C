@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.18"
+Pr2CVERSION="0.19"
 
 if [ $# -ne 0 ]; 
 then
@@ -15,15 +15,18 @@ export SOURCES=`pwd`
 export PROJECT=$(basename "$SOURCES")
 source $SCRIPTS/config.dat
 
-echo "Directories:"
-echo -e SCRIPTS "     $SCRIPTS"
-echo -e PROJECT "     $PROJECT"
-echo -e SOURCES "     $SOURCES"
-echo -e PROC2C "      $PROC2C"
-echo -e WBRTM "       $WBRTM"
-echo -e WBSYMSHELL "  $SYMSHELL"
+echo -e $COLOR2"\nDirectories:"$NORMCO
+echo -e PROC2C $COLOR1"      $PROC2C"$NORMCO
+echo -e PROC2DIR $COLOR1"    $PROC2DIR"$NORMCO
+echo -e SCRIPTS $COLOR1"     $SCRIPTS"$NORMCO
+echo -e WBSYMSHELL $COLOR1"  $SYMSHELL"$NORMCO
+echo -e WBRTM $COLOR1"       $WBRTM"$NORMCO
+echo -e PROJECT $COLOR1"     $PROJECT"$NORMCO
+echo -e SOURCES $COLOR1"     $SOURCES"$NORMCO
+
 
 #CHECK SOURCE
+echo -e "\nCHECKING NAMES..."
 echo -e "\nAt least setup() or draw() function expected in *.pde files:"
 egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
 
@@ -32,7 +35,7 @@ egrep --color -Hn '(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed
 
 echo -e "\nThe following lines may hide library symbols..."
 egrep --color -Hn -f $SCRIPTS/symbols_pattern.grep *.pde
-echo -e "... END\n"
+echo -e "\nCHECKING NAMES FINISHED\n"
 
 echo "Translating project..."
 #GET GLOBAL SYMBOLS
@@ -41,19 +44,19 @@ $SCRIPTS/prepare_local_h.sh
 #https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
 export SRCDIR="./cppsrc/"    
 if [ -d $SRCDIR ]; then
-   echo #"Directory $SRCDIR already exists."
+   echo -e $COLOR1"Directory$COLOR2 $SRCDIR $COLOR1 already exists."$NORMCO
 else
-   echo "Folder $SRCDIR does not exist. Will be created"
+   echo -e $COLOR1"Folder$COLOR2 $SRCDIR $COLOR1 does not exist. Will be created"$NORMCO
    mkdir -p $SRCDIR  # -p, --parents     no error if existing, make parent directories as needed
 fi
 
 if [ -d "${SRCDIR}toolsouts/" ]; then
-   echo -e $COLOR1"Directory $SRCDIR/toolsouts/ already exists."
+   echo -e $COLOR1"Directory$COLOR2 $SRCDIR/toolsouts/$COLOR1 already exists."
    echo -e $COLOR2
    rm   ${SRCDIR}toolsouts/*
    echo -e $NORMCO
 else
-   echo -e $COLOR1"Folder ${SRCDIR}toolsouts/ does not exist. Will be created"$COLOR2
+   echo -e $COLOR1"Folder$COLOR2 ${SRCDIR}toolsouts/$COLOR1 does not exist. Will be created"$COLOR2
    mkdir -p "${SRCDIR}toolsouts/" 
    echo -e $NORMCO
 fi
@@ -77,13 +80,13 @@ echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at
 FILES=*.pde
 for f in $FILES
 do # take action on each file. $f store current file name
-  echo -e "File: $f \t-->\t./cppsrc/$f.cpp"
+  echo -e "File:$COLOR2 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.cpp$NORMCO\n"
   echo "#include \"$f.cpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
   $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
 done
 
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
-echo -e "\nCreating CMakeLists.txt"
+echo -e "\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
 cmake_minimum_required(VERSION 2.9)
 set( CMAKE_VERBOSE_MAKEFILE off )
@@ -164,10 +167,10 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"
 #     )
 EOF
 
-echo -e "\nProject ${PROJECT} DONE\n\n"
+echo -e "\nProject$COLOR1 ${PROJECT}$NORMCO DONE\n\n"
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2021-11-25                   */
+#/*               PROCESSING2C  version 2022-06-02                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

@@ -43,4 +43,16 @@ echo -e $COLOR2"Is \"processing_FloatDict.hpp\" needed?"$NORMCO 1>&2
 grep $GREPOPTIONS "(FloatDict\s+)" $* 1>&2 \
 && echo "#include \"processing_FloatDict.hpp\" //...is optional. Should be deleted when not needed."
 
-echo -e $COLOR1"Searching includes finished for"$COLOR2 $* "\n"$NORMCO 1>&2
+echo -e ${NORMCO}"Searching includes finished for"$COLOR2 $* "\n"$NORMCO 1>&2
+
+#/********************************************************************/
+#/*               PROCESSING2C  version 2022-06-02                   */
+#/********************************************************************/
+#/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
+#/*            W O J C I E C H   B O R K O W S K I                   */
+#/*    Instytut Studów Społecznych Uniwersytetu Warszawskiego        */
+#/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
+#/*    GITHUB: https://github.com/borkowsk                           */
+#/*                                                                  */
+#/*                               (Don't change or remove this note) */
+#/********************************************************************/
