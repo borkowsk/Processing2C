@@ -104,6 +104,9 @@ namespace Processing
         using std::string::find;
         using std::string::substr;
         using std::string::find_first_of;
+        
+        /// Access to one character in a Processing manner
+        char charAt(int index) { return (*this)[index]; }
     };
 
     /// Duplikat deklaracji frienda z wnętrza klasy String
@@ -242,7 +245,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022-06-28                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

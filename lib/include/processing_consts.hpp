@@ -112,6 +112,7 @@ const auto TAU=6.2831855f;
 
 /// MAX_INT is imported from std::numeric_limits
 const auto MAX_INT=std::numeric_limits<int>::max();
+const auto MAX_FLOAT=std::numeric_limits<float>::max();
 
 //For angles, nosie, spheres etc...
 
@@ -124,7 +125,7 @@ const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-28                     */
+/*               PROCESSING2C  version 2022-06-28                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
