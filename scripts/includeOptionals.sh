@@ -12,7 +12,7 @@ grep  $GREPOPTIONS "(String\s+|_string_param\s+)" $* 1>&2 \
 && echo "#include \"processing_string.hpp\"  //Processing::String class"
 
 echo -e $COLOR2"Is \"processing_console.hpp\" needed?"$NORMCO 1>&2
-grep $GREPOPTIONS "(print\s*\(|println\s*\()" $* 1>&2 \
+grep $GREPOPTIONS "(nf\s*\(|print\s*\(|println\s*\()" $* 1>&2 \
 && echo "#include \"processing_console.hpp\"   //...is optional. Should be deleted when not needed."
 
 echo -e $COLOR2"Is \"processing_alist.hpp\" needed?"$NORMCO 1>&2
@@ -46,7 +46,7 @@ grep $GREPOPTIONS "(FloatDict\s+)" $* 1>&2 \
 echo -e ${NORMCO}"Searching includes finished for"$COLOR2 $* "\n"$NORMCO 1>&2
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-06-02                   */
+#/*               PROCESSING2C  version 2022-06-30                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
