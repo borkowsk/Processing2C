@@ -120,7 +120,7 @@ sed 's|hex(|Processing::hex(|g' |\
 #sed 's|binary(|Processing::binary(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
-#sed 's/abs(/std::abs(/g' |\
+sed -E 's|abs(\s*)(\()|std::abs\1\2|g' |\
 #DIRECTIVES
 sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i' |\
