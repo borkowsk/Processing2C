@@ -3,6 +3,9 @@
 echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
         > local.h
 
+#awaryjnie
+#echo 'typedef bool boolean;' >> local.h
+
 echo -e "\n\n//All classes from Processing files" >> local.h
 
 egrep -h '^\s*(class|abstract\s+class|interface|enum)\s+(\w+)' *.pde |\
@@ -55,7 +58,7 @@ sed -E 's|final\s+|const |g' |\
 # Może: static constexpr ?
 sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)/static \t\1/' |\
 #podmiana boolean i nazw klas
-sed 's|boolean|bool   |g' |\
+sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g'  >> local.h
 #sed 's|=|;//=|' >> local.h --- bez usuwania =
@@ -66,7 +69,7 @@ echo -e "\n//All global variables from Processing files" >> local.h
 egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\s+(\w+)\s*[;=].*///' *.pde |\
 sed -E 's/^\s*(int|float|double|String|boolean|char|\w+)\s+/extern\t&\t\t/' |\
 #podmiana boolean i nazw klas
-sed 's|boolean |bool |g'  |\
+sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g' |\
@@ -81,7 +84,7 @@ echo -e "\n//All global arrays from Processing files" >> local.h
 egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\[\s*\]\s+(\w+)\s*[;=].*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/extern\tsarray<\1>/g' |\
 #podmiana boolean i nazw klas
-sed 's|boolean |bool |g'  |\
+sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g' |\
@@ -95,7 +98,7 @@ echo -e "\n//All global matrices from Processing files" >> local.h
 egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\[\s*\]\s*[\s*\]\s+(\w+)\s*[;=].*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/extern\tsmatrix<\1>/g' |\
 #podmiana boolean i nazw klas
-sed 's|boolean |bool |g'  |\
+sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g' |\
@@ -118,7 +121,7 @@ sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 #podmiana boolean i nazw klas
-sed 's|boolean |bool |g'  |\
+sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g' |\
 sed -E -f userclasses.sed  |\
 sed 's|\/\*_reference\*\/|\&|g' |\
@@ -128,13 +131,12 @@ sed -E 's|(//)(.*)///|///< \2|' |\
 #usuwanie zbędnych odstępów
 sed -E 's|\)\s+;|); |' >> local.h
 #sed 's|) ;|);|' >> local.h
-
 echo "#endif" >> local.h
 #cat local.h
 #cat userclasses.sed
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-04-21                   */
+#/*               PROCESSING2C  version 2022-06-30                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
