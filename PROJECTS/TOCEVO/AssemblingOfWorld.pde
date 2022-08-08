@@ -1,12 +1,12 @@
-//*   World is a one of two central class of each ABM model
+///   World is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 int StepCounter=0; ///< globalny licznik kroków
 
 class World {
-  int[][]     cells;//Two dimensional array of resources
-  Agent[][]   agents;//Two dimensional array of agents
+  int[][]     cells;  //!< Two dimensional array of resources
+  Agent[][]   agents; //!< Two dimensional array of agents
   
-  World(int side)//Constructor of the World
+  World(int side) ///< Constructor of the World
   {
     cells=new int[side][side];
     agents=new Agent[side][side];
@@ -17,13 +17,13 @@ class World {
 // not as methods because of not enough flexible syntax of Processing
 //*/////////////////////////////////////////////////////////////////////////
 
-void initializeModel(World world)   ///<
+void initializeModel(World world)   ///< Need to be global!
 {
   initializeCells(world.cells);
   initializeAgents(world.agents);
 }
 
-void visualizeModel(World world)    ///<
+void visualizeModel(World world)    ///< Need to be global!
 {
   noStroke();
   visualizeCells(world.cells);
@@ -37,7 +37,7 @@ void visualizeModel(World world)    ///<
   for(int i=0;i<eatCounters.length;i++)
   if(eatCounters[i]>0)
   {
-    float len=log(eatCounters[i])/maxL*50.0; //println(len);
+    float len=log(eatCounters[i]) / maxL*50.0; //println(len);
     stroke(i,0,128);
     line(side*cwidth,i,side*cwidth+len,i);
   }
@@ -45,27 +45,27 @@ void visualizeModel(World world)    ///<
   for(int i=0;i<punCounters.length;i++)
   if(punCounters[i]>0)
   {
-    float len=log(punCounters[i])/maxL*50.0; //println(len);
+    float len=log(punCounters[i]) / maxL*50.0; //println(len);
     stroke(128,0,128+i);
     line(side*cwidth,eatCounters.length+i,side*cwidth+len,eatCounters.length+i);
   }
   
 }
 
-void changes(World world)   ///<
+void changes(World world)   ///< Need to be global!
 {
   cleanDeaths(world.agents);
-  synchChangeCells(world.cells,world.cells);//No intercells interactions
-  changeAgents(world.agents,world.cells);//Agents influence the resource layer
+  synchChangeCells(world.cells,world.cells); //No intercells interactions
+  changeAgents(world.agents,world.cells); //Agents influence the resource layer
 }
 
-void modelStep(World world) ///<
+void modelStep(World world) ///< Need to be global!
 {
    changes(world);
    
    StepCounter++;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD FOR TragedyOfCommons
-///////////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////////

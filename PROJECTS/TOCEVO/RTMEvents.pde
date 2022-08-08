@@ -1,4 +1,4 @@
-//*    Dopasowana do modelu obsługa zdarzeń
+///    Dopasowana do modelu obsługa zdarzeń
 //*/////////////////////////////////////////////////
 
 void keyPressed()

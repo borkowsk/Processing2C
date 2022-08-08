@@ -2,7 +2,7 @@
 //*  Agent need to be initialised & they need logic of change 
 //*/////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents) ///<
+void initializeAgents(Agent[][] agents) ///< initialisation of all agents
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -13,21 +13,21 @@ void initializeAgents(Agent[][] agents) ///<
     }
 }
 
-void cleanDeaths(Agent[][] agents)      ///<
+void cleanDeaths(Agent[][] agents)      ///< ???
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
     if(agents[a][b]!= null) 
       if(agents[a][b].energy<=0)
       {
-        agents[a][b]=null;//remove death agent from the world 
+        agents[a][b]=null; //remove death agent from the world 
       }
 }
 
 //*  EVERY STEP CHANGE == MAIN DYNAMICS
 //*//////////////////////////////////////
 
-void  changeAgents(Agent[][] agents,int[][] cells)  ///<
+void  changeAgents(Agent[][] agents,int[][] cells)  ///< ???
 {
   int MC=agents.length*agents[0].length;
   
@@ -36,19 +36,20 @@ void  changeAgents(Agent[][] agents,int[][] cells)  ///<
     int a=(int)random(0,agents.length);
     int b=(int)random(0,agents[a].length);
     
-    if(agents[a][b]!= null && agents[a][b].energy>0 )//Exists and not death
+    if(agents[a][b]!= null && agents[a][b].energy>0 ) //Exists and not death
     {
-      //Zużycie zasobów na koszty metaboliczne
+      // Zużycie zasobów na koszty metaboliczne
       if(agents[a][b].energy>costOfStep) 
           agents[a][b].energy-=costOfStep; //Metabolic costs
       else
-          agents[a][b].energy=0;//Not enough!
+          agents[a][b].energy=0; //Not enough!
           
       if(agents[a][b].energy<=0) //Czy nie umarł od tego?
       {
           if(WITH_NEW_DEL_LOG) 
             println("Agent death",(int)agents[a][b].genEat,(int)agents[a][b].genPan);
-          continue;//Now is death
+          
+          continue; //Now is death
       }
       
       if(agents[a][b].punished>0) //Czy jest sparaliżowany?
@@ -67,30 +68,30 @@ void  changeAgents(Agent[][] agents,int[][] cells)  ///<
         float rpOfEat=agents[a][b].genEat/255.0;
         int consumption=(int)(cells[ma][mb]*rpOfEat);
         
-        if(consumption<1 && random(1.0) < rpOfEat)//When too small resources
+        if(consumption<1 && random(1.0) < rpOfEat) //When too small resources
             consumption=1;
             
         if(consumption>0)
         {
           cells[ma][mb]-=consumption;
           agents[a][b].energy+=consumption;
-          //To jednak powinno być tu! TODO DONE
+          // To jednak powinno być tu!
           if(agents[a][b].energy>maxStock)
-            agents[a][b].energy=maxStock;//the storage of unused energy is limited
+            agents[a][b].energy=maxStock; //the storage of unused energy is limited
         }
       }
       
-      //Jeżeli przypadkiem wylosowano własną komórkę, to dalsze akcje nie mają sensu
+      // Jeżeli przypadkiem wylosowano własną komórkę, to dalsze akcje nie mają sensu
       if(a==ma && b==mb) continue;
       
       //Maybe offspring?
       if(agents[ma][mb]==null     //Tylko gdy wolne miejsce
       && agents[a][b].energy > 4 * costOfStep //Jest minimalny zapas
-      && pOffspring > random(1.0) )//I jest DECYZJA!
+      && pOffspring > random(1.0) ) //I jest DECYZJA!
       {
           agents[ma][mb]=new Agent(agents[a][b].energy/2,
-                                  (agents[a][b].genEat+(int)random(-1.5,1.5)),//With mutation possible
-                                  (agents[a][b].genPan+(int)random(-1.5,1.5)) //With mutation possible
+                                  (agents[a][b].genEat+(int)random(-1.5,1.5)), //With mutation possible
+                                  (agents[a][b].genPan+(int)random(-1.5,1.5))  //With mutation possible
                                   );
           if(WITH_NEW_DEL_LOG)
               println("New agent",(int)agents[ma][mb].genEat,(int)agents[ma][mb].genPan);                        
@@ -99,7 +100,7 @@ void  changeAgents(Agent[][] agents,int[][] cells)  ///<
           continue;
       }
       
-      //Maybe punishment
+      // Maybe punishment
       if( agents[a][b].genPan>0 //Czy ma skłonności do karania?
       && agents[ma][mb]!=null                        //Czy to ktoś do ukarania?
       && agents[ma][mb].punished==0                  //Czy nie jest już ukarany?
@@ -117,7 +118,7 @@ void  changeAgents(Agent[][] agents,int[][] cells)  ///<
       //NON-BLOCKING RANDOM WALK
       Agent tmp=agents[a][b];
       agents[a][b]=agents[ma][mb];
-      agents[ma][mb]=tmp;//Agent ready at new position
+      agents[ma][mb]=tmp; //Agent ready at new position
     }
   }
   

@@ -1,12 +1,12 @@
 /// ABM model of segregation (test project for Processing2C)
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: AgentSuplement.pde
-/////////////////////////////////////////////////////////////////////////////////////////
-// Agent is a one of two central class of each ABM model
-// Agent need to be initialised & they need logic of change 
-/////////////////////////////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////////////////////////
+/// Agent is a one of two central class of each ABM model
+/// Agent need to be initialised & they need logic of change 
+//*///////////////////////////////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents) ///
+void initializeAgents(Agent[][] agents) ///< Need to be global!
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -17,7 +17,7 @@ void initializeAgents(Agent[][] agents) ///
     }
 }
 //OR
-void initializeAgents(Agent[] agents) ///
+void initializeAgents(Agent[] agents) ///< Need to be global!
 { 
   for(int a=0;a<agents.length;a++)
   if(random(1)<density)
@@ -27,7 +27,7 @@ void initializeAgents(Agent[] agents) ///
   }
 }
 
-void  changeAgents(Agent[] agents) ///
+void  changeAgents(Agent[] agents) ///< Need to be global!
 {
   int MC=agents.length;
   for(int i=0;i<MC;i++)
@@ -50,17 +50,17 @@ void  changeAgents(Agent[] agents) ///
       && random(1)<agents[a].stress)
       {
         int target=(int)random(0,agents.length);
-        if(agents[target]==null)//Jest miejsce
+        if(agents[target]==null) //Jest miejsce
         {
-          agents[target]=agents[a];//Przeprowadzka
-          agents[a]=null;//Wymeldowanie ze starego miejsca
+          agents[target]=agents[a]; //Przeprowadzka
+          agents[a]=null; //Wymeldowanie ze starego miejsca
         }
       }
     }
   }  
 }
 //OR
-void  changeAgents(Agent[][] agents) ///
+void  changeAgents(Agent[][] agents) ///< Need to be global!
 {
   int MC=agents.length*agents[0].length;
   for(int i=0;i<MC;i++)
@@ -69,7 +69,7 @@ void  changeAgents(Agent[][] agents) ///
     int b=(int)random(0,agents[a].length);
     if(agents[a][b]!= null )
     {
-      //Sprawdzenie stresu
+      // Sprawdzenie stresu
       int strangers=0;
       if(0<a-1 && agents[a-1][b]!=null 
       && agents[a-1][b].identity!=agents[a][b].identity)
@@ -89,23 +89,23 @@ void  changeAgents(Agent[][] agents) ///
       
       agents[a][b].stress=strangers/4.0;  
       
-      //Próba migracji gdy stres doskwiera
+      // Próba migracji gdy stres doskwiera
       if(agents[a][b].stress>0 
       && random(1)<agents[a][b].stress)
       {
         int tara=(int)random(0,agents.length);
         int tarb=(int)random(0,agents[a].length);
         
-        if(agents[tara][tarb]==null)//Jest miejsce
+        if(agents[tara][tarb]==null) //Jest miejsce
         {
-          agents[tara][tarb]=agents[a][b];//Przeprowadzka
-          agents[a][b]=null;//Wymeldowanie ze starego miejsca
+          agents[tara][tarb]=agents[a][b]; //Przeprowadzka
+          agents[a][b]=null; //Wymeldowanie ze starego miejsca
         }
       }
     }
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,7 +1,7 @@
-//*   World full of agents need method of visualisation on screen/window
+///   World full of agents need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeAgents(Agent[][] agents) ///<
+void visualizeAgents(Agent[][] agents) ///< Need to be global!
 {
   double maxSt=Math.pow(maxStock,1/3.0); //println(maxSt);
   Agent curra;
@@ -22,9 +22,9 @@ void visualizeAgents(Agent[][] agents) ///<
         else 
             noStroke();
         
-        float radius=(float)(cwidth*(Math.pow(min(curra.energy,maxStock),1/3.0)/maxSt));  
+        float radius=(float)(cwidth*(Math.pow(min(curra.energy,maxStock),1/3.0) / maxSt));  
 
-        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radius);//'a' is vertical! 
+        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radius); //'a' is vertical! 
       }
       else
       {
@@ -38,5 +38,5 @@ void visualizeAgents(Agent[][] agents) ///<
 }
 
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//*  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
+//  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

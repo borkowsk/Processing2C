@@ -1,8 +1,9 @@
 /// Agent Base Model adopted for Processing2C
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: klasaAnt.pde
-/////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
+//*///////////////////////////////////////////
+
+//++++++++++++ ZMIENNE ++++++++++++
 class Ant {
   float id, trailS; 
   //id - numerek w tablicy mrówek, trails - ile szlaku zostawia
@@ -53,7 +54,7 @@ class Ant {
       memory[2][1] = y;
   }
 
-  void slyszy1() {//inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
+  void slyszy1() { //inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
     if (trailS<0.95 && szlak) trailS=0.94;
   }
 
@@ -66,7 +67,7 @@ class Ant {
     memory[2][1] = memory[1][1];
   }
 
-  boolean memoryCheck(int a, int b) {//sprawdzanie, czy dane pole jest w pamięci
+  boolean memoryCheck(int a, int b) { //sprawdzanie, czy dane pole jest w pamięci
     for (int i=3; i<memo; i++) {
       if (a==memory[i][0] && b==memory[i][1]) {
         return(false);  //fałsz, gdy jest

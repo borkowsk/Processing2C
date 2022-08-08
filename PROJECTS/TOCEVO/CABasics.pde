@@ -1,8 +1,7 @@
-//*   Agent is a one of two central class of each ABM model
-//*   Agent need to be initialised & they need logic of change 
+///   Cell is a one of two central data of each CA model
 //*/////////////////////////////////////////////////////////////
 
-void initializeCells( int[][] cells )     ///<
+void initializeCells( int[][] cells )     ///< Need to be global!
 {
    for(int a=0;a<cells.length;a++)
     for(int b=0;b<cells[a].length;b++)
@@ -38,10 +37,10 @@ void synchChangeCells( int[][] cells , int[][] newcells )   ///< Drugi parametr 
      }
      else
      {
-        val+=(int)(R*val);//Ups, przekraczając max giną :-D (ze starości?)
+        val+=(int)(R*val); //Ups, przekraczając max giną :-D (ze starości?)
      }
      
-     if(val<0) val=MAX_INT;//Tak już nie giną
+     if(val<0) val=MAX_INT; //Tak już nie giną
      
      newcells[a][b]=val;
   }  

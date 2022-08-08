@@ -7,4 +7,4 @@ void exit() //it is called whenever a window is closed.
   save("exit.png");
   println("Thank You");
   super.exit(); //What library superclass have to do at exit
-} 
+}

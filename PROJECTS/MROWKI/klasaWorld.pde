@@ -2,17 +2,18 @@
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: klasaWorld.pde
 /////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
-int worozmiar = sizew/ws;  ///ile pól jest na świecie
 
-float density = 0.005;  ///ewentualna gęstośc jedzenia rozłożena
+//++++++++++++ ZMIENNE ++++++++++++
+int worozmiar = sizew/ws;  ///<ile pól jest na świecie
 
-int xNest = int(worozmiar/7);  ///współrzędne gniazda i jego rozmiar
-int yNest = int(worozmiar/7);  ///
-int siNest = 3;                ///
+float density = 0.005;  ///<ewentualna gęstośc jedzenia rozłożena
 
-int foodSupply;  /// początkowa ilość jedzenia w gnieździe
-int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
+int xNest = int(worozmiar/7);  ///<współrzędne gniazda i jego rozmiar
+int yNest = int(worozmiar/7);  ///<???
+int siNest = 3;                ///<???
+
+int foodSupply;  ///< początkowa ilość jedzenia w gnieździe
+int ileWsumieMrowek = sizew/10;  ///< maksymalna dopuszczalna liczba mrówek
 
 
 class World {
@@ -149,13 +150,13 @@ class World {
     //albo bliżej gniazda/jedzenia w którymkolwiek kierunku, albo małe p, że jednak skręci
   }  
 
-  boolean czyCosWie(int i, int j) {  //jeżeli wie, że gdzieś jest jedzenie
+  boolean czyCosWie(int i, int j) { //jeżeli wie, że gdzieś jest jedzenie
     return antsWorld[i][j].memory[1][0]!=antsWorld[i][j].memory[2][0] 
             || antsWorld[i][j].memory[1][1]!=antsWorld[i][j].memory[2][1];
   }  
 
 
-  boolean czyMoze(int i, int j, int p, int r) {//nie może iść na swoje obecne miejsce lub na czyjeś
+  boolean czyMoze(int i, int j, int p, int r) { //nie może iść na swoje obecne miejsce lub na czyjeś
     return (p!=i || r!=j) && antsWorld[p][r]==null;
   }
 

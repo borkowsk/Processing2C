@@ -1,19 +1,18 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "EPIDEMIA.pde"
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Model of epidemic using template for AGENT BASE MODEL in 1D & 2D discrete geometry
-//  implemented by Wojciech Borkowski
 //*///////////////////////////////////////////////////////////////////////////////////////
 
 //TODO - liczne podejrzane bloki znaków z komentarzami w pozostałych plikach projektu!!!
 
-//PARAMETRY MODELU
+// PARAMETRY MODELU
 int side=200; ///< DŁUGOŚĆ BOKU ŚWIATA
 String modelName="ABMEpidemia"; ///< Nazwa modelu, np. dla plików wyjściowych
 float density=0.66; ///< główny MERYTORYCZNY parametr modelu
 
-World TheWorld=new World(side);///< INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
+World TheWorld=new World(side); ///< INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
 
 //Inne parametry symulacji jako final - coś w rodzaju stałych ;-)
 final int Duration=7;   ///< Czas trwania infekcji!
@@ -28,19 +27,19 @@ final int Death=100;     ///< Oznaczenie zmarłego
                               
 final float PDeath=0.015;     ///< Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
-//STATYSTYKI LICZONE W TRAKCIE SYMULACJI
+// STATYSTYKI LICZONE W TRAKCIE SYMULACJI
 int liveCount=0;        ///< Ile aktualnie żywych
 
 int  sumInfected=0;     ///< Zachorowanie
 int sumRecovered=0;     ///< Wyzdrowienia
 int     sumDeath=0;     ///< Ci co umarli
 
-//HISTORIE DO WYŚWIETLANIA
+// HISTORIE DO WYŚWIETLANIA
 FloatList deaths=new FloatList(); ///< Historia śmierci 
 FloatList newcas=new FloatList(); ///< Historia nowych zachorowań
 FloatList  cured=new FloatList(); ///< Historia wyleczeń
 
-//PARAMETRY WIZUALIZACJI, STATYSTYKI ITP.
+// PARAMETRY WIZUALIZACJI, STATYSTYKI ITP.
 int cwidth=3; ///< DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
               ///WARTOSC NADANA TU JEST TYLKO WSTĘPNA
 int STATUSHEIGH=150; ///< WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
@@ -55,42 +54,42 @@ int fontHeight=16; ///< Wysokość napisów (działa tylko w Processingu, ale 16
 
 void setup()
 {
-  //GRAFIKA
-  textSize(fontHeight); //Same size as default for Processing2C, where textSize function does not work.
-  size(1200,750);//NIESTETY TU MOGĄ BYĆ TYLKO WARTOŚCI PODANE LITERALNIE CZYLI "LITERAŁY"!!!
-  noSmooth();   //Znacząco przyśpiesza wizualizacje
+  // GRAFIKA
+  textSize(fontHeight); // Same size as default for Processing2C, where textSize function does not work.
+  size(1200,750); // NIESTETY TU MOGĄ BYĆ TYLKO WARTOŚCI PODANE LITERALNIE CZYLI "LITERAŁY"!!!
+  noSmooth();     // Znacząco przyśpiesza wizualizacje
   frameRate(FRAMEFREQ);
   background(255,255,200);
   strokeWeight(2);
-  //randomSeed(-1013);//Zasianie generatora gdy chcemy mieć powtarzalny przebieg np. 107 albo 1013
+  //randomSeed(-1013); // Zasianie generatora gdy chcemy mieć powtarzalny przebieg np. 107 albo 1013
   
-  //INICJALIZACJA MODELU I (ewentualnie) STATYSTYK
+  // INICJALIZACJA MODELU I (ewentualnie) STATYSTYK
   initializeModel(TheWorld);//DOKONCZENIE INICJALIZACJI ŚWIATA
   //initializeStats();      //ODKOMENTOWAĆ JEŚLI UŻYWAMY STATYSTYK
   //doStatistics(TheWorld); //J.W.
   
-  //OBLICZAMY WYMAGANY ROZMIAR OKNA DLA funkcji size 
+  // OBLICZAMY WYMAGANY ROZMIAR OKNA DLA funkcji size 
   println(modelName+": REQUIRED SIZE OF PAINTING AREA IS "
           +(cwidth*side)+"x"+(cwidth*side+STATUSHEIGH));
-  cwidth=(height-STATUSHEIGH)/side;//DOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
+  cwidth=(height-STATUSHEIGH) / side; //DOPASOWUJEMY ROZMIAR KOMÓREK DO OKNA JAKIE JEST
   
-  //INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo.pde)
+  // INICJALIZACJA ZAPISU FILMU  (jeśli używamy RTMVideo.pde)
   //if(WITH_VIDEO) 
   //{ 
   //  initVideoExport(this,modelName+".mp4",FRAMEFREQ);
   //  FirstVideoFrame();
   //}
   
-  //INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup( )
-  println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
-  visualizeModel(TheWorld);//PIERWSZA PO INICJALIZACJI WIZUALIZACJA ŚWIATA
+  // INFORMACJE KONSOLOWE NA KONIEC FUNKCJI setup( )
+  println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height); //-myMenu.bounds.height???
+  visualizeModel(TheWorld); //PIERWSZA PO INICJALIZACJI WIZUALIZACJA ŚWIATA
   
   //if(!simulationRun) //WYMAGA MODUŁU RTMEvents.pde
   //  println("PRESS 'r' or 'ESC' to start simulation");
   //else
   //  println("PRESS 's' or 'ESC' to pause simulation");
   
-  //NextVideoFrame();//PIERWSZA REALNA KLATKA FILMU (o ile używamy RTMVideo.pde)
+  //NextVideoFrame(); //PIERWSZA REALNA KLATKA FILMU (o ile używamy RTMVideo.pde)
 }
 
 void draw()
@@ -98,8 +97,8 @@ void draw()
   if(simulationRun)
   {
     modelStep(TheWorld);
-    //doStatistics(TheWorld);//ODKOMENTOWAĆ JEŚLI UŻYWAMY STATYSTYK
-  }                          //Używa wewnętrznej flagi określajacej czy log został otwarty
+    //doStatistics(TheWorld); //ODKOMENTOWAĆ JEŚLI UŻYWAMY STATYSTYK
+  }                           //Używa wewnętrznej flagi określajacej czy log został otwarty
   
   writeStatusLine();
   
@@ -112,12 +111,12 @@ void draw()
 
 }
 
-void writeStatusLine() ///Ta nazwa musi być znana globalnie
+void writeStatusLine() ///< Ta nazwa musi być znana globalnie
 {
   fill(64);rect(0,side*cwidth,width,STATUSHEIGH);fill(128);
-  histogram(TheWorld.agents,0,height-fontHeight-fontHeight/2,STATUSHEIGH-fontHeight-fontHeight/2);//Histogram wg. odporności  
+  histogram(TheWorld.agents,0,height-fontHeight-fontHeight/2,STATUSHEIGH-fontHeight-fontHeight/2); //Histogram wg. odporności  
    
-  //Legenda i historie trzech zmiennych dziennych każda w swojej skali
+  // Legenda i historie trzech zmiennych dziennych każda w swojej skali
   stroke(0,0,255);fill(0,0,200);text("newly infected",300,height-fontHeight);
   //timeline(newcas,200,height,STATUSHEIGH-fontHeight,false);
   stroke(255,0,0);fill(200,0,0);text("newly died",300,height-fontHeight*2);
@@ -125,14 +124,14 @@ void writeStatusLine() ///Ta nazwa musi być znana globalnie
   stroke(0,255,0);fill(0,200,0);text("newly healed",300,height-fontHeight*3);
   //timeline(cured, 200,height,STATUSHEIGH-fontHeight,false);
   
-  //Historie trzech zmiennych we wspólnej skali
-  fill(0,128,255);//Tylko kolor napisów tu możemy ustalić
+  // Historie trzech zmiennych we wspólnej skali
+  fill(0,128,255); //Tylko kolor napisów tu możemy ustalić
   timeline(newcas,deaths,cured, 200,height,STATUSHEIGH-fontHeight,false,
            color(0,0,255),color(255,0,0),color(0,255,0));
   
   fill(128);noStroke();
   textAlign(CENTER, TOP);
-  text("Still Alive:"+liveCount+" Sum of infected:"+sumInfected+" sum of healed:"+sumRecovered+" sum of dead:"+sumDeath+"     ",width/2,side*cwidth);//Miejce dla NAJWAŻNIEJSZYCH STATYSTYK
+  text("Still Alive:"+liveCount+" Sum of infected:"+sumInfected+" sum of healed:"+sumRecovered+" sum of dead:"+sumDeath+"     ",width/2,side*cwidth); //Miejce dla NAJWAŻNIEJSZYCH STATYSTYK
   println("ST:"+StepCounter+"\tZ\t"+sumInfected+"\t"+newcas.get(newcas.size()-1)
                            +"\tW\t"+sumRecovered+"\t"+cured.get(cured.size()-1)
                            +"\tU\t"+sumDeath+"\t"+deaths.get(deaths.size()-1)

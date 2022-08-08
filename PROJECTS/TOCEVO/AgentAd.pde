@@ -1,11 +1,11 @@
-//*   Agent is a one of two central class of each ABM model
+///   Agent is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 
 class Agent {
-  char  genEat; //< Gene for probability of eating
-  char  genPan; //< Gene for probability of punishment
-  char  punished=0; //< NOT USED
-  float energy; //< Agent resources
+  char  genEat; //!< Gene for probability of eating
+  char  genPan; //!< Gene for probability of punishment
+  char  punished=0; //!< NOT USED
+  float energy; //!< Agent resources
   
   /// Information for inspection or so...
   String info()
@@ -36,7 +36,7 @@ class Agent {
   {
     energy=(int)random(maxInitialEnergyOfAgent);
     genEat=(char)(random(255));
-    genPan=usePunishment?(char)(random(255)):0;//A jeśli startujemy z małej skłonności?
+    genPan=usePunishment?(char)(random(255)):0; //A jeśli startujemy z małej skłonności?
   }
   
   /// Offspring constructor for Agent

@@ -1,26 +1,26 @@
 /// ABM model of segregation (test project for Processing2C)
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: ModelStatistics.pde
-/////////////////////////////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////////////////////////
 // Simulation have to collect and write down statistics from every step
-/////////////////////////////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////////////////////////
 PrintWriter outstat;
 
-void initializeStats() { ///
+void initializeStats() { ///< Need to be global!
   String FileName=modelName+="_s"+side+"d"+density+"i"+Number_of_identities
                            +"_"+year()+'.'+nf(month(),2)+'.'+nf(day(),2)+'.'+nf(hour(),2)+'.'+nf(minute(),2)+'.'+nf(second(),2)+'.'+millis();
   outstat=createWriter(FileName+".out");
-  outstat.println("$STEP\tAlive\tStress\t");//<-- complete the header fields!
+  outstat.println("$STEP\tAlive\tStress\t"); //<-- complete the header fields!
 }
 
 float meanStress=0;
 int   liveCount=0;
 
-void doStatistics(World world) { ///
+void doStatistics(World world) { ///< Need to be global!
   doStatisticsOnAgents(world.agents);
 }
 
-void doStatisticsOnAgents(Agent[] agents) {  ///
+void doStatisticsOnAgents(Agent[] agents) {  ///< Need to be global!
   Agent curra;
   double summ=0;
   liveCount=0;
@@ -44,7 +44,7 @@ void doStatisticsOnAgents(Agent[] agents) {  ///
    //outstat should be closed in exit() --> see Exit.pde
 }
 
-void doStatisticsOnAgents(Agent[][] agents) {  ///
+void doStatisticsOnAgents(Agent[][] agents) { ///< Need to be global!
   Agent curra;
   double summ=0;
   liveCount=0;
@@ -69,6 +69,6 @@ void doStatisticsOnAgents(Agent[][] agents) {  ///
    //outstat should be closed in exit() --> see Exit.pde
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS LOG TEMPLATE
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////

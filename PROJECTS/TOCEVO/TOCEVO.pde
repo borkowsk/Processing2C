@@ -1,18 +1,18 @@
-//*   "TragedyOfCommons" AGENT BASE EVOLUTIONARY MODEL 
-//*   utilized 2D discrete geometry
-//*   implemented by Wojciech Borkowski
+///   "TragedyOfCommons" AGENT BASE EVOLUTIONARY MODEL 
+///   utilized 2D discrete geometry
+///   implemented by @author Wojciech Borkowski
 //*///////////////////////////////////////////////////////////////////////////////////////
 
-//Model parameters
+// Model parameters
 int side=200;                 ///< side of main table: 20,50,100,200,400
 String modelName="TOC1.0_";   ///< name of the model used for producing file names of outputs
 
-float treesDensity=0.250;     ///<
+float treesDensity=0.250;     ///< ???
 float treesR=1.015;           ///< from 1..1.1 !
 float agentsDensity=0.005;    ///< Initial density of agents
 
 boolean usePunishment=true;   ///< Punishment swith off/on
-boolean enableKilling=false;  ///<
+boolean enableKilling=false;  ///< ???
 //boolean symPunishment=true; ///< Punishment genes defines tolerance window for others behavior
 char   punishmentTime=20;     ///< How long punished agent is paralysed
 
@@ -21,29 +21,29 @@ float maxStock=costOfStep*50; ///< maximal stock per agent. The storage of unuse
 float maxInitialEnergyOfAgent=costOfStep*50;    ///<
 float pOffspring=0.05;        ///< How often agent WANTs split into 2 agents
 
-World TheWorld=new World(side);///< Made here, but also will be completed inside setup()
+World TheWorld=new World(side); ///< Made here, but also will be completed inside setup()
 
-//Parameters of visualisation etc...
-int cwidth=8;                   ///<size of cell
-int STATUSHEIGH=40;             ///<
+// Parameters of visualisation etc...
+int cwidth=8;                   ///< size of cell
+int STATUSHEIGH=40;             ///< ???
 int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
-int FRAMEFREQ=1000;             ///<
-boolean WITH_NEW_DEL_LOG=false; ///<
+int FRAMEFREQ=1000;             ///< ???
+boolean WITH_NEW_DEL_LOG=false; ///< ???
 /*_OnlyProcessingBlockBegin*/
-boolean WITH_VIDEO=false;       ///<
+boolean WITH_VIDEO=false;       ///< ???
 /*_OnlyProcessingBlockEnd*/
 boolean simulationRun=true;     ///< Start/stop flag
 
 void setup()
 {
-  //Graphics
+  // Graphics
   size(850,840);
-  noSmooth();//Trochę szybciej
+  noSmooth(); //Trochę szybciej
   background(0);
   strokeWeight(2);
   frameRate(FRAMEFREQ);
   
-  //Model
+  // Model
   initializeModel(TheWorld);
   initializeStats();
   doStatistics(TheWorld);
@@ -52,8 +52,8 @@ void setup()
   println("REQUIRED SIZE OF PAINTING AREA IS "+(cwidth*side)+"x"+(cwidth*side+STATUSHEIGH));
   cwidth=(height-STATUSHEIGH)/side;
     
-  //Optionals:
-  //setupMenu();//ISSUE: Size of MenuBar is not counted by Processing!
+  // Optionals:
+  //setupMenu(); //ISSUE: Size of MenuBar is not counted by Processing!
   //...
   
   /*_OnlyProcessingBlockBegin*/
@@ -64,7 +64,7 @@ void setup()
   }
   /*_OnlyProcessingBlockEnd*/
   
-  //Finishing setup stage
+  // Finishing setup stage
   println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
   visualizeModel(TheWorld);//First time visualisation
   
@@ -74,7 +74,7 @@ void setup()
     println("PRESS 's' or 'ESC' to pause simulation");
     
 /*_OnlyProcessingBlockBegin*/   
-  NextVideoFrame();//It utilise inside variable to check if is enabled
+  NextVideoFrame(); //It utilise inside variable to check if is enabled
 /*_OnlyProcessingBlockEnd*/  
 }
 
@@ -92,11 +92,11 @@ void draw()
     visualizeModel(TheWorld);
     writeStatusLine();
     
-    //WARUNEK STOPU
+    // WARUNEK STOPU
     if(liveAgentsCount==0) 
-            simulationRun=false;//stop when agents are extinct
+            simulationRun=false; //stop when agents are extinct
 /*_OnlyProcessingBlockBegin*/    
-    NextVideoFrame();//It utilise inside variable to check if is enabled
+    NextVideoFrame(); //It utilise inside variable to check if is enabled
 /*_OnlyProcessingBlockEnd*/  
   }
 
@@ -119,5 +119,5 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
 }
 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//*  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
+//  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////

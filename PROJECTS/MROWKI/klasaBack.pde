@@ -2,7 +2,8 @@
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: klasaBack.pde
 /////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
+
+//++++++++++++ ZMIENNE ++++++++++++
 class Back {
   float id;  //jaki rodzaj nawierzchni
   float p_follow;  //ile feromonu jest, jak chętnie będą iść
@@ -26,13 +27,13 @@ class Back {
   //++++++++++++ FUNKCJE WYKONAWCZE ++++++++++++
 
 
-  void makeAsound(int x, int y){//dźwięk zadaje kolor tła i kierunek, skąd dobiega
+  void makeAsound(int x, int y){ //dźwięk zadaje kolor tła i kierunek, skąd dobiega
     sound = 1;
     where[0] = x;
     where[1] = y;
   }
 
-  void diss() {//poza bazowym prawdopodobieństwem, feromon zawsze się zmiejsza z czasem
+  void diss() { //poza bazowym prawdopodobieństwem, feromon zawsze się zmiejsza z czasem
     if (p_follow>pe) p_follow-=disp;
   }
 
@@ -40,11 +41,11 @@ class Back {
     if (sound>0) sound-=quiet;
   }
 
-  void trail(float amount) {//wzmocnienie następuje, gdy szlak nie jest już przepełniony
+  void trail(float amount) { //wzmocnienie następuje, gdy szlak nie jest już przepełniony
     if (p_follow<0.95) p_follow+=amount;
   }
 
-  void takeFood() {//funkcja pokazująca zabranie jedzenia z miejsca przez mrówkę 
+  void takeFood() { //funkcja pokazująca zabranie jedzenia z miejsca przez mrówkę 
     if (id == 2) amountFood-=1;
     if (amountFood<=0) id = 0;
   }

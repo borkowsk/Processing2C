@@ -1,42 +1,43 @@
 /// ABM model of segregation (test project for Processing2C)
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "SAKODA.pde"
-/////////////////////////////////////////////////////////////////////////////////////////
-//   Sakoda inspired AGENT BASE MODEL utilized 1D or 2D dicrete geometry
-//   implemented by Wojciech Borkowski
-/////////////////////////////////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////////////////////////
+/// Sakoda inspired AGENT BASE MODEL utilized 1D or 2D dicrete geometry
+/// implemented by Wojciech Borkowski
+//*///////////////////////////////////////////////////////////////////////////////////////
 
-//Model parameters
-int side=100;/// side of main table
-String modelName="ABMSakoda";///
-float density=0.55;///
+// Model parameters
+String modelName="ABMSakoda"; ///< Name of the model
+int side=100; ///< side of main table
+float density=0.55; ///<initial density of agents
 
-World TheWorld=new World(side); ///... but also will be initialised inside setup function
+World TheWorld=new World(side); ///<  will be initialised inside setup function
 
-//Parameters of visualisation etc...
-int cwidth=8;/// size of cell
-int STATUSHEIGH=40;///
-int STEPSperVIS=1;///
-int FRAMEFREQ=20;///
-boolean WITH_VIDEO=false;///
-boolean simulationRun=true;///Start/stop flag
+// Parameters of visualisation etc...
+int cwidth=8; ///< size of cell
+int STATUSHEIGH=40; ///<???
+int STEPSperVIS=1;  ///<???
+int FRAMEFREQ=20;   ///<???
+
+boolean WITH_VIDEO=false;   ///< Is video stream enabled?
+boolean simulationRun=true; ///<Start/stop flag
 
 void setup()
 {
-  //Graphics
+  // Graphics
   size(800,840);
   frameRate(FRAMEFREQ);
   background(255,255,200);
   strokeWeight(2);
   
-  //Model
+  // Model
   initializeModel(TheWorld);
-  initializeStats();//Wykomentowanie blokuje tworzenie pliku log
+  initializeStats(); //Wykomentowanie blokuje tworzenie pliku log
   doStatistics(TheWorld);
   
-  //Window 
+  // Window 
   println("REQUIRED SIZE OF PAINTING AREA IS "+(cwidth*side)+"x"+(cwidth*side+STATUSHEIGH));
-  cwidth=(height-STATUSHEIGH)/side;
+  cwidth=(height-STATUSHEIGH) / side;
     
   if(WITH_VIDEO) 
   {
@@ -45,14 +46,14 @@ void setup()
   }
   
   //Finishing setup stage
-  println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height);//-myMenu.bounds.height???
-  visualizeModel(TheWorld);//First time visualisation
+  println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height); //-myMenu.bounds.height???
+  visualizeModel(TheWorld); //First time visualisation
   if(!simulationRun)
     println("PRESS 'r' or 'ESC' to start simulation");
   else
     println("PRESS 's' or 'ESC' to pause simulation");
   
-  //NextVideoFrame();//It utilise inside variable to check if is enabled
+  //NextVideoFrame(); //It utilise inside variable to check if is enabled
 }
 
 void draw()
@@ -69,12 +70,12 @@ void draw()
   || StepCounter % STEPSperVIS == 0 ) //But when model is running, visualisation shoud be done from time to time
   {
     visualizeModel(TheWorld);
-    //NextVideoFrame();//It utilise inside variable to check if is enabled
+    //NextVideoFrame(); //It utilise inside variable to check if is enabled
   }
 
 }
 
-void writeStatusLine() /// Used also for stats
+void writeStatusLine() ///< Used also for stats
 {
   fill(255);rect(0,side*cwidth,width,STATUSHEIGH);
   fill(0);noStroke();
@@ -84,6 +85,6 @@ void writeStatusLine() /// Used also for stats
   text(StepCounter+")  Fps:"+ frameRate,0,side*cwidth+STATUSHEIGH-2);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
-///////////////////////////////////////////////////////////////////////////////////////////
+//*/////////////////////////////////////////////////////////////////////////////////////////
