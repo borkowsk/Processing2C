@@ -121,6 +121,8 @@ sed 's|hex(|Processing::hex(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
 sed -E 's|abs(\s*)(\()|std::abs\1\2|g' |\
+#Math functions may appeared both in Math. and in global Processing spacename
+sed 's|std::std::|std::|g' |\
 #DIRECTIVES
 sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i' |\
