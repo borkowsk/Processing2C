@@ -1,5 +1,8 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
+
+echo -e $COLOR1"Making $COLOR2'local.h'$COLOR3" $COLERR 
+
 echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
         > local.h
 
@@ -135,8 +138,10 @@ echo "#endif" >> local.h
 #cat local.h
 #cat userclasses.sed
 
+echo -e $COLOR1"File $COLOR2'local.h'$COLOR1 prepared" $NORMCO 
+
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-06-30                   */
+#/*               PROCESSING2C  version 2022-08-16                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

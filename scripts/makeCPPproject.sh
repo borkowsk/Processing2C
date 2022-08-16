@@ -1,32 +1,48 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.19"
+Pr2CVERSION="0.2a"
 
-if [ $# -ne 0 ]; 
+if [ $# -gt 1 ]; 
 then
-   echo "No parameters expected!" 1>&2
+   echo "Only one parameter allowed!" 1>&2
+   echo "It may be 'singlesrc' or 'multisrc'" 1>&2
    exit -1
 fi
 
 #CONFIGURATION
+echo -e $COLOR4"\nConfiguration directories:"$NORMCO
+
 export SCRIPTS=$(dirname "$0")
 export SOURCES=`pwd`
 export PROJECT=$(basename "$SOURCES")
 source $SCRIPTS/config.dat
 
-echo -e $COLOR2"\nDirectories:"$NORMCO
-echo -e PROC2C $COLOR1"      $PROC2C"$NORMCO
+echo -e WBRTM  $COLOR1"      $WBRTM"$NORMCO
 echo -e PROC2DIR $COLOR1"    $PROC2DIR"$NORMCO
 echo -e SCRIPTS $COLOR1"     $SCRIPTS"$NORMCO
 echo -e WBSYMSHELL $COLOR1"  $SYMSHELL"$NORMCO
-echo -e WBRTM $COLOR1"       $WBRTM"$NORMCO
+
 echo -e PROJECT $COLOR1"     $PROJECT"$NORMCO
 echo -e SOURCES $COLOR1"     $SOURCES"$NORMCO
 
+#SINGLE OR MULTISOURCE?
+echo -e $COLOR4"\nChecking single/multi sources mode:"$NORMCO
+export NUMBER_OF_PDES=`ls -1 *.pde | grep -v exit | wc -l`
+echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
+        $NUMBER_OF_PDES  $NORMCO
+        
+export SOURCEMODE=$1
+if [[ $SOURCEMODE != "multisrc" ]]
+then
+     SOURCEMODE="singlesrc"
+fi
+
+echo -e $COLOR3"Project will be translated in mode:$COLOR2 $SOURCEMODE"$NORMCO
 
 #CHECK SOURCE
-echo -e "\nCHECKING NAMES..."
+echo -e $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
+
 echo -e "\nAt least setup() or draw() function expected in *.pde files:"
 egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
 
@@ -35,37 +51,48 @@ egrep --color -Hn '(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed
 
 echo -e "\nThe following lines may hide library symbols..."
 egrep --color -Hn -f $SCRIPTS/symbols_pattern.grep *.pde
-echo -e "\nCHECKING NAMES FINISHED\n"
+#echo -e "\nCHECKING NAMES FINISHED\n"
 
-echo "Translating project..."
+
+
 #GET GLOBAL SYMBOLS
+echo -e $COLOR4"\nSERCHING GLOBAL SYMBOLS:"$NORMCO
 $SCRIPTS/prepare_local_h.sh
 
+#CHECK OUTPUT DIRECTORIES
+echo -e $COLOR4"\nCHECKING OUTPUT DIRECTORIES:"$NORMCO
 #https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
 export SRCDIR="./cppsrc/"    
 if [ -d $SRCDIR ]; then
    echo -e $COLOR1"Directory$COLOR2 $SRCDIR $COLOR1 already exists."$NORMCO
 else
    echo -e $COLOR1"Folder$COLOR2 $SRCDIR $COLOR1 does not exist. Will be created"$NORMCO
-   mkdir -p $SRCDIR  # -p, --parents     no error if existing, make parent directories as needed
+   echo -e $COLERR `mkdir -p $SRCDIR`$NORMCO  # -p, --parents     no error if existing, make parent directories as needed
 fi
 
 if [ -d "${SRCDIR}toolsouts/" ]; then
-   echo -e $COLOR1"Directory$COLOR2 $SRCDIR/toolsouts/$COLOR1 already exists."
-   echo -e $COLOR2
-   rm   ${SRCDIR}toolsouts/*
-   echo -e $NORMCO
+   echo -e $COLOR1"Directory$COLOR2 $SRCDIR/toolsouts/$COLOR1 already exists."$COLOR2
+   echo -e $COLERR `rm   ${SRCDIR}toolsouts/*`$NORMCO
 else
    echo -e $COLOR1"Folder$COLOR2 ${SRCDIR}toolsouts/$COLOR1 does not exist. Will be created"$COLOR2
-   mkdir -p "${SRCDIR}toolsouts/" 
-   echo -e $NORMCO
+   echo -e $COLERR `mkdir -p "${SRCDIR}toolsouts/" `$NORMCO
 fi
 
-mv "$SOURCES/local.h" "$SOURCES/cppsrc/"
+echo -e $COLERR `mv "$SOURCES/local.h" "$SOURCES/cppsrc/"`$NORMCO
+
+#REAL TRANSLATION
+echo -e $COLOR4"DOING REAL TRANSLATION:"$NORMCO
 
 #Preparing C++ source files
 
+if [[ $SOURCEMODE == "multisrc" ]]
+then
+     echo -e $COLERR"$SOURCEMODE required but not implemented yet!"$NORMCO
+     exit -2
+fi
+
 echo "/*All sources in one file?*/" > ./cppsrc/project_at_once.cpp
+
 echo "#include \"processing_consts.hpp\"" >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\"" >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\"" >> ./cppsrc/project_at_once.cpp
@@ -88,7 +115,7 @@ done
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 echo -e "\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
-cmake_minimum_required(VERSION 2.9)
+cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project($PROJECT)
@@ -167,10 +194,10 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"
 #     )
 EOF
 
-echo -e "\nProject$COLOR1 ${PROJECT}$NORMCO DONE\n\n"
+echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-06-02                   */
+#/*               PROCESSING2C  version 2022-08-16                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

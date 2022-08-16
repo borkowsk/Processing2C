@@ -1,4 +1,4 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
+//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
 //Source: ALIGNMENT.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -133,5 +133,5 @@ void processing_window::draw()
   cross(width-1,height-1);
 }
 
-//../../scripts did it
+///data/wb/SCC/public/Processing2C/scripts did it
 

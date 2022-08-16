@@ -19,7 +19,7 @@ cmake_minimum_required(VERSION 3.0)
 project(PROCESSING2C_EXAMPLES)
 #LIBRARIES
 add_subdirectory( "${SYMSHELL}" 
-                  "${SYMSHELL}" ) 
+                  "${SYMSHELL}" )
 add_subdirectory( "../lib/" 
                   "../lib/" )
 add_subdirectory( "../tools/" 

@@ -1,17 +1,25 @@
 # Prerequisites
 *.d
 *.*~
+*.zip
+*.txt
+*.log
+*.tmp
+
+#CMakeLists.txt
+#lista.txt
+#clean_list.txt
+#headers.tmp
+#tools.log
+
 config.dat
-lista.txt
-headers.tmp
-tools.log
-CMakeLists.txt
 
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
+scripts/tools
 
 # Precompiled Headers
 *.gch
@@ -61,3 +69,4 @@ docs/latex/
 #produced graphics
 *.png
 *.tif
+
