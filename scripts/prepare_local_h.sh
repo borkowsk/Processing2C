@@ -14,18 +14,18 @@ echo -e "\n\n//All classes from Processing files" >> local.h
 egrep -h '^\s*(class|abstract\s+class|interface|enum)\s+(\w+)' *.pde |\
 sed 's|abstract |/*abstract*/|g' |\
 sed 's|interface|/*interface*/class|g' |\
-sed 's/  / /g' | tee headers.tmp |\
-sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g' | LC_COLLATE=C sort -i >> local.h
+sed 's/  / /g' | LC_COLLATE=C sort -i | uniq | tee headers.tmp |\
+sed -E 's|class(\s+)(\w+)|&\; typedef Processing::ptr<\2> p\2; //|g'  >> local.h
 #see: https://superuser.com/questions/178171/gnu-sort-by-case-sensitive
 #see: https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm
 
-#sed program for replacing user defined classes
-#egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's|(\w+)|s/(&)(\\s+)(\\w+)/bla/g|'
+#sed program for replacing user defined classes & enums
 
 #... inside declarations
 echo "s/([\,\(\s*]*\s*)(" > userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
- # (\&*)(\s+) -> \/\*_reference\*\/ : & powinien pojawiać tylko w wyniku rozwinięcia dyrektywy, więc po wszystkim innym
+
+# (\&*)(\s+) -> \/\*_reference\*\/ : & powinien pojawiać tylko w wyniku rozwinięcia dyrektywy, więc po wszystkim innym
 echo 'FloatList|IntList|StringList|FloatDict|IntDict|StringDict|Object)(\s*\/\*_reference\*\/\s*|\s+)([A-Za-z1-9_]+)\s*([:;,\)\(\=])/\1p\2\3\4\5/g'  >> userclasses.sed 
 #... predefined JAVA templates
 echo -e "_@ENTER_" >> userclasses.sed
@@ -38,20 +38,21 @@ echo "s/([,<])(" >> userclasses.sed
 egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
 echo 'Object)>/\1p\2>/g' >> userclasses.sed
 
-#TO DZIAŁA NIE TAK JAK BYM CHCIAŁ TODO!!!
-#echo "_@ENTER_" >> userclasses.sed
-#echo "s/\<(" >> userclasses.sed
-#egrep -o 'class(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
-#echo "bulba)\>/<p\1>/g" >> userclasses.sed
-
+#Class/enum name with dot. Eg. String. MyClass.  --> String:: MyClass::
+echo -e "_@ENTER_" >> userclasses.sed
+#[^a-zA-Z\d] czyli nie znak alfanumeryczny gwarantuje, że nazwy klas pasują tylko jako całe wyrazy
+echo "s/([^a-zA-Z\d])(" >> userclasses.sed
+egrep -o '(class|enum)(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
+#awaryjnie - tylko enums
+#egrep -o 'enum(\s+)(\w+)' headers.tmp | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
+echo "Object)\.(\w)/\1\2\:\:\3/g" >> userclasses.sed
 
 #https://stackoverflow.com/questions/1251999/how-can-i-replace-a-newline-n-using-sed
 sed -i ':a;N;$!ba;s/\n//g' userclasses.sed 
 sed -i "s/_@ENTER_/\n/g" userclasses.sed
 
-#TEMPORARY
-echo "s/<(Link)>/<p\1>/g"  >> userclasses.sed
-echo "s/(aNetworkType|aCriterion)\./\1\:\:/g" >> userclasses.sed
+#TEMPORARY - problem enum'ów inaczej rozwiązany
+#echo "s/(NetworkTopology|Criterion)\./\1\:\:/g" >> userclasses.sed
 
 #Stałe czyli 'finals'
 echo -e "\n//All global finals (consts) from Processing files" >> local.h
@@ -141,7 +142,7 @@ echo "#endif" >> local.h
 echo -e $COLOR1"File $COLOR2'local.h'$COLOR1 prepared" $NORMCO 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-08-16                   */
+#/*               PROCESSING2C  version 2022-09-05                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

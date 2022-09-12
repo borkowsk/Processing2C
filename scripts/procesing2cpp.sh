@@ -174,16 +174,17 @@ sed -E 's|\/\*_reference\*\/|\& |g'|\
 sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
-#Może sprawiać kłopoty w dłuższych konkatenacjach tekstów
-sed -E 's/"([^"]*)\.([^"]+)"/"\1@@@\2"/g' |\
+#Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:
+# " bla.bla " obiekt.składowa " bla.bla " - nie sposób odróżnić czy obiekt.składowa jest wewnatrz 
+#czy na zewnątrz cudzysłowu. I tak więc trzeba cudzysłowy dzielić na pomiędzy liniami.
+sed -E 's/"([^"]*)\.([^"]+)"/"\1@@@\2"/' |\
 #WŁAŚCIWA ZAMIANA 
-#sed -E  's/^([^#]*)([_a-zA-Z][_a-zA-Z0-9]*)\.([_a-zA-Z][_a-zA-Z0-9]*)/\1\2->\3/g' |\ #dawna próba uniknięcia ingerencji w dyrektywy kompilatora (#)
 #sed -E  's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.|\1->|g' |\ #TO PSUJE KOŃCE ZDAŃ W KOMENTARZACH!!!
-# patern <.><white><ident> też jest niedozwolony bo nie do odróżnienia od końca zdania w komentarzu!
+# pattern <.><white><ident> też jest niedozwolony bo nie do odróżnienia od końca zdania w komentarzu!
 sed -E   's|([^.])\.([_a-zA-Z][_a-zA-Z0-9]*)|\1->\2|g' |\
 sed -E   's|\](\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|]->\2|g' |\
 sed -E   's|\)(\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|)->\2|g' |\
-sed -E   's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.([_a-zA-Z][_a-zA-Z0-9]*)|\1->\3|g' |\
+sed -E   's|([_a-zA-Z][_a-zA-Z0-9]*)\s*(\.)\s*([_a-zA-Z][_a-zA-Z0-9]*)|\1->\3|g' |\
 #Odbezpieczenie kropek w cudzysłowach
 sed -E 's/\@\@\@/./g' |\
 #jeśli przypadkiem któryś z typów podstawowych zostanie potraktowany jako object w <> szablonu:
@@ -197,7 +198,7 @@ echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-06-02                   */
+#/*               PROCESSING2C  version 2022-09-12                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
