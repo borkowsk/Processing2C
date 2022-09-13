@@ -14,13 +14,13 @@ class World; typedef Processing::ptr<World> pWorld; // {
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		worozmiar ;///< = sizew/ws;  ile pól jest na świecie
-extern	float 		density ;///< = 0.005;  ewentualna gęstośc jedzenia rozłożena
-extern	int 		xNest ;///< = int(worozmiar/7);  współrzędne gniazda i jego rozmiar
-extern	int 		yNest ;///< = int(worozmiar/7);  
-extern	int 		siNest ;///< = 3;                
-extern	int 		foodSupply;  /// początkowa ilość jedzenia w gnieździe
-extern	int 		ileWsumieMrowek ;///< = sizew/10;   maksymalna dopuszczalna liczba mrówek
+extern	int 		worozmiar ;///< = sizew/ws;  <ile pól jest na świecie
+extern	float 		density ;///< = 0.005;  <ewentualna gęstośc jedzenia rozłożena
+extern	int 		xNest ;///< = int(worozmiar/7);  <współrzędne gniazda i jego rozmiar
+extern	int 		yNest ;///< = int(worozmiar/7);  <???
+extern	int 		siNest ;///< = 3;                <???
+extern	int 		foodSupply;  ///< początkowa ilość jedzenia w gnieździe
+extern	int 		ileWsumieMrowek ;///< = sizew/10;  < maksymalna dopuszczalna liczba mrówek
 extern	PrintWriter 		output; ///< Globalny output
 extern	PrintWriter 		stan;   ///< stany
 extern	pWorld 		world;        ///< ŚWIAT MRÓWEK

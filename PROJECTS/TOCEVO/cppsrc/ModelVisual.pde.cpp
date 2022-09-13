@@ -11,10 +11,10 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*   World full of agents need method of visualisation on screen/window
+///   World full of agents need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeAgents(smatrix<pAgent> agents) ///<
+void visualizeAgents(smatrix<pAgent> agents) ///< Need to be global!
 {
   double maxSt=std::pow(maxStock,1/3.0); //println(maxSt);
   pAgent curra;
@@ -35,9 +35,9 @@ void visualizeAgents(smatrix<pAgent> agents) ///<
         else 
             noStroke();
         
-        float radius=(float)(cwidth*(std::pow(min(curra->energy,maxStock),1/3.0)/maxSt));  
+        float radius=(float)(cwidth*(std::pow(min(curra->energy,maxStock),1/3.0) / maxSt));  
 
-        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radius);//'a' is vertical! 
+        ellipse(b*cwidth+cwidth/2,a*cwidth+cwidth/2,radius,radius); //'a' is vertical! 
       }
       else
       {
@@ -51,7 +51,7 @@ void visualizeAgents(smatrix<pAgent> agents) ///<
 }
 
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts did it
 

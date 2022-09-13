@@ -14,27 +14,27 @@ using namespace Processing;
 //==================================================================================
 
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: aSimpleHistory->pde
-/////////////////////////////////////////////////////////////////////////////////////////
-// Wykres zmian w czasie
-///////////////////////////////////////////////////////////////
+//*///////////////////////////////////////////////////////////////////
+/// Wykres zmian w czasie
+//*///////////////////////////////////////////////////////////////////
 
 //void timeline(pFloatList data,             //dane do wykresu
 //              float startX, float startY, //Położenie początku
 //              float height,               //wysokość
 //              bool logaritm);          //czy logarytmować dane
               
-void timeline(pFloatList data,float startX, float startY, float height,bool logaritm)/// Dla C++ ta deklaracja musi być umieszczona w HPP
+void timeline(pFloatList data,float startX, float startY, float height,bool logaritm) /// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-FLT_MAX;
-  int     whMax=-1;//Gdzie jest maksimum
+  int     whMax=-1; //Gdzie jest maksimum
   float   Min=FLT_MAX;
-  int     whMin=-1;//Gdzie jest minimum
+  int     whMin=-1; //Gdzie jest minimum
   int     N=data->size(); //Ile pomiarów
-  float  lenght=width-startX;//Ile miejsca na wykres
+  float  lenght=width-startX; //Ile miejsca na wykres
   
-  //Szukanie minimum i maksimum
+  // Szukanie minimum i maksimum
   for(int t=0;t<N;t++)
   {
     float val=data->get(t);
@@ -48,11 +48,11 @@ void timeline(pFloatList data,float startX, float startY, float height,bool loga
   
   if(logaritm)
   {
-    Max=(float)std::log10(Max+1);//+1 to takie oszustwo 
-    Min=(float)std::log10(Min+1);//żeby 0 nie wywalało obliczeń
+    Max=(float)std::log10(Max+1); //+1 to takie oszustwo 
+    Min=(float)std::log10(Min+1); //żeby 0 nie wywalało obliczeń
   }
   
-  //Właściwe rysowanie
+  // Właściwe rysowanie
   float wid=lenght/N; //println(width,N,wid,min,max);DEBUG
   float oldy=-FLT_MIN;
   for(int t=0;t<N;t++)
@@ -78,22 +78,22 @@ void timeline(pFloatList data,float startX, float startY, float height,bool loga
     {
       textAlign(LEFT,BOTTOM);
       String out=String("")+data->get(t);
-      text(out,startX,startY-val);//Na osi X
-      text(out,startX+x,startY-val);//Przy danych
+      text(out,startX,startY-val); //Na osi X
+      text(out,startX+x,startY-val); //Przy danych
     }
   }
 }
 
-//A jakby miało być więcej zmiennych? UWAGA!:  wspólna skala!!!
-//Wtedy np. tak jak poniżej, co jest wersją bardzo prymitywną, ale będzie działać :-D
-void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c)/// Dla C++ ta deklaracja musi być umieszczona w HPP
+/// A jakby miało być więcej zmiennych? UWAGA!:  wspólna skala!!!
+/// Wtedy np->tak jak poniżej, co jest wersją bardzo prymitywną, ale będzie działać :-D
+void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c) /// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
-  float   Max=-FLT_MAX;//Tu będzie prawdziwa wartość
-  float   gMax=0;//A tu przeliczona dla grafiki
-  float   Min=FLT_MAX;//J->w.
-  float   gMin=0;//Analogicznie j->w.
+  float   Max=-FLT_MAX; //Tu będzie prawdziwa wartość
+  float   gMax=0; //A tu przeliczona dla grafiki
+  float   Min=FLT_MAX; //J->w.
+  float   gMin=0; //Analogicznie j->w.
   int     N1=data_a->size(),N2=data_b->size(),N3=data_c->size(); //Ile pomiarów
-  float   lenght=width-startX;//Ile miejsca na wykres
+  float   lenght=width-startX; //Ile miejsca na wykres
   
   //Szukanie minimum i maksimum
   for(int t=0;t<N1;t++)
@@ -119,8 +119,8 @@ void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX
   
   if(logaritm)
   {
-    gMax=(float)std::log10(Max+1);//+1 to takie oszustwo 
-    gMin=(float)std::log10(Min+1);//żeby 0 nie wywalało obliczeń
+    gMax=(float)std::log10(Max+1); //+1 to takie oszustwo 
+    gMin=(float)std::log10(Min+1); //żeby 0 nie wywalało obliczeń
   }
   else
   {
@@ -128,10 +128,10 @@ void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX
     gMin=Min;
   }
   
-  //Właściwe rysowanie
-  float wid=lenght/max(N1,N2,N3);//Najdłuższy decyduje
+  // Właściwe rysowanie
+  float wid=lenght/max(N1,N2,N3); //Najdłuższy decyduje
   float oldy=-FLT_MIN;
-  stroke(color_a);//fill(color_a);
+  stroke(color_a); //fill(color_a);
   for(int t=0;t<N1;t++)
   {
     float val=data_a->get(t);
@@ -151,7 +151,7 @@ void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX
   }
 
   oldy=-FLT_MIN;
-  stroke(color_b);//fill(color_b);
+  stroke(color_b); //fill(color_b);
   for(int t=0;t<N2;t++)
   {
     float val=data_b->get(t);
@@ -171,7 +171,7 @@ void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX
   }
   
   oldy=-FLT_MIN;
-  stroke(color_c);//fill(color_c);
+  stroke(color_c); //fill(color_c);
   for(int t=0;t<N3;t++)
   {
     float val=data_c->get(t);
@@ -190,22 +190,25 @@ void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX
     oldy=val;
   }
   
-  //Min i max są wspólne
+  // Min i max są wspólne
   textAlign(LEFT,BOTTOM);
-  text(String("")+Max,startX,startY-height);//Na osi X
-  text(String("")+Min,startX,startY);//Na osi X
+  text(String("")+Max,startX,startY-height); //Na osi X
+  text(String("")+Min,startX,startY); //Na osi X
 }
 
-
-void dottedLine(float x1, float y1, float x2, float y2, float steps) ///Potrzebna do wizualizacji
-//https://processing->org/discourse/beta/num_1219255354->html
+/// https://processing->org/discourse/beta/num_1219255354->html
+void dottedLine(float x1, float y1, float x2, float y2, float steps) ///< Potrzebna do wizualizacji
 {
  for(int i=0; i<=steps; i++) {
-   float x = lerp(x1, x2, i/steps);//funkcja lerp jest bardzo uzyteczna :-)
+   float x = lerp(x1, x2, i/steps); //funkcja lerp jest bardzo uzyteczna :-)
    float y = lerp(y1, y2, i/steps);
-   //noStroke();ellipse(x, y,2,2);//Używanie elipsy zamiast punktu nie jest zbyt wydajne ;-)
+   //noStroke();ellipse(x, y,2,2); //Używanie elipsy zamiast punktu nie jest zbyt wydajne ;-)
    point(x,y);
  }
 } 
+
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - TOOLS
+//*//////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts did it
 

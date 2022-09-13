@@ -24,7 +24,6 @@ pHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
 pHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
 pHashMap<String,float>    mapString2Float=new HashMap<String,float>();
 pHashMap<String,String>   mapString2String=new HashMap<String,String>();
-pHashMap<String,pmyTest>   mapString2Object;
 
 class myTest: public virtual Object{
   public:
@@ -34,6 +33,8 @@ class myTest: public virtual Object{
     A=iA;B=iB;
   }
 };
+
+pHashMap<String,pmyTest>   mapString2Object=nullptr;
 
 void adding(pHashMap<String,pmyTest>   map)
 {

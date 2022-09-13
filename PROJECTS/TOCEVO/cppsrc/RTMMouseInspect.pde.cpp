@@ -11,17 +11,17 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*   Obsługa wyszukiwania obiektu po kliknięciu myszy
+///   Obsługa wyszukiwania obiektu po kliknięciu myszy
 //*/////////////////////////////////////////////////////////////////////
-int searchedX=-1;   ///<
-int searchedY=-1;   ///<
-bool Clicked=false;///<
-int selectedX=-1;   ///<
-int selectedY=-1;   ///<
-pAgent selected=nullptr;///<
+int searchedX=-1;   ///<???
+int searchedY=-1;   ///<???
+bool Clicked=false; ///<???
+int selectedX=-1;   ///<???
+int selectedY=-1;   ///<???
+pAgent selected=nullptr; ///<???
 
-//double minDist2Selec=MAX_INT;///???
-//double maxTransSelec=-MAX_INT;///???
+//double minDist2Selec=MAX_INT; ///???
+//double maxTransSelec=-MAX_INT; ///???
 
 /// Simple version of Pair returning a pair of Int
 class PairOfInt: public virtual Object{
@@ -38,9 +38,9 @@ class PairOfInt: public virtual Object{
 
 
 pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
-{ //Przeliczanie współrzędnych myszy na współrzędne komórki 
-  //Parametr jest tylko do sprawdzenie typu i ROZMIARÓW
-  //Działa o tyle o ile wizualizacja komórek startuje w punkcie 0,0
+{ // Przeliczanie współrzędnych myszy na współrzędne komórki 
+  // Parametr jest tylko do sprawdzenie typu i ROZMIARÓW
+  // Działa o tyle o ile wizualizacja komórek startuje w punkcie 0,0
   int x=mouseX/cwidth;
   int y=mouseY/cwidth;
   if(0<=y && y<agents->length
@@ -52,13 +52,13 @@ pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych m
 
 void processing_window::onMouseClicked()
 {
-  println("Mouse clicked at ",mouseX,mouseY);//DEBUG
+  println("Mouse clicked at ",mouseX,mouseY); //DEBUG
   Clicked=true;
   searchedX=mouseX;
   searchedY=mouseY; 
   
-  pPairOfInt result=findCell(TheWorld->agents);//But 1D searching is belong to you!
-  if(result!=nullptr)//Znaleziono
+  pPairOfInt result=findCell(TheWorld->agents); //But 1D searching is belong to you!
+  if(result!=nullptr) //Znaleziono
   {
     selectedX=result->a;
     selectedY=result->b;

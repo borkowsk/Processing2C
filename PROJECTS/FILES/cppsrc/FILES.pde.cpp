@@ -73,7 +73,7 @@ void processing_window::draw()
     {
       text(line,0,height);
       sarray<String> pieces = split(line,"\t"); //println(pieces->length,pieces);
-      if(pieces->length<2) //May appears eg. at the end of file!
+      if(pieces->length<2) //May appears eg->at the end of file!
         throw std::runtime_error(String("Line ")+counter+ String("th Two colums expected"));
       float x = std::stof(pieces[0]);
       float y = std::stof(pieces[1]);

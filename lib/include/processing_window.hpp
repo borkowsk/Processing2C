@@ -13,7 +13,7 @@
 #ifndef PROCESSING_WINDOW_H
 #define PROCESSING_WINDOW_H
 
-#ifndef OPTINLINE
+#ifndef OPT_INLINE
 #define OPTINLINE /* EMPTY */
 #endif
 

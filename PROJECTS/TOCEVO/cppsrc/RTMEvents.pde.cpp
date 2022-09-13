@@ -11,7 +11,7 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*    Dopasowana do modelu obsługa zdarzeń
+///    Dopasowana do modelu obsługa zdarzeń
 //*/////////////////////////////////////////////////
 
 void processing_window::onKeyPressed()

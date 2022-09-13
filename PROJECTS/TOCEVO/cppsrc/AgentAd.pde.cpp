@@ -6,20 +6,21 @@
 #include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
+#include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
 #include "project.h" //...is for you. Could be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*   Agent is a one of two central class of each ABM model
+///   Agent is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 
 class Agent: public virtual Object{
   public:
-  char16_t  genEat; //< Gene for probability of eating
-  char16_t  genPan; //< Gene for probability of punishment
-  char16_t  punished=0; //< NOT USED
-  float energy; //< Agent resources
+  char16_t  genEat; //!< Gene for probability of eating
+  char16_t  genPan; //!< Gene for probability of punishment
+  char16_t  punished=0; //!< NOT USED
+  float energy; //!< Agent resources
   
   /// Information for inspection or so...
   String info()
@@ -50,7 +51,7 @@ class Agent: public virtual Object{
   {
     energy=(int)random(maxInitialEnergyOfAgent);
     genEat=(char16_t)(random(255));
-    genPan=usePunishment?(char16_t)(random(255)):0;//A jeśli startujemy z małej skłonności?
+    genPan=usePunishment?(char16_t)(random(255)):0; //A jeśli startujemy z małej skłonności?
   }
   
   /// Offspring constructor for Agent

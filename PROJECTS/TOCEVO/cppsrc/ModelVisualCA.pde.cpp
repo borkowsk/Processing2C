@@ -10,26 +10,26 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*   World full of cells need method of visualisation on screen/window
+///   World full of cells need method of visualisation on screen/window
 //*//////////////////////////////////////////////////////////////////////////
 
-void visualizeCells(smatrix<int> cells)  ///<
+void visualizeCells(smatrix<int> cells)  ///< Need to be global!
 {
   double maximum=std::log10(MAX_INT);
   for(int a=0;a<cells->length;a++)
    for(int b=0;b<cells[a]->length;b++)
    {
-      //Colorisation
+      // Colorisation
       double val=std::log10(cells[a][b]);
       
       fill(0,(int)(val/maximum*255),0);
     
-      rect(b*cwidth,a*cwidth,cwidth,cwidth);//a is vertical!
+      rect(b*cwidth,a*cwidth,cwidth,cwidth); //'a' is vertical!
    }
 }
 
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts did it
 

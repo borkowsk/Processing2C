@@ -15,17 +15,18 @@ using namespace Processing;
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: klasaWorld->pde
 /////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
-int worozmiar = sizew/ws;  ///ile pól jest na świecie
 
-float density = 0.005;  ///ewentualna gęstośc jedzenia rozłożena
+//++++++++++++ ZMIENNE ++++++++++++
+int worozmiar = sizew/ws;  ///<ile pól jest na świecie
 
-int xNest = int(worozmiar/7);  ///współrzędne gniazda i jego rozmiar
-int yNest = int(worozmiar/7);  ///
-int siNest = 3;                ///
+float density = 0.005;  ///<ewentualna gęstośc jedzenia rozłożena
 
-int foodSupply;  /// początkowa ilość jedzenia w gnieździe
-int ileWsumieMrowek = sizew/10;  /// maksymalna dopuszczalna liczba mrówek
+int xNest = int(worozmiar/7);  ///<współrzędne gniazda i jego rozmiar
+int yNest = int(worozmiar/7);  ///<???
+int siNest = 3;                ///<???
+
+int foodSupply;  ///< początkowa ilość jedzenia w gnieździe
+int ileWsumieMrowek = sizew/10;  ///< maksymalna dopuszczalna liczba mrówek
 
 
 class World: public virtual Object{
@@ -155,25 +156,25 @@ class World: public virtual Object{
   bool czyWstroneZpamieci(int i, int j, int p, int r, int mem) { 
     //idzie za danymi współrzędnymi w pamięci
     sarray<int> polePamieci = antsWorld[i][j]->memory[mem];
-    p = abs(p - polePamieci[0]);  //zawinięcie w torus
+    p = std::abs(p - polePamieci[0]);  //zawinięcie w torus
     p = min(p, worozmiar-p);
-    i = abs(i - polePamieci[0]);
+    i = std::abs(i - polePamieci[0]);
     i = min(i, worozmiar-i);
-    r = abs(r - polePamieci[1]);
+    r = std::abs(r - polePamieci[1]);
     r = min(r, worozmiar-r);
-    j = abs(j - polePamieci[1]);
+    j = std::abs(j - polePamieci[1]);
     j = min(j, worozmiar-j);
     return (p<=i && r<=j) || random(1)<pLosowe; 
     //albo bliżej gniazda/jedzenia w którymkolwiek kierunku, albo małe p, że jednak skręci
   }  
 
-  bool czyCosWie(int i, int j) {  //jeżeli wie, że gdzieś jest jedzenie
+  bool czyCosWie(int i, int j) { //jeżeli wie, że gdzieś jest jedzenie
     return antsWorld[i][j]->memory[1][0]!=antsWorld[i][j]->memory[2][0] 
             || antsWorld[i][j]->memory[1][1]!=antsWorld[i][j]->memory[2][1];
   }  
 
 
-  bool czyMoze(int i, int j, int p, int r) {//nie może iść na swoje obecne miejsce lub na czyjeś
+  bool czyMoze(int i, int j, int p, int r) { //nie może iść na swoje obecne miejsce lub na czyjeś
     return (p!=i || r!=j) && antsWorld[p][r]==nullptr;
   }
 

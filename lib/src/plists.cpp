@@ -26,7 +26,7 @@ float     FloatList::remove(int index)// 	Remove an element from the specified i
 bool      FloatList::hasValue(float what)// 	Check if a number is a part of the list
 {
     FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return false;//TODO!!!
 }
 
@@ -50,65 +50,62 @@ void      FloatList::div(int index,float amount)// 	Divide a value
     std::vector<float>::operator [] (index) /=amount;
 }
 
-float     FloatList::min()// 	Return the smallest value
+float     FloatList::min() // 	Return the smallest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return -0;//TODO!!!
 }
 
-float     FloatList::max()// 	Return the largest value
+float     FloatList::max() // 	Return the largest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return -0;//TODO!!!
 }
 
-void      FloatList::sort()// 	Sorts an array, lowest to highest
+void      FloatList::sort() // 	Sorts an array, lowest to highest
 {
-    FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    std::sort(begin(),end());
 }
 
-void      FloatList::sortReverse()// 	Reverse sort, orders values from highest to lowest
+void      FloatList::sortReverse() // 	Reverse sort, orders values from highest to lowest
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 void      FloatList::reverse()// 	Reverse the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit();  std::exit(-1);
 }
 
 void      FloatList::shuffle()// 	Randomize the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit();  std::exit(-1);
 }
 
 sarray<float>     FloatList::array() const // 	Create a new array with a copy of all the values
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();abort();
+    Processing::exit();  std::exit(-1);
     return nullptr;
 }
 
 int      IntList::remove(int index)// 	Remove an element from the specified index
 {
-    //FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
-    //Processing::exit();
     FIRST_TIME_ERRMESSAGE( string(" This is very inefficient!") );
     int ret=*(this->begin() + index);
     std::vector<int>::erase(this->begin() + index);//Very slow in std::vector implementation!
     return ret;//TODO - is it compatible?
 }
 
-bool     IntList::hasValue(int   what)// 	Check if a number is a part of the list
+bool     IntList::hasValue(int   what) // 	Check if a number is a part of the list
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return false;//TODO!!!
 }
 
@@ -132,122 +129,116 @@ void     IntList::div(int index,int   amount)// 	Divide a value
     (*this)[index]/=amount;
 }
 
-int      IntList::min()// 	Return the smallest value
+int      IntList::min() // 	Return the smallest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return 0xffffffff;//TODO!!!
 }
 
-int      IntList::max()// 	Return the largest value
+int      IntList::max() // 	Return the largest value
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return 0xefffffff;//TODO!!!
 }
 
-void     IntList::sort()// 	Sorts an array, lowest to highest
+void     IntList::sort() // 	Sorts an array, lowest to highest
 {
-    FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    //std::sort(this->begin(),this->end());//TODO TEST
-    Processing::exit();
+    std::sort(begin(),end());
 }
 
 void     IntList::sortReverse()// 	Reverse sort, orders values from highest to lowest
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
     //std::sort(this->cbegin(),this->cend());//TODO TEST
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
-void     IntList::reverse()// 	Reverse the order of the list elements
+void     IntList::reverse() // 	Reverse the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
-void     IntList::shuffle()// 	Randomize the order of the list elements
+void     IntList::shuffle() // 	Randomize the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 sarray<int>  IntList::array() const // 	Create a new array with a copy of all the values
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();abort();
+    Processing::exit(); std::exit(-1);
     return nullptr;
 }
 
-String   StringList::remove(int index)// 	Remove an element from the specified index
+String   StringList::remove(int index) // 	Remove an element from the specified index
 {
-    //FIRST_TIME_ERRMESSAGE( string(" not implemented!") );
-    //Processing::exit();
     FIRST_TIME_ERRMESSAGE( string(" This is very inefficient!") );
     String ret=*(this->begin() + index);
     std::vector<String>::erase(this->begin() + index);//Very slow in std::vector implementation!
     return ret;//TODO - is it compatible?
 }
 
-bool     StringList::hasValue(_string_param   what)// Check if a number is a part of the list
+bool     StringList::hasValue(_string_param   what) // Check if a number is a part of the list
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
     return false;//TODO!!!
 }
 
-void     StringList::sort()// 	Sorts an array, lowest to highest
+void     StringList::sort() // 	Sorts an array, lowest to highest
 {
-    FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    //std::sort(this->begin(),this->end());//TODO TEST
-    Processing::exit();
+    std::sort(this->begin(),this->end());
 }
 
 
-void     StringList::sortReverse()// 	Reverse sort, orders values from highest to lowest
+void     StringList::sortReverse() // 	Reverse sort, orders values from highest to lowest
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
     //std::sort(this->cbegin(),this->cend());//TODO TEST
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 
-void     StringList::reverse()// 	Reverse the order of the list elements
+void     StringList::reverse() // 	Reverse the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 
-void     StringList::shuffle()// 	Randomize the order of the list elements
+void     StringList::shuffle() // 	Randomize the order of the list elements
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 
-void     StringList::lower()// 	Make the entire list lower case
+void     StringList::lower() // 	Make the entire list lower case
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 
-void     StringList::upper()// 	Make the entire list upper case
+void     StringList::upper() // 	Make the entire list upper case
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();
+    Processing::exit(); std::exit(-1);
 }
 
 
 sarray<int>  StringList::array()  const // 	Create a new array with a copy of all the values ???
 {
     FIRST_TIME_ERRMESSAGE(  string(" not implemented!")  );
-    Processing::exit();abort();
+    Processing::exit(); std::exit(-1);
     return nullptr;
 }
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-22                     */
+/*               PROCESSING2C  version 2022-09-13                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

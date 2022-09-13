@@ -17,11 +17,11 @@ using namespace Processing;
 //*/////////////////////////////////////////////////////////////////////////////////////
 PrintWriter outstat;    ///< główny plik wynikowy
 
-void initializeStats()  ///<
+void initializeStats()  ///< Need to be global!
 {
   String FileName=String("ToC_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(String("Results/")+FileName+ String(".out"));
-  println(outstat,"$STEP\tAlive\t.....");//<-- complete the header fields!
+  println(outstat,"$STEP\tAlive\t....."); //<-- complete the header fields!
 }
 
 int   prevStep=0;           ///<
@@ -37,9 +37,9 @@ int   numOfBorns=0;         ///< number of newborns
 float bornsPerStep=0;       ///<
 
 sarray<int> eatCounters=nullptr; ///< TU JEST PROBLEM
-sarray<int> punCounters=nullptr; ///< Chyba tablica nie jest akceptowana. TODO!!!
+sarray<int> punCounters=nullptr; ///< Chyba tablica nie jest akceptowana->TODO!!!
 
-void doStatistics(pWorld world)  ///<
+void doStatistics(pWorld world)  ///< Need to be global!
 {
   if(eatCounters==nullptr) eatCounters=new array<int>(256);
   if(punCounters==nullptr) punCounters=new array<int>(256);
@@ -47,21 +47,21 @@ void doStatistics(pWorld world)  ///<
   doStatisticsOnCells(world->cells);
 }
 
-void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
+void doStatisticsOnAgents(smatrix<pAgent> agents) ///< Need to be global!
 {  
   pAgent curra;
   
   double summ=0;
   liveAgentsCount=0;
     
-  for(int i=0;i<eatCounters->length;i++) eatCounters[i]=0;//Zero counters!
-  for(int i=0;i<punCounters->length;i++) punCounters[i]=0;//Zero counters!
+  for(int i=0;i<eatCounters->length;i++) eatCounters[i]=0; //Zero counters!
+  for(int i=0;i<punCounters->length;i++) punCounters[i]=0; //Zero counters!
   
   for(int a=0;a<agents->length;a++)
    for(int b=0;b<agents[a]->length;b++)
     if( (curra=agents[a][b]) != nullptr )
     {
-      //Dummy statistic
+      // Dummy statistic
       summ+=curra->energy;
      
       /*count genoms*/                //assert(curra->genEat<256);	//
@@ -71,8 +71,8 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
       liveAgentsCount++;
     }
   
-   punPerStep=(float)((numOfPunishments)/((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
-   bornsPerStep=(float)((numOfBorns)/((double)StepCounter-prevStep));
+   punPerStep=(float)((numOfPunishments) / ((double)StepCounter-prevStep)); // println(numOfPanishments,StepCounter-prevStep,panPerStep);
+   bornsPerStep=(float)((numOfBorns) / ((double)StepCounter-prevStep));
    meanAgentsEn=(float)(summ/liveAgentsCount);
    
    if(outstat!=nullptr)
@@ -80,12 +80,12 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///<
    
    prevStep=StepCounter;
    
-   numOfPunishments=0;//Liczone "on run"
-   numOfBorns=0;//number of newborns
-   //outstat should be closed in exit() --> see Exit->pde
+   numOfPunishments=0; //Liczone "on run"
+   numOfBorns=0; //number of newborns
+   // outstat should be closed in exit() --> see Exit->pde
 }
 
-void doStatisticsOnCells(smatrix<int> cells) ///<
+void doStatisticsOnCells(smatrix<int> cells) ///< Need to be global!
 {  
   long summ=0;
   int curr;
@@ -96,13 +96,13 @@ void doStatisticsOnCells(smatrix<int> cells) ///<
    for(int b=0;b<cells[a]->length;b++)
     if( (curr=cells[a][b]) != 0 )
     {
-      //Dummy stat
+      // Dummy stat
       summ+=curr;
       
       //if(curr==1) 
       //.....THIS PART IS FOR YOU!
       
-      liveCellsCount++;//Alive cells
+      liveCellsCount++; //Alive cells
     }
   
    if(liveCellsCount>0)
@@ -117,7 +117,7 @@ void doStatisticsOnCells(smatrix<int> cells) ///<
      if(outstat!=nullptr)
         println(outstat,String("\t")+StepCounter+String("\t")+liveCellsCount+ String("\tFINISHED"));
    }
-   //outstat should be closed in exit() --> see Exit->pde
+   // outstat should be closed in exit() --> see Exit->pde
 }
 
 

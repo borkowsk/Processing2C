@@ -39,19 +39,27 @@ void processing_window::setup() // Preparing for draw() loop
   inventory->append("tea");
   inventory->append("cocoa");
   println(inventory);
-  
+  inventory->sort();
+  println("Sorted:",inventory);
+  //inventory-->sortReverse(); // Still not implemented
+  //println("Sorted rev.:",inventory);
+
   inventoryF = new FloatList();
   inventoryF->append(108.6);
   inventoryF->append(5.8);
   inventoryF->append(8.2);
   println(inventoryF);
+  inventoryF->sort();
+  println("Sorted:",inventoryF);
   
   inventoryI = new IntList();
   inventoryI->append(84);
   inventoryI->append(15);
   inventoryI->append(102);
   println(inventoryI);
-  
+  inventoryI->sort();
+  println("Sorted:",inventoryI);
+
   //noLoop();// ONLY ONE CALL OF draw FUNCTION!
   //or
   setFrameRate(1);

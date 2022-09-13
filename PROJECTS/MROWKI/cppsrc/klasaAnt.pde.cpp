@@ -13,8 +13,9 @@ using namespace Processing;
 /// Agent Base Model adopted for Processing2C
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: klasaAnt->pde
-/////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
+//*///////////////////////////////////////////
+
+//++++++++++++ ZMIENNE ++++++++++++
 class Ant: public virtual Object{
   public:
   float id, trailS; 
@@ -22,7 +23,7 @@ class Ant: public virtual Object{
   
   smatrix<int> memory = new matrix<int>(memo+3,2); 
   //pamięć z przegródkami: 
-  //zerowa - jedzenie, pierwsza - wsp. gniazda, druga - wsp. jedzenia, rezszta - gdzie już była
+  //zerowa - jedzenie, pierwsza - wsp->gniazda, druga - wsp->jedzenia, rezszta - gdzie już była
   
   bool czyCosNiosla = false;
 
@@ -66,7 +67,7 @@ class Ant: public virtual Object{
       memory[2][1] = y;
   }
 
-  void slyszy1() {//inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
+  void slyszy1() { //inna wersja działania wibracji - wzmacnia swój szlak po usłyszeniu
     if (trailS<0.95 && szlak) trailS=0.94;
   }
 
@@ -79,7 +80,7 @@ class Ant: public virtual Object{
     memory[2][1] = memory[1][1];
   }
 
-  bool memoryCheck(int a, int b) {//sprawdzanie, czy dane pole jest w pamięci
+  bool memoryCheck(int a, int b) { //sprawdzanie, czy dane pole jest w pamięci
     for (int i=3; i<memo; i++) {
       if (a==memory[i][0] && b==memory[i][1]) {
         return(false);  //fałsz, gdy jest

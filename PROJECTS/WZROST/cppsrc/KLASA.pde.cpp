@@ -1,4 +1,4 @@
-//Processing to C++ converter /data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh
+//Processing to C++ converter ../../scripts/procesing2cpp.sh
 //Source: KLASA.pde
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -25,13 +25,13 @@ class KLASA: public virtual Object{
   public:
   int R,G,B;
   
-  KLASA() //!< Constructor TODO in comments
+  KLASA() //Konstruktor
   { 
     R=G=B=0; 
     KLASA_Counter++;
   }
   
-  void Set(int iR,int iG,int iB) //!< Setter TODO in comments
+  void Set(int iR,int iG,int iB) //Setter
   {
     R=iR;G=iG;B=iB;
   }
@@ -41,9 +41,9 @@ class KLASA: public virtual Object{
     return R<=0 && G<=0 && B<=0;
   }
   
-  void Visualise(int X,int Y) //!< Method TODO in comments
+  void Visualise(int X,int Y) //Method
   {
-    if(!isEmpty())
+    if(!isEmpty()) //<>//
     {
       stroke(R,G,B);
       if(W>1)
@@ -59,12 +59,12 @@ class KLASA: public virtual Object{
     }
   }
   
-  void finalize() //Finalizer.  Wywoływany przez Javę gdy Garbage collector likwiduje objekt
+  void finalize() //Finalizer->Wywoływany przez Javę gdy Garbage collector likwiduje objekt
   {               //Teoretycznie - bo trudno to sprawdzić. http://stackoverflow->com/questions/2506488/when-is-the-finalize-method-called-in-java
     KLASA_Counter--; //Wygląda na to że w tym programie nie jest wołany nigdy
     println("-");
     //super::finalize();//A na to Processing robi blup...
   }
 };
-///data/wb/SCC/public/Processing2C/scripts did it
+//../../scripts did it
 

@@ -14,7 +14,7 @@
 //using namespace std::math;
 
 /// To nie do końca działa :-/
-#define OPTINLINE inline
+#define OPT_INLINE inline
 
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing

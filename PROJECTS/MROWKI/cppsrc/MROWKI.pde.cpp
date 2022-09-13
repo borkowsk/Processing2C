@@ -15,8 +15,9 @@ using namespace Processing;
 /// Agent Base Model adopted for Processing2C
 /// Author: Zofia Cieślińska
 /// ORIGINAL FILE: "MRÓWKI.pde"
-/////////////////////////////////////////////
- //++++++++++++ ZMIENNE ++++++++++++
+//*///////////////////////////////////////////
+
+//++++++++++++ ZMIENNE ++++++++++++
 
 //świat
 PrintWriter output; ///< Globalny output
@@ -140,6 +141,5 @@ void petla() { ///< Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-
 //../../scripts did it
 

@@ -12,52 +12,52 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 
-//*   "TragedyOfCommons" AGENT BASE EVOLUTIONARY MODEL 
-//*   utilized 2D discrete geometry
-//*   implemented by Wojciech Borkowski
+///   "TragedyOfCommons" AGENT BASE EVOLUTIONARY MODEL 
+///   utilized 2D discrete geometry
+///   implemented by @author Wojciech Borkowski
 //*///////////////////////////////////////////////////////////////////////////////////////
 
-//Model parameters
+// Model parameters
 int side=200;                 ///< side of main table: 20,50,100,200,400
 String modelName="TOC1.0_";   ///< name of the model used for producing file names of outputs
 
-float treesDensity=0.250;     ///<
+float treesDensity=0.250;     ///< ???
 float treesR=1.015;           ///< from 1..1.1 !
 float agentsDensity=0.005;    ///< Initial density of agents
 
 bool usePunishment=true;   ///< Punishment swith off/on
-bool enableKilling=false;  ///<
+bool enableKilling=false;  ///< ???
 //bool symPunishment=true; ///< Punishment genes defines tolerance window for others behavior
 char16_t   punishmentTime=20;     ///< How long punished agent is paralysed
 
 int   costOfStep=10;          ///< Metabolic cost for agent to live one step more.
-float maxStock=costOfStep*50; ///< maximal stock per agent. The storage of unused energy is limited!
+float maxStock=costOfStep*50; ///< maximal stock per agent->The storage of unused energy is limited!
 float maxInitialEnergyOfAgent=costOfStep*50;    ///<
 float pOffspring=0.05;        ///< How often agent WANTs split into 2 agents
 
-pWorld TheWorld=new World(side);///< Made here, but also will be completed inside setup()
+pWorld TheWorld=new World(side); ///< Made here, but also will be completed inside setup()
 
-//Parameters of visualisation etc...
-int cwidth=8;                   ///<size of cell
-int STATUSHEIGH=40;             ///<
+// Parameters of visualisation etc...
+int cwidth=8;                   ///< size of cell
+int STATUSHEIGH=40;             ///< ???
 int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
-int FRAMEFREQ=1000;             ///<
-bool WITH_NEW_DEL_LOG=false; ///<
+int FRAMEFREQ=1000;             ///< ???
+bool WITH_NEW_DEL_LOG=false; ///< ???
 /*_OnlyProcessingBlockBegin
-bool WITH_VIDEO=false;       ///<
+bool WITH_VIDEO=false;       ///< ???
 _OnlyProcessingBlockEnd*/
 bool simulationRun=true;     ///< Start/stop flag
 
 void processing_window::setup()
 {
-  //Graphics
+  // Graphics
   size(850,840);
-  noSmooth();//Trochę szybciej
+  noSmooth(); //Trochę szybciej
   background(0);
   strokeWeight(2);
   setFrameRate(FRAMEFREQ);
   
-  //Model
+  // Model
   initializeModel(TheWorld);
   initializeStats();
   doStatistics(TheWorld);
@@ -66,8 +66,8 @@ void processing_window::setup()
   println(String("REQUIRED SIZE OF PAINTING AREA IS ")+(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
   cwidth=(height-STATUSHEIGH)/side;
     
-  //Optionals:
-  //setupMenu();//ISSUE: Size of MenuBar is not counted by Processing!
+  // Optionals:
+  //setupMenu(); //ISSUE: Size of MenuBar is not counted by Processing!
   //...
   
   /*_OnlyProcessingBlockBegin
@@ -78,7 +78,7 @@ void processing_window::setup()
   }
   _OnlyProcessingBlockEnd*/
   
-  //Finishing setup stage
+  // Finishing setup stage
   println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height);//-myMenu->bounds->height???
   visualizeModel(TheWorld);//First time visualisation
   
@@ -88,7 +88,7 @@ void processing_window::setup()
     println("PRESS 's' or 'ESC' to pause simulation");
     
 /*_OnlyProcessingBlockBegin   
-  NextVideoFrame();//It utilise inside variable to check if is enabled
+  NextVideoFrame(); //It utilise inside variable to check if is enabled
 _OnlyProcessingBlockEnd*/  
 }
 
@@ -106,11 +106,11 @@ void processing_window::draw()
     visualizeModel(TheWorld);
     writeStatusLine();
     
-    //WARUNEK STOPU
+    // WARUNEK STOPU
     if(liveAgentsCount==0) 
-            simulationRun=false;//stop when agents are extinct
+            simulationRun=false; //stop when agents are extinct
 /*_OnlyProcessingBlockBegin    
-    NextVideoFrame();//It utilise inside variable to check if is enabled
+    NextVideoFrame(); //It utilise inside variable to check if is enabled
 _OnlyProcessingBlockEnd*/  
   }
 
@@ -133,7 +133,7 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
 }
 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//*  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
+//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //../../scripts did it
 

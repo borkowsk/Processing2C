@@ -41,6 +41,13 @@ class Animal: public virtual Object{
     }
 };
 
+
+// Now will be change of superclass!
+//Undefined any base class preprosessor definition: _anyPreviousSuperClass
+#undef _superclass
+//Base class is now:
+#define _superclass Animal
+
 class Cat : public  Animal, public virtual Mew, public virtual Eat  , public virtual Object{
   public:
     void eat(int l) {
@@ -51,6 +58,13 @@ class Cat : public  Animal, public virtual Mew, public virtual Eat  , public vir
          println(l,"Cat meows");  
     }
 };
+
+
+// Now will be change of superclass!
+//Undefined any base class preprosessor definition: _anyPreviousSuperClass
+#undef _superclass
+//Base class is now:
+#define _superclass Animal
 
 class Dog : public  Animal  , public virtual Object{
   public:

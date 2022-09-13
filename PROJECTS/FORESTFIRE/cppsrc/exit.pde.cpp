@@ -20,6 +20,6 @@ void processing_window::exit() //it is called whenever a window is closed.
   save("exit.png");
   println("Thank You");
   processing_window_base::exit(); //What library superclass have to do at exit
-} 
+}
 //../../scripts did it
 

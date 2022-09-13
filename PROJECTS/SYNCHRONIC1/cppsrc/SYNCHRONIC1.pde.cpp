@@ -15,23 +15,23 @@ using namespace Processing;
 /// Also class demonstration
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// Comments from lecture: Małgorzata Filon
-/// ORIGINAL FILE: "synchronizacja1.pde" -> "SYNCHRONIC1.pde"
+/// ORIGINAL FILE: "synchronizacja1.pde" -> "SYNCHRONIC1->pde"
 //*////////////////////////////////////////////////////////////////////////////////
 
 class singiel: public virtual Object{
   public: //klasa czyli typ złożony
   //pola obiektu czyli dane 
   float x1,x2;
-  float r; // np. wspolczynik kontroli
+  float r; // np->wspolczynik kontroli
   float sync; //jedno z pól, zależne do czego używamy obiektu, tu jest to wartośc sychronizacji
   
-  //Metody. Kazda klasa ma jedną metodę, ktora nazywa sie jak nazwa klasy
-  singiel(float iX,float iR,float iSync) // konstruktor nie ma wart. zwracanej, nadaje stan obiektowi, 
+  //Metody->Kazda klasa ma jedną metodę, ktora nazywa sie jak nazwa klasy
+  singiel(float iX,float iR,float iSync) // konstruktor nie ma wart->zwracanej, nadaje stan obiektowi, 
   {                                      // wszystkie pola musza mieć wartość nie przypadkową
     x1=x2=iX; r=iR; sync=iSync;
   }
   
-  //zwykła metoda, czyli zmienia wart. przynajmniej jednego pola
+  //zwykła metoda, czyli zmienia wart->przynajmniej jednego pola
   void next()
   {
     x1=x2;
@@ -39,13 +39,13 @@ class singiel: public virtual Object{
   }
 };
 
-//zdefiniowaliśmy klasę, teraz jej użyjemy. Potrzebna bedzie wartość wspólczynnika spięcia, czyli synchronizacji
+//zdefiniowaliśmy klasę, teraz jej użyjemy->Potrzebna bedzie wartość wspólczynnika spięcia, czyli synchronizacji
 const float DefaultAlfa=0.25;
 
 int     Rozbieg=100; //Ile kroków traktujemy jako rozbieg do zsynchronizowania
 
 psingiel First, Second; //uchwyty do obiektow, coś jak zwykla liczbe float czy intiger, ale to ze je zadeklarujemy nie oznacza ze istnieją obiekty. 
-                      //obiekty powstaną dalej, wiec te uchwycą to co powstanie. Wiecej niz jeden może chwytac
+                      //obiekty powstaną dalej, wiec te uchwycą to co powstanie->Wiecej niz jeden może chwytac
 int Ws=400;
 
 void processing_window::setup()
@@ -93,7 +93,7 @@ void processing_window::draw()
     line(N-1,scaleY(Second->x1),N,scaleY(Second->x2));
     
     stroke(0,Grn,0);
-    point(N,scaleY(abs(First->x2-Second->x2)));
+    point(N,scaleY(std::abs(First->x2-Second->x2)));
     point(2*Ws+First->x2*Ws,scaleY(Second->x2));
     
     if(N>Rozbieg) //to wyrzucić to będzie widać dojście do atraktora

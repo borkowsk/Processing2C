@@ -10,15 +10,17 @@ HashMap<String,Integer>  mapString2Integer=new HashMap<String,Integer>();
 HashMap<Integer,String>  mapInteger2String=new HashMap<Integer,String>();
 HashMap<String,Float>    mapString2Float=new HashMap<String,Float>();
 HashMap<String,String>   mapString2String=new HashMap<String,String>();
-HashMap<String,myTest>   mapString2Object;
 
-class myTest {
+class myTest
+{
   int A;float B;
   myTest(int iA,float iB)
   {
     A=iA;B=iB;
   }
 };
+
+HashMap<String,myTest>   mapString2Object=null;
 
 void adding(HashMap<String,myTest>   map)
 {
