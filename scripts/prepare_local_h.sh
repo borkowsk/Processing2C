@@ -41,7 +41,7 @@ echo 'Object)>/\1p\2>/g' >> userclasses.sed
 #Class/enum name with dot. Eg. String. MyClass.  --> String:: MyClass::
 echo -e "_@ENTER_" >> userclasses.sed
 #[^a-zA-Z\d] czyli nie znak alfanumeryczny gwarantuje, że nazwy klas pasują tylko jako całe wyrazy
-echo "s/([^a-zA-Z\d])(" >> userclasses.sed
+echo "s/([^[:alnum:]])(" >> userclasses.sed
 egrep -o '(class|enum)(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
 #awaryjnie - tylko enums
 #egrep -o 'enum(\s+)(\w+)' headers.tmp | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
