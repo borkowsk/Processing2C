@@ -34,22 +34,22 @@ public:
         //Entry& operator -> () const { return *this;} //circular pointer references are not allowed
     };
 
-    V   get(K key) ///Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+    V   get(K key) //!< \brief Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
     { return (*this)[key]; }
 
-    V   put(K key, V value) ///Associates the specified value with the specified key in this map.
+    V   put(K key, V value) //!< \brief Associates the specified value with the specified key in this map.
     { (*this)[key]=value;return value;}
 
-    V   replace(K key, V value) ///Replaces the entry for the specified key only if it is currently mapped to some value.
+    V   replace(K key, V value) //!< \brief Replaces the entry for the specified key only if it is currently mapped to some value.
     { (*this)[key]=value;return value;}
 
-    sarray<const Entry*>    entrySet()///Returns a Set view of the mappings contained in this map.
+    sarray<const Entry*>    entrySet() //!< \brief Returns a Set view of the mappings contained in this map.
     {
         sarray<const Entry*> ret{ new array<const Entry*>{ this->size() } };
         int i=0;
         for (auto&  ent: *this)
         {
-            ret[i++]=(const Entry*)&ent;//HACK!!! Entry must not have any fields or virtual methods!
+            ret[i++]=(const Entry*)&ent; //HACK!!! Entry must not have any fields or virtual methods!
         }
         return ret;
     }
@@ -94,7 +94,7 @@ public:
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

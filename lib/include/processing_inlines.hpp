@@ -19,12 +19,12 @@
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
-extern bool _filled;//=true;
-extern int _LINE_WIDTH;//=1;
-extern int _RECT_MODE;//=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
-extern int _ELLIPSE_MODE;//=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
-extern int _TEXT_HORIZONTAL_AL;//=LEFT;
-extern int _TEXT_VERTICAL_AL;//=BOTTOM;
+extern bool _filled; //=true;
+extern int _LINE_WIDTH; //=1;
+extern int _RECT_MODE; //=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _ELLIPSE_MODE; //=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _TEXT_HORIZONTAL_AL; //=LEFT;
+extern int _TEXT_VERTICAL_AL; //=BOTTOM;
 
 inline void strokeWeight(float Weight)
 {
@@ -34,7 +34,7 @@ inline void strokeWeight(float Weight)
 inline void noStroke()
 {
     _LINE_WIDTH=0;
-    line_width(0);//??? TODO TEST?
+    line_width(0); //??? TODO TEST?
 }
 
 inline void stroke(float Gray)
@@ -98,7 +98,7 @@ inline void line(float  x1,float  y1,float  x2,float  y2)
     line_d((int)x1,(int)y1,(int)x2,(int)y2);
 }
 
-inline void rectMode(int mode)/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+inline void rectMode(int mode)  // Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 {
     _RECT_MODE=mode;
 }
@@ -117,7 +117,7 @@ inline void rect(float a,float  b,float  c,float  d)
     case RADIUS:x1=a-c;x2=a+c;y1=b-d;y2=b+d;break;
     default:
     case CORNER:
-        if(d<0)//Procesing can handle that strange situation
+        if(d<0)  // Processing can handle that strange situation
         {x1=a; y1=b+d; x2=a+c; y2=b;}
         else
         {x1=a; y1=b; x2=a+c; y2=b+d;}
@@ -151,33 +151,29 @@ inline void ellipse(float a,float  b,float  c,float  d)
     if(_filled)
         fill_ellipse_d(x1,y1,A,B);
 
-    if(get_line_width()>0 && A>1 && B>1)//TODO - eliminate it!!!
+    if(get_line_width()>0 && A>1 && B>1)  //TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
 }
 
-/// map & lerp - nie graficzne, ale też często używane z grafiką
-/// \ingroup math
+//  map & lerp - nie graficzne, ale też często używane z grafiką
+// ///////////////////////////////////////////////////////////////
+
 
 /// \fn map
-/// \param s
-/// \param a1
-/// \param a2
-/// \param b1
-/// \param b2
-/// \return float
+/// \return float value result of calculation
 /// \see https://rosettacode.org/wiki/Map_range#C
+/// \ingroup math
 /// \n TODO TEST & IMPROVE?
-inline float map(float s,float a1,float a2,float b1,float b2)//float value,float start1,float stop1,float start2,float stop2)
+inline float map(float s,float a1,float a2,float b1,float b2)  //float value,float start1,float stop1,float start2,float stop2)
 {
     return b1 + (s-a1)*(b2-b1)/(a2-a1);
 }
 
 /// \fn lerp
-/// \param v0
-/// \param v1
-/// \param t
-/// \return float
+/// \details Linear interpolation
+/// \return float value result of calculation
 /// \see \a https://en.wikipedia.org/wiki/Linear_interpolation
+/// \ingroup math
 /// \n TODO TEST & IMPROVE?
 inline float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
 {
@@ -197,7 +193,7 @@ inline void textAlign(int hor,int ver)
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-04-28                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -1,7 +1,7 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # No parameters are expected!  
-Pr2CVERSION="0.2a"
+Pr2CVERSION="0.2b"
 
 if [ $# -gt 1 ]; 
 then
@@ -121,6 +121,16 @@ set( CMAKE_VERBOSE_MAKEFILE off )
 project($PROJECT)
 set( VERSION_NUM $Pr2CVERSION ) #MUST BE NUMERIC 
 
+IF (WIN32)
+  # set stuff for windows
+  message( "MS Windows platform assumed.\n\tInside C/C++ code automatic _MSC_VER variable will be used!" )
+  #set( WINDOWS_ONLY_SRC  "" )
+ELSE()
+  # set stuff for other systems
+  message( "Linux/unix platform assumed.")
+  #set( X_ONLY_SRC  "" )
+ENDIF()
+
 set( SRCPATH  "$SOURCES/cppsrc/" )
 set( PROC2C   "$PROC2DIR" )
 set( SYMSHELL "$SYMSHELL" )
@@ -167,7 +177,7 @@ target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_x11" PRIVATE "\${CMAKE
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_x11"  
      "-L\${PROC2C}/lib"
      "-L\${SYMSHELL}"
-     wbprocess wbsyshX11 X11 Xpm
+     wbprocess wbsyshLight X11 Xpm
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
      rt
@@ -177,7 +187,7 @@ target_compile_options( "\${PROJECT_NAME}_\${VERSION_NUM}_svg" PRIVATE "\${CMAKE
 target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"  
      "-L\${PROC2C}/lib"
      "-L\${SYMSHELL}"
-     wbprocess wbsyshSVG
+     wbprocess wbsyshLightSVG
      \${CMAKE_THREAD_LIBS_INIT}
      pthread
      rt
@@ -187,7 +197,7 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"
 
 #target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}"
 #     #"-L\${PROC2C}/lib/;\${SYMSHELL};\${MYLIBS}"
-#     wbprocess wbrtm wbsyshX11 X11 Xpm
+#     wbprocess wbrtm wbsyshLight X11 Xpm
 #     \${CMAKE_THREAD_LIBS_INIT}
 #     pthread
 #     rt
@@ -197,7 +207,7 @@ EOF
 echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-08-16                   */
+#/*               PROCESSING2C  version 2022-11-14                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

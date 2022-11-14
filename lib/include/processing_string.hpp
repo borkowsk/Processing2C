@@ -23,65 +23,69 @@ namespace Processing
     /// A foreshadowing declaration of this class to be used hereafter as a method parameter
     class _self_printable;
 
-    /// A class that mimics the String capabilities in Processing programs
+    /// \brief A class that mimics the String capabilities in Processing programs
     class String:public std::string //private std::string - ŚLAD PO NIEUDANEJ PRóBIE - CIĄGLE CZEGOŚ JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
     {
     public:
         friend class Processing::_string_param;
-        /// Destructor
-        ~String() = default ;//raczej potrzebne?
-        /// Default constructor
+        /// \brief Destructor
+        ~String() = default ; //raczej potrzebne?
+
+        // CONSTRUCTORS
+        // ////////////
+
+        /// \brief Default constructor
         String() = default ;
-        /// Copy constructor
+        /// \brief Copy constructor
         String(String const&) = default ;
-        /// NULL init constructor
+        /// \brief NULL init constructor
         String(nullptr_t p):String(){} //POTRZEBNE?
-        /// From std::string constructor
+        /// \brief From std::string constructor
         String(const std::string& str):std::string(str){}
-        /// From C like string and const string constructor
+        /// \brief From C like string and const string constructor
         String(const char* str):std::string(str){}
-        /// From char constructor
+        /// \brief From char constructor
         explicit String(const char  c);
-        /// String conversion from double and other numbers
-        String(double v);//:String(){ operator+=(v);}
-        /// General Object  ptr conversion constructor
-        String(const Object* p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
-        /// Template Processing::ptr<> conversion constructor
+        /// \brief String conversion from double and other numbers
+        String(double v); //:String(){ operator+=(v);}
+        /// \brief General Object  ptr conversion constructor
+        String(const Object* p); //:String("@"){ operator+=( (long unsigned int)p.get() );}
+        /// \brief Template Processing::ptr<> conversion constructor
         template<class T>
-        String(const ptr<T> p);//:String("@"){ operator+=( (long unsigned int)p.get() );}
+        String(const ptr<T> p); //:String("@"){ operator+=( (long unsigned int)p.get() );}
 
 
-        /// It makes a pointer on itself :-D, such a ugly HACK ...
-        /// But it works
+        /// \note It makes a pointer on itself :-D, such a ugly HACK ... But it works
         String* operator -> () { return this; }
 
-        /// Back, named "conversion", to base class
+        /// \brief Back, named "conversion", to base class
         const std::string& _std_str() const { return *this;}
         std::string& _std_str() { return *this;}
 
-        /// Comparison with the string constant
+        /// \brief Comparison with the string constant
         bool  equals(const char* wz) const { return this->compare(wz)==0;}
 
-        /// Comparison with another String \TODO - MORE TESTS!
+        /// \brief Comparison with another String \TODO - MORE TESTS!
         bool equals(const String& wz) const { return this->compare(wz._std_str())==0;}
 
-        /// Explicit test for empties
+        /// \brief Explicit test for empties
         bool  notEmpty() { return this->c_str()!=nullptr; }
 
-        /// Implicit tests for empties
+        /// \brief Implicit tests for empties
         bool operator == (nullptr_t);
+        /// \brief Negated implicit tests for empties
         bool operator != (nullptr_t);
 
-        ///Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
+        /// \brief Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
         String& operator = (_string_param v); ///< blabla
-        ///Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
+        /// \brief Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
         String& operator += (_string_param v);
         template<class X>
         String& operator += (const ptr<X>& p);
 
-        ///Konkatenacja na wzór Processing-u. Niestety w C++ wciąż generuje liczne ostrzeżenia
+        /// \brief Konkatenacja na wzór Processing-u. Niestety w C++ wciąż generuje liczne ostrzeżenia
         String operator  + (_string_param v) const;
-        ///Operator konkatenacji - nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
+        /// \brief Operator konkatenacji - nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
         String operator  & (_string_param v) const;
 
         //template<class X>
@@ -93,10 +97,10 @@ namespace Processing
         //
         // ‘std::__cxx11::basic_string<_CharT, _Traits, _Alloc> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&, std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&&) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
 
-        /// Alternatywna funkcja zaprzyjaźniona do konkatenacji _Stringów poprzez _string_param
+        /// \brief Alternatywna funkcja zaprzyjaźniona do konkatenacji _Stringów poprzez _string_param
         friend String operator  + (_string_param,_string_param);
 
-        /// DIRECT IMPORTS FROM basic_string, even if will be made private
+        // DIRECT IMPORTS FROM basic_string, even if will be made private
         using std::string::length;
         using std::string::c_str;
         using std::string::operator [];
@@ -105,81 +109,95 @@ namespace Processing
         using std::string::substr;
         using std::string::find_first_of;
         
-        /// Access to one character in a Processing manner
+        /// \brief Access to one character in a Processing manner
         char charAt(int index) { return (*this)[index]; }
     };
 
-    /// Duplikat deklaracji frienda z wnętrza klasy String
+    /// \brief Duplikat deklaracji frienda z wnętrza klasy String
     /// TODO: Dlaczego ta deklaracja jest potrzebna? CZORT WIE :-( Bez tego nie działa
     String operator  + (_string_param,_string_param);
 
-    /// class designed for automatic PARAMETER conversion into String
+    /// \brief class designed for automatic PARAMETER conversion into String
     class _string_param:public String
     {
     public:
-        /// Destructor
+        /// \brief Destructor
         ~_string_param() = default; // Zwalnianie zasobów - czy ta deklaracja potrzebna?
-        /// Default constructor
+        /// \brief Default constructor
         _string_param() = default;
-        /// Copy constructor
+        /// \brief Copy constructor
         _string_param(_string_param const& ) = default;
-        /// Non trivial constructors
-        /// \param p : any type
+
+        /// \brief One of non-trivial constructors
+        /// \param p : String
         _string_param(const String&          p):String(p){}
+        /// \param p : std::string
         _string_param(const std::string&     p):String(p){}
+        /// \param p : const char*
         _string_param(const char*    p):String(p){}
+        /// \param p : const void*
         _string_param(const void*    p);
+        /// \param p : any char
         _string_param(const char     p);
+        /// \param p : double precision value
         _string_param(double         p);
+        /// \param p : single  precision value
         _string_param(float          p);
+        /// \param p : int value
         _string_param(int            p);
+        /// \param p : unsigned long value
         _string_param(long unsigned  p);
+        /// \param p : any self-printable object
         _string_param(_self_printable const& p);
+        /// \param p : any exception
         _string_param(std::exception &e);
+
+        /// \param p : any ptr to Processing compatible object
         template<class T>
         _string_param(ptr<T> p):_string_param(p.get()){}
 
-
-        ///Operator konkatenacji dla _string_param.
-        ///Wydaje się niepotrzebny, ale bez niego dłuższe konkatenacje czasem się nie udają
+        /// \brief Operator konkatenacji dla _string_param.
+        /// Wydaje się niepotrzebny, ale bez niego dłuższe konkatenacje czasem się nie udają
         _string_param operator  + (_string_param) const;
 
-        ///Jawne odzyskiwanie klasy String z klasy _string_param
+        /// \brief Jawne odzyskiwanie klasy String z klasy _string_param
         String& _str() { return *(String*)this;}
         String const& _str() const { return *(String*)this;}
-        String& get() { return *(String*)this;}//Obsolete
+
+        /// Obsolete
+        String& get() { return *(String*)this;} //Obsolete
         //operator String& () {return *(String*)this;}
     };
 
-    /// Alternatywna wersja _errMessage
+    /// \brief Alternatywna wersja _errMessage
     void _errMessage(String msg,const char* func,int line=-1,const char* file="");
 
-    /// Interface for classes able to make printable representation
+    /// \brief Interface for classes able to make printable representation
     class _self_printable
     {
     public:
         virtual String print() const=0;
     };
 
-    /// Wskaźnik na klasy zdolne do samodzielnego stworzenia sobie drukowalnej reprezentacji
+    /// \brief Wskaźnik na klasy zdolne do samodzielnego stworzenia sobie drukowalnej reprezentacji
     /// czyli spełniającej interface _self_printable
     template<class T>
     class  self_printable_ptr:public ptr<T>,virtual public _self_printable/*interface*/
     {
     public:
-        /// Najważniejsza metoda wymagana przez interface
+        /// \brief Najważniejsza metoda wymagana przez interface
         String print() const { return  this->get()->print(); }
 
-        /// Destructor
+        /// \brief Destructor
         ~self_printable_ptr() = default ;
-        /// Default, empty constructor
+        /// \brief Default, empty constructor
         self_printable_ptr() = default ;
-        /// Copy constructor
+        /// \brief Copy constructor
         self_printable_ptr(self_printable_ptr const& ) = default ;
-        /// MOST IMPORTANT CONSTRUCTOR (for accept " new T() " )
+        /// \brief MOST IMPORTANT CONSTRUCTOR (for accept " new T() " )
         self_printable_ptr(T* ini):ptr<T>(ini){}
 
-        ///\todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
+        // Todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
         // Bez tej metody projekt się kompiluje ale czy działa?
         //self_printable_ptr<T>& operator = (T*& other)
         //{
@@ -245,7 +263,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022-06-28                   *
+ *               PROCESSING2C  version 2022-11-14                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

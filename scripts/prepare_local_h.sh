@@ -142,7 +142,7 @@ echo "#endif" >> local.h
 echo -e $COLOR1"File $COLOR2'local.h'$COLOR1 prepared" $NORMCO 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-09-05                   */
+#/*               PROCESSING2C  version 2022-09-13                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

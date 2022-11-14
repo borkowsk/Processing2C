@@ -1,6 +1,3 @@
-/// A simple class to use a String as a lookup for an String value. 
-/// String "keys" are associated with String values.
-/// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 /// \file processing_StringDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE StringDict
 /// \author 'borkowsk'
@@ -12,6 +9,7 @@
 /// \alternative
 /// * https://en.cppreference.com/w/cpp/utility/hash
 /// * https://en.cppreference.com/w/cpp/container/unordered_map
+//*//////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 //*//////////////////////////////////////////////////////////////////////
 #pragma once
@@ -27,50 +25,54 @@
 namespace Processing {
 //*///////////////////////////////////////////////////////////////////
 
+/// \brief A simple class to use a String as a lookup for an String value.
+/// String "keys" are associated with String values.
+/// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 class StringDict: private std::map<String,String>, virtual public _self_printable {
     public:
         using     std::map<String,String>::begin;
         using     std::map<String,String>::end;
         using     std::map<String,String>::operator[];
 
-        /// Destructor
+        /// \brief Destructor
         ~StringDict() = default ;
 
-        ///Constructor(s)	
-        StringDict() = default;
-        StringDict(StringDict const&) = default;  //!< copy-constructor (not aggregate initialization)
+        // Constructor(s)
+        // //////////////
+        StringDict() = default;                   //!< \brief default constructor
+        StringDict(StringDict const&) = default;  //!< \brief copy constructor (not aggregate initialization)
         //StringDict(pairs);
         //StringDict(row);
 
-        /// Printing device for whole container
-        String print() const; //!< forced by _self_printable
+        /// \brief Printing device for whole container
+        String print() const; //!< \note Printing forced by `_self_printable::`
 
-        int size() const; //!<	Returns the number of key/value pairs
-        void clear();  //!<	Remove all entries
+        int size() const; //!< \brief	Returns the number of key/value pairs
+        void clear();  //!< \brief	Remove all entries
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_values_.html
         //iterable<String>        values(); //!< Return the internal array being used to store the values
 
-        sarray<String> keyArray() const; //!< Return a copy of the internal keys array
+        sarray<String> keyArray() const; //!< \brief Return a copy of the internal keys array
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_valueArray_.html
         sarray<String> valueArray() const; //!< Create a new array and copy each of the values into it
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_get_.html
-        String get(const String &key) const; //!< Return a value for the specified key
+        String get(const String &key) const; //!< \brief Return a value for the specified key
         String get(const String &key,const String &alternate) const;
 
         ///file:///home/borkowsk/processing-3.5.4/modes/java/reference/StringDict_set_.html
-        void set(const String &key,const String &value); //!< Create a new key/value pair or change the value of one
+        void set(const String &key,const String &value); //!< \brief Create a new key/value pair or change the value of one
 
-        bool hasKey(const String &key) const; //!< Check if a key is a part of the data structure
-        String remove(const String &key); //!< Remove a key/value pair
+        bool hasKey(const String &key) const; //!< \brief Check if a key is a part of the data structure
+        String remove(const String &key); //!< \brief Remove a key/value pair
 
-        /// Sorting tools:
-        void sortKeys(); //!< Sort the keys alphabetically
-        void sortKeysReverse(); //!< Sort the keys alphabetically in reverse
-        void sortValues(); //!< Sort by values in ascending order
-        void sortValuesReverse(); //!< Sort by values in descending order
+        // Sorting tools:
+        void sortKeys(); //!< \brief Sort the keys alphabetically
+        void sortKeysReverse(); //!< \brief Sort the keys alphabetically in reverse
+        void sortValues(); //!< \brief Sort by values in ascending order
+        void sortValuesReverse(); //!< \brief Sort by values in descending order
     };
 
     inline int StringDict::size() const

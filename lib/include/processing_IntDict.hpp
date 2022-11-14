@@ -1,6 +1,3 @@
-/// A simple class to use a String as a lookup for an integer value. 
-/// String "keys" are associated with int values.
-/// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 /// \file processing_IntDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE IntDict
 /// \author 'borkowsk'
@@ -27,6 +24,9 @@
 namespace Processing {
 //*///////////////////////////////////////////////////////////////////
 
+/// \brief A simple class to use a String as a lookup for an integer value.
+/// String "keys" are associated with int values.
+/// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
 class IntDict: private std::map<String,int>, virtual public _self_printable
 {
 public:
@@ -34,52 +34,57 @@ public:
         using     std::map<String,int>::end;
         using     std::map<String,int>::operator[];
 
-        /// Destructor
+        /// \brief Destructor
         ~IntDict() = default ;
 
-        ///Constructor(s)
-        IntDict() = default;
-        IntDict(IntDict const&) = default;  //!< copy-constructor (not aggregate initialization)
+        // CONSTRUCTORS
+        // ////////////
+        IntDict() = default; /// \brief Default constructor
+        IntDict(IntDict const&) = default;  //!< \brief copy-constructor (not aggregate initialization)
         //IntDict(pairs);
         //IntDict(row);
 
-        /// Printing device for whole container
+        /// \brief Printing method for whole container
         String print() const; //!< forced by _self_printable
 
-        int     size() const; //!<	Returns the number of key/value pairs
-        void    clear(); //!<	Remove all entries
+        int     size() const; //!< \brief Returns the number of key/value pairs
+        void    clear();      //!< \brief Remove all entries
         
         ///...
-        //iterable<int>        values(); //!< Return the internal array being used to store the values
+        //iterable<int>        values(); //!< \brief Return the internal array being used to store the values
 
-        sarray<String>  keyArray() const; //!< Return a copy of the internal keys array
+        sarray<String>  keyArray() const; //!< \brief Return a copy of the internal keys array
         
         ///...
-        sarray<int>  valueArray() const; //!< Create a new array and copy each of the values into it
+        sarray<int>  valueArray() const; //!< \brief Create a new array and copy each of the values into it
         
         ///...
-        int get(const String&) const; //!< Return a value for the specified key
+        int get(const String&) const; //!< \brief Return a value for the specified key
         int get(const String& key,int alternate) const;
         
         ///...
-        void set(const String& key,int value); //!< Create a new key/value pair or change the value of one
+        void set(const String& key,int value); //!< \brief Create a new key/value pair or change the value of one
         
-        bool hasKey(const String& key) const; //!< Check if a key is a part of the data structure
-        int  remove(const String& key); //!< Remove a key/value pair
+        bool hasKey(const String& key) const; //!< \brief Check if a key is a part of the data structure
+        int  remove(const String& key); //!< \brief Remove a key/value pair
         
-        /// Sorting tools:
-        void sortKeys(); //!< Sort the keys alphabetically
-        void sortKeysReverse(); //!< Sort the keys alphabetically in reverse
-        void sortValues(); //!< Sort by values in ascending order
-        void sortValuesReverse(); //!< Sort by values in descending order
+        // Sorting tools:
+        // //////////////
+        void sortKeys();           //!< \brief Sort the keys alphabetically
+        void sortKeysReverse();    //!< \brief Sort the keys alphabetically in reverse
+        void sortValues();         //!< \brief Sort by values in ascending order
+        void sortValuesReverse();  //!< \brief Sort by values in descending order
         
-        /// Arithmetics:
-        void add(const String& key,int val); //!< Add to a value
-        void sub(const String& key,int val); //!< Subtract from a value
-        void div(const String& key,int val); //!< Divide a value
-        void mult(const String& key,int val);//!< Multiply a value
+        // Arithmetics:
+        // ////////////
+        void add(const String& key,int val); //!< \brief Add to a value
+        void sub(const String& key,int val); //!< \brief Subtract from a value
+        void div(const String& key,int val); //!< \brief Divide a value
+        void mult(const String& key,int val); //!< \brief Multiply a value
 };
 
+// INLINE IMPLEMENTATIONS:
+// ///////////////////////
 
     inline int IntDict::size() const
     {
@@ -164,7 +169,7 @@ public:
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-04-29                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

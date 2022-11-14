@@ -34,31 +34,31 @@ namespace Processing
 
       ~FloatList()=default;
       FloatList()=default;
-      FloatList(FloatList const&) = default;  // copy-constructor (not aggregate initialization)
-      FloatList(std::initializer_list<int>);// initializer-list constructor (not copy constructor)
+      FloatList(FloatList const&) = default; //!< \brief  copy-constructor (not aggregate initialization)
+      FloatList(std::initializer_list<int>); //!< \brief  initializer-list constructor (not copy constructor)
       FloatList(int initialSize):std::vector<float>(initialSize){}
 
-      int       size() const;// 	Get the length of the list
-      void      clear();// 	Remove all entries from the list
-      float     get(int index) const;// Get an entry at a particular index
-      void      append(float what);// 	Add a new entry to the list (.append(values) .append(list) )
-      void      set(int index,float what);// 	Set the entry at a particular index
+      int       size() const;              //!< \brief Get the length of the list
+      void      clear();                   //!< \brief Remove all entries from the list
+      float     get(int index) const;      //!< \brief Get an entry at a particular index
+      void      append(float what);        //!< \brief Add a new entry to the list (.append(values) .append(list) )
+      void      set(int index,float what); //!< \brief Set the entry at a particular index
 
-      float     remove(int index);// 	Remove an element from the specified index
-      bool      hasValue(float what);// 	Check if a number is a part of the list
-      void      add(int index,float amount);// 	Add to a value
-      void      sub(int index,float amount);// 	Subtract from a value
-      void      mult(int index,float amount);// 	Multiply a value
-      void      div(int index,float amount);// 	Divide a value
-      float     min();// 	Return the smallest value
-      float     max();// 	Return the largest value
-      void      sort();// 	Sorts an array, lowest to highest
-      void      sortReverse();// 	Reverse sort, orders values from highest to lowest
-      void      reverse();// 	Reverse the order of the list elements
-      void      shuffle();// 	Randomize the order of the list elements
+      float     remove(int index);         //!< \brief  	Remove an element from the specified index
+      bool      hasValue(float what);      //!< \brief  	Check if a number is a part of the list
+      void      add(int index,float amount); //!< \brief  	Add to a value
+      void      sub(int index,float amount); //!< \brief  	Subtract from a value
+      void      mult(int index,float amount); //!< \brief  	Multiply a value
+      void      div(int index,float amount); //!< \brief  	Divide a value
+      float     min();      //!< \brief  	Return the smallest value
+      float     max();      //!< \brief  	Return the largest value
+      void      sort();     //!< \brief  	Sorts an array, lowest to highest
+      void      sortReverse(); //!< \brief  	Reverse sort, orders values from highest to lowest
+      void      reverse();     //!< \brief  	Reverse the order of the list elements
+      void      shuffle();     //!< \brief  	Randomize the order of the list elements
 
-      sarray<float>     array() const;// 	Create a new array with a copy of all the values
-      String print() const;
+      sarray<float>     array() const;     //!< \brief 	Create a new array with a copy of all the values
+      String print() const;     //!< \brief Needed by self-printable ?
   };
 
   /// \class IntList
@@ -78,31 +78,31 @@ namespace Processing
 
        ~IntList()=default;
        IntList()=default;
-       IntList(IntList const&) = default;  // copy-constructor (not aggregate initialization)
-       IntList(std::initializer_list<int>);// initializer-list constructor (not copy constructor)
+       IntList(IntList const&) = default;       //!< \brief  copy-constructor (not aggregate initialization)
+       IntList(std::initializer_list<int>);     //!< \brief  initializer-list constructor (not copy constructor)
        IntList(int initialSize):std::vector<int>(initialSize){}
 
-       int      size() const;// 	Get the length of the list
-       void     clear();// 	Remove all entries from the list
-       int      get(int index) const;// Get an entry at a particular index
-       void     append(int   what);// 	Add a new entry to the list (.append(values) .append(list) )
-       void     set(int index,int   what);// 	Set the entry at a particular index
+       int      size() const;     //!< \brief  	Get the length of the list
+       void     clear();          //!< \brief  	Remove all entries from the list
+       int      get(int index) const;      //!< \brief  Get an entry at a particular index
+       void     append(int   what);        //!< \brief  Add a new entry to the list (.append(values) .append(list) )
+       void     set(int index,int   what); //!< \brief  Set the entry at a particular index
 
-       int      remove(int index);// 	Remove an element from the specified index
-       bool     hasValue(int   what);// 	Check if a number is a part of the list
-       void     add(int index,int   amount);// 	Add to a value
-       void     sub(int index,int   amount);// 	Subtract from a value
-       void     mult(int index,int   amount);// 	Multiply a value
-       void     div(int index,int   amount);// 	Divide a value
-       int      min();// 	Return the smallest value
-       int      max();// 	Return the largest value
-       void     sort();// 	Sorts an array, lowest to highest
-       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
-       void     reverse();// 	Reverse the order of the list elements
-       void     shuffle();// 	Randomize the order of the list elements
+       int      remove(int index);     //!< \brief  	Remove an element from the specified index
+       bool     hasValue(int   what);  //!< \brief  	Check if a number is a part of the list
+       void     add(int index,int   amount);  //!< \brief  	Add to a value
+       void     sub(int index,int   amount);  //!< \brief 	Subtract from a value
+       void     mult(int index,int   amount); //!< \brief  	Multiply a value
+       void     div(int index,int   amount);  //!< \brief  	Divide a value
+       int      min();     //!< \brief  	Return the smallest value
+       int      max();     //!< \brief  	Return the largest value
+       void     sort();    //!< \brief  	Sorts an array, lowest to highest
+       void     sortReverse(); //!< \brief  	Reverse sort, orders values from highest to lowest
+       void     reverse();     //!< \brief  	Reverse the order of the list elements
+       void     shuffle();     //!< \brief  	Randomize the order of the list elements
 
-       sarray<int>  array() const;// 	Create a new array with a copy of all the values
-       String print() const;
+       sarray<int>  array() const;  //!< \brief  	Create a new array with a copy of all the values
+       String print() const;     //!< \brief Needed by self-printable ?
   };
 
   /// \class StringList
@@ -122,29 +122,29 @@ namespace Processing
 
        ~StringList() = default;
        StringList() = default;
-       StringList(StringList const&) = default;  // copy-constructor (not aggregate initialization)
-       StringList(std::initializer_list<String> lst);// initializer-list constructor (not copy constructor)
+       StringList(StringList const&) = default;       //!< \brief copy-constructor (not aggregate initialization)
+       StringList(std::initializer_list<String> lst); //!< \brief  initializer-list constructor (not copy constructor)
        StringList(sarray<String> const& arr);
        StringList(int initialSize):std::vector<Processing::String>(initialSize){}
 
-       int      size() const;// 	Get the length of the list
-       void     clear();// 	Remove all entries from the list
-       String   get(int index) const;// 	Get an entry at a particular index
-       void     append(_string_param   what);// Add a new entry to the list (.append(values) .append(list) )
+       int      size() const;  //!< \brief  	Get the length of the list
+       void     clear();       //!< \brief  	Remove all entries from the list
+       String   get(int index) const;          //!< \brief  Get an entry at a particular index
+       void     append(_string_param   what);  //!< \brief  Add a new entry to the list (.append(values) .append(list) )
        void     append(String& what);
-       void     set(int index,_string_param   what);// 	Set the entry at a particular index
+       void     set(int index,_string_param   what); //!< \brief  	Set the entry at a particular index
 
-       String   remove(int index);// 	Remove an element from the specified index
-       bool     hasValue(_string_param   what);// Check if a number is a part of the list
-       void     sort();// 	Sorts an array, lowest to highest
-       void     sortReverse();// 	Reverse sort, orders values from highest to lowest
-       void     reverse();// 	Reverse the order of the list elements
-       void     shuffle();// 	Randomize the order of the list elements
-       void     lower();// 	Make the entire list lower case
-       void     upper();// 	Make the entire list upper case
+       String   remove(int index); //!< \brief  	Remove an element from the specified index
+       bool     hasValue(_string_param   what); //!< \brief  Check if a number is a part of the list
+       void     sort(); //!< \brief  	Sorts an array, lowest to highest
+       void     sortReverse(); //!< \brief  	Reverse sort, orders values from highest to lowest
+       void     reverse();   //!< \brief  	Reverse the order of the list elements
+       void     shuffle();   //!< \brief  	Randomize the order of the list elements
+       void     lower();     //!< \brief  	Make the entire list lower case
+       void     upper();     //!< \brief 	Make the entire list upper case
 
-       sarray<int>  array() const;// 	Create a new array with a copy of all the values
-       String print() const;
+       sarray<int>  array() const; //!< \brief  Create a new array with a copy of all the values
+       String print() const;       //!< \brief Needed by self-printable ?
   };
 
   typedef Processing::self_printable_ptr<FloatList>  pFloatList;
@@ -186,7 +186,7 @@ inline String FloatList::print() const
         ret+=_string_param(val);
         ret+=String(" ");
     }
-    ret+=String("]");//TODO +=char ?
+    ret+=String("]"); //TODO +=char ?
     return ret;
 }
 
@@ -200,7 +200,7 @@ inline String IntList::print() const
         ret+=_string_param(val);
         ret+=String(" ");
     }
-    ret+=String("]");//TODO +=char ?
+    ret+=String("]"); //TODO +=char ?
     return ret;
 }
 
@@ -215,7 +215,7 @@ inline String StringList::print() const
         ret+=_string_param(val);
         ret+=String("\" ");
     }
-    ret+=String("]");//TODO +=char ?
+    ret+=String("]"); //TODO +=char ?
     return ret;
 }
 
@@ -235,7 +235,7 @@ inline StringList::StringList(const sarray<String> &arr):
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

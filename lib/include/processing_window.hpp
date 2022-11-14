@@ -25,21 +25,21 @@ namespace Processing
 /// An announcement declaration for type that implements various conversions to a String
 class _string_param;
 /// An announcement declaration for mode of closing arcs
-extern const int OPENPIE;//default arc open_mode
+extern const int OPENPIE; //default arc open_mode
 
 //TODO - make file for internal variables? Exp.: "processing_ivars.hpp" ?
 ///\brief Mode for driving ellipses \ingroup drawing
-extern int _ELLIPSE_MODE;//=CENTER?
+extern int _ELLIPSE_MODE; //=CENTER?
 ///\brief Mode for driving rectangles \ingroup drawing
-extern int _RECT_MODE;//=CORNER?
+extern int _RECT_MODE; //=CORNER?
 ///\brief Mode for driving heads of lines \ingroup drawing
-extern int STROKE_CAP;//=SQUARE?;
+extern int STROKE_CAP; //=SQUARE?;
 ///\brief Mode for driving conjunctions of lines \ingroup drawing
-extern int STROKE_JOIN;//=MITER?;
+extern int STROKE_JOIN; //=MITER?;
 ///\brief Mode for horizontal text alignment \ingroup drawing
-extern int _TEXT_HORIZONTAL_AL;//=LEFT;
+extern int _TEXT_HORIZONTAL_AL; //=LEFT;
 ///\brief Mode for vertical text alignment \ingroup drawing
-extern int _TEXT_VERTICAL_AL;//=TOP;
+extern int _TEXT_VERTICAL_AL; //=TOP;
 
 
 /// \brief Interface for the main window class that mimics the Processing window
@@ -47,14 +47,14 @@ extern int _TEXT_VERTICAL_AL;//=TOP;
 class processing_window_base
 {
   public:
-    virtual ~processing_window_base();
+    virtual ~processing_window_base(); //!< \brief DESTRUCTOR is virtual
     virtual void exit();
     virtual void before_setup(int argc, const char *argv[]);
-    virtual void setup()=0;//Must be provided!
-    virtual void before_draw();//Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
-    virtual void draw(){} //EMPTY DRAW()
-    virtual void after_draw();//Calculate frameRate and _INTERNAL_DELAY
-    virtual void check_events();//If events are in queue, they are processed
+    virtual void setup()=0; //!< \brief Must be provided!
+    virtual void before_draw(); //!< \brief Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
+    virtual void draw(){} //!< \brief EMPTY DRAW()
+    virtual void after_draw(); //!< \brief Calculate frameRate and _INTERNAL_DELAY
+    virtual void check_events(); //!< \brief If events are in queue, they are processed
     virtual void setTitle(_string_param bar);
     //Event handlers
     virtual void onMouseClicked()=0;
@@ -93,7 +93,7 @@ extern class processing_window: public processing_window_base
 
 /// \brief Alias for _processing_window_instance
 /// \ingroup rtm
-extern processing_window *const surface;//=&_processing_window_instance;
+extern processing_window *const surface; //=&_processing_window_instance;
 
 /// \brief Stops continuously executing the code within draw().
 /// \note By default, Processing loops through draw() continuously,
@@ -164,7 +164,7 @@ class color
     /// \param alfa : alpha channel
     color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
     {
-        val|=alfa<<24;//??? TODO! TEST IT!
+        val|=alfa<<24; //??? TODO! TEST IT!
     }
 
     std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
@@ -213,7 +213,7 @@ extern const float& frameRate;
 extern const int&   frameCount;
 ///\var Internal variable used by set_delay(); \ingroup rtm
 /// DO NOT USE DIRECTLY!!!
-extern int _INTERNAL_DELAY;//=100; //
+extern int _INTERNAL_DELAY; //=100; //
 
 /// The mousePressed variable stores whether or not a mouse button is currently being pressed.
 /// The value is true when any mouse button is pressed, and false if no button is pressed.
@@ -221,39 +221,39 @@ extern int _INTERNAL_DELAY;//=100; //
 extern const bool& mousePressed;
 
 ///Writeable version. \ingroup rtm
-extern       bool& mousePressedWr;/// Rather not used in Processing examples.
+extern       bool& mousePressedWr; ///< Rather not used in Processing examples.
 
 
-extern const int&  mouseButton;/// When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
-                               /// depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
-extern const int&  mouseX;/// always contains the current horizontal coordinate of the mouse.
-extern const int&  mouseY;/// always contains the current vertical coordinate of the mouse.
-                          /// Note that Processing can only track the mouse position when the pointer is over the current window
+extern const int&  mouseButton; ///< When a mouse button is pressed, the value of this is set to either LEFT, RIGHT, or CENTER,
+                               ///< depending on which button is pressed. If no button is pressed, mouseButton may be reset to 0.
+extern const int&  mouseX; ///< always contains the current horizontal coordinate of the mouse.
+extern const int&  mouseY; ///< always contains the current vertical coordinate of the mouse.
+                           ///< Note that Processing can only track the mouse position when the pointer is over the current window
 
-extern const int&  pmouseX;/// always contains the previous horizontal coordinate of the mouse.
-extern const int&  pmouseY;/// always contains the previous vertical coordinate of the mouse.
-                          /// Note that Processing can only track the mouse position when the pointer is over the current window
+extern const int&  pmouseX; ///< always contains the previous horizontal coordinate of the mouse.
+extern const int&  pmouseY; ///< always contains the previous vertical coordinate of the mouse.
+                            ///< Note that Processing can only track the mouse position when the pointer is over the current window
 
-/// For non-ASCII keys, use the keyCode variable. The keys included in the ASCII specification (BACKSPACE, TAB, ENTER, RETURN, ESC, and DELETE)
+/// For non-ASCII keys, use the `keyCode` variable. The keys included in the ASCII specification (BACKSPACE, TAB, ENTER, RETURN, ESC, and DELETE)
 /// do not require checking to see if the key is coded, and you should simply use the key variable instead of keyCode
 /// If you're making cross-platform projects, note that the ENTER key is commonly used on PCs and Unix and the RETURN key is used instead on Macintosh.
 /// Check for both ENTER and RETURN to make sure your program will work for all platforms.
-extern const bool&   keyPressed;/// is true if any key is pressed and false if no keys are pressed.
-extern       char    key;/// always contains the value of the most recent key on the keyboard that was used (either pressed or released)
-extern       int     keyCode;/// The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
-                             /// as well as ALT, CONTROL, and SHIFT.
-                             /// There are issues with how keyCode behaves across different renderers and operating systems.
-                             /// Watch out for unexpected behavior as you switch renderers and operating systems.
-                             /// When checking for these keys, it can be useful to first check if the key is coded.
-                             /// This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
+extern       char    key;     ///< always contains the value of the most recent key on the keyboard that was used (either pressed or released)
+extern       int     keyCode; ///< The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
+                             ///< as well as ALT, CONTROL, and SHIFT.
+                             ///< There are issues with how keyCode behaves across different renderers and operating systems.
+                             ///< Watch out for unexpected behavior as you switch renderers and operating systems.
+                             ///< When checking for these keys, it can be useful to first check if the key is coded.
+                             ///< This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
+extern const bool&   keyPressed; ///< is true if any key is pressed and false if no keys are pressed.
 
 //  Most important driving functions
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// Not implemented!
+/// TODO Not implemented!
 void noSmooth();
 
-/// Not implemented!
+/// TODO Not implemented!
 void smooth();
 
 /// \brief The background() function sets the color used for the background of the Processing window.
@@ -265,8 +265,9 @@ void background(float gray);
 void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
 void background(float v1,float v2,float v3,float  alpha);
-/// \a TODO Currently not implemented
-/// \param col
+
+/// \param col - 3D color
+/// \note TODO Currently not implemented (???)
 void background(const color& col);
 
 #ifndef PROCESSING_INLINES_H
@@ -279,10 +280,11 @@ void noStroke();
 #endif
 
 #ifndef PROCESSING_INLINES_H
-void strokeWeight(float Weight);//!< Parameters	weight 	float: the weight (in pixels) of the stroke
+void strokeWeight(float Weight); //!< Parameters	weight 	float: the weight (in pixels) of the stroke
 #endif
-void strokeCap(int cap);  //!< Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
-void strokeJoin(int join);//!< Parameters	join 	int: either MITER, BEVEL, ROUND
+
+void strokeCap(int cap);   ///< \param	cap 	int: either SQUARE, PROJECT, or ROUND
+void strokeJoin(int join); ///< \param	join 	int: either MITER, BEVEL, ROUND
 
 #ifndef PROCESSING_INLINES_H
 void fill(float Gray);
@@ -320,7 +322,7 @@ void line(float  x1,float  y1,float  x2,float  y2);
 ///  start 	float: angle to start the arc, specified in radians
 ///  stop 	float: angle to stop the arc, specified in radians
 void ellipse(float a,float  b,float  c,float  d);
-void ellipseMode(int mode);/// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
+void ellipseMode(int mode); /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 #endif
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
@@ -329,21 +331,24 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=P
 /// By default, the first two parameters set the location of the upper-left corner, the third sets the width, and
 /// the fourth sets the height.
 ///
-/// Parameters
-/// a 	float: x-coordinate of the rectangle by default
-/// b 	float: y-coordinate of the rectangle by default
-/// c 	float: width of the rectangle by default
-/// d 	float: height of the rectangle by default
-/// r 	float: radii for all four corners
-/// tl 	float: radius for top-left corner
-/// tr 	float: radius for top-right corner
-/// br 	float: radius for bottom-right corner
-/// bl 	float: radius for bottom-left corner
-/// Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
+//  Parameters:
+/// \param a 	float: x-coordinate of the rectangle by default
+/// \param b 	float: y-coordinate of the rectangle by default
+/// \param c 	float: width of the rectangle by default
+/// \param d 	float: height of the rectangle by default
 void rect(float a,float  b,float  c,float  d);
+
+/// \param r 	float: radii for all four corners
 void rect(float a,float  b,float  c,float  d,float r);
+
+/// \param tl 	float: radius for top-left corner
+/// \param tr 	float: radius for top-right corner
+/// \param br 	float: radius for bottom-right corner
+/// \param bl 	float: radius for bottom-left corner
 void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl);
-void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+
+/// \note Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
+void rectMode(int mode); /// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
 #endif
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
@@ -351,32 +356,29 @@ void rectMode(int mode);/// Parameter: mode 	int: either CORNER, CORNERS, CENTER
 /// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().
 void redraw();
 
-
-/// Parameters:
-/// kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
-/// img 	PImage: any variable of type PImage
-///   x 	int: the horizontal active spot of the cursor
-///   y 	int: the vertical active spot of the cursor
-void cursor();
+/// \param kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
 void cursor(int kind);
+void cursor();
 void noCursor();
+
+// \param img 	PImage: any variable of type PImage
+// \param   x 	int: the horizontal active spot of the cursor
+// \param   y 	int: the vertical active spot of the cursor
 //void cursor(PImage img);
 //void cursor(PImage img,int x,int y);
 
-void delay(int napTime); ///The delay() function halts for a specified time. Delay times are specified in thousandths of a second.
-/// Parameters	napTime 	int: milliseconds to pause before running draw() again
+void delay(int napTime); ///< The delay() function halts for a specified time. Delay times are specified in thousandths of a second.
+                         ///< \Param	napTime 	int: milliseconds to pause before running draw() again
 
 inline
-void pixelDensity(int density){} //DO NOTHING!
-// Parameters	density 	int: 1 or 2
+void pixelDensity(int density){} ///< DO NOTHING! \Param	density 	int: 1 or 2
 
 inline
-int displayDensity(int display=0) {return 1;}
-/// Parameters	display 	int: the display number to check
+int displayDensity(int display=0) {return 1;} ///< \Param	display 	int: the display number to check
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022-04-28                   *
+ *               PROCESSING2C  version 2022-11-14                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

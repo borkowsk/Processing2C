@@ -33,13 +33,13 @@ static inline std::ostream& operator << (std::ostream& o,String& str)
 void BufferedReader::_set(std::ifstream* p)
 {
     // HACK!!!
-    (*this)=(_JAVAInputStream*)p;//TODO DEBUG - looks like it works
+    (*this)=(_JAVAInputStream*)p; //TODO DEBUG - looks like it works
 }
 
 void PrintWriter::_set(std::ofstream* p)
 {
     // HACK!!!
-    (*this)=(_JAVAOutputStream*)p;//TODO DEBUG - looks like it works
+    (*this)=(_JAVAOutputStream*)p; //TODO DEBUG - looks like it works
 }
 
 /// Create opaque std::ofstream connected to file 'name'
@@ -61,7 +61,6 @@ PrintWriter& createWriter(_string_param name)
         ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
         std::cerr.flush();std::cout.flush();
         auto res=system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
-        //system("/bin/bash ");
         delete file;
     }
 

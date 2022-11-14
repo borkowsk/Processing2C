@@ -77,7 +77,7 @@ public:
         void add(const String& key,float val); //!< Add to a value
         void sub(const String& key,float val); //!< Subtract from a value
         void div(const String& key,float val); //!< Divide a value
-        void mult(const String& key,float val);//!< Multiply a value
+        void mult(const String& key,float val); //!< Multiply a value
 };
 
     inline int FloatDict::size() const
@@ -163,7 +163,7 @@ public:
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-04-29                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

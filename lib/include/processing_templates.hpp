@@ -53,27 +53,29 @@ namespace Processing
 class Object
 {
   private:
-    /// Assign operator
+    /// \brief Assign operator
     /// \return deferred 'this' of L-value
     Object& operator = (const Object&);
   public:
-    /// Destructor
+    /// \brief Destructor
     virtual ~Object(){} //TODO =0; ???
-    /// Make hashcode number for this object
+
+    /// \brief Make hashcode number for this object
     ///	\return the hashcode
     virtual long hashCode() const;
-    ///	Compares the given object \p 'obj' to this object based on address.
-    /// \param obj
+
+    ///	\brief Compares the given object 'obj' to this object based on address.
+    /// \param obj - object to compare with this
     /// \return logical result
     ///
-    /// TODO CHECK what happened with ptrs to inside base classes?
+    /// TODO CHECK what happened with `ptrs` to inside base classes?
     virtual bool equals(const Object& obj) const { return this==&obj; }
 };
 
 /**
  * The template class "ptr\<T>".
- * Proxy for standard shared_ptr which mimic Processing "object references"
- * behaviours
+ * \brief Proxy for standard shared_ptr
+ * which mimic Processing "object references" behaviours
  * \tparam T : any class
  * \n See: https://en.cppreference.com/w/cpp/memory/shared_ptr
  * \ingroup JAVA_compatibility
@@ -85,29 +87,29 @@ class ptr:public std::shared_ptr<T>
       /// Destructor
       ~ptr(){} // = default; ??? TODO?
 
-      ///Constructors
-      ptr():std::shared_ptr<T>(nullptr)//empty
+      // Constructors
+      ptr():std::shared_ptr<T>(nullptr) //!< \brief default constructor
       {}
-      ptr(nullptr_t p):std::shared_ptr<T>(p)//visible empty
+      ptr(nullptr_t p):std::shared_ptr<T>(p) //!< \brief visible empty value constructor
       {}
-      ptr(T* ini):std::shared_ptr<T>(ini)//from raw pointer for new T
+      ptr(T* ini):std::shared_ptr<T>(ini) //!< \brief from raw pointer for new T constructor
       {}
 
-      ///konwersja z gołych shared_ptr'ów potrzebna dla dynamic_ptr_cast<>
+      /// \brief konwersja z gołych shared_ptr'ów potrzebna dla dynamic_ptr_cast<>
       template<class B>
       ptr(std::shared_ptr<B> ini):std::shared_ptr<T>(ini)
       {
-          assert(ini.get()==nullptr || this->get()!=nullptr);//std::cerr<<ini.get()<<std::endl;
+          assert(ini.get()==nullptr || this->get()!=nullptr); //std::cerr<<ini.get()<<std::endl;
       }
 
-      ///Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+      /// \brief Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
       template<class B>
       ptr(ptr<B>& ini):std::shared_ptr<T>(ini)
       {
           assert(ini.get()==nullptr || this->get()!=nullptr);
       }
 
-      // Przypisania  //using std::shared_ptr<T>::operator = ;//robi kipisz!!! :-(
+      // Przypisania  //using std::shared_ptr<T>::operator = ; //robi kipisz!!! :-(
       // ^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
       ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
       ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
@@ -139,9 +141,9 @@ class ptr:public std::shared_ptr<T>
       bool operator == (std::nullptr_t p) const { return this->get()==p;}
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
-      /// Dostęp do atrybutów przechowywanego obiektu
+      /// \brief Dostęp do atrybutów przechowywanego obiektu
       T* operator -> () { return this->get();} //TODO Takie są dziedziczone, więc po co?
-      /// Dostęp do całości przechowywanego obiektu
+      /// \brief Dostęp do całości przechowywanego obiektu
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
 
@@ -158,7 +160,7 @@ class ptr:public std::shared_ptr<T>
      */
     template<class A,class B>
     inline
-    A* _free_ptr_to(ptr<B>& b)//TODO rename it into _raw_ptr_to
+    A* _free_ptr_to(ptr<B>& b) //TODO rename it into _raw_ptr_to
     {
         return (A*)(B*)b;
     }
@@ -232,10 +234,10 @@ class array
 {
       T* _ptr;
   public:
-      size_t length;//Processing ma to jako goły atrybut, a nie metodę akcesorową
+      size_t length; //!< Processing ma to jako goły atrybut, a nie metodę akcesorową
 
-      ~array() { delete [] _ptr; } // Zwalnianie zasobów
-      array(size_t N); //Jedyny konstruktor
+      ~array() { delete [] _ptr; } //!< \brief Destruktor - Zwalnianie zasobów
+      array(size_t N); //!< \brief Jedyny konstruktor
       T& operator [] (size_t i) { return _ptr[i]; }
 };
 
@@ -251,8 +253,8 @@ class sarray:public ptr< array<T> >
   public:
       //using ptr< array<T> >::operator ->;??? //NIE?
 
-     ~sarray() = default;// Odziedziczone zwalnianie zasobów
-      sarray() = default;
+     ~sarray() = default; //!< \brief Odziedziczone zwalnianie zasobów
+      sarray() = default; //!< \brief Konstruktor tylko domyślny
       sarray(sarray const&) = default; //??? TODO TODO ? chyba OK
       sarray(array<T>* tab): ptr< array<T> >(tab){}
       sarray(std::initializer_list<T> lst);
@@ -275,8 +277,8 @@ template<class T>
 class matrix:public array< sarray<T> >
 {
 public:
-    ~matrix() = default;// Odziedziczone zwalnianie zasobów
-    matrix(std::size_t N,std::size_t M);//Jedyny konstruktor
+    ~matrix() = default; // Odziedziczone zwalnianie zasobów
+    matrix(std::size_t N,std::size_t M); //Jedyny konstruktor
 };
 
 /**
@@ -295,7 +297,7 @@ class smatrix:public ptr< matrix<T> >
       smatrix() = default;
       smatrix(smatrix const&) = default; //???  TODO ? chyba OK
       smatrix(matrix<T>* tab): ptr< matrix<T> > (tab) {}
-      smatrix(std::initializer_list<T> lst);//Jak na razie nigdzie nie używane. TODO TEST!
+      smatrix(std::initializer_list<T> lst); //Jak na razie nigdzie nie używane. TODO TEST!
 
       //matrix<T>* operator -> () { return this->get();} // dublet? TODO usunąć?
       sarray<T>& operator [] (size_t j) const { return (*this->get())[j]; } // dublet? NIE!
@@ -342,7 +344,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-28                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

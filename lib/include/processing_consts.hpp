@@ -99,9 +99,9 @@ const int BASELINE=104;
 // # define M_PI_4		0.78539816339744830962	/* pi/4 */
 
 ///  M_PI is imported from \<cmath> \var PI
-const auto PI=M_PI;//3.6651914291881;
+const auto PI=M_PI; //3.6651914291881;
 ///  M_PI is imported from \<cmath> then TWO_PI is generated on this base. \var TWO_PI
-const auto TWO_PI=2*M_PI;//6.2831855f
+const auto TWO_PI=2*M_PI; //6.2831855f
 /// \a M_PI_2 is imported from \<cmath>, \var HALF_PI
 const auto HALF_PI=M_PI_2;
 /// \a M_PI_4 is imported from \<cmath>, \var QUARTER_PI
@@ -125,7 +125,7 @@ const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-06-28                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

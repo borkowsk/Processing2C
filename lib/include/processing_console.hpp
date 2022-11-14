@@ -15,15 +15,15 @@ namespace Processing
 {
   class _string_param;
 
-  //void print();//To bez sensu
-  void print(_string_param _p1);//The print() function writes to the console
+  //void print(); //To bez sensu
+  void print(_string_param _p1); //The print() function writes to the console
   void print(_string_param _p1,_string_param _p2);
   void print(_string_param _p1,_string_param _p2,_string_param _p3);
   void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
              _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8=""); ///< TODO MORE! (up to 10)
 
   void println();
-  void println(_string_param _p1);//The println() function writes to the console. Each call to this function creates also a new line.
+  void println(_string_param _p1); //The println() function writes to the console. Each call to this function creates also a new line.
   void println(_string_param _p1,_string_param _p2);
   void println(_string_param _p1,_string_param _p2,_string_param _p3);
   void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
@@ -32,7 +32,7 @@ namespace Processing
   String hex(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent hexadecimal notation. 
   String hex(int num,int digits); //jest
   String binary(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent binary notation.
-  String binary(int value,int digits);//TODO
+  String binary(int value,int digits); //TODO
 
   String nf(double num);
   String nf(double num,int digits);
@@ -100,7 +100,7 @@ namespace Processing
   
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -58,7 +58,7 @@ public:
     /// A method of accessing a specific item
     T& get(int index)
     {
-        return this->at(index);// []?
+        return this->at(index); // []?
     }
 
     /// Index Specific Item Removal Method
@@ -66,7 +66,7 @@ public:
     void remove(int index)
     {
        //assert("NOT IMPLEMENTED"==nullptr);
-       std::vector<T>::erase(this->begin() + index);//Very slow in std::vector implementation!
+       std::vector<T>::erase(this->begin() + index); //Very slow in std::vector implementation!
     }
 
     /// A method for removing a specific item based on the comparison.
@@ -157,14 +157,14 @@ public:
     /// Most important operator
     ArrayList<T>* operator -> ()
     {
-        auto ret=this->get();//Linia potrzebna dla debuggingu
+        auto ret=this->get(); //Linia potrzebna dla debuggingu
         return ret;
     }
 
     /// Return size of pointed list
     int   size() const //Returns the number of elements in this list.
     {
-        int ret=this->get()->size();//TODO: Po co? Potrzebne chyba tylko do DEBUG
+        int ret=this->get()->size(); //TODO: Po co? Potrzebne chyba tylko do DEBUG
         return ret;
     }
 
@@ -183,7 +183,7 @@ public:
     }
 
     // DIRECT IMPORTS FROM basic class, even if will be made private
-    //using self_printable_ptr< ArrayList<T> >::operator [];// NIE NO TAKIEGO TO NIE MA :-D
+    //using self_printable_ptr< ArrayList<T> >::operator []; // NIE NO TAKIEGO TO NIE MA :-D
     //using self_printable_ptr< ArrayList<T> >::operator =;
     //using self_printable_ptr< ArrayList<T> >::operator ->;
     //T&        operator [] (size_t i) { return (*this->get())[i]; }
@@ -193,7 +193,7 @@ public:
 
 }/*_endOfNamespace*/
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

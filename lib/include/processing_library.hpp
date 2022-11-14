@@ -87,8 +87,8 @@ namespace Processing
   /// \ingroup drawing
   void textFont(PFont f);
 
-  /// \note Shapes
-  /// ===================================
+  /// \note About Shapes
+  /// ==================
   /// Using the beginShape() and endShape() functions allow creating more complex forms. beginShape() begins recording vertices for
   /// a shape and endShape() stops recording. The value of the kind parameter tells it which types of shapes to create from
   /// the provided vertices. With no mode specified, the shape can be any irregular polygon.
@@ -120,18 +120,17 @@ namespace Processing
 
   /// \brief vertex() is used to specify the vertex coordinates for points, lines, triangles, quads, and polygons.
   /// \note It is used exclusively within the beginShape() and endShape() functions.
-  /// TODO - IMPLEMENTATION!!!
-  /// \param  v 	float[]: vertex parameters, as a float array of length VERTEX_FIELD_COUNT
   /// \param  x 	float: x-coordinate of the vertex
-  /// \param  y 	float: y-coordinate of the vertex
-  /// \param  z 	float: z-coordinate of the vertex
-  /// \param  u 	float: horizontal coordinate for the texture mapping
-  /// \param  v 	float: vertical coordinate for the texture mapping
-  /// \ingroup drawing
+  /// \param  y 	float: y-coordinate of the vertex \ingroup drawing
   void vertex(float x,float y);
+  /// \param  z 	float: z-coordinate of the vertex \ingroup drawing
   void vertex(float x,float y,float z);
+  /// \param  v 	float[]: vertex parameters, as a float array of length VERTEX_FIELD_COUNT, TODO - IMPLEMENTATION!!!
   void vertex(float v[]);
+  /// \param  u 	float: horizontal coordinate for the texture mapping
+  /// \param  v 	float: vertical coordinate for the texture mapping \ingroup drawing
   void vertex(float x,float y,float u,float v);
+  /// \param  z 	float: z-coordinate of the vertex  \ingroup drawing
   void vertex(float x,float y,float z,float u,float v);
 
   /// \note Generates random numbers:
@@ -157,7 +156,7 @@ namespace Processing
   inline
   double random(double hig){return random(0,hig); }
 
-  /// Sets the seed value for random().
+  /// \brief Sets the seed value for random().
   /// By default, random() produces different results each time the program is run,
   /// bit with specific seed you have same sequence of values everytime
   /// \param seed 	int: seed value
@@ -274,14 +273,13 @@ namespace Processing
   /// \param value 	float: the incoming value to be converted
   /// \param start 	float: lower bound of the value's current range
   /// \param stop 	float: upper bound of the value's current range
-  /// \return	float
   /// \ingroup etc
   float norm(float value,float start,float stop);
 
+  /// \brief lerp is a linear interpolation
   /// \param start 	float: first value
   /// \param stop 	float: second value
   /// \param  amt 	float: float between 0.0 and 1.0
-  /// \return	float
   /// \ingroup etc
   float lerp(float start,float stop,float amt);
 
@@ -321,17 +319,17 @@ namespace Processing
   /// \param napTime: milliseconds to pause before running draw() again \ingroup etc
   void delay(int napTime);
 
-  ///  \brief The year() function returns the current year as an integer (2003, 2004, 2005, etc).\ingroup etc
+  ///  \brief The year() function returns the current year as an integer (2003, 2004, 2005, etc). \ingroup etc
   int year();
-  /// \brief  The month() function returns the current month as a value from 1 - 12.\ingroup etc
+  /// \brief  The month() function returns the current month as a value from 1 - 12. \ingroup etc
   int month();
-  /// \brief  The day() function returns the current day as a value from 1 - 31.\ingroup etc
+  /// \brief  The day() function returns the current day as a value from 1 - 31. \ingroup etc
   int day();
-  /// \brief  The hour() function returns the current hour as a value from 0 - 23.\ingroup etc
+  /// \brief  The hour() function returns the current hour as a value from 0 - 23. \ingroup etc
   int hour();
-  /// \brief  The minute() function returns the current minute as a value from 0 - 59.\ingroup etc
+  /// \brief  The minute() function returns the current minute as a value from 0 - 59. \ingroup etc
   int minute();
-  /// \brief  The second() function returns the current second as a value from 0 - 59.\ingroup etc
+  /// \brief  The second() function returns the current second as a value from 0 - 59. \ingroup etc
   int second();
 
   ///  \brief The millis() function returns the number of milliseconds

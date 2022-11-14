@@ -35,22 +35,22 @@ namespace Processing
       String readLine();
 
       /// Reads a single character.
-      //int	read();//TODO - need implementation?
+      //int	read(); //TODO - need implementation?
       ///Reads characters into a portion of an array.
-      //int	read(char[] cbuf, int off, int len);//TODO - need implementation?
+      //int	read(char[] cbuf, int off, int len); //TODO - need implementation?
 
       ///Returns a Stream, the elements of which are lines read from this BufferedReader.
-      //Stream<String>	lines();//TODO - implement???
+      //Stream<String>	lines(); //TODO - implement???
 
       /// Tells whether this stream supports the mark() operation, which it does.
       bool	markSupported() { return false; }
       /// Marks the present position in the stream.
-      //void	mark(int readAheadLimit);//TODO - implement?
+      //void	mark(int readAheadLimit); //TODO - implement?
       /// Resets the stream to the most recent mark.
-      //void	reset();//TODO - implement?
+      //void	reset(); //TODO - implement?
 
       /// Skips characters.
-      //long	skip(long n);//TODO - implement?
+      //long	skip(long n); //TODO - implement?
   };
 
   /// A "hidden" class that adds methods that are not in std::ofstream but are in a JAVA class that we are faking
@@ -59,32 +59,32 @@ namespace Processing
   {
   public:
       ///Appends the specified character to this writer.
-      //PrintWriter 	append(char c);//TODO - implement?
+      //PrintWriter 	append(char c); //TODO - implement?
       ///Appends the specified character sequence to this writer.
-      //PrintWriter 	append(CharSequence csq);//TODO - implement?
+      //PrintWriter 	append(CharSequence csq); //TODO - implement?
       ///Appends a subsequence of the specified character sequence to this writer.
-      //PrintWriter 	append(CharSequence csq, int start, int end);//TODO - implement?
+      //PrintWriter 	append(CharSequence csq, int start, int end); //TODO - implement?
       ///Flushes the stream if it's not closed and checks its error state.
-      bool 	checkError();//TODO - need implementation?
+      bool 	checkError(); //TODO - need implementation?
 
       ///Writes a formatted string to this writer using the specified format string and arguments.
-      //PrintWriter 	format(Locale l, String format, Object... args);//TODO - implement?
+      //PrintWriter 	format(Locale l, String format, Object... args); //TODO - implement?
       ///Writes a formatted string to this writer using the specified format string and arguments.
-      //PrintWriter 	format(String format, Object... args);//TODO - implement?
-      //PrintWriter 	printf(Locale l, String format, Object... args);//TODO - implement?
+      //PrintWriter 	format(String format, Object... args); //TODO - implement?
+      //PrintWriter 	printf(Locale l, String format, Object... args); //TODO - implement?
       ///A convenience method to write a formatted string to this writer using the specified format string and arguments.
-      //PrintWriter 	printf(String format, Object... args);//TODO - implement?
+      //PrintWriter 	printf(String format, Object... args); //TODO - implement?
 
       ///Writes an array of characters.
-      void 	write(char buf[]);//TODO - need implementation?
+      void 	write(char buf[]); //TODO - need implementation?
       ///Writes A Portion of an array of characters.
-      void 	write(char buf[], int off, int len);//TODO - need implementation?
+      void 	write(char buf[], int off, int len); //TODO - need implementation?
       ///Writes a single character.
-      void 	write(int c);//TODO - need implementation?
+      void 	write(int c); //TODO - need implementation?
       ///Writes a string.
-      void 	write(String s);//TODO - need implementation?
+      void 	write(String s); //TODO - need implementation?
       ///Writes a portion of a string.
-      void 	write(String s, int off, int len);//TODO - need implementation?
+      void 	write(String s, int off, int len); //TODO - need implementation?
   };
 
   /// A class that mimics the read access handle from a text file
@@ -217,7 +217,7 @@ namespace Processing
         std::getline(*_get(), line._std_str());
         return line;
     }
-    else return String(nullptr);// Totally empty string
+    else return String(nullptr); // Totally empty string
   }
 
   /// Read whole line from the stream (using -> access)
@@ -230,7 +230,7 @@ namespace Processing
           std::getline(*this, line._std_str());
           return line;
       }
-      else return String(nullptr);// Totally empty string
+      else return String(nullptr); // Totally empty string
   }
 
   /// Read whole line from the stream using function syntax
@@ -253,7 +253,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022-11-14                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
