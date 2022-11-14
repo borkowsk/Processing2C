@@ -61,14 +61,16 @@ grep -q "P2Cscr" $HOME/.profile
 
 if [  $? != 0  ]
 then
+##TODO #Any insertion of such configuration variables need consider __LAST_EXPORT__ mark.
      P2Cscr="$PROC2DIR/scripts"
      echo -e "\nProcessing to C++ scripts are in" $P2Cscr
      echo -e "\nexport P2Cscr=\"${P2Cscr}\"" >> $HOME/.profile
 fi
+
 echo "In $HOME/.profile:"
 grep --color "P2Cscr" $HOME/.profile
-set -e
 
+set -e
 #make the tools app
 pushd tools/
 cmake .
