@@ -1,10 +1,15 @@
 /// \file window_exit.cpp
 /// \brief Domyślna obsługa zakończenia aplikacji
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+/// \details
+///
+///     Domyślna obsługa zakończenia aplikacji polegająca jedynie na wywołaniu metody exit klasy bazowej
+///
 /// \ingroup rtm
-///
-/// Domyślna obsługa zakończenia aplikacji polegająca jedynie na wywołaniu metody exit klasy bazowej
-///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -20,7 +25,7 @@ void processing_window::exit()          //it is called whenever a window is clos
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

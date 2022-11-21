@@ -4,6 +4,7 @@
 /// \file processing_IntDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE IntDict
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup JAVA_compatibility
 /// \see
 /// * file:///.../processing-3.5.4/modes/java/reference/FloatDict.html
@@ -163,7 +164,7 @@ public:
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

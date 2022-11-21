@@ -1,8 +1,8 @@
 /// \file processing_console.hpp
 /// \brief Związane z konsolą funkcje print i println oraz formatowanie
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup console
-///
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
@@ -100,7 +100,7 @@ namespace Processing
   
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

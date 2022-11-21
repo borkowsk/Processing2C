@@ -3,7 +3,10 @@
  * \brief Most commonly used strings functions
  * \ingroup strings
  * \author 'borkowsk'
- * \last_modification  see the bottom lines
+ * \date 2022-11-21 (last modification)
+ * \details
+ *            see the bottom lines
+ * \ingroup strings
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -67,7 +70,7 @@ void _errMessage(Processing::String msg,const char* func,int line,const char* fi
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

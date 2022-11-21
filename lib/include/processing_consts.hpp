@@ -2,6 +2,7 @@
  * \file processing_consts.hpp
  * \brief Stałe dostępne we wszystkich programach w Processingu
  * \author 'borkowsk'
+ * \date 2022-11-21 (last modification)
  * \defgroup Processing_compatibility Functions and classes which mimic Processing interface
  * \defgroup JAVA_compatibility Functions and classes which mimic JAVA programming language
  */
@@ -125,7 +126,7 @@ const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

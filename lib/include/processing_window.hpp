@@ -2,9 +2,8 @@
  * \file processing_window.hpp
  * \classes processing_window; color
  * \ingroup drawing , rtm
- * \author Created by "wborkowsk-at-uw.edu.pl" in 2020.
- * \last_modification  see the bottom lines
- * \see Doxygen
+ * \author borkowsk
+ * \date 2022-11-21 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -378,7 +377,7 @@ int displayDensity(int display=0) {return 1;} ///< \Param	display 	int: the disp
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022-11-14                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

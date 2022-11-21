@@ -1,8 +1,11 @@
 /// \file pnumberformat.cpp
 /// \brief  Processing like numbers to string and string to number conversions
 /// \author 'borkowsk'
-/// \ingroup file_streams
+/// \date 2022-11-21 (last modification)
+/// \details
+///             ...
 ///
+/// \ingroup file_streams
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
@@ -217,7 +220,7 @@ String binary(int value,int digits)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

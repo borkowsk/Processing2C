@@ -1,11 +1,15 @@
 /// \file windows_draw.cpp
 /// \brief Domyślna obsługa odrysowywania okna
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+/// \details
+///     Domyślna obsługa odrysowywania (funkcja draw() ) aplikacji
+///     polegająca jedynie na nic nie robieniu
+///
 /// \ingroup rtm
-///
-/// Domyślna obsługa odrysowywania (funkcja draw() ) aplikacji
-/// polegająca jedynie na nic nie robieniu
-///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -16,11 +20,12 @@ namespace Processing
 
 void processing_window::draw() 
 {
+    /// default empty
 }
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

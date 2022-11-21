@@ -1,6 +1,7 @@
 /// \file processing_StringDict.hpp
 /// \brief IMPLEMENTATION OF Processing LIKE StringDict
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup JAVA_compatibility
 /// \see
 /// * file:///.../processing-3.5.4/modes/java/reference/StringDict.html
@@ -138,7 +139,7 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-04-29                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

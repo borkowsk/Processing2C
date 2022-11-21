@@ -1,8 +1,10 @@
 /// \file pshape.cpp
 /// \brief Processing shapes
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+/// \details
+///     TODO ALL OF Shapes need implementation!
 /// \ingroup graphics
-/// \n TODO ALL OF Shapes
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
@@ -63,7 +65,7 @@ void vertex(float x,float y,float z,float u,float v)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

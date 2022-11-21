@@ -1,4 +1,5 @@
 /// \file processing_alist.hpp
+/// \date 2022-11-21 (last modification)
 /// IMPLEMENTATION OF JAVA LIKE ArrayList
 /// \link https://en.cppreference.com/w/cpp/container/vector
 #pragma once
@@ -187,7 +188,7 @@ public:
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-22                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

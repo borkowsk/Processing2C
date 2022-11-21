@@ -1,8 +1,8 @@
 /// \file processing_inlines.hpp
 /// \brief Procedury graficzne w wersji inline, dla przyśpieszenia wykonania
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup graphics
-///
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
@@ -193,7 +193,7 @@ inline void textAlign(int hor,int ver)
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

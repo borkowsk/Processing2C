@@ -1,3 +1,8 @@
+/// \file
+/// \brief Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
+/// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+///
 #include <locale>
 #include <cassert>
 #include <ctime>
@@ -11,6 +16,9 @@ std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to
 std::ofstream mylog;           ///< Mainly for error checking
 bool EXTRACT_CLASSES=false;    ///< Make separate header file for all detected classes
 
+/// \brief  Recode mask of ctype into readable text.
+/// \param  interest - mask of ctype information
+/// \return textual representation as std::string.
 std::string print_type(std::ctype<char>::mask interest)
 {
     std::string out=std::to_string(interest);
@@ -30,7 +38,7 @@ std::string print_type(std::ctype<char>::mask interest)
     return out;
 }
 
-/// All characters up to and including the given sequence
+/// Extract all characters up to and including the given sequence
 int all_until(std::istream& inp,const std::string finish,std::string& block,char escape='\0')
 {
     int exp_len=finish.length();
@@ -56,7 +64,7 @@ int all_until(std::istream& inp,const std::string finish,std::string& block,char
     return 0;//Never used
 }
 
-/// Paired characters parentheses - block of even parentheses.
+/// Extract paired characters parentheses - block of even parentheses.
 int parentheses_block(std::istream& inp,const char start,const char finish,std::string& block,int counter=0,char escape='\0')
 {
     block="";// ??
@@ -81,7 +89,7 @@ int parentheses_block(std::istream& inp,const char start,const char finish,std::
 }
 
 
-/// Semantic parentheses - block of even parentheses. NOT IMPLEMENTED - todo?
+/// TODO: Extract semantic parentheses - block of even parentheses. NOT IMPLEMENTED.
 int parentheses_block(std::istream& inp,const std::string start,const std::string finish,std::string& block,int counter=0,char escape='\0')
 {
     int exp_len=finish.length();
@@ -90,8 +98,9 @@ int parentheses_block(std::istream& inp,const std::string start,const std::strin
     return 0;//Never used
 }
 
+/// Extract next block of code
 int next_block(std::istream& inp,std::string& block,std::ctype<char>::mask interest=
-std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::ctype_base::punct
+                        std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::ctype_base::punct
         )
 {
     // Get a reference to the ctype<char> facet.
@@ -139,6 +148,7 @@ std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::
     return 0;
 }
 
+/// Extract identifier
 std::string take_identifier(const std::string& curr_block,size_t pos)
 {
     std::string out="";
@@ -171,6 +181,7 @@ std::string take_identifier(const std::string& curr_block,size_t pos)
     return out;
 }
 
+/// Detect name of super class from definition of a class
 std::string detect_super_class(const std::string& curr_block)
 {
     std::string super_class="???";
@@ -194,6 +205,7 @@ std::string detect_super_class(const std::string& curr_block)
     return super_class;
 }
 
+/// Detect name of class from definition of a class
 std::string detect_class_name(const std::string& curr_block)
 {
     std::string this_class="???";
@@ -254,6 +266,7 @@ void count_lines(std::string& block)
     { line_counter++; pos = block.find('\n', pos + 1); }
 }
 
+/// Main function of class extraction tool
 int main(int argc,const char** argv)
 {
     std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
@@ -465,3 +478,17 @@ int main(int argc,const char** argv)
     std::cerr<<"\nEnd of Processing refactor tools error stream!\n"<< std::endl;
     return 0;
 }
+/* ******************************************************************
+ *               PROCESSING2C  version 2022                         *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/

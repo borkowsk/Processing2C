@@ -1,9 +1,10 @@
 /// \file main.cpp
 /// \brief  main() function for Processing like application
 /// \author 'borkowsk'
-///
-/// main() function must exists for Processing2C++ applications
-/// but user may generate and use its own versions
+/// \date 2022-11-21 (last modification)
+/// \details
+///     main() function must exists for Processing2C++ applications
+///     but user may generate and use its own versions
 /// \ingroup rtm
 ///
 // //////////////////////////////////////////////////////////////////////
@@ -85,7 +86,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

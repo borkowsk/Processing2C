@@ -2,6 +2,7 @@
  * \file processing_files.hpp
  * \ingroup file_streams
  * \author 'borkowsk'
+ * \date 2022-11-21 (last modification)
  * \classes BufferedReader; PrintWriter;
  * \last_modification  see the bottom lines
  */
@@ -253,7 +254,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

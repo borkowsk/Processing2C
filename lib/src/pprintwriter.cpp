@@ -4,7 +4,7 @@
  * \classes BufferedReader; PrintWriter;
  * \ingroup file_streams
  * \author 'borkowsk'
- * \last_modification  see the bottom lines
+ * \date 2022-11-21 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -32,14 +32,14 @@ static inline std::ostream& operator << (std::ostream& o,String& str)
 
 void BufferedReader::_set(std::ifstream* p)
 {
-    // HACK!!!
-    (*this)=(_JAVAInputStream*)p; //TODO DEBUG - looks like it works
+    // DIRTY HACK but it works.
+    (*this)=(_JAVAInputStream*)p;
 }
 
 void PrintWriter::_set(std::ofstream* p)
 {
-    // HACK!!!
-    (*this)=(_JAVAOutputStream*)p; //TODO DEBUG - looks like it works
+    // DIRTY HACK but it works.
+    (*this)=(_JAVAOutputStream*)p;
 }
 
 /// Create opaque std::ofstream connected to file 'name'
@@ -107,7 +107,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

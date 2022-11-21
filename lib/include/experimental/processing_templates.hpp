@@ -1,5 +1,6 @@
 /// \file processing_templates.hpp
 /// \brief Mandatory templates for objects and arrays
+/// \date 2022-11-21 (last modification)
 /// \see
 /// \n https://stackoverflow.com/questions/31874669/c11-reference-count-smart-pointer-design
 /// \n https://en.cppreference.com/w/cpp/utility/initializer_list
@@ -285,15 +286,15 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 }
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2021-11-12                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* *******************************************************************/
+/*               PROCESSING2C  version 2022                          */
+/* *******************************************************************/
+/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                  */
+/*            W O J C I E C H   B O R K O W S K I                    */
+/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego        */
+/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI   */
+/*    GITHUB: https://github.com/borkowsk                            */
+/*                                                                   */
+/*                               (Don't change or remove this note)  */
+/* *******************************************************************/
 #endif

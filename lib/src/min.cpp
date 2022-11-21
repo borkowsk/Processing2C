@@ -1,6 +1,7 @@
 /// \file max.cpp
 /// \brief  Implementations of mixed type 'min' functions
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup math
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -25,7 +26,7 @@ float min(float a,int b)
 
 }//END OF NAMESPACE Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

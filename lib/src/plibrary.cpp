@@ -1,8 +1,14 @@
 /// \file ***.cpp
-/// \brief
+/// \brief most commonly used library functions
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+/// \details
+///             ...
 ///
-/// most commonly used library functions
+/// \ingroup PROCESSING_compatibility
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -12,14 +18,16 @@
 namespace Processing
 {
 
-/// Simple functions
+// Simple functions
+// /////////////////
+
 
 void  randomSeed(int seed)
 {
     srand((unsigned)seed);
 }
 
-static double _denominator=RAND_MAX+1.0;
+static double _denominator=RAND_MAX+1.0; ///< Denominator for random function (STATIC, so unvisible for linker)
 double random(double low,double hig)
 {
     double tmp=low + (rand()/_denominator) * (hig-low);  //???TODO BETTER
@@ -38,37 +46,41 @@ double random(double low,double hig)
 
 //inline float random(double hig){return random(0,hig); }
 
-/// Proportions
-/// ///////////
-/// Parameters:
-/// value 	float: the incoming value to be converted
-/// start1 	float: lower bound of the value's current range
-/// stop1 	float: upper bound of the value's current range
-/// start2 	float: lower bound of the value's target range
-/// stop2 	float: upper bound of the value's target range
-float map(float s,float a1,float a2,float b1,float b2)//float value,float start1,float stop1,float start2,float stop2)
+/// \details Implementation of proportions mapping
+/// \param value 	float: the incoming value to be converted
+/// \param start1 	float: lower bound of the value's current range
+/// \param stop1 	float: upper bound of the value's current range
+/// \param start2 	float: lower bound of the value's target range
+/// \param stop2 	float: upper bound of the value's target range
+float map(float s,float a1,float a2,float b1,float b2) //float value,float start1,float stop1,float start2,float stop2)
 {
     return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
 }
 
+/// \details Implementation of proportions mapping
+/// \param value 	double: the incoming value to be converted
+/// \param start1 	double: lower bound of the value's current range
+/// \param stop1 	double: upper bound of the value's current range
+/// \param start2 	double: lower bound of the value's target range
+/// \param stop2 	double: upper bound of the value's target range
 double map(double s,double a1,double a2,double b1,double b2)
 {
     return b1 + (s-a1)*(b2-b1)/(a2-a1);//https://rosettacode.org/wiki/Map_range#C
 }
 
 /// Parameters:
-/// value 	float: the incoming value to be converted
-/// start 	float: lower bound of the value's current range
-/// stop 	float: upper bound of the value's current range
+/// \param value 	float: the incoming value to be converted
+/// \param start 	float: lower bound of the value's current range
+/// \param stop 	float: upper bound of the value's current range
 float norm(float value,float start,float stop)
 {
     return (value-start)/(stop-start);
 }
 
 /// Parameters:
-/// start 	float: first value
-/// stop 	float: second value
-/// amt 	float: float between 0.0 and 1.0
+/// \param start 	float: first value
+/// \param stop 	float: second value
+/// \param amt 	    float: float between 0.0 and 1.0
 /// float lerp(float start,float stop,float amt)
 ///
 float lerp(float v0, float v1, float t) // Precise method, which guarantees v = v1 when t = 1.
@@ -77,13 +89,9 @@ float lerp(float v0, float v1, float t) // Precise method, which guarantees v = 
 }
 
 
-/// Recalculating angles
-/// ////////////////////
-/// Parameters:
-/// degrees 	float: degree value to convert to radians
-/// radians 	float: radian value to convert to degrees
-/// Returns	float
-///
+/// \details Recalculating angles
+/// \param degrees 	float: degree value to convert to radians
+/// \return	float
 float radians(float degrees)
 {
     const double mult = M_PI/180;
@@ -91,6 +99,9 @@ float radians(float degrees)
     //return ( degrees * M_PI ) / 180 ;
 }
 
+/// \details Recalculating angles
+/// \param radians 	float: radian value to convert to degrees
+/// \return	float
 float degrees(float radians)
 {
     const double mult = 180/M_PI;
@@ -100,14 +111,19 @@ float degrees(float radians)
 
 
 }//END of namespace Processing
-/********************************************************************/
-/*               PROCESSING2C  version 2020-12-10                   */
-/********************************************************************/
-/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
-/*            W O J C I E C H   B O R K O W S K I                   */
-/*    Instytut Studiow Spolecznych Uniwersytetu Warszawskiego       */
-/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
-/*    GITHUB: https://github.com/borkowsk                           */
-/*                                                                  */
-/*                               (Don't change or remove this note) */
-/********************************************************************/
+/* ******************************************************************
+ *               PROCESSING2C  version 2022                         *
+ ********************************************************************
+ *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
+ *            W O J C I E C H   B O R K O W S K I                   *
+ *          Robert Zajonc Institute for Social Studies,             *
+ *                     UNIVERSITY OF WARSAW                         *
+ *   (Instytut Studiów Społecznych Uniwersytetu Warszawskiego)      *
+ *    WWW: http://iss.uw.edu.pl/en/ ; https://en.uw.edu.pl/         *
+ *    RG : https://www.researchgate.net/profile/Wojciech-Borkowski  *
+ *    GITHUB: https://github.com/borkowsk                           *
+ *                                                                  *
+ *                               (Don't change or remove this note) *
+ ********************************************************************/
+
+

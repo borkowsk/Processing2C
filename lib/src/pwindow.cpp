@@ -1,9 +1,14 @@
 /// \file pwindow.cpp
 /// \brief podstawy obsługi okienka pseudo-processingowego
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
+/// \details
+///         ...
+///
 /// \ingroup rtm
-///
-///
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -286,7 +291,7 @@ void redraw()
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

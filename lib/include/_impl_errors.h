@@ -1,8 +1,8 @@
 /// \file _impl_errors.h
 /// \brief Macros for errors and function(s) for string concatenation which may helps
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup rtm
-///
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ namespace Processing
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5,const _string_param& a6);
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

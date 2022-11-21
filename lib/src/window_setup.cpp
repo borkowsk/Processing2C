@@ -1,11 +1,16 @@
 /// \file window_setup.cpp
 /// \brief Domyślna obsługa konfiguracji okna
 /// \author 'borkowsk'
-/// \ingroup
+/// \date 2022-11-21 (last modification)
+/// \details
 ///
-/// Domyślna obsługa konfiguracji okna (setup) aplikacji polegająca jedynie
-/// na otwarciu okna o rozmiarze 100x100
+///     Domyślna obsługa konfiguracji okna (setup) aplikacji
+///     polegająca jedynie na otwarciu okna o rozmiarze 100x100
 ///
+/// \ingroup rtm
+// //////////////////////////////////////////////////////////////////////
+// This file is part of the Processing2C++ Library. See bottom lines.
+// //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
 #include "processing_window.hpp"
 #include "processing_templates.hpp"
@@ -21,7 +26,7 @@ void processing_window::setup()
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2021-12-23                   *
+ *               PROCESSING2C  version 2022                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

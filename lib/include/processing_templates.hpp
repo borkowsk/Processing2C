@@ -2,6 +2,7 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
+* \date 2022-11-21 (last modification)
 * \see <ul>
 * <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> "https://en.cppreference.com/w/cpp/language/constructor"
@@ -344,7 +345,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022-11-14                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

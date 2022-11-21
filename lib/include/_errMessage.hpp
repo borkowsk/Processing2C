@@ -1,6 +1,7 @@
 /// \file _errMessage.hpp
 /// \brief Functions for printing or logging error messages.
 /// \author 'borkowsk'
+/// \date 2022-11-21 (last modification)
 /// \ingroup rtm
 /// \TODO JAVA Exceptions - e.printStackTrace();
 ///	  file:///home/borkowsk/processing-3.5.4/modes/java/reference/try.html
@@ -19,7 +20,7 @@
 void _errMessage(const char* msg,const char* func,int line=-1,const char* file="");
 void _errMessage(std::string msg,const char* func,int line=-1,const char* file="");
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2021-12-23                     */
+/*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
