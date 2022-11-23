@@ -1,16 +1,3 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
-//Source: RTMVideo.pde
-#include "processing_consts.hpp"
-#include "processing_templates.hpp"
-#include "processing_library.hpp"
-#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
-#include "processing_window.hpp"
-#include "processing_string.hpp"  //Processing::String class
-#include "project.h" //...is for you. Could be deleted when not needed.
-using namespace Processing;
-#include "local.h"
-//==================================================================================
-
 //*   Tool for made video from simulation - DO NOT HAVE C++ VERSION!
 //*///////////////////////////////////////////////////////////////////////////////////
 /*_OnlyProcessingBlockBegin

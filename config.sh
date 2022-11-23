@@ -1,15 +1,15 @@
 #!/bin/bash
-# Processing2C version 0.13 installation script
+# Processing2C version 0.2c installation script
 #
 
 EDIT=nano
+source scripts/screen.ini
 
 set -e # https://intoli.com/blog/exit-on-errors-in-bash-scripts/
 
-source screen.ini
 
 echo -e $COLOR2"Running"$COLOR1 `realpath $0` $NORMCO
-echo -e "\n\tThis script stops on any error!\n\tWhen it stop, remove source of the error & run it again!\n" 
+echo -e "\n\tThis script stops on any error!\n"$COLOR3"\tWhen it stop, remove source of the error & run it again!\n"$NORMCO 
 
 function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
  echo -e $COLOR1""
@@ -32,8 +32,8 @@ pause
 if [[ ! -d $SYMSHELL ]]
 then
 echo 
-echo -e "Are you sure, that SymShellLight is cloned into directory $COLOR1 $SYMSHELL $NORMCO?"
-echo -e "I can't find this toolbox, which is strictly required!"
+echo -e $COLERR"Are you sure, that SymShellLight is cloned into directory"$COLOR1 $SYMSHELL $NORMCO"?"
+echo -e $COLERR"I can't find this toolbox, which is strictly required!"$NORMCO
 echo
 echo -e "How to install?"
 echo
@@ -61,14 +61,15 @@ grep -q "P2Cscr" $HOME/.profile
 
 if [  $? != 0  ]
 then
-##TODO #Any insertion of such configuration variables need consider __LAST_EXPORT__ mark.
+##TODO: Any insertion of such configuration variables need consider __LAST_EXPORT__ mark!
      P2Cscr="$PROC2DIR/scripts"
      echo -e "\nProcessing to C++ scripts are in" $P2Cscr
      echo -e "\nexport P2Cscr=\"${P2Cscr}\"" >> $HOME/.profile
+     $EDIT $HOME/.profile
 fi
 
-echo "In $HOME/.profile:"
-grep --color "P2Cscr" $HOME/.profile
+echo -e $COLOR2"In"$COLOR3 $HOME/.profile $NORMCO":"
+grep --color=always "P2Cscr" $HOME/.profile
 
 set -e
 #make the tools app
@@ -93,10 +94,12 @@ echo
 echo -e $COLOR2"Ready to make library!"$NORMCO
 pause
 
-echo
 pushd lib/ 
+echo -e $COLOR3"CMAKE..."$NORMCO
 cmake . 
+echo -e $COLOR3"MAKE..."$NORMCO
 make
+echo -e $COLOR3"DONE"$NORMCO
 popd
 
 date > configured.txt #FINALLY SUCCESFULL
@@ -115,17 +118,31 @@ echo -e $NORMCO
 ./_translateProjects.sh
 
 echo -e "$COLOR2\nNow You have to edit $COLOR1 'CMakeLists.txt' $COLOR2 using $COLOR1 $EDIT $COLOR2"  
-echo -e "\nSELECT EXAMPLES by REMOVING 'EXCLUDE_FROM_ALL' CLAUSULES\n"$NORMCO
+echo -e "\nSELECT EXAMPLES by ADDING/REMOVING $COLOR3'EXCLUDE_FROM_ALL'$COLOR2 CLAUSULES\n"$NORMCO
 pause
 $EDIT CMakeLists.txt
+echo -e $COLOR3"CMAKE..."$NORMCO
 cmake . 
+echo -e $COLOR3"MAKE..."$NORMCO
 make
+echo -e $COLOR3"DONE"$NORMCO
 popd
 
 date > configured.txt #FINALLY SUCCESFULL
 echo -e "With some examples" >> configured.txt
 
-echo -e $COLOR2"\nSCRIPT" `realpath $0` "FINISHED"$NORMCO
+echo -e $COLOR2"\nSCRIPT"$COLOR1 `realpath $0` $COLOR2"FINISHED"$NORMCO
 
 
+#/********************************************************************/
+#/*               PROCESSING2C  version 2022-11-23                   */
+#/********************************************************************/
+#/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
+#/*            W O J C I E C H   B O R K O W S K I                   */
+#/*    Instytut Studów Społecznych Uniwersytetu Warszawskiego        */
+#/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
+#/*    GITHUB: https://github.com/borkowsk                           */
+#/*                                                                  */
+#/*                               (Don't change or remove this note) */
+#/********************************************************************/
 

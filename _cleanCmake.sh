@@ -1,20 +1,23 @@
 #!/bin/bash
 #Cleaning cmake files
+source scripts/screen.ini
+
 pushd lib/ > /dev/null
-echo "Directory is" `pwd`
+$ECHO $COLOR1"Directory is"$COLOR2 `pwd` $NORMCO
 ./_cleanCmake.sh
-echo "Finished for" `pwd`
+$ECHO $COLOR1"Finished for"$COLOR2 `pwd` $NORMCO
 popd > /dev/null
 
 #Cleaning cmake files
 pushd tools/ > /dev/null
-echo "Directory is" `pwd`
+$ECHO $COLOR1"Directory is"$COLOR2 `pwd` $NORMCO
 ./_cleanCmake.sh
-echo "Finished for" `pwd`
+$ECHO $COLOR1"Finished for"$COLOR2 `pwd` $NORMCO
 popd > /dev/null
 
 pushd PROJECTS/ > /dev/null
-echo "Directory is" `pwd`
+$ECHO $COLOR1"Directory is"$COLOR2 `pwd` $NORMCO
 ./_cleanProjects.sh
-echo "Finished for" `pwd`
+$ECHO $COLOR1"Finished for"$COLOR2 `pwd` $NORMCO
 popd > /dev/null
+$ECHO $COLOR1"THE END"

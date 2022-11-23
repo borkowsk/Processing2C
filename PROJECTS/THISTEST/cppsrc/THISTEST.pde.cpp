@@ -1,17 +1,3 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
-//Source: THISTEST.pde
-#include "processing_consts.hpp"
-#include "processing_templates.hpp"
-#include "processing_library.hpp"
-#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
-#include "processing_window.hpp"
-#include "processing_string.hpp"  //Processing::String class
-#include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "project.h" //...is for you. Could be deleted when not needed.
-using namespace Processing;
-#include "local.h"
-//==================================================================================
-
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących Processing::ptr<...>
 /// To powoduje GPF bo tworzy się nowy _shared_ptr<...> nie powiązany z tym trzymającym obiekt! 
 //*//////////////////////////////////////////////////////////////////////////////////////////////

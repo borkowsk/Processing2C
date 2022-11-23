@@ -1,19 +1,3 @@
-//Processing to C++ converter ../../scripts/procesing2cpp.sh
-//Source: DICTSTEST.pde
-#include "processing_consts.hpp"
-#include "processing_templates.hpp"
-#include "processing_library.hpp"
-#include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
-#include "processing_window.hpp"
-#include "processing_string.hpp"  //Processing::String class
-#include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_IntDict.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_FloatDict.hpp" //...is optional. Should be deleted when not needed.
-#include "project.h" //...is for you. Could be deleted when not needed.
-using namespace Processing;
-#include "local.h"
-//==================================================================================
-
 /// Dictionary is a simple class to use a String as a lookup for an value. 
 /// String "keys" are associated with integer or float values.
 /// In Pr2C it is implemented as class derived from std::map

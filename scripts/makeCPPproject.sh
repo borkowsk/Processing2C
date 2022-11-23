@@ -1,19 +1,23 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
-# No parameters are expected!  
-Pr2CVERSION="0.2b"
+# One optional parameter is possible:  multisrc
+# But it is still TODO! 
+Pr2CVERSION="0.2c"
+
+export SCRIPTS=$(dirname "$0")
+source $SCRIPTS/screen.ini
 
 if [ $# -gt 1 ]; 
 then
-   echo "Only one parameter allowed!" 1>&2
+   echo $ERRCOL"Only one parameter allowed!"$NORMCO 1>&2
    echo "It may be 'singlesrc' or 'multisrc'" 1>&2
    exit -1
 fi
 
 #CONFIGURATION
+echo -e $COLOR3"\nMaking PROCESSING2C project in "$COLOR2 `pwd` $NORMCO "\n"
 echo -e $COLOR4"\nConfiguration directories:"$NORMCO
 
-export SCRIPTS=$(dirname "$0")
 export SOURCES=`pwd`
 export PROJECT=$(basename "$SOURCES")
 source $SCRIPTS/config.dat
@@ -43,14 +47,14 @@ echo -e $COLOR3"Project will be translated in mode:$COLOR2 $SOURCEMODE"$NORMCO
 #CHECK SOURCE
 echo -e $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
 
-echo -e "\nAt least setup() or draw() function expected in *.pde files:"
-egrep --color -Hn '(setup\(\)|draw\(\))' *.pde
+echo -e $COLOR1"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
+grep -E  --color=always -Hn '(setup\(\)|draw\(\))' *.pde
 
-echo -e "\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"
-egrep --color -Hn '(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
+echo -e $COLOR1"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
+egrep  -Hn  --color=always '(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
 
-echo -e "\nThe following lines may hide library symbols..."
-egrep --color -Hn -f $SCRIPTS/symbols_pattern.grep *.pde
+echo -e $COLOR1"\nThe following lines may hide library symbols..."$NORMCO
+egrep  -Hn  --color=always -f $SCRIPTS/symbols_pattern.grep *.pde
 #echo -e "\nCHECKING NAMES FINISHED\n"
 
 
@@ -115,6 +119,7 @@ done
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 echo -e "\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
+# This file was made automagically. Do not edit!
 cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
@@ -123,11 +128,11 @@ set( VERSION_NUM $Pr2CVERSION ) #MUST BE NUMERIC
 
 IF (WIN32)
   # set stuff for windows
-  message( "MS Windows platform assumed.\n\tInside C/C++ code automatic _MSC_VER variable will be used!" )
+  message( \${PROJECT_NAME} ": MS Windows platform assumed.\n\tInside C/C++ code automatic _MSC_VER variable will be used!" )
   #set( WINDOWS_ONLY_SRC  "" )
 ELSE()
   # set stuff for other systems
-  message( "Linux/unix platform assumed.")
+  message( \${PROJECT_NAME} ": Linux/unix platform assumed." )
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
@@ -156,6 +161,7 @@ add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_svg"
               )
 
 #add_executable("\${PROJECT_NAME}_\${VERSION_NUM}"
+
 EOF
 
 #List of modules
@@ -202,12 +208,13 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"
 #     pthread
 #     rt
 #     )
+
 EOF
 
 echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-11-14                   */
+#/*               PROCESSING2C  version 2022-11-23                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

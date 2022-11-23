@@ -5,21 +5,23 @@ then
    exit -1
 fi
 
-
-echo "//Processing to C++ converter $0"
-echo "//Source: $1"
-echo "#include \"processing_consts.hpp\""
-echo "#include \"processing_templates.hpp\""
-echo "#include \"processing_library.hpp\""
-echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
-echo "#include \"processing_window.hpp\""
-#TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
-${SCRIPTS}/includeOptionals.sh $1
-echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
-echo "using namespace Processing;"
-echo "#include \"local.h\""
-echo "//=================================================================================="
-echo ""
+if [[ $SOURCEMODE == "multisrc" ]]
+then
+	echo "//Processing to C++ converter $0"
+	echo "//Source: $1"
+	echo "#include \"processing_consts.hpp\""
+	echo "#include \"processing_templates.hpp\""
+	echo "#include \"processing_library.hpp\""
+	echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
+	echo "#include \"processing_window.hpp\""
+	#TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
+	${SCRIPTS}/includeOptionals.sh $1
+	echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
+	echo "using namespace Processing;"
+	echo "#include \"local.h\" //???."  
+	echo "//=================================================================================="
+	echo ""
+fi
 
 echo -e "\n${NORMCO}START TRANSLATION OF $COLOR2 $1 $COLOR1" 1>&2 #Colored ERRORS!
 
@@ -198,7 +200,7 @@ echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-09-12                   */
+#/*               PROCESSING2C  version 2022-11-23                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
@@ -208,4 +210,5 @@ echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
 #/*                                                                  */
 #/*                               (Don't change or remove this note) */
 #/********************************************************************/
+
 
