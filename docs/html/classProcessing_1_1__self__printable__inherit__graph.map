@@ -1,8 +1,0 @@
-<map id="Processing::_self_printable" name="Processing::_self_printable">
-<area shape="rect" id="node1" title="Interface for classes able to make printable representation." alt="" coords="5,107,201,133"/>
-<area shape="rect" id="node2" href="$classProcessing_1_1ArrayList.html" title=" " alt="" coords="249,5,445,32"/>
-<area shape="rect" id="node3" href="$classProcessing_1_1FloatList.html" title="The FloatList is offten used as replacement of a array&lt;float&gt;" alt="" coords="269,56,425,83"/>
-<area shape="rect" id="node4" href="$classProcessing_1_1IntList.html" title="The IntList is offten used as replacement of a array&lt;int&gt;" alt="" coords="277,107,417,133"/>
-<area shape="rect" id="node5" href="$classProcessing_1_1self__printable__ptr.html" title=" " alt="" coords="253,158,442,199"/>
-<area shape="rect" id="node6" href="$classProcessing_1_1StringList.html" title="The StringList is offten used as replacement of a array&lt;String&gt;" alt="" coords="267,224,428,251"/>
-</map>
