@@ -1,7 +1,9 @@
 /// \file
-/// \brief Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
+/// \brief An application that corrects the Processing code before the real translation
+///        PL: Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
 /// \author 'borkowsk'
 /// \date 2022-11-21 (last modification)
+/// 	Processing2C version 22.
 ///
 #include <locale>
 #include <cassert>

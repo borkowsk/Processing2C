@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Processing2C version 22.
+#
 if [ $# -ne 1 ]; 
 then
    echo -e "${COLOR2}$# ${COLOR1}is invalid number of parameters!"$NORMCO 1>&2

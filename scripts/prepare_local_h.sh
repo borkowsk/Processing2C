@@ -1,5 +1,8 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
+#
+# Processing2C version 22.
+#
 
 echo -e $COLOR1"Making $COLOR2'local.h'$COLOR3" $COLERR 
 

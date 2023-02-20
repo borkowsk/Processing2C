@@ -1,6 +1,6 @@
-/// Simple model of colony growth with mutations (test project for Processing2C)
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: "WZROST.pde"
+/// Simple model of colony growth with mutations (test project for Processing2C).
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @note THIS IS PROCESSING2C EXAMPLE
 //*////////////////////////////////////////////////////////////////////////////////
 // Wzrost losowo z punktu środkowego z mutacjami kolorów
 //*////////////////////////////////////////////////////////////////////////////////
@@ -99,6 +99,5 @@ void processing_window::draw()
     Step++;
   }
 }
-
 //../../scripts did it
 

@@ -6,6 +6,11 @@
 *.log
 *.tmp
 
+# Doxygen help - need be generated locally
+*.html
+*.rtf
+*.js
+
 #CMakeLists.txt
 #lista.txt
 #clean_list.txt

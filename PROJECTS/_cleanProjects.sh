@@ -1,11 +1,15 @@
 #!/bin/bash
+#Processing2C version 22.
+
+source "../scripts/screen.ini"
+
 if [ $# -ne 0 ]; 
 then
-   echo "No parameters expected!" 1>&2
+   echo -e $COLERR"No parameters expected!"$NORMCO 1>&2
    exit -1
 fi
 
-echo "Cleaning cmake files!"
+echo -e ${COLOR1}"Cleaning cmake files!"${NORMCO}
 echo "Cleaning cmake files" `date` >> clean_list.txt
 
 for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdujących się w bieżącym katalogu
@@ -28,9 +32,10 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
     rm -f *~
     popd > /dev/null
   elif [ -f "$f" ]; then
-    echo "'$f' plik" >> /dev/null
+     echo "'$f' - file" >> /dev/null
   else
-    echo "'$f' unexpected directory entry type" >> lista.txt
+    echo -e "${COLOR4}WARNING${NORMCO}'$f' -${COLERR} unexpected entry type ${NORMCO}"
+    echo "'$f' unexpected directory entry type" >> clean_list.txt
   fi
 done
 

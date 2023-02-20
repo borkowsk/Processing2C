@@ -1,8 +1,11 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # One optional parameter is possible:  multisrc
-# But it is still TODO! 
-Pr2CVERSION="0.2c"
+# But it is still TODO!
+#
+# Processing2C version 22.
+#
+Pr2CVERSION="0.22"
 
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
