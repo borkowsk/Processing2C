@@ -1,7 +1,7 @@
 #!/bin/bash
 #GREPOPTIONS="--with-filename --color -E" #For DEBUG
 #
-# Processing2C version 22.
+# Processing2C version .22.
 #
 GREPOPTIONS="-c -E"
 if [ $# -lt 1 ];

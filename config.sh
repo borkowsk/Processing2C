@@ -1,7 +1,8 @@
 #!/bin/bash
 # Processing2C version 0.2c installation script
 #
-
+# Processing2C version .22.
+#
 EDIT=nano
 source scripts/screen.ini
 
@@ -135,7 +136,7 @@ echo -e $COLOR2"\nSCRIPT"$COLOR1 `realpath $0` $COLOR2"FINISHED"$NORMCO
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-11-23                   */
+#/*               PROCESSING2C  version 2022-12-31                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

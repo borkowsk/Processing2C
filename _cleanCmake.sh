@@ -1,5 +1,8 @@
 #!/bin/bash
 #Cleaning cmake files
+#
+# Processing2C version .22.
+#
 source scripts/screen.ini
 
 pushd lib/ > /dev/null
