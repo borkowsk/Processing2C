@@ -55,8 +55,9 @@ namespace Processing
         String(const ptr<T> p); //:String("@"){ operator+=( (long unsigned int)p.get() );}
 
 
-        /// \note It makes a pointer on itself :-D, such a ugly HACK ... But it works
-        String* operator -> () { return this; }
+        /// \note It makes a pointer on itself :-D, such a ugly HACK... But it works :-)
+        const String* operator -> () const { return this; }
+	String* operator -> () { return this; }
 
         /// \brief Back, named "conversion", to base class
         const std::string& _std_str() const { return *this;}
@@ -263,7 +264,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023-07-03                   *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

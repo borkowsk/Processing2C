@@ -143,7 +143,9 @@ class ptr:public std::shared_ptr<T>
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
       /// \brief Dostęp do atrybutów przechowywanego obiektu
-      T* operator -> () { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      const T* operator -> () const { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      T* operator -> () { return this->get();}
+       
       /// \brief Dostęp do całości przechowywanego obiektu
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
@@ -260,7 +262,10 @@ class sarray:public ptr< array<T> >
       sarray(array<T>* tab): ptr< array<T> >(tab){}
       sarray(std::initializer_list<T> lst);
 
-      array<T>*   operator -> () { return this->get();} // dublet? TODO usunąć?
+
+      const array<T>*   operator -> () const { return this->get();} //!< @todo Dublet? TODO usunąć?
+      array<T>*   operator -> () { return this->get();}
+       
       T&          operator [] (std::size_t i) const { return (*this->get())[i]; }
       T*          begin() const { return &(*this)[0]; }
       T*          end() const { return &(*this)[ length() ]; }
@@ -292,7 +297,7 @@ template<class T>
 class smatrix:public ptr< matrix<T> >
 {
   public:
-      //using ptr< matrix<T> >::operator ->; //NIE?
+      //using ptr< matrix<T> >::operator ->; //NIE???
 
      ~smatrix() = default; // Odziedziczone zwalnianie zasobów
       smatrix() = default;
@@ -301,6 +306,8 @@ class smatrix:public ptr< matrix<T> >
       smatrix(std::initializer_list<T> lst); //Jak na razie nigdzie nie używane. TODO TEST!
 
       //matrix<T>* operator -> () { return this->get();} // dublet? TODO usunąć?
+      
+      
       sarray<T>& operator [] (size_t j) const { return (*this->get())[j]; } // dublet? NIE!
       sarray<T>* begin() const { return &(*this)[0]; } // dublet? NIE!
       sarray<T>* end() const { return &(*this)[ this->get()->length ]; } // dublet? NIE!
@@ -345,7 +352,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022                           */
+/*               PROCESSING2C  version 2023-03-07                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
