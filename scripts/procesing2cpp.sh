@@ -17,7 +17,7 @@ then
 	echo "#include \"processing_library.hpp\""
 	echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
 	echo "#include \"processing_window.hpp\""
-	#TODO - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
+	#TODO ? - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
 	${SCRIPTS}/includeOptionals.sh $1
 	echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 	echo "using namespace Processing;"
@@ -31,11 +31,11 @@ echo -e "\n${NORMCO}START TRANSLATION OF $COLOR2 $1 $COLOR1" 1>&2 #Colored ERROR
 cat $1 |\
 ${SCRIPTS}/tools "${SRCDIR}toolsouts" |\
 #Brutalne dodawanie średników za końcem klasy.
-sed -E 's|\/\/\_endOfClass(.*)|;//_endOfClass\1\n|i'  |\
+sed -E 's|\/\/([ _]*)EndOfClass(.*)|;//_EndOfClass\1\n|i'  |\
 #//_endofsuperclass:_anyPreviousSuperClass
-sed -E 's|\/\/\_endofsuperclass:(.*)|//Undefined any base class preprosessor definition: \1\n#undef _superclass|i'  |\
-#//_superclass:Colorable
-sed -E 's|\/\/\_superclass:(.*)|//Base class is now:\n#define _superclass \1|i'  |\
+sed -E 's|\/\/([ _]*)endofsuperclass:(.*)|//Undefining any base class preprocessor definition: \1\n#undef _superclass|i'  |\
+#//_superclass:Colorable (???)
+sed -E 's|\/\/([ _]*)superclass:(.*)|//Base class is now:\n#define _superclass \1|i'  |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
 #także globalne "finale" muszą być skopiowane do głównego headera i wykomentowane w oryginalnym miejscu
@@ -43,13 +43,13 @@ sed -E 's|final\s+|const |g' |\
 # Może: static constexpr ?
 sed -E 's#^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)\s+(\w+)\s*[;=].*///#//declared in local@@@h: &#' |\
 #przeorganizowywanie konstruktorow
-sed -E 's|\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\:\1\2\(\3\)\4{|' |\
+sed -E 's|(\s*)\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\1\t\:\2\3\(\4\)\5\n\1{|' |\
 #Dodawanie ENTER po { ale nie dla "enum""!!!"
 sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
 #wolne public/private przed funkcjami i zmiennymi - rzadko stosowane w Processingu
-sed -E "s/^(\s*)public/\1public:\n\t/g" |\
-sed -E "s/^(\s*)private/\1private:\n\t/g" |\
+sed -E "s/^(\s*)public /\1public:\n\t/g" |\
+sed -E "s/^(\s*)private /\1private:\n\t/g" |\
 #sed -E 's|\)\s+\{(.+)$|){\n\t\t\1|' |\
 #w deklaracjach klas (działa tylko dla deklaracji klas z { w tej samej linii! )
 sed -E 's|\s*abstract\s*class(.+)\{|//abstract\nclass\1{|' |\
@@ -133,7 +133,7 @@ sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i' |\
 sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|i' |\
 sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|i' |\
-sed 's|\/\*_interfunc\*\/|virtual|g'|\
+sed 's|\/\*_interfunc\*\/|virtual |g'|\
 sed -E 's|abstract(\s+)virtual|virtual|' |\
 sed 's|\/\*_forcebody\*\/|=0|g' |\
 sed 's|\/\*_emptybody\*\/|{}|g' |\
@@ -170,7 +170,7 @@ sed 's/Exception/std::runtime_error/g' |\
 sed -E 's/throw(\s+)new/throw/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
-#Tutaj dopiero dyrektywy zależne od templeatów C++
+#Tutaj dopiero dyrektywy zależne od template-ów C++
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
@@ -197,13 +197,13 @@ sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
-echo -e "//$(dirname $0) did it\n"
+echo -e "//NOTE! $(dirname $0) did it\n"
 
 echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-11-23                   */
+#/*               PROCESSING2C  version 2023-03-07                   */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

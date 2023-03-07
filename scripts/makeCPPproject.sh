@@ -3,9 +3,9 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22.
+# Processing2C version 22b.
 #
-Pr2CVERSION="0.22"
+Pr2CVERSION="0.22b"
 
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
@@ -36,9 +36,16 @@ echo -e SOURCES $COLOR1"     $SOURCES"$NORMCO
 #SINGLE OR MULTISOURCE?
 echo -e $COLOR4"\nChecking single/multi sources mode:"$NORMCO
 export NUMBER_OF_PDES=`ls -1 *.pde | grep -v exit | wc -l`
-echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
+
+if [[ $NUMBER_OF_PDES == 0 ]];
+then
+	echo -e $COLERR"No any '*.pde' files in this folder.\nNothing to do!!!"$NORMCO
+	exit -1
+else
+	echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
         $NUMBER_OF_PDES  $NORMCO
-        
+fi
+
 export SOURCEMODE=$1
 if [[ $SOURCEMODE != "multisrc" ]]
 then
