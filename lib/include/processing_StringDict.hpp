@@ -136,6 +136,7 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
     }
 
     typedef Processing::self_printable_ptr<StringDict> pStringDict;
+    
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */

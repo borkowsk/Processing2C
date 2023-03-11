@@ -167,6 +167,7 @@ public:
     }
 
     typedef Processing::self_printable_ptr<IntDict> pIntDict;
+
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */

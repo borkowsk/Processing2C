@@ -161,6 +161,7 @@ public:
     }
 
     typedef Processing::self_printable_ptr<FloatDict> pFloatDict;
+    
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */

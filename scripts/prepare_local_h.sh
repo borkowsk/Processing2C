@@ -1,7 +1,7 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22b.
+# Processing2C version 22b. (2023-03-11)
 #
 
 echo -e $COLOR1"Making $COLOR2'local.h'$COLOR3" $COLERR 
@@ -128,12 +128,13 @@ sed -E 's|//+(.*)//+|\t///< \1|' >> local.h
 #Funkcje wymagające deklaracji zapowiadających
 echo -e "\n//All global functions from Processing files" >> local.h
 
-egrep -h '^\s*(void|int|float|double|String|boolean|char)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
-sed -E 's#^\s*(void|int|float|double|String|boolean|char)\s+(\w+)\s*(\(.*\)\s*)#\1\t\2\3; //#' |\
-#składnia prostych tablic w parametrach
-sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/g' |\
-sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\
-sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/sarray<\1>/g' |\
+egrep -h '^\s*(void|int|float|double|String|boolean|char|\w+)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
+#funkcja o dowolnych parametrach
+sed -E 's#^\s*(void|int|float|double|String|boolean|char|\w+)\s+(\w+)\s*(\(.*\)\s*)#\1\t\2\3; //#' |\
+#podmiana prostych tablic w parametrach
+sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/g' |\
+sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\
+sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*])/sarray<\1>/g' |\
 #pozostałe to składnia tablic obiektów w parametrach (TODO można by użyć też w zapowiedziach tablic!) 
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
@@ -156,7 +157,7 @@ echo "#endif" >> local.h
 echo -e $COLOR1"File $COLOR2'local.h'$COLOR1 prepared" $NORMCO 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2023-03-07                   */
+#/*               PROCESSING2C  version 2023                         */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
