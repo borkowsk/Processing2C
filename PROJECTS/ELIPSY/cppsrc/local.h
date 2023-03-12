@@ -6,12 +6,12 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		W;///< =600;  Control parameter
+extern	int 		W;	///< =600; / Control parameter
 
 //All global arrays from Processing files
 

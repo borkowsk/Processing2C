@@ -57,7 +57,7 @@ void CloseVideo() //To wołamy gdy chcemy zamknąć
   if(videoExport!=null)
   { 
    fill(0);
-   text("(c) W.Borkowski @ ISS University of Warsaw",1,height);//Może się nie zdążyć pojawić
+   text("(c) W.Borkowski @ ISS University of Warsaw",1,height); //Może się nie zdążyć pojawić
    //powinno być jakieś "force screen update", ale nie znalazłem
    for(int i=0;i<videoFramesFreq;i++) //Musi trwać sekundę czy coś...
        videoExport.saveFrame(); //Video frame

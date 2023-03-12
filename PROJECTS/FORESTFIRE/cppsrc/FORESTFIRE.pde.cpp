@@ -179,9 +179,9 @@ void doVisualisation() ///< Must be predeclared
        +LightP+ String(" (per step and per tree)"), width, height-16);
   fill(255,255,0); 
   textAlign(LEFT);
-  text(Step/Year+ String(" years  = ") 
+  text(Step/Year +  String(" years  = ") 
      + Step/Week +  String(" weeks & ") 
-     + (Step%Week)/24 +  String(" days = ") 
+     + (Step%Week) / 24 +  String(" days = ") 
      + Step +  String(" h") 
      + String(" Speed:") + frameRate +  String(" fr/sec") ,0,height);
   fill(0,255,255);
@@ -195,5 +195,5 @@ void doVisualisation() ///< Must be predeclared
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// "Forest fire with regeneration" - my private version 
 //*///////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+//NOTE! ../../scripts did it
 

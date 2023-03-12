@@ -6,12 +6,12 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		fontSize;///< =16; < FontSize is not implemented in Pricessing2C
+extern	int 		fontSize;	///< =16;  - FontSize is not implemented in Pricessing2C
 
 //All global arrays from Processing files
 

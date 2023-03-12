@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(ARRAYLIST)
-set( VERSION_NUM 0.22 ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22c ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows

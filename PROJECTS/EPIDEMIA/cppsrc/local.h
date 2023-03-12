@@ -6,7 +6,7 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 class Agent; typedef Processing::ptr<Agent> pAgent; // 
 class World; typedef Processing::ptr<World> pWorld; // {
 
@@ -19,23 +19,23 @@ static 	const int Death=100;     ///< Oznaczenie zmarłego
 static 	const float PDeath=0.015;     ///< Średnie prawdopodobieństwo śmierci w danym dniu choroby
 
 //All global variables from Processing files
-extern	int 		side;///< =200; < DŁUGOŚĆ BOKU ŚWIATA
-extern	String 		modelName;///< ="ABMEpidemia"; < Nazwa modelu, np. dla plików wyjściowych
-extern	float 		density;///< =0.66; < główny MERYTORYCZNY parametr modelu
-extern	pWorld 		TheWorld;///< =new World(side); < INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
-extern	int 		liveCount;///< =0;        < Ile aktualnie żywych
-extern	int  		sumInfected;///< =0;     < Zachorowanie
-extern	int 		sumRecovered;///< =0;     < Wyzdrowienia
-extern	int     		sumDeath;///< =0;     < Ci co umarli
-extern	pFloatList 		deaths;///< =new FloatList(); < Historia śmierci 
-extern	pFloatList 		newcas;///< =new FloatList(); < Historia nowych zachorowań
-extern	pFloatList  		cured;///< =new FloatList(); < Historia wyleczeń
-extern	int 		cwidth;///< =3; < DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
-extern	int 		STATUSHEIGH;///< =150; < WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
-extern	int 		STEPSperVIS;///< =1; < JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
-extern	int 		FRAMEFREQ;///< =30;  < ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
-extern	bool 		simulationRun;///< =true; < FLAGA Start/stop DZIAŁANIA SYMULACJI
-extern	int 		fontHeight;///< =16; < Wysokość napisów (działa tylko w Processingu, ale 16 to domyslne w X11
+extern	int 		side;	///< =200;  - DŁUGOŚĆ BOKU ŚWIATA
+extern	String 		modelName;	///< ="ABMEpidemia";  - Nazwa modelu, np. dla plików wyjściowych
+extern	float 		density;	///< =0.66;  - główny MERYTORYCZNY parametr modelu
+extern	pWorld 		TheWorld;	///< =new World(side);  - INICJALIZACJA JEST KONCZONA W FUNKCJI setup( )
+extern	int 		liveCount;	///< =0;         - Ile aktualnie żywych
+extern	int  		sumInfected;	///< =0;      - Zachorowanie
+extern	int 		sumRecovered;	///< =0;      - Wyzdrowienia
+extern	int     		sumDeath;	///< =0;      - Ci co umarli
+extern	pFloatList 		deaths;	///< =new FloatList();  - Historia śmierci 
+extern	pFloatList 		newcas;	///< =new FloatList();  - Historia nowych zachorowań
+extern	pFloatList  		cured;	///< =new FloatList();  - Historia wyleczeń
+extern	int 		cwidth;	///< =3;  - DŁUGOŚĆ BOKU KOMÓRKI W WIZUALIZACJI
+extern	int 		STATUSHEIGH;	///< =150;  - WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
+extern	int 		STEPSperVIS;	///< =1;  - JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
+extern	int 		FRAMEFREQ;	///< =30;   - ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
+extern	bool 		simulationRun;	///< =true;  - FLAGA Start/stop DZIAŁANIA SYMULACJI
+extern	int 		fontHeight;	///< =16;  - Wysokość napisów (działa tylko w Processingu, ale 16 to domyslne w X11
 
 //All global arrays from Processing files
 

@@ -77,5 +77,5 @@ class Ant: public virtual Object{
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//../../scripts did it
+//NOTE! ../../scripts did it
 

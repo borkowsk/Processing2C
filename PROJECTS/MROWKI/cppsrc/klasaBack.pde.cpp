@@ -51,5 +51,5 @@ class Back: public virtual Object{
     if (amountFood<=0) id = 0;
   }
 };
-//../../scripts did it
+//NOTE! ../../scripts did it
 

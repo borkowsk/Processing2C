@@ -53,5 +53,5 @@ class KLASA: public virtual Object{
     //super::finalize();//A na to Processing robi blup...
   }
 };
-//../../scripts did it
+//NOTE! ../../scripts did it
 

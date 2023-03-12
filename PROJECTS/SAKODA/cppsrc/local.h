@@ -6,24 +6,24 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 class Agent; typedef Processing::ptr<Agent> pAgent; // { 
 class World; typedef Processing::ptr<World> pWorld; // {
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		Number_of_identities;///< =2; < Ile jest wykluczających się tożsamości
-extern	String 		modelName;///< ="ABMSakoda"; < Name of the model
-extern	int 		side;///< =100; < side of main table
-extern	float 		density;///< =0.55; <initial density of agents
-extern	pWorld 		TheWorld;///< =new World(side); <  will be initialised inside setup function
-extern	int 		cwidth;///< =8; < size of cell
-extern	int 		STATUSHEIGH;///< =40; <???
-extern	int 		STEPSperVIS;///< =1;  <???
-extern	int 		FRAMEFREQ;///< =20;   <???
-extern	bool 		WITH_VIDEO;///< =false;   < Is video stream enabled?
-extern	bool 		simulationRun;///< =true; <Start/stop flag
+extern	int 		Number_of_identities;	///< =2;  - Ile jest wykluczających się tożsamości
+extern	String 		modelName;	///< ="ABMSakoda";  - Name of the model
+extern	int 		side;	///< =100;  - side of main table
+extern	float 		density;	///< =0.55;  -initial density of agents
+extern	pWorld 		TheWorld;	///< =new World(side);  -  will be initialised inside setup function
+extern	int 		cwidth;	///< =8;  - size of cell
+extern	int 		STATUSHEIGH;	///< =40;  -???
+extern	int 		STEPSperVIS;	///< =1;   -???
+extern	int 		FRAMEFREQ;	///< =20;    -???
+extern	bool 		WITH_VIDEO;	///< =false;    - Is video stream enabled?
+extern	bool 		simulationRun;	///< =true;  -Start/stop flag
 
 //All global arrays from Processing files
 

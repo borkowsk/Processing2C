@@ -1,11 +1,11 @@
 ///   Obsługa wyszukiwania obiektu po kliknięciu myszy
 //*/////////////////////////////////////////////////////////////////////
-int searchedX=-1;   ///<???
-int searchedY=-1;   ///<???
-boolean Clicked=false; ///<???
-int selectedX=-1;   ///<???
-int selectedY=-1;   ///<???
-Agent selected=null; ///<???
+int searchedX=-1;       ///<???
+int searchedY=-1;       ///<???
+boolean Clicked=false;  ///<???
+int selectedX=-1;       ///<???
+int selectedY=-1;       ///<???
+Agent selected=null;    ///<???
 
 //double minDist2Selec=MAX_INT; ///???
 //double maxTransSelec=-MAX_INT; ///???
@@ -20,7 +20,7 @@ class PairOfInt {
         this.a = a;
         this.b = b;
     }
-}/*_endOfClass*/
+} /*_endOfClass*/
 
 
 PairOfInt findCell(Agent[][] agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości

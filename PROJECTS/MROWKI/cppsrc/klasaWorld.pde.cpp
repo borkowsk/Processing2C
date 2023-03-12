@@ -258,5 +258,5 @@ class World: public virtual Object{
     }
   }
 };
-//../../scripts did it
+//NOTE! ../../scripts did it
 

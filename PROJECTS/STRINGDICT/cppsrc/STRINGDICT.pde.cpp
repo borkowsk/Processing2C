@@ -28,5 +28,5 @@ void processing_window::draw()
   text(s, width/2, height/2);
 }
 
-//../../scripts did it
+//NOTE! ../../scripts did it
 

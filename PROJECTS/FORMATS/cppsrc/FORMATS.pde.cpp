@@ -87,5 +87,5 @@ void processing_window::setup()
   text(String("      ") + binary(gray),10,pos+=fontSize); 
 }
 
-//../../scripts did it
+//NOTE! ../../scripts did it
 

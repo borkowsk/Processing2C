@@ -4,7 +4,7 @@
 //*////////////////////////////////////////////////////////////////////////////////
 /// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
 
-//HashMap is used here // To wciąż potrzebne (?) do for(auto me : <<AnyHashMap>>->entrySet()) 
+//HashMap will be used here // To wciąż potrzebne (?) do for(auto me : <<AnyHashMap>>->entrySet()) 
 
 pHashMap<String,int>  mapString2Integer=new HashMap<String,int>();
 pHashMap<int,String>  mapInteger2String=new HashMap<int,String>();
@@ -77,5 +77,5 @@ void processing_window::setup()
   println("\nDefault print method:");
   println(mapString2Object);
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 

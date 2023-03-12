@@ -43,5 +43,5 @@ void processing_window::draw()
   int numRecords = inventoryI->get("records");
   text(numRecords, width/2, height/2);
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 

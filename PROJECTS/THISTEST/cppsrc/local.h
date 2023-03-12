@@ -6,13 +6,13 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 class C; typedef Processing::ptr<C> pC; // {
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		y;///< =0; < Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
+extern	int 		y;	///< =0;  - Globalna zmienna powinna mieć w C++ deklaracje zapowiadającą
 
 //All global arrays from Processing files
 

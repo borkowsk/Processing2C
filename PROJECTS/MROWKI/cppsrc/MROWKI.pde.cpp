@@ -127,5 +127,5 @@ void petla() { ///< Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 
