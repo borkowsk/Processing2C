@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Processing2C version 22.
+# Processing2C version 22c. (2023-03-12)
 #
 if [ $# -ne 1 ]; 
 then
-   echo -e "${COLOR2}$# ${COLOR1}is invalid number of parameters!"$NORMCO 1>&2
+   echo -e "${COLOR2}$# ${COLERR}is invalid number of parameters!"$NORMCO 1>&2
    exit -1
 fi
 
@@ -26,10 +26,10 @@ then
 	echo ""
 fi
 
-echo -e "\n${NORMCO}START TRANSLATION OF $COLOR2 $1 $COLOR1" 1>&2 #Colored ERRORS!
+echo -e "\n${COLOR4}START TRANSLATION OF $COLOR1 $1 $COLOR3" 1>&2 #Colored ERRORS!
 
 cat $1 |\
-${SCRIPTS}/tools "${SRCDIR}toolsouts" |\
+${SCRIPTS}/tools "${SRCDIR}toolsouts" 2> tools.err |\
 #Brutalne dodawanie średników za końcem klasy.
 sed -E 's|\/\/([ _]*)EndOfClass(.*)|;//_EndOfClass\1\n|i'  |\
 #//_endofsuperclass:_anyPreviousSuperClass
@@ -147,8 +147,8 @@ sed -E 's|\?(\s*)(\"[^"]*\")|?\1 String(\2) |g' |\
 #IMPORTY 
 sed 's/import java.util.Collections;/#include\<algorithm\>/' |\
 #TE SĄ JUŻ PRZESTARZAŁE W PROCESSINGU
-sed 's#import java.util.Map;#//HashMap is used here#' |\
-sed 's#import java.util.Arrays;#//ArrayList is used here#' |\
+sed 's#import java.util.Map;#//HashMap will be used here#' |\
+sed 's#import java.util.Arrays;#//ArrayList will be used here#' |\
 #COLLECTIONS ALGORITHMS
 sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
 #processing_window METHODS
@@ -181,7 +181,7 @@ sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:
 # " bla.bla " obiekt.składowa " bla.bla " - nie sposób odróżnić czy obiekt.składowa jest wewnatrz 
-#czy na zewnątrz cudzysłowu. I tak więc trzeba cudzysłowy dzielić na pomiędzy liniami.
+#czy na zewnątrz cudzysłowu. I tak więc trzeba wielokrotne cudzysłowy dzielić pomiędzy liniami.
 sed -E 's/"([^"]*)\.([^"]+)"/"\1@@@\2"/' |\
 #WŁAŚCIWA ZAMIANA 
 #sed -E  's|([_a-zA-Z][_a-zA-Z0-9]*)(\s*)\.|\1->|g' |\ #TO PSUJE KOŃCE ZDAŃ W KOMENTARZACH!!!
@@ -199,19 +199,24 @@ sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
 echo -e "//NOTE! $(dirname $0) did it\n"
 
-echo -e $NORMCO"END OF$COLOR2 $* $NORMCO\n" 1>&2 #end of colored errors
+echo -e $COLOR3 1>&2
+#cat tools.err 1>&2     #DEBUG!
+#head -3 tools.err 1>&2 #DEBUG!
+echo -e $NORMCO 1>&2
+grep -E "(Line\s+[0-9]*|'.*')" --color=always  tools.err 1>&2
+
+echo -e $COLOR4"\nEND OF$COLOR1 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2023-03-07                   */
+#/*                 PROCESSING2C  release 2023                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
-#/*    Instytut Studów Społecznych Uniwersytetu Warszawskiego        */
+#/*    Instytut Studiów Społecznych Uniwersytetu Warszawskiego       */
 #/*    WWW: https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI  */
 #/*    GITHUB: https://github.com/borkowsk                           */
 #/*                                                                  */
 #/*                               (Don't change or remove this note) */
 #/********************************************************************/
-
 

@@ -1,10 +1,10 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22b. (2023-03-11)
+# Processing2C version 22c. (2023-03-12)
 #
 
-echo -e $COLOR1"Making $COLOR2'local.h'$COLOR3" $COLERR 
+echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
 
 echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
         > local.h
@@ -154,10 +154,10 @@ echo "#endif" >> local.h
 #cat local.h
 #cat userclasses.sed
 
-echo -e $COLOR1"File $COLOR2'local.h'$COLOR1 prepared" $NORMCO 
+echo -e $COLOR2"File ${COLOR1}local.h${COLOR2} ready." $NORMCO 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2023                         */
+#/*                 PROCESSING2C  release 2023                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
