@@ -1,7 +1,7 @@
 /// \file _impl_errors.h
 /// \brief Macros for errors and function(s) for string concatenation which may helps
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \ingroup rtm
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -12,7 +12,9 @@
 //FOR NOT IMPLEMENTED OR BADLY USED FUNCTIONS also in 'not_implemented.h'
 #include "_errMessage.hpp"
 
-#define ERRMESSAGE( _XXX_ )              { _errMessage( _XXX_ , __FUNCTION__ , __LINE__ , __FILE__ ); }
+//#define ERRMESSAGE( _XXX_ )              { _errMessage( _XXX_ , __FUNCTION__ , __LINE__ , __FILE__ ); }
+#define ERRMESSAGE( _XXX_ )              { _errMessage( _XXX_ , __PRETTY_FUNCTION__ , __LINE__ , __FILE__ ); }
+
 
 #define ALWAYS_ERRMESSAGE( _XXX_ )       ERRMESSAGE( _XXX_ );
 
@@ -55,7 +57,7 @@ namespace Processing
     String concat(const _string_param& a1,const _string_param& a2,const _string_param& a3,const _string_param& a4,const _string_param& a5,const _string_param& a6);
 }//END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022                           */
+/*               PROCESSING2C  version 2023                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

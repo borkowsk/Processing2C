@@ -1,7 +1,7 @@
 /// \file processing_inlines.hpp
 /// \brief Procedury graficzne w wersji inline, dla przyśpieszenia wykonania
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \ingroup graphics
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -28,7 +28,8 @@ extern int _TEXT_VERTICAL_AL; //=BOTTOM;
 
 inline void strokeWeight(float Weight)
 {
-    line_width(_LINE_WIDTH=(int)Weight);
+    _LINE_WIDTH=(int)Weight;
+    line_width(_LINE_WIDTH );
 }
 
 inline void noStroke()
@@ -40,8 +41,7 @@ inline void noStroke()
 inline void stroke(float Gray)
 {
     if(_LINE_WIDTH<0) _LINE_WIDTH=1;
-    int S=(int)Gray;
-    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
+    set_pen_rgb((int)Gray,(int)Gray,(int)Gray,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void stroke(float Red,float Green,float Blue)

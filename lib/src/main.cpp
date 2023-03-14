@@ -1,7 +1,7 @@
 /// \file main.cpp
 /// \brief  main() function for Processing like application
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \details
 ///     main() function must exists for Processing2C++ applications
 ///     but user may generate and use its own versions
@@ -92,7 +92,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

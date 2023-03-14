@@ -3,7 +3,7 @@
  * \classes processing_window; color
  * \ingroup drawing , rtm
  * \author borkowsk
- * \date 2022-11-21 (last modification)
+ * \date 2023-03-14 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -279,29 +279,21 @@ void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
 void stroke(const color& col);
 void noStroke();
-#endif
-
-#ifndef PROCESSING_INLINES_H
-void strokeWeight(float Weight); //!< Parameters	weight 	float: the weight (in pixels) of the stroke
+void strokeWeight(float Weight); // Parameters	weight 	float: the weight (in pixels) of the stroke
 #endif
 
 void strokeCap(int cap);   ///< \param	cap 	int: either SQUARE, PROJECT, or ROUND
 void strokeJoin(int join); ///< \param	join 	int: either MITER, BEVEL, ROUND
 
 #ifndef PROCESSING_INLINES_H
+void noFill();
 void fill(float Gray);
 void fill(float Gray,float Alpha);
-#endif
-
-#ifndef PROCESSING_INLINES_H
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
 void fill(const color& col);
 #endif
 
-#ifndef PROCESSING_INLINES_H
-void noFill();
-#endif
 
 #ifndef PROCESSING_INLINES_H
 void point(float x,float y);
@@ -411,6 +403,7 @@ void square(float a,float  b,float extent);
 void redraw();
 
 /// \param kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
+/// \todo Cursors not implemented!
 void cursor(int kind);
 void cursor();
 void noCursor();

@@ -14,6 +14,7 @@ int radius() ///< Example of the user declared function
 void processing_window::setup()
 {
   size(600,600);
+  background(255);
   setFrameRate(500); // draw( ) about 500 times per sec.(if possible!)
                   //Nie za dużo bo Xorg zablokuje kompa!
 }
@@ -26,10 +27,12 @@ void processing_window::draw()
   float x=random(W);
   float y=random(W);
   ellipse(x,y,r,r);
+  
+  //noStroke();
   stroke(255);
   point(x,y);
+  
   println(frameRate);
 }
-
 //NOTE! ../../scripts did it
 

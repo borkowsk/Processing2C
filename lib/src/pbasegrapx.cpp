@@ -1,7 +1,7 @@
 /// \file
 /// \brief
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \details
 ///     podstawy obsługi okienka pseudo-processingowego
 ///
@@ -41,7 +41,7 @@ void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
 
 int _LINE_WIDTH=1;
 
-void strokeWeight(float Weight)/// Parameters	weight 	float: the weight (in pixels) of the stroke
+void strokeWeight(float Weight) /// @param	weight 	float: the weight (in pixels) of the stroke
 {
     line_width(_LINE_WIDTH=(int)Weight);
     FIRST_TIME_ERRMESSAGE( " not inline called" );
@@ -260,7 +260,7 @@ void triangle(float     x1,float     y1,float     x2,float     y2,float     x3,f
                 points, 3                         /* tablica punktów i jej długość */
     );
 
-    FIRST_TIME_ERRMESSAGE( " not inline called" );
+    //FIRST_TIME_ERRMESSAGE( " not inline called" ); //todo INLINE VERSION?
 }
 
 /// \brief
@@ -293,7 +293,7 @@ void quad( float  x1,float y1,float x2, float y2,float x3,float y3,float x4,floa
                 0,                                   /* pionowa składowa wektora przesunięcia */
                 points, 4                         /* tablica punktów i jej długość */
     );
-    FIRST_TIME_ERRMESSAGE( " not inline called" );
+    //FIRST_TIME_ERRMESSAGE( " not inline called" ); //todo INLINE VERSION?
 }
 
 

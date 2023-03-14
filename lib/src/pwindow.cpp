@@ -1,7 +1,7 @@
 /// \file pwindow.cpp
 /// \brief podstawy obsługi okienka pseudo-processingowego
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \details
 ///         ...
 ///
@@ -291,7 +291,7 @@ void redraw()
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *
