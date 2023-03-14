@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Processing2C version 22c. (2023-03-12)
+# Processing2C version 22c. (2023-03-14)
 #
 if [ $# -ne 1 ]; 
 then
@@ -152,6 +152,7 @@ sed 's#import java.util.Arrays;#//ArrayList will be used here#' |\
 #COLLECTIONS ALGORITHMS
 sed -E 's/Collections.sort\((\w+)\);/std::sort(\1.begin(),\1.end());/g' |\
 #processing_window METHODS
+sed 's/void settings()/void processing_window::settings()/' |\
 sed 's/void setup()/void processing_window::setup()/' |\
 sed 's/void draw()/void processing_window::draw()/' |\
 sed 's/void exit()/void processing_window::exit()/' |\

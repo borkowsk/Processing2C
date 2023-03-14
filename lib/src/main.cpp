@@ -42,12 +42,18 @@ int main(int argc,const char *argv[])
     setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
 
     _processing_window_instance.before_setup(argc,argv);
+
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( "settings() called" );
+#endif
+    //processing_window::settings()
+    _processing_window_instance.settings();
 #ifndef NDEBUG
     FIRST_TIME_ERRMESSAGE( "setup() called" );
 #endif
     _processing_window_instance.setup();
 
-    if(_ssh_window==0)//setup nie zainicjował okna!!!
+    if(_ssh_window==0)//setup nie zainicjował okna!!! Zabezpiecza jeśli nie ma rysowania w `setup()`
     {
         size(100,100);
         std::cerr<<"setup() should use size() function!"<<std::endl;

@@ -46,14 +46,15 @@ extern int _TEXT_VERTICAL_AL; //=TOP;
 class processing_window_base
 {
   public:
-    virtual ~processing_window_base(); //!< \brief DESTRUCTOR is virtual
+    virtual ~processing_window_base();  //!< \brief DESTRUCTOR is virtual
     virtual void exit();
     virtual void before_setup(int argc, const char *argv[]);
-    virtual void setup()=0; //!< \brief Must be provided!
-    virtual void before_draw(); //!< \brief Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
-    virtual void draw(){} //!< \brief EMPTY DRAW()
-    virtual void after_draw(); //!< \brief Calculate frameRate and _INTERNAL_DELAY
-    virtual void check_events(); //!< \brief If events are in queue, they are processed
+    virtual void settings()=0;          //!< \brief May be provided!
+    virtual void setup()=0;             //!< \brief Must be provided!
+    virtual void before_draw();         //!< \brief Cleaning _keyPressed & _mousePressed - @todo TMP METHOD - do it more clever!
+    virtual void draw(){}               //!< \brief EMPTY DRAW()
+    virtual void after_draw();          //!< \brief Calculate frameRate and _INTERNAL_DELAY
+    virtual void check_events();        //!< \brief If events are in queue, they are processed
     virtual void setTitle(_string_param bar);
     //Event handlers
     virtual void onMouseClicked()=0;
@@ -76,6 +77,7 @@ extern class processing_window: public processing_window_base
   bool _loop=true;
   public:
   bool inLoop() {return _loop;}
+  void settings() override;
   void setup() override ;
   void draw() override ;
   void exit() override ;
@@ -239,27 +241,28 @@ extern const int&  pmouseY; ///< always contains the previous vertical coordinat
 /// Check for both ENTER and RETURN to make sure your program will work for all platforms.
 extern       char    key;     ///< always contains the value of the most recent key on the keyboard that was used (either pressed or released)
 extern       int     keyCode; ///< The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
-                             ///< as well as ALT, CONTROL, and SHIFT.
-                             ///< There are issues with how keyCode behaves across different renderers and operating systems.
-                             ///< Watch out for unexpected behavior as you switch renderers and operating systems.
-                             ///< When checking for these keys, it can be useful to first check if the key is coded.
-                             ///< This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
+                              ///< as well as ALT, CONTROL, and SHIFT.
+                              ///< There are issues with how keyCode behaves across different renderers and operating systems.
+                              ///< Watch out for unexpected behavior as you switch renderers and operating systems.
+                              ///< When checking for these keys, it can be useful to first check if the key is coded.
+                              ///< This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 extern const bool&   keyPressed; ///< is true if any key is pressed and false if no keys are pressed.
 
-//  Most important driving functions
+//  The most important drawing functions
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// TODO Not implemented!
+/// @todo Not implemented!
 void noSmooth();
 
-/// TODO Not implemented!
+/// @todo Not implemented!
 void smooth();
 
 /// \brief The background() function sets the color used for the background of the Processing window.
 /// \note The default background is light gray.
-/// This function is typically used within draw() to clear the display window at the beginning of each frame,
-/// but it can be used inside setup() to set the background on the first frame of animation or
-/// if the background need only be set once.
+/// \details
+///     This function is typically used within draw() to clear the display window at the beginning of each frame,
+///     but it can be used inside setup() to set the background on the first frame of animation or
+///     if the background need only be set once.
 void background(float gray);
 void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
@@ -309,7 +312,8 @@ void line(float  x1,float  y1,float  x2,float  y2);
 #endif
 
 #ifndef PROCESSING_INLINES_H
-/// "ellipse" draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
+/// \brief "ellipse" draws an ellipse (oval) to the screen.
+/// An ellipse with equal width and height is a circle.
 /// By default, the first two parameters set the location, and the third and fourth parameters set
 /// the shape's width and height.
 ///
@@ -322,10 +326,51 @@ void line(float  x1,float  y1,float  x2,float  y2);
 ///  stop 	float: angle to stop the arc, specified in radians
 void ellipse(float a,float  b,float  c,float  d);
 void ellipseMode(int mode); /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
+
+/// \brief Simplified circle.
+void circle(int x,int y,int r);
 #endif
+
+/// \brief Functions for driving elliptical arc.
+///  \param a 	float: x-coordinate of the ellipse
+///  \param b 	float: y-coordinate of the ellipse
+///  \param c 	float: width of the ellipse by default
+///  \param d 	float: height of the ellipse by default
+///  \param start 	float: angle to start the arc, specified in radians
+///  \param stop 	float: angle to stop the arc, specified in radians
+///  \param mode arc connecting mode (STILL IGNORED?)
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
+/// @brief A triangle is a plane created by connecting three points.
+/// @details
+///         The first two arguments specify the first point, the middle two arguments specify the second point,
+///         and the last two arguments specify the third point.
+void triangle(
+        float     x1,      //!< x-coordinate of the first point
+        float     y1,      //!< y-coordinate of the first point
+        float     x2,      //!< x-coordinate of the second point
+        float     y2,      //!< y-coordinate of the second point
+        float     x3,      //!< x-coordinate of the third point
+        float     y3       //!< y-coordinate of the third point
+    );
+
+/// \brief 	A quad is a quadrilateral, a four sided polygon.
+/// \details
+///         It is similar to a rectangle, but the angles between its edges are not constrained to ninety degrees.
+///         The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs should proceed
+///         clockwise or counter-clockwise around the defined shape.
+/// \param x1 float: x-coordinate of the first corner
+/// \param y1 float: y-coordinate of the first corner
+/// \param x2 float: x-coordinate of the second corner
+/// \param y2 float: y-coordinate of the second corner
+/// \param x3 float: y-coordinate of the second corner
+/// \param y3 float: x-coordinate of the third corner
+/// \param x4 float: x-coordinate of the fourth corner
+/// \param y4 float: y-coordinate of the fourth corner
+void quad( float  x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+
 #ifndef PROCESSING_INLINES_H
+
 /// "rect" draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at ninety degrees.
 /// By default, the first two parameters set the location of the upper-left corner, the third sets the width, and
 /// the fourth sets the height.
@@ -338,16 +383,26 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=P
 void rect(float a,float  b,float  c,float  d);
 
 /// \param r 	float: radii for all four corners
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
 void rect(float a,float  b,float  c,float  d,float r);
 
 /// \param tl 	float: radius for top-left corner
 /// \param tr 	float: radius for top-right corner
 /// \param br 	float: radius for bottom-right corner
 /// \param bl 	float: radius for bottom-left corner
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
 void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl);
 
 /// \note Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
 void rectMode(int mode); /// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+
+//  Parameters:
+/// \param a 	float: x-coordinate of the rectangle by default
+/// \param b 	float: y-coordinate of the rectangle by default
+/// \param extent float: lenght of side.
+/// \note Meaning of parameters depends on rectMode() but in mode CORNERS
+///       this particular function behave stupid in Processing 3.x at least.
+void square(float a,float  b,float extent);
 #endif
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
@@ -377,7 +432,7 @@ int displayDensity(int display=0) {return 1;} ///< \Param	display 	int: the disp
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *
