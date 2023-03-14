@@ -181,7 +181,7 @@ void rect(float a,float  b,float  c,float  d)
         break;
     default: ALWAYS_ERRMESSAGE( " - undefined rect mode!" );
     case CORNER:
-        if(d<0)//Procesing can handle that strange situation
+        if(d<0) //Processing can (?) handle that strange situation.
         {x1=a; y1=b+d; x2=a+c; y2=b;}
         else
         {x1=a; y1=b; x2=a+c; y2=b+d;}
@@ -208,11 +208,94 @@ void rect(float a,float  b,float  c,float  d)
 /// \param c  : meaning depend of mode
 /// \param d  : meaning depend of mode
 /// \param r : radius for rounding corners (CURRENTLY IGNORED)
+/// @todo NOT IGNORE CORNERS ROUNDING WHERE POSSIBLE.
 void rect(float a,float  b,float  c,float  d,float r)
 {
     rect(a,b,c,d);
-    FIRST_TIME_ERRMESSAGE( " !!! 'r' parameter is ignored here!" );
+    FIRST_TIME_ERRMESSAGE( " !!! 'r' parameter is ignored in Processing2C!" );
 }
+
+/// \param tl 	float: radius for top-left corner
+/// \param tr 	float: radius for top-right corner
+/// \param br 	float: radius for bottom-right corner
+/// \param bl 	float: radius for bottom-left corner
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
+void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl)
+{
+    rect(a,b,c,d);
+    FIRST_TIME_ERRMESSAGE( " !!! 'tl','tr','br','bl' parameters are ignored in Processing2C!" );
+}
+
+/// \note Meaning of parameters depends on rectMode() but in mode CORNERS
+///       this particular function behave stupid in Processing 3.x at least.
+void square(float a,float  b,float extent)
+{
+    rect(a,b,extent,extent);
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
+}
+
+/// @details
+///         A triangle is a plane created by connecting three points.
+///         ---------------------------------------------------------
+///
+///         The first two arguments specify the first point, the middle two arguments specify the second point,
+///         and the last two arguments specify the third point.
+///
+/// \param x1 float: x-coordinate of the first vertex
+/// \param y1 float: y-coordinate of the first vertex
+/// \param x2 float: x-coordinate of the second vertex
+/// \param y2 float: y-coordinate of the second vertex
+/// \param x3 float: y-coordinate of the second vertex
+/// \param y3 float: x-coordinate of the third vertex
+//  WARNING:    Type 'float' cannot be narrowed to 'ssh_coordinate' (aka 'int') in initializer list
+//  Explicit conversion needed.
+void triangle(float     x1,float     y1,float     x2,float     y2,float     x3,float     y3)
+{
+    /* tablica wierzchołków wielokąta */
+    const ssh_point points[]={{(int)x1,(int)y1},{(int)x2,(int)y2},{(int)x3,(int)y3}};
+
+    /* Wypełnia wielokąt przesunięty o "vx","vy" kolorem domyślnym */
+    fill_poly_d(0,                                   /* pozioma składowa wektora przesunięcia */
+                0,                                   /* pionowa składowa wektora przesunięcia */
+                points, 3                         /* tablica punktów i jej długość */
+    );
+
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
+}
+
+/// \brief
+/// \details
+///         A quad is a quadrilateral, a four sided polygon.
+///         ------------------------------------------------
+///
+///         It is similar to a rectangle, but the angles between its edges are not constrained to ninety degrees.
+///         The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs should proceed
+///         clockwise or counter-clockwise around the defined shape.
+///
+/// \param x1 float: x-coordinate of the first corner
+/// \param y1 float: y-coordinate of the first corner
+/// \param x2 float: x-coordinate of the second corner
+/// \param y2 float: y-coordinate of the second corner
+/// \param x3 float: y-coordinate of the second corner
+/// \param y3 float: x-coordinate of the third corner
+/// \param x4 float: x-coordinate of the fourth corner
+/// \param y4 float: y-coordinate of the fourth corner
+//  WARNING:    Type 'float' cannot be narrowed to 'ssh_coordinate' (aka 'int') in initializer list
+//  Explicit conversion needed.
+void quad( float  x1,float y1,float x2, float y2,float x3,float y3,float x4,float y4)
+{
+    /* tablica wierzchołków wielokąta */
+    const ssh_point points[]={{(int)x1,(int)y1},{(int)x2,(int)y2},
+                              {(int)x3,(int)y3},{(int)x4,(int)y4}};
+
+    /* Wypełnia wielokąt przesunięty o "vx","vy" kolorem domyślnym */
+    fill_poly_d(0,                                   /* pozioma składowa wektora przesunięcia */
+                0,                                   /* pionowa składowa wektora przesunięcia */
+                points, 4                         /* tablica punktów i jej długość */
+    );
+    FIRST_TIME_ERRMESSAGE( " not inline called" );
+}
+
 
 /// Current mode for driving ellipses. Either CENTER, RADIUS, CORNER, or CORNERS
 int  _ELLIPSE_MODE=CENTER;
@@ -251,7 +334,20 @@ void ellipse(float a,float  b,float  c,float  d)
     FIRST_TIME_ERRMESSAGE( "!!! not inline called" );
 }
 
-///  Functions for driving elliptical arc
+///  \details Functions for driving elliptical arc.
+///           =====================================
+///  Draws an arc to the screen. Arcs are drawn along the outer edge of an ellipse defined by the a, b, c,
+///  and d parameters. The origin of the arc's ellipse may be changed with the ellipseMode() function.
+///  Use the start and stop parameters to specify the angles (in radians) at which to draw the arc.
+///  The start/stop values must be in clockwise order.
+///
+///  There are three ways to draw an arc; the rendering technique used is defined by the optional seventh parameter.
+///  The three options, depicted in the above examples, are PIE, OPEN, and CHORD. The default mode is the OPEN stroke with a PIE fill.
+///
+///  In some cases, the arc() function isn't accurate enough for smooth drawing. For example, the shape may jitter
+///  on screen when rotating slowly. If you're having an issue with how arcs are rendered, you'll need to draw the
+///  arc yourself with `beginShape()` - `endShape()` or a `PShape`.
+///
 ///  \param a 	float: x-coordinate of the ellipse
 ///  \param b 	float: y-coordinate of the ellipse
 ///  \param c 	float: width of the ellipse by default
@@ -281,6 +377,17 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode/*
 
     if(mode!=0)
         FIRST_TIME_ERRMESSAGE( " mode ignored!!" );
+    // FIRST_TIME_ERRMESSAGE( " not inline called" );
+}
+
+/// \details Simplified circle.
+/// \todo Test, what about ellipse mode?!!!
+/// \param x
+/// \param y
+/// \param r
+void circle(float x,float y,float r)
+{
+    fill_circle_d((ssh_coordinate)x,(ssh_coordinate)y,(ssh_natural)r); //ssh_coordinate & ssh_natural
     FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
@@ -359,7 +466,7 @@ void saveFrame()//PROCESSING: If saveFrame() is used without parameters, it will
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

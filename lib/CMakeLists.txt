@@ -42,7 +42,7 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/window_exit.cpp"
     "${PROC2CDIR}/lib/src/window_draw.cpp"
     "${PROC2CDIR}/lib/src/window_setup.cpp"
-)
+        ../../../../../../data/wb/SCC/public/Processing2C/lib/src/window_settings.cpp)
 endif()
 
 

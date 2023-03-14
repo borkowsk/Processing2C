@@ -136,6 +136,32 @@ inline void rect(float a,float  b,float  c,float  d)
     }
 }
 
+/// \param r : radius for rounding corners (CURRENTLY IGNORED)
+/// @todo NOT IGNORE CORNERS ROUNDING WHERE POSSIBLE.
+inline void rect(float a,float  b,float  c,float  d,float r)
+{
+    rect(a,b,c,d);
+}
+
+/// \param tl 	float: radius for top-left corner
+/// \param tr 	float: radius for top-right corner
+/// \param br 	float: radius for bottom-right corner
+/// \param bl 	float: radius for bottom-left corner
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
+inline void rect(float a,float b,float c,float d,
+                 float tl,float tr,float br,float bl // corners rounding
+                 )
+{
+    rect(a,b,c,d);
+}
+
+/// \note Meaning of parameters depends on rectMode() but in mode CORNERS
+///       this particular function behave stupid in Processing 3.x at least.
+inline  void square(float a,float  b,float extent)
+{
+    rect(a,b,extent,extent);
+}
+
 inline void ellipse(float a,float  b,float  c,float  d)
 {
     int x1,y1,A,B;
@@ -153,6 +179,11 @@ inline void ellipse(float a,float  b,float  c,float  d)
 
     if(get_line_width()>0 && A>1 && B>1)  //TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
+}
+
+inline void circle(float x,float y,float r)
+{
+    fill_circle_d((ssh_coordinate)x,(ssh_coordinate)y,(ssh_natural)r); //ssh_coordinate & ssh_natural
 }
 
 //  map & lerp - nie graficzne, ale też często używane z grafiką
