@@ -41,6 +41,7 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
+#	"${SRCPATH}exit.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
 #	"${SRCPATH}THISTEST.pde.cpp"
 #        )

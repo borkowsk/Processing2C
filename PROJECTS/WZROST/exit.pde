@@ -2,4 +2,5 @@
 void exit()
 {
   save("exit.png");
+  super.exit();
 }

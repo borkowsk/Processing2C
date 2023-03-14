@@ -1,17 +1,17 @@
 
-final int iniWidth=500;
-final int iniHeight=500;
-final int NUMBER_OF_SHAPES=7;
+const int iniWidth=500;
+const int iniHeight=500;
+const int NUMBER_OF_SHAPES=7;
 int   FREQUENCY=25;
 
-void settings()
+void processing_window::settings()
 {
    size(iniWidth,iniHeight);
 }
 
-void setup()
+void processing_window::setup()
 {
-  frameRate(FREQUENCY);
+  setFrameRate(FREQUENCY);
   background(0);
   fill(random(255));
   stroke(random(255));
@@ -19,7 +19,7 @@ void setup()
   //rectMode(CORNERS); - its brake a lot!
 }
 
-void draw()
+void processing_window::draw()
 {
   random_shape();
   if(frameCount % FREQUENCY == 0)
@@ -59,3 +59,5 @@ void random_shape() ///< Global namespace!
    default: println("Not so many shapes!"); break;
    }
 }
+//NOTE! ../../scripts did it
+
