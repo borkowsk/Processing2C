@@ -268,9 +268,11 @@ void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
 void background(float v1,float v2,float v3,float  alpha);
 
-/// \param col - 3D color
-/// \note TODO Currently not implemented (???)
-void background(const color& col);
+/// \param col - 3D color + alpha channel
+inline void background(const color& col)
+{
+    background(col.red(),col.green(),col.blue(),col.alfa());
+}
 
 #ifndef PROCESSING_INLINES_H
 void stroke(float Gray);

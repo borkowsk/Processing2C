@@ -13,8 +13,8 @@
 // This file is part of the Processing2C++ Library. See bottom lines.
 //*///////////////////////////////////////////////////////////////////
 #pragma once
-#ifndef PROCESSING_StringDict_H
-#define PROCESSING_StringDict_H
+#ifndef PROCESSING_IntDict_H
+#define PROCESSING_IntDict_H
 
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -169,7 +169,7 @@ public:
     typedef Processing::self_printable_ptr<IntDict> pIntDict;
 
 }/*_endOfNamespace*/
-#endif
+#endif //PROCESSING_IntDict_H
 /* ****************************************************************** */
 /*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */

@@ -242,6 +242,9 @@ class array
       ~array() { delete [] _ptr; } //!< \brief Destruktor - Zwalnianie zasobów
       array(size_t N); //!< \brief Jedyny konstruktor
       T& operator [] (size_t i) { return _ptr[i]; }
+
+      // For internal use only!
+      const T* _raw_ptr() const { return _ptr; }
 };
 
 /**
@@ -271,6 +274,8 @@ class sarray:public ptr< array<T> >
       T*          end() const { return &(*this)[ length() ]; }
 
       std::size_t length() const { return this->get()->length; }
+
+      const T*          _raw_ptr() const {  return this->get()->_raw_ptr(); }
 };
 
 /**

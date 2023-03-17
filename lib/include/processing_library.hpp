@@ -2,7 +2,7 @@
  * \brief Most commonly used library functions.
  * \file processing_library.hpp
  * \author borkowsk
- * \date 2023-03-07 (last modification)
+ * \date 2023-03-17 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
