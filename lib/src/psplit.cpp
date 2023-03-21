@@ -1,7 +1,7 @@
 /// \file psplit.cpp
 /// \brief split & concat functions
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-21 (last modification)
 /// \details
 ///         ...
 ///
@@ -9,12 +9,14 @@
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
-#include "processing_consts.hpp"
-#include "processing_window.hpp"
+
+//#include "processing_consts.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 //#include "processing_console.hpp"
 #include "_impl_errors.h"
+
 #include <string>
 //#define DEBUG 1
 
@@ -94,7 +96,7 @@ sarray<String> split(_string_param string2parse,_string_param delimiter) // TODO
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

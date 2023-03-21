@@ -21,7 +21,7 @@ namespace Processing
 {
 extern bool _filled; //=true;
 extern int _LINE_WIDTH; //=1;
-extern int _RECT_MODE; //=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _RECT_MODE;  //=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 extern int _ELLIPSE_MODE; //=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
 extern int _TEXT_HORIZONTAL_AL; //=LEFT;
 extern int _TEXT_VERTICAL_AL; //=BOTTOM;
@@ -86,6 +86,16 @@ inline void fill(float Red,float Green,float Blue,float Alpha)
 {
     set_brush_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha);
     _filled=true;
+}
+
+inline void fill(const color c)
+{
+    fill(c.red(),c.green(),c.blue(), c.alfa());
+}
+
+inline void stroke(const color c)
+{
+    stroke(c.red(),c.green(),c.blue(), c.alfa());
 }
 
 inline void point(float x,float y)

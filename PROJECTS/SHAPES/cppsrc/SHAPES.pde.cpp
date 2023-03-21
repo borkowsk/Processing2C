@@ -15,7 +15,7 @@ void processing_window::setup()
   background(0);
   fill(random(255));
   stroke(random(255));
-  strokeWeight(3);
+  strokeWeight(2);
   circle(width/2,height/2, min(width,height) / 10 );
   //rectMode(CORNERS); - its brake a lot!
 }
@@ -61,5 +61,5 @@ void random_shape() ///< Global namespace!
    default: println("Not so many shapes!"); break;
    }
 }
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it
+//NOTE! ../../scripts did it
 

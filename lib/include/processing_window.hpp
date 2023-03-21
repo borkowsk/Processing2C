@@ -3,7 +3,7 @@
  * \classes processing_window; color
  * \ingroup drawing , rtm
  * \author borkowsk
- * \date 2023-03-14 (last modification)
+ * \date 2023-03-21 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -17,6 +17,7 @@
 #endif
 
 #include<cstdint>
+#include<cassert>
 
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
@@ -137,60 +138,6 @@ void fullScreen();
 /// \see \a https://processing.org/reference/frameRate_.html
 void setFrameRate(float fps); ///Set desired frame rate
 
-/// Class implementing an RGBA model of color
-/// \n TODO Move it to its own "color.hpp"!
-/// \ingroup drawing
-class color
-{
-  public:
-    std::uint32_t val;
-
-    /// Constructor from int
-    /// \param value unsigned int 32b : hexadecimal form of RGBA color
-    color(std::uint32_t value):val(value){}
-
-    /// Constructor from components
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
-    {
-        val=B + 256*G + 256*256*R;
-    }
-
-    /// Constructor from components and alpha channel
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    /// \param alfa : alpha channel
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
-    {
-        val|=alfa<<24; //??? TODO! TEST IT!
-    }
-
-    std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
-
-    std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
-
-    std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
-
-    std::uint8_t blue() const  { return (val & 0x000000FF); }
-    
-    operator const std::uint32_t () const { return val; }
-};
-
-//inline String hex(const color& col) { return Processing::hex(col.val); }
-//inline String binary(const color& col) { return Processing::binary(col.val); }
-
-/// \fn Extracted alpha from 'color'
-inline float  alfa(const color& col) { return col.alfa(); }
-/// \fn Extracted red from 'color'
-inline float   red(const color& col) { return col.red(); }
-/// \fn Extracted green from 'color'
-inline float green(const color& col) { return col.green(); }
-/// \fn Extracted blue from 'color'
-inline float  blue(const color& col) { return col.blue(); }
-
 // Global "system" variables
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -279,7 +226,7 @@ void stroke(float Gray);
 void stroke(float Gray,float Alpha);
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
-void stroke(const color& col);
+void stroke(const color col);
 void noStroke();
 void strokeWeight(float Weight); // Parameters	weight 	float: the weight (in pixels) of the stroke
 #endif
@@ -293,7 +240,7 @@ void fill(float Gray);
 void fill(float Gray,float Alpha);
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
-void fill(const color& col);
+void fill(const color col);
 #endif
 
 

@@ -28,8 +28,8 @@ void processing_window::draw()
   float y=random(W);
   ellipse(x,y,r,r);
   
-  //noStroke();
-  stroke(255);
+  noStroke();
+  //stroke(255);
   point(x,y);
   
   println(frameRate);

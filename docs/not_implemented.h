@@ -68,10 +68,10 @@ lib/src/parrayformat.cpp-227-String nfc(sarray<double> nums)
 lib/src/parrayformat.cpp-230-    return String("<NOT IMPLEMENTED>");
 lib/src/parrayformat.cpp-233-String nfc(sarray<double> nums,int digits)
 lib/src/parrayformat.cpp-236-    return String("<NOT IMPLEMENTED>");
-lib/src/pbasegrapx.cpp-32-void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
-lib/src/pbasegrapx.cpp-37-void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
-lib/src/pbasegrapx.cpp-42-int _LINE_WIDTH=1;
-lib/src/pbasegrapx.cpp-354-    String name="screen-";
+lib/src/pbasegrapx.cpp-34-void strokeCap(int cap)/// Parameters	cap 	int: either SQUARE, PROJECT, or ROUND
+lib/src/pbasegrapx.cpp-39-void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
+lib/src/pbasegrapx.cpp-44-int _LINE_WIDTH=1;
+lib/src/pbasegrapx.cpp-473-    String name="screen-";
 lib/src/pfont.cpp-23-/// `typedef void* PFont;              /// Font handler`
 lib/src/pfont.cpp-24-PFont createFont(String fn,int s)
 lib/src/pfont.cpp-31-void textFont(PFont f)
@@ -105,10 +105,10 @@ lib/src/plists.cpp-219-void     StringList::shuffle() // 	Randomize the order of
 lib/src/plists.cpp-226-void     StringList::lower() // 	Make the entire list lower case
 lib/src/plists.cpp-233-void     StringList::upper() // 	Make the entire list upper case
 lib/src/plists.cpp-240-sarray<int>  StringList::array()  const // 	Create a new array with a copy of all the values ???
-lib/src/pnoise.cpp-56-     * Sets the seed of this random number generator using a single long seed.
-lib/src/pnoise.cpp-62-    void setSeed(uint64_t useed)
-lib/src/pnoise.cpp-87-     * The general contract of next is that it returns an int value and if the argument bits is between 1 and 32 (inclusive),
-lib/src/pnoise.cpp-93-        (int)(seed >>> (48 - bits)).
+lib/src/pnoise.cpp-58-     * Sets the seed of this random number generator using a single long seed.
+lib/src/pnoise.cpp-64-    void setSeed(uint64_t useed)
+lib/src/pnoise.cpp-89-     * The general contract of next is that it returns an int value and if the argument bits is between 1 and 32 (inclusive),
+lib/src/pnoise.cpp-95-        (int)(seed >>> (48 - bits)).
 lib/src/pobject.cpp-21-    long Object::hashCode() const
 lib/src/pshape.cpp-21-void beginShape()
 lib/src/pshape.cpp-26-void beginShape(int kind)
@@ -119,4 +119,6 @@ lib/src/pshape.cpp-46-void vertex(float x,float y,float z)
 lib/src/pshape.cpp-51-void vertex(float v[])
 lib/src/pshape.cpp-56-void vertex(float x,float y,float u,float v)
 lib/src/pshape.cpp-61-void vertex(float x,float y,float z,float u,float v)
-lib/src/pwindow.cpp-287-void redraw()
+lib/src/pstrings.cpp-218-/// @internal
+lib/src/pstrings.cpp-222-static int count_substrings(const char *str,const char *substr)
+lib/src/pwindow.cpp-316-void redraw()

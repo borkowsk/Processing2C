@@ -9,10 +9,12 @@
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
+
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
+
 #include "symshell.h"
 #include "_impl_errors.h"
 
@@ -79,22 +81,27 @@ void stroke(float Red,float Green,float Blue,float Alpha)
 }
 
 //TEMPORARY IMPLEMENTATION OF stroke(color)
-void stroke(const color& col)//Until update of symshell.h (TODO!)
-{
-    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
-    stroke(red(col),green(col),blue(col));
+//void stroke(const color& col)//Until update of symshell.h (TODO!)
+//{
+//    if(_LINE_WIDTH<0) _LINE_WIDTH=1;
+//    stroke(red(col),green(col),blue(col));
     //FIRST_TIME_ERRMESSAGE( ' '<<std::hex<<col.val );
-    FIRST_TIME_ERRMESSAGE( " not inline called" );
+//    FIRST_TIME_ERRMESSAGE( " not inline called" );
+//}
+
+void stroke(const color c)
+{
+    stroke(c.red(),c.green(),c.blue(), c.alfa());
 }
 
 void noStroke()
 {
-    line_width(0);//??? TODO?
+    line_width(0);//??? TODO? -1 ???
     _LINE_WIDTH=0;
     FIRST_TIME_ERRMESSAGE( " not inline called" );
 }
 
-bool _filled=true;//TODO _FILLED !!!???
+bool _filled=true; //TODO _FILLED !!!???
 
 void fill(float Gray)
 {
@@ -127,9 +134,14 @@ void fill(float Red,float Green,float Blue,float Alpha)
 }
 
 //TEMPORARY IMPLEMENTATION OF fill(color)
-void fill(const color& col)//Until update of symshell.h (TODO!)
+//void fill(const color col)//Until update of symshell.h (TODO!)
+//{
+//    fill(red(col),green(col),blue(col));
+//}
+
+void fill(const color c)
 {
-    fill(red(col),green(col),blue(col));
+    fill(c.red(),c.green(),c.blue(), c.alfa());
 }
 
 void noFill()

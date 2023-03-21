@@ -10,11 +10,12 @@
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "symshell.h"
 #include "_impl_errors.h"
+
 #include <chrono>
 #include <iostream>
                             //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
@@ -89,16 +90,20 @@ int     keyCode;/// TODO!
 
 sarray<String> args;//WHOLE PROGRAM PARAMETERS!!!
 
+/// @details
+///     Clears events flags.
 void processing_window_base::before_draw()
 {
     _mousePressed=0;
     _keyPressed=0;
 }
 
+/// @details
+///     It realises drawing, updates counters, then calculates `frameRate` and `_INTERNAL_DELAY`
 void processing_window_base::after_draw()
-//Calculate frameRate and _INTERNAL_DELAY
 {
     flush_plot();
+
     _frameCount++;
     _frameCountFromChange++;
 
@@ -112,9 +117,10 @@ void processing_window_base::after_draw()
     // ...
 }
 
+/// @details
+///     If events are in queue, they are processed
+///     Apart frame rate, messages in Processing are get only 10 times per second!
 void processing_window_base::check_events()
-//If events are in queue, they are processed
-//Apart frame rate, messages in Processing are get only 10 times per second!
 {
     //std::cerr<<'?';
     _mousePressed=false;
@@ -130,11 +136,11 @@ void processing_window_base::check_events()
         case EOF:
         case 27:
             exit();
-            ::exit(0);//Na wypadek gdyby uzytkownik zapomnial wywolac super.exit
+            ::exit(0); //!< Na wypadek gdyby użytkownik zapomniał wywołać `super.exit`
             break;
         case '\b':
-            _pmouseX=_mouseX;/// _pmouseX always contains the previous horizontal coordinate of the mouse.
-            _pmouseY=_mouseY;/// _pmouseX always contains the previous vertical coordinate of the mouse.
+            _pmouseX=_mouseX; //!< `_pmouseX` always contains the previous horizontal coordinate of the mouse.
+            _pmouseY=_mouseY; //!< `_pmouseX` always contains the previous vertical coordinate of the mouse.
             get_mouse_event(_mouseX,_mouseY,_mouseButton);
             if(_mouseButton==1) _mouseButton=LEFT;
             else
@@ -164,47 +170,57 @@ void processing_window_base::check_events()
     }
 }
 
+/// @details
+///     Currently does nothing.
 processing_window_base::~processing_window_base()
 {
     //Is anything to do here?
 }
 
+/// @details
+///     It closes windows or other plotting device connected via SymShell library,
+///     then calls global exit() function wit status `0`.
 void processing_window_base::exit()
 {
     //Is anything to do here?
     close_plot();
-    //Finishing the whole aplication
+    //Finishing the whole application
     ::exit(0);
 }
 
+/// @details
+///     Just calls  `_processing_window_instance.exit()`.
 void exit()
 {
     _processing_window_instance.exit();
 }
 
+/// @details
+///     It does all jobs with program parameters, then sets all defaults.
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
-    extern sarray<String> args; /// JAVA LIKE PROGRAM PARAMETERS!!!
-                                /// So, without program name at the beginning.
+    extern sarray<String> args; ///< JAVA LIKE PROGRAM PARAMETERS!!!
+                                ///< So, without program name at the beginning.
 
-    args=new array<String>(argc-1);///Allocation of JAVA LIKE PROGRAM PARAMETERS!!!
-    int argpos=0;       /// When parameters beginning with '-' exist on list,
-                        /// some empty parameters appeared at the end of args table.
+    args=new array<String>(argc-1); ///< Allocation of JAVA LIKE PROGRAM PARAMETERS!!!
+    int argpos=0;                      ///< When parameters beginning with '-' exist on list,
+                                       ///< some empty parameters appeared at the end of args table.
 
-    for(int i=1;i<argc;i++)//In JAVA name of the program is not available as par0!!!
-        if(argv[i][0]!='-')//Parameters for X11 or symshell are skipped here.
+    for(int i=1;i<argc;i++) //In JAVA name of the program is not available as par0!!!
+        if(argv[i][0]!='-') //Parameters for X11 or symshell are skipped here.
         {
-            args[argpos++]=String(argv[i]);//new String(argv[i]);???
+            args[argpos++]=String(argv[i]); //new String(argv[i]);???
         }
 
     randomSeed(time(nullptr));
-    //fix_size(SSH_YES);//NOT WORK UNDER X11 - TODO?
+    //fix_size(SSH_YES); //NOT WORK UNDER X11 - TODO?
     set_background(256+200);
     print_transparently(SSH_YES);
     buffering_setup(SSH_YES);//buffered window!
     mouse_activity(SSH_YES);
 
     shell_setup(_PROGRAMNAME,argc,argv);
+
     milliseconds ms = duration_cast< milliseconds >(
         system_clock::now().time_since_epoch()
     );
@@ -213,9 +229,12 @@ void processing_window_base::before_setup(int argc,const char *argv[])
     firstms=ms;
 }
 
-// The background() function sets the color used for the background of the Processing window. The default background is light gray.
-// This function is typically used within draw() to clear the display window at the beginning of each frame, but it can be used
-// inside setup() to set the background on the first frame of animation or if the backgound need only be set once.
+/// @details
+///     The `background()` function sets the color used for the background of the Processing window. The default
+///     background is light gray.
+///     This function is typically used within `draw()` to clear the display window at the beginning of each frame,
+///     but it can be used inside `setup()` to set the background on the first frame of animation or if the backgound
+///     need only be set once.
 void background(float gray)
 {
     invalidate_screen();//Cały ekran/okno zostanie zmazany
@@ -235,17 +254,19 @@ void background(float v1,float v2,float v3)
 {
     invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(v1,v2,v3);
-    fill_rect_rgb(0,0,width,height,v1,v2,v3);
+    fill_rect_rgb(0,0,width,height,v1,v2,v3); // clear_screen()?
 }
 
 void background(float v1,float v2,float v3,float  alpha)
 {
     invalidate_screen();//Cały ekran/okno zostanie zmazany
     set_background(v1,v2,v3);
-    fill_rect_rgb(0,0,width,height,v1,v2,v3);
+    fill_rect_rgb(0,0,width,height,v1,v2,v3);// clear_screen()?
     FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
 }
 
+/// @details
+///     It initializes SymShell graphic output, then set defaults for it.
 void size(int width,int height)
 {
     init_plot(width,height,0,0);
@@ -257,9 +278,11 @@ void size(int width,int height)
     _height=screen_height();
 }
 
+/// @details
+///     By declaring a very large window, usually larger than any screen, it tries to force the system to limit.
 void fullScreen()
 {
-    init_plot(1800,1200,0,0);//Powinien dopasować się do ekranu
+    init_plot(3600,2400,0,0); //Powinien dopasować się do ekranu
     strokeWeight(1);
     stroke(0);
     fill(255);
@@ -267,23 +290,29 @@ void fullScreen()
     _height=screen_height();
 }
 
+/// @details
+///     Set desired frame rate, which, however, only works approximately!
 void setFrameRate(float fps)
-///Set desired frame rate
 {
     _exp_frame_rate=fps;
     _INTERNAL_DELAY=1000/fps;
 }
 
+/// @details
+///     This function sets the title in the window bar if it is possible with the given way of
+///     displaying in the SymShell module used.
 void processing_window_base::setTitle(Processing::_string_param bar)
 {
     set_title(bar.c_str());
 }
 
-/// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary,
-/// for example when an event registered by mousePressed() or keyPressed() occurs.
-/// In structuring a program, it only makes sense to call redraw() within events such as mousePressed(). This is because redraw()
-/// does not run draw() immediately (it only sets a flag that indicates an update is needed).
-/// The redraw() function does not work properly when called inside draw(). To enable/disable animations, use loop() and noLoop().
+/// @details
+///     Executes the code within `draw()` one time. This functions allows the program to update the display window only
+///     when necessary, for example when an event registered by `mousePressed()` or `keyPressed()` occurs.
+///     In structuring a program, it only makes sense to call `redraw()` within events such as `mousePressed()`. This is
+///     because `redraw()` does not run `draw()` immediately (it only sets a flag that indicates an update is needed).
+///     The `redraw()` function does not work properly when called inside `draw()`.
+///     To enable/disable animations, use `loop()` and `noLoop()`.
 void redraw()
 {
     FIRST_TIME_ERRMESSAGE( " not implemented!" );
