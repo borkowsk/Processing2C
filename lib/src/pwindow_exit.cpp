@@ -1,33 +1,32 @@
-/// \file window_setup.cpp
-/// \brief Domyślna obsługa konfiguracji okna
-/// \author 'borkowsk'
-/// @date 2023-03-23 (last modification)
-/// \details
-///
-///     Domyślna obsługa konfiguracji okna (setup) aplikacji
-///     polegająca jedynie na otwarciu okna o rozmiarze 100x100.
-///
+/// @file    pwindow_exit.cpp
+/// @details Created by borkowsk on 23.03.23.
+///          Only implementation of `processing_window_base::exit()`,
+///          which by default closes window and calls `::exit(int)`.
 /// \ingroup rtm
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
 
-//#include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_window.hpp"
-//#include "processing_library.hpp"
-//#include "processing_console.hpp"
+#include "symshell.h"
 
 namespace Processing
 {
 
-/// @details The default setup only starts window of size 100x100.
-void processing_window::setup()
-{
-        size(100,100);
-}
+    /// @details
+    ///     It closes windows or other plotting device connected via SymShell library,
+    ///     then calls global `exit()` function wit status `0`.
+    void processing_window_base::exit()
+    {
+        //Is anything to do here?
+        close_plot();
+        //Finishing the whole application
+        ::exit(0);
+    }
 
-}//END of namespace Processing
+}
+//END of namespace Processing
 /* ******************************************************************
  *               PROCESSING2C  version 2023                         *
  ********************************************************************
@@ -42,4 +41,3 @@ void processing_window::setup()
  *                                                                  *
  *                               (Don't change or remove this note) *
  ********************************************************************/
-

@@ -28,7 +28,7 @@
 namespace Processing {
 //*///////////////////////////////////////////////////////////////////
 
-class FloatDict: private std::map<String,float>, virtual public _self_printable
+class FloatDict: public std::map<String,float>, virtual public _self_printable
 {
 public:
         using     std::map<String,float>::begin;
@@ -48,7 +48,7 @@ public:
         String print() const; //!< forced by _self_printable
 
         int     size() const; //!<	Returns the number of key/value pairs
-        void    clear(); //!<	Remove all entries
+        void    clear();      //!<	Remove all entries
 
         ///...
         //iterable<int>        values(); //!< Return the internal array being used to store the values

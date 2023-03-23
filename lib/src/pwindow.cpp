@@ -17,7 +17,8 @@
 #include "_impl_errors.h"
 
 #include <chrono>
-#include <iostream>
+//#include <iostream> //ONLY FOR SOME DEBUG. But these instruction were commented out!
+
                             //https://stackoverflow.com/questions/7889136/stdchrono-and-cout
 using namespace std::chrono;//https://en.cppreference.com/w/cpp/chrono/duration
                             //https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets
@@ -30,6 +31,7 @@ static int _height=0;
 
 static float _frameRate=0; ///Approximated frame rate achieved;
        int   _exp_frame_rate=100;///Expected frame rate
+
 static int _frameCount=0;
 static int _frameCountFromChange=0;
 
@@ -131,7 +133,7 @@ void processing_window_base::check_events()
         _keyPressed=false;
 
         int inp=get_char();
-        std::cerr<<inp<<' '<<char(inp);
+        //std::cerr<<inp<<' '<<char(inp);
         switch(inp){
         case EOF:
         case 27:
@@ -171,31 +173,6 @@ void processing_window_base::check_events()
 }
 
 /// @details
-///     Currently does nothing.
-processing_window_base::~processing_window_base()
-{
-    //Is anything to do here?
-}
-
-/// @details
-///     It closes windows or other plotting device connected via SymShell library,
-///     then calls global exit() function wit status `0`.
-void processing_window_base::exit()
-{
-    //Is anything to do here?
-    close_plot();
-    //Finishing the whole application
-    ::exit(0);
-}
-
-/// @details
-///     Just calls  `_processing_window_instance.exit()`.
-void exit()
-{
-    _processing_window_instance.exit();
-}
-
-/// @details
 ///     It does all jobs with program parameters, then sets all defaults.
 void processing_window_base::before_setup(int argc,const char *argv[])
 {
@@ -227,42 +204,6 @@ void processing_window_base::before_setup(int argc,const char *argv[])
     //std::cerr<<ms.count()<<"ms"<<std::endl;
     begintms=ms;
     firstms=ms;
-}
-
-/// @details
-///     The `background()` function sets the color used for the background of the Processing window. The default
-///     background is light gray.
-///     This function is typically used within `draw()` to clear the display window at the beginning of each frame,
-///     but it can be used inside `setup()` to set the background on the first frame of animation or if the backgound
-///     need only be set once.
-void background(float gray)
-{
-    invalidate_screen();//Cały ekran/okno zostanie zmazany
-    set_background(256+gray);
-    fill_rect(0,0,width,height,256+gray);
-}
-
-void background(float gray,float  alpha)
-{
-    invalidate_screen();//Cały ekran/okno zostanie zmazany
-    set_background(256+gray);
-    fill_rect(0,0,width,height,256+gray);
-    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
-}
-
-void background(float v1,float v2,float v3)
-{
-    invalidate_screen();//Cały ekran/okno zostanie zmazany
-    set_background(v1,v2,v3);
-    fill_rect_rgb(0,0,width,height,v1,v2,v3); // clear_screen()?
-}
-
-void background(float v1,float v2,float v3,float  alpha)
-{
-    invalidate_screen();//Cały ekran/okno zostanie zmazany
-    set_background(v1,v2,v3);
-    fill_rect_rgb(0,0,width,height,v1,v2,v3);// clear_screen()?
-    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
 }
 
 /// @details

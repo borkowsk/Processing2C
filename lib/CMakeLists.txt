@@ -5,7 +5,8 @@ project(WBProcessing)
 set(PROC2CDIR "/data/wb/SCC/public/Processing2C" )
 set(SYMSHELL  "/data/wb/SCC/public/SymShellLight" )
 
-
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}" )
 
 if(true)
@@ -29,6 +30,7 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/plists.cpp"
     "${PROC2CDIR}/lib/src/psplit.cpp"
     "${PROC2CDIR}/lib/src/pdatetime.cpp"
+    "${PROC2CDIR}/lib/src/processing_exit.cpp"
     "${PROC2CDIR}/lib/src/max.cpp"
     "${PROC2CDIR}/lib/src/min.cpp"
     "${PROC2CDIR}/lib/src/pnoise.cpp"
@@ -42,7 +44,14 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/window_exit.cpp"
     "${PROC2CDIR}/lib/src/window_draw.cpp"
     "${PROC2CDIR}/lib/src/window_setup.cpp"
-        ../../../../../../data/wb/SCC/public/Processing2C/lib/src/window_settings.cpp)
+    "${PROC2CDIR}/lib/src/window_settings.cpp"
+    "${PROC2CDIR}/lib/src/pwindow_destructor.cpp"
+    "${PROC2CDIR}/lib/src/pwindow_exit.cpp"
+        )
+
+
+target_compile_options( wbprocess PRIVATE "${CMAKE_CXX_FLAGS}" "-fPIC" "-w"  "-pthread" )
+
 endif()
 
 

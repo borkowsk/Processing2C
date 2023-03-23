@@ -44,62 +44,6 @@
 namespace Processing
 {
 
-/// Class implementing an RGBA model of color
-/// \n TODO Move it to its own "color.hpp"!
-/// \ingroup drawing
-class color
-{
-public:
-    std::uint32_t val;
-
-    /// Constructor from int
-    /// \param value unsigned int 32b : hexadecimal form of RGBA color
-    color(std::uint32_t value=0):val(value){}
-
-    /// Constructor from components
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
-    {
-        val=B; val|=G<<8; val|=R<<16;
-        assert(red()==R);assert(green()==G);assert(blue()==B);
-    }
-
-    /// Constructor from components and alpha channel
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    /// \param alfa : alpha channel
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
-    {
-        val|=alfa<<24; //??? TODO! TEST IT!
-    }
-
-    std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
-
-    std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
-
-    std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
-
-    std::uint8_t blue() const  { return (val & 0x000000FF); }
-
-    operator const std::uint32_t () const { return val; }
-};
-
-//inline String hex(const color& col) { return Processing::hex(col.val); }
-//inline String binary(const color& col) { return Processing::binary(col.val); }
-
-/// \fn Extracted alpha from 'color'
-inline float  alfa(const color& col) { return col.alfa(); }
-/// \fn Extracted red from 'color'
-inline float   red(const color& col) { return col.red(); }
-/// \fn Extracted green from 'color'
-inline float green(const color& col) { return col.green(); }
-/// \fn Extracted blue from 'color'
-inline float  blue(const color& col) { return col.blue(); }
-
-
 /**
  * \class "Object"
  * This is a base class for all Processing/JAVA like class but not pointers
@@ -115,7 +59,7 @@ class Object
     Object& operator = (const Object&);
   public:
     /// \brief Destructor
-    virtual ~Object(){} //TODO =0; ???
+    virtual ~Object() = default;
 
     /// \brief Make hashcode number for this object
     ///	\return the hashcode
@@ -374,6 +318,61 @@ class smatrix:public ptr< matrix<T> >
       sarray<T>* end() const { return &(*this)[ this->get()->length ]; } // dublet? NIE!
       //size_t     length() { return this->get()->length; } // dublet? TODO usunąć?
 };
+
+/// Class implementing an RGBA model of color
+/// \n TODO Move it to its own "color.hpp"!
+/// \ingroup drawing
+    class color
+    {
+    public:
+        std::uint32_t val;
+
+        /// Constructor from int
+        /// \param value unsigned int 32b : hexadecimal form of RGBA color
+        color(std::uint32_t value=0):val(value){}
+
+        /// Constructor from components
+        /// \param R : red component
+        /// \param G : green component
+        /// \param B : blue component
+        color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
+        {
+            val=B; val|=G<<8; val|=R<<16;
+            assert(red()==R);assert(green()==G);assert(blue()==B);
+        }
+
+        /// Constructor from components and alpha channel
+        /// \param R : red component
+        /// \param G : green component
+        /// \param B : blue component
+        /// \param alfa : alpha channel
+        color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
+        {
+            val|=alfa<<24; //??? TODO! TEST IT!
+        }
+
+        std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
+
+        std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
+
+        std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
+
+        std::uint8_t blue() const  { return (val & 0x000000FF); }
+
+        operator const std::uint32_t () const { return val; }
+    };
+
+//inline String hex(const color& col) { return Processing::hex(col.val); }
+//inline String binary(const color& col) { return Processing::binary(col.val); }
+
+/// \fn Extracted alpha from 'color'
+    inline float  alfa(const color& col) { return col.alfa(); }
+/// \fn Extracted red from 'color'
+    inline float   red(const color& col) { return col.red(); }
+/// \fn Extracted green from 'color'
+    inline float green(const color& col) { return col.green(); }
+/// \fn Extracted blue from 'color'
+    inline float  blue(const color& col) { return col.blue(); }
 
 // PODRĘCZNE IMPLEMENTACJE INLINE
 // ==============================

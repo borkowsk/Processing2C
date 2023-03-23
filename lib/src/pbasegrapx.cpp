@@ -43,6 +43,45 @@ void strokeJoin(int join)/// Parameters	join 	int: either MITER, BEVEL, ROUND
 
 int _LINE_WIDTH=1;
 
+/// @details
+///     The `background()` function sets the color used for the background of the Processing window. The default
+///     background is light gray.
+///     This function is typically used within `draw()` to clear the display window at the beginning of each frame,
+///     but it can be used inside `setup()` to set the background on the first frame of animation or if the backgound
+///     need only be set once.
+void background(float gray)
+{
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
+    set_background(256+gray);
+    fill_rect(0,0,width,height,256+gray);
+}
+
+/// @copydetails
+void background(float gray,float  alpha)
+{
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
+    set_background(256+gray);
+    fill_rect(0,0,width,height,256+gray);
+    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
+}
+
+/// @copydetails
+void background(float v1,float v2,float v3)
+{
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
+    set_background(v1,v2,v3);
+    fill_rect_rgb(0,0,width,height,v1,v2,v3); // clear_screen()?
+}
+
+/// @copydetails
+void background(float v1,float v2,float v3,float  alpha)
+{
+    invalidate_screen();//Cały ekran/okno zostanie zmazany
+    set_background(v1,v2,v3);
+    fill_rect_rgb(0,0,width,height,v1,v2,v3);// clear_screen()?
+    FIRST_TIME_ERRMESSAGE( " ignoring alpha channel!" );
+}
+
 void strokeWeight(float Weight) /// @param	weight 	float: the weight (in pixels) of the stroke
 {
     line_width(_LINE_WIDTH=(int)Weight);

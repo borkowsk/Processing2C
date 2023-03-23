@@ -143,9 +143,6 @@ void setFrameRate(float fps); ///Set desired frame rate
 
 //TODO - make file for internal variables? Exp.: "processing_ivars.hpp" ?
 
-///\var Internal name of the program. Typically equal to base part of main source file in Processing. \ingroup rtm
-extern const char* _PROGRAMNAME;
-
 ///\var width of a screen/window/virtual screen  \ingroup rtm
 extern const int& width;
 ///\var height of a screen/window/virtual screen  \ingroup rtm

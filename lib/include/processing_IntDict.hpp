@@ -28,7 +28,7 @@ namespace Processing {
 /// \brief A simple class to use a String as a lookup for an integer value.
 /// String "keys" are associated with int values.
 /// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
-class IntDict: private std::map<String,int>, virtual public _self_printable
+class IntDict: public std::map<String,int>, virtual public _self_printable
 {
 public:
         using     std::map<String,int>::begin;
