@@ -162,10 +162,10 @@ set( WBRTM    "$WBRTM" )
 
 set( MYLIBS   "$WBRTM/lib" )
 
-#add_subdirectory( "\${SYMSHELL}"
-#                  "\${SYMSHELL}" )
-#add_subdirectory( "\${PROC2C}/lib/"
-#                  "\${PROC2C}/lib/" )
+add_subdirectory( "\${SYMSHELL}"
+                  "\${SYMSHELL}" )
+add_subdirectory( "\${PROC2C}/lib/"
+                  "\${PROC2C}/lib/" )
 
 add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 
