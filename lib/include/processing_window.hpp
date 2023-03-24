@@ -91,6 +91,7 @@ extern class processing_window: public processing_window_base
   void onKeyReleased() override ;
   friend void loop();
   friend void noLoop();
+  ~processing_window() override;
 } _processing_window_instance;
 
 /// \brief Alias for _processing_window_instance

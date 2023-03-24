@@ -1,4 +1,4 @@
-/// @file    pwindow_destructor.cpp
+/// @file    window_destructor.cpp
 /// @details Created by borkowsk on 23.03.23.
 /// \ingroup rtm
 // //////////////////////////////////////////////////////////////////////
@@ -13,7 +13,7 @@ namespace Processing
 
 /// @details
 ///     Currently does nothing but is virtual.
-processing_window_base::~processing_window_base()
+processing_window::~processing_window()
 {
     //Is anything to do here?
 }
