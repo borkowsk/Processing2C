@@ -3,8 +3,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(PROCESSING2C_EXAMPLES)
 #LIBRARIES
-add_subdirectory( "/data/wb/SCC/public/SymShellLight" 
-                  "/data/wb/SCC/public/SymShellLight" )
+add_subdirectory( "/home/borkowsk/SCC/public/symShellLight" 
+                  "/home/borkowsk/SCC/public/symShellLight" )
 add_subdirectory( "../lib/" 
                   "../lib/" )
 add_subdirectory( "../tools/" 

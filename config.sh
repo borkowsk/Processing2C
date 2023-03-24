@@ -1,9 +1,15 @@
 #!/bin/bash
-# Processing2C version 0.2c installation script
+# Processing2C version 0.2d installation script
 #
 # Processing2C version .22.
 #
-EDIT=nano
+if [[ -f /usr/bin/gedit ]]
+then 
+	EDIT=/usr/bin/gedit
+else
+	EDIT=nano
+fi
+
 source scripts/screen.ini
 
 set -e # https://intoli.com/blog/exit-on-errors-in-bash-scripts/
@@ -19,14 +25,12 @@ function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
 }
 
 #WBRTM="/home/Kowalski/WBRTM"
-SYMSHELL=`realpath "../SymShellLight"`
+SYMSHELL=`realpath "../symShellLight"`
 PROC2DIR=`realpath "./"`
 
 echo -e $COLOR2"Are the paths correct?\n"$NORMCO
 echo -e "PROC2DIR=$PROC2DIR  #This toolbox whole path"
 echo -e "SYMSHELL=$SYMSHELL  #SymShellLight toolbox whole path"
-ls -d $PROC2DIR
-ls -d $SYMSHELL
 echo -e $COLOR2"If something is wrong, break script, edit it and run it again!"$NORMCO
 pause
 
@@ -40,14 +44,16 @@ echo -e "How to install?"
 echo
 echo -e "In parent directory use the following commands:"$COLOR2
 echo
-echo -e "$ git clone git clone https://github.com/borkowsk/SymShellLight.git"
-echo -e "$ cd SymShellLight"
+echo -e "$ git clone git clone https://github.com/borkowsk/symShellLight.git"
+echo -e "$ cd symShellLight"
 echo -e "$ $EDIT README.md"
 echo
 echo -e $NORMCO"Then follow the compilation instruction."
 exit -1
 fi
 
+ls -d $PROC2DIR
+ls -d $SYMSHELL
 
 #prepare config.dat
 echo
@@ -120,23 +126,29 @@ echo -e $NORMCO
 
 echo -e "$COLOR2\nNow You have to edit $COLOR1 'CMakeLists.txt' $COLOR2 using $COLOR1 $EDIT $COLOR2"  
 echo -e "\nSELECT EXAMPLES by ADDING/REMOVING $COLOR3'EXCLUDE_FROM_ALL'$COLOR2 CLAUSULES\n"$NORMCO
-pause
+
 $EDIT CMakeLists.txt
+pause
+
 echo -e $COLOR3"CMAKE..."$NORMCO
-cmake . 
+#mkdir -p build_examples/ 
+#cmake -B build_examples/ -S ./
+cmake .
 echo -e $COLOR3"MAKE..."$NORMCO
+#pushd build_examples/
 make
 echo -e $COLOR3"DONE"$NORMCO
+#popd
 popd
 
-date > configured.txt #FINALLY SUCCESFULL
+date > configured.txt          #FINALLY SUCCESFULL
 echo -e "With some examples" >> configured.txt
 
 echo -e $COLOR2"\nSCRIPT"$COLOR1 `realpath $0` $COLOR2"FINISHED"$NORMCO
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-12-31                   */
+#/*               PROCESSING2C  version 2023                         */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

@@ -3,9 +3,9 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22c. (2023-03-12)
+# Processing2C version 22d. (2023-03-23)
 #
-Pr2CVERSION="0.22c"
+Pr2CVERSION="0.22d"
 
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
@@ -162,10 +162,11 @@ set( WBRTM    "$WBRTM" )
 
 set( MYLIBS   "$WBRTM/lib" )
 
-add_subdirectory( "\${SYMSHELL}"
-                  "\${SYMSHELL}" )
-add_subdirectory( "\${PROC2C}/lib/"
-                  "\${PROC2C}/lib/" )
+# THESE LINES BELOW COULD BE UNCOMMENTED WHEN LIBRARIES SEEMS TO BE NOT COMPILED.
+#add_subdirectory( "\${SYMSHELL}"
+#                  "\${SYMSHELL}" )
+#add_subdirectory( "\${PROC2C}/lib/"
+#                  "\${PROC2C}/lib/" )
 
 add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 

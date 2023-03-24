@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(ALIGNMENT)
-set( VERSION_NUM 0.22c ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22d ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -15,13 +15,14 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/ALIGNMENT/cppsrc/" )
-set( PROC2C   "/data/wb/SCC/public/Processing2C" )
-set( SYMSHELL "/data/wb/SCC/public/SymShellLight" )
+set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/ALIGNMENT/cppsrc/" )
+set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
+set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )
 
+# THESE LINES BELOW COULD BE UNCOMMENTED WHEN LIBRARIES SEEMS TO BE NOT COMPILED.
 #add_subdirectory( "${SYMSHELL}"
 #                  "${SYMSHELL}" )
 #add_subdirectory( "${PROC2C}/lib/"
