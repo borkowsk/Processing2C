@@ -18,7 +18,7 @@ function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
 }
 
 #WBRTM="/home/Kowalski/WBRTM"
-SYMSHELL=`realpath "../SymShellLight"`
+SYMSHELL=`realpath "../symShellLight"`
 PROC2DIR=`realpath "./"`
 
 echo -e $COLOR2"Are the paths correct?\n"$NORMCO

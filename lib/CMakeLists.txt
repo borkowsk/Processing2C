@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.9)
 
 project(WBProcessing)
 
-set(PROC2CDIR "/data/wb/SCC/public/Processing2C" )
-set(SYMSHELL  "/data/wb/SCC/public/SymShellLight" )
+set(PROC2CDIR "/home/data/SCC/public/Processing2C" )
+set(SYMSHELL  "/home/data/SCC/public/symShellLight" )
 
 
 include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}" )
