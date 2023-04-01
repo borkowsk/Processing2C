@@ -1,4 +1,4 @@
-# Processing2C
+# Processing2C version 0.22
 
 **Scripts &amp; libraries for porting Processing Application (mainly simulations) into C++**
 
@@ -19,8 +19,9 @@ $ git clone https://github.com/borkowsk/Processing2C.git
 Then go into _Processing2C/_ and and run _config.sh_ bash script.
 
 For much more information see: 
-*   How to do doc:   [scripts/doc*.md](https://github.com/borkowsk/Processing2C/blob/master/scripts/docEN.md)
-*   Interface documenation in doc,pdf & html format   [docs/interface.*](https://github.com/borkowsk/Processing2C/blob/master/docs/Interface.pdf) 
+*   __How to do__ doc:   [scripts/doc*.md](https://github.com/borkowsk/Processing2C/blob/master/scripts/docEN.md)
+*   __Interface__ documentation in doc,pdf & html format [docs/interface.*](https://github.com/borkowsk/Processing2C/blob/master/docs/Interface.pdf) 
+*   __Doxygen__ documentation could be created. __Doxyfile__ is in _docs_ subdirectory.
 
 **SOFTWARE REQUIREMENTS**
 
@@ -33,8 +34,11 @@ Toolbox need the following tools available:
 
 **NOT IMPLEMENTED**
 
-Functions already declared but still not implemented are listed in _[not_implemented.h](https://github.com/borkowsk/Processing2C/blob/master/not_implemented.h)_ file. 
+Functions already declared but still not implemented are listed in _[not_implemented.h](https://github.com/borkowsk/Processing2C/blob/master/docs/not_implemented.h)_ file. 
 
 **COFFE**
+
+If you find this software useful to you, buy me a coffee
+
 https://www.buymeacoffee.com/wborkowsk
 

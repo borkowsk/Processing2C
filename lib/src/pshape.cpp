@@ -9,8 +9,8 @@
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "symshell.h"
 #include "_impl_errors.h"

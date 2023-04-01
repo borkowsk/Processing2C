@@ -6,7 +6,7 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 
 //All global finals (consts) from Processing files
 

@@ -6,7 +6,7 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 /*abstract*/class Animal; typedef Processing::ptr<Animal> pAnimal; // 
 /*interface*/class Eat; typedef Processing::ptr<Eat> pEat; // 
 /*interface*/class Mew; typedef Processing::ptr<Mew> pMew; // 

@@ -26,7 +26,7 @@ World TheWorld=new World(side); ///< Made here, but also will be completed insid
 // Parameters of visualisation etc...
 int cwidth=8;                   ///< size of cell
 int STATUSHEIGH=40;             ///< ???
-int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
+int STEPSperVIS=usePunishment?100:10; ///< Jak nie ma punishment'u to mogą szybko wymrzeć
 int FRAMEFREQ=1000;             ///< ???
 boolean WITH_NEW_DEL_LOG=false; ///< ???
 /*_OnlyProcessingBlockBegin*/

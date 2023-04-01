@@ -14,6 +14,7 @@ int radius() ///< Example of the user declared function
 void setup()
 {
   size(600,600);
+  background(255);
   frameRate(500); // draw( ) about 500 times per sec.(if possible!)
                   //Nie za dużo bo Xorg zablokuje kompa!
 }
@@ -26,8 +27,10 @@ void draw()
   float x=random(W);
   float y=random(W);
   ellipse(x,y,r,r);
-  stroke(255);
+  
+  noStroke();
+  //stroke(255);
   point(x,y);
+  
   println(frameRate);
 }
-

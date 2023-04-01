@@ -1,6 +1,6 @@
 /// Simple model of colony growth with mutations (test project for Processing2C)
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: "klasaRGB.pde"
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @file "klasaRGB.pde"
 //*////////////////////////////////////////////////////////////////////////////////
 //  TAKA KLASA PRZYKLADOWA
 //*/////////////////////////

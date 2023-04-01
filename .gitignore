@@ -3,16 +3,25 @@
 *.*~
 *.zip
 *.txt
-*.log
-*.tmp
 
-#CMakeLists.txt
+# Doxygen help - need be generated locally
+*.html
+*.rtf
+*.js
+
+# Processing2C byproducts
 #lista.txt
 #clean_list.txt
 #headers.tmp
-#tools.log
 
+*.log
+*.tmp
+*.err
+tools.log
 config.dat
+
+# CMake files
+#CMakeLists.txt
 
 # Compiled Object files
 *.slo

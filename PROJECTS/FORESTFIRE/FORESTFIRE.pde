@@ -179,9 +179,9 @@ void doVisualisation() ///< Must be predeclared
        +LightP+" (per step and per tree)", width, height-16);
   fill(255,255,0); 
   textAlign(LEFT);
-  text(Step/Year+" years  = " 
+  text(Step/Year + " years  = " 
      + Step/Week + " weeks & " 
-     + (Step%Week)/24 + " days = " 
+     + (Step%Week) / 24 + " days = " 
      + Step + " h" 
      + " Speed:" + frameRate + " fr/sec" ,0,height);
   fill(0,255,255);

@@ -29,7 +29,7 @@ namespace Processing {
 /// \brief A simple class to use a String as a lookup for an String value.
 /// String "keys" are associated with String values.
 /// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
-class StringDict: private std::map<String,String>, virtual public _self_printable {
+class StringDict: public std::map<String,String>, virtual public _self_printable {
     public:
         using     std::map<String,String>::begin;
         using     std::map<String,String>::end;
@@ -136,6 +136,7 @@ class StringDict: private std::map<String,String>, virtual public _self_printabl
     }
 
     typedef Processing::self_printable_ptr<StringDict> pStringDict;
+    
 }/*_endOfNamespace*/
 #endif
 /* ****************************************************************** */

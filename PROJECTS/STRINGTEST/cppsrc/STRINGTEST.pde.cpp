@@ -50,5 +50,5 @@ void processing_window::setup()  // Must be
   toScreen(SL);
   toScreen(SAL);
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 

@@ -1,7 +1,7 @@
 /// \file ***.cpp
 /// \brief most commonly used library functions
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-21 (last modification)
 /// \details
 ///             ...
 ///
@@ -9,10 +9,12 @@
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
+
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
+
 #include <iostream>
 
 namespace Processing
@@ -21,13 +23,15 @@ namespace Processing
 // Simple functions
 // /////////////////
 
-
+/// @details Uses standard C `srand()`!
 void  randomSeed(int seed)
 {
     srand((unsigned)seed);
 }
 
-static double _denominator=RAND_MAX+1.0; ///< Denominator for random function (STATIC, so unvisible for linker)
+static double _denominator=RAND_MAX+1.0; ///< Denominator for random function (STATIC, so invisible for linker)
+
+/// @details Uses standard C `rand()`!
 double random(double low,double hig)
 {
     double tmp=low + (rand()/_denominator) * (hig-low);  //???TODO BETTER

@@ -26,7 +26,7 @@ pWorld TheWorld=new World(side); ///< Made here, but also will be completed insi
 // Parameters of visualisation etc...
 int cwidth=8;                   ///< size of cell
 int STATUSHEIGH=40;             ///< ???
-int STEPSperVIS=usePunishment?100:10;///< Jak nie ma punishment'u to mogą szybko wymrzeć
+int STEPSperVIS=usePunishment?100:10; ///< Jak nie ma punishment'u to mogą szybko wymrzeć
 int FRAMEFREQ=1000;             ///< ???
 bool WITH_NEW_DEL_LOG=false; ///< ???
 /*_OnlyProcessingBlockBegin
@@ -121,5 +121,5 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+//NOTE! ../../scripts did it
 

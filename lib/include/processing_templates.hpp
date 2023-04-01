@@ -59,7 +59,7 @@ class Object
     Object& operator = (const Object&);
   public:
     /// \brief Destructor
-    virtual ~Object(){} //TODO =0; ???
+    virtual ~Object() = default;
 
     /// \brief Make hashcode number for this object
     ///	\return the hashcode
@@ -143,7 +143,9 @@ class ptr:public std::shared_ptr<T>
       bool operator != (std::nullptr_t p) const { return this->get()!=p;}
 
       /// \brief Dostęp do atrybutów przechowywanego obiektu
-      T* operator -> () { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      const T* operator -> () const { return this->get();} //TODO Takie są dziedziczone, więc po co?
+      T* operator -> () { return this->get();}
+       
       /// \brief Dostęp do całości przechowywanego obiektu
       operator T* () { return this->get();} //TODO Takie są dziedziczone, więc po co?
 };
@@ -240,6 +242,9 @@ class array
       ~array() { delete [] _ptr; } //!< \brief Destruktor - Zwalnianie zasobów
       array(size_t N); //!< \brief Jedyny konstruktor
       T& operator [] (size_t i) { return _ptr[i]; }
+
+      // For internal use only!
+      const T* _raw_ptr() const { return _ptr; }
 };
 
 /**
@@ -260,12 +265,17 @@ class sarray:public ptr< array<T> >
       sarray(array<T>* tab): ptr< array<T> >(tab){}
       sarray(std::initializer_list<T> lst);
 
-      array<T>*   operator -> () { return this->get();} // dublet? TODO usunąć?
+
+      const array<T>*   operator -> () const { return this->get();} //!< @todo Dublet? TODO usunąć?
+      array<T>*   operator -> () { return this->get();}
+       
       T&          operator [] (std::size_t i) const { return (*this->get())[i]; }
       T*          begin() const { return &(*this)[0]; }
       T*          end() const { return &(*this)[ length() ]; }
 
       std::size_t length() const { return this->get()->length; }
+
+      const T*          _raw_ptr() const {  return this->get()->_raw_ptr(); }
 };
 
 /**
@@ -292,7 +302,7 @@ template<class T>
 class smatrix:public ptr< matrix<T> >
 {
   public:
-      //using ptr< matrix<T> >::operator ->; //NIE?
+      //using ptr< matrix<T> >::operator ->; //NIE???
 
      ~smatrix() = default; // Odziedziczone zwalnianie zasobów
       smatrix() = default;
@@ -301,11 +311,68 @@ class smatrix:public ptr< matrix<T> >
       smatrix(std::initializer_list<T> lst); //Jak na razie nigdzie nie używane. TODO TEST!
 
       //matrix<T>* operator -> () { return this->get();} // dublet? TODO usunąć?
+      
+      
       sarray<T>& operator [] (size_t j) const { return (*this->get())[j]; } // dublet? NIE!
       sarray<T>* begin() const { return &(*this)[0]; } // dublet? NIE!
       sarray<T>* end() const { return &(*this)[ this->get()->length ]; } // dublet? NIE!
       //size_t     length() { return this->get()->length; } // dublet? TODO usunąć?
 };
+
+/// Class implementing an RGBA model of color
+/// \n TODO Move it to its own "color.hpp"!
+/// \ingroup drawing
+    class color
+    {
+    public:
+        std::uint32_t val;
+
+        /// Constructor from int
+        /// \param value unsigned int 32b : hexadecimal form of RGBA color
+        color(std::uint32_t value=0):val(value){}
+
+        /// Constructor from components
+        /// \param R : red component
+        /// \param G : green component
+        /// \param B : blue component
+        color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
+        {
+            val=B; val|=G<<8; val|=R<<16;
+            assert(red()==R);assert(green()==G);assert(blue()==B);
+        }
+
+        /// Constructor from components and alpha channel
+        /// \param R : red component
+        /// \param G : green component
+        /// \param B : blue component
+        /// \param alfa : alpha channel
+        color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
+        {
+            val|=alfa<<24; //??? TODO! TEST IT!
+        }
+
+        std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
+
+        std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
+
+        std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
+
+        std::uint8_t blue() const  { return (val & 0x000000FF); }
+
+        operator const std::uint32_t () const { return val; }
+    };
+
+//inline String hex(const color& col) { return Processing::hex(col.val); }
+//inline String binary(const color& col) { return Processing::binary(col.val); }
+
+/// \fn Extracted alpha from 'color'
+    inline float  alfa(const color& col) { return col.alfa(); }
+/// \fn Extracted red from 'color'
+    inline float   red(const color& col) { return col.red(); }
+/// \fn Extracted green from 'color'
+    inline float green(const color& col) { return col.green(); }
+/// \fn Extracted blue from 'color'
+    inline float  blue(const color& col) { return col.blue(); }
 
 // PODRĘCZNE IMPLEMENTACJE INLINE
 // ==============================
@@ -345,7 +412,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022                           */
+/*               PROCESSING2C  version 2023-03-07                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

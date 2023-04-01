@@ -1,6 +1,6 @@
 /// ABM model of segregation (test project for Processing2C)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// ORIGINAL FILE: RTMExit.pde
+/// ORIGINAL NAME OF @file: RTMExit.pde
 //*////////////////////////////////////////////////////////////////////////////////////////
 
 void exit()          //it is called whenever a window is closed. 
@@ -16,6 +16,7 @@ void exit()          //it is called whenever a window is closed.
   }
   
   //if(WITH_VIDEO) CloseVideo();    //Finalise of Video export
+  
   save("exit.png");
   println(modelName,"said: Thank You!");
   super.exit();       //What library superclass have to do at exit()

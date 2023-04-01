@@ -1,7 +1,7 @@
 /// \file main.cpp
 /// \brief  main() function for Processing like application
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \details
 ///     main() function must exists for Processing2C++ applications
 ///     but user may generate and use its own versions
@@ -10,11 +10,13 @@
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
+
 #include "processing_consts.hpp"
-#include "processing_window.hpp"
 #include "processing_templates.hpp"
+#include "processing_window.hpp"
 #include "processing_library.hpp"
 #include "_impl_errors.h"
+
 #include <iostream>
 #include <iomanip>
 
@@ -42,12 +44,18 @@ int main(int argc,const char *argv[])
     setlocale(LC_NUMERIC,"en_US.UTF-8");//Because of thousand separator
 
     _processing_window_instance.before_setup(argc,argv);
+
+#ifndef NDEBUG
+    FIRST_TIME_ERRMESSAGE( "settings() called" );
+#endif
+    //processing_window::settings()
+    _processing_window_instance.settings();
 #ifndef NDEBUG
     FIRST_TIME_ERRMESSAGE( "setup() called" );
 #endif
     _processing_window_instance.setup();
 
-    if(_ssh_window==0)//setup nie zainicjował okna!!!
+    if(_ssh_window==0)//setup nie zainicjował okna!!! Zabezpiecza jeśli nie ma rysowania w `setup()`
     {
         size(100,100);
         std::cerr<<"setup() should use size() function!"<<std::endl;
@@ -86,7 +94,7 @@ int main(int argc,const char *argv[])
     return 0;
 }
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

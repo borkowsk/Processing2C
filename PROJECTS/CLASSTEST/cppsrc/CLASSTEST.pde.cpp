@@ -8,20 +8,20 @@
 //interface
 class Mew: public virtual Object{
   public:
-    virtual void meow(int l) =0 ;
+    virtual  void meow(int l) =0 ;
 };
 
 //interface
 class Eat: public virtual Object{
   public:
-    virtual void eat(int l) =0 ;
+    virtual  void eat(int l) =0 ;
 };
 
 //abstract
 class Animal: public virtual Object{
   public:
     float mass;
-    virtual void eat(int l) {
+    virtual  void eat(int l) {
         println(l,"Animal eats"); 
         mass+=l;
     }
@@ -29,10 +29,10 @@ class Animal: public virtual Object{
 
 
 // Now will be change of superclass!
-//Undefined any base class preprosessor definition: _anyPreviousSuperClass
+//Undefining any base class preprocessor definition: _
 #undef _superclass
 //Base class is now:
-#define _superclass Animal
+#define _superclass _
 
 class Cat : public  Animal, public virtual Mew, public virtual Eat  , public virtual Object{
   public:
@@ -47,10 +47,10 @@ class Cat : public  Animal, public virtual Mew, public virtual Eat  , public vir
 
 
 // Now will be change of superclass!
-//Undefined any base class preprosessor definition: _anyPreviousSuperClass
+//Undefining any base class preprocessor definition: _
 #undef _superclass
 //Base class is now:
-#define _superclass Animal
+#define _superclass _
 
 class Dog : public  Animal  , public virtual Object{
   public:
@@ -142,5 +142,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 

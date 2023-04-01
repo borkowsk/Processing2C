@@ -1,11 +1,11 @@
 ///   Obsługa wyszukiwania obiektu po kliknięciu myszy
 //*/////////////////////////////////////////////////////////////////////
-int searchedX=-1;   ///<???
-int searchedY=-1;   ///<???
-bool Clicked=false; ///<???
-int selectedX=-1;   ///<???
-int selectedY=-1;   ///<???
-pAgent selected=nullptr; ///<???
+int searchedX=-1;       ///<???
+int searchedY=-1;       ///<???
+bool Clicked=false;  ///<???
+int selectedX=-1;       ///<???
+int selectedY=-1;       ///<???
+pAgent selected=nullptr;    ///<???
 
 //double minDist2Selec=MAX_INT; ///???
 //double maxTransSelec=-MAX_INT; ///???
@@ -21,7 +21,7 @@ class PairOfInt: public virtual Object{
         this->a = a;
         this->b = b;
     }
-};/*_endOfClass*/
+} ;/*_endOfClass*/
 
 
 pPairOfInt findCell(smatrix<pAgent> agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
@@ -62,5 +62,5 @@ void processing_window::onMouseClicked()
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+//NOTE! ../../scripts did it
 

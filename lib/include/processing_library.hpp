@@ -1,7 +1,8 @@
-/** \brief Most commonly used library functions
+/** 
+ * \brief Most commonly used library functions.
  * \file processing_library.hpp
  * \author borkowsk
- * \date 2022-11-21 (last modification)
+ * \date 2023-03-17 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -123,13 +124,17 @@ namespace Processing
   /// \param  x 	float: x-coordinate of the vertex
   /// \param  y 	float: y-coordinate of the vertex \ingroup drawing
   void vertex(float x,float y);
+  
   /// \param  z 	float: z-coordinate of the vertex \ingroup drawing
   void vertex(float x,float y,float z);
+  
   /// \param  v 	float[]: vertex parameters, as a float array of length VERTEX_FIELD_COUNT, TODO - IMPLEMENTATION!!!
   void vertex(float v[]);
+  
   /// \param  u 	float: horizontal coordinate for the texture mapping
   /// \param  v 	float: vertical coordinate for the texture mapping \ingroup drawing
   void vertex(float x,float y,float u,float v);
+  
   /// \param  z 	float: z-coordinate of the vertex  \ingroup drawing
   void vertex(float x,float y,float z,float u,float v);
 
@@ -355,7 +360,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *                     PROCESSING2C  2023                           *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

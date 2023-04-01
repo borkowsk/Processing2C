@@ -1,8 +1,11 @@
 #!/bin/bash
 # This script have to prepare cmake C++ project in directory containing Processing project
 # One optional parameter is possible:  multisrc
-# But it is still TODO! 
-Pr2CVERSION="0.2c"
+# But it is still TODO!
+#
+# Processing2C version 22d. (2023-03-23)
+#
+Pr2CVERSION="0.22d"
 
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
@@ -15,7 +18,7 @@ then
 fi
 
 #CONFIGURATION
-echo -e $COLOR3"\nMaking PROCESSING2C project in "$COLOR2 `pwd` $NORMCO "\n"
+echo -e $COLOR3"\nMaking PROCESSING2C project in "$COLOR1 `pwd` $NORMCO "\n"
 echo -e $COLOR4"\nConfiguration directories:"$NORMCO
 
 export SOURCES=`pwd`
@@ -33,9 +36,16 @@ echo -e SOURCES $COLOR1"     $SOURCES"$NORMCO
 #SINGLE OR MULTISOURCE?
 echo -e $COLOR4"\nChecking single/multi sources mode:"$NORMCO
 export NUMBER_OF_PDES=`ls -1 *.pde | grep -v exit | wc -l`
-echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
+
+if [[ $NUMBER_OF_PDES == 0 ]];
+then
+	echo -e $COLERR"No any '*.pde' files in this folder.\nNothing to do!!!"$NORMCO
+	exit -1
+else
+	echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
         $NUMBER_OF_PDES  $NORMCO
-        
+fi
+
 export SOURCEMODE=$1
 if [[ $SOURCEMODE != "multisrc" ]]
 then
@@ -47,53 +57,56 @@ echo -e $COLOR3"Project will be translated in mode:$COLOR2 $SOURCEMODE"$NORMCO
 #CHECK SOURCE
 echo -e $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
 
-echo -e $COLOR1"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
-grep -E  --color=always -Hn '(setup\(\)|draw\(\))' *.pde
+echo -e $COLOR2"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
+grep -E  --color=always -Hn '^void\s+(setup\(\)|draw\(\))' *.pde
 
-echo -e $COLOR1"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
-egrep  -Hn  --color=always '(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
+echo -e $COLOR2"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
+egrep  -Hn  --color=always '^void\s+(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
 
-echo -e $COLOR1"\nThe following lines may hide library symbols..."$NORMCO
-egrep  -Hn  --color=always -f $SCRIPTS/symbols_pattern.grep *.pde
+echo -e $COLOR2"\nThe following lines may hide library symbols..."$NORMCO
+#exclude pseudo declaration then check for any construct ::identifier::\s+(::one of library identifier::) 
+grep -P -Hn  --color=always -f $SCRIPTS/symbols_pattern.grep *.pde
 #echo -e "\nCHECKING NAMES FINISHED\n"
 
 
 
 #GET GLOBAL SYMBOLS
-echo -e $COLOR4"\nSERCHING GLOBAL SYMBOLS:"$NORMCO
+echo -e $COLOR4"\nSEARCHING GLOBAL SYMBOLS:"$NORMCO
 $SCRIPTS/prepare_local_h.sh
 
-#CHECK OUTPUT DIRECTORIES
+#LETS CHECK OUTPUT DIRECTORIES!
 echo -e $COLOR4"\nCHECKING OUTPUT DIRECTORIES:"$NORMCO
 #https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
 export SRCDIR="./cppsrc/"    
-if [ -d $SRCDIR ]; then
-   echo -e $COLOR1"Directory$COLOR2 $SRCDIR $COLOR1 already exists."$NORMCO
+if [ -d ${SRCDIR} ]; then
+   echo -e $COLOR2"Directory ${COLOR1}${SRCDIR}${COLOR2} already exists."$NORMCO
 else
-   echo -e $COLOR1"Folder$COLOR2 $SRCDIR $COLOR1 does not exist. Will be created"$NORMCO
+   echo -e $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR1} does not exist. Will be created"$NORMCO
    echo -e $COLERR `mkdir -p $SRCDIR`$NORMCO  # -p, --parents     no error if existing, make parent directories as needed
 fi
 
-if [ -d "${SRCDIR}toolsouts/" ]; then
-   echo -e $COLOR1"Directory$COLOR2 $SRCDIR/toolsouts/$COLOR1 already exists."$COLOR2
-   echo -e $COLERR `rm   ${SRCDIR}toolsouts/*`$NORMCO
+export TOOLSOUTDIR="${SRCDIR}toolsouts/"
+if [ -d ${TOOLSOUTDIR} ]; then
+   echo -e $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}${COLOR2} already exists."$NORMCO
+   echo -e $COLERR `rm ${TOOLSOUTDIR}/*`$NORMCO
 else
-   echo -e $COLOR1"Folder$COLOR2 ${SRCDIR}toolsouts/$COLOR1 does not exist. Will be created"$COLOR2
-   echo -e $COLERR `mkdir -p "${SRCDIR}toolsouts/" `$NORMCO
+   echo -e $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR2} does not exist. Will be created"$NORMCO
+   echo -e $COLERR `mkdir -p ${TOOLSOUTDIR} `$NORMCO
 fi
 
 echo -e $COLERR `mv "$SOURCES/local.h" "$SOURCES/cppsrc/"`$NORMCO
 
-#REAL TRANSLATION
-echo -e $COLOR4"DOING REAL TRANSLATION:"$NORMCO
-
-#Preparing C++ source files
 
 if [[ $SOURCEMODE == "multisrc" ]]
 then
      echo -e $COLERR"$SOURCEMODE required but not implemented yet!"$NORMCO
      exit -2
 fi
+
+#OPTIONAL HEADERS
+echo -e $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
+
+#Preparing C++ source files
 
 echo "/*All sources in one file?*/" > ./cppsrc/project_at_once.cpp
 
@@ -108,16 +121,22 @@ echo "#include \"local.h\"" >> ./cppsrc/project_at_once.cpp
 echo "//==================================================================================" >> ./cppsrc/project_at_once.cpp
 echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at_once.cpp
 
+#REAL TRANSLATION
+echo -e $COLOR4"DOING REAL TRANSLATION:"$NORMCO
+
 FILES=*.pde
 for f in $FILES
 do # take action on each file. $f store current file name
-  echo -e "File:$COLOR2 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.cpp$NORMCO\n"
+  echo -e $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.cpp$NORMCO\n"
   echo "#include \"$f.cpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
   $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
 done
 
+#FINAL WORK
+echo -e $COLOR4"FINALISING..."$NORMCO
+
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
-echo -e "\nCreating$COLOR1 CMakeLists.txt $NORMCO"
+echo -e  $COLOR3"\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
 # This file was made automagically. Do not edit!
 cmake_minimum_required(VERSION 3.0)
@@ -143,6 +162,7 @@ set( WBRTM    "$WBRTM" )
 
 set( MYLIBS   "$WBRTM/lib" )
 
+# THESE LINES BELOW COULD BE UNCOMMENTED WHEN LIBRARIES SEEMS TO BE NOT COMPILED.
 #add_subdirectory( "\${SYMSHELL}"
 #                  "\${SYMSHELL}" )
 #add_subdirectory( "\${PROC2C}/lib/"
@@ -214,7 +234,7 @@ EOF
 echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2022-11-23                   */
+#/*                 PROCESSING2C  release 2023                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

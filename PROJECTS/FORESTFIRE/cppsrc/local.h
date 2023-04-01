@@ -6,26 +6,26 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		Week;///< =24*7;    < how many steps is equivalential to one week?
-extern	float 		Year;///< =365.5*24; < how many steps is equivalential to one YEAR?
-extern	int 		N;///< =100;        <array side
-extern	int 		FireTimeDiv;///< =50; <How long the tree is burning (divider for size)
-extern	float 		IgnitionP ;///< = 0.10; <Probability of fire transfer
-extern	float 		InitT;///< =  0.00; <How many trees at start
-extern	float 		GrowS;///< =  0.0005; <Growt per step
-extern	float 		SeedP;///< =  0.0005; <How often new ofspring emerging (per free cell)
-extern	float 		LightP;///< = 0.000000005; <How often fire emerge (per tree)
-extern	int 		MatureT;///< =220; <Max size of tree. Then will stop to grow
-extern	PrintWriter 		Log; ///<For writing statistics into disk drive
-extern	int 		S;///< =20;       cell width & height
-extern	int 		Step;///< =0; <!!!
-extern	double 		meanSize;///< =0; <Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
-extern	float 		Burn;///< =0; Ile możliwości zapalenia na krok
+extern	int 		Week;	///< =24*7;     - how many steps is equivalential to one week?
+extern	float 		Year;	///< =365.5*24;  - how many steps is equivalential to one YEAR?
+extern	int 		N;	///< =100;         -array side
+extern	int 		FireTimeDiv;	///< =50;  -How long the tree is burning (divider for size)
+extern	float 		IgnitionP ;	///< = 0.10;  -Probability of fire transfer
+extern	float 		InitT;	///< =  0.00;  -How many trees at start
+extern	float 		GrowS;	///< =  0.0005;  -Growt per step
+extern	float 		SeedP;	///< =  0.0005;  -How often new ofspring emerging (per free cell)
+extern	float 		LightP;	///< = 0.000000005;  -How often fire emerge (per tree)
+extern	int 		MatureT;	///< =220;  -Max size of tree. Then will stop to grow
+extern	PrintWriter 		Log; // -For writing statistics into disk drive
+extern	int 		S;	///< =20;       /cell width & height
+extern	int 		Step;	///< =0;  -!!!
+extern	double 		meanSize;	///< =0;  -Sredni rozmiar drzewa (albo wiek bo to wychodzi na to samo chyba)
+extern	float 		Burn;	///< =0; /Ile możliwości zapalenia na krok
 
 //All global arrays from Processing files
 

@@ -10,4 +10,5 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="THISTEST";
+#include "exit.pde.cpp"
 #include "THISTEST.pde.cpp"

@@ -40,8 +40,13 @@
 /// @{
 namespace Processing
 {
+
+///\var Internal name of the program. Typically equal to base part of main source file in Processing. \ingroup rtm
+extern const char* _PROGRAMNAME;
+
 // CHAR CONSTANTS
 // //////////////
+
 /// 'ESC' key integer representation
 const char ESC=27;
 /// \brief ???
@@ -126,7 +131,7 @@ const float RAD_TO_DEG = 57.295779513082320876798154814105f;
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2022                           */
+/*               PROCESSING2C  version 2023                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

@@ -3,7 +3,7 @@
  * \classes processing_window; color
  * \ingroup drawing , rtm
  * \author borkowsk
- * \date 2022-11-21 (last modification)
+ * \date 2023-03-21 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -17,6 +17,7 @@
 #endif
 
 #include<cstdint>
+#include<cassert>
 
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
@@ -46,14 +47,15 @@ extern int _TEXT_VERTICAL_AL; //=TOP;
 class processing_window_base
 {
   public:
-    virtual ~processing_window_base(); //!< \brief DESTRUCTOR is virtual
+    virtual ~processing_window_base();  //!< \brief DESTRUCTOR is virtual
     virtual void exit();
     virtual void before_setup(int argc, const char *argv[]);
-    virtual void setup()=0; //!< \brief Must be provided!
-    virtual void before_draw(); //!< \brief Cleaning _keyPressed & _mousePressed - TMP METHOD - TODO more clever!
-    virtual void draw(){} //!< \brief EMPTY DRAW()
-    virtual void after_draw(); //!< \brief Calculate frameRate and _INTERNAL_DELAY
-    virtual void check_events(); //!< \brief If events are in queue, they are processed
+    virtual void settings()=0;          //!< \brief May be provided!
+    virtual void setup()=0;             //!< \brief Must be provided!
+    virtual void before_draw();         //!< \brief Cleaning _keyPressed & _mousePressed - @todo TMP METHOD - do it more clever!
+    virtual void draw(){}               //!< \brief EMPTY DRAW()
+    virtual void after_draw();          //!< \brief Calculate frameRate and _INTERNAL_DELAY
+    virtual void check_events();        //!< \brief If events are in queue, they are processed
     virtual void setTitle(_string_param bar);
     //Event handlers
     virtual void onMouseClicked()=0;
@@ -76,6 +78,7 @@ extern class processing_window: public processing_window_base
   bool _loop=true;
   public:
   bool inLoop() {return _loop;}
+  void settings() override;
   void setup() override ;
   void draw() override ;
   void exit() override ;
@@ -88,6 +91,7 @@ extern class processing_window: public processing_window_base
   void onKeyReleased() override ;
   friend void loop();
   friend void noLoop();
+  ~processing_window() override;
 } _processing_window_instance;
 
 /// \brief Alias for _processing_window_instance
@@ -135,67 +139,10 @@ void fullScreen();
 /// \see \a https://processing.org/reference/frameRate_.html
 void setFrameRate(float fps); ///Set desired frame rate
 
-/// Class implementing an RGBA model of color
-/// \n TODO Move it to its own "color.hpp"!
-/// \ingroup drawing
-class color
-{
-  public:
-    std::uint32_t val;
-
-    /// Constructor from int
-    /// \param value unsigned int 32b : hexadecimal form of RGBA color
-    color(std::uint32_t value):val(value){}
-
-    /// Constructor from components
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B)
-    {
-        val=B + 256*G + 256*256*R;
-    }
-
-    /// Constructor from components and alpha channel
-    /// \param R : red component
-    /// \param G : green component
-    /// \param B : blue component
-    /// \param alfa : alpha channel
-    color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
-    {
-        val|=alfa<<24; //??? TODO! TEST IT!
-    }
-
-    std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
-
-    std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
-
-    std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
-
-    std::uint8_t blue() const  { return (val & 0x000000FF); }
-    
-    operator const std::uint32_t () const { return val; }
-};
-
-//inline String hex(const color& col) { return Processing::hex(col.val); }
-//inline String binary(const color& col) { return Processing::binary(col.val); }
-
-/// \fn Extracted alpha from 'color'
-inline float  alfa(const color& col) { return col.alfa(); }
-/// \fn Extracted red from 'color'
-inline float   red(const color& col) { return col.red(); }
-/// \fn Extracted green from 'color'
-inline float green(const color& col) { return col.green(); }
-/// \fn Extracted blue from 'color'
-inline float  blue(const color& col) { return col.blue(); }
-
 // Global "system" variables
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //TODO - make file for internal variables? Exp.: "processing_ivars.hpp" ?
-
-///\var Internal name of the program. Typically equal to base part of main source file in Processing. \ingroup rtm
-extern const char* _PROGRAMNAME;
 
 ///\var width of a screen/window/virtual screen  \ingroup rtm
 extern const int& width;
@@ -239,66 +186,61 @@ extern const int&  pmouseY; ///< always contains the previous vertical coordinat
 /// Check for both ENTER and RETURN to make sure your program will work for all platforms.
 extern       char    key;     ///< always contains the value of the most recent key on the keyboard that was used (either pressed or released)
 extern       int     keyCode; ///< The variable keyCode is used to detect special keys such as the arrow keys (UP, DOWN, LEFT, and RIGHT)
-                             ///< as well as ALT, CONTROL, and SHIFT.
-                             ///< There are issues with how keyCode behaves across different renderers and operating systems.
-                             ///< Watch out for unexpected behavior as you switch renderers and operating systems.
-                             ///< When checking for these keys, it can be useful to first check if the key is coded.
-                             ///< This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
+                              ///< as well as ALT, CONTROL, and SHIFT.
+                              ///< There are issues with how keyCode behaves across different renderers and operating systems.
+                              ///< Watch out for unexpected behavior as you switch renderers and operating systems.
+                              ///< When checking for these keys, it can be useful to first check if the key is coded.
+                              ///< This is done with the conditional if (key == CODED), as shown in the example KEYBOARD.
 extern const bool&   keyPressed; ///< is true if any key is pressed and false if no keys are pressed.
 
-//  Most important driving functions
+//  The most important drawing functions
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// TODO Not implemented!
+/// @todo Not implemented!
 void noSmooth();
 
-/// TODO Not implemented!
+/// @todo Not implemented!
 void smooth();
 
 /// \brief The background() function sets the color used for the background of the Processing window.
 /// \note The default background is light gray.
-/// This function is typically used within draw() to clear the display window at the beginning of each frame,
-/// but it can be used inside setup() to set the background on the first frame of animation or
-/// if the background need only be set once.
+/// \details
+///     This function is typically used within draw() to clear the display window at the beginning of each frame,
+///     but it can be used inside setup() to set the background on the first frame of animation or
+///     if the background need only be set once.
 void background(float gray);
 void background(float gray,float  alpha);
 void background(float v1,float v2,float v3);
 void background(float v1,float v2,float v3,float  alpha);
 
-/// \param col - 3D color
-/// \note TODO Currently not implemented (???)
-void background(const color& col);
+/// \param col - 3D color + alpha channel
+inline void background(const color& col)
+{
+    background(col.red(),col.green(),col.blue(),col.alfa());
+}
 
 #ifndef PROCESSING_INLINES_H
 void stroke(float Gray);
 void stroke(float Gray,float Alpha);
 void stroke(float Red,float Green,float Blue);
 void stroke(float Red,float Green,float Blue,float Alpha);
-void stroke(const color& col);
+void stroke(const color col);
 void noStroke();
-#endif
-
-#ifndef PROCESSING_INLINES_H
-void strokeWeight(float Weight); //!< Parameters	weight 	float: the weight (in pixels) of the stroke
+void strokeWeight(float Weight); // Parameters	weight 	float: the weight (in pixels) of the stroke
 #endif
 
 void strokeCap(int cap);   ///< \param	cap 	int: either SQUARE, PROJECT, or ROUND
 void strokeJoin(int join); ///< \param	join 	int: either MITER, BEVEL, ROUND
 
 #ifndef PROCESSING_INLINES_H
+void noFill();
 void fill(float Gray);
 void fill(float Gray,float Alpha);
-#endif
-
-#ifndef PROCESSING_INLINES_H
 void fill(float Red,float Green,float Blue);
 void fill(float Red,float Green,float Blue,float Alpha);
-void fill(const color& col);
+void fill(const color col);
 #endif
 
-#ifndef PROCESSING_INLINES_H
-void noFill();
-#endif
 
 #ifndef PROCESSING_INLINES_H
 void point(float x,float y);
@@ -309,7 +251,8 @@ void line(float  x1,float  y1,float  x2,float  y2);
 #endif
 
 #ifndef PROCESSING_INLINES_H
-/// "ellipse" draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
+/// \brief "ellipse" draws an ellipse (oval) to the screen.
+/// An ellipse with equal width and height is a circle.
 /// By default, the first two parameters set the location, and the third and fourth parameters set
 /// the shape's width and height.
 ///
@@ -322,10 +265,51 @@ void line(float  x1,float  y1,float  x2,float  y2);
 ///  stop 	float: angle to stop the arc, specified in radians
 void ellipse(float a,float  b,float  c,float  d);
 void ellipseMode(int mode); /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
+
+/// \brief Simplified circle.
+void circle(int x,int y,int r);
 #endif
+
+/// \brief Functions for driving elliptical arc.
+///  \param a 	float: x-coordinate of the ellipse
+///  \param b 	float: y-coordinate of the ellipse
+///  \param c 	float: width of the ellipse by default
+///  \param d 	float: height of the ellipse by default
+///  \param start 	float: angle to start the arc, specified in radians
+///  \param stop 	float: angle to stop the arc, specified in radians
+///  \param mode arc connecting mode (STILL IGNORED?)
 void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=Processing::OPENPIE);
 
+/// @brief A triangle is a plane created by connecting three points.
+/// @details
+///         The first two arguments specify the first point, the middle two arguments specify the second point,
+///         and the last two arguments specify the third point.
+void triangle(
+        float     x1,      //!< x-coordinate of the first point
+        float     y1,      //!< y-coordinate of the first point
+        float     x2,      //!< x-coordinate of the second point
+        float     y2,      //!< y-coordinate of the second point
+        float     x3,      //!< x-coordinate of the third point
+        float     y3       //!< y-coordinate of the third point
+    );
+
+/// \brief 	A quad is a quadrilateral, a four sided polygon.
+/// \details
+///         It is similar to a rectangle, but the angles between its edges are not constrained to ninety degrees.
+///         The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs should proceed
+///         clockwise or counter-clockwise around the defined shape.
+/// \param x1 float: x-coordinate of the first corner
+/// \param y1 float: y-coordinate of the first corner
+/// \param x2 float: x-coordinate of the second corner
+/// \param y2 float: y-coordinate of the second corner
+/// \param x3 float: y-coordinate of the second corner
+/// \param y3 float: x-coordinate of the third corner
+/// \param x4 float: x-coordinate of the fourth corner
+/// \param y4 float: y-coordinate of the fourth corner
+void quad( float  x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4);
+
 #ifndef PROCESSING_INLINES_H
+
 /// "rect" draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at ninety degrees.
 /// By default, the first two parameters set the location of the upper-left corner, the third sets the width, and
 /// the fourth sets the height.
@@ -338,16 +322,26 @@ void arc(float a,float  b,float  c,float  d,float  start,float  stop,int  mode=P
 void rect(float a,float  b,float  c,float  d);
 
 /// \param r 	float: radii for all four corners
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
 void rect(float a,float  b,float  c,float  d,float r);
 
 /// \param tl 	float: radius for top-left corner
 /// \param tr 	float: radius for top-right corner
 /// \param br 	float: radius for bottom-right corner
 /// \param bl 	float: radius for bottom-left corner
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
 void rect(float a,float b,float c,float d,float tl,float tr,float br,float bl);
 
 /// \note Rect mode could be either CORNER, CORNERS, CENTER, or RADIUS
 void rectMode(int mode); /// Parameter: mode 	int: either CORNER, CORNERS, CENTER, or RADIUS
+
+//  Parameters:
+/// \param a 	float: x-coordinate of the rectangle by default
+/// \param b 	float: y-coordinate of the rectangle by default
+/// \param extent float: lenght of side.
+/// \note Meaning of parameters depends on rectMode() but in mode CORNERS
+///       this particular function behave stupid in Processing 3.x at least.
+void square(float a,float  b,float extent);
 #endif
 
 /// Executes the code within draw() one time. This functions allows the program to update the display window only when necessary, for example when an event registered by mousePressed() or keyPressed() occurs.
@@ -356,6 +350,7 @@ void rectMode(int mode); /// Parameter: mode 	int: either CORNER, CORNERS, CENTE
 void redraw();
 
 /// \param kind 	int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT
+/// \todo Cursors not implemented!
 void cursor(int kind);
 void cursor();
 void noCursor();
@@ -377,7 +372,7 @@ int displayDensity(int display=0) {return 1;} ///< \Param	display 	int: the disp
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

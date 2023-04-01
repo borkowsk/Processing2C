@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * \date 2022-11-21 (last modification)
+ * \date 2023-03-17 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -20,6 +20,7 @@ namespace Processing
 {
     /// A foreshadowing declaration of this class to be used hereafter as a method parameter
     class _string_param;
+
     /// A foreshadowing declaration of this class to be used hereafter as a method parameter
     class _self_printable;
 
@@ -38,12 +39,18 @@ namespace Processing
         String() = default ;
         /// \brief Copy constructor
         String(String const&) = default ;
-        /// \brief NULL init constructor
-        String(nullptr_t p):String(){} //POTRZEBNE?
         /// \brief From std::string constructor
         String(const std::string& str):std::string(str){}
+        /// \brief NULL init constructor
+        String(nullptr_t p):String(){} //POTRZEBNE?
         /// \brief From C like string and const string constructor
         String(const char* str):std::string(str){}
+        /// \brief from String* transfer!
+        explicit String(String* from_new);
+        /// \brief from const String* copy!
+        explicit String(const String* from_new);
+        /// From procesing array of characters.
+        explicit String(const sarray<char16_t> from);
         /// \brief From char constructor
         explicit String(const char  c);
         /// \brief String conversion from double and other numbers
@@ -55,8 +62,9 @@ namespace Processing
         String(const ptr<T> p); //:String("@"){ operator+=( (long unsigned int)p.get() );}
 
 
-        /// \note It makes a pointer on itself :-D, such a ugly HACK ... But it works
-        String* operator -> () { return this; }
+        /// \note It makes a pointer on itself :-D, such a ugly HACK... But it works :-)
+        const String* operator -> () const { return this; }
+	    String* operator -> () { return this; }
 
         /// \brief Back, named "conversion", to base class
         const std::string& _std_str() const { return *this;}
@@ -65,11 +73,11 @@ namespace Processing
         /// \brief Comparison with the string constant
         bool  equals(const char* wz) const { return this->compare(wz)==0;}
 
-        /// \brief Comparison with another String \TODO - MORE TESTS!
+        /// \brief Comparison with another String \todo - MORE TESTS!
         bool equals(const String& wz) const { return this->compare(wz._std_str())==0;}
 
         /// \brief Explicit test for empties
-        bool  notEmpty() { return this->c_str()!=nullptr; }
+        bool  notEmpty() const { return this->c_str()!=nullptr; }
 
         /// \brief Implicit tests for empties
         bool operator == (nullptr_t);
@@ -77,14 +85,24 @@ namespace Processing
         bool operator != (nullptr_t);
 
         /// \brief Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
-        String& operator = (_string_param v); ///< blabla
+        String& operator = (_string_param v);
+
+        /// \brief powinien to robic `_string_param`, ale nie robi :-/
+        String& operator = (const char* v) { std::string::operator = (v); return *this; }
+
+        /// \brief powinien to robic `_string_param`, ale nie robi :-/
+        String& operator = (const Processing::String&)= default;
+
         /// \brief Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
         String& operator += (_string_param v);
+
+        /// \brief ...
         template<class X>
         String& operator += (const ptr<X>& p);
 
         /// \brief Konkatenacja na wzór Processing-u. Niestety w C++ wciąż generuje liczne ostrzeżenia
         String operator  + (_string_param v) const;
+
         /// \brief Operator konkatenacji - nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
         String operator  & (_string_param v) const;
 
@@ -111,6 +129,44 @@ namespace Processing
         
         /// \brief Access to one character in a Processing manner
         char charAt(int index) { return (*this)[index]; }
+
+        /// Java like searching of `substring`.
+        int indexOf(String substring, int fromIndex=0);
+
+        /// Java like searching of `character`.
+        int indexOf(const char character, int fromIndex=0);
+
+        /// Java like substring extraction.
+        String substring(int startIndex,int endIndex);
+
+        /// Java like to upper case conversion.
+        String toUpperCase() const;
+
+        /// Upper case partial conversion. Similar to Java but more flexible.
+        /// \param startIndex - inclusively
+        /// \param endIndex - exclusively
+        /// \return Copy of this string with requested characters upper-cased.
+        String toUpperCase(int startIndex,int endIndex) const;
+
+        /// Java like to lower case conversion.
+        String toLowerCase() const; /// < @todo
+
+        /// Lower case partial conversion. Similar to Java but more flexible.
+        /// \param startIndex - inclusively
+        /// \param endIndex - exclusively
+        /// \return Copy of this string with requested characters lower-cased.
+        String toLowerCase(int startIndex,int endIndex) const;
+
+        /// @brief Java getchars() for tranfer char frpm string to array of chars.
+        /// @note The Java String class getChars() method copies the content of this string into a specified char array.
+        ///       There are four arguments passed in the getChars() method.
+        /// \param srcBeginIndex `int`: The index from where copying of characters is started.
+        /// \param srcEndIndex `int` : The index which is next to the last character that is getting copied.
+        /// \param destination 'char[]': The char array where characters from the string that invokes the getChars()
+        ///                     method is getting copied.
+        /// \param dstEndIndex `int`: It shows the position in the destination array from where the characters from
+        ///                     the string will be pushed.
+        void getChars(int srcBeginIndex, int srcEndIndex, sarray<char16_t> dest, int dstBeginIndex); /// < @todo
     };
 
     /// \brief Duplikat deklaracji frienda z wnętrza klasy String
@@ -125,8 +181,9 @@ namespace Processing
         ~_string_param() = default; // Zwalnianie zasobów - czy ta deklaracja potrzebna?
         /// \brief Default constructor
         _string_param() = default;
-        /// \brief Copy constructor
-        _string_param(_string_param const& ) = default;
+
+        _string_param(const _string_param& ) = default;
+        //_string_param(_string_param const& ) = default;
 
         /// \brief One of non-trivial constructors
         /// \param p : String
@@ -158,13 +215,14 @@ namespace Processing
 
         /// \brief Operator konkatenacji dla _string_param.
         /// Wydaje się niepotrzebny, ale bez niego dłuższe konkatenacje czasem się nie udają
-        _string_param operator  + (_string_param) const;
+        _string_param operator  + (_string_param what) const;
 
         /// \brief Jawne odzyskiwanie klasy String z klasy _string_param
         String& _str() { return *(String*)this;}
         String const& _str() const { return *(String*)this;}
 
-        /// Obsolete
+        /// \brief Jawne odzyskiwanie klasy `String` z klasy `_string_param`
+        /// \absolete !!!
         String& get() { return *(String*)this;} //Obsolete
         //operator String& () {return *(String*)this;}
     };
@@ -261,9 +319,78 @@ namespace Processing
     //template<class X> /// TODO: Czy to jest potrzebne - RACZEJ NIE
     //String& operator + (const ptr<X>&,String&);
 
+    String hex(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent hexadecimal notation.
+    String hex(int num,int digits); //jest
+    String binary(int num); //Converts an int, byte, char, or color (?) to a String containing the equivalent binary notation.
+    String binary(int value,int digits); //TODO
+
+    String nf(double num);
+    String nf(double num,int digits);
+    String nf(double num,int left,int right);
+
+    String nf(sarray<int> nums);
+    String nf(sarray<int> nums,int digits);
+    String nf(sarray<int> nums,int left,int right);
+
+    String nf(sarray<float> nums);
+    String nf(sarray<float> nums,int digits);
+    String nf(sarray<float> nums,int left,int right);
+
+    String nf(sarray<double> nums);
+    String nf(sarray<double> nums,int digits);
+    String nf(sarray<double> nums,int left,int right);
+
+    String nfp(double num);
+    String nfp(double num,int digits);
+    String nfp(double num,int left,int right);
+
+    String nfp(sarray<int> nums);
+    String nfp(sarray<int> nums,int digits);
+    String nfp(sarray<int> nums,int left,int right);
+
+    String nfp(sarray<float> nums);
+    String nfp(sarray<float> nums,int digits);
+    String nfp(sarray<float> nums,int left,int right);
+
+    String nfp(sarray<double> nums);
+    String nfp(sarray<double> nums,int digits);
+    String nfp(sarray<double> nums,int left,int right);
+
+    String nfs(double num);
+    String nfs(double num,int digits);
+    String nfs(double num,int left,int right);
+
+    String nfs(sarray<int> nums);
+    String nfs(sarray<int> nums,int digits);
+    String nfs(sarray<int> nums,int left,int right);
+
+    String nfs(sarray<float> nums);
+    String nfs(sarray<float> nums,int digits);
+    String nfs(sarray<float> nums,int left,int right);
+
+    String nfs(sarray<double> nums);
+    String nfs(sarray<double> nums,int digits);
+    String nfs(sarray<double> nums,int left,int right);
+
+    String nfc(double num);
+    String nfc(double num,int digits);
+    String nfc(double num,int left,int right);
+
+    String nfc(sarray<int> nums);
+    String nfc(sarray<int> nums,int digits);
+    String nfc(sarray<int> nums,int left,int right);
+
+    String nfc(sarray<float> nums);
+    String nfc(sarray<float> nums,int digits);
+    String nfc(sarray<float> nums,int left,int right);
+
+    String nfc(sarray<double> nums);
+    String nfc(sarray<double> nums,int digits);
+    String nfc(sarray<double> nums,int left,int right);
+
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *                PROCESSING2C  version 2023                        *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

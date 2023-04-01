@@ -1,7 +1,7 @@
 /// \file processing_inlines.hpp
 /// \brief Procedury graficzne w wersji inline, dla przyśpieszenia wykonania
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-03-14 (last modification)
 /// \ingroup graphics
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -21,14 +21,15 @@ namespace Processing
 {
 extern bool _filled; //=true;
 extern int _LINE_WIDTH; //=1;
-extern int _RECT_MODE; //=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
+extern int _RECT_MODE;  //=CORNER; /// either CENTER, RADIUS, CORNER, or CORNERS
 extern int _ELLIPSE_MODE; //=CENTER; /// either CENTER, RADIUS, CORNER, or CORNERS
 extern int _TEXT_HORIZONTAL_AL; //=LEFT;
 extern int _TEXT_VERTICAL_AL; //=BOTTOM;
 
 inline void strokeWeight(float Weight)
 {
-    line_width(_LINE_WIDTH=(int)Weight);
+    _LINE_WIDTH=(int)Weight;
+    line_width(_LINE_WIDTH );
 }
 
 inline void noStroke()
@@ -40,8 +41,7 @@ inline void noStroke()
 inline void stroke(float Gray)
 {
     if(_LINE_WIDTH<0) _LINE_WIDTH=1;
-    int S=(int)Gray;
-    set_pen_rgb(S,S,S,_LINE_WIDTH,1 /*style*/);
+    set_pen_rgb((int)Gray,(int)Gray,(int)Gray,_LINE_WIDTH,1 /*style*/);
 }
 
 inline void stroke(float Red,float Green,float Blue)
@@ -86,6 +86,16 @@ inline void fill(float Red,float Green,float Blue,float Alpha)
 {
     set_brush_rgba((int)Red,(int)Green,(int)Blue,(int)Alpha);
     _filled=true;
+}
+
+inline void fill(const color c)
+{
+    fill(c.red(),c.green(),c.blue(), c.alfa());
+}
+
+inline void stroke(const color c)
+{
+    stroke(c.red(),c.green(),c.blue(), c.alfa());
 }
 
 inline void point(float x,float y)
@@ -136,6 +146,32 @@ inline void rect(float a,float  b,float  c,float  d)
     }
 }
 
+/// \param r : radius for rounding corners (CURRENTLY IGNORED)
+/// @todo NOT IGNORE CORNERS ROUNDING WHERE POSSIBLE.
+inline void rect(float a,float  b,float  c,float  d,float r)
+{
+    rect(a,b,c,d);
+}
+
+/// \param tl 	float: radius for top-left corner
+/// \param tr 	float: radius for top-right corner
+/// \param br 	float: radius for bottom-right corner
+/// \param bl 	float: radius for bottom-left corner
+/// @todo NOT IGNORE CORNERS WHERE POSSIBLE.
+inline void rect(float a,float b,float c,float d,
+                 float tl,float tr,float br,float bl // corners rounding
+                 )
+{
+    rect(a,b,c,d);
+}
+
+/// \note Meaning of parameters depends on rectMode() but in mode CORNERS
+///       this particular function behave stupid in Processing 3.x at least.
+inline  void square(float a,float  b,float extent)
+{
+    rect(a,b,extent,extent);
+}
+
 inline void ellipse(float a,float  b,float  c,float  d)
 {
     int x1,y1,A,B;
@@ -153,6 +189,11 @@ inline void ellipse(float a,float  b,float  c,float  d)
 
     if(get_line_width()>0 && A>1 && B>1)  //TODO - eliminate it!!!
         ellipse_d(x1,y1,A,B);
+}
+
+inline void circle(float x,float y,float r)
+{
+    fill_circle_d((ssh_coordinate)x,(ssh_coordinate)y,(ssh_natural)r); //ssh_coordinate & ssh_natural
 }
 
 //  map & lerp - nie graficzne, ale też często używane z grafiką

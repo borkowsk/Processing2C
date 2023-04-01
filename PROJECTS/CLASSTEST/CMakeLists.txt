@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(CLASSTEST)
-set( VERSION_NUM 0.2c ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22d ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -22,6 +22,7 @@ set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )
 
+# THESE LINES BELOW COULD BE UNCOMMENTED WHEN LIBRARIES SEEMS TO BE NOT COMPILED.
 #add_subdirectory( "${SYMSHELL}"
 #                  "${SYMSHELL}" )
 #add_subdirectory( "${PROC2C}/lib/"

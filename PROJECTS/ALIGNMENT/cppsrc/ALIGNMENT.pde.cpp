@@ -121,5 +121,5 @@ void processing_window::draw()
   cross(width-1,height-1);
 }
 
-//../../scripts did it
+//NOTE! ../../scripts did it
 

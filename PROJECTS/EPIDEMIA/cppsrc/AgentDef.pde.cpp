@@ -14,7 +14,7 @@ class Agent: public virtual Object{
   {
     state=Susceptible;
     immunity=( random(1.0)+random(1.0)+random(1.0)
-              +random(1.0)+random(1.0)+random(1.0) )/6.0; //Średnia 0.5
+              +random(1.0)+random(1.0)+random(1.0) ) / 6.0; //Średnia 0.5
              //random(1.0); //Srednia taka sama, ale rozkład płaski
   }
 };
@@ -22,5 +22,5 @@ class Agent: public virtual Object{
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT FOR FILL UP
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//../../scripts did it
+//NOTE! ../../scripts did it
 

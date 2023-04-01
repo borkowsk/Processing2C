@@ -1,6 +1,8 @@
 void processing_window::exit()
 {
   save("exit.png");
+  println("The End");
+  processing_window_base::exit();
 }
-//../../scripts did it
+//NOTE! ../../scripts did it
 

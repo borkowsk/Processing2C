@@ -6,7 +6,7 @@
 
 
 
-//All classes from Processing files
+//All classes but not templates from Processing files
 class singiel; typedef Processing::ptr<singiel> psingiel; // { //klasa czyli typ złożony
 
 //All global finals (consts) from Processing files

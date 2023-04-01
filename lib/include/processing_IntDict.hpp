@@ -13,8 +13,8 @@
 // This file is part of the Processing2C++ Library. See bottom lines.
 //*///////////////////////////////////////////////////////////////////
 #pragma once
-#ifndef PROCESSING_StringDict_H
-#define PROCESSING_StringDict_H
+#ifndef PROCESSING_IntDict_H
+#define PROCESSING_IntDict_H
 
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -28,7 +28,7 @@ namespace Processing {
 /// \brief A simple class to use a String as a lookup for an integer value.
 /// String "keys" are associated with int values.
 /// \warning Implementation is based on an ordered_map not a hash map, and is not complete;
-class IntDict: private std::map<String,int>, virtual public _self_printable
+class IntDict: public std::map<String,int>, virtual public _self_printable
 {
 public:
         using     std::map<String,int>::begin;
@@ -167,8 +167,9 @@ public:
     }
 
     typedef Processing::self_printable_ptr<IntDict> pIntDict;
+
 }/*_endOfNamespace*/
-#endif
+#endif //PROCESSING_IntDict_H
 /* ****************************************************************** */
 /*               PROCESSING2C  version 2022                           */
 /* ****************************************************************** */

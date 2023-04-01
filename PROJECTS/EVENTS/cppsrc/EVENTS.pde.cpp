@@ -6,11 +6,19 @@
 // * Click on the window to give it focus,
 // * Or press the 'B' key.
 // * Also click one of mouse buttons
+// Both setup() and draw() are implemented, as well set of events handler.
+//
 
 void processing_window::setup() {
   size(100,100);
   setFrameRate(100); // Apart this fraquency,
-                  // events are get only 10 times per second!
+                  // events are get only 10 times per second! (?)
+}
+
+int test()
+{
+  int blue=1;     //It hides library symbol! But dont panic, this is a test only.
+  return color(255,255,255);// 'Suspicious' warning here is also for test only.
 }
 
 void processing_window::draw() {
@@ -30,10 +38,9 @@ void processing_window::draw() {
       println("keyPressed &&",String("'")+key+ String("'"),"detected in draw function - fill(RED)");
     }
     //keyPressed=false;//NOW IS PROCESSED.
-  } else {
-    fill(255);
-    //println("keyPressed not detected in draw function - fill(WHITE)");
-  }
+  } 
+  else fill(255);    //println("keyPressed not detected in draw function - fill(WHITE)");
+
   
   if (mousePressed && (mouseButton == LEFT)) {
     background(0); println("mousePressed && LEFT detected in draw function");
@@ -117,7 +124,5 @@ void processing_window::onMouseReleased() {
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}
-
-
-//../../scripts did it
+//NOTE! ../../scripts did it
 

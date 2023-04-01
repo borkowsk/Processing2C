@@ -1,7 +1,11 @@
 #!/bin/bash
+#Processing2C version 22.
+
+source "../scripts/screen.ini"
+
 if [ $# -ne 0 ]; 
 then
-   echo "No parameters expected!" 1>&2
+   echo -e $COLERR"No parameters expected!"$NORMCO 1>&2
    exit -1
 fi
 
@@ -27,7 +31,7 @@ add_subdirectory( "../tools/"
 #EXAMPLES
 EOF
 
-echo "Preparing!" `date` > lista.txt
+echo "Preparing!" `date` "..." > translate_lst.txt
 
 for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdujących się w bieżącym katalogu
   if [ -d "$f" ]; then
@@ -43,9 +47,13 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
     fi
     popd > /dev/null
   elif [ -f "$f" ]; then
-    echo "'$f' plik" >> lista.txt
+     echo "'$f' - file" >> lista.txt
   else
-    echo "'$f' niespodziewany typ pliku" >> lista.txt
+    echo -e "${COLOR4}WARNING${NORMCO}'$f' -${COLERR} unexpected entry type ${NORMCO}"
+    echo "'$f' - unexpected entry type" >> translate_lst.txt
   fi
 done
+
+echo "DONE" >> translate_lst.txt
+
 

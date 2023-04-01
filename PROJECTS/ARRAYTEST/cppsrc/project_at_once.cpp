@@ -10,3 +10,4 @@ using namespace Processing;
 //==================================================================================
 const char* Processing::_PROGRAMNAME="ARRAYTEST";
 #include "ARRAYTEST.pde.cpp"
+#include "exit.pde.cpp"
