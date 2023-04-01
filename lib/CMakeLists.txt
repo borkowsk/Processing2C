@@ -2,13 +2,8 @@ cmake_minimum_required(VERSION 2.9)
 
 project(WBProcessing)
 
-<<<<<<< HEAD
 set(PROC2CDIR "/home/data/SCC/public/Processing2C" )
 set(SYMSHELL  "/home/data/SCC/public/symShellLight" )
-=======
-set(PROC2CDIR "/home/borkowsk/SCC/public/Processing2C" )
-set(SYMSHELL  "/home/borkowsk/SCC/public/symShellLight" )
->>>>>>> 2d9285212a1af7004b7d2058fdf6837577cc91fe
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -58,6 +53,5 @@ add_library( wbprocess STATIC
 endif()
 
 target_compile_options( wbprocess PRIVATE "${CMAKE_CXX_FLAGS}" "-fPIC" "-w" "-pthread" )
-
 
 #KONIEC
