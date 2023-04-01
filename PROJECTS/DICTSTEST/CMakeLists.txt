@@ -1,0 +1,78 @@
+# This file was made automagically. Do not edit!
+cmake_minimum_required(VERSION 3.0)
+set( CMAKE_VERBOSE_MAKEFILE off )
+
+project(DICTSTEST)
+set( VERSION_NUM 0.2c ) #MUST BE NUMERIC 
+
+IF (WIN32)
+  # set stuff for windows
+  message( ${PROJECT_NAME} ": MS Windows platform assumed.\n\tInside C/C++ code automatic _MSC_VER variable will be used!" )
+  #set( WINDOWS_ONLY_SRC  "" )
+ELSE()
+  # set stuff for other systems
+  message( ${PROJECT_NAME} ": Linux/unix platform assumed." )
+  #set( X_ONLY_SRC  "" )
+ENDIF()
+
+set( SRCPATH  "/home/data/SCC/public/Processing2C/PROJECTS/DICTSTEST/cppsrc/" )
+set( PROC2C   "/home/data/SCC/public/Processing2C" )
+set( SYMSHELL "/home/data/SCC/public/symShellLight" )
+set( WBRTM    "" )
+
+set( MYLIBS   "/lib" )
+
+#add_subdirectory( "${SYMSHELL}"
+#                  "${SYMSHELL}" )
+#add_subdirectory( "${PROC2C}/lib/"
+#                  "${PROC2C}/lib/" )
+
+add_definitions( -DVERSION_NUM=${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
+
+include_directories(  "${SRCPATH}" "${PROC2C}/lib/include" "${SYMSHELL}" "${WBRTM}/INCLUDE" )
+
+add_executable("${PROJECT_NAME}_${VERSION_NUM}_x11"
+               "${SRCPATH}project_at_once.cpp"
+              )
+
+add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
+               "${SRCPATH}project_at_once.cpp"
+              )
+
+#add_executable("${PROJECT_NAME}_${VERSION_NUM}"
+
+#	"${SRCPATH}DICTSTEST.pde.cpp"
+#	"${SRCPATH}exit.pde.cpp"
+#	"${SRCPATH}project_at_once.cpp"
+#        )
+
+target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}_x11" PRIVATE "${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" )
+target_link_libraries( "${PROJECT_NAME}_${VERSION_NUM}_x11"  
+     "-L${PROC2C}/lib"
+     "-L${SYMSHELL}"
+     wbprocess wbsyshLight X11 Xpm
+     ${CMAKE_THREAD_LIBS_INIT}
+     pthread
+     rt
+     )
+
+target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}_svg" PRIVATE "${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" "-O3" )
+target_link_libraries( "${PROJECT_NAME}_${VERSION_NUM}_svg"  
+     "-L${PROC2C}/lib"
+     "-L${SYMSHELL}"
+     wbprocess wbsyshLightSVG
+     ${CMAKE_THREAD_LIBS_INIT}
+     pthread
+     rt
+     )
+
+#target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}"  PRIVATE "${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # --verbose ?
+
+#target_link_libraries( "${PROJECT_NAME}_${VERSION_NUM}"
+#     #"-L${PROC2C}/lib/;${SYMSHELL};${MYLIBS}"
+#     wbprocess wbrtm wbsyshLight X11 Xpm
+#     ${CMAKE_THREAD_LIBS_INIT}
+#     pthread
+#     rt
+#     )
+
