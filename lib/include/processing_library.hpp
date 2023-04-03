@@ -2,7 +2,7 @@
  * \brief Most commonly used library functions.
  * \file processing_library.hpp
  * \author borkowsk
- * \date 2023-03-17 (last modification)
+ * \date 2023-04-03 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -139,7 +139,7 @@ namespace Processing
   void vertex(float x,float y,float z,float u,float v);
 
   /// \note Generates random numbers:
-  /// ===================================
+  ///       =========================
   /// Each time the random() function is called, it returns an unexpected value within the specified range.
   /// If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter.
   /// For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
@@ -319,6 +319,9 @@ namespace Processing
 
   // Time counting and manipulating:
   // ////////////////////////////////
+  
+  /// \brief Replacement of JAVAs `System.currentTimeMillis()` \ingroup etc
+  long long system_ctime_in_ms();
 
   /// \brief Stop program for same time (in  milliseconds)
   /// \param napTime: milliseconds to pause before running draw() again \ingroup etc
@@ -326,14 +329,19 @@ namespace Processing
 
   ///  \brief The year() function returns the current year as an integer (2003, 2004, 2005, etc). \ingroup etc
   int year();
+  
   /// \brief  The month() function returns the current month as a value from 1 - 12. \ingroup etc
   int month();
+  
   /// \brief  The day() function returns the current day as a value from 1 - 31. \ingroup etc
   int day();
+  
   /// \brief  The hour() function returns the current hour as a value from 0 - 23. \ingroup etc
   int hour();
+  
   /// \brief  The minute() function returns the current minute as a value from 0 - 59. \ingroup etc
   int minute();
+  
   /// \brief  The second() function returns the current second as a value from 0 - 59. \ingroup etc
   int second();
 

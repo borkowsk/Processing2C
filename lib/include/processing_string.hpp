@@ -202,8 +202,10 @@ namespace Processing
         _string_param(float          p);
         /// \param p : int value
         _string_param(int            p);
+        /// \param p : long int value
+        _string_param(long  int      p);
         /// \param p : unsigned long value
-        _string_param(long unsigned  p);
+        _string_param(unsigned long   p);
         /// \param p : any self-printable object
         _string_param(_self_printable const& p);
         /// \param p : any exception

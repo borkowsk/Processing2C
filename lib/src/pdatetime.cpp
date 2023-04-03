@@ -1,7 +1,7 @@
 /// \file
 /// \brief Processing library functions connected with data & time
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-04-03 (last modification)
 ///
 /// \ingroup PROCESSING_compatibility
 // //////////////////////////////////////////////////////////////////////
@@ -22,9 +22,27 @@
 
 namespace Processing
 {
-    //std::chrono::time_point?
-    auto tp=system_clock::now();
-    std::tm tm = std::tm{0};//Last reading of time remain here
+
+/// @brief Replacement of JAVAs `System.currentTimeMillis()`
+/// @details 
+///     https://stackoverflow.com/questions/2831841/how-to-get-the-time-in-milliseconds-in-c
+long long system_ctime_in_ms()
+{
+        auto time = system_clock::now(); // get the current time
+
+        auto since_epoch = time.time_since_epoch(); // get the duration since epoch
+
+        // I don't know what system_clock returns
+        // I think it's uint64_t nanoseconds since epoch
+        // Either way this duration_cast will do the right thing
+        auto millis = duration_cast<milliseconds>(since_epoch);
+
+        return  millis.count(); // just like java (new Date()).getTime();
+}
+
+//std::chrono::time_point?
+auto tp=system_clock::now();
+std::tm tm = std::tm{0}; //Last reading of time remain here
 
 /// Date & time functions
 
@@ -34,6 +52,8 @@ inline void _readTime()
     std::time_t tt = std::chrono::system_clock::to_time_t(tp);
     gmtime_r(&tt, &tm);
 }
+
+
 
 int year()   /// The year() function returns the current year as an integer (2003, 2004, 2005, etc).
 {

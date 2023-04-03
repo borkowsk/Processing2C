@@ -88,6 +88,9 @@ _string_param::_string_param(float  p)//:String( std::to_string(p) )// inline?
 _string_param::_string_param(int    p):String( std::to_string(p) )// inline?
 {}
 
+_string_param::_string_param(long int    p):String( std::to_string(p) )// inline?
+{}
+
 _string_param::_string_param(unsigned long int    p):String( std::to_string(p) )// inline?
 {}
 

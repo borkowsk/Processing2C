@@ -113,7 +113,8 @@ sed -E 's/([(,]\s*)(this)(\s*[,)])/\1SAFE_THIS\3/g' |\
 sed -E 's|super\/\*(\w+)\*\/\.|\1::|g' |\
 sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
-sed "s/frameRate(/setFrameRate(/" |\
+sed 's/frameRate(/setFrameRate(/' |\
+sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 #MATH & FLOATs
