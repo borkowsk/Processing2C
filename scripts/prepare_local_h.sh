@@ -1,7 +1,7 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22c. (2023-03-12)
+# Processing2C version 22e. (2023-04-03)
 #
 
 echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
@@ -73,7 +73,9 @@ sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+b
 sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g'  |\
 sed -E -f userclasses.sed  |\
-sed 's|\/\*_reference\*\/|\&|g'  >> local.h
+sed    's|/*_tmpptr*/|* |g'            |\
+sed    's|/*_rawptr*/|* |g'            |\
+sed    's|\/\*_reference\*\/|\&|g'  >> local.h
 #sed 's|=|;//=|' >> local.h --- bez usuwania =
 
 #zmienne proste:
@@ -83,9 +85,11 @@ egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\s+(\w+)\s*[;=].*///' *.
 sed -E 's/^\s*(int|float|double|String|boolean|char|\w+)\s+/extern\t&\t\t/' |\
 #podmiana boolean, char i nazw klas
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
-sed 's|char |char16_t |g'              |\
+sed    's|char |char16_t |g'           |\
 sed -E -f userclasses.sed              |\
-sed 's|\/\*_reference\*\/|\&|g'        |\
+sed    's|/*_tmpptr*/|* |g'            |\
+sed    's|/*_rawptr*/|* |g'            |\
+sed    's|\/\*_reference\*\/|\&|g'     |\
 #poprawianie komentarzy i interpunkcji
 sed 's|=|;///=|'                       |\
 sed 's|///<|// -|'                     |\
@@ -97,11 +101,13 @@ echo -e "\n//All global arrays from Processing files" >> local.h
 
 egrep -h '^\s*(final\s+|)(int|float|double|String|boolean|char)\s*\[\s*\]\s+\w+.*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/extern\tsarray<\1>/g' |\
-#podmiana boolean, char i nazw klas
+#podmiana boolean, char i nazw klas i atrybuty przy nazwach typów
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
-sed 's|char |char16_t |g'              |\
+sed    's|char |char16_t |g'           |\
 sed -E -f userclasses.sed              |\
-sed 's|\/\*_reference\*\/|\&|g'        |\
+sed    's|/*_tmpptr*/|* |g'            |\
+sed    's|/*_rawptr*/|* |g'            |\
+sed    's|/*_reference*/|& |g'         |\
 sed -E 's|final\s+|const |g'           |\
 #poprawianie komentarzy i interpunkcji
 sed 's|=|;///=|'                       |\
@@ -117,7 +123,9 @@ sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/extern\ts
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
 sed 's|char |char16_t |g'              |\
 sed -E -f userclasses.sed              |\
-sed 's|\/\*_reference\*\/|\&|g'        |\
+sed    's|/*_tmpptr*/|* |g'            |\
+sed    's|/*_rawptr*/|* |g'            |\
+sed    's|/*_reference*/|& |g'         |\
 sed -E 's|final\s+|const |g'           |\
 #poprawianie komentarzy i interpunkcji
 sed 's|=|;///=|'                       |\
@@ -140,15 +148,17 @@ sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
 #podmiana boolean i nazw klas
-sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
-sed 's|char |char16_t |g' |\
-sed -E -f userclasses.sed  |\
-sed 's|\/\*_reference\*\/|\&|g' |\
+sed -E 's|boolean([<(\t >)])|bool\1|g' |\
+sed    's|char |char16_t |g'           |\
+sed -E -f userclasses.sed              |\
+sed    's|\/\*_tmpptr\*\/|\* |g'       |\
+sed    's|\/\*_rawptr\*\/|\* |g'       |\
+sed    's|\/\*_reference\*\/|\&|g'     |\
 #poprawianie komentarzy i interpunkcji
-sed -E 's|//\s*\{*\s*///|///|' |\
-sed -E 's|(//)(.*)///|///< \2|' |\
+sed -E 's|//\s*\{*\s*///|///|'         |\
+sed -E 's|(//)(.*)///|///< \2|'        |\
 #usuwanie zbędnych odstępów
-sed -E 's|\)\s+;|); |' >> local.h
+sed -E 's|\)\s+;|); |'                 >> local.h
 #sed 's|) ;|);|' >> local.h
 echo "#endif" >> local.h
 #cat local.h

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Processing2C version 22c. (2023-03-14)
+# Processing2C version 22e. (2023-04-03)
 #
 if [ $# -ne 1 ]; 
 then
@@ -174,11 +174,12 @@ sed -E 's/throw(\s+)new/throw/g' |\
 sed -E -f userclasses.sed  |\
 #Tutaj dopiero dyrektywy zależne od template-ów C++
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
-sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
-sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g' |\
+sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'   |\
+sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
 sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
+sed -E 's|\/\*_tmpptr\*\/|\* |g'   |\
+sed -E 's|\/\*_rawptr\*\/|\* |g'   |\
 sed -E 's|\/\*_reference\*\/|\& |g'|\
-sed -E 's|\s*\/\*_tmpptr\*\/|\* |g'|\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:
