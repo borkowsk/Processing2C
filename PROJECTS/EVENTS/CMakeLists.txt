@@ -15,9 +15,9 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/home/data/SCC/public/Processing2C/PROJECTS/EVENTS/cppsrc/" )
-set( PROC2C   "/home/data/SCC/public/Processing2C" )
-set( SYMSHELL "/home/data/SCC/public/symShellLight" )
+set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/EVENTS/cppsrc/" )
+set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
+set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )
