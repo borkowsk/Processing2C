@@ -1,7 +1,7 @@
 /// \file pobject.cpp
 /// \brief  Processing & Java Object base class
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// \date 2023-04-11 (last modification)
 /// \details
 ///             ...
 ///
@@ -17,9 +17,12 @@
 
 namespace Processing
 {
+    /// @details Destructor
+    Object::~Object()
+    {}
 
+    ///	@details the hashcode number for this object
     long Object::hashCode() const
-    ///	returns the hashcode number for this object
     {
         FIRST_TIME_ERRMESSAGE( " - not implemented! " );
         return (size_t)this;
@@ -27,7 +30,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

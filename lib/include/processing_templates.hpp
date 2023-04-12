@@ -59,7 +59,7 @@ class Object
     Object& operator = (const Object&);
   public:
     /// \brief Destructor
-    virtual ~Object() = default;
+    virtual ~Object();
 
     /// \brief Make hashcode number for this object
     ///	\return the hashcode

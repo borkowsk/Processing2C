@@ -96,7 +96,7 @@ bool String::operator != (nullptr_t)
 ///               `size_t` is an unsigned integral type (the same as member type `string::size_type`).
 ///      See: https://cplusplus.com/reference/string/string/find/
 ///
-int String::indexOf(String substring, int fromIndex)
+int String::indexOf(String substring, int fromIndex) const
 {
     auto ret=std::string::find(substring,fromIndex);
     FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
@@ -113,7 +113,7 @@ int String::indexOf(String substring, int fromIndex)
 /// @internal
 ///      See: https://cplusplus.com/reference/string/string/find/
 ///
-int String::indexOf(const char character, int fromIndex)
+int String::indexOf(const char character, int fromIndex) const
 {
     auto ret=std::string::find(character,fromIndex);
     FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
@@ -131,9 +131,9 @@ int String::indexOf(const char character, int fromIndex)
 ///
 ///     See: https://cplusplus.com/reference/string/string/substr/
 ///
-String String::substring(int startIndex,int endIndex)
+String String::substring(int startIndex,int endIndex) const
 {                                                                                                 assert(startIndex>=0);
-                                                                                                    assert(endIndex<=1);
+                                                                                                    assert(endIndex>=1);
                                                                                             assert(startIndex<endIndex);
     std::string ret=std::string::substr(startIndex,
                                         endIndex-startIndex);
@@ -204,7 +204,7 @@ String String::toLowerCase(int startIndex,int endIndex) const
 /// @internal
 ///         `size_t` is an unsigned integral type (the same as member type `string::size_type`.
 ///         Use regular C++ `for` inside, so is it not so fast.
-void String::getChars(int srcBeginIndex, int srcEndIndex, sarray<char16_t> dest, int dstBeginIndex)
+void String::getChars(int srcBeginIndex, int srcEndIndex, sarray<char16_t> dest, int dstBeginIndex) const
 {
     for(std::string::size_type i=srcBeginIndex;i<srcEndIndex;i++)
     {

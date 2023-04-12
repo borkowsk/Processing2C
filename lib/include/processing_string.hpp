@@ -128,16 +128,16 @@ namespace Processing
         using std::string::find_first_of;
         
         /// \brief Access to one character in a Processing manner
-        char charAt(int index) { return (*this)[index]; }
+        char charAt(int index) const { return (*this)[index]; }
 
         /// Java like searching of `substring`.
-        int indexOf(String substring, int fromIndex=0);
+        int indexOf(String substring, int fromIndex=0) const;
 
         /// Java like searching of `character`.
-        int indexOf(const char character, int fromIndex=0);
+        int indexOf(const char character, int fromIndex=0) const;
 
         /// Java like substring extraction.
-        String substring(int startIndex,int endIndex);
+        String substring(int startIndex,int endIndex) const;
 
         /// Java like to upper case conversion.
         String toUpperCase() const;
@@ -166,7 +166,7 @@ namespace Processing
         ///                     method is getting copied.
         /// \param dstEndIndex `int`: It shows the position in the destination array from where the characters from
         ///                     the string will be pushed.
-        void getChars(int srcBeginIndex, int srcEndIndex, sarray<char16_t> dest, int dstBeginIndex); /// < @todo
+        void getChars(int srcBeginIndex, int srcEndIndex, sarray<char16_t> dest, int dstBeginIndex) const; /// < @todo ?
     };
 
     /// \brief Duplikat deklaracji frienda z wnętrza klasy String
