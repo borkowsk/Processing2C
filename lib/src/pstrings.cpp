@@ -99,7 +99,7 @@ bool String::operator != (nullptr_t)
 int String::indexOf(String substring, int fromIndex) const
 {
     auto ret=std::string::find(substring,fromIndex);
-    FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
+    //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
     return (ret==std::string::npos?-1:ret);
 }
 
@@ -116,7 +116,7 @@ int String::indexOf(String substring, int fromIndex) const
 int String::indexOf(const char character, int fromIndex) const
 {
     auto ret=std::string::find(character,fromIndex);
-    FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
+    //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
     return (ret==std::string::npos?-1:ret);
 }
 
@@ -137,7 +137,7 @@ String String::substring(int startIndex,int endIndex) const
                                                                                             assert(startIndex<endIndex);
     std::string ret=std::string::substr(startIndex,
                                         endIndex-startIndex);
-    FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
+    //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
     return ret;
 }
 
