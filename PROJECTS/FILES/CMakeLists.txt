@@ -42,7 +42,6 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
-#	"${SRCPATH}FILES.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
 #        )
 

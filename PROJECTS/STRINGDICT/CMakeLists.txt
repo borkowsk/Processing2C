@@ -42,9 +42,7 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
-#	"${SRCPATH}exit.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
-#	"${SRCPATH}STRINGDICT.pde.cpp"
 #        )
 
 target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}_x11" PRIVATE "${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" )

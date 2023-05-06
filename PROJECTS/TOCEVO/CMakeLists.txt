@@ -42,20 +42,7 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
-#	"${SRCPATH}AgentAd.pde.cpp"
-#	"${SRCPATH}AgentBasics.pde.cpp"
-#	"${SRCPATH}AssemblingOfWorld.pde.cpp"
-#	"${SRCPATH}CABasics.pde.cpp"
-#	"${SRCPATH}ModelStats.pde.cpp"
-#	"${SRCPATH}ModelVisualCA.pde.cpp"
-#	"${SRCPATH}ModelVisual.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
-#	"${SRCPATH}RTMEvents.pde.cpp"
-#	"${SRCPATH}RTMExit.pde.cpp"
-#	"${SRCPATH}RTMMouseInspect.pde.cpp"
-#	"${SRCPATH}RTMVideo.pde.cpp"
-#	"${SRCPATH}TOCEVO.pde.cpp"
-#	"${SRCPATH}TragedyOfCommons.pde.cpp"
 #        )
 
 target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}_x11" PRIVATE "${CMAKE_CXX_FLAGS}" "-w" "-std=c++14" "-pthread" )

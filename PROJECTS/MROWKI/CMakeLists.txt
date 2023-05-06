@@ -42,11 +42,6 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
-#	"${SRCPATH}exit.pde.cpp"
-#	"${SRCPATH}klasaAnt.pde.cpp"
-#	"${SRCPATH}klasaBack.pde.cpp"
-#	"${SRCPATH}klasaWorld.pde.cpp"
-#	"${SRCPATH}MROWKI.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
 #        )
 

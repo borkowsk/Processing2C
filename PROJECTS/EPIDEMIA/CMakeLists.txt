@@ -42,16 +42,6 @@ add_executable("${PROJECT_NAME}_${VERSION_NUM}_svg"
 
 #add_executable("${PROJECT_NAME}_${VERSION_NUM}"
 
-#	"${SRCPATH}AgentBasics.pde.cpp"
-#	"${SRCPATH}AgentDef.pde.cpp"
-#	"${SRCPATH}Agent.pde.cpp"
-#	"${SRCPATH}AgentSupl.pde.cpp"
-#	"${SRCPATH}AssemblingOfWorld.pde.cpp"
-#	"${SRCPATH}EPIDEMIA.pde.cpp"
-#	"${SRCPATH}exit.pde.cpp"
-#	"${SRCPATH}Histogram.pde.cpp"
-#	"${SRCPATH}History.pde.cpp"
-#	"${SRCPATH}ModelVisual.pde.cpp"
 #	"${SRCPATH}project_at_once.cpp"
 #        )
 
