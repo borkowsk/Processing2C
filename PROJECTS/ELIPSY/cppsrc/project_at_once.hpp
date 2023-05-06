@@ -8,6 +8,6 @@
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="SHAPES";
-#include "exit.pde.cpp"
-#include "SHAPES.pde.cpp"
+const char* Processing::_PROGRAMNAME="ELIPSY";
+#include "ELIPSY.pde.hpp"
+#include "exit.pde.hpp"

@@ -9,5 +9,5 @@ using namespace Processing;
 #include "local.h"
 //==================================================================================
 const char* Processing::_PROGRAMNAME="PERLIN";
-#include "exit.pde.cpp"
-#include "PERLIN.pde.cpp"
+#include "exit.pde.hpp"
+#include "PERLIN.pde.hpp"

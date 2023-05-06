@@ -25,7 +25,8 @@ namespace Processing
     class _self_printable;
 
     /// \brief A class that mimics the String capabilities in Processing programs
-    class String:public std::string //private std::string - ŚLAD PO NIEUDANEJ PRóBIE - CIĄGLE CZEGOŚ JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
+    //... private std::string - ŚLAD PO NIEUDANEJ PRóBIE - CIĄGLE CZEGOŚ JESZCZE POTRZEBUJE NIEJAWNIE Z std::string
+    class String:public std::string
     {
     public:
         friend class Processing::_string_param;

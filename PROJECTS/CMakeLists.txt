@@ -3,8 +3,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(PROCESSING2C_EXAMPLES)
 #LIBRARIES
-add_subdirectory( "/home/borkowsk/SCC/public/symShellLight" 
-                  "/home/borkowsk/SCC/public/symShellLight" )
+add_subdirectory( "/data/wb/SCC/public/SymShellLight" 
+                  "/data/wb/SCC/public/SymShellLight" )
 add_subdirectory( "../lib/" 
                   "../lib/" )
 add_subdirectory( "../tools/" 
@@ -19,6 +19,7 @@ add_subdirectory( DICTSTEST 	)
 add_subdirectory( ELIPSY 	)
 add_subdirectory( EPIDEMIA 	)
 add_subdirectory( EVENTS 	)
+add_subdirectory( FIFO 	)
 add_subdirectory( FILES 	)
 add_subdirectory( FORESTFIRE 	)
 add_subdirectory( FORMATS 	)

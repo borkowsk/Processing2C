@@ -6,16 +6,16 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_files.hpp" //...is optional. Should be deleted when not needed.
+#include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="SAKODA";
-#include "AgentA.pde.cpp"
-#include "AgentBasics.pde.cpp"
-#include "AssemblingOfWorld.pde.cpp"
-#include "ModelStats.pde.cpp"
-#include "ModelVisual.pde.cpp"
-#include "RTMEvents.pde.cpp"
-#include "RTMExit.pde.cpp"
-#include "SAKODA.pde.cpp"
+const char* Processing::_PROGRAMNAME="EPIDEMIA";
+#include "AgentDef.pde.hpp"
+#include "AgentSupl.pde.hpp"
+#include "AssemblingOfWorld.pde.hpp"
+#include "EPIDEMIA.pde.hpp"
+#include "exit.pde.hpp"
+#include "Histogram.pde.hpp"
+#include "History.pde.hpp"
+#include "ModelVisual.pde.hpp"

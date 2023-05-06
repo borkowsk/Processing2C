@@ -5,10 +5,9 @@
 #include "processing_inlines.hpp" //...is optional. Use when project is already compilable!
 #include "processing_window.hpp"
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_map.hpp"   //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="MAPTEST";
-#include "exit.pde.cpp"
-#include "MAPTEST.pde.cpp"
+const char* Processing::_PROGRAMNAME="SYNCHRONIC1";
+#include "exit.pde.hpp"
+#include "SYNCHRONIC1.pde.hpp"

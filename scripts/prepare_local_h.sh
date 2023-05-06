@@ -1,7 +1,7 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22e. (2023-04-03)
+# Processing2C version 22f. (2023-05-05)
 #
 
 echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
@@ -14,7 +14,7 @@ echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOC
 
 echo -e "\n\n//All classes but not templates from Processing files" >> local.h
 
-egrep -h '^\s*(class|abstract\s+class|interface|enum)[ ]+(\w+)([^<]*)$' *.pde |\
+egrep -h '^\s*(class|abstract\s+class|interface|enum)\s+(\w+).*$' *.pde |\
 sed 's|abstract |/*abstract*/|g' |\
 sed 's|interface|/*interface*/class|g' |\
 sed 's/  / /g' | LC_COLLATE=C sort -i | uniq | tee headers.tmp |\
@@ -51,6 +51,7 @@ echo -e "_@ENTER_" >> userclasses.sed
 #[^a-zA-Z\d] czyli nie znak alfanumeryczny gwarantuje, że nazwy klas pasują tylko jako całe wyrazy
 echo "s/([^[:alnum:]])(" >> userclasses.sed
 egrep -o '(class|enum)(\s+)(\w+)' headers.tmp | sed 's|class ||' | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
+
 #awaryjnie - tylko enums
 #egrep -o 'enum(\s+)(\w+)' headers.tmp | sed 's|enum ||' | sed -E 's/(\w+)$/&|/' >> userclasses.sed
 echo "Object)\.(\w)/\1\2\:\:\3/g" >> userclasses.sed
@@ -69,6 +70,9 @@ egrep -h '^\s*(final\s+int|final\s+float|final\s+double|final\s+String|final\s+b
 sed -E 's|final\s+|const |g' |\
 # Może: static constexpr ?
 sed -E 's/^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+boolean|const\s+\w+)/static \t\1/' |\
+#STAŁE
+sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
 #podmiana boolean, char i nazw klas
 sed -E 's|boolean([<(\t >)])|bool\1|g'  |\
 sed 's|char |char16_t |g'  |\
@@ -83,6 +87,9 @@ echo -e "\n//All global variables from Processing files" >> local.h
 
 egrep -h '^\s*(int|float|double|String|boolean|char|\w+)\s+(\w+)\s*[;=].*///' *.pde |\
 sed -E 's/^\s*(int|float|double|String|boolean|char|\w+)\s+/extern\t&\t\t/' |\
+#STAŁE
+sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
 #podmiana boolean, char i nazw klas
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
 sed    's|char |char16_t |g'           |\
@@ -101,6 +108,9 @@ echo -e "\n//All global arrays from Processing files" >> local.h
 
 egrep -h '^\s*(final\s+|)(int|float|double|String|boolean|char)\s*\[\s*\]\s+\w+.*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/extern\tsarray<\1>/g' |\
+#STAŁE
+sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
 #podmiana boolean, char i nazw klas i atrybuty przy nazwach typów
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
 sed    's|char |char16_t |g'           |\
@@ -119,6 +129,9 @@ echo -e "\n//All global matrices from Processing files" >> local.h
 
 egrep -h '^\s*(final |)(int|float|double|String|boolean|char)\[\s*\]\s*[\s*\]\s+\w+.*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/extern\tsmatrix<\1>/g' |\
+#STAŁE
+sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
 #podmiana boolean, char i nazw klas
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
 sed 's|char |char16_t |g'              |\
@@ -147,6 +160,9 @@ sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*])/sarray<\1>/g' 
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])|scuboid<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*]\s*\[\s*])|smatrix<p\1>|g' |\
 sed -E 's|(\w+)(\s*)(\[\s*])|sarray<p\1>|g' |\
+#STAŁE
+sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
+sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
 #podmiana boolean i nazw klas
 sed -E 's|boolean([<(\t >)])|bool\1|g' |\
 sed    's|char |char16_t |g'           |\

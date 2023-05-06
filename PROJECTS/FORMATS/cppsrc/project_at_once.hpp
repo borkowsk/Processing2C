@@ -6,11 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_files.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="WZROST";
-#include "exit.pde.cpp"
-#include "KLASA.pde.cpp"
-#include "WZROST.pde.cpp"
+const char* Processing::_PROGRAMNAME="FORMATS";
+#include "exit.pde.hpp"
+#include "FORMATS.pde.hpp"

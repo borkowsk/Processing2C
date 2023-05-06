@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(DICTSTEST)
-set( VERSION_NUM 0.22d ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22f ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -15,9 +15,9 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/DICTSTEST/cppsrc/" )
-set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
-set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
+set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/DICTSTEST/cppsrc/" )
+set( PROC2C   "/data/wb/SCC/public/Processing2C" )
+set( SYMSHELL "/data/wb/SCC/public/SymShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )

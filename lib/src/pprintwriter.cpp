@@ -25,7 +25,7 @@ namespace Processing
 {
 
 static inline std::ostream& operator << (std::ostream& o,String& str)
-{                               assert(str.notEmpty());
+{                                                                                                assert(str.notEmpty());
     o<<str._std_str();
     return o;
 }
@@ -47,13 +47,13 @@ void PrintWriter::_set(std::ofstream* p)
 /// \return opaque handle to writable std::ofstream
 PrintWriter& createWriter(_string_param name)
 {
-    auto file=new std::ofstream(name._std_str());                       assert(file!=nullptr);
+    auto file=new std::ofstream(name._std_str());                                              assert(file!=nullptr);
 
     static PrintWriter tmp;
 
     if(file->is_open())
     {
-        tmp._set(file);                                                 assert(tmp._ok());
+        tmp._set(file);                                                                            assert(tmp._ok());
     }
     else
     {
@@ -72,14 +72,14 @@ PrintWriter& createWriter(_string_param name)
 /// \return opaque handle to readable std::ifstream
 BufferedReader& createReader(_string_param name)
 {
-    auto file=new std::ifstream(name._std_str());                        assert(file!=nullptr);
+    auto file=new std::ifstream(name._std_str());                                              assert(file!=nullptr);
 
     static BufferedReader tmp;
 
     if(file->is_open())
     {
         file->exceptions( /*std::ifstream::failbit | ???*/ std::ifstream::badbit );
-        tmp._set(file);                                                 assert(tmp._ok());
+        tmp._set(file);                                                                            assert(tmp._ok());
     }
     else
     {
@@ -107,7 +107,7 @@ void println(PrintWriter& o,_string_param _p1)
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

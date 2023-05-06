@@ -3,9 +3,9 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22d. (2023-03-23)
+# Processing2C version 22f. (2023-05-05)
 #
-Pr2CVERSION="0.22d"
+Pr2CVERSION="0.22f"
 
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
@@ -129,9 +129,9 @@ echo -e $COLOR4"DOING REAL TRANSLATION:"$NORMCO
 FILES=*.pde
 for f in $FILES
 do # take action on each file. $f store current file name
-  echo -e $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.cpp$NORMCO\n"
-  echo "#include \"$f.cpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
-  $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.cpp"
+  echo -e $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.hpp$NORMCO\n"
+  echo "#include \"$f.hpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
+  $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.hpp"
 done
 
 #FINAL WORK

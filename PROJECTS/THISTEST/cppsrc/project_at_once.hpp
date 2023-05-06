@@ -6,11 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_alist.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_lists.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="STRINGTEST";
-#include "exit.pde.cpp"
-#include "STRINGTEST.pde.cpp"
+const char* Processing::_PROGRAMNAME="THISTEST";
+#include "exit.pde.hpp"
+#include "THISTEST.pde.hpp"

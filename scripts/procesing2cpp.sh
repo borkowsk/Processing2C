@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Processing2C version 22e. (2023-04-03)
+# Processing2C version 22f. (2023-05-05)
 #
 if [ $# -ne 1 ]; 
 then
@@ -118,11 +118,11 @@ sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 #MATH & FLOATs
-sed 's/Float.MAX_VALUE/FLT_MAX/g' |\
-sed 's/Float.MIN_VALUE/FLT_MIN/g' |\
-sed 's/Integer.parseInt/std::stoi/g' |\
-sed 's/Float.parseFloat/std::stof/g' |\
-sed 's|hex(|Processing::hex(|g' |\
+sed 's/Float.MAX_VALUE/FLT_MAX/g' 	|\
+sed 's/Float.MIN_VALUE/FLT_MIN/g' 	|\
+sed 's/Integer.parseInt/std::stoi/g' 	|\
+sed 's/Float.parseFloat/std::stof/g' 	|\
+sed 's|hex(|Processing::hex(|g' 	|\
 #sed 's|binary(|Processing::binary(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
@@ -131,13 +131,15 @@ sed -E 's|abs(\s*)(\()|std::abs\1\2|g' |\
 sed 's|std::std::|std::|g' |\
 #DIRECTIVES
 sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
-sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i' |\
+sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i'     |\
 sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|i' |\
-sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|i' |\
-sed 's|\/\*_interfunc\*\/|virtual |g'|\
-sed -E 's|abstract(\s+)virtual|virtual|' |\
-sed 's|\/\*_forcebody\*\/|=0|g' |\
-sed 's|\/\*_emptybody\*\/|{}|g' |\
+sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|i'     |\
+sed 's|\/\*_interfunc\*\/|virtual |g'     |\
+sed 's|\/\*_virtual\*\/|virtual |g'       |\
+sed 's|\/\*_override\*\/|override |g'     |\
+sed -E 's|abstract(\s+)virtual|virtual|'  |\
+sed 's|\/\*_forcebody\*\/|=0|g'           |\
+sed 's|\/\*_emptybody\*\/|{}|g'           |\
 sed 's|\/\*_endOfClass|;/*_endOfClass|i'  |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\

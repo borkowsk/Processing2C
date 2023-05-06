@@ -6,11 +6,9 @@
 #include "processing_window.hpp"
 #include "processing_string.hpp"  //Processing::String class
 #include "processing_console.hpp"   //...is optional. Should be deleted when not needed.
-#include "processing_IntDict.hpp" //...is optional. Should be deleted when not needed.
-#include "processing_FloatDict.hpp" //...is optional. Should be deleted when not needed.
+#include "processing_files.hpp" //...is optional. Should be deleted when not needed.
 using namespace Processing;
 #include "local.h"
 //==================================================================================
-const char* Processing::_PROGRAMNAME="DICTSTEST";
-#include "DICTSTEST.pde.cpp"
-#include "exit.pde.cpp"
+const char* Processing::_PROGRAMNAME="FILES";
+#include "FILES.pde.hpp"
