@@ -31,10 +31,10 @@ echo -e "\n${COLOR4}START TRANSLATION OF $COLOR1 $1 $COLOR3" 1>&2 #Colored ERROR
 cat $1 |\
 ${SCRIPTS}/tools "${SRCDIR}toolsouts" 2> tools.err |\
 #Brutalne dodawanie średników za końcem klasy.
-sed -E 's|\/\/([ _]*)EndOfClass(.*)|;//_EndOfClass\1\n|i'  |\
+sed -E 's|\/\/([ _]*)EndOfClass(.*)|; //_EndOfClass\1\n|i'  |\
 #//_endofsuperclass:_anyPreviousSuperClass
 sed -E 's|\/\/([ _]*)endofsuperclass:(.*)|//Undefining any base class preprocessor definition: \1\n#undef _superclass|i'  |\
-#//_superclass:Colorable (???)
+#//_superclass:
 sed -E 's|\/\/([ _]*)superclass:(.*)|//Base class is now:\n#define _superclass \1|i'  |\
 #Enumeracje są kopiowane do globalnego headera, a nie mogą występować w kodzie dwukrotnie
 sed -E 's|enum([^\{]*)\{([^\}]*)\}|//enum\1 : \2|' |\
@@ -117,12 +117,18 @@ sed 's/frameRate(/setFrameRate(/' |\
 sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
-#MATH & FLOATs
+#MATH & FLOATs & chars
 sed 's/Float.MAX_VALUE/FLT_MAX/g' 	|\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' 	|\
 sed 's/Integer.parseInt/std::stoi/g' 	|\
 sed 's/Float.parseFloat/std::stof/g' 	|\
 sed 's|hex(|Processing::hex(|g' 	|\
+# https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html
+sed 's/Character.isAlphabetic(/std::isalpha(/g'   |\
+sed 's/Character.isLetter(/std::isalpha(/g'       |\
+sed 's/Character.isDigit(/std::isdigit(/g'        |\
+sed 's/Character.isSpace(/std::isspace(/g'        |\
+sed 's/Character.isWhitespace(/std::isspace(/g'   |\
 #sed 's|binary(|Processing::binary(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
