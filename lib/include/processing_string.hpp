@@ -54,6 +54,8 @@ namespace Processing
         explicit String(const sarray<char16_t> from);
         /// \brief From char constructor
         explicit String(const char  c);
+        /// \brief From char16_t constructor
+        explicit String(const char16_t c);
         /// \brief String conversion from double and other numbers
         String(double v); //:String(){ operator+=(v);}
         /// \brief General Object  ptr conversion constructor
@@ -197,6 +199,10 @@ namespace Processing
         _string_param(const void*    p);
         /// \param p : any char
         _string_param(const char     p);
+
+        /// \param p : any char16_t
+        _string_param(const char16_t  p);
+
         /// \param p : double precision value
         _string_param(double         p);
         /// \param p : single  precision value
@@ -313,7 +319,13 @@ namespace Processing
         return *this;
     }
 
-    /// Constructor: Inicjalizacja _string_param z typów _self_printable
+    inline _string_param::_string_param(char p):String( p )// inline?
+    {}
+
+    inline _string_param::_string_param(char16_t p):String( p )// inline?
+    {}
+
+    /// @details Constructor: Inicjalizacja _string_param z typów _self_printable
     inline _string_param::_string_param(const _self_printable& p):String(p.print())
     {}
 

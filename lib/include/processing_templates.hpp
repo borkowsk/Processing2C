@@ -2,7 +2,7 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
-* \date 2022-11-21 (last modification)
+* \date 2023-05-15 (last modification)
 * \see <ul>
 * <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> "https://en.cppreference.com/w/cpp/language/constructor"
@@ -104,17 +104,40 @@ class ptr:public std::shared_ptr<T>
       }
 
       /// \brief Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
+      /// \note  Zadziała jeśli jest możliwy `static_cast` z B* do T*
       template<class B>
-      ptr(ptr<B>& ini):std::shared_ptr<T>(ini)
+      explicit /* MUSI BYĆ 'EXPLICIT' BO SIĘ POJAWIAJĄ NIESPODZIEWANE KONWERSJE! */
+      ptr(ptr<B>& ini):std::shared_ptr<T>( ini  )
       {
           assert(ini.get()==nullptr || this->get()!=nullptr);
       }
 
-      // Przypisania  //using std::shared_ptr<T>::operator = ; //robi kipisz!!! :-(
-      // ^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
-      ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
-      ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
-      ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
+    // Przypisania  //using std::shared_ptr<T>::operator = ; //robi kipisz!!! :-(
+    // ^^^^^^^^^^^  //TODO - sprawdzić czy nie można w ogóle się ich pozbyć
+    ptr<T>& operator = (nullptr_t p){ std::shared_ptr<T>::operator = (p); return *this; }
+    ptr<T>& operator = (std::shared_ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this;}
+    /// @note Bez & bo to rozwala przypisania z new Klasa() !!!
+    ptr<T>& operator = (ptr<T> p){ std::shared_ptr<T>::operator = (p); return *this; }
+
+      ///@todo taki operator = chyba robi kaszanę: nieoczekiwane destrukcje w pętli for(all) ...
+ /*   ptr<T>& operator = (T* p)
+      {
+          std::shared_ptr<T> tmp(p);
+          swap(*this,tmp);
+          return *this;
+      }
+
+     /// @brief Przypisanie wskaźnika klasy potomnej.
+     /// @todo A nie referencja? lepiej. Bo teraz robi kopie ptr<>
+     template<class B>
+      ptr<T>& operator = (ptr<B> p)
+      {
+          //std::shared_ptr<T>::operator = ( (T*) p ); // To nie dziala bo nie ma operatorow przypisania dla `shared_ptr`
+          //ptr<T>::operator = ( std::static_pointer_cast<T>(p) ); //???
+          ptr<T>::operator = (static_cast<T*> (p) );
+          return *this;
+      }
+*/
 
       // Porównania
       // ^^^^^^^^^^

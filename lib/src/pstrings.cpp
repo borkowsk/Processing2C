@@ -68,6 +68,10 @@ String::String(const char c):std::string({c})
 {}
 
 /// @details ???
+String::String(const char16_t c):std::string({c})
+{}
+
+/// @details ???
 bool String::operator == (nullptr_t v)
 {
     //FIRST_TIME_ERRMESSAGE( " should not be performed for nullptr!" );// WHY???

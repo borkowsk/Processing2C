@@ -9,13 +9,12 @@
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
 // //////////////////////////////////////////////////////////////////////
-#include "processing_consts.hpp"
+//#include "processing_consts.hpp"
 #include "processing_templates.hpp"
-#include "processing_window.hpp"
+//#include "processing_window.hpp"
 #include "processing_library.hpp"
-#include "processing_console.hpp"
-
-#include <iostream>
+//#include "processing_console.hpp"
+//#include <iostream>
 
 namespace Processing
 {
@@ -31,7 +30,6 @@ String& String::operator += (_string_param v)// inline?
 {
     std::string::operator += (v);return *this;
 }
-
 
 String String::operator  + (_string_param v) const
 {
@@ -72,8 +70,6 @@ String operator  + (_string_param v,_string_param s)
 //{
 //}
 
-_string_param::_string_param(char p):String( p )// inline?
-{}
 
 _string_param::_string_param(double p)//:String( std::to_string(p) )// inline?
 {
