@@ -3,10 +3,11 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22f. (2023-05-05)
+# Processing2C version 22g. (2023-06-15)
 #
-Pr2CVERSION="0.22f"
+Pr2CVERSION="0.22g"
 
+export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 export SCRIPTS=$(dirname "$0")
 source $SCRIPTS/screen.ini
 
@@ -141,6 +142,7 @@ echo -e $COLOR4"FINALISING..."$NORMCO
 echo -e  $COLOR3"\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
 # This file was made automagically. Do not edit!
+#! @date $TIMEMARK (translation timemark)
 cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 

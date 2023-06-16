@@ -10,7 +10,7 @@ fi
 
 if [[ $SOURCEMODE == "multisrc" ]]
 then
-	echo "//Processing to C++ converter $0"
+	echo "//Processing to C++ converter $0 @date $TIMEMARK"
 	echo "//Source: $1"
 	echo "#include \"processing_consts.hpp\""
 	echo "#include \"processing_templates.hpp\""
@@ -115,6 +115,7 @@ sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
 sed 's/frameRate(/setFrameRate(/' |\
 sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
+sed 's/System.exit(/::exit(/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 #MATH & FLOATs & chars
@@ -208,7 +209,7 @@ sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
-echo -e "//NOTE! $(dirname $0) did it\n"
+echo -e "//NOTE! $(dirname $0) did it $TIMEMARK\n"
 
 echo -e $COLOR3 1>&2
 #cat tools.err 1>&2     #DEBUG!

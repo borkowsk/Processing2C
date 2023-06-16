@@ -1,12 +1,12 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22f. (2023-05-05)
+# Processing2C version 22g. (2023-06-15)
 #
 
 echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
 
-echo -e "//Automagically generated file\n//Dont edit!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
+echo -e "//Automagically generated file. @date $TIMEMARK \n//Dont edit\!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
         > local.h
 
 #awaryjnie
