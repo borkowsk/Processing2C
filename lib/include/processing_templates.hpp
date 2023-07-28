@@ -35,6 +35,7 @@
 #define PROCESSING_TEMPLATES_H
 
 #include <cassert>
+#include <cstdint>
 #include <memory>
 #include <initializer_list>
 
@@ -435,7 +436,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2023-03-07                     */
+/*               PROCESSING2C  version 2023-07-28                     */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */

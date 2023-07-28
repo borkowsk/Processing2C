@@ -8,6 +8,13 @@ then
 	EDIT=/usr/bin/gedit
 else
 	EDIT=nano
+	if [[ -f /bin/nano/ ]]
+	then
+	echo "nano detected"
+    else
+    echo "nano required:"
+    sudo apt install nano
+    fi
 fi
 
 source scripts/screen.ini
