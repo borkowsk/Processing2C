@@ -1,5 +1,5 @@
-//Automagically generated file
-//Dont edit!
+//Automagically generated file. @date 2023-10-11 14:12:40 
+//Dont edit\!
 #pragma once
 #ifndef LOCAL_H
 #define LOCAL_H
@@ -11,12 +11,12 @@
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		W;	///< =600; / Control parameter
+extern	int 		W;	// ->  Control parameter
 
 //All global arrays from Processing files
 
 //All global matrices from Processing files
 
 //All global functions from Processing files
-int	radius();  ///< Example of the user declared function
+int	radius();  // => Example of the user declared function
 #endif
