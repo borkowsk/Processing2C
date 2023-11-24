@@ -1,5 +1,5 @@
-//Automagically generated file
-//Dont edit!
+//Automagically generated file. @date 2023-10-11 14:12:44 
+//Dont edit\!
 #pragma once
 #ifndef LOCAL_H
 #define LOCAL_H
@@ -12,15 +12,15 @@ class KLASA; typedef Processing::ptr<KLASA> pKLASA; //
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		KLASA_Counter;	///< =0;  - Globalny licznik obiektów typu RGB
-extern	int 		JUMP;	///< =3;      - skok pozycji "zarodnika". Nieparzysty!
-extern	int 		CJUMP;	///< =9;     - skok koloru. Tez lepiej nieparzysty.
-extern	int 		STARTG;	///< =128;  - W jakiej szarości pierwsza komórka
-extern	bool 		ScreenDumps;	///< =false;  - Zrzucanie obrazków co krok wcale
-extern	int 		VIS_FRQ;	///< =100;  - co ile kroków zrzut ekranu
-extern	int          		Side;  // - Bok macierzy
-extern	int          		W;     // - Mnożnik dla kwadracika
-extern	PrintWriter 		output; // - A tu używamy KLASY zdefiniowanej w bibliotece
+extern	int 		KLASA_Counter;	// ->  Globalny licznik obiektów typu RGB
+extern	int 		JUMP;	// ->  skok pozycji "zarodnika". Nieparzysty!
+extern	int 		CJUMP;	// ->  skok koloru. Tez lepiej nieparzysty.
+extern	int 		STARTG;	// ->  W jakiej szarości pierwsza komórka
+extern	bool 		ScreenDumps;	// ->  Zrzucanie obrazków co krok wcale
+extern	int 		VIS_FRQ;	// ->  co ile kroków zrzut ekranu
+extern	int          		Side;  // ->  Bok macierzy
+extern	int          		W;     // ->  Mnożnik dla kwadracika
+extern	PrintWriter 		output; // ->  A tu używamy KLASY zdefiniowanej w bibliotece
 
 //All global arrays from Processing files
 

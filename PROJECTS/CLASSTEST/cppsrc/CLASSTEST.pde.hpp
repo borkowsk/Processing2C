@@ -142,5 +142,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-//NOTE! ../../scripts did it
+//NOTE! ../../scripts did it 2023-10-11 14:12:40
 

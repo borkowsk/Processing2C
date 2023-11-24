@@ -1,12 +1,7 @@
-### @file ".../Processing2C/lib/CMakeLists.txt"
-### @date 2023-10-05 (last modification)
-
 cmake_minimum_required(VERSION 2.9)
 
 project(WBProcessing)
 
-#set(PROC2CDIR "../../Processing2C" )
-#set(SYMSHELL  "../../symShellLight" )
 set(PROC2CDIR "/home/borkowsk/SCC/public/Processing2C" )
 set(SYMSHELL  "/home/borkowsk/SCC/public/symShellLight" )
 

@@ -1,5 +1,5 @@
-//Automagically generated file
-//Dont edit!
+//Automagically generated file. @date 2023-10-11 14:12:42 
+//Dont edit\!
 #pragma once
 #ifndef LOCAL_H
 #define LOCAL_H

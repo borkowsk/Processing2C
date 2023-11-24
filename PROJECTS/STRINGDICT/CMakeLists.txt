@@ -1,9 +1,10 @@
 # This file was made automagically. Do not edit!
+#! @date 2023-10-11 14:12:43 (translation timemark)
 cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(STRINGDICT)
-set( VERSION_NUM 0.22f ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22g ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -15,9 +16,9 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/STRINGDICT/cppsrc/" )
-set( PROC2C   "/data/wb/SCC/public/Processing2C" )
-set( SYMSHELL "/data/wb/SCC/public/SymShellLight" )
+set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/STRINGDICT/cppsrc/" )
+set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
+set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )
