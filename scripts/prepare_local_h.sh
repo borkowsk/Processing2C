@@ -1,7 +1,7 @@
 #!/bin/bash
 #See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22f. (2023-09-20)
+# Processing2C version 22g. (2023-11-24)
 #
 #@todo Przerobić powtarzające się komendy na jeden plik skryptu dla seda
 
@@ -114,12 +114,12 @@ sed -E 's|//+(.*)//+|\t// -> |'        |\
 sed -E 's|(->)(\s+)(->)|->|'           >> local.h
 
 
-#zmienne tablicowe (ale tylko typów prostych!)
+#zmienne tablicowe
 echo -e "\n//All global arrays from Processing files" >> local.h
 #            ---------------------------------------
 
-egrep -h '^\s*(final\s+|)(int|float|double|String|boolean|char)\s*\[\s*\]\s+\w+.*///' *.pde |\
-sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*])/extern\tsarray<\1>/g' |\
+egrep -h '^\s*(final\s+|)(int|float|double|String|boolean|char|\w+)\s*\[\s*\]\s+\w+\s*[=;].*///' *.pde |\
+sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*])/extern\tsarray<\1>/' |\
 #STAŁE
 sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
 sed 's/Float.MIN_VALUE/FLT_MIN/g'      |\
@@ -139,11 +139,11 @@ sed 's|>\s*-|>|'                       |\
 sed -E 's|//+(.*)//+|\t// -> |'        |\
 sed -E 's|(->)(\s+)(->)|->|'           >> local.h
 
-#zmienne matrycowe (ale tylko typów prostych!)
+#zmienne matrycowe
 echo -e "\n//All global matrices from Processing files" >> local.h
 #            -----------------------------------------
 
-egrep -h '^\s*(final |)(int|float|double|String|boolean|char)\[\s*\]\s*[\s*\]\s+\w+.*///' *.pde |\
+egrep -h '^\s*(final |)(int|float|double|String|boolean|char|\w+)\[\s*\]\s*[\s*\]\s+\w+.*///' *.pde |\
 sed -E 's/(int|float|double|boolean|String|char)(\s*)(\[\s*]\s*\[\s*])/extern\tsmatrix<\1>/g' |\
 #STAŁE
 sed 's/Float.MAX_VALUE/FLT_MAX/g'      |\
@@ -169,9 +169,9 @@ sed -E 's|(->)(\s+)(->)|->|'           >> local.h
 echo -e "\n//All global functions from Processing files" >> local.h
 #            ------------------------------------------
 
-egrep -h '^\s*(void|int|float|double|String|boolean|char|\w+)\s+(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
+egrep -h '^\s*(void|int|float|double|String|boolean|char|\w+)(\[\]\s+|\s+)(\w+)\s*\(.*\)\s*\{*\s*///' *.pde |\
 #funkcja o dowolnych parametrach
-sed -E 's#^\s*(void|int|float|double|String|boolean|char|\w+)\s+(\w+)\s*(\(.*\)\s*)#\1\t\2\3; //#' |\
+sed -E 's#^\s*(void|int|float|double|String|boolean|char|\w+)(\[\]\s+|\s+)(\w+)\s*(\(.*\)\s*)#\1\2\t\3\4; //#' |\
 #podmiana prostych tablic w parametrach
 sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/g' |\
 sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\

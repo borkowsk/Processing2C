@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Processing2C version 22f. (2023-05-05)
+# Processing2C version 22h. (2023-11-24)
 #
 if [ $# -ne 1 ]; 
 then
@@ -21,7 +21,8 @@ then
 	${SCRIPTS}/includeOptionals.sh $1
 	echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
 	echo "using namespace Processing;"
-	echo "#include \"local.h\" //???."  
+	echo "#include \"local.h\" //???."
+	echo "#include <iostream>"
 	echo "//=================================================================================="
 	echo ""
 fi
@@ -45,7 +46,7 @@ sed -E 's#^\s*(const\s+int|const\s+float|const\s+double|const\s+String|const\s+b
 #przeorganizowywanie konstruktorow
 sed -E 's|(\s*)\{(\s*)super\/\*(\w+)\*\/\((.*)\)(s*);|\1\t\:\2\3\(\4\)\5\n\1{|' |\
 #Dodawanie ENTER po { ale nie dla "enum""!!!"
-sed -E 's|\{(.*)}|{\n\t\1\n\t}|' |\
+sed -E 's|(\s+)\{(.*)}|\1{\n\t\2\n\t}|' |\
 sed -E 's|(\s*)([;}])(\s*)return([^;]+);|\1\2\n\3\treturn \4;|' |\
 #wolne public/private przed funkcjami i zmiennymi - rzadko stosowane w Processingu
 sed -E "s/^(\s*)public /\1public:\n\t/g" |\
@@ -106,7 +107,7 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
 #zmiany bardziej generalne
-sed -E 's|boolean([ >)])|bool\1|g'  |\
+sed -E 's|boolean([ >)])|bool   \1|g'  |\
 sed -E 's|char([ >)])|char16_t\1|g' |\
 sed 's/this\./this->/g' |\
 sed -E 's/([(,]\s*)(this)(\s*[,)])/\1SAFE_THIS\3/g' |\
@@ -115,12 +116,15 @@ sed 's/super\./super::/' |\
 sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
 sed 's/frameRate(/setFrameRate(/' |\
 sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
-sed 's/System.exit(/::exit(/' |\
+sed 's/System.exit(/::exit(/'   |\
+sed -E 's/(^\s*)(flush\(\));/\1std::cout@@@flush();std::cerr@@@flush();/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\
 #MATH & FLOATs & chars
 sed 's/Float.MAX_VALUE/FLT_MAX/g' 	|\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' 	|\
+sed 's/Float.isNaN(/std::isnan(/g'   |\
+sed 's/Double.isNaN(/std::isnan(/g'  |\
 sed 's/Integer.parseInt/std::stoi/g' 	|\
 sed 's/Float.parseFloat/std::stof/g' 	|\
 sed 's|hex(|Processing::hex(|g' 	|\
@@ -141,10 +145,14 @@ sed 's|\/\*_OnlyCppBlockBegin|/*_OnlyCppBlockBegin*/|i' |\
 sed 's|_OnlyCppBlockEnd\*\/|/*_OnlyCppBlockEnd*/|i'     |\
 sed 's|\/\*_OnlyProcessingBlockBegin\*\/|/*_OnlyProcessingBlockBegin|i' |\
 sed 's|\/\*_OnlyProcessingBlockEnd\*\/|_OnlyProcessingBlockEnd*/|i'     |\
+sed -E 's|abstract(\s+)virtual|virtual|'  |\
+sed -E 's|abstract(\s)|/*_interfunc*/\1|g'|\
+sed -E 's|virtual(\s+)virtual|virtual |g' |\
+sed 's|\/\*_inline\*\/|inline |g'         |\
+sed 's|\/\*_const\*\/|const |g'           |\
 sed 's|\/\*_interfunc\*\/|virtual |g'     |\
 sed 's|\/\*_virtual\*\/|virtual |g'       |\
 sed 's|\/\*_override\*\/|override |g'     |\
-sed -E 's|abstract(\s+)virtual|virtual|'  |\
 sed 's|\/\*_forcebody\*\/|=0|g'           |\
 sed 's|\/\*_emptybody\*\/|{}|g'           |\
 sed 's|\/\*_endOfClass|;/*_endOfClass|i'  |\

@@ -3,7 +3,7 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22g. (2023-06-15)
+# Processing2C version 22g. (2023-11-15)
 #
 Pr2CVERSION="0.22g"
 
@@ -109,19 +109,20 @@ echo -e $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 
 #Preparing C++ source files
 
-echo "/*All sources in one file?*/" > ./cppsrc/project_at_once.cpp
+echo "/*All sources in one file?*/"                                  > ./cppsrc/project_at_once.cpp
 
-echo "#include \"processing_consts.hpp\"" >> ./cppsrc/project_at_once.cpp
-echo "#include \"processing_templates.hpp\"" >> ./cppsrc/project_at_once.cpp
-echo "#include \"processing_library.hpp\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!" >> ./cppsrc/project_at_once.cpp
-echo "#include \"processing_window.hpp\"" >> ./cppsrc/project_at_once.cpp
-${SCRIPTS}/includeOptionals.sh *.pde >> ./cppsrc/project_at_once.cpp
-echo "using namespace Processing;" >> ./cppsrc/project_at_once.cpp
-[[ -f "./cppsrc/pre_local.h" ]] && echo "#include \"pre_local.h\"" >> ./cppsrc/project_at_once.cpp
-echo "#include \"local.h\"" >> ./cppsrc/project_at_once.cpp
+echo "#include \"processing_window.hpp\""                            >> ./cppsrc/project_at_once.cpp
+${SCRIPTS}/includeOptionals.sh *.pde                                 >> ./cppsrc/project_at_once.cpp
+echo "using namespace Processing;"                                   >> ./cppsrc/project_at_once.cpp
+[[ -f "./cppsrc/pre_local.h" ]] && echo "#include \"pre_local.h\""   >> ./cppsrc/project_at_once.cpp
+echo "#include \"local.h\""                                          >> ./cppsrc/project_at_once.cpp
 [[ -f "./cppsrc/post_local.h" ]] && echo "#include \"post_local.h\"" >> ./cppsrc/project_at_once.cpp
-echo "//==================================================================================" >> ./cppsrc/project_at_once.cpp
+echo "#include <iostream>"                                           >> ./cppsrc/project_at_once.cpp
+echo "//=================================================================================="          >> ./cppsrc/project_at_once.cpp
 echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at_once.cpp
 
 #REAL TRANSLATION
