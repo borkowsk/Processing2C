@@ -156,6 +156,7 @@ sed 's|\/\*_override\*\/|override |g'     |\
 sed 's|\/\*_forcebody\*\/|=0|g'           |\
 sed 's|\/\*_emptybody\*\/|{}|g'           |\
 sed 's|\/\*_endOfClass|;/*_endOfClass|i'  |\
+sed -E 's|\/\/\s*_EofCl|;//_EofCl|i'            |\
 #Opakowywanie stałych znakowych i stringowych w operacjach konkatenacji ""
 sed -E "s|\+(\s*)('[^']')|\+\1String(\2)|g" |\
 sed -E 's|(\"[^"]*\")(\s*)\+|String(\1)\2\+|g' |\

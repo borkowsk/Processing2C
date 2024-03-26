@@ -37,6 +37,7 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/delay.cpp"
     "${PROC2CDIR}/lib/src/max.cpp"
     "${PROC2CDIR}/lib/src/min.cpp"
+    "${PROC2CDIR}/lib/src/appendTextToFile.cpp"
     "${PROC2CDIR}/lib/src/mouseClicked.cpp"
     "${PROC2CDIR}/lib/src/mousePressed.cpp"
     "${PROC2CDIR}/lib/src/mouseReleased.cpp"
