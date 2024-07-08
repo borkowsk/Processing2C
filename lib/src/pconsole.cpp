@@ -1,7 +1,7 @@
 /// \file ***.cpp
 /// \brief Processing like console functions
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// @date 2024-07-08 (last modification)
 ///
 /// \ingroup PROCESSING_compatibility
 // //////////////////////////////////////////////////////////////////////
@@ -43,7 +43,8 @@ void print(_string_param _p1,_string_param _p2,_string_param _p3)
 }
 
 void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
-           _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8)
+           _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8,
+           _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC )
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
     if(_p4.notEmpty()) std::cout<<' '<<_p4;
@@ -51,6 +52,10 @@ void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _
     if(_p6.notEmpty()) std::cout<<' '<<_p6;
     if(_p7.notEmpty()) std::cout<<' '<<_p7;
     if(_p8.notEmpty()) std::cout<<' '<<_p8;
+    if(_p9.notEmpty()) std::cout<<' '<<_p9;
+    if(_pA.notEmpty()) std::cout<<' '<<_pA;
+    if(_pB.notEmpty()) std::cout<<' '<<_pB;
+    if(_pC.notEmpty()) std::cout<<' '<<_pC;
 }
 
 void println()
@@ -74,7 +79,8 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3)
 }
 
 void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
-             _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8)
+             _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8,
+             _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC )
 
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
@@ -83,12 +89,16 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
     if(_p6.notEmpty()) std::cout<<' '<<_p6;
     if(_p7.notEmpty()) std::cout<<' '<<_p7;
     if(_p8.notEmpty()) std::cout<<' '<<_p8;
+    if(_p9.notEmpty()) std::cout<<' '<<_p9;
+    if(_pA.notEmpty()) std::cout<<' '<<_pA;
+    if(_pB.notEmpty()) std::cout<<' '<<_pB;
+    if(_pC.notEmpty()) std::cout<<' '<<_pC;
     std::cout<<std::endl;
 }
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2024                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

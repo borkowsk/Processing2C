@@ -1,6 +1,7 @@
-//
-// Created by borkowsk on 26.03.24.
-//
+/// @file
+/// @details Created by borkowsk on 26.03.24.
+/// @date 2024-07-08 (test)
+
 #include "processing_string.hpp"  //Processing::String class
 #include <fstream>
 using namespace std;

@@ -3,9 +3,10 @@
 # One optional parameter is possible:  multisrc
 # But it is still TODO!
 #
-# Processing2C version 22g. (2023-11-15)
+# Processing2C version 22h. 
+# @date 2024-07-08 (last modif.)
 #
-Pr2CVERSION="0.22g"
+Pr2CVERSION="0.22h"
 
 export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 export SCRIPTS=$(dirname "$0")
@@ -110,7 +111,7 @@ echo -e $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 #Preparing C++ source files
 
 echo "/*All sources in one file?*/"                                  > ./cppsrc/project_at_once.cpp
-
+echo "/// @""date" 2024 ($Pr2CVERSION)"                              >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
@@ -239,7 +240,7 @@ EOF
 echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*                 PROCESSING2C  release 2023                       */
+#/*                 PROCESSING2C  release 2024                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

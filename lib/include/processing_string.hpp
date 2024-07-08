@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * \date 2023-03-17 (last modification)
+ * @date 2024-07-08 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -12,12 +12,16 @@
 #ifndef PROCESSING2C_PROCESSING_STRING_HPP
 #define PROCESSING2C_PROCESSING_STRING_HPP
 
+#include "processing_templates.hpp"
 #include <cassert>
 #include <string>
 
 ///\namespace Processing \brief P2C compatibility libraries
 namespace Processing
 {
+    /// A foreshadowing declaration of this class to be used hereafter as a method parameter
+    class Object;
+
     /// A foreshadowing declaration of this class to be used hereafter as a method parameter
     class _string_param;
 
@@ -43,7 +47,7 @@ namespace Processing
         /// \brief From std::string constructor
         String(const std::string& str):std::string(str){}
         /// \brief NULL init constructor
-        String(nullptr_t p):String(){} //POTRZEBNE?
+        String(std::nullptr_t p):String(){} //POTRZEBNE?
         /// \brief From C like string and const string constructor
         String(const char* str):std::string(str){}
         /// \brief from String* transfer!
@@ -83,9 +87,9 @@ namespace Processing
         bool  notEmpty() const { return this->c_str()!=nullptr; }
 
         /// \brief Implicit tests for empties
-        bool operator == (nullptr_t);
+        bool operator == (std::nullptr_t);
         /// \brief Negated implicit tests for empties
-        bool operator != (nullptr_t);
+        bool operator != (std::nullptr_t);
 
         /// \brief Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
         String& operator = (_string_param v);
