@@ -4,7 +4,7 @@
 # But it is still TODO!
 #
 # Processing2C version 22h. 
-# @date 2024-07-08 (last modif.)
+# @date 2024-07-09 (last modif.)
 #
 Pr2CVERSION="0.22h"
 
@@ -111,7 +111,7 @@ echo -e $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 #Preparing C++ source files
 
 echo "/*All sources in one file?*/"                                  > ./cppsrc/project_at_once.cpp
-echo "/// @""date" 2024 ($Pr2CVERSION)"                              >> ./cppsrc/project_at_once.cpp
+echo "/// @""date" "2024 ($Pr2CVERSION)"                             >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
