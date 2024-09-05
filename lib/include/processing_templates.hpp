@@ -2,7 +2,7 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
-* \date 2023-05-15 (last modification)
+* @date 2024-09-05 (last modification)
 * \see <ul>
 * <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> "https://en.cppreference.com/w/cpp/language/constructor"
@@ -372,16 +372,17 @@ class smatrix:public ptr< matrix<T> >
         /// \param alfa : alpha channel
         color(std::uint8_t R,std::uint8_t G,std::uint8_t B,std::uint8_t alfa):color(R,G,B)
         {
-            val|=alfa<<24; //??? TODO! TEST IT!
+            val|=alfa<<24; ///< TODO TEST IT!
         }
 
-        std::uint8_t alfa() const  { return (val & 0xFF000000)>>24; }
+        std::uint8_t  alfa() const  { return (val & 0xFF000000)>>24; }
+        std::uint8_t alpha() const  { return (val & 0xFF000000)>>24; }
 
-        std::uint8_t red() const   { return (val & 0x00FF0000)>>16; }
+        std::uint8_t   red() const  { return (val & 0x00FF0000)>>16; }
 
-        std::uint8_t green() const { return (val & 0x0000FF00)>>8; }
+        std::uint8_t green() const  { return (val & 0x0000FF00)>>8; }
 
-        std::uint8_t blue() const  { return (val & 0x000000FF); }
+        std::uint8_t  blue() const  { return (val & 0x000000FF); }
 
         operator const std::uint32_t () const { return val; }
     };
@@ -391,6 +392,7 @@ class smatrix:public ptr< matrix<T> >
 
 /// \fn Extracted alpha from 'color'
     inline float  alfa(const color& col) { return col.alfa(); }
+    inline float  alpha(const color& col) { return col.alfa(); }
 /// \fn Extracted red from 'color'
     inline float   red(const color& col) { return col.red(); }
 /// \fn Extracted green from 'color'

@@ -1,7 +1,7 @@
 /// \file processing_alist.hpp
 /// \brief IMPLEMENTATION OF JAVA LIKE ArrayList
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// @date 2024-09-05 (last modification)
 /// \ingroup JAVA_compatibility
 ///
 /// \see \a https://en.cppreference.com/w/cpp/container/vector
@@ -54,6 +54,14 @@ public:
     {
       this->push_back(o);
       return true;
+    }
+
+    /// Method which replaces element at particula position.
+    T set(int index,const T& element)
+    {
+        T tmp=this->at(index);
+        (*this)[index]=element;
+        return tmp;
     }
 
     /// A method of accessing a specific item

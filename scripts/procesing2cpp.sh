@@ -1,6 +1,6 @@
 #!/bin/bash
-#
-# Processing2C version 22h. (2023-11-24)
+# Processing2C version 22h. 
+# @date 2024-09-05 (last modification)
 #
 if [ $# -ne 1 ]; 
 then
@@ -134,6 +134,10 @@ sed 's/Character.isLetter(/std::isalpha(/g'       |\
 sed 's/Character.isDigit(/std::isdigit(/g'        |\
 sed 's/Character.isSpace(/std::isspace(/g'        |\
 sed 's/Character.isWhitespace(/std::isspace(/g'   |\
+sed 's/Character.isLowerCase(/std::islower(/g'    |\
+sed 's/Character.isUpperCase(/std::isupper(/g'    |\
+sed 's/Character.toLowerCase(/std::tolower(/g'    |\
+sed 's/Character.toUpperCase(/std::toupper(/g'    |\
 #sed 's|binary(|Processing::binary(|g' |\
 sed 's/Math\./std::/g'  |\
 sed -E 's|>>>(\s*)([0-9]+)|>>\1\2/*UNSIGNED SHIFT EXPECTED*/|g' |\
@@ -151,6 +155,7 @@ sed -E 's|virtual(\s+)virtual|virtual |g' |\
 sed 's|\/\*_inline\*\/|inline |g'         |\
 sed 's|\/\*_const\*\/|const |g'           |\
 sed 's|\/\*_interfunc\*\/|virtual |g'     |\
+sed 's|\/\*_pvi\*\/|public virtual |g'    |\
 sed 's|\/\*_virtual\*\/|virtual |g'       |\
 sed 's|\/\*_override\*\/|override |g'     |\
 sed 's|\/\*_forcebody\*\/|=0|g'           |\
@@ -193,11 +198,16 @@ sed -E -f userclasses.sed  |\
 #Tutaj dopiero dyrektywy zależne od template-ów C++
 sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
 sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'   |\
+sed -E 's|\/\*_dynamic_cast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'   |\
 sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
+sed -E 's|\/\*_stcast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
+sed -E 's|\/\*_static_cast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
 sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
 sed -E 's|\/\*_tmpptr\*\/|\* |g'   |\
 sed -E 's|\/\*_rawptr\*\/|\* |g'   |\
+sed -E 's|\/\*_ref\*\/|\& |g'|\
 sed -E 's|\/\*_reference\*\/|\& |g'|\
+
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:
@@ -230,7 +240,7 @@ echo -e $COLOR4"\nEND OF$COLOR1 $* $NORMCO\n" 1>&2 #end of colored errors
 
 
 #/********************************************************************/
-#/*                 PROCESSING2C  release 2023                       */
+#/*                 PROCESSING2C  release 2024                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
