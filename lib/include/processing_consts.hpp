@@ -2,7 +2,7 @@
  * \file processing_consts.hpp
  * \brief Stałe dostępne we wszystkich programach w Processingu
  * \author 'borkowsk'
- * \date 2022-11-21 (last modification)
+ * @date 2024-09-06 (last modification)
  * \defgroup Processing_compatibility Functions and classes which mimic Processing interface
  * \defgroup JAVA_compatibility Functions and classes which mimic JAVA programming language
  */

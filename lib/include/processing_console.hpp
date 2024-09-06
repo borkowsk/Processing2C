@@ -1,7 +1,7 @@
 /// \file processing_console.hpp
 /// \brief Związane z konsolą funkcje print i println oraz formatowanie
 /// \author 'borkowsk'
-/// @date 2024-07-08 (last modification)
+/// @date 2024-09-06 (last modification)
 /// \ingroup console
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -21,8 +21,9 @@ namespace Processing
   void print(_string_param _p1,_string_param _p2,_string_param _p3);
   void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
              _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="",
-             _string_param _p9="",_string_param _pA="",_string_param _pB="",_string_param _pC=""
-                     ); ///< TODO MORE?! (up to 16)
+             _string_param _p9="",_string_param _pA="",_string_param _pB="",_string_param _pC="",
+             _string_param _pD="",_string_param _pE="",_string_param _pF=""
+                     );
 
   void println();
   void println(_string_param _p1); //The println() function writes to the console. Each call to this function creates also a new line.
@@ -30,9 +31,11 @@ namespace Processing
   void println(_string_param _p1,_string_param _p2,_string_param _p3);
   void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
                _string_param _p5="",_string_param _p6="",_string_param _p7="",_string_param _p8="",
-               _string_param _p9="",_string_param _pA="",_string_param _pB="",_string_param _pC=""
-                       ); ///< TODO MORE?! (up to 16)
+               _string_param _p9="",_string_param _pA="",_string_param _pB="",_string_param _pC="",
+               _string_param _pD="",_string_param _pE="",_string_param _pF=""
+                       );
 
+  void flush(); //???_string_param _pD="",_string_param _pE="",_string_param _pF=""
 }//END of namespace Processing
 /* ****************************************************************** */
 /*               PROCESSING2C  version 2024                           */

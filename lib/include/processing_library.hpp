@@ -2,7 +2,7 @@
  * \brief Most commonly used library functions.
  * \file processing_library.hpp
  * \author borkowsk
- * \date 2023-04-03 (last modification)
+ * @date 2024-09-06 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -138,28 +138,30 @@ namespace Processing
   /// \param  z 	float: z-coordinate of the vertex  \ingroup drawing
   void vertex(float x,float y,float z,float u,float v);
 
-  /// \note Generates random numbers:
   ///       =========================
-  /// Each time the random() function is called, it returns an unexpected value within the specified range.
-  /// If only one parameter is passed to the function, it will return a float between zero and the value of the high parameter.
-  /// For example, random(5) returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
+  /// \note Generates random numbers:
+  /// Each time the `random()` function is called, it returns an unexpected value within the specified range.
+  /// If only one parameter is passed to the function, it will return a `float` between zero and the value of
+  /// the high parameter.
+  /// For example, `random(5)` returns values between 0 and 5 (starting at zero, and up to, but not including, 5).
   /// If two parameters are specified, the function will return a float with a value between the two values.
-  /// For example, random(-5, 10.2) returns values starting at -5 and up to (but not including) 10.2.
-  /// To convert a floating-point random number to an integer, use the int() function.
+  /// For example, `random(-5, 10.2)` returns values starting at -5 and up to (but not including) 10.2.
+  /// To convert a floating-point random number to an integer, use the `int()` function.
 
   /// \brief It produces an "unpredictable" value within the specified range.
   /// \param low
   /// \param hig
   /// \return random value from low..hig range
   /// \ingroup etc
-  double random(double low,double hig);
+  double random(double low,double hig); /// @todo Should return `float` like in processing!
+                                        ///      Make `randd(double low,double hig)` for such behaviour!
 
   /// \brief It produces an "unpredictable" value within the specified range.
   /// \param hig
   /// \return random value from 0..hig range
   /// \ingroup etc
   inline
-  double random(double hig){return random(0,hig); }
+  float random(double hig){ return random(0,hig); }
 
   /// \brief Sets the seed value for random().
   /// By default, random() produces different results each time the program is run,

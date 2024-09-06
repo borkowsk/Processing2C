@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * @date 2024-07-08 (last modification)
+ * @date 2024-09-06 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -94,10 +94,10 @@ namespace Processing
         /// \brief Przypisywanie niemal czegokolwiek, dzięki możliwościom klasy _string_param
         String& operator = (_string_param v);
 
-        /// \brief powinien to robic `_string_param`, ale nie robi :-/
+        /// \brief powinien to robić `_string_param`, ale nie robi :-/
         String& operator = (const char* v) { std::string::operator = (v); return *this; }
 
-        /// \brief powinien to robic `_string_param`, ale nie robi :-/
+        /// \brief powinien to robić `_string_param`, ale nie robi :-/
         String& operator = (const Processing::String&)= default;
 
         /// \brief Przedłużanie string-u o niemal cokolwiek, dzięki możliwościom klasy _string_param
@@ -110,7 +110,7 @@ namespace Processing
         /// \brief Konkatenacja na wzór Processing-u. Niestety w C++ wciąż generuje liczne ostrzeżenia
         String operator  + (_string_param v) const;
 
-        /// \brief Operator konkatenacji - nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
+        /// \brief Operator konkatenacji — nie ma go w Processing-u, ale może pomagać rozwiązywać kłopoty z operatorem '+'
         String operator  & (_string_param v) const;
 
         //template<class X>
@@ -125,7 +125,7 @@ namespace Processing
         /// \brief Alternatywna funkcja zaprzyjaźniona do konkatenacji _Stringów poprzez _string_param
         friend String operator  + (_string_param,_string_param);
 
-        // DIRECT IMPORTS FROM basic_string, even if will be made private
+        // DIRECT IMPORTS FROM `basic_string`, even, if it will be made private
         using std::string::length;
         using std::string::c_str;
         using std::string::operator [];
@@ -164,7 +164,7 @@ namespace Processing
         /// \return Copy of this string with requested characters lower-cased.
         String toLowerCase(int startIndex,int endIndex) const;
 
-        /// @brief Java getchars() for tranfer char frpm string to array of chars.
+        /// @brief Java `getchars()` for transfer char from string to array of chars.
         /// @note The Java String class getChars() method copies the content of this string into a specified char array.
         ///       There are four arguments passed in the getChars() method.
         /// \param srcBeginIndex `int`: The index from where copying of characters is started.
@@ -265,7 +265,7 @@ namespace Processing
         self_printable_ptr() = default ;
         /// \brief Copy constructor
         self_printable_ptr(self_printable_ptr const& ) = default ;
-        /// \brief MOST IMPORTANT CONSTRUCTOR (for accept " new T() " )
+        /// \brief THE MOST IMPORTANT CONSTRUCTOR (for accept `new T()` ).
         self_printable_ptr(T* ini):ptr<T>(ini){}
 
         // Todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
@@ -278,36 +278,36 @@ namespace Processing
 
         auto begin() //auto return need C++14 !
         {
-            T* raw=this->get(); //Code splited for DEBUGing
+            T* raw=this->get(); //Code is split for DEBUG-ing.
             auto iter=raw->begin();
             return iter;
         }
 
         auto end() //auto return need C++14 !
         {
-            T* raw=this->get(); //Code splited for DEBUGing
+            T* raw=this->get(); //Code is split for DEBUG-ing.
             auto iter=raw->end();
             return iter;
         }
     };
 
     // Implementacje
-    // ////////////////////////////////////
+    //*////////////////////////////////////
 
-    /// Constructor: Inicjalizacja obiektu String jakąś liczbą
+    /// Constructor: Inicjalizacja obiektu String jakąś liczbą.
     inline String::String(double v):String()
     {
         operator+=(v);
     }
 
-    /// Constructor: Inicjalizacja obiektu String reprezentacją tekstową adresu jakiegoś obiektu
+    /// Constructor: Inicjalizacja obiektu String reprezentacją tekstową adresu jakiegoś obiektu.
     inline String::String(const Object* p):String("@")
     {
         operator += ( (long unsigned int)p );
     }
 
-    /// Constructor: Inicjalizacja klasy String reprezentacją tekstową adresu trzymanego w obiekcie
-    /// z szablonu Processing::ptr<T>
+    /// Constructor: Inicjalizacja klasy String reprezentacją tekstową adresu trzymanego w obiekcie.
+    /// z szablonu `Processing::ptr<T>`
     template<class T>
     inline String::String(const ptr<T> p):String("@")
     {
@@ -315,7 +315,7 @@ namespace Processing
     }
 
     /// Dopisanie do zawartości String-u reprezentacji tekstowej adresu trzymanego w obiekcie
-    /// z szablonu Processing::ptr<T>
+    /// z szablonu `Processing::ptr<T>`
     template<class X>
     String& String::operator += (const ptr<X>& p)
     {
@@ -329,7 +329,7 @@ namespace Processing
     inline _string_param::_string_param(char16_t p):String( p )// inline?
     {}
 
-    /// @details Constructor: Inicjalizacja _string_param z typów _self_printable
+    /// @details Constructor: Inicjalizacja `_string_param` z typów `_self_printable`.
     inline _string_param::_string_param(const _self_printable& p):String(p.print())
     {}
 
@@ -409,7 +409,7 @@ namespace Processing
 
 }//END of namespace Processing
 /* ******************************************************************
- *                PROCESSING2C  version 2023                        *
+ *                PROCESSING2C  version 2024                        *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

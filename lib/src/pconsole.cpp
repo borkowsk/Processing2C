@@ -1,7 +1,7 @@
-/// \file ***.cpp
+/// \file
 /// \brief Processing like console functions
 /// \author 'borkowsk'
-/// @date 2024-07-08 (last modification)
+/// @date 2024-09-06 (last modification)
 ///
 /// \ingroup PROCESSING_compatibility
 // //////////////////////////////////////////////////////////////////////
@@ -44,18 +44,25 @@ void print(_string_param _p1,_string_param _p2,_string_param _p3)
 
 void print(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
            _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8,
-           _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC )
+           _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC,
+           _string_param _pD,_string_param _pE,_string_param _pF)
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
     if(_p4.notEmpty()) std::cout<<' '<<_p4;
+
     if(_p5.notEmpty()) std::cout<<' '<<_p5;
     if(_p6.notEmpty()) std::cout<<' '<<_p6;
     if(_p7.notEmpty()) std::cout<<' '<<_p7;
     if(_p8.notEmpty()) std::cout<<' '<<_p8;
+
     if(_p9.notEmpty()) std::cout<<' '<<_p9;
     if(_pA.notEmpty()) std::cout<<' '<<_pA;
     if(_pB.notEmpty()) std::cout<<' '<<_pB;
     if(_pC.notEmpty()) std::cout<<' '<<_pC;
+
+    if(_pD.notEmpty()) std::cout<<' '<<_pD;
+    if(_pE.notEmpty()) std::cout<<' '<<_pE;
+    if(_pF.notEmpty()) std::cout<<' '<<_pF;
 }
 
 void println()
@@ -80,8 +87,8 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3)
 
 void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param _p4,
              _string_param _p5,_string_param _p6,_string_param _p7,_string_param _p8,
-             _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC )
-
+             _string_param _p9,_string_param _pA,_string_param _pB,_string_param _pC,
+             _string_param _pD,_string_param _pE,_string_param _pF)
 {
     std::cout<<_p1<<' '<<_p2<<' '<<_p3;
     if(_p4.notEmpty()) std::cout<<' '<<_p4;
@@ -93,8 +100,16 @@ void println(_string_param _p1,_string_param _p2,_string_param _p3,_string_param
     if(_pA.notEmpty()) std::cout<<' '<<_pA;
     if(_pB.notEmpty()) std::cout<<' '<<_pB;
     if(_pC.notEmpty()) std::cout<<' '<<_pC;
+    if(_pD.notEmpty()) std::cout<<' '<<_pD;
+    if(_pE.notEmpty()) std::cout<<' '<<_pE;
+    if(_pF.notEmpty()) std::cout<<' '<<_pF;
     std::cout<<std::endl;
 }
+
+void flush()
+{
+    std::cerr.flush(); std::cout.flush();
+}//???
 
 }//END of namespace Processing
 /* ******************************************************************

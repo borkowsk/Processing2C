@@ -2,7 +2,7 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
-* @date 2024-09-05 (last modification)
+* @date 2024-09-06 (last modification)
 * \see <ul>
 * <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> "https://en.cppreference.com/w/cpp/language/constructor"
@@ -36,6 +36,7 @@
 
 #include <cassert>
 #include <cstdint>
+//#include <cstring>
 #include <memory>
 #include <initializer_list>
 
@@ -417,13 +418,60 @@ sarray<T>::sarray(std::initializer_list<T> l):ptr< array<T> >(new array<T>(l.siz
 
 /**
  * \brief The sole constructor of inside template array<T> class
+ * \details The purpose of this class is to imitate the behavior of a JAVA array, which is filled with zeros
+ *          after allocation. However, in JAVA and Processing, such an array contains only primitive types
+ *          or object handles, i.e. pointers, which can usually be safely filled with zeros.
  */
 template<class T>
 inline
 array<T>::array(size_t N): length{N}
 {
     _ptr = new T[N];
+    // Fill memory with zeros - to niebezpieczne dla obiektów posiadających własne konstruktory!
+    // memset(_ptr,'\0', N * sizeof(T) );
 }
+
+    template<> inline
+    array<char>::array(size_t N): length{N} {
+        _ptr = new char[N];
+        for(int i=0;i<N;i++) _ptr[i]='\0';
+    }
+
+    template<> inline
+    array<char16_t>::array(size_t N): length{N} {
+        _ptr = new char16_t[N];
+        for(int i=0;i<N;i++) _ptr[i]='\0';
+    }
+
+    template<> inline
+    array<char32_t>::array(size_t N): length{N} {
+        _ptr = new char32_t[N];
+        for(int i=0;i<N;i++) _ptr[i]='\0';
+    }
+
+    template<> inline
+    array<int>::array(size_t N): length{N} {
+        _ptr = new int[N];
+        for(int i=0;i<N;i++) _ptr[i]=0;
+    }
+
+    template<> inline
+    array<long>::array(size_t N): length{N} {
+        _ptr = new long[N];
+        for(int i=0;i<N;i++) _ptr[i]=0;
+    }
+
+    template<> inline
+    array<float>::array(size_t N): length{N} {
+            _ptr = new float[N];
+            for(int i=0;i<N;i++) _ptr[i]=0.0f;
+    }
+
+    template<> inline
+    array<double>::array(size_t N): length{N} {
+        _ptr = new double[N];
+        for(int i=0;i<N;i++) _ptr[i]=0.0;
+    }
 
 /**
  * \brief The sole constructor of inside template matrix<T> class
@@ -438,7 +486,7 @@ matrix<T>::matrix(size_t N,size_t M):array< sarray<T> >( N )
 
 }/// @} END of namespace Processing
 /* ****************************************************************** */
-/*               PROCESSING2C  version 2023-07-28                     */
+/*               PROCESSING2C  version 2024                           */
 /* ****************************************************************** */
 /*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                   */
 /*            W O J C I E C H   B O R K O W S K I                     */
