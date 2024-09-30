@@ -1,12 +1,13 @@
 /// ABM model of segregation (test project for Processing2C)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: RTMEventHandling->pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 ///  Dopasowana do modelu obsługa zdarzeń
 //*///////////////////////////////////////////////////////////////////////////////////////
 int searchedX=-1;
 int searchedY=-1;
-bool Clicked=false;
+bool    Clicked=false;
 pAgent  theSelected=nullptr; 
 
 double minDist2Selec=MAX_INT;
@@ -60,5 +61,5 @@ void processing_window::onKeyPressed()
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 ///////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

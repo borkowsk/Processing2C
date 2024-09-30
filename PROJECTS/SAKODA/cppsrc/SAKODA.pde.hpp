@@ -1,53 +1,56 @@
-/// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @file
+/// ABM model of segregation. (test project for Processing2C)
 /// ORIGINAL FILE: "SAKODA.pde"
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
-/// Sakoda inspired AGENT BASE MODEL utilized 1D or 2D dicrete geometry
-/// implemented by Wojciech Borkowski
+/// Sakoda conception inspired AGENT BASE MODEL utilized 1D or 2D discrete geometry
+/// implemented by Wojciech Borkowski.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
-// Model parameters
-String modelName="ABMSakoda"; ///< Name of the model
-int side=100; ///< side of main table
-float density=0.55; ///<initial density of agents
+// Model parameters:
+String modelName="ABMSakoda";                  ///< Name of the model.
+int side=100;                                  ///< side of main table.
+float density=0.55;                            ///< initial density of agents.
 
-pWorld TheWorld=new World(side); ///<  will be initialised inside setup function
+pWorld TheWorld=new World(side);                ///<  will be initialised inside setup function.
 
-// Parameters of visualisation etc...
-int cwidth=8; ///< size of cell
-int STATUSHEIGH=40; ///<???
-int STEPSperVIS=1;  ///<???
-int FRAMEFREQ=20;   ///<???
+// Parameters of visualisation etc. :
+int cwidth=8;       ///< size of cell.
+int STATUSHEIGH=40; ///< ???
+int STEPSperVIS=1;  ///< ???
+int FRAMEFREQ=20;   ///< ???
 
-bool WITH_VIDEO=false;   ///< Is video stream enabled?
-bool simulationRun=true; ///<Start/stop flag
+bool    WITH_VIDEO=false;                     ///< Is video stream enabled?
+bool    simulationRun=true;                   ///< Start/stop flag.
 
 void processing_window::setup()
 {
-  // Graphics
-  size(800,840);
+  size(800,840); // Do graphics!
   setFrameRate(FRAMEFREQ);
   background(255,255,200);
   strokeWeight(2);
   
-  // Model
+  // Do model!
   initializeModel(TheWorld);
-  initializeStats(); //Wykomentowanie blokuje tworzenie pliku log
+  initializeStats();          // Wykomentowanie blokuje tworzenie pliku log
   doStatistics(TheWorld);
   
-  // Window 
+  // Window:
   println(String("REQUIRED SIZE OF PAINTING AREA IS ")+(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
   cwidth=(height-STATUSHEIGH) / side;
-    
+
+  // Movie (You need RTMVideo->pde to make it.):
   if(WITH_VIDEO) 
   {
     //initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
     //FirstVideoFrame();
   }
   
-  //Finishing setup stage
-  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height); //-myMenu->bounds->height???
-  visualizeModel(TheWorld); //First time visualisation
+  // Finishing setup stage:
+  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height); // - myMenu->bounds->height ???
+  visualizeModel(TheWorld); // First time (0-th step) visualisation.
+
   if(!simulationRun)
     println("PRESS 'r' or 'ESC' to start simulation");
   else
@@ -88,5 +91,5 @@ void writeStatusLine() ///< Used also for stats
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

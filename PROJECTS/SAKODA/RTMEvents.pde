@@ -1,5 +1,6 @@
 /// ABM model of segregation (test project for Processing2C)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: RTMEventHandling.pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 ///  Dopasowana do modelu obsługa zdarzeń

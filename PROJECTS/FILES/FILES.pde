@@ -1,6 +1,7 @@
-/// TEST KLAS obsługi strumieni
+/// TEST KLAS obsługi strumieni.
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "FILES.pde"
+// @date 2024-09-30 (last change)
 //////////////////////////////////////////////////////////////////////////////////
 
 PrintWriter    writer = null;

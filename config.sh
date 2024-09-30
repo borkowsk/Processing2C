@@ -1,6 +1,6 @@
 #!/bin/bash
 # Processing2C version 0.2d installation script
-#
+# @date 2024-09-30 (last change)
 # Processing2C version .22.
 #
 if [[ -f /usr/bin/gedit ]]

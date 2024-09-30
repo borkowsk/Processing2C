@@ -1,5 +1,6 @@
 /// Agent Base Model adopted for Processing2C
-/// Author: Zofia Cieślińska
+/// @author: Zofia Cieślińska
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: klasaWorld->pde
 /////////////////////////////////////////////
 
@@ -140,7 +141,7 @@ class World: public virtual Object{
   //++++++++++++ FUNKCJE POMOCNICZE ++++++++++++
 
 
-  bool czyWstroneZpamieci(int i, int j, int p, int r, int mem) { 
+  bool    czyWstroneZpamieci(int i, int j, int p, int r, int mem) { 
     //idzie za danymi współrzędnymi w pamięci
     sarray<int> polePamieci = antsWorld[i][j]->memory[mem];
     p = std::abs(p - polePamieci[0]);  //zawinięcie w torus
@@ -155,18 +156,18 @@ class World: public virtual Object{
     //albo bliżej gniazda/jedzenia w którymkolwiek kierunku, albo małe p, że jednak skręci
   }  
 
-  bool czyCosWie(int i, int j) { //jeżeli wie, że gdzieś jest jedzenie
+  bool    czyCosWie(int i, int j) { //jeżeli wie, że gdzieś jest jedzenie
     return antsWorld[i][j]->memory[1][0]!=antsWorld[i][j]->memory[2][0] 
             || antsWorld[i][j]->memory[1][1]!=antsWorld[i][j]->memory[2][1];
   }  
 
 
-  bool czyMoze(int i, int j, int p, int r) { //nie może iść na swoje obecne miejsce lub na czyjeś
+  bool    czyMoze(int i, int j, int p, int r) { //nie może iść na swoje obecne miejsce lub na czyjeś
     return (p!=i || r!=j) && antsWorld[p][r]==nullptr;
   }
 
 
-  bool czyChce(int i, int j, int p, int r) {  
+  bool    czyChce(int i, int j, int p, int r) {  
     if (antsWorld[i][j]->memory[0][0]>0) {  
       //jeżeli już coś zebrała, chce tylko do gniazda
       return czyWstroneZpamieci(i, j, p, r, 1);
@@ -258,5 +259,5 @@ class World: public virtual Object{
     }
   }
 };
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

@@ -1,46 +1,46 @@
-/// String operations tests
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @file
+/// String operations tests.
 /// ORIGINAL FILE: "STRINGTEST.PDE"
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /////////////////////////////////////////////////////////////////
 
-String A;                     ///< declared globally
-String B=nullptr;                ///< declared globally
-String C="Ala ma kota!";      ///< declared globally
-String D="😜👍 😡 🤼‍♂️ 🧐";   ///< declared globally
-String E=String("Number")+1;          ///< declared globally
+String A;                     ///< declared globally.
+String B=nullptr;                ///< declared globally.
+String C="Ala ma kota!";      ///< declared globally.
+String D="😜👍 😡 🤼‍♂️ 🧐";      ///< declared globally.
+String E=String("Number")+1;          ///< declared globally.
 
-sarray<String> SA={
-	A,B,C,D,E
-	};      ///< declared globally
+sarray<String> SA={A,B,C,D,E};      ///< declared globally.
 
-pStringList SL=new StringList(SA); ///< declared globally
+pStringList SL=new StringList(SA); ///< declared globally.
 
-pArrayList<String> SAL=new ArrayList<String>(); ///< declared globally
+pArrayList<String> SAL=new ArrayList<String>(); ///< declared globally.
 
 int y=0; ///< declared globally
 
-void toScreen(pStringList lst)  ///< declared globally
+void toScreen(pStringList lst)  ///< declared globally.
 {
   for(String s:lst)
   if(s!=nullptr)
       text(s,1,y+=16);
 }
 
-void toScreen(pArrayList<String> lst)  ///< declared globally
+void toScreen(pArrayList<String> lst)  ///< declared globally.
 {
   for(String s:lst)
   if(s!=nullptr)
       text(s,1,y+=16);
 }
 
-void addStrings(pStringList lst1,pArrayList<String> lst2)  ///< declared globally
+void addStrings(pStringList lst1,pArrayList<String> lst2)  ///< declared globally.
 {
   lst1->append(C+String("? & ")+E);
   for(String s:lst1)
     lst2->add(s);
 }
 
-void processing_window::setup()  // Must be
+void processing_window::setup()  // Must be->But should not be marked with `///`
 {
   size(300,200);
   for(String s:SA)
@@ -50,5 +50,5 @@ void processing_window::setup()  // Must be
   toScreen(SL);
   toScreen(SAL);
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

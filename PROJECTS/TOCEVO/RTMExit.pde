@@ -1,4 +1,5 @@
-// @date 2024-09-30 (last modification)
+// @file
+/// @date 2024-09-30 (last modification)
 /// Support for exiting the program when something needs to be cleaned up before doing so.
 //*///////////////////////////////////////////////////////////////////////////////////////
 

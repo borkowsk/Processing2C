@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:44 
+//Automagically generated file. @date 2024-09-30 17:06:18 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -12,7 +12,7 @@ class KLASA; typedef Processing::ptr<KLASA> pKLASA; //
 //All global finals (consts) from Processing files
 
 //All global variables from Processing files
-extern	int 		KLASA_Counter;	// ->  Globalny licznik obiektów typu RGB
+extern	int 		KLASA_Counter;	// ->  Globalny licznik obiektów typu RGB.
 extern	int 		JUMP;	// ->  skok pozycji "zarodnika". Nieparzysty!
 extern	int 		CJUMP;	// ->  skok koloru. Tez lepiej nieparzysty.
 extern	int 		STARTG;	// ->  W jakiej szarości pierwsza komórka

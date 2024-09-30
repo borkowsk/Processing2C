@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:42 
+//Automagically generated file. @date 2024-09-30 17:06:17 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -21,9 +21,9 @@ extern	int 		yNest ;	// -> ???
 extern	int 		siNest ;	// -> ???
 extern	int 		foodSupply;  // ->  początkowa ilość jedzenia w gnieździe
 extern	int 		ileWsumieMrowek ;	// ->  maksymalna dopuszczalna liczba mrówek
-extern	PrintWriter 		output; // ->  Globalny output
-extern	PrintWriter 		stan;   // ->  stany
-extern	pWorld 		world;        // ->  ŚWIAT MRÓWEK
+extern	PrintWriter 		output;     // ->  Globalny output
+extern	PrintWriter 		stan;       // ->  stany
+extern	pWorld 		world;            // ->  ŚWIAT MRÓWEK
 extern	int 		ws ;	// ->  ???
 extern	int 		sizew ;	// ->  ???
 extern	float 		ts ;	// ->  wzmocnienie szlaku po zebraniu jedzenia
@@ -39,16 +39,16 @@ extern	bool 		szlak;          // ->  ???
 extern	bool 		pamiec;         // ->  ???
 extern	bool 		losowo;         // ->  ???
 extern	int 		ileSymulacji ;	// ->  ???
-extern	int 		iteracja;  // ->  ???
+extern	int 		iteracja;          // ->  ???
 extern	int 		dra ;	// ->  ???
-extern	int 		lpsym ;	// ->  do nazewnictwa
+extern	int 		lpsym ;	// ->  do nazewnictwa.
 
 //All global arrays from Processing files
 
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	inicjacja();  // => Funkcja wymagająca deklaracji zapowiadającej
-void	pomocPetli();  // => Funkcja wymagająca deklaracji zapowiadającej
-void	petla();  // => Funkcja wymagająca deklaracji zapowiadającej
+void 	inicjacja();  // => Funkcja wymagająca w C++ deklaracji zapowiadającej.
+void 	pomocPetli();  // => Funkcja wymagająca deklaracji zapowiadającej
+void 	petla();  // => Funkcja wymagająca deklaracji zapowiadającej
 #endif

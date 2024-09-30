@@ -1,16 +1,18 @@
+/// @file
 /// Simple model of colony growth with mutations (test project for Processing2C).
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @note THIS IS PROCESSING2C EXAMPLE
+/// @todo May make GPF!
+/// @date 2024-09-30 (last modification)
 //*////////////////////////////////////////////////////////////////////////////////
-// Wzrost losowo z punktu środkowego z mutacjami kolorów
+// PL: Wzrost losowo z punktu środkowego z mutacjami kolorów
 //*////////////////////////////////////////////////////////////////////////////////
-// UWAGA! Uzywamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
+// UWAGA! Używamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
 
 //Parametry modelu  
 int JUMP=3;     ///< skok pozycji "zarodnika". Nieparzysty!
 int CJUMP=9;    ///< skok koloru->Tez lepiej nieparzysty.
 int STARTG=128; ///< W jakiej szarości pierwsza komórka
-bool ScreenDumps=false; ///< Zrzucanie obrazków co krok wcale
+bool    ScreenDumps=false; ///< Zrzucanie obrazków co krok wcale
 int VIS_FRQ=100; ///< co ile kroków zrzut ekranu
 
 //Ważne globalne zmienne, ale inicjowane w funkcji setup
@@ -29,7 +31,7 @@ void processing_window::setup() //Window and model initialization
   World = new matrix<pKLASA>(Side,Side);
   World[Side/2][Side/2]= new KLASA();
 
-  World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG); // Inicjalize 
+  World[Side/2][Side/2]->Set(STARTG,STARTG,STARTG); // Inicjalizacja.
   World[Side/2][Side/2]->Visualise(Side/2,Side/2);
   
   output = createWriter("Statistics.log"); // Create a new file in the sketch directory  
@@ -41,7 +43,7 @@ void processing_window::setup() //Window and model initialization
 }
 
 int Step=0;
-bool Stop=false;
+bool    Stop=false;
 
 /// Monte Carlo Step
 void processing_window::draw()
@@ -99,5 +101,5 @@ void processing_window::draw()
     Step++;
   }
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:44
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

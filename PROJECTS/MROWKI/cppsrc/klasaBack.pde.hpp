@@ -1,5 +1,6 @@
 /// Agent Base Model adopted for Processing2C
-/// Author: Zofia Cieślińska
+/// @author: Zofia Cieślińska
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: klasaBack->pde
 /////////////////////////////////////////////
 
@@ -51,5 +52,5 @@ class Back: public virtual Object{
     if (amountFood<=0) id = 0;
   }
 };
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

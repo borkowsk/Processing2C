@@ -272,7 +272,9 @@ void count_lines(std::string& block)
 /// Main function of class extraction tool.
 int main(int argc,const char** argv)
 {
-    std::cerr << "Processing refactor tool error stream:" << std::endl << std::flush;
+    std::cerr << "Processing2C preprocessor compiled "<<__DATE__<< std::endl
+              << "This is the beginning of error stream: "<< std::endl << std::flush;
+
 
     if(argc>1)
     {
@@ -288,6 +290,7 @@ int main(int argc,const char** argv)
 
     std::string logName= OutDir + "/tools.log";
     mylog.open(logName, std::ios::app);
+
     if(!mylog.is_open())
     {
         std::cerr << "Cant open file \"" << logName << "\"\n";

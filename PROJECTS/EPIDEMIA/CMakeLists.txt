@@ -1,10 +1,10 @@
 # This file was made automagically. Do not edit!
-#! @date 2023-10-11 14:12:40 (translation timemark)
+#! @date 2024-09-30 17:06:17 (translation timemark)
 cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(EPIDEMIA)
-set( VERSION_NUM 0.22g ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22h ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -16,9 +16,9 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/EPIDEMIA/cppsrc/" )
-set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
-set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
+set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/EPIDEMIA/cppsrc/" )
+set( PROC2C   "/data/wb/SCC/public/Processing2C" )
+set( SYMSHELL "/data/wb/SCC/public/SymShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )

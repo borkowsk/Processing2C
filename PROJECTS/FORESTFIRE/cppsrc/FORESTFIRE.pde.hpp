@@ -1,5 +1,6 @@
-/// Sophisticated :-) PCA (Probabilistic Cellular Automaton) model test for Processing2C
+/// Sophisticated :-) PCA (Probabilistic Cellular Automaton) model test for Processing2C.
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: "FORESTFIRE.pde"
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Model "pożaru lasu" jest bardzo klasyczny, choć tu mamy wersję autorską
@@ -27,7 +28,7 @@ PrintWriter Log; ///<For writing statistics into disk drive
 
 // For visualisation
 int S=20;       ///cell width & height
-bool is_burning=false;
+bool    is_burning=false;
 
 // For statistics
 int Step=0; ///<!!!
@@ -195,5 +196,5 @@ void doVisualisation() ///< Must be predeclared
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// "Forest fire with regeneration" - my private version 
 //*///////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:41
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

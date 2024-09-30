@@ -1,4 +1,5 @@
-// @date 2024-09-30 (last modification)
+// @file
+/// @date 2024-09-30 (last modification)
 /// Support for exiting the program when something needs to be cleaned up before doing so.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,5 +28,5 @@ _OnlyProcessingBlockEnd*/
 ////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 ////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

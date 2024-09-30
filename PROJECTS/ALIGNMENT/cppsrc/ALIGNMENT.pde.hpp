@@ -1,6 +1,7 @@
 /// Ellipse,Rect & Text alignment test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ALIGNMENT.PDE"
+// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////////////////////////
 
 
@@ -121,5 +122,5 @@ void processing_window::draw()
   cross(width-1,height-1);
 }
 
-//NOTE! ../../scripts did it 2023-10-11 14:12:39
+//NOTE! ../../scripts did it 2024-09-30 17:06:16
 

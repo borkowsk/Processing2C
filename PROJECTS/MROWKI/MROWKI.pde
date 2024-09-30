@@ -1,17 +1,19 @@
-/// Agent Base Model adopted for Processing2C
-/// Author: Zofia Cieślińska
+/// @file
+/// Agent Base Model of ant foraging adopted for Processing2C.
 /// ORIGINAL FILE: "MRÓWKI.pde"
+/// @author: Zofia Cieślińska
+/// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////
 
 //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
-PrintWriter output; ///< Globalny output
-PrintWriter stan;   ///< stany
-World world;        ///< ŚWIAT MRÓWEK
+PrintWriter output;     ///< Globalny output
+PrintWriter stan;       ///< stany
+World world;            ///< ŚWIAT MRÓWEK
 
-int ws = 10;        ///< ???
-int sizew = 900;    ///< ???
+int ws = 10;            ///< ???
+int sizew = 900;        ///< ???
 
 //mrówka
 float ts = 0.5;         ///< wzmocnienie szlaku po zebraniu jedzenia
@@ -44,9 +46,9 @@ void setup() {
   petla();
 }
 
-int iteracja;  ///< ???
-int dra = 0;   ///< ???
-int lpsym = 1; ///< do nazewnictwa
+int iteracja;          ///< ???
+int dra = 0;           ///< ???
+int lpsym = 1;         ///< do nazewnictwa.
 
 void draw() {
   if (foodSupply<400) {  //dra - ile razy wykona tę samą symulację
@@ -77,7 +79,8 @@ void draw() {
   }
 }
 
-void inicjacja() { ///< Funkcja wymagająca deklaracji zapowiadającej
+void inicjacja()  ///< Funkcja wymagająca w C++ deklaracji zapowiadającej.
+{
   foodSupply = 0;
   iteracja = 0;
   world = new World();

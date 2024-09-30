@@ -1,5 +1,6 @@
-/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// ABM (Agent Base Modeling) minimum template test for Processing2C.
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: "EPIDEMIA.pde"
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Model of epidemic using template for AGENT BASE MODEL in 1D & 2D discrete geometry
@@ -47,8 +48,8 @@ int STATUSHEIGH=150; ///< WYSOKOŚĆ PASKA STATUSU NA DOLE OKNA
 int STEPSperVIS=1; ///< JAK CZĘSTO URUCHAMIAMY WIZUALIZACJĘ
 int FRAMEFREQ=30;  ///< ILE RAZY NA SEKUNDĘ URUCHAMIA SIĘ draw( )
 
-//bool WITH_VIDEO=false; ///< CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo->pde)
-bool simulationRun=true; ///< FLAGA Start/stop DZIAŁANIA SYMULACJI
+//bool    WITH_VIDEO=false; ///< CZY CHCEMY ZAPIS DO PLIKU FILMOWEGO (wymagany modu… RTMVideo->pde)
+bool    simulationRun=true; ///< FLAGA Start/stop DZIAŁANIA SYMULACJI
 
 int fontHeight=16; ///< Wysokość napisów (działa tylko w Processingu, ale 16 to domyslne w X11
 
@@ -143,5 +144,5 @@ void writeStatusLine() ///< Ta nazwa musi być znana globalnie
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM MAIN TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:40
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

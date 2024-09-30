@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:40 
+//Automagically generated file. @date 2024-09-30 17:06:16 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -18,5 +18,5 @@ extern	int 		W;	// ->  Control parameter
 //All global matrices from Processing files
 
 //All global functions from Processing files
-int	radius();  // => Example of the user declared function
+int 	radius();  // => Example of the user declared function
 #endif

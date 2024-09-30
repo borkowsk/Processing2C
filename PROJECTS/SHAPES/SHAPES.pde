@@ -1,7 +1,12 @@
+/// @file
+/// Shape example.
+/// @date 2024-09-30 (last change)
+//*/////////////////////////
 
 final int iniWidth=500;
 final int iniHeight=500;
 final int NUMBER_OF_SHAPES=7;
+
 int   FREQUENCY=25;
 
 void settings()

@@ -1,7 +1,12 @@
+/// @file
+/// Shape example.
+/// @date 2024-09-30 (last change)
+//*/////////////////////////
 
 const int iniWidth=500;
 const int iniHeight=500;
 const int NUMBER_OF_SHAPES=7;
+
 int   FREQUENCY=25;
 
 void processing_window::settings()
@@ -61,5 +66,5 @@ void random_shape() ///< Global namespace!
    default: println("Not so many shapes!"); break;
    }
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

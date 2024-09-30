@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:42 
+//Automagically generated file. @date 2024-09-30 17:06:17 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -14,35 +14,35 @@ class World; typedef Processing::ptr<World> pWorld; // {
 
 //All global variables from Processing files
 extern	int 		Number_of_identities;	// ->  Ile jest wykluczających się tożsamości
-extern	String 		modelName;	// ->  Name of the model
-extern	int 		side;	// ->  side of main table
-extern	float 		density;	// -> initial density of agents
-extern	pWorld 		TheWorld;	// ->   will be initialised inside setup function
-extern	int 		cwidth;	// ->  size of cell
-extern	int 		STATUSHEIGH;	// -> ???
-extern	int 		STEPSperVIS;	// -> ???
-extern	int 		FRAMEFREQ;	// -> ???
+extern	String 		modelName;	// ->  Name of the model.
+extern	int 		side;	// ->  side of main table.
+extern	float 		density;	// ->  initial density of agents.
+extern	pWorld 		TheWorld;	// ->   will be initialised inside setup function.
+extern	int 		cwidth;	// ->  size of cell.
+extern	int 		STATUSHEIGH;	// ->  ???
+extern	int 		STEPSperVIS;	// ->  ???
+extern	int 		FRAMEFREQ;	// ->  ???
 extern	bool 		WITH_VIDEO;	// ->  Is video stream enabled?
-extern	bool 		simulationRun;	// -> Start/stop flag
+extern	bool 		simulationRun;	// ->  Start/stop flag.
 
 //All global arrays from Processing files
 
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	initializeAgents(smatrix<pAgent> agents);  // => Need to be global!
-void	initializeAgents(sarray<pAgent> agents);  // => Need to be global!
-void	changeAgents(sarray<pAgent> agents);  // => Need to be global!
-void	changeAgents(smatrix<pAgent> agents);  // => Need to be global!
-void	initializeModel(pWorld world);  // => Need to be global!
-void	visualizeModel(pWorld world);  // => Need to be global!
-void	changeState(pWorld world);  // => Need to be global!
-void	modelStep(pWorld world);  // => Need to be global!
-void	initializeStats();  // => Need to be global!
-void	doStatistics(pWorld world);  // => Need to be global!
-void	doStatisticsOnAgents(sarray<pAgent> agents);  // => Need to be global!
-void	doStatisticsOnAgents(smatrix<pAgent> agents);  // => Need to be global!
-void	visualizeAgents(smatrix<pAgent> agents);  // => Need to be global!
-void	visualizeAgents(sarray<pAgent> agents);  // => Need to be global!
-void	writeStatusLine();  // => Used also for stats
+void 	initializeAgents(smatrix<pAgent> agents);  // => Need to be global!
+void 	initializeAgents(sarray<pAgent> agents);  // => Need to be global!
+void  	changeAgents(sarray<pAgent> agents);  // => Need to be global!
+void  	changeAgents(smatrix<pAgent> agents);  // => Need to be global!
+void 	initializeModel(pWorld world);  // => Need to be global!
+void 	visualizeModel(pWorld world);  // => Need to be global!
+void 	changeState(pWorld world);  // => Need to be global!
+void 	modelStep(pWorld world);  // => Need to be global!
+void 	initializeStats();  // => Need to be global!
+void 	doStatistics(pWorld world);  // => Need to be global!
+void 	doStatisticsOnAgents(sarray<pAgent> agents);  // => Need to be global!
+void 	doStatisticsOnAgents(smatrix<pAgent> agents);  // => Need to be global!
+void 	visualizeAgents(smatrix<pAgent> agents);  // => Need to be global!
+void 	visualizeAgents(sarray<pAgent> agents);  // => Need to be global!
+void 	writeStatusLine();  // => Used also for stats
 #endif

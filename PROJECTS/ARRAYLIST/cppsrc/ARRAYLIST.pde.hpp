@@ -1,6 +1,7 @@
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
+// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 pArrayList<String> testStrings=nullptr;
@@ -13,7 +14,7 @@ void processing_window::setup() // Preparing for draw() loop
   size(200, 200);
   
   testStrings=new ArrayList<String>();
-  bool res=testStrings->add("bulba?");
+  bool    res=testStrings->add("bulba?");
   res=testStrings->add("buuulba!");
   println(testStrings);
   
@@ -77,5 +78,5 @@ void user_print(pIntList intInv) ///< USED before definition!
 }
 
 
-//NOTE! ../../scripts did it 2023-10-11 14:12:40
+//NOTE! ../../scripts did it 2024-09-30 17:06:16
 

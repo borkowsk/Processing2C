@@ -1,6 +1,7 @@
 /// Class hierarchy test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "CLASSTEST.pde"
+// @date 2024-09-30 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 /// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
@@ -28,7 +29,7 @@ class Animal: public virtual Object{
 };
 
 
-// Now will be change of superclass!
+// Now will change of superclass!
 //Undefining any base class preprocessor definition: _
 #undef _superclass
 //Base class is now:
@@ -46,7 +47,7 @@ class Cat : public  Animal, public virtual Mew, public virtual Eat  , public vir
 };
 
 
-// Now will be change of superclass!
+// Now will change of superclass!
 //Undefining any base class preprocessor definition: _
 #undef _superclass
 //Base class is now:
@@ -83,7 +84,7 @@ void processing_window::setup()
     //mew = cat;//Work in processing, DOES NOT IN C++ :-/ :-(
               //error: ambiguous overload for ‘operator=’ 
     mew = static_cast<pMew>(cat); //works using COMPILE TIME static_cast in C++
-    mew = std::dynamic_pointer_cast<Mew>(cat); //dynamic_cast is usualy resolved at RUN TIME
+    mew = std::dynamic_pointer_cast<Mew>(cat); //dynamic_cast is usually resolved at RUN TIME
     
     mew->meow(2);
     
@@ -134,7 +135,7 @@ void processing_window::setup()
 
     print_animals(animals);  
     println(animals);  
-    print_animals(animals); //Sprawdzenie czy wywołanie funcji z parametrem obiektowym nie niszczy pamięci!
+    print_animals(animals); //Sprawdzenie czy wywołanie function z parametrem obiektowym nie niszczy pamięci!
 }
 
 void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
@@ -142,5 +143,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
       for(pAnimal a:anim)
         println(a);
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:40
+//NOTE! ../../scripts did it 2024-09-30 17:06:16
 

@@ -1,17 +1,19 @@
-/// Agent Base Model adopted for Processing2C
-/// Author: Zofia Cieślińska
+/// @file
+/// Agent Base Model of ant foraging adopted for Processing2C.
 /// ORIGINAL FILE: "MRÓWKI.pde"
+/// @author: Zofia Cieślińska
+/// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////
 
 //++++++++++++ ZMIENNE ++++++++++++
 
 //świat
-PrintWriter output; ///< Globalny output
-PrintWriter stan;   ///< stany
-pWorld world;        ///< ŚWIAT MRÓWEK
+PrintWriter output;     ///< Globalny output
+PrintWriter stan;       ///< stany
+pWorld world;            ///< ŚWIAT MRÓWEK
 
-int ws = 10;        ///< ???
-int sizew = 900;    ///< ???
+int ws = 10;            ///< ???
+int sizew = 900;        ///< ???
 
 //mrówka
 float ts = 0.5;         ///< wzmocnienie szlaku po zebraniu jedzenia
@@ -26,10 +28,10 @@ int ileje = 80;         ///< ile jest maksymalnie jedzenia na miejscu jedzenia
 float quiet = 0.5;      ///< tempo uciszania dźwięku
 
 //manipulowalne
-bool may_vibrate;    ///< Globalna zmienna nie może nazywać się tak jak lokalne metody
-bool szlak;          ///< ???
-bool pamiec;         ///< ???
-bool losowo;         ///< ???
+bool    may_vibrate;    ///< Globalna zmienna nie może nazywać się tak jak lokalne metody
+bool    szlak;          ///< ???
+bool    pamiec;         ///< ???
+bool    losowo;         ///< ???
 int ileSymulacji = 2;   ///< ???
 
 
@@ -44,9 +46,9 @@ void processing_window::setup() {
   petla();
 }
 
-int iteracja;  ///< ???
-int dra = 0;   ///< ???
-int lpsym = 1; ///< do nazewnictwa
+int iteracja;          ///< ???
+int dra = 0;           ///< ???
+int lpsym = 1;         ///< do nazewnictwa.
 
 void processing_window::draw() {
   if (foodSupply<400) {  //dra - ile razy wykona tę samą symulację
@@ -77,7 +79,8 @@ void processing_window::draw() {
   }
 }
 
-void inicjacja() { ///< Funkcja wymagająca deklaracji zapowiadającej
+void inicjacja()  ///< Funkcja wymagająca w C++ deklaracji zapowiadającej.
+{
   foodSupply = 0;
   iteracja = 0;
   world = new World();
@@ -89,8 +92,8 @@ void inicjacja() { ///< Funkcja wymagająca deklaracji zapowiadającej
 
 //++++++++++++ FUNKCJE DO SPRAWNEGO SYMULOWANIA ++++++++++++
 
-smatrix<bool> permutacje = new matrix<bool>(16,4);
-sarray<bool> doIteracji = new array<bool>(2);
+smatrix<bool   > permutacje = new matrix<bool   >(16,4);
+sarray<bool   > doIteracji = new array<bool   >(2);
 int pet = 0;
 
 void pomocPetli() { ///< Funkcja wymagająca deklaracji zapowiadającej
@@ -127,5 +130,5 @@ void petla() { ///< Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

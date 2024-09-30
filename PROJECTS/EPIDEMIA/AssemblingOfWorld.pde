@@ -1,5 +1,6 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: AssemblingOfWorld.pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// World is a one of two central class of each ABM model

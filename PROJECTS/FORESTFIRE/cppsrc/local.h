@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:41 
+//Automagically generated file. @date 2024-09-30 17:06:17 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -32,6 +32,6 @@ extern	float 		Burn;	// -> Ile możliwości zapalenia na krok
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	doMonteCarloStep();  // => MAIN FUNCTION OF THE MODEL
-void	doVisualisation();  // => Must be predeclared
+void 	doMonteCarloStep();  // => MAIN FUNCTION OF THE MODEL
+void 	doVisualisation();  // => Must be predeclared
 #endif

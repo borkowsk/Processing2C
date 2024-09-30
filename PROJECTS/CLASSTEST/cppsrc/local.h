@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:40 
+//Automagically generated file. @date 2024-09-30 17:06:16 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -23,5 +23,5 @@ class Dog; typedef Processing::ptr<Dog> pDog; // extends Animal
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	print_animals(pArrayList<pAnimal> anim);  // =>  Drukowanie własną metodą
+void 	print_animals(pArrayList<pAnimal> anim);  // =>  Drukowanie własną metodą
 #endif

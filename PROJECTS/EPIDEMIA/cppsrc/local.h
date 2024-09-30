@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2023-10-11 14:12:40 
+//Automagically generated file. @date 2024-09-30 17:06:17 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -42,18 +42,18 @@ extern	int 		fontHeight;	// ->  Wysokość napisów (działa tylko w Processingu
 //All global matrices from Processing files
 
 //All global functions from Processing files
-void	initializeAgents(smatrix<pAgent> agents);  // =>  Inicjalizacja wszystkich agentów w 2D
-void	initializeAgents(sarray<pAgent> agents);  // =>  Inicjalizacja wszystkich agentów  w 1D
-void	agentsChange(sarray<pAgent> agents);  // =>  Główna dynamika symulacji 1D - dummy! NIEZAIPLEMENTOWANA!
-void	agentsChange(smatrix<pAgent> agents);  // =>  Główna dynamika symulacji 2D
-void	initializeModel(pWorld world);  // => Zwyczajowa nazwa funkcji
-void	visualizeModel(pWorld world);  // => Zwyczajowa nazwa funkcji
-void	modelStep(pWorld world);  // => Zwyczajowa nazwa funkcji
-void	writeStatusLine();  // => Ta nazwa musi być znana globalnie
-void	histogram(smatrix<pAgent> agents,float startx,float starty,float hight);  // => Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.
-void	timeline(pFloatList data,float startX, float startY, float height,bool logaritm);  // =>  Dla C++ ta deklaracja musi być umieszczona w HPP
-void	timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c);  // =>  Dla C++ ta deklaracja musi być umieszczona w HPP
-void	dottedLine(float x1, float y1, float x2, float y2, float steps);  // => Potrzebna do wizualizacji
-void	visualizeAgents(smatrix<pAgent> agents);  // => Wizualizacja wszystkich agentów 2D
-void	visualizeAgents(sarray<pAgent> agents);  // =>  Wizualizacja wszystkich agentów 2D
+void 	initializeAgents(smatrix<pAgent> agents);  // =>  Inicjalizacja wszystkich agentów w 2D
+void 	initializeAgents(sarray<pAgent> agents);  // =>  Inicjalizacja wszystkich agentów  w 1D
+void  	agentsChange(sarray<pAgent> agents);  // =>  Główna dynamika symulacji 1D - dummy! NIEZAIPLEMENTOWANA!
+void  	agentsChange(smatrix<pAgent> agents);  // =>  Główna dynamika symulacji 2D
+void 	initializeModel(pWorld world);  // => Zwyczajowa nazwa funkcji
+void 	visualizeModel(pWorld world);  // => Zwyczajowa nazwa funkcji
+void 	modelStep(pWorld world);  // => Zwyczajowa nazwa funkcji
+void 	writeStatusLine();  // => Ta nazwa musi być znana globalnie
+void 	histogram(smatrix<pAgent> agents,float startx,float starty,float hight);  // => Funkcja przechodzi po wszystkich agentach i zlicza wg. klas odpornosci.
+void 	timeline(pFloatList data,float startX, float startY, float height,bool logaritm);  // =>  Dla C++ ta deklaracja musi być umieszczona w HPP
+void 	timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c);  // =>  Dla C++ ta deklaracja musi być umieszczona w HPP
+void 	dottedLine(float x1, float y1, float x2, float y2, float steps);  // => Potrzebna do wizualizacji
+void 	visualizeAgents(smatrix<pAgent> agents);  // => Wizualizacja wszystkich agentów 2D
+void 	visualizeAgents(sarray<pAgent> agents);  // =>  Wizualizacja wszystkich agentów 2D
 #endif

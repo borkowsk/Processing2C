@@ -1,10 +1,12 @@
+/// @file
 /// Simple model of colony growth with mutations (test project for Processing2C).
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @note THIS IS PROCESSING2C EXAMPLE
+/// @todo May make GPF!
+/// @date 2024-09-30 (last modification)
 //*////////////////////////////////////////////////////////////////////////////////
-// Wzrost losowo z punktu środkowego z mutacjami kolorów
+// PL: Wzrost losowo z punktu środkowego z mutacjami kolorów
 //*////////////////////////////////////////////////////////////////////////////////
-// UWAGA! Uzywamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
+// UWAGA! Używamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
 
 //Parametry modelu  
 int JUMP=3;     ///< skok pozycji "zarodnika". Nieparzysty!
@@ -29,7 +31,7 @@ void setup() //Window and model initialization
   World = new KLASA[Side][Side];
   World[Side/2][Side/2]= new KLASA();
 
-  World[Side/2][Side/2].Set(STARTG,STARTG,STARTG); // Inicjalize 
+  World[Side/2][Side/2].Set(STARTG,STARTG,STARTG); // Inicjalizacja.
   World[Side/2][Side/2].Visualise(Side/2,Side/2);
   
   output = createWriter("Statistics.log"); // Create a new file in the sketch directory  

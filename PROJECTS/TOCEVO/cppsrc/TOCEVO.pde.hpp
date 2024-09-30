@@ -16,7 +16,7 @@ float treesDensity=0.250;     ///< ??? ...
 float treesR=1.015;           ///< from 1..1.1 ...
 float agentsDensity=0.005;    ///< Initial density of agents.
 
-bool    usePunishment=true;   ///< Punishment swith off/on.
+bool    usePunishment=true;   ///< Punishment switch off/on.
 bool    enableKilling=false;  ///< ??? ...
 //bool    symPunishment=true; ///< Punishment genes defines tolerance window for others behavior.
 char16_t   punishmentTime=20;     ///< How long punished agent is paralysed.
@@ -126,5 +126,5 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

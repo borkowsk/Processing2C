@@ -1,6 +1,7 @@
 /// Dictionary is a simple class to use a String as a lookup for an value. 
 /// String "keys" are associated with integer or float values.
 /// In Pr2C it is implemented as class derived from std::map
+// @date 2024-09-30 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 
 pFloatDict inventoryF;
@@ -43,5 +44,5 @@ void processing_window::draw()
   int numRecords = inventoryI->get("records");
   text(numRecords, width/2, height/2);
 }
-//NOTE! ../../scripts did it 2023-10-11 14:12:40
+//NOTE! ../../scripts did it 2024-09-30 17:06:16
 

@@ -1,5 +1,6 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: aSimpleHistory->pde
 //*///////////////////////////////////////////////////////////////////
 /// Wykres zmian w czasie
@@ -8,9 +9,9 @@
 //void timeline(pFloatList data,             //dane do wykresu
 //              float startX, float startY, //Położenie początku
 //              float height,               //wysokość
-//              bool logaritm);          //czy logarytmować dane
+//              bool    logaritm);          //czy logarytmować dane
               
-void timeline(pFloatList data,float startX, float startY, float height,bool logaritm) /// Dla C++ ta deklaracja musi być umieszczona w HPP
+void timeline(pFloatList data,float startX, float startY, float height,bool    logaritm) /// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-FLT_MAX;
   int     whMax=-1; //Gdzie jest maksimum
@@ -71,7 +72,7 @@ void timeline(pFloatList data,float startX, float startY, float height,bool loga
 
 /// A jakby miało być więcej zmiennych? UWAGA!:  wspólna skala!!!
 /// Wtedy np->tak jak poniżej, co jest wersją bardzo prymitywną, ale będzie działać :-D
-void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool logaritm,color color_a,color color_b,color color_c) /// Dla C++ ta deklaracja musi być umieszczona w HPP
+void timeline(pFloatList data_a,pFloatList data_b,pFloatList data_c,float startX,float startY,float height,bool    logaritm,color color_a,color color_b,color color_c) /// Dla C++ ta deklaracja musi być umieszczona w HPP
 {
   float   Max=-FLT_MAX; //Tu będzie prawdziwa wartość
   float   gMax=0; //A tu przeliczona dla grafiki
@@ -195,5 +196,5 @@ void dottedLine(float x1, float y1, float x2, float y2, float steps) ///< Potrze
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - TOOLS
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:40
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

@@ -1,6 +1,8 @@
+/// @file
 /// Test for HashMaps
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "MAPTEST.pde"
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 //*////////////////////////////////////////////////////////////////////////////////
 /// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
 

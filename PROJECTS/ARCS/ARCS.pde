@@ -1,8 +1,9 @@
-/// Division of the ellipse into sectors
+/// Division of the ellipse into sectors.
 /// The coordinate system is treated as rotated!
 /// This is a test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARCS.pde"
+// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////
 
 void setup()

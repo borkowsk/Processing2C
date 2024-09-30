@@ -1,6 +1,7 @@
 /// Test foir number formating functions (test project for Processing2C)
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "FORMATS.pde"
+// @date 2024-09-30 (last change)
 //*////////////////////////////////////////////////////////////////////////////////
 
 int fontSize=16; ///< FontSize is not implemented in Pricessing2C

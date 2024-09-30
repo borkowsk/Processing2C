@@ -1,4 +1,4 @@
-//Automagically generated file. @date 2024-09-30 14:18:21 
+//Automagically generated file. @date 2024-09-30 17:06:18 
 //Dont edit\!
 #pragma once
 #ifndef LOCAL_H
@@ -36,7 +36,7 @@ extern	String 		modelName;	// ->  name of the model used for producing file name
 extern	float 		treesDensity;	// ->  ??? ...
 extern	float 		treesR;	// ->  from 1..1.1 ...
 extern	float 		agentsDensity;	// ->  Initial density of agents.
-extern	bool 		usePunishment;	// ->  Punishment swith off/on.
+extern	bool 		usePunishment;	// ->  Punishment switch off/on.
 extern	bool 		enableKilling;	// ->  ??? ...
 extern	char16_t   		punishmentTime;	// ->  How long punished agent is paralysed.
 extern	int   		costOfStep;	// ->  Metabolic cost for agent to live one step more.

@@ -1,6 +1,8 @@
+// @date 2024-09-30 (last change)
+
 void exit()
 {
-  //save("exit.png");	// Nothing interesting to save from the window.
-  println("The End");
-  super.exit();
+  save("exit.png"); //Without extension in Processing it produce TIFF, in C++ file format depend on implementation
+  println("Bye...");
+  super.exit();     //What shoud be done by default!
 }

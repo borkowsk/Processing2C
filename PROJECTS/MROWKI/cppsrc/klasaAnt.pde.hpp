@@ -1,5 +1,7 @@
-/// Agent Base Model adopted for Processing2C
-/// Author: Zofia Cieślińska
+/// Agent Base Model of ant foraging adopted for Processing2C.
+/// @author: Zofia Cieślińska
+/// @date 2024-09-30 (last change)
+//*////////////////////////////////////////////////////////////
 /// ORIGINAL FILE: klasaAnt->pde
 //*///////////////////////////////////////////
 
@@ -13,7 +15,7 @@ class Ant: public virtual Object{
   //pamięć z przegródkami: 
   //zerowa - jedzenie, pierwsza - wsp->gniazda, druga - wsp->jedzenia, rezszta - gdzie już była
   
-  bool czyCosNiosla = false;
+  bool    czyCosNiosla = false;
 
   Ant(float idA, int xGnia, int yGnia) {  //inicjacja mrówki
     id = idA; //numerek w tablicy mrówek
@@ -68,7 +70,7 @@ class Ant: public virtual Object{
     memory[2][1] = memory[1][1];
   }
 
-  bool memoryCheck(int a, int b) { //sprawdzanie, czy dane pole jest w pamięci
+  bool    memoryCheck(int a, int b) { //sprawdzanie, czy dane pole jest w pamięci
     for (int i=3; i<memo; i++) {
       if (a==memory[i][0] && b==memory[i][1]) {
         return(false);  //fałsz, gdy jest
@@ -77,5 +79,5 @@ class Ant: public virtual Object{
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

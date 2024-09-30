@@ -1,9 +1,13 @@
-/// @file STRINGDICT->pde is a test for Processing2C++
-/// @class StringDict:
-///   A simple class to use a String as a lookup for an String value. 
-///   String "keys" are associated with String values.
-///   In Pr2C it is implemented as class used std::map
-//*///////////////////////////////////////////////////////////////////
+/// @file
+/// STRINGDICT is a test for Processing2C++
+/// @date 2024-09-30 (last change)
+/// @class StringDict
+/// @details
+///   A simple class to use a `String` as a lookup for an `String` value.
+///   `String` "keys" are associated with String values.
+///   In Pr2C it is implemented as class used `std::map`
+//*///////////////////////////////////////////////////////////////////////
+
 pStringDict inventory;
 
 void processing_window::setup() 
@@ -28,5 +32,5 @@ void processing_window::draw()
   text(s, width/2, height/2);
 }
 
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! ../../scripts did it 2024-09-30 17:06:18
 

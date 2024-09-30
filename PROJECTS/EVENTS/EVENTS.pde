@@ -2,6 +2,7 @@
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// base on Processing examples
 /// ORIGINAL FILE: "EVENTS.pde"
+// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////////////
 // * Click on the window to give it focus,
 // * Or press the 'B' key.

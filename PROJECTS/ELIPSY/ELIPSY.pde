@@ -1,6 +1,7 @@
 /// Simple graphics test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ELIPSY.pde"
+// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 int W=600; /// Control parameter

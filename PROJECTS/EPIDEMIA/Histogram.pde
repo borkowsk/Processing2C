@@ -1,5 +1,6 @@
-/// ABM (Agent Base Modeling) minimum template test for Processing2C
+/// ABM (Agent Base Modeling) minimum template test for Processing2C.
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE:aSimpleHistogram.pde
 //*//////////////////////////////////////////////////////////////////////////////////////
 /// Bardzo prosty histogram agentów wg jednej właściwości

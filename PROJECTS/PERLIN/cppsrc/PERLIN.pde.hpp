@@ -1,10 +1,13 @@
-/// Perlin noise test for Processing2C
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @file
+/// Perlin noise test for Processing2C.
 /// ORIGINAL FILE: "PERLIN.pde"
+/// @uthor: Wojciech Borkowski wborkowski_uw_edu_pl
+/// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////////////////////
+
 /// Based on Processing examples for Perlin noise
-// See also: https://en->wikipedia->org/wiki/Perlin_noise
-//      and: https://www->openprocessing->org/sketch/494102/
+/// See also: https://en->wikipedia->org/wiki/Perlin_noise
+///      and: https://www->openprocessing->org/sketch/494102/
 
 void processing_window::setup() 
 {
@@ -15,13 +18,13 @@ void processing_window::setup()
 void processing_window::draw()
 {
   draw3();
-  //draw4();//THIS IS STIL NOT COMPATIBLE WITH Processing2C
+  //draw4(); // THIS IS STIL NOT COMPATIBLE WITH Processing2C
 }
 
-float xoff = 0.0;
-float yoff = 0.1;   // 2nd dimension of perlin noise
+float xoff = 0.0;  // 1st dimension
+float yoff = 0.1;  // 2nd dimension of perlin noise
 
-void draw0() ///< Used before definition
+void draw0()       ///< Used before definition, so need be marked as global for Processing2C++
 {
   stroke(random(256),0,0); //stroke(frameCount%256,2*frameCount/100,0); //stroke(0, 10);
   xoff = xoff + .01;
@@ -29,7 +32,7 @@ void draw0() ///< Used before definition
   line(n, 0, n, height);
 }
 
-void draw1() ///< May be used before definition
+void draw1()       ///< May be used before definition
 {
   background(255);
   xoff = xoff + .01;
@@ -39,7 +42,7 @@ void draw1() ///< May be used before definition
 
 float noiseScale = 0.10;
 
-void draw2() ///< May be used before definition
+void draw2()       ///< May be used before definition
 {
   background(0);
   for (int x=0; x < width; x++) {
@@ -49,7 +52,7 @@ void draw2() ///< May be used before definition
   }
 }
 
-void draw3() /// May be used before definition
+void draw3()      ///< May be used before definition
 {
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width/2; x++) {
@@ -68,8 +71,9 @@ void draw3() /// May be used before definition
   }
 }
 
-void draw4() /// May be used before definition
-{ //https://processing->org/examples/noisewave->html
+/// See: https://processing->org/examples/noisewave->html
+void draw4()      ///< May be used before definition
+{
   background(51);
 
   fill(255);
@@ -98,5 +102,5 @@ void draw4() /// May be used before definition
 }
 
 
-//NOTE! ../../scripts did it 2023-10-11 14:12:42
+//NOTE! ../../scripts did it 2024-09-30 17:06:17
 

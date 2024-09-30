@@ -1,6 +1,7 @@
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
+// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 ArrayList<String> testStrings=null;
