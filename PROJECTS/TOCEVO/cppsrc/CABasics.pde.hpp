@@ -1,4 +1,5 @@
-///   Cell is a one of two central data of each CA model
+// @date 2024-09-30 (last modification)
+/// Cell is a one of two central data of each CA model.
 //*/////////////////////////////////////////////////////////////
 
 void initializeCells( smatrix<int> cells )     ///< Need to be global!
@@ -14,10 +15,8 @@ void initializeCells( smatrix<int> cells )     ///< Need to be global!
        cells[cells->length/2][cells->length/2]=1;
 }
 
-// Implement rules
-//*///////////////////////////////////////////////
-
-void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
+/// Implement rules of cells states change.
+void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi parametr tłumaczony jest błędnie? TODO???
 {
   float R=treesR-1.0;
   int N=cells->length;
@@ -49,5 +48,5 @@ void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

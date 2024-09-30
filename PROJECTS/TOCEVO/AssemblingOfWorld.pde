@@ -1,6 +1,8 @@
-///   World is a one of two central class of each ABM model
-//*/////////////////////////////////////////////////////////////
-int StepCounter=0; ///< globalny licznik kroków
+// @date 2024-09-30 (last modification)
+/// World is a one of two central class of each ABM model.
+//*///////////////////////////////////////////////////////
+
+/*_using_class Agent */
 
 class World {
   int[][]     cells;  //!< Two dimensional array of resources
@@ -16,6 +18,8 @@ class World {
 // More elaborated functionalities are defined as stand-alone functions,
 // not as methods because of not enough flexible syntax of Processing
 //*/////////////////////////////////////////////////////////////////////////
+
+int StepCounter=0; ///< Global step counter.
 
 void initializeModel(World world)   ///< Need to be global!
 {

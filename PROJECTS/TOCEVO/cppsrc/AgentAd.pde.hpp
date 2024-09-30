@@ -1,12 +1,13 @@
-///   Agent is a one of two central class of each ABM model
+// @date 2024-09-30 (last modification)
+/// Agent is a one of two central class of each ABM model.
 //*/////////////////////////////////////////////////////////////
 
 class Agent: public virtual Object{
   public:
-  char16_t  genEat; //!< Gene for probability of eating
-  char16_t  genPan; //!< Gene for probability of punishment
-  char16_t  punished=0; //!< NOT USED
-  float energy; //!< Agent resources
+  char16_t  genEat;     //!< Gene for probability of eating.
+  char16_t  genPan;     //!< Gene for probability of punishment.
+  char16_t  punished=0; //!< NOT USED.
+  float energy;     //!< Agent resources.
   
   /// Information for inspection or so...
   String info()
@@ -14,7 +15,7 @@ class Agent: public virtual Object{
     return String("Energy:")+energy+String(" genEat:")+nf(genEat,3)+String(" genPan:")+nf(genPan,3)+String(" punished:")+punished;
   }
   
-  /// This function sets attribute values ensuring they are correct
+  /// This function sets attribute values ensuring they are correct.
   void set(float initEnergy,int igenEat,int igenPan)
   {
     energy=min(initEnergy,maxInitialEnergyOfAgent);
@@ -32,23 +33,24 @@ class Agent: public virtual Object{
     else genPan=0;
   }
   
-  /// Default constructor of the Agent
+  /// Default constructor of the Agent.
   Agent()
   {
     energy=(int)random(maxInitialEnergyOfAgent);
     genEat=(char16_t)(random(255));
-    genPan=usePunishment?(char16_t)(random(255)):0; //A jeśli startujemy z małej skłonności?
+    genPan=usePunishment?(char16_t)(random(255)):0; // A jeśli startujemy z małej skłonności?
   }
   
-  /// Offspring constructor for Agent
+  /// Offspring constructor for Agent.
   Agent(float initEnergy,int igenEat,int igenPan)
   {
     set(initEnergy,igenEat,igenPan);
   }
+  
 };
 
 //*////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT for TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

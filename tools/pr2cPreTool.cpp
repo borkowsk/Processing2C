@@ -1,11 +1,11 @@
-/// \file
-/// \brief An application that corrects the Processing code before the real translation
-///        PL: Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
-/// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+/// @file
+/// @brief An application that corrects the Processing code before the real translation
+///        PL.: Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
+/// @author 'borkowsk'
+/// @date 2024-09-30 (last modification)
 /// 	Processing2C version 22.
 ///
-#include <locale>
+//#include <locale>
 #include <cassert>
 #include <ctime>
 #include <iostream>
@@ -14,33 +14,33 @@
 #include <string>
 #include <cstring>
 
-std::string   OutDir="./";     ///< Where byproducts (eg. class headers) have to put?
-std::ofstream mylog;           ///< Mainly for error checking
-bool EXTRACT_CLASSES=false;    ///< Make separate header file for all detected classes
+std::string   OutDir="./";     ///< Where byproducts (e.g. class headers) have to put?
+std::ofstream mylog;           ///< Mainly for error checking.
+bool EXTRACT_CLASSES=false;    ///< Make separate header file for all detected classes.
 
-/// \brief  Recode mask of ctype into readable text.
-/// \param  interest - mask of ctype information
-/// \return textual representation as std::string.
+/// \brief  Recode mask of `ctype` into readable text.
+/// \param  interest - mask of `ctype` information
+/// \return textual representation as `std::string`.
 std::string print_type(std::ctype<char>::mask interest)
 {
     std::string out=std::to_string(interest);
     out+="\t";
-    if((interest & std::ctype_base::space) !=0 ) out+="space;";//white-space character
-    if((interest & std::ctype_base::print) !=0 ) out+="print;";//printable character
-    if((interest & std::ctype_base::cntrl) !=0 ) out+="cntrl;";//control character
-    if((interest & std::ctype_base::upper) !=0 ) out+="upper;";//uppercase letter
-    if((interest & std::ctype_base::lower) !=0 ) out+="lower;";//lowercase letter
-    if((interest & std::ctype_base::alpha) !=0 ) out+="alpha;";//alphabetic character
-    if((interest & std::ctype_base::digit) !=0 ) out+="digit;";//decimal digit
-    if((interest & std::ctype_base::punct) !=0 ) out+="punct;";//punctuation character
+    if((interest & std::ctype_base::space) !=0 ) out+="space;"; //white-space character
+    if((interest & std::ctype_base::print) !=0 ) out+="print;"; //printable character
+    if((interest & std::ctype_base::cntrl) !=0 ) out+="cntrl;"; //control character
+    if((interest & std::ctype_base::upper) !=0 ) out+="upper;"; //uppercase letter
+    if((interest & std::ctype_base::lower) !=0 ) out+="lower;"; //lowercase letter
+    if((interest & std::ctype_base::alpha) !=0 ) out+="alpha;"; //alphabetic character
+    if((interest & std::ctype_base::digit) !=0 ) out+="digit;"; //decimal digit
+    if((interest & std::ctype_base::punct) !=0 ) out+="punct;"; //punctuation character
     if((interest & std::ctype_base::xdigit)!=0 ) out+="xdigit;";//hexadecimal digit
-    if((interest & std::ctype_base::blank) !=0 ) out+="blank;";//blank character
-    if((interest & std::ctype_base::alnum) !=0 ) out+="alnum;";//alpha|digit	alpha-numeric character
-    if((interest & std::ctype_base::graph) !=0 ) out+="graph;";//alnum|punct	character with graphic representation
+    if((interest & std::ctype_base::blank) !=0 ) out+="blank;"; //blank character
+    if((interest & std::ctype_base::alnum) !=0 ) out+="alnum;"; //alpha|digit	alpha-numeric character
+    if((interest & std::ctype_base::graph) !=0 ) out+="graph;"; //alnum|punct	character with graphic representation
     return out;
 }
 
-/// Extract all characters up to and including the given sequence
+/// Extract all characters up to and including the given sequence.
 int all_until(std::istream& inp,const std::string finish,std::string& block,char escape='\0')
 {
     int exp_len=finish.length();
@@ -53,9 +53,9 @@ int all_until(std::istream& inp,const std::string finish,std::string& block,char
         if(iC==EOF)
             return EOF;
 
-        block+=iC;
+        block+=std::string::value_type(iC); // Get rid of warning about automatic conversion from int to SOME char.
 
-        if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPEm to nie sprawdzamy zakończenia
+        if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPE-m to nie sprawdzamy zakończenia
             continue;
 
         if(block.length() >= exp_len
@@ -63,6 +63,7 @@ int all_until(std::istream& inp,const std::string finish,std::string& block,char
                 )
             return 1;
     }
+
     return 0;//Never used
 }
 
@@ -75,11 +76,11 @@ int parentheses_block(std::istream& inp,const char start,const char finish,std::
         auto iC = inp.get();
 
         if(iC==EOF)
-        { std::cerr << "Unexpected end of file inside parentheses "<<start<<finish<<" block "; return 0;}
+        { std::cerr << "An unexpected end of file inside parentheses "<<start<<finish<<" block "; return 0;}
 
         block+=iC;
 
-        if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPEm to nie sprawdzamy zakończenia
+        if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPE-m to nie sprawdzamy zakończenia
             continue;
 
         if(iC==start) counter++;
@@ -100,7 +101,7 @@ int parentheses_block(std::istream& inp,const std::string start,const std::strin
     return 0;//Never used
 }
 
-/// Extract next block of code
+/// Extract next block of code.
 int next_block(std::istream& inp,std::string& block,std::ctype<char>::mask interest=
                         std::ctype_base::space | std::ctype_base::alpha | std::ctype_base::digit | std::ctype_base::punct
         )
@@ -121,7 +122,7 @@ int next_block(std::istream& inp,std::string& block,std::ctype<char>::mask inter
 
         if(iC==EOF)
         {
-            if(block.length()>0)
+            if(!block.empty())
                 return typek1;
             else
                 return EOF;
@@ -153,7 +154,7 @@ int next_block(std::istream& inp,std::string& block,std::ctype<char>::mask inter
 /// Extract identifier
 std::string take_identifier(const std::string& curr_block,size_t pos)
 {
-    std::string out="";
+    std::string out; //EMPTY BY DEFAULT
 
     while(iswblank(curr_block[pos])) pos++;// EAT BLANKS!
     // WHEN COMMENTS INSIDE!!!
@@ -183,7 +184,7 @@ std::string take_identifier(const std::string& curr_block,size_t pos)
     return out;
 }
 
-/// Detect name of super class from definition of a class
+/// Detect the name of super class from definition of a class
 std::string detect_super_class(const std::string& curr_block)
 {
     std::string super_class="???";
@@ -207,7 +208,7 @@ std::string detect_super_class(const std::string& curr_block)
     return super_class;
 }
 
-/// Detect name of class from definition of a class
+/// Detect the name of class from definition of a class
 std::string detect_class_name(const std::string& curr_block)
 {
     std::string this_class="???";
@@ -268,10 +269,10 @@ void count_lines(std::string& block)
     { line_counter++; pos = block.find('\n', pos + 1); }
 }
 
-/// Main function of class extraction tool
+/// Main function of class extraction tool.
 int main(int argc,const char** argv)
 {
-    std::cerr << "Processing refactor tools error stream:" << std::endl << std::flush;
+    std::cerr << "Processing refactor tool error stream:" << std::endl << std::flush;
 
     if(argc>1)
     {
@@ -306,6 +307,7 @@ int main(int argc,const char** argv)
 
     std::string curr_block="s";
 
+    std::cerr<<"Waiting for input from `std::cin`...."<<std::endl;
     while(true) {
         bool isInterface=false;
         auto t = next_block(std::cin, curr_block);
@@ -313,11 +315,11 @@ int main(int argc,const char** argv)
 
         if(t==EOF) break;
 
-        if((t & std::ctype_base::punct) != 0
-           && curr_block.length() > 1
-           && curr_block[0] != '/' && curr_block[0] != '*'
-           && curr_block.find('/',1) != std::string::npos
-                )
+        if( (t & std::ctype_base::punct) != 0
+        && curr_block.length() > 1
+        && curr_block[0] != '/' && curr_block[0] != '*'
+        && curr_block.find('/',1) != std::string::npos
+            )
         {
             std::cout << curr_block;
 
@@ -326,11 +328,11 @@ int main(int argc,const char** argv)
             std::cerr.flush();
         }
         else
-        if ((t & std::ctype_base::punct) != 0
-            && curr_block.length() >= 2
-            && curr_block[0] == '/'
-            && curr_block[1] == '/'
-                )
+        if((t & std::ctype_base::punct) != 0
+        && curr_block.length() >= 2
+        && curr_block[0] == '/'
+        && curr_block[1] == '/'
+            )
         {
             std::string rest_of_comment;
             getline(std::cin, rest_of_comment);
@@ -339,11 +341,11 @@ int main(int argc,const char** argv)
                 mylog << curr_block << rest_of_comment <<"\t\t\tCOMMENT"<< std::endl;
         }
         else
-        if ((t & std::ctype_base::punct) != 0
-            && curr_block.length() >= 2
-            && curr_block[0] == '/'
-            && curr_block[1] == '*'
-                )
+        if((t & std::ctype_base::punct) != 0
+        && curr_block.length() >= 2
+        && curr_block[0] == '/'
+        && curr_block[1] == '*'
+            )
         {
             std::string rest_of_comment;
             all_until(std::cin, "*/", rest_of_comment);
@@ -355,17 +357,17 @@ int main(int argc,const char** argv)
         else
         if(curr_block[0] == '"'
         || curr_block[0] == '\'')
-            {
-                std::string rest_of_string;
-                                                                            assert(curr_block.length()==1);
-                all_until(std::cin, curr_block, rest_of_string,'\\');
-                std::cout << curr_block << rest_of_string ;//<< "/*SP*/";
-                mylog << curr_block << rest_of_string <<"\t\t\tSTRING or CHAR"<< std::endl;
-            }
-            else
-        if(curr_block.compare("class")==0
-        || (isInterface=(curr_block.compare("interface")==0))
-        || curr_block.compare("abstract")==0
+        {
+            std::string rest_of_string;
+                                                                        assert(curr_block.length()==1);
+            all_until(std::cin, curr_block, rest_of_string,'\\');
+            std::cout << curr_block << rest_of_string ;//<< "/*SP*/";
+            mylog << curr_block << rest_of_string <<"\t\t\tSTRING or CHAR"<< std::endl;
+        }
+        else
+        if( curr_block.compare("class")==0
+        ||  (isInterface=(curr_block.compare("interface")==0))
+        ||  curr_block.compare("abstract")==0
         )
         {
             std::string rest_of_header;
@@ -387,22 +389,22 @@ int main(int argc,const char** argv)
 
             if(EXTRACT_CLASSES) // When user want to have separate files for all classes
             {
-                std::string  headersrc{ OutDir };
-                headersrc+="/";
-                headersrc+=this_class;
-                headersrc+="_clss.pde";
+                std::string  header_src{OutDir };
+                header_src+="/";
+                header_src+=this_class;
+                header_src+="_class.pde";
 
-                mylog << "CREATE CLASS HEADER FILE:\t"<< headersrc << std::endl;
+                mylog << "CREATE CLASS HEADER FILE:\t" << header_src << std::endl;
 
-                std::ofstream newheader(headersrc);
-                newheader<<"//#pragma once\n"
-                         <<"//#ifndef "<<"HEADER_"<<this_class<<"_INCLUDED\n"
-                         <<"//#define "<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
+                std::ofstream new_header(header_src);
+                new_header << "//_pragma once\n"
+                         <<"//_ifndef "<<"HEADER_"<<this_class<<"_INCLUDED\n"
+                         <<"//_define "<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
 
                 auto imports=interfaces_imports(curr_block, isInterface);
                 if(imports[0]!='?')
                 {
-                    newheader << imports << std::endl;
+                    new_header << imports << std::endl;
 
                     mylog << "DETECTED\n"
                           << "\tIMPORTS:\t" << imports << std::endl;
@@ -410,7 +412,7 @@ int main(int argc,const char** argv)
 
                 if(super_class[0]!='?')
                 {
-                    newheader<<"//_import:" << super_class << "\n"
+                    new_header << "//_import:" << super_class << "\n"
                              <<"//_superclass:"<<super_class << "\n"<<std::endl;
 
                     mylog << "DETECTED\n"
@@ -431,18 +433,18 @@ int main(int argc,const char** argv)
                     mylog << "DETECTED\n\tCLASS DEFINITION:\n" << class_code << std::endl;
                 }
 
-                newheader<<"/// Automatically extracted definition of @class "<<this_class<<"\n"
+                new_header << "/// @note Automatically extracted definition of `class`: " << this_class << "\n"
                          << curr_block << std::endl
                          << class_code << std::endl;
 
                 if(super_class[0]!='?')
                 {
-                    newheader << "\n//_endofsuperclass:" << super_class << std::endl;
+                    new_header << "\n//_endOfSuperClass:" << super_class << std::endl;
                 }
 
-                newheader <<"\n/// Generated by Processing2C++ extraction Tools\n"
-                          <<"//#endif //"<<"HEADER_"<<this_class<<"_INCLUDED\n\n";
-                newheader.close();
+                new_header << "\n/// Generated by Processing2C++ extraction Tools\n"
+                           << "//_endif //" << "HEADER_" << this_class << "_INCLUDED\n\n";
+                new_header.close();
 
                 std::cout<<"/** @class "<< this_class <<" */" << std::endl;
                 std::cout<<"//_import:"<<this_class<<"\n";
@@ -452,14 +454,14 @@ int main(int argc,const char** argv)
             }
             else // ALL_IN_ONE_FILE - Into outputs now
             {
-                if( super_class.length()>0
+                if( !super_class.empty()
                     && super_class[0]!='?'
                 )
                 {
-                    std::cout << "\n// Now will be change of superclass!";
-                    std::cout << "\n//_endofsuperclass:_anyPreviousSuperClass";
-                    std::cout << "\n//_superclass:" << super_class << "\n" << std::endl;
-                            //<<"//_derivedclass:"<<this_class<<"\n";
+                    std::cout << "\n// Now will change of superclass!";
+                    std::cout << "\n//_endOfSuperClass: _anyPreviousSuperClass";
+                    std::cout << "\n//_superClass:" << super_class << "\n" << std::endl;
+                            //<<"//_derivedClass:"<<this_class<<"\n";
                 }
 
                 std::cout << curr_block;
@@ -477,11 +479,13 @@ int main(int argc,const char** argv)
             mylog << std::endl;
         }
     }
+
     std::cerr<<"\nEnd of Processing refactor tools error stream!\n"<< std::endl;
+
     return 0;
 }
 /* ******************************************************************
- *               PROCESSING2C  version 2022                         *
+ *               PROCESSING2C  version 2023                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

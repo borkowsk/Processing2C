@@ -1,5 +1,8 @@
-///   World full of agents need method of visualisation on screen/window
+// @date 2024-09-30 (last modification)
+/// A world full of agents needs method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////////
+
+/*_using_class Agent */
 
 void visualizeAgents(smatrix<pAgent> agents) ///< Need to be global!
 {
@@ -40,5 +43,5 @@ void visualizeAgents(smatrix<pAgent> agents) ///< Need to be global!
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION OF agents FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

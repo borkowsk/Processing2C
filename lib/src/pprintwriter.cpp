@@ -4,7 +4,7 @@
  * \classes BufferedReader; PrintWriter;
  * \ingroup file_streams
  * \author 'borkowsk'
- * \date 2022-11-21 (last modification)
+ * @date 2024-09-30 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -25,7 +25,7 @@ namespace Processing
 {
 
 static inline std::ostream& operator << (std::ostream& o,String& str)
-{                                                                                                assert(str.notEmpty());
+{                                                                                     assert(str.notEmpty());
     o<<str._std_str();
     return o;
 }
@@ -61,6 +61,7 @@ PrintWriter& createWriter(_string_param name)
         ALWAYS_ERRMESSAGE( concat("FILE '",name,"' can't be open!") )
         std::cerr.flush();std::cout.flush();
         auto res=system("sleep 1;echo \"\\nSee directory:\\n $PWD\\n\";ls -l");
+        if(res!=0) perror("CALL SYSTEM ERROR");
         delete file;
     }
 
@@ -95,12 +96,12 @@ BufferedReader& createReader(_string_param name)
 }
 
 void print(PrintWriter& o,_string_param _p1)
-{
+{                                                               assert(o.isOpen());
     o<<_p1;
 }
 
 void println(PrintWriter& o,_string_param _p1)
-{
+{                                                              assert(o.isOpen());
     o<<_p1<<std::endl;
 }
 

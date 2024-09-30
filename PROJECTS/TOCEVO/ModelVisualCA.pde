@@ -1,5 +1,6 @@
-///   World full of cells need method of visualisation on screen/window
-//*//////////////////////////////////////////////////////////////////////////
+// @date 2024-09-30 (last modification)
+/// A world full of cells needs method of visualisation on screen/window.
+//*//////////////////////////////////////////////////////////////////////
 
 void visualizeCells(int[][] cells)  ///< Need to be global!
 {

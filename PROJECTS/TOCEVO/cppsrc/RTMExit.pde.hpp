@@ -1,3 +1,7 @@
+// @date 2024-09-30 (last modification)
+/// Support for exiting the program when something needs to be cleaned up before doing so.
+//*///////////////////////////////////////////////////////////////////////////////////////
+
 void processing_window::exit()   // It is called whenever a window is closed. 
 {
   noLoop();   // For to be sure... (but no more screen update so!!!)
@@ -23,5 +27,5 @@ _OnlyProcessingBlockEnd*/
 ////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 ////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

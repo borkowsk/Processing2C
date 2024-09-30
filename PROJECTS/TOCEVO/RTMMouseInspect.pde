@@ -1,5 +1,7 @@
-///   Obsługa wyszukiwania obiektu po kliknięciu myszy
-//*/////////////////////////////////////////////////////////////////////
+// @date 2024-09-30 (last modification)
+// Obsługa wyszukiwania obiektu po kliknięciu myszy:
+//*///////////////////////////////////////////////////
+
 int searchedX=-1;       ///<???
 int searchedY=-1;       ///<???
 boolean Clicked=false;  ///<???
@@ -10,12 +12,12 @@ Agent selected=null;    ///<???
 //double minDist2Selec=MAX_INT; ///???
 //double maxTransSelec=-MAX_INT; ///???
 
-/// Simple version of Pair returning a pair of Int
-class PairOfInt {
+/// Simple version of Pair returning a pair of Int.
+class MousePairOfInt {
     int a;
     int b;
 
-    PairOfInt(int a,int b) 
+    MousePairOfInt(int a,int b) 
     {
         this.a = a;
         this.b = b;
@@ -23,7 +25,7 @@ class PairOfInt {
 } /*_endOfClass*/
 
 
-PairOfInt findCell(Agent[][] agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości
+MousePairOfInt findCell(Agent[][] agents) ///< Używamy globalnych zmiennych mouseX i mouseY dla szybkości.
 { // Przeliczanie współrzędnych myszy na współrzędne komórki 
   // Parametr jest tylko do sprawdzenie typu i ROZMIARÓW
   // Działa o tyle o ile wizualizacja komórek startuje w punkcie 0,0
@@ -31,11 +33,12 @@ PairOfInt findCell(Agent[][] agents) ///< Używamy globalnych zmiennych mouseX i
   int y=mouseY/cwidth;
   if(0<=y && y<agents.length
   && 0<=x && x<agents[y].length)
-      return new PairOfInt(x,y);
+      return new MousePairOfInt(x,y);
   else
       return null;
 }
 
+/// Support for searching for an object on mouse click.
 void mouseClicked()
 {
   println("Mouse clicked at ",mouseX,mouseY); //DEBUG
@@ -43,7 +46,7 @@ void mouseClicked()
   searchedX=mouseX;
   searchedY=mouseY; 
   
-  PairOfInt result=findCell(TheWorld.agents); //But 1D searching is belong to you!
+  MousePairOfInt result=findCell(TheWorld.agents); //But 1D searching is belong to you!
   if(result!=null) //Znaleziono
   {
     selectedX=result.a;

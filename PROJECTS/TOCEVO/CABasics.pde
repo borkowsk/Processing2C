@@ -1,4 +1,5 @@
-///   Cell is a one of two central data of each CA model
+// @date 2024-09-30 (last modification)
+/// Cell is a one of two central data of each CA model.
 //*/////////////////////////////////////////////////////////////
 
 void initializeCells( int[][] cells )     ///< Need to be global!
@@ -14,10 +15,8 @@ void initializeCells( int[][] cells )     ///< Need to be global!
        cells[cells.length/2][cells.length/2]=1;
 }
 
-// Implement rules
-//*///////////////////////////////////////////////
-
-void synchChangeCells( int[][] cells , int[][] newcells )   ///< Drugi parametr tłumaczony jest błędnie! TODO
+/// Implement rules of cells states change.
+void synchChangeCells( int[][] cells , int[][] newcells )   ///< Drugi parametr tłumaczony jest błędnie? TODO???
 {
   float R=treesR-1.0;
   int N=cells.length;

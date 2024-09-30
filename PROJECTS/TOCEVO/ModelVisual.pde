@@ -1,5 +1,8 @@
-///   World full of agents need method of visualisation on screen/window
+// @date 2024-09-30 (last modification)
+/// A world full of agents needs method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////////
+
+/*_using_class Agent */
 
 void visualizeAgents(Agent[][] agents) ///< Need to be global!
 {

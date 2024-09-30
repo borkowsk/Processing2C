@@ -1,3 +1,7 @@
+// @date 2024-09-30 (last modification)
+/// Support for exiting the program when something needs to be cleaned up before doing so.
+//*///////////////////////////////////////////////////////////////////////////////////////
+
 void exit()   // It is called whenever a window is closed. 
 {
   noLoop();   // For to be sure... (but no more screen update so!!!)

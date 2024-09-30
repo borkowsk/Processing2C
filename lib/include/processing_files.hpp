@@ -2,7 +2,7 @@
  * \file processing_files.hpp
  * \ingroup file_streams
  * \author 'borkowsk'
- * \date 2022-11-21 (last modification)
+ * @date 2024-09-30 (last modification)
  * \classes BufferedReader; PrintWriter;
  * \last_modification  see the bottom lines
  */
@@ -186,11 +186,13 @@ namespace Processing
           return  pom != nullptr
                   && pom->is_open();
       }
+
       /// Returns a pointer to the hidden class object derived from std::ofstream
       _JAVAOutputStream* _get() const
       {
           return this->ptr<_JAVAOutputStream>::get();
       }
+
       /// for use inside createWriter() ONLY
       void _set(std::ofstream* p);
 

@@ -1,4 +1,5 @@
-///    Dopasowana do modelu obsługa zdarzeń
+// @date 2024-09-30 (last modification)
+/// Model-tailored event handling.
 //*/////////////////////////////////////////////////
 
 void keyPressed()

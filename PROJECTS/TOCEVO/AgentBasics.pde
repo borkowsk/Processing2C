@@ -1,8 +1,11 @@
-//*  Agent is a one of two central class of each ABM model
-//*  Agent need to be initialised & they need logic of change 
+// @date 2024-09-30 (last modification)
+//  Agent is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents) ///< initialisation of all agents
+/*_using_class Agent */
+
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(Agent[][] agents) ///< initialisation of all agents.
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -13,7 +16,7 @@ void initializeAgents(Agent[][] agents) ///< initialisation of all agents
     }
 }
 
-void cleanDeaths(Agent[][] agents)      ///< ???
+void cleanDeaths(Agent[][] agents)      ///< Cleaning world from death agents.
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -27,7 +30,7 @@ void cleanDeaths(Agent[][] agents)      ///< ???
 //*  EVERY STEP CHANGE == MAIN DYNAMICS
 //*//////////////////////////////////////
 
-void  changeAgents(Agent[][] agents,int[][] cells)  ///< ???
+void  changeAgents(Agent[][] agents,int[][] cells)  ///< Changing states of agents.
 {
   int MC=agents.length*agents[0].length;
   

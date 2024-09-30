@@ -1,6 +1,8 @@
-///   World is a one of two central class of each ABM model
-//*/////////////////////////////////////////////////////////////
-int StepCounter=0; ///< globalny licznik kroków
+// @date 2024-09-30 (last modification)
+/// World is a one of two central class of each ABM model.
+//*///////////////////////////////////////////////////////
+
+/*_using_class Agent */
 
 class World: public virtual Object{
   public:
@@ -17,6 +19,8 @@ class World: public virtual Object{
 // More elaborated functionalities are defined as stand-alone functions,
 // not as methods because of not enough flexible syntax of Processing
 //*/////////////////////////////////////////////////////////////////////////
+
+int StepCounter=0; ///< Global step counter.
 
 void initializeModel(pWorld world)   ///< Need to be global!
 {
@@ -70,5 +74,5 @@ void modelStep(pWorld world) ///< Need to be global!
 //*/////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

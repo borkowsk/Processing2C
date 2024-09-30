@@ -1,29 +1,35 @@
-//*   Simulation have to collect and write down statistics from every step
-//*/////////////////////////////////////////////////////////////////////////////////////
-PrintWriter outstat;    ///< główny plik wynikowy
+// @date 2024-09-30 (last modification)
+///   Simulation have to collect and write down statistics from every step.
+//*////////////////////////////////////////////////////////////////////////
 
-void initializeStats()  ///< Need to be global!
+/*_using_class Agent */
+/*_using_class World */
+
+PrintWriter outstat;    ///< The main statistics output file.
+
+void initializeStats()  ///< Needs to be global!
 {
   String FileName=String("ToC_")+year()+String('.')+nf(month(),2)+String('.')+nf(day(),2)+String('.')+nf(hour(),2)+String('.')+nf(minute(),2)+String('.')+nf(second(),2)+String('.')+millis();
   outstat=createWriter(String("Results/")+FileName+ String(".out"));
   println(outstat,"$STEP\tAlive\t....."); //<-- complete the header fields!
 }
 
-int   prevStep=0;           ///<
-float meanAgentsEn=0;       ///<
-float meanCells=0;          ///<
-int   liveAgentsCount=0;    ///<
-int   liveCellsCount=0;     ///<
+int   prevStep=0;           ///< ...
+float meanAgentsEn=0;       ///< ...
+float meanCells=0;          ///< ...
+int   liveAgentsCount=0;    ///< ...
+int   liveCellsCount=0;     ///< ...
 
-int   numOfPunishments=0;   ///<
+int   numOfPunishments=0;   ///< ...
 float punPerStep=0;         ///< Punishment per step
 
 int   numOfBorns=0;         ///< number of newborns
-float bornsPerStep=0;       ///<
+float bornsPerStep=0;       ///< ...
 
-sarray<int> eatCounters=nullptr; ///< TU JEST PROBLEM
-sarray<int> punCounters=nullptr; ///< Chyba tablica nie jest akceptowana->TODO!!!
+sarray<int> eatCounters=nullptr;     ///< TU JEST PROBLEM
+sarray<int> punCounters=nullptr;     ///< Chyba tablica nie jest akceptowana->TODO???
 
+/// Every(?) step statistics.
 void doStatistics(pWorld world)  ///< Need to be global!
 {
   if(eatCounters==nullptr) eatCounters=new array<int>(256);
@@ -32,6 +38,7 @@ void doStatistics(pWorld world)  ///< Need to be global!
   doStatisticsOnCells(world->cells);
 }
 
+/// Agents statistics after step.
 void doStatisticsOnAgents(smatrix<pAgent> agents) ///< Need to be global!
 {  
   pAgent curra;
@@ -70,6 +77,7 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) ///< Need to be global!
    // outstat should be closed in exit() --> see Exit->pde
 }
 
+/// Cells statistics after step. 
 void doStatisticsOnCells(smatrix<int> cells) ///< Need to be global!
 {  
   long summ=0;
@@ -109,5 +117,5 @@ void doStatisticsOnCells(smatrix<int> cells) ///< Need to be global!
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS FOR TragedyOfCommons
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

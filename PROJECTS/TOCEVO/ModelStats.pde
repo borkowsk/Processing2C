@@ -1,29 +1,35 @@
-//*   Simulation have to collect and write down statistics from every step
-//*/////////////////////////////////////////////////////////////////////////////////////
-PrintWriter outstat;    ///< główny plik wynikowy
+// @date 2024-09-30 (last modification)
+///   Simulation have to collect and write down statistics from every step.
+//*////////////////////////////////////////////////////////////////////////
 
-void initializeStats()  ///< Need to be global!
+/*_using_class Agent */
+/*_using_class World */
+
+PrintWriter outstat;    ///< The main statistics output file.
+
+void initializeStats()  ///< Needs to be global!
 {
   String FileName="ToC_"+year()+'.'+nf(month(),2)+'.'+nf(day(),2)+'.'+nf(hour(),2)+'.'+nf(minute(),2)+'.'+nf(second(),2)+'.'+millis();
   outstat=createWriter("Results/"+FileName+".out");
   outstat.println("$STEP\tAlive\t....."); //<-- complete the header fields!
 }
 
-int   prevStep=0;           ///<
-float meanAgentsEn=0;       ///<
-float meanCells=0;          ///<
-int   liveAgentsCount=0;    ///<
-int   liveCellsCount=0;     ///<
+int   prevStep=0;           ///< ...
+float meanAgentsEn=0;       ///< ...
+float meanCells=0;          ///< ...
+int   liveAgentsCount=0;    ///< ...
+int   liveCellsCount=0;     ///< ...
 
-int   numOfPunishments=0;   ///<
+int   numOfPunishments=0;   ///< ...
 float punPerStep=0;         ///< Punishment per step
 
 int   numOfBorns=0;         ///< number of newborns
-float bornsPerStep=0;       ///<
+float bornsPerStep=0;       ///< ...
 
-int[] eatCounters=null; ///< TU JEST PROBLEM
-int[] punCounters=null; ///< Chyba tablica nie jest akceptowana. TODO!!!
+int[] eatCounters=null;     ///< TU JEST PROBLEM
+int[] punCounters=null;     ///< Chyba tablica nie jest akceptowana. TODO???
 
+/// Every(?) step statistics.
 void doStatistics(World world)  ///< Need to be global!
 {
   if(eatCounters==null) eatCounters=new int[256];
@@ -32,6 +38,7 @@ void doStatistics(World world)  ///< Need to be global!
   doStatisticsOnCells(world.cells);
 }
 
+/// Agents statistics after step.
 void doStatisticsOnAgents(Agent[][] agents) ///< Need to be global!
 {  
   Agent curra;
@@ -70,6 +77,7 @@ void doStatisticsOnAgents(Agent[][] agents) ///< Need to be global!
    // outstat should be closed in exit() --> see Exit.pde
 }
 
+/// Cells statistics after step. 
 void doStatisticsOnCells(int[][] cells) ///< Need to be global!
 {  
   long summ=0;

@@ -1,4 +1,5 @@
-///    Dopasowana do modelu obsługa zdarzeń
+// @date 2024-09-30 (last modification)
+/// Model-tailored event handling.
 //*/////////////////////////////////////////////////
 
 void processing_window::onKeyPressed()
@@ -43,5 +44,5 @@ void processing_window::onKeyPressed()
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 

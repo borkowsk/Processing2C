@@ -1,8 +1,11 @@
-//*  Agent is a one of two central class of each ABM model
-//*  Agent need to be initialised & they need logic of change 
+// @date 2024-09-30 (last modification)
+//  Agent is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 
-void initializeAgents(smatrix<pAgent> agents) ///< initialisation of all agents
+/*_using_class Agent */
+
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(smatrix<pAgent> agents) ///< initialisation of all agents.
 {
    for(int a=0;a<agents->length;a++)
     for(int b=0;b<agents[a]->length;b++)
@@ -13,7 +16,7 @@ void initializeAgents(smatrix<pAgent> agents) ///< initialisation of all agents
     }
 }
 
-void cleanDeaths(smatrix<pAgent> agents)      ///< ???
+void cleanDeaths(smatrix<pAgent> agents)      ///< Cleaning world from death agents.
 {
    for(int a=0;a<agents->length;a++)
     for(int b=0;b<agents[a]->length;b++)
@@ -27,7 +30,7 @@ void cleanDeaths(smatrix<pAgent> agents)      ///< ???
 //*  EVERY STEP CHANGE == MAIN DYNAMICS
 //*//////////////////////////////////////
 
-void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///< ???
+void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///< Changing states of agents.
 {
   int MC=agents->length*agents[0]->length;
   
@@ -129,5 +132,5 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///< ???
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2023-10-11 14:12:43
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-09-30 14:18:21
 
