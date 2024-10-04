@@ -1,7 +1,7 @@
 /// IntList,FloatList,StringList & ArrayList test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYLIST.pde"
-// @date 2024-09-30 (last change)
+// @date 2024-10-04 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 pArrayList<String> testStrings=nullptr;
@@ -78,5 +78,5 @@ void user_print(pIntList intInv) ///< USED before definition!
 }
 
 
-//NOTE! ../../scripts did it 2024-09-30 17:06:16
+//NOTE! ../../scripts did it 2024-10-04 13:54:20
 

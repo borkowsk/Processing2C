@@ -1,6 +1,6 @@
 /// ABM model of segregation (test project for Processing2C)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 /// ORIGINAL NAME OF @file: RTMExit->pde
 //*////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,5 +26,5 @@ void processing_window::exit()          //it is called whenever a window is clos
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 

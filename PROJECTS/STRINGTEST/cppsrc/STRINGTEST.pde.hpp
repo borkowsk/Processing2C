@@ -2,7 +2,7 @@
 /// String operations tests.
 /// ORIGINAL FILE: "STRINGTEST.PDE"
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 /////////////////////////////////////////////////////////////////
 
 String A;                     ///< declared globally.
@@ -50,5 +50,5 @@ void processing_window::setup()  // Must be->But should not be marked with `///`
   toScreen(SL);
   toScreen(SAL);
 }
-//NOTE! ../../scripts did it 2024-09-30 17:06:18
+//NOTE! ../../scripts did it 2024-10-04 13:54:22
 

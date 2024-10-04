@@ -1,7 +1,7 @@
 /// ABM model of segregation (test project for Processing2C).
 /// Agent is a one of two central class of each ABM model
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 //*////////////////////////////////////////////////////
 /// ORIGINAL FILE: AgentA->pde
 
@@ -24,5 +24,5 @@ class Agent: public virtual Object{
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT OF SAKODA MODEL
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 

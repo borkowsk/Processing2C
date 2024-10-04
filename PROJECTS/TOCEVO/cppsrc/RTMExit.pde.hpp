@@ -1,10 +1,11 @@
 // @file
-/// @date 2024-09-30 (last modification)
+/// @date 2024-10-04 (last modification)
 /// Support for exiting the program when something needs to be cleaned up before doing so.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
 void processing_window::exit()   // It is called whenever a window is closed. 
 {
+  save("exit.png");
   noLoop();   // For to be sure... (but no more screen update so!!!)
 
   delay(100); // it is possible to close window when draw() is still working!
@@ -28,5 +29,5 @@ _OnlyProcessingBlockEnd*/
 ////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 ////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:18
+//NOTE! ../../scripts did it 2024-10-04 13:54:22
 

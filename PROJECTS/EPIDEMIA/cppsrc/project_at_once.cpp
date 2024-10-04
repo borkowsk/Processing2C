@@ -1,5 +1,5 @@
 /* All sources in one file? */
-// @date 2024-09-30 (0.22h)
+// @date 2024-10-04 (0.22h)
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -17,7 +17,7 @@ const char* Processing::_PROGRAMNAME="EPIDEMIA";
 #include "AgentSupl.pde.hpp"
 #include "AssemblingOfWorld.pde.hpp"
 #include "EPIDEMIA.pde.hpp"
-#include "exit.pde.hpp"
+#include "exit_common.pde.hpp"
 #include "Histogram.pde.hpp"
 #include "History.pde.hpp"
 #include "ModelVisual.pde.hpp"

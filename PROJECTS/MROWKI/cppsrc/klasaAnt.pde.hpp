@@ -1,6 +1,6 @@
 /// Agent Base Model of ant foraging adopted for Processing2C.
 /// @author: Zofia Cieślińska
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 //*////////////////////////////////////////////////////////////
 /// ORIGINAL FILE: klasaAnt->pde
 //*///////////////////////////////////////////
@@ -79,5 +79,5 @@ class Ant: public virtual Object{
     return(true); //prawda, jeżeli nie ma i można się ruszyć
   }
 };
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 

@@ -1,4 +1,4 @@
-// @date 2024-09-30 (last modification)
+// @date 2024-10-04 (last modification)
 /// Agent is a one of two central class of each ABM model.
 //*/////////////////////////////////////////////////////////////
 
@@ -52,5 +52,5 @@ class Agent: public virtual Object{
 //*////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT for TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:18
+//NOTE! ../../scripts did it 2024-10-04 13:54:22
 

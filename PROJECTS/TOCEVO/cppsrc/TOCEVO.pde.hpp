@@ -2,7 +2,7 @@
 /// "TragedyOfCommons" AGENT BASE EVOLUTIONARY MODEL.
 ///  It utilizes 2D discrete geometry.
 ///  Implemented by @author Wojciech Borkowski
-/// @date 2024-09-30 (last modification)
+/// @date 2024-10-04 (last modification)
 //*///////////////////////////////////////////////////////////////////////////////////////
 
 /*_using_class Agent */
@@ -126,5 +126,5 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:18
+//NOTE! ../../scripts did it 2024-10-04 13:54:22
 

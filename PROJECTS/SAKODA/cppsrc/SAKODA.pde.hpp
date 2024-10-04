@@ -2,7 +2,7 @@
 /// ABM model of segregation. (test project for Processing2C)
 /// ORIGINAL FILE: "SAKODA.pde"
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Sakoda conception inspired AGENT BASE MODEL utilized 1D or 2D discrete geometry
 /// implemented by Wojciech Borkowski.
@@ -91,5 +91,5 @@ void writeStatusLine() ///< Used also for stats
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 

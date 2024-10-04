@@ -1,5 +1,5 @@
 /* All sources in one file? */
-// @date 2024-09-30 (0.22h)
+// @date 2024-10-04 (0.22h)
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
 #include "processing_library.hpp"
@@ -11,5 +11,5 @@ using namespace Processing;
 #include <iostream>
 //==================================================================================
 const char* Processing::_PROGRAMNAME="SYNCHRONIC1";
-#include "exit.pde.hpp"
+#include "exit_common.pde.hpp"
 #include "SYNCHRONIC1.pde.hpp"

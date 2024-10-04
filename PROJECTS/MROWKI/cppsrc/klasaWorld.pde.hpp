@@ -1,6 +1,6 @@
 /// Agent Base Model adopted for Processing2C
 /// @author: Zofia Cieślińska
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 /// ORIGINAL FILE: klasaWorld->pde
 /////////////////////////////////////////////
 
@@ -259,5 +259,5 @@ class World: public virtual Object{
     }
   }
 };
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 

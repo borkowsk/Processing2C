@@ -2,7 +2,7 @@
 /// Simple model of colony growth with mutations (test project for Processing2C).
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// @todo May make GPF!
-/// @date 2024-09-30 (last modification)
+/// @date 2024-10-04 (last modification)
 //*////////////////////////////////////////////////////////////////////////////////
 // PL: Wzrost losowo z punktu środkowego z mutacjami kolorów
 //*////////////////////////////////////////////////////////////////////////////////
@@ -101,5 +101,5 @@ void processing_window::draw()
     Step++;
   }
 }
-//NOTE! ../../scripts did it 2024-09-30 17:06:18
+//NOTE! ../../scripts did it 2024-10-04 13:54:22
 

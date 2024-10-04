@@ -1,6 +1,6 @@
 /// ABM model of segregation (test project for Processing2C)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-04 (last change)
 /// ORIGINAL FILE: ModelStatistics->pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 // Simulation have to collect and write down statistics from every step
@@ -73,5 +73,5 @@ void doStatisticsOnAgents(smatrix<pAgent> agents) { ///< Need to be global!
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS LOG TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-09-30 17:06:17
+//NOTE! ../../scripts did it 2024-10-04 13:54:21
 
