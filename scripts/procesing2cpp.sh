@@ -1,12 +1,18 @@
 #!/bin/bash
 # Processing2C version 22h. 
-# @date 2024-09-05 (last modification)
+# @date 2024-10-10 (last modification)
 #
-if [ $# -ne 1 ]; 
+#echo STAGE0 1>&2
+
+if [ $# -ge 4 ]; 
 then
    echo -e "${COLOR2}$# ${COLERR}is invalid number of parameters!"$NORMCO 1>&2
    exit -1
+else
+   echo -e ${COLOR6}$1 ${COLOR7}$2 ${COLOR2}$3 $NORMCO 1>&2
 fi
+
+#echo STAGE1 1>&2
 
 if [[ $SOURCEMODE == "multisrc" ]]
 then
@@ -25,14 +31,16 @@ then
 	echo "#include <iostream>"
 	echo "//=================================================================================="
 	echo ""
+	#TEEE="| tee $2/$1_imp.pde"
 fi
 
-echo -e "\n${COLOR4}START TRANSLATION OF $COLOR1 $1 $COLOR3" 1>&2 #Colored ERRORS!
+#echo STAGE2 1>&2
+echo -e "\n${COLOR4}START TRANSLATION OF $COLOR1 $1 $COLOR3 OPTIONS:$COLOR1 $2 $3 $NORMCO" 1>&2 #Colored ERRORS!
 
 cat $1 |\
-${SCRIPTS}/tools "${SRCDIR}toolsouts" 2> tools.err |\
+${SCRIPTS}/tools $2 $3 2> tools.err   | tee $2/$1_imp.pde                     |\
 #Brutalne dodawanie średników za końcem klasy.
-sed -E 's|\/\/([ _]*)EndOfClass(.*)|; //_EndOfClass\1\n|i'  |\
+sed -E 's|\/\/([ _]*)EndOfClass(.*)|; //_EndOfClass\1\n|i'                    |\
 #//_endofsuperclass:_anyPreviousSuperClass
 sed -E 's|\/\/([ _]*)endofsuperclass:(.*)|//Undefining any base class preprocessor definition: \1\n#undef _superclass|i'  |\
 #//_superclass:
@@ -207,7 +215,6 @@ sed -E 's|\/\*_tmpptr\*\/|\* |g'   |\
 sed -E 's|\/\*_rawptr\*\/|\* |g'   |\
 sed -E 's|\/\*_ref\*\/|\& |g'|\
 sed -E 's|\/\*_reference\*\/|\& |g'|\
-
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:

@@ -1,8 +1,8 @@
-// @date 2024-10-04 (last modification)
+// @date 2024-10-10 (last modification)
 //  Agent is a one of two central class of each ABM model
 //*/////////////////////////////////////////////////////////////
 
-/*_using_class Agent */
+/*_import_class:Agent */
 
 /// Agents need to be initialised & they need logic of change.
 void initializeAgents(smatrix<pAgent> agents) ///< initialisation of all agents.
@@ -132,5 +132,5 @@ void  changeAgents(smatrix<pAgent> agents,smatrix<int> cells)  ///< Changing sta
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
 

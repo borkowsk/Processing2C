@@ -1,10 +1,10 @@
 # This file was made automagically. Do not edit!
-#! @date 2024-10-04 13:54:22 (translation timemark)
+#! @date 2024-10-10 (translation timemark)
 cmake_minimum_required(VERSION 3.0)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project(TOCEVO)
-set( VERSION_NUM 0.22h ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.22i ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows

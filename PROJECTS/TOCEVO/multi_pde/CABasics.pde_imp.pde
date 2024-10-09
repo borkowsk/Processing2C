@@ -2,26 +2,26 @@
 /// Cell is a one of two central data of each CA model.
 //*/////////////////////////////////////////////////////////////
 
-void initializeCells( smatrix<int> cells )     ///< Need to be global!
+void initializeCells( int[][] cells )     ///< Need to be global!
 {
-   for(int a=0;a<cells->length;a++)
-    for(int b=0;b<cells[a]->length;b++)
+   for(int a=0;a<cells.length;a++)
+    for(int b=0;b<cells[a].length;b++)
       if(treesDensity>0 && random(1)<treesDensity)
         cells[a][b]=(int)(random(1.0)*random(1.0)*random(1.0)*MAX_INT*random(1.0)*random(1.0)*random(1.0));
       else
         cells[a][b]=0;
    
    if(treesDensity==0) 
-       cells[cells->length/2][cells->length/2]=1;
+       cells[cells.length/2][cells.length/2]=1;
 }
 
 /// Implement rules of cells states change.
-void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi parametr tłumaczony jest błędnie? TODO???
+void synchChangeCells( int[][] cells , int[][] newcells )   ///< Drugi parametr tłumaczony jest błędnie? TODO???
 {
   float R=treesR-1.0;
-  int N=cells->length;
+  int N=cells.length;
   for(int a=0;a<N;a++)
-  for(int b=0;b<cells[a]->length;b++)
+  for(int b=0;b<cells[a].length;b++)
   {
      int val=cells[a][b];
      
@@ -46,7 +46,5 @@ void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi
 }
 
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
+//  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
-

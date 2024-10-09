@@ -16,37 +16,37 @@ float treesDensity=0.250;     ///< ??? ...
 float treesR=1.015;           ///< from 1..1.1 ...
 float agentsDensity=0.005;    ///< Initial density of agents.
 
-bool    usePunishment=true;   ///< Punishment switch off/on.
-bool    enableKilling=false;  ///< ??? ...
-//bool    symPunishment=true; ///< Punishment genes defines tolerance window for others behavior.
-char16_t   punishmentTime=20;     ///< How long punished agent is paralysed.
+boolean usePunishment=true;   ///< Punishment switch off/on.
+boolean enableKilling=false;  ///< ??? ...
+//boolean symPunishment=true; ///< Punishment genes defines tolerance window for others behavior.
+char   punishmentTime=20;     ///< How long punished agent is paralysed.
 
 int   costOfStep=10;          ///< Metabolic cost for agent to live one step more.
-float maxStock=costOfStep*50; ///< maximal stock per agent->The storage of unused energy is limited!
+float maxStock=costOfStep*50; ///< maximal stock per agent. The storage of unused energy is limited!
 float maxInitialEnergyOfAgent=costOfStep*50;    ///<
 float pOffspring=0.05;        ///< How often agent WANTs split into 2 agents.
 
-pWorld TheWorld=new World(side); ///< Made here, but also will be completed inside `setup()` .
+World TheWorld=new World(side); ///< Made here, but also will be completed inside `setup()` .
 
 // Parameters of visualisation etc...
 int cwidth=8;                   ///< size of cell.
 int STATUSHEIGH=40;             ///< ??? ...
 int STEPSperVIS=usePunishment?100:10; ///< Jak nie ma punishment'u to mogą szybko wymrzeć.
 int FRAMEFREQ=1000;             ///< ??? ...
-bool    WITH_NEW_DEL_LOG=false; ///< ??? ...
-/*_OnlyProcessingBlockBegin
-bool    WITH_VIDEO=false;       ///< ??? ...
-_OnlyProcessingBlockEnd*/
-bool    simulationRun=true;     ///< Start/stop flag.
+boolean WITH_NEW_DEL_LOG=false; ///< ??? ...
+/*_OnlyProcessingBlockBegin*/
+boolean WITH_VIDEO=false;       ///< ??? ...
+/*_OnlyProcessingBlockEnd*/
+boolean simulationRun=true;     ///< Start/stop flag.
 
-void processing_window::setup()
+void setup()
 {
   // Graphics
   size(850,840);
   noSmooth(); //Trochę szybciej
   background(0);
   strokeWeight(2);
-  setFrameRate(FRAMEFREQ);
+  frameRate(FRAMEFREQ);
   
   // Model
   initializeModel(TheWorld);
@@ -54,23 +54,23 @@ void processing_window::setup()
   doStatistics(TheWorld);
   
   //Window 
-  println(String("REQUIRED SIZE OF PAINTING AREA IS ")+(cwidth*side)+String("x")+(cwidth*side+STATUSHEIGH));
+  println("REQUIRED SIZE OF PAINTING AREA IS "+(cwidth*side)+"x"+(cwidth*side+STATUSHEIGH));
   cwidth= (height-STATUSHEIGH) / side;
     
   // Optionals:
   //setupMenu(); //ISSUE: Size of MenuBar is not counted by Processing!
   //...
   
-  /*_OnlyProcessingBlockBegin
+  /*_OnlyProcessingBlockBegin*/
   if(WITH_VIDEO) 
   {
-    initVideoExport(SAFE_THIS,modelName+ String(".mp4"),FRAMEFREQ);
+    initVideoExport(this,modelName+".mp4",FRAMEFREQ);
     FirstVideoFrame();
   }
-  _OnlyProcessingBlockEnd*/
+  /*_OnlyProcessingBlockEnd*/
   
   // Finishing setup stage
-  println(String("CURRENT SIZE OF PAINTING AREA IS ")+width+String("x")+height); // - myMenu->bounds->height???
+  println("CURRENT SIZE OF PAINTING AREA IS "+width+"x"+height); // - myMenu.bounds.height???
   visualizeModel(TheWorld); //First time visualisation
   
   if(!simulationRun)
@@ -78,12 +78,12 @@ void processing_window::setup()
   else
     println("PRESS 's' or 'ESC' to pause simulation");
     
-/*_OnlyProcessingBlockBegin   
+/*_OnlyProcessingBlockBegin*/   
   NextVideoFrame(); //It utilise inside variable to check if is enabled
-_OnlyProcessingBlockEnd*/  
+/*_OnlyProcessingBlockEnd*/  
 }
 
-void processing_window::draw()
+void draw()
 {
   if(simulationRun)
   {
@@ -100,9 +100,9 @@ void processing_window::draw()
     // WARUNEK STOPU
     if(liveAgentsCount==0) 
             simulationRun=false; //stop when agents are extinct
-/*_OnlyProcessingBlockBegin    
+/*_OnlyProcessingBlockBegin*/    
     NextVideoFrame(); //It utilise inside variable to check if is enabled
-_OnlyProcessingBlockEnd*/  
+/*_OnlyProcessingBlockEnd*/  
   }
 
 }
@@ -112,19 +112,20 @@ void writeStatusLine() ///< Wypełnia treścią obszar statusu aplikacji
   fill(255);rect(0,side*cwidth,width,STATUSHEIGH);
   fill(0);noStroke();
   textAlign(LEFT, TOP);
-  text(String("NofAg:")+nf(liveAgentsCount,5)+String(" MnE:")+nf(meanAgentsEn,0,2),0,side*cwidth);
-  text(String("NofC:")+nf(liveCellsCount,5)+String(" MnCv:")+meanCells,width/2,side*cwidth);
+  text("NofAg:"+nf(liveAgentsCount,5)+" MnE:"+nf(meanAgentsEn,0,2),0,side*cwidth);
+  text("NofC:"+nf(liveCellsCount,5)+" MnCv:"+meanCells,width/2,side*cwidth);
   textAlign(LEFT, BOTTOM);
-  text(StepCounter+String(")  Fps:")+ nf(frameRate,3,0)+String("  Born/st:")+bornsPerStep,0,side*cwidth+STATUSHEIGH-2);
+  text(StepCounter+")  Fps:"+ nf(frameRate,3,0)+"  Born/st:"+bornsPerStep,0,side*cwidth+STATUSHEIGH-2);
   if(usePunishment)
   {
     textAlign(RIGHT, BOTTOM);
-    text(String("NofPan./st: ")+punPerStep+ String(" ..."),width,height);
+    text("NofPan./st: "+punPerStep+" ...",width,height);
   }
 }
 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
+//  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
+// multi_pde.pde
+String PROJECT_NAME="TOCEVO";
 

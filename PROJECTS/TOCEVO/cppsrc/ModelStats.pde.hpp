@@ -1,9 +1,9 @@
-// @date 2024-10-04 (last modification)
+// @date 2024-10-10 (last modification)
 ///   Simulation have to collect and write down statistics from every step.
 //*////////////////////////////////////////////////////////////////////////
 
-/*_using_class Agent */
-/*_using_class World */
+/*_import_class:Agent */
+/*_import_class:World */
 
 PrintWriter outstat;    ///< The main statistics output file.
 
@@ -117,5 +117,5 @@ void doStatisticsOnCells(smatrix<int> cells) ///< Need to be global!
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS FOR TragedyOfCommons
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
 

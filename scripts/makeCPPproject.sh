@@ -4,9 +4,9 @@
 # But it is still TODO!
 #
 # Processing2C version 22h. 
-# @date 2024-09-30 (last modif.)
+# @date 2024-10-10 (last modif.)
 #
-Pr2CVERSION="0.22h"
+Pr2CVERSION="0.22i"
 
 export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 export SCRIPTS=$(dirname "$0")
@@ -41,14 +41,17 @@ export NUMBER_OF_PDES=`ls -1 *.pde | grep -v exit | wc -l`
 
 if [[ $NUMBER_OF_PDES == 0 ]];
 then
-	echo -e $COLERR"No any '*.pde' files in this folder.\nNothing to do!!!"$NORMCO
-	exit -1
+  $ECHO $COLERR"No any '*.pde' files in this folder.\nNothing to do!!!"$NORMCO  \
+  1>&2
+  exit -1
 else
-	echo -e $COLOR3'\nNumber of "*.pde" source files excluding "exit.pde":'$COLOR2 \
-        $NUMBER_OF_PDES  $NORMCO
+  $ECHO $COLOR3'\nNumber of "*.pde" source files excluding "exit*.pde":'$COLOR2 \
+          $NUMBER_OF_PDES  $NORMCO
 fi
 
 export SOURCEMODE=$1
+#echo -e $COLOR3"Required translation mode:$COLOR2 $SOURCEMODE"$NORMCO
+
 if [[ $SOURCEMODE != "multisrc" ]]
 then
      SOURCEMODE="singlesrc"
@@ -57,61 +60,103 @@ fi
 echo -e $COLOR3"Project will be translated in mode:$COLOR2 $SOURCEMODE"$NORMCO
 
 #CHECK SOURCE
-echo -e $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
+$ECHO $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
 
-echo -e $COLOR2"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
-grep -E  --color=always -Hn '^void\s+(setup\(\)|draw\(\))' *.pde
+$ECHO $COLOR2"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
+$ECHO  --color=always -Hn '^void\s+(setup\(\)|draw\(\))' *.pde
 
-echo -e $COLOR2"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
+$ECHO $COLOR2"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
 egrep  -Hn  --color=always '^void\s+(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
 
-echo -e $COLOR2"\nThe following lines may hide library symbols..."$NORMCO
+$ECHO $COLOR2"\nThe following lines may hide library symbols..."$NORMCO
 #exclude pseudo declaration then check for any construct ::identifier::\s+(::one of library identifier::) 
 grep -P -Hn  --color=always -f $SCRIPTS/symbols_pattern.grep *.pde
-#echo -e "\nCHECKING NAMES FINISHED\n"
-
-
+#$ECHO"\nCHECKING NAMES FINISHED\n"
 
 #GET GLOBAL SYMBOLS
-echo -e $COLOR4"\nSEARCHING GLOBAL SYMBOLS:"$NORMCO
+$ECHO $COLOR4"\nSEARCHING GLOBAL SYMBOLS:"$NORMCO
 $SCRIPTS/prepare_local_h.sh
-
-#LETS CHECK OUTPUT DIRECTORIES!
-echo -e $COLOR4"\nCHECKING OUTPUT DIRECTORIES:"$NORMCO
-#https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
-export SRCDIR="./cppsrc/"    
-if [ -d ${SRCDIR} ]; then
-   echo -e $COLOR2"Directory ${COLOR1}${SRCDIR}${COLOR2} already exists."$NORMCO
-else
-   echo -e $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR1} does not exist. Will be created"$NORMCO
-   echo -e $COLERR `mkdir -p $SRCDIR`$NORMCO  # -p, --parents     no error if existing, make parent directories as needed
-fi
-
-export TOOLSOUTDIR="${SRCDIR}toolsouts/"
-if [ -d ${TOOLSOUTDIR} ]; then
-   echo -e $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}${COLOR2} already exists."$NORMCO
-   echo -e $COLERR `rm ${TOOLSOUTDIR}/*`$NORMCO
-else
-   echo -e $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR2} does not exist. Will be created"$NORMCO
-   echo -e $COLERR `mkdir -p ${TOOLSOUTDIR} `$NORMCO
-fi
-
-echo -e $COLERR `mv "$SOURCES/local.h" "$SOURCES/cppsrc/"`$NORMCO
 
 
 if [[ $SOURCEMODE == "multisrc" ]]
 then
-     echo -e $COLERR"$SOURCEMODE required but not implemented yet!"$NORMCO
-     exit -2
+
+# MULTI-SOURCE MODE BELOW:
+#*########################
+
+export SRCDIR="./multi_cpp/"    
+if [ -d ${SRCDIR} ]; then
+  $ECHO $COLOR2"Directory ${COLOR1}${SRCDIR}${COLOR2} already exists."$NORMCO
+else
+  $ECHO $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR2} does not exist. Will be created"$NORMCO
+  $ECHO $COLERR`mkdir -p $SRCDIR` $NORMCO  # -p, --parents  no error if existing, make parent directories as needed
 fi
 
+export TOOLSOUTDIR="./multi_pde/"
+if [ -d ${TOOLSOUTDIR} ]; then
+  $ECHO $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}${COLOR2} already exists."$NORMCO
+  $ECHO $COLERR `rm ${TOOLSOUTDIR}/*`$NORMCO
+else
+  $ECHO $COLOR2"Folder ${COLOR1}${TOOLSOUTDIR}${COLOR2} does not exist. Will be created"$NORMCO
+  $ECHO $COLERR `mkdir -p ${TOOLSOUTDIR} `$NORMCO
+fi
+
+$ECHO $COLERR `mv "$SOURCES/local.h" "$SRCDIR"`$NORMCO
+
+#REAL TRANSLATION
+$ECHO $COLOR4"DOING REAL TRANSLATION:"$NORMCO
+
+FILES=*.pde
+for f in $FILES
+do # take action on each file. $f store current file name
+  $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t${COLOR2}${SRCDIR}${f}.cpp$NORMCO\n"
+  $ECHO $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" -CLSS #> "${SRCDIR}$f.cpp"
+  $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" "-ECLL" > "${SRCDIR}$f.cpp"
+done
+
+cat ${TOOLSOUTDIR}/${PROJECT}.pde_imp.pde > ${TOOLSOUTDIR}/multi_pde.pde
+echo -e "// multi_pde.pde\nString PROJECT_NAME=\"$PROJECT\";\n" >> ${TOOLSOUTDIR}/multi_pde.pde
+mv ${TOOLSOUTDIR}/${PROJECT}.pde_imp.pde ${TOOLSOUTDIR}/${PROJECT}.pde_imp.bak
+
+
+$ECHO $COLERR"$SOURCEMODE required but not implemented yet!"$NORMCO
+
+else #singlesrc below
+
+# SINGLE-SOURCE MODE BELOW:
+#*#########################
+
+#LETS CHECK OUTPUT DIRECTORIES!
+$ECHO $COLOR4"\nCHECKING OUTPUT DIRECTORIES:"$NORMCO
+
+#https://stackoverflow.com/questions/18622907/only-mkdir-if-it-does-not-exist
+export SRCDIR="./cppsrc/"    
+if [ -d ${SRCDIR} ]; then
+  $ECHO $COLOR2"Directory ${COLOR1}${SRCDIR}${COLOR2} already exists."$NORMCO
+else
+  $ECHO $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR1} does not exist. Will be created"$NORMCO
+  $ECHO $COLERR`mkdir -p $SRCDIR` $NORMCO  # -p, --parents  no error if existing, make parent directories as needed
+fi
+
+export TOOLSOUTDIR="${SRCDIR}toolsouts/"
+if [ -d ${TOOLSOUTDIR} ]; then
+  $ECHO $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}${COLOR2} already exists."$NORMCO
+  $ECHO $COLERR `rm ${TOOLSOUTDIR}/*`$NORMCO
+else
+  $ECHO $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR2} does not exist. Will be created"$NORMCO
+  $ECHO $COLERR `mkdir -p ${TOOLSOUTDIR} `$NORMCO
+fi
+
+$ECHO $COLERR `mv "$SOURCES/local.h" "$SOURCES/cppsrc/"`$NORMCO
+
+
 #OPTIONAL HEADERS
-echo -e $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
+$ECHO $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 
 #Preparing C++ source files
 
 echo "/* All sources in one file? */"                                > ./cppsrc/project_at_once.cpp
-echo "// @date 2024-09-30 ($Pr2CVERSION)"                                  >> ./cppsrc/project_at_once.cpp
+echo "// @date 2024-10-10 ($Pr2CVERSION)"                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
@@ -127,21 +172,21 @@ echo "//========================================================================
 echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";" >> ./cppsrc/project_at_once.cpp
 
 #REAL TRANSLATION
-echo -e $COLOR4"DOING REAL TRANSLATION:"$NORMCO
+$ECHO $COLOR4"DOING REAL TRANSLATION:"$NORMCO
 
 FILES=*.pde
 for f in $FILES
 do # take action on each file. $f store current file name
-  echo -e $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.hpp$NORMCO\n"
+  $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.hpp$NORMCO\n"
   echo "#include \"$f.hpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
   $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.hpp"
 done
 
 #FINAL WORK
-echo -e $COLOR4"FINALISING..."$NORMCO
+$ECHO $COLOR4"FINALISING..."$NORMCO
 
 #Preparing CMakeLists.txt    --> https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
-echo -e  $COLOR3"\nCreating$COLOR1 CMakeLists.txt $NORMCO"
+$ECHO $COLOR3"\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
 # This file was made automagically. Do not edit!
 #! @date $TIMEMARK (translation timemark)
@@ -236,8 +281,10 @@ target_link_libraries( "\${PROJECT_NAME}_\${VERSION_NUM}_svg"
 #     )
 
 EOF
+fi  #multisrc else singlesrc
 
-echo -e $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
+
+$ECHO $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
 #/*                 PROCESSING2C  release 2024                       */

@@ -7,16 +7,7 @@
 /// @details 
 ///         We have two layer - environment resources cells and agents. 
 ///         
-class World {
-  int[][]     cells;  //!< Two dimensional array of resources
-  Agent[][]   agents; //!< Two dimensional array of agents
-  
-  World(int side)     //!< Constructor of the World
-  {
-    cells=new int[side][side];
-    agents=new Agent[side][side];
-  }
-};
+/*_import_class:World */
 
 // More elaborated functionalities are defined as stand-alone functions,
 // not as methods because of not enough flexible syntax of Processing

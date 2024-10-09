@@ -1,15 +1,18 @@
-// @date 2024-10-04 (last modification)
+/// @date 2024-10-10 (last modification)
 /// World is a one of two central class of each ABM model.
 //*///////////////////////////////////////////////////////
 
-/*_using_class Agent */
+/*_import_class:Agent */
 
+/// @details 
+///         We have two layer - environment resources cells and agents. 
+///         
 class World: public virtual Object{
   public:
   smatrix<int>     cells;  //!< Two dimensional array of resources
   smatrix<pAgent>   agents; //!< Two dimensional array of agents
   
-  World(int side) ///< Constructor of the World
+  World(int side)     //!< Constructor of the World
   {
     cells=new matrix<int>(side,side);
     agents=new matrix<pAgent>(side,side);
@@ -74,5 +77,5 @@ void modelStep(pWorld world) ///< Need to be global!
 //*/////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD FOR TragedyOfCommons
 //*/////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
 

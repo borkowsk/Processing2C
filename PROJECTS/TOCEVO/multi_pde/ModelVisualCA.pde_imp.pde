@@ -2,14 +2,14 @@
 /// A world full of cells needs method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////
 
-void visualizeCells(smatrix<int> cells)  ///< Need to be global!
+void visualizeCells(int[][] cells)  ///< Need to be global!
 {
-  double maximum=std::log10(MAX_INT);
-  for(int a=0;a<cells->length;a++)
-   for(int b=0;b<cells[a]->length;b++)
+  double maximum=Math.log10(MAX_INT);
+  for(int a=0;a<cells.length;a++)
+   for(int b=0;b<cells[a].length;b++)
    {
       // Colorisation
-      double val=std::log10(cells[a][b]);
+      double val=Math.log10(cells[a][b]);
       
       fill(0,(int)(val/maximum*255),0);
     
@@ -18,7 +18,5 @@ void visualizeCells(smatrix<int> cells)  ///< Need to be global!
 }
 
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
+//  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
-
