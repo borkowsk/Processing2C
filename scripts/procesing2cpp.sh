@@ -1,6 +1,6 @@
 #!/bin/bash
 # Processing2C version 22h. 
-# @date 2024-10-10 (last modification)
+# @date 2024-10-11 (last modification)
 #
 #echo STAGE0 1>&2
 
@@ -114,7 +114,7 @@ sed -E 's|assert ([^;]+);|assert(\1);\t//|g' |\
 #modyfikacja print i println do plikow
 sed -E 's|(\w+)\.print\(|print(\1,|g' |\
 sed -E 's|(\w+)\.println\(|println(\1,|g' |\
-#zmiany bardziej generalne
+#zmiany bardziej generalne i wczesne...
 sed -E 's|boolean([ >)])|bool   \1|g'  |\
 sed -E 's|char([ >)])|char16_t\1|g' |\
 sed 's/this\./this->/g' |\
@@ -125,6 +125,7 @@ sed -E 's/(\w+)(\s+)instanceof(\s+)(\w+)/instanceof< \4 >( \1 )/g' |\
 sed 's/frameRate(/setFrameRate(/' |\
 sed 's/System.currentTimeMillis()/system_ctime_in_ms()/' |\
 sed 's/System.exit(/::exit(/'   |\
+sed 's/processing.core.PApplet/Processing::pApplet/' |\
 sed -E 's/(^\s*)(flush\(\));/\1std::cout@@@flush();std::cerr@@@flush();/' |\
 #sed 's/\.length/.length()/g' |\ #zbyt brutalne
 sed 's/null/nullptr/g' |\

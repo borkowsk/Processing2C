@@ -1,9 +1,10 @@
 #!/bin/bash
-#See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
+# See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
-# Processing2C version 22g. (2023-11-24)
+# Processing2C version 22i. 
+# @date 2024-10-11 (last mofifications)
 #
-#@todo Przerobić powtarzające się komendy na jeden plik skryptu dla seda
+# @todo Przerobić powtarzające się komendy na jeden plik skryptu dla seda
 
 echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
 
@@ -173,6 +174,7 @@ egrep -h '^\s*(void|int|float|double|String|boolean|char|\w+)(\[\]\s+|\s+)(\w+)\
 #funkcja o dowolnych parametrach
 sed -E 's#^\s*(void|int|float|double|String|boolean|char|\w+)(\[\]\s+|\s+)(\w+)\s*(\(.*\)\s*)#\1\2\t\3\4; //#' |\
 #podmiana prostych tablic w parametrach
+sed 's/processing.core.PApplet/Processing::pApplet/g' |\
 sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*]\s*\[\s*])/scuboid<\1>/g' |\
 sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*]\s*\[\s*])/smatrix<\1>/g' |\
 sed -E 's/(int|float|double|boolean|String|char|\w+)(\s*)(\[\s*])/sarray<\1>/g' |\

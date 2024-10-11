@@ -3,7 +3,7 @@
  * \classes processing_window; color
  * \ingroup drawing , rtm
  * \author borkowsk
- * \date 2023-03-21 (last modification)
+ * @date 2024-10-11 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -93,6 +93,9 @@ extern class processing_window: public processing_window_base
   friend void noLoop();
   ~processing_window() override;
 } _processing_window_instance;
+
+typedef processing_window AppletDummy;
+typedef Processing::ptr<AppletDummy> pApplet;
 
 /// \brief Alias for _processing_window_instance
 /// \ingroup rtm

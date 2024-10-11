@@ -4,7 +4,7 @@
 # But it is still TODO!
 #
 # Processing2C version 22h. 
-# @date 2024-10-10 (last modif.)
+# @date 2024-10-11 (last modif.)
 #
 Pr2CVERSION="0.22i"
 
@@ -156,7 +156,7 @@ $ECHO $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 #Preparing C++ source files
 
 echo "/* All sources in one file? */"                                > ./cppsrc/project_at_once.cpp
-echo "// @date 2024-10-10 ($Pr2CVERSION)"                            >> ./cppsrc/project_at_once.cpp
+echo "// @date 2024-10-11 ($Pr2CVERSION)"                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
@@ -178,9 +178,17 @@ FILES=*.pde
 for f in $FILES
 do # take action on each file. $f store current file name
   $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t$COLOR2./cppsrc/$f.hpp$NORMCO\n"
-  echo "#include \"$f.hpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
-  $SCRIPTS/procesing2cpp.sh "$f" > "./cppsrc/$f.hpp"
+  $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" > "./cppsrc/$f.hpp"
+
+  if [[ "$f" != "$PROJECT.pde" ]]; then # Why? See below...
+  	echo "#include \"$f.hpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
+  fi
+
 done
+
+# Most problems with undeclared types were because the main file includes itself 
+# in random places depending on the name! Now it will be always the last one.
+echo "#include \"$PROJECT.pde.hpp\"" >> "$SOURCES/cppsrc/project_at_once.cpp"
 
 #FINAL WORK
 $ECHO $COLOR4"FINALISING..."$NORMCO
