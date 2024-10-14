@@ -1,13 +1,14 @@
 /// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-04 (last change)
 /// ORIGINAL FILE: AgentSuplement->pde
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
-/// Agent is a one of two central class of each ABM model
-/// Agent need to be initialised & they need logic of change 
+/// Agent is a one of two central class of each ABM model.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
-void initializeAgents(smatrix<pAgent> agents) ///< Need to be global!
+/*_import_class:Agent */
+
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(smatrix<pAgent> agents) ///< @note Need to be global!
 {
    for(int a=0;a<agents->length;a++)
     for(int b=0;b<agents[a]->length;b++)
@@ -18,7 +19,8 @@ void initializeAgents(smatrix<pAgent> agents) ///< Need to be global!
     }
 }
 //OR
-void initializeAgents(sarray<pAgent> agents) ///< Need to be global!
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(sarray<pAgent> agents) ///< @note Need to be global!
 { 
   for(int a=0;a<agents->length;a++)
   if(random(1)<density)
@@ -28,7 +30,8 @@ void initializeAgents(sarray<pAgent> agents) ///< Need to be global!
   }
 }
 
-void  changeAgents(sarray<pAgent> agents) ///< Need to be global!
+/// Agents need logic of change.
+void  changeAgents(sarray<pAgent> agents) ///< @note Need to be global!
 {
   int MC=agents->length;
   for(int i=0;i<MC;i++)
@@ -61,7 +64,8 @@ void  changeAgents(sarray<pAgent> agents) ///< Need to be global!
   }  
 }
 //OR
-void  changeAgents(smatrix<pAgent> agents) ///< Need to be global!
+/// Agents need logic of change.
+void  changeAgents(smatrix<pAgent> agents) ///< @note Need to be global!
 {
   int MC=agents->length*agents[0]->length;
   for(int i=0;i<MC;i++)
@@ -109,6 +113,7 @@ void  changeAgents(smatrix<pAgent> agents) ///< Need to be global!
 
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-10-04 13:54:21
+//MADE NOTE: /data/wb/SCC/public/Processing2C/scripts did it 2024-10-14 17:34:05 !
 

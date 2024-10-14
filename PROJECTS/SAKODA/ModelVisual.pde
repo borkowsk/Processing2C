@@ -1,18 +1,21 @@
 /// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: ModelVisualisation.pde
-//*///////////////////////////////////////////////////////////////////////////////////////
-/// World full of agents need method of visualisation on screen/window
+/// @date 2024-10-14 (last change)
+//*//////////////////////////////////////////////////////////////////////////
+/// World full of agents need method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////////
 
+/*_import_class:Agent */
+/*_import_class:World */
+
+/// @brief Procedure for visualizing a two-dimensional array of agents
 void visualizeAgents(Agent[][] agents) { ///< Need to be global!
   Agent curra;
   for(int a=0;a<agents.length;a++)
    for(int b=0;b<agents[a].length;b++)
    {
       // Background
-      noStroke();fill(200); //Lepiej dopasowa tło
+      noStroke();fill(200); // Lepiej dopasowa tło
       rect(b*cwidth,a*cwidth,cwidth,cwidth); //'a' is vertical!
       
       // Colorisation of agent
@@ -30,6 +33,7 @@ void visualizeAgents(Agent[][] agents) { ///< Need to be global!
    }
 }
 //OR
+/// @brief Procedure for visualizing a one-dimensional array of agents
 void visualizeAgents(Agent[] agents) { ///< Need to be global!
    Agent curra;
    for(int a=0;a<agents.length;a++)
@@ -51,7 +55,7 @@ void visualizeAgents(Agent[] agents) { ///< Need to be global!
       fill(128);
     }
     
-    int t=(StepCounter/STEPSperVIS)%side; //Uwzględniamy różne częstości wizualizacji
+    int t=(StepCounter/STEPSperVIS)%side; // @internal We take into account different visualization frequencies.
     rect(a*cwidth,t*cwidth,cwidth,cwidth);
     stroke(255);
     line(0,(t+1)*cwidth+1,width,(t+1)*cwidth+1);
@@ -60,4 +64,5 @@ void visualizeAgents(Agent[] agents) { ///< Need to be global!
 
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////

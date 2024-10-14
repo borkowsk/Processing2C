@@ -1,26 +1,9 @@
-/// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-04 (last change)
+/// ABM model of segregation (test project for Processing2C).
 /// ORIGINAL FILE: RTMEventHandling->pde
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
-///  Dopasowana do modelu obsługa zdarzeń
+/// @details Model-specific event handling
 //*///////////////////////////////////////////////////////////////////////////////////////
-int searchedX=-1;
-int searchedY=-1;
-bool    Clicked=false;
-pAgent  theSelected=nullptr; 
-
-double minDist2Selec=MAX_INT;
-double maxTransSelec=-MAX_INT;
-
-void processing_window::onMouseClicked()
-{
-  Clicked=true;
-  theSelected=nullptr;
-  searchedX=mouseX;
-  searchedY=mouseY; //Searching should be implemented in visialisation!
-  key=0;
-}
 
 void processing_window::onKeyPressed() 
 {
@@ -58,8 +41,26 @@ void processing_window::onKeyPressed()
   }
 }
 
+int searchedX=-1;
+int searchedY=-1;
+bool    Clicked=false;
+pAgent  theSelected=nullptr; 
+
+double minDist2Selec=MAX_INT;
+double maxTransSelec=-MAX_INT;
+
+void processing_window::onMouseClicked()
+{
+  Clicked=true;
+  theSelected=nullptr;
+  searchedX=mouseX;
+  searchedY=mouseY; // @internal Searching should be implemented in visualisation!
+  key=0;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 ///////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! ../../scripts did it 2024-10-04 13:54:21
+//MADE NOTE: /data/wb/SCC/public/Processing2C/scripts did it 2024-10-14 17:34:05 !
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Processing2C version 22h. 
-# @date 2024-10-11 (last modification)
+# @date 2024-10-14 (last modification)
 #
 #echo STAGE0 1>&2
 
@@ -14,24 +14,29 @@ fi
 
 #echo STAGE1 1>&2
 
-if [[ $SOURCEMODE == "multisrc" ]]
+if [[ $SOURCEMODE == "multisrc" ]] && [[ "$3" == "-ECLL" ]]
 then
-	echo "//Processing to C++ converter $0 @date $TIMEMARK"
-	echo "//Source: $1"
+	echo "/// @note Automatically made from _$1_ by __Processing to C++__ converter ($0)."
+	echo "/// @date $TIMEMARK (translation)"
+	echo "//"
 	echo "#include \"processing_consts.hpp\""
 	echo "#include \"processing_templates.hpp\""
 	echo "#include \"processing_library.hpp\""
-	echo "#include \"processing_inlines.hpp\" //...is optional. Use when project is already compilable!"
 	echo "#include \"processing_window.hpp\""
-	#TODO ? - nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
-	${SCRIPTS}/includeOptionals.sh $1
-	echo "#include \"project.h\" //...is for you. Could be deleted when not needed."
+	echo "#ifndef _NO_INLINE"
+	echo "#include \"processing_inlines.hpp\" //...is optional."
+	echo "#endif // _NO_INLINE"
+	# nagłówki opcjonalne powinny być dodawane na podstawie wyniku grep'a!
+	echo -e $COLOR4 $1 $NORMCO 1>&2
+	${SCRIPTS}/includeOptionals.sh $1 ${SRCDIR}local.h
 	echo "using namespace Processing;"
+	if [ -f "project.h" ];then
+		echo "#include \"project.h\" // This could be deleted when not needed."
+	fi
 	echo "#include \"local.h\" //???."
 	echo "#include <iostream>"
-	echo "//=================================================================================="
+	echo "//================================================================"
 	echo ""
-	#TEEE="| tee $2/$1_imp.pde"
 fi
 
 #echo STAGE2 1>&2
@@ -98,7 +103,7 @@ sed -E 's|new(\s+)(\w+)(\s*)\[(.+)]|new\1array<p\2>(\4)|' |\
 #listy i mapy obiektów np.
 #ArrayList<Link> connections;
 #connections=new ArrayList<Link>();
-#TODO - to dodawanie p do typu w ArrayList jest podejrzane. Powinno działać ogólnie a nie tak dziwnie
+#TODO - to dodawanie p do typu w `ArrayList` jest podejrzane. Powinno działać ogólnie a nie tak dziwnie
 #sed -E 's|ArrayList<(\s*)(\w+)(\s*)>(\s+)(\w+)(\s*)([\),;:=])|pArrayList<p\2>\4\5\6\7|g' |\
 sed -E 's|new(\s+)ArrayList<(\s*)(\w+)(\s*)>|new ArrayList<p\3>|g' |\
 #sed -E 's|HashMap\s*<(.+)>(\s+)(\w+)(\s*)([\),;:=])|pHashMap<\1>\2\3\4\5|g' |\
@@ -132,8 +137,8 @@ sed 's/null/nullptr/g' |\
 #MATH & FLOATs & chars
 sed 's/Float.MAX_VALUE/FLT_MAX/g' 	|\
 sed 's/Float.MIN_VALUE/FLT_MIN/g' 	|\
-sed 's/Float.isNaN(/std::isnan(/g'   |\
-sed 's/Double.isNaN(/std::isnan(/g'  |\
+sed 's/Float.isNaN(/std::isnan(/g'      |\
+sed 's/Double.isNaN(/std::isnan(/g'     |\
 sed 's/Integer.parseInt/std::stoi/g' 	|\
 sed 's/Float.parseFloat/std::stof/g' 	|\
 sed 's|hex(|Processing::hex(|g' 	|\
@@ -204,18 +209,25 @@ sed 's/Exception/std::runtime_error/g' |\
 sed -E 's/throw(\s+)new/throw/g' |\
 #PODMIANA TYPÓW UŻYTKOWNIKA NA inteligentne wskaźniki pAAAA
 sed -E -f userclasses.sed  |\
+#sed -E 's|\/\*_import_class:\s*(\w+)\s*\*\/|#include "\1_class@@@pde@@@hpp"|' |\
+#DYREKTYWY PREPROCESORA C
+sed -E 's|\/\/_include|#_include|'                                            |\
+sed -E 's|\/\/_pragma|#pragma|'                                               |\
+sed -E 's|\/\/_ifndef|#ifndef|'                                               |\
+sed -E 's|\/\/_define|#define|'                                               |\
+sed -E 's|\/\/_endif|#endif|'                                                 |\
 #Tutaj dopiero dyrektywy zależne od template-ów C++
-sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g' |\
-sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'   |\
+sed -E 's|\/\*_downcast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'       |\
+sed -E 's|\/\*_dncast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'         |\
 sed -E 's|\/\*_dynamic_cast\*\/\((\w+)\)|std::dynamic_pointer_cast\<\1\>|g'   |\
-sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
-sed -E 's|\/\*_stcast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
-sed -E 's|\/\*_static_cast\*\/\((\w+)\)|static_cast\<p\1\>|g'  |\
-sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g' |\
-sed -E 's|\/\*_tmpptr\*\/|\* |g'   |\
-sed -E 's|\/\*_rawptr\*\/|\* |g'   |\
-sed -E 's|\/\*_ref\*\/|\& |g'|\
-sed -E 's|\/\*_reference\*\/|\& |g'|\
+sed -E 's|\/\*_upcast\*\/\((\w+)\)|static_cast\<p\1\>|g'                      |\
+sed -E 's|\/\*_stcast\*\/\((\w+)\)|static_cast\<p\1\>|g'                      |\
+sed -E 's|\/\*_static_cast\*\/\((\w+)\)|static_cast\<p\1\>|g'                 |\
+sed -E 's|\/\*_tmpfree\*\/\((\w+)\)|_free_ptr_to\<\1\>|g'                     |\
+sed -E 's|\/\*_tmpptr\*\/|\* |g'                                              |\
+sed -E 's|\/\*_rawptr\*\/|\* |g'                                              |\
+sed -E 's|\/\*_ref\*\/|\& |g'                                                 |\
+sed -E 's|\/\*_reference\*\/|\& |g'                                           |\
 #ZAMIANA ODWOŁAŃ KROPKOWYCH NA STRZAŁKOWE
 #kropki zamkniete w "" próbujemy zabezpieczyć - głównie dotyczy to nazw plików w includach
 #Globalizacja tego może sprawiać kłopoty w dłuższych konkatenacjach tekstów, bo w takiej sytuacji:
@@ -236,7 +248,7 @@ sed -E 's/\<p(bool|int|long|float|double|String)(\s*)\>/\1\2/g' |\
 #CZYSZCZENIE NADMIAROWYCH ZNAKÓW SPACJI I KOMENTARZY
 sed -E 's|//\s+//|//|g'
 #echo 's/"(.+)\.(.+)"/-TEST-TEST-TEST-/g' 1>&2
-echo -e "//NOTE! $(dirname $0) did it $TIMEMARK\n"
+echo -e "//MADE NOTE: $(dirname $0) did it $TIMEMARK !\n"
 
 echo -e $COLOR3 1>&2
 #cat tools.err 1>&2     #DEBUG!

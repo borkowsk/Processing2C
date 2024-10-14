@@ -1,18 +1,19 @@
 /// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: AssemblingOfWorld.pde
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
-/// World is a one of two central class of each ABM model
-//*///////////////////////////////////////////////////////////////////////////////////////
-int StepCounter=0;
 
+/*_import_class:Agent */
+
+int StepCounter=0;  ///< Global step counter.
+
+/// @brief World is a one of two central class of each ABM model.
 class World {
-  //Agent[] agents; //One dimensional array of agents
+  //Agent[] agents; //!< One dimensional array of agents.
   //OR
-  Agent[][] agents; //Two dimensional array of agents
+  Agent[][] agents; //!< Two dimensional array of agents.
   
-  World(int side) //Constructor of the World
+  World(int side)   //!< Constructor of the World.
   {
     //agents=new Agent[side];
     //OR
@@ -43,4 +44,5 @@ void modelStep(World world) { ///< Need to be global!
 
 //*/////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD OF SAKODA
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*/////////////////////////////////////////////////////////////////////////////////////////////

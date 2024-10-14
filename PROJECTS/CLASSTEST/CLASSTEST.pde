@@ -1,10 +1,14 @@
 /// Class hierarchy test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "CLASSTEST.pde"
-// @date 2024-09-30 (last change)
+// @date 2024-10-14 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 /// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
+interface Face 
+{
+     /*_interfunc*/ String face() /*_forcebody*/ ;
+}
 
 interface Mew 
 {
@@ -16,16 +20,19 @@ interface Eat
     /*_interfunc*/ void eat(int l) /*_forcebody*/ ;
 };
 
-abstract class Animal 
+abstract class Animal implements Face
 {
     float mass;
     /*_interfunc*/ void eat(int l) {
         println(l,"Animal eats"); 
         mass+=l;
     }
+    
+    String face() { return "👾" ;}
+
 };
 
-class Cat extends Animal implements Mew, /*_pubext*/ Eat 
+class Cat extends Animal implements Face,/*_pubext*/ Mew, /*_pubext*/ Eat
 {
     void eat(int l) {
          println(l,"Cat eats");  
@@ -34,6 +41,8 @@ class Cat extends Animal implements Mew, /*_pubext*/ Eat
     void meow(int l) {
          println(l,"Cat meows");  
     }
+    
+    String face() { return "🐱"; }
 };
 
 class Dog extends Animal 
@@ -41,6 +50,8 @@ class Dog extends Animal
     void eat(int l) {
          println(l,"Dog eats");  
     }
+    
+    String face() { return "🐶"; }
 };
 
 class AnimalFeeder 
@@ -53,7 +64,7 @@ class AnimalFeeder
 
 void setup()
 {
-    size(150,100);
+    size(150,150);
     Object object = new Cat();
     Cat cat = /*_downcast*/(Cat)(object); //Second parentheses required
     cat.meow(0);
@@ -117,12 +128,19 @@ void setup()
     feeder.feed(animals);
 
     print_animals(animals);  
-    println(animals);  
+    println(animals);
+    
+    String as="";
+    for(Animal a:animals)
+        as+=a.face();
+    as+="...";
+    text(as,10,height/2);    println(as);
+        
     print_animals(animals); //Sprawdzenie czy wywołanie function z parametrem obiektowym nie niszczy pamięci!
 }
 
 void print_animals(ArrayList<Animal> anim) /// Drukowanie własną metodą
 {
       for(Animal a:anim)
-        println(a);
+        println(a,"",a.face());
 }

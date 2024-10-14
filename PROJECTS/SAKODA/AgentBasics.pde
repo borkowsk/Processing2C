@@ -1,13 +1,14 @@
 /// ABM model of segregation (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE: AgentSuplement.pde
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
-/// Agent is a one of two central class of each ABM model
-/// Agent need to be initialised & they need logic of change 
+/// Agent is a one of two central class of each ABM model.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
-void initializeAgents(Agent[][] agents) ///< Need to be global!
+/*_import_class:Agent */
+
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(Agent[][] agents) ///< @note Need to be global!
 {
    for(int a=0;a<agents.length;a++)
     for(int b=0;b<agents[a].length;b++)
@@ -18,7 +19,8 @@ void initializeAgents(Agent[][] agents) ///< Need to be global!
     }
 }
 //OR
-void initializeAgents(Agent[] agents) ///< Need to be global!
+/// Agents need to be initialised & they need logic of change.
+void initializeAgents(Agent[] agents) ///< @note Need to be global!
 { 
   for(int a=0;a<agents.length;a++)
   if(random(1)<density)
@@ -28,7 +30,8 @@ void initializeAgents(Agent[] agents) ///< Need to be global!
   }
 }
 
-void  changeAgents(Agent[] agents) ///< Need to be global!
+/// Agents need logic of change.
+void  changeAgents(Agent[] agents) ///< @note Need to be global!
 {
   int MC=agents.length;
   for(int i=0;i<MC;i++)
@@ -61,7 +64,8 @@ void  changeAgents(Agent[] agents) ///< Need to be global!
   }  
 }
 //OR
-void  changeAgents(Agent[][] agents) ///< Need to be global!
+/// Agents need logic of change.
+void  changeAgents(Agent[][] agents) ///< @note Need to be global!
 {
   int MC=agents.length*agents[0].length;
   for(int i=0;i<MC;i++)
@@ -109,4 +113,5 @@ void  changeAgents(Agent[][] agents) ///< Need to be global!
 
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www.researchgate.net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
