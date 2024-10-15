@@ -1,11 +1,11 @@
 #!/bin/bash
 #Processing2C version 22.
-
+export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 source "../scripts/screen.ini"
 
-if [ $# -ne 0 ]; 
+if [ $# -g 1 ]; 
 then
-   echo -e $COLERR"No parameters expected!"$NORMCO 1>&2
+   echo -e $COLERR"One or zero parameters expected!"$NORMCO 1>&2
    exit -1
 fi
 
@@ -17,10 +17,12 @@ echo
 
 rm -f trash.txt
 cat <<EOF > "CMakeLists.txt"
-# Examples for Processing2C
+# Examples for Processing2C translated $TIMEMARK
 # Add or remove EXCLUDE_FROM_ALL, if you want (not) compile a particular example\n
-cmake_minimum_required(VERSION 3.0)
+
+cmake_minimum_required(VERSION 3.5)
 project(PROCESSING2C_EXAMPLES)
+
 #LIBRARIES
 add_subdirectory( "${SYMSHELL}" 
                   "${SYMSHELL}" )
@@ -31,7 +33,7 @@ add_subdirectory( "../tools/"
 #EXAMPLES
 EOF
 
-echo "Preparing!" `date` "..." > translate_lst.txt
+echo "Preparing!" $TIMEMARK "..." > translate_lst.txt
 
 for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdujących się w bieżącym katalogu
   if [ -d "$f" ]; then
@@ -41,8 +43,16 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
     then
      echo "Processing projekt '$f'" 
      #echo $LST
-     ../../scripts/makeCPPproject.sh
-     echo -e "add_subdirectory( $f \t)" >> ../CMakeLists.txt
+     ../../scripts/makeCPPproject.sh $*
+     
+     if [ -f "CMakeLists.txt" ];then
+     	echo -e "add_subdirectory( $f \t)" >> ../CMakeLists.txt
+     fi
+     
+     if [ -f "multi_cpp/CMakeLists.txt" ]; then
+      	echo -e "add_subdirectory( $f/multi_cpp/ \t)" >> ../CMakeLists.txt
+     fi
+     
      git add *.sed
     fi
     popd > /dev/null

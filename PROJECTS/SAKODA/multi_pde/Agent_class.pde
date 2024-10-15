@@ -1,6 +1,5 @@
 //_pragma once
-/// @file
-/// @date 2024-10-14 (last change)
+/// @date 2024-10-15 (last change)
 //_ifndef HEADER_Agent_INCLUDED
 //_define HEADER_Agent_INCLUDED
 

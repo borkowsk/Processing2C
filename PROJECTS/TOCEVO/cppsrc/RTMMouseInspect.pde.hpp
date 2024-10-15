@@ -1,6 +1,9 @@
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 // Obsługa wyszukiwania obiektu po kliknięciu myszy:
 //*///////////////////////////////////////////////////
+
+/*_import_class:Agent */
+/*_import_class:World */
 
 int searchedX=-1;       ///<???
 int searchedY=-1;       ///<???
@@ -65,5 +68,5 @@ void processing_window::onMouseClicked()
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
 

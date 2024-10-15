@@ -1,24 +1,23 @@
-/// Class hierarchy test for Processing2C
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// Class hierarchy test for Processing2C.
 /// ORIGINAL FILE: "CLASSTEST.pde"
-// @date 2024-10-14 (last change)
+/// @date 2024-10-15 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 /// INSPIRED BY EXAMPLE from https://www.baeldung.com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
 interface Face 
 {
      /*_interfunc*/ String face() /*_forcebody*/ ;
-}
+} //_endOfclass
 
 interface Mew 
 {
     /*_interfunc*/ void meow(int l) /*_forcebody*/ ;
-};
+} //_endOfclass
 
 interface Eat 
 {
     /*_interfunc*/ void eat(int l) /*_forcebody*/ ;
-};
+} //_endOfclass
 
 abstract class Animal implements Face
 {
@@ -30,7 +29,7 @@ abstract class Animal implements Face
     
     String face() { return "👾" ;}
 
-};
+} //_endOfclass
 
 class Cat extends Animal implements Face,/*_pubext*/ Mew, /*_pubext*/ Eat
 {
@@ -43,7 +42,7 @@ class Cat extends Animal implements Face,/*_pubext*/ Mew, /*_pubext*/ Eat
     }
     
     String face() { return "🐱"; }
-};
+} //_endOfclass
 
 class Dog extends Animal 
 {
@@ -52,7 +51,7 @@ class Dog extends Animal
     }
     
     String face() { return "🐶"; }
-};
+} //_endOfclass
 
 class AnimalFeeder 
 {
@@ -60,7 +59,7 @@ class AnimalFeeder
         for(Animal a:animals)
             a.eat(10);
         }
-};
+} //_endOfclass
 
 void setup()
 {
@@ -144,3 +143,7 @@ void print_animals(ArrayList<Animal> anim) /// Drukowanie własną metodą
       for(Animal a:anim)
         println(a,"",a.face());
 }
+
+//*/////////////////////////////////////////////////////////////////
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+//*/////////////////////////////////////////////////////////////////

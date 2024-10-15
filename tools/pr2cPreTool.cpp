@@ -1,9 +1,8 @@
 /// @file
-/// @brief An application that corrects the Processing code before the real translation
-///        PL.: Aplikacja poprawiająca kod Processing-u przed właściwym tłumaczeniem
+/// @brief An application that corrects and splits the Processing code before the real translation.
+///        PL.: Aplikacja poprawiająca i dzieląca kod Processing-u przed właściwym tłumaczeniem.
 /// @author 'borkowsk'
-/// @date 2024-10-10 (last modification)
-/// 	Processing2C version 22.
+/// @date 2024-10-15 (last modification)
 ///
 //#include <locale>
 #include <cassert>
@@ -17,9 +16,11 @@
 std::string   OutDir="./";        ///< Where byproducts (e.g. class headers) have to put?
 std::ofstream mylog;              ///< Mainly for error checking.
 bool EXTRACT_CLASSES=false;       ///< Make separate header file for all detected classes.
-std::string current_date_dox="";  ///< @ d a t e  extracted from doxygen comments
-std::string current_dox_block=""; ///< Doxygen lines from beginning to "class definition" or to next @brief
-std::string current_imports="";   ///< All /*_imports: ... */ directives
+int  DEBUG_LEVEL=0;               ///< Level of debugging.
+std::string current_date_dox;     ///< @ d a t e  extracted from doxygen comments.
+std::string current_author_dox;   ///< @ a u t h o r  extracted from doxygen comments.
+std::string current_dox_block;    ///< Doxygen lines from beginning to "class definition" or to next  @ b r i e f.
+std::string current_imports;      ///< All /*_imports: ... */ directives.
 
 /// \brief  Recode mask of `ctype` into readable text.
 /// \param  interest - mask of `ctype` information
@@ -46,7 +47,7 @@ std::string print_type(std::ctype<char>::mask interest)
 /// Extract all characters up to and including the given sequence.
 int all_until(std::istream& inp,const std::string finish,std::string& block,char escape='\0')
 {
-    int exp_len=finish.length();
+    auto exp_len=finish.length();
     block="";
 
     while(true)
@@ -56,13 +57,13 @@ int all_until(std::istream& inp,const std::string finish,std::string& block,char
         if(iC==EOF)
             return EOF;
 
-        block+=std::string::value_type(iC); // Get rid of warning about automatic conversion from int to SOME char.
+        block+=std::string::value_type(iC); // Get rid of warning about automatic conversion from an integer to SOME char.
 
         if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPE-m to nie sprawdzamy zakończenia
             continue;
 
-        if(block.length() >= exp_len
-           && finish.compare(block.substr(block.length() - exp_len, exp_len) ) == 0
+        if( block.length() >= exp_len
+        &&  finish.compare(block.substr(block.length() - exp_len, exp_len) ) == 0
                 )
             return 1;
     }
@@ -81,7 +82,7 @@ int parentheses_block(std::istream& inp,const char start,const char finish,std::
         if(iC==EOF)
         { std::cerr << "An unexpected end of file inside parentheses "<<start<<finish<<" block "; return 0;}
 
-        block+=iC;
+        block+=char16_t(iC);
 
         if( escape!='\0' && block.length()>1 && escape==block[block.length()-2] ) //jeśli znak jest poprzedzony ESCAPE-m to nie sprawdzamy zakończenia
             continue;
@@ -96,7 +97,7 @@ int parentheses_block(std::istream& inp,const char start,const char finish,std::
 
 
 /// TODO: Extract semantic parentheses - block of even parentheses. NOT IMPLEMENTED.
-int parentheses_block(std::istream& inp,const std::string start,const std::string finish,std::string& block,int counter=0,char escape='\0')
+int parentheses_block(std::istream& /*inp*/,const std::string& /*start*/,const std::string& finish,std::string& block,int /*counter*/=0,char /*escape*/='\0')
 {
     int exp_len=finish.length();
     block="";
@@ -245,7 +246,7 @@ std::string interfaces_imports(const std::string& curr_block,bool isInterface)
         pos+=strlen("implements")+1;
         identifier=take_identifier(curr_block,pos);         //std::cerr << identifier <<",";
 
-        if(identifier.empty() || identifier.length()==0 || identifier[0]=='?')
+        if(identifier.empty() || identifier.empty() || identifier[0]=='?')
             return output; //Coś poszło nie tak
 
         output="/*_import_class:"+identifier+" */\n";
@@ -285,6 +286,13 @@ void keep_doxygen_text(const std::string& curr_block,const std::string& rest_of_
         current_date_dox += "\n";
         return;
     }
+    else
+    if( dox.find("@author")!=std::string::npos || dox.find("\\author")!=std::string::npos)
+    {
+        current_date_dox = dox;
+        current_date_dox += "\n";
+        return;
+    }
     else if(  dox.find("@brief")!=std::string::npos || dox.find("\\brief")!=std::string::npos)
     {
         current_dox_block= dox;
@@ -314,6 +322,10 @@ int parseParams(int argc,const char** argv)
         else
         if( strcasecmp(argv[i], "-ECLL") == 0) {
             EXTRACT_CLASSES = true; std::cerr<<"OK "<<"EXTRACT_CLASSES="<<(EXTRACT_CLASSES?"yes":"no");
+        }
+        else
+        if( strcasecmp(argv[i], "-DEBUG") == 0 ) {
+            DEBUG_LEVEL+=1;
         }
         else
         {
@@ -397,7 +409,7 @@ int main(int argc,const char** argv)
                 mylog << curr_block << rest_of_comment <<"\t\t\tCOMMENT"<< std::endl;
             if(curr_block[2] == '/' && curr_block[3] != '<' ) //DOXYGEN
             {
-                std::cerr <<"'"<< curr_block << rest_of_comment <<"'"<< std::endl;
+                if(DEBUG_LEVEL) std::cerr <<"'"<< curr_block << rest_of_comment <<"'"<< std::endl;
                 keep_doxygen_text(curr_block,rest_of_comment);
             }
         }
@@ -416,7 +428,7 @@ int main(int argc,const char** argv)
             mylog << wholeComment << "\t\t\tCOMMENT" << std::endl;
             if (wholeComment[2] == '*') //DOXYGEN
             {
-                std::cerr << "'" << curr_block << rest_of_comment << "'" << std::endl;
+                if(DEBUG_LEVEL) std::cerr << "'" << curr_block << rest_of_comment << "'" << std::endl;
                 keep_doxygen_text(curr_block,rest_of_comment);
             }
             else
@@ -438,9 +450,9 @@ int main(int argc,const char** argv)
             mylog << curr_block << rest_of_string <<"\t\t\tSTRING or CHAR"<< std::endl;
         }
         else
-        if( curr_block.compare("class")==0
-        ||  (isInterface=(curr_block.compare("interface")==0))
-        ||  curr_block.compare("abstract")==0
+        if( curr_block=="class"
+        ||( isInterface=(curr_block=="interface") )
+        || curr_block=="abstract"
         )
         {
             std::string rest_of_header;
@@ -470,7 +482,7 @@ int main(int argc,const char** argv)
                 mylog << "CREATE CLASS HEADER FILE:\t" << header_src << std::endl;
 
                 std::ofstream new_header(header_src);
-                new_header << "//_pragma once\n/// @file\n"
+                new_header << "//_pragma once\n"
                          << (current_date_dox.empty()?"":current_date_dox.c_str())
                          <<"//_ifndef "<<"HEADER_"<<this_class<<"_INCLUDED\n"
                          <<"//_define "<<"HEADER_"<<this_class<<"_INCLUDED\n\n"
@@ -484,7 +496,7 @@ int main(int argc,const char** argv)
                     new_header<< current_dox_block <<std::endl;
                     current_dox_block="";
                 }
-                // Importy wynikajace z interfejsów
+                // Importy wynikające z interfejsów
                 auto imports=interfaces_imports(curr_block, isInterface);
                 if(imports[0]!='?')
                 {

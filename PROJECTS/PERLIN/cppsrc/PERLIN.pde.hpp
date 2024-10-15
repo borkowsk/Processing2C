@@ -2,7 +2,7 @@
 /// Perlin noise test for Processing2C.
 /// ORIGINAL FILE: "PERLIN.pde"
 /// @uthor: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-04 (last change)
+/// @date 2024-10-15 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 /// Based on Processing examples for Perlin noise
@@ -102,5 +102,5 @@ void draw4()      ///< May be used before definition
 }
 
 
-//NOTE! ../../scripts did it 2024-10-04 13:54:21
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
 

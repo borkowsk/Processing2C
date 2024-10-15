@@ -1,6 +1,9 @@
-// @date 2024-09-30 (last modification)
+// @date 2024-10-15 (last modification)
 // Obsługa wyszukiwania obiektu po kliknięciu myszy:
 //*///////////////////////////////////////////////////
+
+/*_import_class:Agent */
+/*_import_class:World */
 
 int searchedX=-1;       ///<???
 int searchedY=-1;       ///<???

@@ -1,6 +1,6 @@
 /// @file
-/// @note Automatically made from _AgentBasics.pde_ by __Processing to C++__ converter (/data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh).
-/// @date 2024-10-14 17:32:20 (translation)
+/// @note Automatically made from _AgentBasics.pde_ by __Processing to C++__ converter (../../scripts/procesing2cpp.sh).
+/// @date 2024-10-15 16:11:04 (translation)
 //
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -18,7 +18,7 @@ using namespace Processing;
 
 /// ABM model of segregation (test project for Processing2C)
 /// ORIGINAL FILE: AgentSuplement->pde
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Agent is a one of two central class of each ABM model.
 //*///////////////////////////////////////////////////////////////////////////////////////
@@ -133,5 +133,5 @@ void  changeAgents(smatrix<pAgent> agents) ///< @note Need to be global!
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: /data/wb/SCC/public/Processing2C/scripts did it 2024-10-14 17:32:20 !
+//MADE NOTE: ../../scripts did it 2024-10-15 16:11:04 !
 

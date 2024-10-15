@@ -3,7 +3,7 @@
 /// This is a test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARCS.pde"
-// @date 2024-10-04 (last change)
+// @date 2024-10-15 (last change)
 //*//////////////////////////////////////////////////
 
 void processing_window::setup()
@@ -24,5 +24,5 @@ void processing_window::setup()
         arc(400,400,100,100,radians(10),radians(180),PIE);
 }
 
-//NOTE! ../../scripts did it 2024-10-04 13:54:20
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
 

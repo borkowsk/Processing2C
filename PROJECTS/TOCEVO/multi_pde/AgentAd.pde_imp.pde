@@ -1,4 +1,4 @@
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 /// Agent is a one of two central class of each ABM model.
 //*/////////////////////////////////////////////////////////////
 

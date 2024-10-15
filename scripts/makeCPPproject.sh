@@ -4,9 +4,9 @@
 # But it is still TODO!
 #
 # Processing2C version 22h.
-# @date 2024-10-14 (last modif.)
+# @date 2024-10-15 (last modif.)
 #
-Pr2CVERSION="0.22i"
+Pr2CVERSION="0.22j"
 
 export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 export SCRIPTS=$(dirname "$0")
@@ -20,14 +20,15 @@ then
 fi
 
 #CONFIGURATION
-echo -e $COLOR3"\nMaking PROCESSING2C project in "$COLOR1 `pwd` $NORMCO "\n"
+echo -e $COLOR4"\nMaking PROCESSING2C project in "$COLOR1 `pwd` $NORMCO "\n"
 echo -e $COLOR4"\nConfiguration directories:"$NORMCO
 
 export SOURCES=`pwd`
 export PROJECT=$(basename "$SOURCES")
+
 source $SCRIPTS/config.dat
 
-echo -e WBRTM  $COLOR1"      $WBRTM"$NORMCO
+#echo -e WBRTM  $COLOR1"      $WBRTM"$NORMCO
 echo -e PROC2DIR $COLOR1"    $PROC2DIR"$NORMCO
 echo -e SCRIPTS $COLOR1"     $SCRIPTS"$NORMCO
 echo -e WBSYMSHELL $COLOR1"  $SYMSHELL"$NORMCO
@@ -36,11 +37,10 @@ echo -e PROJECT $COLOR1"     $PROJECT"$NORMCO
 echo -e SOURCES $COLOR1"     $SOURCES"$NORMCO
 
 #SINGLE OR MULTISOURCE?
-echo -e $COLOR4"\nChecking single/multi sources mode:"$NORMCO
+echo -e $COLOR4"\nChecking number of pde sources."$NORMCO
 export NUMBER_OF_PDES=`ls -1 *.pde | grep -v exit | wc -l`
 
-if [[ $NUMBER_OF_PDES == 0 ]];
-then
+if [[ $NUMBER_OF_PDES == 0 ]]; then
   $ECHO $COLERR"No any '*.pde' files in this folder.\nNothing to do!!!"$NORMCO  \
   1>&2
   exit -1
@@ -49,33 +49,34 @@ else
           $NUMBER_OF_PDES  $NORMCO
 fi
 
+echo -e $COLOR4"\nChecking single/multi sources mode:\n"$NORMCO
 export SOURCEMODE=$1
-#echo -e $COLOR3"Required translation mode:$COLOR2 $SOURCEMODE"$NORMCO
 
-if [[ $SOURCEMODE != "multisrc" ]]
-then
+if [[ $SOURCEMODE != "multisrc" ]]; then
      SOURCEMODE="singlesrc"
 fi
 
 echo -e $COLOR3"Project will be translated in mode:$COLOR2 $SOURCEMODE"$NORMCO
 
 #CHECK SOURCE
-$ECHO $COLOR4"\nCHECKING FUNCTION NAMES..."$NORMCO
+$ECHO $COLOR4"\nCHECKING IDENTIFIERS..."$NORMCO
 
 $ECHO $COLOR2"\nAt least setup() or draw() function expected in *.pde files:"$NORMCO
-$ECHO  --color=always -Hn '^void\s+(setup\(\)|draw\(\))' *.pde
+egrep  -Hn --color=always '^void\s+(setup\(\)|draw\(\))' *.pde
 
 $ECHO $COLOR2"\nOnly non parametrised event handlers are alloved. These are such ones in *.pde files:"$NORMCO
-egrep  -Hn  --color=always '^void\s+(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
+egrep  -Hn --color=always '^void\s+(keyPressed\(\)|keyReleased\(\)|mouseClicked\(\)|mousePressed\(\)|mouseReleased\(\)|mouseMoved\(\)|mouseDragged\(\))' *.pde
 
 $ECHO $COLOR2"\nThe following lines may hide library symbols..."$NORMCO
 #exclude pseudo declaration then check for any construct ::identifier::\s+(::one of library identifier::) 
 grep -P -Hn  --color=always -f $SCRIPTS/symbols_pattern.grep *.pde
-#$ECHO"\nCHECKING NAMES FINISHED\n"
+
+#$ECHO $COLOR4"\nCHECKING IDENTIFIERS FINISHED\n"$NORMCO
 
 #GET GLOBAL SYMBOLS
 $ECHO $COLOR4"\nSEARCHING GLOBAL SYMBOLS:"$NORMCO
 $SCRIPTS/prepare_local_h.sh
+
 
 
 if [[ $SOURCEMODE == "multisrc" ]] #==========================================================================================================================
@@ -84,25 +85,32 @@ then
 # MULTI-SOURCE MODE BELOW:
 #*########################
 
+$ECHO $COLOR4"\nCHECKING DIRECTORIES FOR multisrc MODE...\n"$NORMCO
+
 export SRCDIR="./multi_cpp/"    
-if [ -d ${SRCDIR} ]; then
+if [ -d "${SRCDIR}" ]; then
   $ECHO $COLOR2"Directory ${COLOR1}${SRCDIR}${COLOR2} already exists."$NORMCO
 else
   $ECHO $COLOR2"Folder ${COLOR1}${SRCDIR}${COLOR2} does not exist. Will be created"$NORMCO
-  $ECHO $COLERR`mkdir -p $SRCDIR` $NORMCO  # -p, --parents  no error if existing, make parent directories as needed
+  $ECHO $COLERR`mkdir -p $SRCDIR ` $NORMCO  # -p, --parents  no error if existing, make parent directories as needed
 fi
 
 export TOOLSOUTDIR="./multi_pde/"
-if [ -d ${TOOLSOUTDIR} ]; then
+if [ -d "${TOOLSOUTDIR}" ]; then
   $ECHO $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}${COLOR2} already exists."$NORMCO
-  $ECHO $COLERR `rm ${TOOLSOUTDIR}/*`$NORMCO
 else
   $ECHO $COLOR2"Folder ${COLOR1}${TOOLSOUTDIR}${COLOR2} does not exist. Will be created"$NORMCO
   $ECHO $COLERR `mkdir -p ${TOOLSOUTDIR} `$NORMCO
-  $ECHO $COLERR `mkdir -p ${TOOLSOUTDIR}.bak_classes/ `$NORMCO
 fi
 
-$ECHO $COLERR `mv "$SOURCES/local.h" "$SRCDIR"`$NORMCO
+if [ -d "${TOOLSOUTDIR}.bak_classes/" ]; then
+  $ECHO $COLOR2"Directory ${COLOR1}${TOOLSOUTDIR}.bak_classes/${COLOR2} already exists."$NORMCO  
+else
+  $ECHO $COLERR `mkdir -p ${TOOLSOUTDIR}.bak_classes/ ` $NORMCO
+fi
+
+$ECHO $COLERR `rm ${TOOLSOUTDIR}/* `$NORMCO
+$ECHO $COLERR `mv "$SOURCES/local.h" "$SRCDIR" `$NORMCO
 
 #REAL TRANSLATION
 $ECHO $COLOR4"DOING REAL TRANSLATION:"$NORMCO
@@ -110,12 +118,11 @@ $ECHO $COLOR4"DOING REAL TRANSLATION:"$NORMCO
 # W trybie multi trzeba tłumaczyć dyrektywy _import_class
 echo 's|\/\*_import_class:\s*(\w+)\s*\*\/|#include "\1_class@@@pde@@@hpp"|' >> userclasses.sed
 
-
 FILES="*.pde"
 for f in $FILES
 do # take action on each file. $f store current source file name
   $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t${COLOR2}${SRCDIR}${f}.cpp$NORMCO\n"
-  $ECHO $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" -CLSS '>' "${SRCDIR}$f.cpp"
+  #$ECHO $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" -CLSS '>' "${SRCDIR}$f.cpp"
   $ECHO "/// @file" > "${SRCDIR}$f.cpp"
   $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}" "-ECLL" >> "${SRCDIR}$f.cpp"
 done
@@ -125,11 +132,19 @@ echo "const char* Processing::_PROGRAMNAME=\"$PROJECT\";"            >> ${SRCDIR
 CLASSFILES="${TOOLSOUTDIR}*_class.pde"
 for f in $CLASSFILES
 do # take action on each file. $f store current class file name
-  FBASE=$(basename "$f")
-  $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t${COLOR2}${SRCDIR}${FBASE}.hpp$NORMCO\n"
-  $ECHO $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}.bak_classes/" '>' "${SRCDIR}${FBASE}.hpp"
-  $ECHO "/// @file" > "${SRCDIR}${FBASE}.hpp"
-  $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}.bak_classes/" >> "${SRCDIR}${FBASE}.hpp"
+  if [ -f "$f" ]; then 
+	  FBASE=$(basename "$f")
+	  #echo STAGE1 1>&2
+	  $ECHO $COLOR3"Translating file:$COLOR1 $f $NORMCO\t-->\t${COLOR2}${SRCDIR}${FBASE}.hpp$NORMCO\n"
+	  #echo STAGE2 1>&2
+	  #$ECHO $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}.bak_classes/" '>' "${SRCDIR}${FBASE}.hpp"
+	  #echo STAGE3 1>&2
+	  $ECHO "/// @file" > "${SRCDIR}${FBASE}.hpp"
+	  #echo STAGE4 1>&2
+	  $SCRIPTS/procesing2cpp.sh "$f" "${TOOLSOUTDIR}.bak_classes/" >> "${SRCDIR}${FBASE}.hpp" 
+  else
+      $ECHO $COLERR "File $f not found!" $NORMCO
+  fi
 done
 
 
@@ -137,6 +152,8 @@ cat ${TOOLSOUTDIR}/${PROJECT}.pde_imp.pde > ${TOOLSOUTDIR}/multi_pde.pde
 echo -e "// multi_pde.pde\nString PROJECT_NAME=\"$PROJECT\";\n" >> ${TOOLSOUTDIR}/multi_pde.pde
 mv ${TOOLSOUTDIR}/${PROJECT}.pde_imp.pde ${TOOLSOUTDIR}/${PROJECT}.pde_imp.bak
 
+
+#exit 1
 
 #FINAL WORK
 $ECHO $COLOR4"FINALISING..."$NORMCO
@@ -147,10 +164,10 @@ $ECHO $COLOR3"\nCreating$COLOR1 ${SRCDIR}CMakeLists.txt $NORMCO"
 cat << EOF > ${SRCDIR}CMakeLists.txt
 # This file was made automagically. Do not edit!
 #! @date $TIMEMARK (translation timemark)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
-project($PROJECT)
+project( ${PROJECT}_M )
 set( VERSION_NUM $Pr2CVERSION ) #MUST BE NUMERIC 
 
 IF (WIN32)
@@ -186,7 +203,7 @@ EOF
 #List of modules
 pushd "${SRCDIR}" >> /dev/null
 
-FILES="*.hpp *.cpp"
+FILES="*.pde.???"
 for f in $FILES
 do
   echo -e "\t\"$f\"" >> CMakeLists.txt
@@ -263,7 +280,7 @@ $ECHO $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 #Preparing C++ source files
 
 echo -e "/// @file \n/* All sources included in one file. */"         > ./cppsrc/project_at_once.cpp
-echo "/// @date 2024-10-14 ($Pr2CVERSION)"                           >> ./cppsrc/project_at_once.cpp
+echo "/// @date 2024-10-15 ($Pr2CVERSION)"                           >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
@@ -307,10 +324,10 @@ $ECHO $COLOR3"\nCreating$COLOR1 CMakeLists.txt $NORMCO"
 cat << EOF > CMakeLists.txt
 # This file was made automagically. Do not edit!
 #! @date $TIMEMARK (translation timemark)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
-project($PROJECT)
+project( ${PROJECT}_S )
 set( VERSION_NUM $Pr2CVERSION ) #MUST BE NUMERIC 
 
 IF (WIN32)

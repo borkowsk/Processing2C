@@ -1,7 +1,6 @@
-/// @file "klasaRGB.pde"
-/// Simple model of colony growth with mutations (test project for Processing2C)
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-04 (last change)
+/// @file
+/// Simple model of colony growth with mutations (test project for Processing2C).
+/// @date 2024-10-15 (last change)
 //*////////////////////////////////////////////////////
 
 
@@ -57,5 +56,9 @@ class KLASA: public virtual Object{
     //super::finalize();//A na to Processing robi blup...
   }
 };
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+
+//*//////////////////////////////////////////////////////////
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+//*//////////////////////////////////////////////////////////
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:57 !
 

@@ -1,26 +1,30 @@
 /// @file
 /// Simple model of colony growth with mutations (test project for Processing2C).
-/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @todo May make GPF!
-/// @date 2024-10-04 (last modification)
+/// @date 2024-10-15 (last modification)
+/// TODO Gpf in table in C++ version :-/
+/// NOTE We use a user-defined CLASS called "KLASA" ;-)
 //*////////////////////////////////////////////////////////////////////////////////
-// PL: Wzrost losowo z punktu środkowego z mutacjami kolorów
-//*////////////////////////////////////////////////////////////////////////////////
-// UWAGA! Używamy KLASY zdefiniowanej przez użytkownika o nazwie RGB
 
-//Parametry modelu  
-int JUMP=3;     ///< skok pozycji "zarodnika". Nieparzysty!
-int CJUMP=9;    ///< skok koloru->Tez lepiej nieparzysty.
-int STARTG=128; ///< W jakiej szarości pierwsza komórka
-bool    ScreenDumps=false; ///< Zrzucanie obrazków co krok wcale
-int VIS_FRQ=100; ///< co ile kroków zrzut ekranu
+// PL: Wzrost losowo z punktu środkowego z mutacjami kolorów.
+//     UWAGA! Używamy KLASY zdefiniowanej przez użytkownika o nazwie "KLASA" ;-)
 
-//Ważne globalne zmienne, ale inicjowane w funkcji setup
-int          Side;  ///< Bok macierzy
-int          W;     ///< Mnożnik dla kwadracika
-smatrix<pKLASA>    World; ///< TABLICA - NAWIASY MUSZĄ BYĆ PRZY TYPIE
+/*_import_class:KLASA*/
 
-PrintWriter output; ///< A tu używamy KLASY zdefiniowanej w bibliotece
+// Parametry modelu:
+//*////////////////
+int JUMP=3;                 ///< skok pozycji "zarodnika". Nieparzysty!
+int CJUMP=9;                ///< skok koloru->Tez lepiej nieparzysty.
+int STARTG=128;             ///< W jakiej szarości pierwsza komórka.
+bool    ScreenDumps=false;  ///< Zrzucanie obrazków co krok wcale.
+int VIS_FRQ=100;            ///< co ile kroków zrzut ekranu.
+
+// Ważne globalne zmienne, ale inicjowane w funkcji `s e t u p`:
+//*/////////////////////////////////////////////////////////////
+int          Side;          ///< Bok macierzy.
+int          W;             ///< Mnożnik dla kwadracika.
+smatrix<pKLASA>    World;         ///< TABLICA OBIEKTÓW - DLA TŁUMACZENIA C++ NAWIASY TABLICY MUSZĄ BYĆ PRZY TYPIE.
+
+PrintWriter output;         ///< A tu używamy innej klasy, zdefiniowanej w bibliotece.
 
 void processing_window::setup() //Window and model initialization
 {
@@ -45,7 +49,7 @@ void processing_window::setup() //Window and model initialization
 int Step=0;
 bool    Stop=false;
 
-/// Monte Carlo Step
+/// Monte Carlo Step.
 void processing_window::draw()
 {
   //Zapis tego co jest
@@ -101,5 +105,9 @@ void processing_window::draw()
     Step++;
   }
 }
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+
+//*//////////////////////////////////////////////////////////
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+//*//////////////////////////////////////////////////////////
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:57 !
 

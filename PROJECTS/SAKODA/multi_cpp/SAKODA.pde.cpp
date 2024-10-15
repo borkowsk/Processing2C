@@ -1,6 +1,6 @@
 /// @file
-/// @note Automatically made from _SAKODA.pde_ by __Processing to C++__ converter (/data/wb/SCC/public/Processing2C/scripts/procesing2cpp.sh).
-/// @date 2024-10-14 17:32:20 (translation)
+/// @note Automatically made from _SAKODA.pde_ by __Processing to C++__ converter (../../scripts/procesing2cpp.sh).
+/// @date 2024-10-15 16:11:04 (translation)
 //
 #include "processing_consts.hpp"
 #include "processing_templates.hpp"
@@ -20,7 +20,7 @@ using namespace Processing;
 /// @file
 /// ABM model of segregation (test project for Processing2C).
 /// ORIGINAL FILE: "SAKODA.pde"
-/// @date 2024-09-30 (last change)
+/// @date 2024-10-14 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Sakoda conception inspired AGENT BASE MODEL utilized 1D or 2D discrete geometry
 /// implemented by Wojciech Borkowski.
@@ -112,6 +112,6 @@ void writeStatusLine() ///< Used also for stats
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM SAKODA MAIN 
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: /data/wb/SCC/public/Processing2C/scripts did it 2024-10-14 17:32:20 !
+//MADE NOTE: ../../scripts did it 2024-10-15 16:11:04 !
 
 const char* Processing::_PROGRAMNAME="SAKODA";

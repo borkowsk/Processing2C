@@ -1,6 +1,6 @@
 /// @file
 /// Simple model of synchronization of couple, also class usage demonstration. (test project for Processing2C)
-/// @date 2024-10-04 (last change)
+/// @date 2024-10-15 (last change)
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// @note Comments from lecture/Komentarze są notatkami z wykładu: Małgorzata Filon
 /// ORIGINAL FILE: "synchronizacja1.pde" -> "SYNCHRONIC1->pde"
@@ -108,5 +108,5 @@ void processing_window::draw()
 
 }
 
-//NOTE! ../../scripts did it 2024-10-04 13:54:22
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
 

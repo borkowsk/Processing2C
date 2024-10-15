@@ -1,41 +1,53 @@
-/// Class hierarchy test for Processing2C
-/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+/// Class hierarchy test for Processing2C.
 /// ORIGINAL FILE: "CLASSTEST.pde"
-// @date 2024-10-04 (last change)
+/// @date 2024-10-15 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 /// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
+//interface
+class Face: public virtual Object{
+  public:
+     virtual  String face() =0 ;
+} ; //_EndOfClass_
+
 
 //interface
 class Mew: public virtual Object{
   public:
     virtual  void meow(int l) =0 ;
-};
+} ; //_EndOfClass_
+
 
 //interface
 class Eat: public virtual Object{
   public:
     virtual  void eat(int l) =0 ;
-};
+} ; //_EndOfClass_
+
 
 //abstract
-class Animal: public virtual Object{
+class Animal : public virtual Face , public virtual Object{
   public:
     float mass;
     virtual  void eat(int l) {
         println(l,"Animal eats"); 
         mass+=l;
     }
-};
+    
+    String face() {
+	 return "👾" ;
+	}
+
+} ; //_EndOfClass_
 
 
-// Now will change of superclass!
-//Undefining any base class preprocessor definition: _
-#undef _superclass
+
+//_endOfSuperClass; // Now will change of superclass!
 //Base class is now:
 #define _superclass _
+//_derivedClass:Cat
 
-class Cat : public  Animal, public virtual Mew, public virtual Eat  , public virtual Object{
+class Cat : public  Animal, public virtual Face,public virtual Mew, public virtual Eat , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Cat eats");  
@@ -44,21 +56,30 @@ class Cat : public  Animal, public virtual Mew, public virtual Eat  , public vir
     void meow(int l) {
          println(l,"Cat meows");  
     }
-};
+    
+    String face() {
+	 return "🐱"; 
+	}
+} ; //_EndOfClass_
 
 
-// Now will change of superclass!
-//Undefining any base class preprocessor definition: _
-#undef _superclass
+
+//_endOfSuperClass; // Now will change of superclass!
 //Base class is now:
 #define _superclass _
+//_derivedClass:Dog
 
 class Dog : public  Animal  , public virtual Object{
   public:
     void eat(int l) {
          println(l,"Dog eats");  
     }
-};
+    
+    String face() {
+	 return "🐶"; 
+	}
+} ; //_EndOfClass_
+
 
 class AnimalFeeder: public virtual Object{
   public:
@@ -66,11 +87,12 @@ class AnimalFeeder: public virtual Object{
         for(pAnimal a:animals)
             a->eat(10);
         }
-};
+} ; //_EndOfClass_
+
 
 void processing_window::setup()
 {
-    size(150,100);
+    size(150,150);
     pObject object= new Cat();
     pCat cat= std::dynamic_pointer_cast<Cat>(object); //Second parentheses required
     cat->meow(0);
@@ -134,14 +156,25 @@ void processing_window::setup()
     feeder->feed(animals);
 
     print_animals(animals);  
-    println(animals);  
+    println(animals);
+    
+    String as="";
+    for(pAnimal a:animals)
+        as+=a->face();
+    as+="...";
+    text(as,10,height/2);    println(as);
+        
     print_animals(animals); //Sprawdzenie czy wywołanie function z parametrem obiektowym nie niszczy pamięci!
 }
 
 void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
 {
       for(pAnimal a:anim)
-        println(a);
+        println(a,"",a->face());
 }
-//NOTE! ../../scripts did it 2024-10-04 13:54:20
+
+//*/////////////////////////////////////////////////////////////////
+/// Author: Wojciech Borkowski wborkowski_uw_edu_pl
+//*/////////////////////////////////////////////////////////////////
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
 

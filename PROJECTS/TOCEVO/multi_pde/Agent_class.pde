@@ -1,5 +1,4 @@
 //_pragma once
-/// @file
 //_ifndef HEADER_Agent_INCLUDED
 //_define HEADER_Agent_INCLUDED
 

@@ -1,4 +1,4 @@
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 /// Cell is a one of two central data of each CA model.
 //*/////////////////////////////////////////////////////////////
 

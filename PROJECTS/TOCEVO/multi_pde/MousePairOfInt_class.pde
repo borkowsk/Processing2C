@@ -1,7 +1,9 @@
 //_pragma once
-/// @file
 //_ifndef HEADER_MousePairOfInt_INCLUDED
 //_define HEADER_MousePairOfInt_INCLUDED
+
+/*_import_class:Agent */
+/*_import_class:World */
 
 /// Simple version of Pair returning a pair of Int.
 

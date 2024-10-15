@@ -1,4 +1,4 @@
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 ///   Simulation have to collect and write down statistics from every step.
 //*////////////////////////////////////////////////////////////////////////
 
@@ -117,5 +117,5 @@ void doStatisticsOnCells(smatrix<int> cells) ///< Need to be global!
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: STATISTICS FOR TragedyOfCommons
 //*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
 

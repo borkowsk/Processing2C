@@ -1,6 +1,6 @@
 //* Module for made video from simulation - DO NOT HAVE C++ VERSION!
 //*/////////////////////////////////////////////////////////////////
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 
 /*_OnlyProcessingBlockBegin
 // http://funprogramming->org/VideoExport-for-Processing/examples/basic/basic->pde
@@ -26,7 +26,7 @@ VideoExport        videoExport;              // KLASA z biblioteki VideoExport A
 static int         videoFramesFreq=0;   
 static bool        videoExportEnabled=false; // init will set up it for true
 
-void initVideoExport(processing->core->PApplet parent, String Name,int Frames)
+void initVideoExport(Processing::pApplet parent, String Name,int Frames)
 {
   videoFramesFreq=Frames;
   videoExport = new VideoExport(parent,Name); // Klasa VideoExport musi mieć dostęp do obiektu aplikacji Processing'u
@@ -72,5 +72,5 @@ _OnlyProcessingBlockEnd*/
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - MOVIE MAKER 
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//NOTE! /data/wb/SCC/public/Processing2C/scripts did it 2024-10-09 23:57:26
+//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
 

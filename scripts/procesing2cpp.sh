@@ -1,6 +1,6 @@
 #!/bin/bash
 # Processing2C version 22h. 
-# @date 2024-10-14 (last modification)
+# @date 2024-10-15 (last modification)
 #
 #echo STAGE0 1>&2
 
@@ -14,8 +14,11 @@ fi
 
 #echo STAGE1 1>&2
 
+TEEOUT="/dev/null"
+
 if [[ $SOURCEMODE == "multisrc" ]] && [[ "$3" == "-ECLL" ]]
 then
+        $ECHO ${COLOR2}Multisource mode${NORMCO} 1>&2
 	echo "/// @note Automatically made from _$1_ by __Processing to C++__ converter ($0)."
 	echo "/// @date $TIMEMARK (translation)"
 	echo "//"
@@ -37,13 +40,14 @@ then
 	echo "#include <iostream>"
 	echo "//================================================================"
 	echo ""
+	TEEOUT="$2/$1_imp.pde"
 fi
 
 #echo STAGE2 1>&2
 echo -e "\n${COLOR4}START TRANSLATION OF $COLOR1 $1 $COLOR3 OPTIONS:$COLOR1 $2 $3 $NORMCO" 1>&2 #Colored ERRORS!
 
 cat $1 |\
-${SCRIPTS}/tools $2 $3 2> tools.err   | tee $2/$1_imp.pde                     |\
+${SCRIPTS}/tools $2 $3 2> tools.err   | tee $TEEOUT                           |\
 #Brutalne dodawanie średników za końcem klasy.
 sed -E 's|\/\/([ _]*)EndOfClass(.*)|; //_EndOfClass\1\n|i'                    |\
 #//_endofsuperclass:_anyPreviousSuperClass

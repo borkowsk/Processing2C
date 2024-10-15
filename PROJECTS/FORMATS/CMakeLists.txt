@@ -1,10 +1,10 @@
 # This file was made automagically. Do not edit!
-#! @date 2024-10-04 13:54:21 (translation timemark)
-cmake_minimum_required(VERSION 3.0)
+#! @date 2024-10-15 16:10:56 (translation timemark)
+cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
-project(FORMATS)
-set( VERSION_NUM 0.22h ) #MUST BE NUMERIC 
+project( FORMATS_S )
+set( VERSION_NUM 0.22j ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -65,14 +65,4 @@ target_link_libraries( "${PROJECT_NAME}_${VERSION_NUM}_svg"
      pthread
      rt
      )
-
-#target_compile_options( "${PROJECT_NAME}_${VERSION_NUM}"  PRIVATE "${CMAKE_CXX_FLAGS}" "-std=c++14" "-pthread" ) # --verbose ?
-
-#target_link_libraries( "${PROJECT_NAME}_${VERSION_NUM}"
-#     #"-L${PROC2C}/lib/;${SYMSHELL};${MYLIBS}"
-#     wbprocess wbrtm wbsyshLight X11 Xpm
-#     ${CMAKE_THREAD_LIBS_INIT}
-#     pthread
-#     rt
-#     )
 

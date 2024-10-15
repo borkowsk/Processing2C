@@ -1,10 +1,10 @@
 # This file was made automagically. Do not edit!
-#! @date 2024-10-14 17:34:05 (translation timemark)
-cmake_minimum_required(VERSION 3.0)
+#! @date 2024-10-15 16:10:56 (translation timemark)
+cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
-project(SAKODA)
-set( VERSION_NUM 0.22i ) #MUST BE NUMERIC 
+project( SAKODA_S )
+set( VERSION_NUM 0.22j ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows

@@ -1,4 +1,4 @@
-// @date 2024-10-10 (last modification)
+// @date 2024-10-15 (last modification)
 /// A world full of cells needs method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////
 
