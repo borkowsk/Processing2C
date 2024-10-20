@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * @date 2024-09-06 (last modification)
+ * @date 2024-10-20 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -138,13 +138,20 @@ namespace Processing
         char charAt(int index) const { return (*this)[index]; }
 
         /// Java like searching of `substring`.
+        /// @returns the index within this string of the first occurrence of the specified substring, starting at the
+        ///          specified index. If no such value of k exists, then -1 is returned.
         int indexOf(String substring, int fromIndex=0) const;
+
+        /// Java like searching of last occurence of `substring`.
+        /// @returns the index within this string of the last occurrence of the specified substring, searching
+        ///          backward starting at the specified index. If no such value of k exists, then -1 is returned.
+        int lastIndexOf(String str, int fromIndex=0) const;
 
         /// Java like searching of `character`.
         int indexOf(const char character, int fromIndex=0) const;
 
         /// Java like substring extraction.
-        String substring(int startIndex,int endIndex) const;
+        String substring(int startIndex,int endIndex=INT32_MAX) const;
 
         /// Java like to upper case conversion.
         String toUpperCase() const;

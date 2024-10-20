@@ -1,9 +1,9 @@
 /**
  * \file pstrings.cpp
  * \brief Most commonly used strings functions
+ * @date 2024-10-20 (last modification)
  * \ingroup strings
  * \author 'borkowsk'
- * \date 2023-03-17 (last modification)
  * \details
  *            see the bottom lines
  * \ingroup strings
@@ -107,6 +107,15 @@ int String::indexOf(String substring, int fromIndex) const
     return (ret==std::string::npos?-1:ret);
 }
 
+// Returns the index within this string of the last occurrence of the specified substring.
+// \param str
+// \param fromIndex
+int String::lastIndexOf(String substring, int fromIndex) const {
+    auto ret=std::string::rfind(substring,fromIndex);
+    //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
+    return (ret==std::string::npos?-1:ret);
+}
+
 /// @details XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ///          -------------------------------
 ///          ....
@@ -139,6 +148,8 @@ String String::substring(int startIndex,int endIndex) const
 {                                                                                                 assert(startIndex>=0);
                                                                                                     assert(endIndex>=1);
                                                                                             assert(startIndex<endIndex);
+    if(endIndex>this->length())
+            endIndex=this->length();
     std::string ret=std::string::substr(startIndex,
                                         endIndex-startIndex);
     //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
@@ -241,7 +252,7 @@ void _errMessage(Processing::String msg,const char* func,int line,const char* fi
 
 }//END of namespace Processing
 /* ******************************************************************
- *               PROCESSING2C  version 2023                         *
+ *               PROCESSING2C  version 2024                         *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *

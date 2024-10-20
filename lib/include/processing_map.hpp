@@ -1,7 +1,8 @@
 /// \file processing_map.hpp
 /// \brief Java like map template
+/// @date 2024-10-20 (last modification)
 /// \author 'borkowsk'
-/// \date 2022-11-21 (last modification)
+
 /// \ingroup JAVA_compatibility
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -34,11 +35,36 @@ public:
         //Entry& operator -> () const { return *this;} //circular pointer references are not allowed
     };
 
+    bool containsKey(K key) //!< Checks if such key is already in use.
+    {
+#if __cplusplus >= 202002L
+        return std::map<K,V>::contains(key);
+#else
+        return std::map<K,V>::find(key)!=std::map<K,V>::end();
+#endif
+    }
+
     V   get(K key) //!< \brief Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
     { return (*this)[key]; }
 
     V   put(K key, V value) //!< \brief Associates the specified value with the specified key in this map.
-    { (*this)[key]=value;return value;}
+    { (*this)[key]=value; return value;}
+
+    /// If the specified key is not already associated with a value (or is mapped to nullptr) associates
+    /// it with the given value and returns nullptr, else returns the current value.
+    /// @param key - key with which the specified value is to be associated
+    /// @param value - value to be associated with the specified key
+    /// @returns the previous value associated with the specified key, or null if there was no mapping for the key.
+    ///          (A null return can also indicate that the map previously associated null with the key, if the
+    ///           implementation supports null values.)
+    //!< https://docs->oracle->com/javase/8/docs/api/java/util/HashMap.html
+    V  putIfAbsent(K key, V value)
+    {
+        auto previous=std::map<K,V>::find(key);
+        if(previous!=std::map<K,V>::end()) return *previous;
+        put(key,value);
+        return V{};
+    }
 
     V   replace(K key, V value) //!< \brief Replaces the entry for the specified key only if it is currently mapped to some value.
     { (*this)[key]=value;return value;}
