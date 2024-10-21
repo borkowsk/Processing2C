@@ -1,14 +1,16 @@
 #!/bin/bash
+# @date 2024-10-21 (last mofifications)
 # See: https://askubuntu.com/questions/927064/grep-pattern-with-leading-spaces
 #
 # Processing2C version 22i. 
-# @date 2024-10-11 (last mofifications)
 #
-# @todo Przerobić powtarzające się komendy na jeden plik skryptu dla seda
+# @todo Przerobić powtarzające się komendy na jeden plik skryptu dla seda!
 
 echo -e $COLOR2"Making ${COLOR1}local.h${COLOR2}" $COLERR 
 
-echo -e "//Automagically generated file. @date $TIMEMARK \n//Dont edit\!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n"\
+date="@date"
+echo -e "// $date $TIMEMARK (automagically generated file).\n//" \
+        "Dont edit\!\n#pragma once\n#ifndef LOCAL_H\n#define LOCAL_H\n" \
         > local.h
 
 #awaryjnie
@@ -166,6 +168,21 @@ sed -E 's|//+(.*)//+|\t// -> |'        |\
 sed -E 's|(->)(\s+)(->)|->|'           >> local.h
 
 
+#jawne definicje //_extern pomagające Pr2C++
+echo -e "\n// _extern marked clauses" >> local.h
+#            ----------------------- 
+grep -h '_extern ' *.pde               |\
+sed     's#//_extern #extern #'        |\
+sed     's|///<|// => |'               |\
+#podmiana boolean, char i nazw klas i atrybuty przy nazwach typów
+sed -E 's|boolean([<(\t >)])|bool\1|g' |\
+sed    's|char |char16_t |g'           |\
+sed -E -f userclasses.sed              |\
+sed    's|/*_tmpptr*/|* |g'            |\
+sed    's|/*_rawptr*/|* |g'            |\
+sed    's|/*_reference*/|& |g'         |\
+sed -E 's|final\s+|const |g'           >> local.h
+
 #Funkcje wymagające deklaracji zapowiadających
 echo -e "\n//All global functions from Processing files" >> local.h
 #            ------------------------------------------
@@ -209,7 +226,7 @@ echo "#endif"                          >> local.h
 echo -e $COLOR2"File ${COLOR1}local.h${COLOR2} ready." $NORMCO 
 
 #/********************************************************************/
-#/*                 PROCESSING2C  release 2023                       */
+#/*                 PROCESSING2C  release 2024                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
