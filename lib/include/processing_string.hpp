@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * @date 2024-10-20 (last modification)
+ * @date 2024-10-28 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -143,9 +143,11 @@ namespace Processing
         int indexOf(String substring, int fromIndex=0) const;
 
         /// Java like searching of last occurence of `substring`.
+        /// @param str : substring to locate.
+        /// @param fromIndex : index in string from witch searching will start BACKWARD!
         /// @returns the index within this string of the last occurrence of the specified substring, searching
         ///          backward starting at the specified index. If no such value of k exists, then -1 is returned.
-        int lastIndexOf(String str, int fromIndex=0) const;
+        int lastIndexOf(String str, int fromIndex=-1) const;
 
         /// Java like searching of `character`.
         int indexOf(const char character, int fromIndex=0) const;

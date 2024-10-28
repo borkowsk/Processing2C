@@ -1,7 +1,7 @@
 /**
  * \file pstrings.cpp
  * \brief Most commonly used strings functions
- * @date 2024-10-20 (last modification)
+ * @date 2024-10-28 (last modification)
  * \ingroup strings
  * \author 'borkowsk'
  * \details
@@ -85,14 +85,12 @@ bool String::operator != (nullptr_t)
     return !empty();
 }
 
-/// @details XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-///          ------------------------------
-///          ....
+/// JAVA like substring find method.
 /// \param substring - pattern to find.
 /// \param fromIndex - index of firsts searching position.
 /// @returns:	An int value, representing the index of the first occurrence of the character in the string,
 ///             or -1 if it never occurs
-/// See: https://www.w3schools.com/java/ref_string_indexof.asp
+/// @details https://www.w3schools.com/java/ref_string_indexof.asp
 /// @internal
 ///         `size_t find (const string& str, size_t pos = 0) const noexcept;`
 ///      Returns: The position of the first character of the first match.
@@ -107,18 +105,17 @@ int String::indexOf(String substring, int fromIndex) const
     return (ret==std::string::npos?-1:ret);
 }
 
-// Returns the index within this string of the last occurrence of the specified substring.
-// \param str
-// \param fromIndex
+/// JAVA like substring reverse find method.
+/// @details https://www.w3schools.com/java/ref_string_lastindexof.asp
+/// \param substring - String to locate.
+/// \param fromIndex - index of character to search back from (default is end).
+/// @returns the index within this string of the last occurrence of the specified substring.
 int String::lastIndexOf(String substring, int fromIndex) const {
-    auto ret=std::string::rfind(substring,fromIndex);
-    //FIRST_TIME_ERRMESSAGE( "NOT INLINE VERSION USED!");
+    auto ret=std::string::rfind(substring,(fromIndex>=0? fromIndex : std::string::npos));
     return (ret==std::string::npos?-1:ret);
 }
 
-/// @details XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-///          -------------------------------
-///          ....
+/// JAVA like character find method.
 /// \param character - what to find?
 /// \param fromIndex - index of firsts searching position.
 /// \return
@@ -133,9 +130,7 @@ int String::indexOf(const char character, int fromIndex) const
     return (ret==std::string::npos?-1:ret);
 }
 
-/// @details Java like substring extraction.
-///          -------------------------------
-///          .........
+/// Java like substring extraction.
 /// \param startIndex - inclusive
 /// \param endIndex - exclusive
 /// \return string containing requested characters.
