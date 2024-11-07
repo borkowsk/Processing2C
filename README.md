@@ -25,7 +25,7 @@ For much more information see:
 
 **SOFTWARE REQUIREMENTS**
 
-Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes for __Processing 3.x__ .
+Curently tested only on __UBUNTU from version 18.04__ to __22.04__ on source codes for __Processing 3.x__ .
 
 Toolbox need the following tools available: 
 
