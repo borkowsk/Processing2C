@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * @date 2024-10-28 (last modification)
+ * @date 2025-03-05 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -55,7 +55,7 @@ namespace Processing
         /// \brief from const String* copy!
         explicit String(const String* from_new);
         /// From procesing array of characters.
-        explicit String(const sarray<char16_t> from);
+        explicit String(const sarray<char16_t> from); //TODO Dlaczego bez &
         /// \brief From char constructor
         explicit String(const char  c);
         /// \brief From char16_t constructor
@@ -249,6 +249,9 @@ namespace Processing
         //operator String& () {return *(String*)this;}
     };
 
+    // Jawna konwersja czegokolwiek na String.
+    inline String str(_string_param par) { return par._str(); }
+
     /// \brief Alternatywna wersja _errMessage
     void _errMessage(String msg,const char* func,int line=-1,const char* file="");
 
@@ -416,9 +419,16 @@ namespace Processing
     String nfc(sarray<double> nums,int digits);
     String nfc(sarray<double> nums,int left,int right);
 
+    static inline String _chars(const char c,unsigned n) {
+        String tmp; tmp.reserve(n);
+        for(unsigned i=0;i<n;i++)
+            tmp+=c;
+        return tmp;
+    }
+
 }//END of namespace Processing
 /* ******************************************************************
- *                PROCESSING2C  version 2024                        *
+ *                PROCESSING2C  version 2025                        *
  ********************************************************************
  *           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 *
  *            W O J C I E C H   B O R K O W S K I                   *
