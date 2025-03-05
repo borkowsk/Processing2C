@@ -25,7 +25,7 @@ For much more information see:
 
 **SOFTWARE REQUIREMENTS**
 
-Curently tested only on __UBUNTU 18.04__ and __UBUNTU 20.04__ on source codes for __Processing 3.x__ .
+Curently tested only on __UBUNTU from version 18.04__ to __22.04__ on source codes for __Processing 3.x__ .
 
 Toolbox need the following tools available: 
 
@@ -36,9 +36,14 @@ Toolbox need the following tools available:
 
 Functions already declared but still not implemented are listed in _[not_implemented.h](https://github.com/borkowsk/Processing2C/blob/master/docs/not_implemented.h)_ file. 
 
-**COFFE**
+**SPONSORS**
 
-If you find this software useful to you, buy me a coffee
+This tool was initially created for my private educational experiment, but when it proved useful, it was used for two European grants: __HumanAI__ and __GuestXR__, so its further development is partly due to this funding.
+
+**COFFE 🍵**
+
+If You find this software useful to You, buy me a coffee. Software development is a job that consumes huge amounts of coffee 😥.
 
 https://www.buymeacoffee.com/wborkowsk
+
 
