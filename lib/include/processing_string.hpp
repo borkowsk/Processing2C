@@ -3,7 +3,7 @@
  * \classes String
  * \ingroup strings
  * \author borkowsk
- * @date 2025-03-05 (last modification)
+ * @date 2025-04-02 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -245,7 +245,7 @@ namespace Processing
 
         /// \brief Jawne odzyskiwanie klasy `String` z klasy `_string_param`
         /// \absolete !!!
-        String& get() { return *(String*)this;} //Obsolete
+        String& get() { return *(String*)this;} //Obsolete?
         //operator String& () {return *(String*)this;}
     };
 
@@ -281,7 +281,7 @@ namespace Processing
         self_printable_ptr(T* ini):ptr<T>(ini){}
 
         // Todo PRZETESTOWAĆ CZY TO W OGÓLE POTRZEBNE
-        // Bez tej metody projekt się kompiluje ale czy działa?
+        // Bez tej metody projekt się kompiluje ale JAK działa?
         //self_printable_ptr<T>& operator = (T*& other)
         //{
         //    ptr<T>::operator = (other);
