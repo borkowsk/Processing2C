@@ -1,4 +1,4 @@
-// @date 2024-10-15 (last modification)
+// @date 2026-01-29 (last modification)
 /// Cell is a one of two central data of each CA model.
 //*/////////////////////////////////////////////////////////////
 
@@ -48,5 +48,5 @@ void synchChangeCells( smatrix<int> cells , smatrix<int> newcells )   ///< Drugi
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

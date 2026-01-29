@@ -1,7 +1,7 @@
 /// Simple graphics test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ELIPSY.pde"
-// @date 2024-10-15 (last change)
+// @date 2026-01-29 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 int W=600; /// Control parameter
@@ -35,5 +35,5 @@ void processing_window::draw()
   
   println(frameRate);
 }
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

@@ -17,4 +17,5 @@ rm -f rules.ninja
 rm -f .ninja_log
 rm -f .ninja_deps
 rm -Rf cmake-build-*/
+rm -Rf .idea/
 

@@ -1,4 +1,4 @@
-// @date 2024-10-15 (last modification)
+// @date 2026-01-29 (last modification)
 /// A world full of cells needs method of visualisation on screen/window.
 //*//////////////////////////////////////////////////////////////////////
 
@@ -20,5 +20,5 @@ void visualizeCells(smatrix<int> cells)  ///< Need to be global!
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - CA: BASIC VISUALISATION of CELLS FOR TragedyOfCommons
 //*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

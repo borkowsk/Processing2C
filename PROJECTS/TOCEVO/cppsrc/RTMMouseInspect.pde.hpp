@@ -1,4 +1,4 @@
-// @date 2024-10-15 (last modification)
+// @date 2026-01-29 (last modification)
 // Obsługa wyszukiwania obiektu po kliknięciu myszy:
 //*///////////////////////////////////////////////////
 
@@ -68,5 +68,5 @@ void processing_window::onMouseClicked()
 //*/////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM EVENTS TEMPLATE
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

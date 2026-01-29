@@ -1,6 +1,6 @@
 /// ABM model of segregation (test project for Processing2C)
 /// ORIGINAL FILE: AssemblingOfWorld->pde
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*///////////////////////////////////////////////////////////////////////////////////////
 
 /*_import_class:Agent */
@@ -47,5 +47,5 @@ void modelStep(pWorld world) { ///< Need to be global!
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: WORLD OF SAKODA
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*/////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

@@ -1,4 +1,4 @@
-# Processing2C version 0.22
+# Processing2C version 0.26
 
 **Scripts &amp; libraries for porting Processing Application (mainly simulations) into C++**
 
@@ -7,16 +7,20 @@ However, the Processing interface is quite extensive and I don't use most of its
 
 **Quick start**
 
-It need *SYMSHELLLIGHT* library in sister directory _SymShellLight/_ !
-
+It need *SymShellLight* library, which is loaded as a submodule!
 So go into your choice directory and run:
 
 ```console
-$ git clone https://github.com/borkowsk/SymShellLight.git
-$ git clone https://github.com/borkowsk/Processing2C.git
+$ git clone --recursive https://github.com/borkowsk/Processing2C.git
 ```
 
 Then go into _Processing2C/_ and and run _config.sh_ bash script.
+
+For update submoduled library to most recent version, go to Processing2C top folder and use:
+
+```console
+$ git submodule update --remote --recursive
+```
 
 For much more information see: 
 *   __How to do__ doc:   [scripts/doc*.md](https://github.com/borkowsk/Processing2C/blob/master/scripts/docEN.md)

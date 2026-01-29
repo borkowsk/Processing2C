@@ -1,10 +1,10 @@
 # This file was made automagically. Do not edit!
-#! @date 2024-10-15 16:10:57 (translation timemark)
+#! @date 2026-01-29 16:31:16 (translation timemark)
 cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
 project( WZROST_S )
-set( VERSION_NUM 0.22j ) #MUST BE NUMERIC 
+set( VERSION_NUM 0.26.01 ) #MUST BE NUMERIC 
 
 IF (WIN32)
   # set stuff for windows
@@ -18,7 +18,7 @@ ENDIF()
 
 set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/WZROST/cppsrc/" )
 set( PROC2C   "/data/wb/SCC/public/Processing2C" )
-set( SYMSHELL "/data/wb/SCC/public/SymShellLight" )
+set( SYMSHELL "/data/wb/SCC/public/Processing2C/SYMSHELL" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )
@@ -31,7 +31,8 @@ set( MYLIBS   "/lib" )
 
 add_definitions( -DVERSION_NUM=${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 
-include_directories(  "${SRCPATH}" "${PROC2C}/lib/include" "${SYMSHELL}" "${WBRTM}/INCLUDE" )
+include_directories(  "${SRCPATH}" "${PROC2C}/lib/include" "${SYMSHELL}/INCL" )
+#"${WBRTM}/INCLUDE" )
 
 add_executable("${PROJECT_NAME}_${VERSION_NUM}_x11"
                "${SRCPATH}project_at_once.cpp"

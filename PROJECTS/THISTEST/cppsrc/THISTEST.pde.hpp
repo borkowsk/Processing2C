@@ -1,6 +1,6 @@
 /// @file
 /// Test dla problemu z użyciem "this" jako parametru funkcji oczekujących `Processing::ptr<...>`.
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //  PL: BEZ SPECJALNEJ OBSŁUGI to powoduje GPF bo tworzy się nowy `_shared_ptr<...>` nie powiązany 
 //      z tym trzymającym obiekt! 
 //*//////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,5 +36,5 @@ void processing_window::setup()
   c->call_inside("Third time");
   saveFrame();
 }
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

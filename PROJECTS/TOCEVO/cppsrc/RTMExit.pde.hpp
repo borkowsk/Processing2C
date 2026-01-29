@@ -1,5 +1,5 @@
 // @file
-/// @date 2024-10-15 (last modification)
+/// @date 2026-01-29 (last modification)
 /// Support for exiting the program when something needs to be cleaned up before doing so.
 //*///////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,5 +29,5 @@ _OnlyProcessingBlockEnd*/
 //*//////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - EXIT TEMPLATE
 //*//////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

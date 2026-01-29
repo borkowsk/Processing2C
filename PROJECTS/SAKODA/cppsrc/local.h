@@ -1,5 +1,5 @@
-//Automagically generated file. @date 2024-10-15 16:10:56 
-//Dont edit\!
+// @date 2026-01-29 16:31:15 (automagically generated file).
+// Dont edit\!
 #pragma once
 #ifndef LOCAL_H
 #define LOCAL_H
@@ -32,6 +32,8 @@ extern	bool 		simulationRun;	// ->  Start/stop flag.
 //All global arrays from Processing files
 
 //All global matrices from Processing files
+
+// _extern marked clauses
 
 //All global functions from Processing files
 void 	initializeAgents(smatrix<pAgent> agents);  // => @note Need to be global!

@@ -1,6 +1,6 @@
 /// @file
 /// Simple model of colony growth with mutations (test project for Processing2C).
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*////////////////////////////////////////////////////
 
 
@@ -60,5 +60,5 @@ class KLASA: public virtual Object{
 //*//////////////////////////////////////////////////////////
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:57 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

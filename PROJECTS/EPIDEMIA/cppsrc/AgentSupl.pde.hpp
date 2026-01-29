@@ -1,6 +1,6 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 /// ORIGINAL FILE: AgentSuplement->pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// Agent is a one of two central class of each ABM model
@@ -139,5 +139,5 @@ void  agentsChange(smatrix<pAgent> agents) /// Główna dynamika symulacji 2D
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC INITIALISATION & EVERY STEP CHANGE
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

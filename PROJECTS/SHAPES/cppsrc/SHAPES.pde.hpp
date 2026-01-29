@@ -1,6 +1,6 @@
 /// @file
 /// Shape example.
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*/////////////////////////
 
 const int iniWidth=500;
@@ -66,5 +66,5 @@ void random_shape() ///< Global namespace!
    default: println("Not so many shapes!"); break;
    }
 }
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

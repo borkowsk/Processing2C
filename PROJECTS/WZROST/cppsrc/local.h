@@ -1,5 +1,5 @@
-//Automagically generated file. @date 2024-10-15 16:10:57 
-//Dont edit\!
+// @date 2026-01-29 16:31:16 (automagically generated file).
+// Dont edit\!
 #pragma once
 #ifndef LOCAL_H
 #define LOCAL_H
@@ -25,6 +25,8 @@ extern	PrintWriter 		output;         // ->  A tu używamy innej klasy, zdefiniow
 //All global arrays from Processing files
 
 //All global matrices from Processing files
+
+// _extern marked clauses
 
 //All global functions from Processing files
 #endif

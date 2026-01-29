@@ -1,7 +1,7 @@
 /// ABM model of segregation (test project for Processing2C). 
 /// ORIGINAL FILE: AgentA->pde
 /// Agent is a one of two central class of each ABM model.
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*///////////////////////////////////////////////////////////
 
 int Number_of_identities=2; ///< How many mutually exclusive identities are there?
@@ -24,5 +24,5 @@ class Agent: public virtual Object{
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: AGENT OF SAKODA MODEL
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*/////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

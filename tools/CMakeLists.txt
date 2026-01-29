@@ -1,6 +1,6 @@
-# @date 2024-09-30 (last modification)
+# @date 2026-01-29 (last modification)
 
-cmake_minimum_required(VERSION 3.00)
+cmake_minimum_required(VERSION 3.11)
 
 project(tools)
 

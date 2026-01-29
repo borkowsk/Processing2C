@@ -1,6 +1,6 @@
 /// @file
 /// Simple model of colony growth with mutations (test project for Processing2C).
-/// @date 2024-10-15 (last modification)
+/// @date 2026-01-29 (last modification)
 /// TODO Gpf in table in C++ version :-/
 /// NOTE We use a user-defined CLASS called "KLASA" ;-)
 //*////////////////////////////////////////////////////////////////////////////////
@@ -109,5 +109,5 @@ void processing_window::draw()
 //*//////////////////////////////////////////////////////////
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*//////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:57 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
 

@@ -1,7 +1,7 @@
 #!/bin/bash
-# Processing2C version 0.2d installation script
-# @date 2024-09-30 (last change)
-# Processing2C version .22.
+# Processing2C installation script
+# @version 0.26.01
+# @date 2026-01-29 (last change)
 #
 if [[ -f /usr/bin/gedit ]]
 then 
@@ -32,35 +32,50 @@ function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
 }
 
 #WBRTM="/home/Kowalski/WBRTM"
-SYMSHELL=`realpath "../symShellLight"`
+SYMSHELL=`realpath "./SYMSHELL"`
 PROC2DIR=`realpath "./"`
 
 echo -e $COLOR2"Are the paths correct?\n"$NORMCO
-echo -e "PROC2DIR=$PROC2DIR  #This toolbox whole path"
-echo -e "SYMSHELL=$SYMSHELL  #SymShellLight toolbox whole path"
-echo -e $COLOR2"If something is wrong, break script, edit it and run it again!"$NORMCO
-pause
-
+echo -e "PROC2DIR=$COLOR1"$PROC2DIR"$NORMCO  #This toolbox whole path"
+echo -e "SYMSHELL=$COLOR1"$SYMSHELL"$NORMCO  #SymShellLight toolbox whole path"
 if [[ ! -d $SYMSHELL ]]
 then
+  echo -e $COLERR"Directory"$COLOR1 $SYMSHELL $COLERR"is not found!" $NORMCO
+  echo -e $COLERR"This toolbox is strictly required!"$NORMCO
+  exit -1  
+fi
+echo -e $COLOR2"If it seems wrong, break script, edit it and run it again!"$NORMCO
+pause
+echo
+
+if [[ ! -d "$SYMSHELL/SVG/" ]]
+then
 echo 
-echo -e $COLERR"Are you sure, that SymShellLight is cloned into directory"$COLOR1 $SYMSHELL $NORMCO"?"
-echo -e $COLERR"I can't find this toolbox, which is strictly required!"$NORMCO
+echo -e $COLERR"Are you sure, that SymShellLight toolbox is in directory"$COLOR1 $SYMSHELL $NORMCO"?"
+echo -e $COLERR"I can't find this toolbox, which is strictly required!"
 echo
-echo -e "How to install?"
+echo -e $NORMCO"How to get this?"
 echo
-echo -e "In parent directory use the following commands:"$COLOR2
+echo -e $NORMCO"In directory"$COLOR1 $PROC2DIR $NORMCO"use the following git command:"$COLOR2
 echo
-echo -e "$ git clone git clone https://github.com/borkowsk/symShellLight.git"
-echo -e "$ cd symShellLight"
-echo -e "$ $EDIT README.md"
+echo -e "$ git submodule update --remote --recursive"$NORMCO
 echo
-echo -e $NORMCO"Then follow the compilation instruction."
+echo -e "Alternatively..."
+echo 
+echo -e $NORMCO"Go to the parent directory and use the following command:"$COLOR2
+echo
+echo -e "$ git clone https://github.com/borkowsk/symShellLight.git SymShellLight"
+echo -e "$ ln -s ../SymShellLight/ $PROC2DIR/SYMSHELL"$NORMCO
+echo
 exit -1
+else
+ echo -e "SymShellLight toolbox is located in...\n"$COLOR1"$SYMSHELL"$NORMCO
+ echo
 fi
 
+echo -e "Finally, p2c working directory is ..."$COLOR1 
 ls -d $PROC2DIR
-ls -d $SYMSHELL
+echo -e $NORMCO
 
 #prepare config.dat
 echo
@@ -129,6 +144,7 @@ echo -e $COLOR1
 pushd "PROJECTS/"
 echo -e $NORMCO
 
+./_cleanProjects.sh
 ./_translateProjects.sh
 
 echo -e "$COLOR2\nNow You have to edit $COLOR1 'CMakeLists.txt' $COLOR2 using $COLOR1 $EDIT $COLOR2"  
@@ -155,7 +171,7 @@ echo -e $COLOR2"\nSCRIPT"$COLOR1 `realpath $0` $COLOR2"FINISHED"$NORMCO
 
 
 #/********************************************************************/
-#/*               PROCESSING2C  version 2023                         */
+#/*               PROCESSING2C  version 2026                         */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */

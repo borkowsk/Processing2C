@@ -1,6 +1,6 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 /// ORIGINAL FILE: ModelVisualisation->pde
 //*///////////////////////////////////////////////////////////////////////////////////////
 /// World full of agents need method of visualisation on screen/window
@@ -68,5 +68,5 @@ void visualizeAgents(sarray<pAgent> agents) /// Wizualizacja wszystkich agentów
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - ABM: BASIC VISUALISATION
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

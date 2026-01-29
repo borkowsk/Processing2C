@@ -1,5 +1,5 @@
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*////////////////////////////////////////////////////
 
 void processing_window::exit()
@@ -8,5 +8,5 @@ void processing_window::exit()
   println("Bye...");
   processing_window_base::exit();     //What shoud be done by default!
 }
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:14 !
 

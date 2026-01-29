@@ -1,6 +1,6 @@
 /// Class hierarchy test for Processing2C.
 /// ORIGINAL FILE: "CLASSTEST.pde"
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*/////////////////////////////////////////////////////////////////////////
 /// INSPIRED BY EXAMPLE from https://www->baeldung->com/java-type-casting
 //*/////////////////////////////////////////////////////////////////////////
@@ -176,5 +176,5 @@ void print_animals(pArrayList<pAnimal> anim) /// Drukowanie własną metodą
 //*/////////////////////////////////////////////////////////////////
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 //*/////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:55 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 

@@ -2,7 +2,7 @@
 /// Agent Base Model of ant foraging adopted for Processing2C.
 /// ORIGINAL FILE: "MRÓWKI.pde"
 /// @author: Zofia Cieślińska
-/// @date 2024-10-15 (last change)
+/// @date 2026-01-29 (last change)
 //*///////////////////////////////////////////
 
 //++++++++++++ ZMIENNE ++++++++++++
@@ -130,5 +130,5 @@ void petla() { ///< Funkcja wymagająca deklaracji zapowiadającej
     loop();
   }
 }
-//MADE NOTE: ../../scripts did it 2024-10-15 16:10:56 !
+//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
 
