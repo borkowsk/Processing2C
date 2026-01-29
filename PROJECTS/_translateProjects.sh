@@ -50,7 +50,7 @@ for f in *; do # * rozwija się do listy wszystkich plików/katalogów znajdują
      fi
      
      if [ -f "multi_cpp/CMakeLists.txt" ]; then
-      	echo -e "add_subdirectory( $f/multi_cpp/ \t)" >> ../CMakeLists.txt
+      	echo -e "add_subdirectory( $f/multi_cpp/ EXCLUDE_FROM_ALL \t)" >> ../CMakeLists.txt
      fi
      
      git add *.sed
