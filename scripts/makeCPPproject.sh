@@ -4,9 +4,9 @@
 # But it is still TODO!
 #
 # Processing2C version 22h.
-# @date 2024-10-15 (last modif.)
+# @date 2026-01-29 (last modif.)
 #
-Pr2CVERSION="0.22j"
+Pr2CVERSION="0.26.01"
 
 export TIMEMARK=`date "+%Y-%m-%d %H:%M:%S" `
 export SCRIPTS=$(dirname "$0")
@@ -195,7 +195,8 @@ set( MYLIBS   "$WBRTM/lib" )
 
 add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 
-include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}" "\${WBRTM}/INCLUDE" )
+include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}/INCL" )
+#"\${WBRTM}/INCLUDE" )
 
 set(  SRCCODESLIST 
 EOF
@@ -280,7 +281,7 @@ $ECHO $COLOR4"PREPARING INCLUDES FOR $SOURCEMODE MODE:"$NORMCO
 #Preparing C++ source files
 
 echo -e "/// @file \n/* All sources included in one file. */"         > ./cppsrc/project_at_once.cpp
-echo "/// @date 2024-10-15 ($Pr2CVERSION)"                           >> ./cppsrc/project_at_once.cpp
+echo "/// @date 2026-01-29 ($Pr2CVERSION)"                           >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_consts.hpp\""                            >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_templates.hpp\""                         >> ./cppsrc/project_at_once.cpp
 echo "#include \"processing_library.hpp\""                           >> ./cppsrc/project_at_once.cpp
@@ -355,7 +356,8 @@ set( MYLIBS   "$WBRTM/lib" )
 
 add_definitions( -DVERSION_NUM=\${VERSION_NUM} ) # -DMULTITR -DDEF_MAXTHREADS=16 
 
-include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}" "\${WBRTM}/INCLUDE" )
+include_directories(  "\${SRCPATH}" "\${PROC2C}/lib/include" "\${SYMSHELL}/INCL" )
+#"\${WBRTM}/INCLUDE" )
 
 add_executable("\${PROJECT_NAME}_\${VERSION_NUM}_x11"
                "\${SRCPATH}project_at_once.cpp"
@@ -412,7 +414,7 @@ fi  #multisrc else singlesrc
 $ECHO $COLOR4"\nProject$COLOR1 ${PROJECT}$COLOR4 DONE\n\n"$NORMCO
 
 #/********************************************************************/
-#/*                 PROCESSING2C  release 2024                       */
+#/*                 PROCESSING2C  release 2026                       */
 #/********************************************************************/
 #/*           THIS CODE IS DESIGNED & COPYRIGHT  BY:                 */
 #/*            W O J C I E C H   B O R K O W S K I                   */
