@@ -3,7 +3,7 @@
  * \classes processing_window; color
  * \ingroup drawing , rtm
  * \author borkowsk
- * @date 2024-10-11 (last modification)
+ * @date 2026-01-29 (last modification)
  */
 // //////////////////////////////////////////////////////////////////////
 // This file is part of the Processing2C++ Library. See bottom lines.
@@ -270,7 +270,7 @@ void ellipse(float a,float  b,float  c,float  d);
 void ellipseMode(int mode); /// Parameters	mode 	int: either CENTER, RADIUS, CORNER, or CORNERS
 
 /// \brief Simplified circle.
-void circle(int x,int y,int r);
+void circle(float x,float y,float r);
 #endif
 
 /// \brief Functions for driving elliptical arc.

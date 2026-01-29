@@ -1,14 +1,14 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.11)
 
 project(WBProcessing)
 
-set(PROC2CDIR "/home/borkowsk/SCC/public/Processing2C" )
-set(SYMSHELL  "/home/borkowsk/SCC/public/symShellLight" )
+set(PROC2CDIR "/data/wb/SCC/public/Processing2C" )
+set(SYMSHELL  "/data/wb/SCC/public/Processing2C/SYMSHELL" )
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}" )
+include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}/INCL" )
 
 if(true)
 add_definitions( -DHAVE_X11 -DUSE_X11 )
@@ -37,7 +37,6 @@ add_library( wbprocess STATIC
     "${PROC2CDIR}/lib/src/delay.cpp"
     "${PROC2CDIR}/lib/src/max.cpp"
     "${PROC2CDIR}/lib/src/min.cpp"
-    "${PROC2CDIR}/lib/src/appendTextToFile.cpp"
     "${PROC2CDIR}/lib/src/mouseClicked.cpp"
     "${PROC2CDIR}/lib/src/mousePressed.cpp"
     "${PROC2CDIR}/lib/src/mouseReleased.cpp"

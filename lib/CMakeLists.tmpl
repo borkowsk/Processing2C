@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.11)
 
 project(WBProcessing)
 
@@ -8,7 +8,7 @@ set(SYMSHELL  %%SYMSHELL%% )
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}" )
+include_directories( "${PROC2CDIR}/lib/include" "${SYMSHELL}/INCL" )
 
 if(true)
 add_definitions( -DHAVE_X11 -DUSE_X11 )

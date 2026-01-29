@@ -2,7 +2,7 @@
 * \file 'processing_templates.hpp'
 * \brief Mandatory templates for objects and arrays
 * \author 'borkowsk'
-* @date 2024-09-06 (last modification)
+* @date 2026-01-29 (last modification)
 * \see <ul>
 * <li> "https://en.cppreference.com/w/cpp/utility/initializer_list"
 * <li> "https://en.cppreference.com/w/cpp/language/constructor"
@@ -106,7 +106,7 @@ class ptr:public std::shared_ptr<T>
       }
 
       /// \brief Konwersja z ptr<> z typów akceptowalnych przez shared_ptr<T>
-      /// \note  Zadziała jeśli jest możliwy `static_cast` z B* do T*
+      /// \note  Zadziała, jeśli jest możliwy `static_cast` z B* do T*
       template<class B>
       explicit /* MUSI BYĆ 'EXPLICIT' BO SIĘ POJAWIAJĄ NIESPODZIEWANE KONWERSJE! */
       ptr(ptr<B>& ini):std::shared_ptr<T>( ini  )
