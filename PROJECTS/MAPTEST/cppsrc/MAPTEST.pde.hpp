@@ -2,7 +2,7 @@
 /// Test for HashMaps
 /// ORIGINAL FILE: "MAPTEST.pde"
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2026-01-29 (last change)
+/// @date 2024-09-30 (last change)
 //*////////////////////////////////////////////////////////////////////////////////
 /// "file:///home/borkowsk/processing-3.5.4/modes/java/reference/HashMap.html"
 
@@ -79,5 +79,5 @@ void processing_window::setup()
   println("\nDefault print method:");
   println(mapString2Object);
 }
-//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
+//MADE NOTE: ../../scripts did it 2026-03-20 13:40:05 !
 

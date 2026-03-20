@@ -1,7 +1,7 @@
 /// Array and matrix test for Processing2C
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// ORIGINAL FILE: "ARRAYTEST.pde"
-// @date 2026-01-29 (last change)
+// @date 2024-09-30 (last change)
 //*//////////////////////////////////////////////////////////////////
 
 smatrix<int> c;
@@ -52,5 +52,5 @@ void processing_window::draw()
   println(a,b,c[a][b],String("'")+s[a][b]+ String("'"));
 }
 
-//MADE NOTE: ../../scripts did it 2026-01-29 16:31:14 !
+//MADE NOTE: ../../scripts did it 2026-03-20 13:40:03 !
 

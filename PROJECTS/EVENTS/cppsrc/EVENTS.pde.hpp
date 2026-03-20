@@ -2,7 +2,7 @@
 /// Author: Wojciech Borkowski wborkowski_uw_edu_pl
 /// base on Processing examples
 /// ORIGINAL FILE: "EVENTS.pde"
-// @date 2026-01-29 (last change)
+// @date 2024-09-30 (last change)
 //*///////////////////////////////////////////////////
 // * Click on the window to give it focus,
 // * Or press the 'B' key.
@@ -125,5 +125,5 @@ void processing_window::onMouseReleased() {
 //  float e = event->getCount();
 //  println("mouseWheel",e);
 //}
-//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
+//MADE NOTE: ../../scripts did it 2026-03-20 13:40:04 !
 

@@ -1,6 +1,6 @@
 /// @file
 /// STRINGDICT is a test for Processing2C++
-/// @date 2026-01-29 (last change)
+/// @date 2024-09-30 (last change)
 /// @class StringDict
 /// @details
 ///   A simple class to use a `String` as a lookup for an `String` value.
@@ -32,5 +32,5 @@ void processing_window::draw()
   text(s, width/2, height/2);
 }
 
-//MADE NOTE: ../../scripts did it 2026-01-29 16:31:16 !
+//MADE NOTE: ../../scripts did it 2026-03-20 13:40:06 !
 

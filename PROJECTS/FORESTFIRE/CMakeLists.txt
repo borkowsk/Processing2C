@@ -1,5 +1,5 @@
 # This file was made automagically. Do not edit!
-#! @date 2026-01-29 16:31:15 (translation timemark)
+#! @date 2026-03-20 13:40:04 (translation timemark)
 cmake_minimum_required(VERSION 3.5)
 set( CMAKE_VERBOSE_MAKEFILE off )
 
@@ -16,9 +16,9 @@ ELSE()
   #set( X_ONLY_SRC  "" )
 ENDIF()
 
-set( SRCPATH  "/data/wb/SCC/public/Processing2C/PROJECTS/FORESTFIRE/cppsrc/" )
-set( PROC2C   "/data/wb/SCC/public/Processing2C" )
-set( SYMSHELL "/data/wb/SCC/public/Processing2C/SYMSHELL" )
+set( SRCPATH  "/home/borkowsk/SCC/public/Processing2C/PROJECTS/FORESTFIRE/cppsrc/" )
+set( PROC2C   "/home/borkowsk/SCC/public/Processing2C" )
+set( SYMSHELL "/home/borkowsk/SCC/public/symShellLight" )
 set( WBRTM    "" )
 
 set( MYLIBS   "/lib" )

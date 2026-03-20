@@ -1,12 +1,12 @@
-# Examples for Processing2C translated 2026-01-29 16:31:14
+# Examples for Processing2C translated 2026-03-20 13:40:03
 # Add or remove EXCLUDE_FROM_ALL, if you want (not) compile a particular example\n
 
 cmake_minimum_required(VERSION 3.5)
 project(PROCESSING2C_EXAMPLES)
 
 #LIBRARIES
-add_subdirectory( "/data/wb/SCC/public/Processing2C/SYMSHELL" 
-                  "/data/wb/SCC/public/Processing2C/SYMSHELL" )
+add_subdirectory( "/home/borkowsk/SCC/public/symShellLight" 
+                  "/home/borkowsk/SCC/public/symShellLight" )
 add_subdirectory( "../lib/" 
                   "../lib/" )
 add_subdirectory( "../tools/" 

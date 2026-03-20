@@ -1,6 +1,6 @@
 /// ABM (Agent Base Modeling) minimum template test for Processing2C.
 /// @author: Wojciech Borkowski wborkowski_uw_edu_pl
-/// @date 2026-01-29 (last change)
+/// @date 2024-09-30 (last change)
 /// ORIGINAL FILE:aSimpleHistogram->pde
 //*//////////////////////////////////////////////////////////////////////////////////////
 /// Bardzo prosty histogram agentów wg jednej właściwości
@@ -49,5 +49,5 @@ void histogram(smatrix<pAgent> agents,float startx,float starty,float hight) ///
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
 //  https://www->researchgate->net/profile/WOJCIECH_BORKOWSKI - TOOLS
 //*//////////////////////////////////////////////////////////////////////////////////////////////////////
-//MADE NOTE: ../../scripts did it 2026-01-29 16:31:15 !
+//MADE NOTE: ../../scripts did it 2026-03-20 13:40:04 !
 
