@@ -1,7 +1,7 @@
 #!/bin/bash
 # Processing2C installation script
-# @version 0.26.01
-# @date 2026-01-29 (last change)
+# @version 0.26.03
+# @date 2026-03-19 (last change)
 #
 if [[ -f /usr/bin/gedit ]]
 then 
@@ -32,27 +32,30 @@ function pause(){ #https://www.cyberciti.biz/tips/linux-unix-pause-command.html
 }
 
 #WBRTM="/home/Kowalski/WBRTM"
-SYMSHELL=`realpath "./SYMSHELL"`
+#SYMSHELL=`realpath "../symShellLight/"`
+SYMSHELL=`realpath "./SYMSHELL/"` #required "git submodule update --remote --recursive"
 PROC2DIR=`realpath "./"`
 
 echo -e $COLOR2"Are the paths correct?\n"$NORMCO
 echo -e "PROC2DIR=$COLOR1"$PROC2DIR"$NORMCO  #This toolbox whole path"
-echo -e "SYMSHELL=$COLOR1"$SYMSHELL"$NORMCO  #SymShellLight toolbox whole path"
-if [[ ! -d $SYMSHELL ]]
-then
-  echo -e $COLERR"Directory"$COLOR1 $SYMSHELL $COLERR"is not found!" $NORMCO
-  echo -e $COLERR"This toolbox is strictly required!"$NORMCO
-  exit -1  
-fi
-echo -e $COLOR2"If it seems wrong, break script, edit it and run it again!"$NORMCO
-pause
-echo
+echo -e "SYMSHELL=$COLOR1"$SYMSHELL"$NORMCO  #symShellLight toolbox whole path"
 
-if [[ ! -d "$SYMSHELL/SVG/" ]]
+#if [[ ! -d $SYMSHELL ]]
+#then
+#  echo -e $COLERR"Directory"$COLOR1 $SYMSHELL $COLERR"is not found!" $NORMCO
+#  echo -e $COLERR"This toolbox is strictly required!"$NORMCO
+#  exit -1
+#fi
+#echo -e $COLOR2"If it seems wrong, break script, edit it and run it again!"$NORMCO
+#pause
+#echo
+
+if [[ ! -d "$SYMSHELL/SVG/" ]] #sprawdzamy czy ten katalog jest i jest w nim to czego chcemy
 then
-echo 
+#echo /home/borkowsk/SCC/public/symShellLight
 echo -e $COLERR"Are you sure, that SymShellLight toolbox is in directory"$COLOR1 $SYMSHELL $NORMCO"?"
 echo -e $COLERR"I can't find this toolbox, which is strictly required!"
+#git submodule update --remote --recursive
 echo
 echo -e $NORMCO"How to get this?"
 echo
@@ -64,25 +67,52 @@ echo -e "Alternatively..."
 echo 
 echo -e $NORMCO"Go to the parent directory and use the following command:"$COLOR2
 echo
-echo -e "$ git clone https://github.com/borkowsk/symShellLight.git SymShellLight"
-echo -e "$ ln -s ../SymShellLight/ $PROC2DIR/SYMSHELL"$NORMCO
+echo -e "$ git clone https://github.com/borkowsk/symShellLight.git symShellLight"
+echo -e "$ rmdir $PROC2DIR/SYMSHELL"
+echo -e "$ ln -s ../symShellLight/ $PROC2DIR/SYMSHELL"$NORMCO
 echo
 exit -1
 else
- echo -e "SymShellLight toolbox is located in...\n"$COLOR1"$SYMSHELL"$NORMCO
+ echo -e "The symShellLight toolbox is located in...\n"$COLOR1"$SYMSHELL"$NORMCO
  echo
 fi
 
-echo -e "Finally, p2c working directory is ..."$COLOR1 
+echo -e $NORMCO"The p2c working directory is ..."$COLOR1
 ls -d $PROC2DIR
 echo -e $NORMCO
 
+echo -e $NORMCO"Checking cmake,make and c++ compiler, needed for p2c to work..."$COLOR1
+cmake --version
+echo
+make --version
+echo
+c++ --version
+echo
+
+echo -e $NORMCO"Checking X11 libraries, needed for p2c to work..."$COLOR1
+if pkg-config --exists x11; then
+    echo "Xlib development is instaled."
+else
+    echo -e $COLERR"You have to install Xlib.\nTry 'sudo apt install libx11-dev' or something equivalent."$NORMCO
+    exit -1
+fi
+
+# Sprawdzenie Xpm
+if pkg-config --exists xpm; then
+    echo "Xpm lib is instaled."
+else
+    echo -e $COLERR"You have to install Xpm.\nTry 'sudo apt install libxpm-dev' or something equivalent."$NORMCO
+    exit -1
+fi
+
 #prepare config.dat
+echo
 echo
 cp scripts/config.dat.tmpl scripts/config.dat
 echo SYMSHELL=${SYMSHELL} >> scripts/config.dat
 echo PROC2DIR=${PROC2DIR} >> scripts/config.dat
 echo -e "see $COLOR1 scripts/config.dat !"$NORMCO
+
 
 #set variable with path in .profile
 set +e
