@@ -48,6 +48,6 @@ This tool was initially created for my private educational experiment, but when 
 
 If You find this software useful to You, buy me a coffee. Software development is a job that consumes huge amounts of coffee 😥.
 
-https://www.buymeacoffee.com/wborkowsk
+[COFFE](https://buycoffee.to/adalbertus)
 
 
