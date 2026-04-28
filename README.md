@@ -16,10 +16,11 @@ $ git clone --recursive https://github.com/borkowsk/Processing2C.git
 
 Then go into _Processing2C/_ and and run _config.sh_ bash script.
 
-For update submoduled library to most recent version, go to Processing2C top folder and use:
+For update submoduled library to most recent version, go to Processing2C __top folder__ and use:
 
 ```console
-$ git submodule update --remote --recursive
+# git submodule update --init --recursive ## When SYMSHELL directory is complete empty.
+$ git submodule update --remote --recursive --merge ## "recursive" is probably not needed.
 ```
 
 For much more information see: 
