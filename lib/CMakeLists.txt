@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(WBProcessing)
 
-set(PROC2CDIR "/data/wb/SCC/public/Processing2C" )
-set(SYMSHELL  "/data/wb/SCC/public/Processing2C/SYMSHELL" )
+set(PROC2CDIR "/home/borkowsk/SCC/public/Processing2C" )
+set(SYMSHELL  "/home/borkowsk/SCC/public/symShellLight" )
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
