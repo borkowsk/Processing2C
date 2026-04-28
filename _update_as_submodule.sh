@@ -1,5 +1,5 @@
 #/bin/bash
-# @date 2026 (last modification)
+# @date 2026-04-28 (last modification)
 # ==============================
 #Ten skrypt aktualizuje SymShellLight zainstalowany jako submodul innej bublioteki
 
