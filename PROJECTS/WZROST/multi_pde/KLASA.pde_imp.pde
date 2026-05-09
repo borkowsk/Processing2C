@@ -1,0 +1,18 @@
+/// @file
+/// Simple model of colony growth with mutations (test project for Processing2C).
+/// @date 2024-09-30 (last change)
+//*////////////////////////////////////////////////////
+
+
+//*/////////////////////////
+//  TAKA KLASA PRZYKŁADOWA
+//*/////////////////////////
+
+int KLASA_Counter=0; ///< Globalny licznik obiektów typu RGB.
+
+/// Info: obiekt przykładowy z polami Red,Green,Blue.
+/*_import_class:KLASA */
+
+//*//////////////////////////////////////////////////////////
+/// @author: Wojciech Borkowski wborkowski_uw_edu_pl
+//*//////////////////////////////////////////////////////////
