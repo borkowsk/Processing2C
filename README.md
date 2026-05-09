@@ -5,7 +5,7 @@
 In my professional work as a computer simulation creator, I use Processing to create prototypes of models, which I often reimplement in C++. This often means repeating a coder job that has already been done, which I don't like, so I finally created an automatic translator.
 However, the Processing interface is quite extensive and I don't use most of its functionalities, so the library still contains a lot of `"not implemented"` functions and classes!
 
-<img src="./docs/under-construction-multi-tasking.gif width="200" title="Under constant construction">
+<img src="./docs/under-construction-multi-tasking.gif"  width="200" title="Under constant construction">
 
 **Quick start**
 
